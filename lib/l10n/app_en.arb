@@ -1,0 +1,27 @@
+{
+  "@@locale": "en",
+  "appTitle": "NewRoots",
+  "@appTitle": { "description": "Application name" },
+
+  "tagline": "From arrival to belonging.",
+  "navHome": "Home",
+  "navCommunity": "Community",
+  "navScamShield": "ScamShield",
+  "navProfile": "Profile",
+
+  "featureRoadmap": "Integration Roadmap",
+  "featureHousing": "Housing Navigator",
+  "featureCareer": "Career Bridge",
+  "featureEnglish": "English Learning",
+  "featureEducation": "Education Navigator",
+  "featureHealthcare": "Healthcare Navigator",
+  "featureCommunity": "Community Connection",
+  "featureSupportGroups": "Support Groups",
+  "featureScamShield": "ScamShield",
+  "featureSafety": "Community Safety Guide",
+
+  "placeholderComingSoon": "Coming soon",
+  "@placeholderComingSoon": { "description": "Generic placeholder for unbuilt screens" },
+
+  "disclaimer": "NewRoots is a navigation tool, not a substitute for legal, medical, or financial professionals."
+}

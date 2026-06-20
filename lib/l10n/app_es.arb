@@ -1,0 +1,23 @@
+{
+  "@@locale": "es",
+  "appTitle": "NewRoots",
+  "tagline": "De la llegada a la pertenencia.",
+  "navHome": "Inicio",
+  "navCommunity": "Comunidad",
+  "navScamShield": "ScamShield",
+  "navProfile": "Perfil",
+
+  "featureRoadmap": "Plan de integración",
+  "featureHousing": "Guía de vivienda",
+  "featureCareer": "Puente profesional",
+  "featureEnglish": "Aprendizaje de inglés",
+  "featureEducation": "Guía educativa",
+  "featureHealthcare": "Guía de salud",
+  "featureCommunity": "Conexión comunitaria",
+  "featureSupportGroups": "Grupos de apoyo",
+  "featureScamShield": "ScamShield",
+  "featureSafety": "Guía de seguridad comunitaria",
+
+  "placeholderComingSoon": "Próximamente",
+  "disclaimer": "NewRoots es una herramienta de orientación, no un sustituto de profesionales legales, médicos o financieros."
+}

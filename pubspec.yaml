@@ -1,0 +1,47 @@
+name: newroots
+description: "NewRoots California — AI-powered integration, community, and safety navigator for immigrant families."
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+
+# NOTE: This is a scaffold/outline. Version constraints are intentionally left
+# open; run `flutter pub get` (or `flutter pub add <pkg>`) to resolve and pin
+# the latest compatible versions before building.
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod:
+  # Navigation
+  go_router:
+  # Internationalization
+  intl:
+
+  # Firebase (backend platform — see DESIGN_PLAN.md §2)
+  firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  firebase_storage:
+  cloud_functions:
+  firebase_messaging:
+  firebase_app_check:
+  firebase_analytics:
+  firebase_crashlytics:
+  firebase_remote_config:
+
+  # ScamShield: capture/upload suspicious screenshots
+  image_picker:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+
+flutter:
+  uses-material-design: true
+  generate: true # enables gen-l10n from .arb files
