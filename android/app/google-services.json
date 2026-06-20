@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "9734463147",
+    "project_id": "newroots-prod",
+    "storage_bucket": "newroots-prod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9734463147:android:1a4d5ec8a0120f780421ee",
+        "android_client_info": {
+          "package_name": "com.example.newroots"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT3OP8A4Q0d59UEVWtaJDnINIr5PrBq4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
