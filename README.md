@@ -40,20 +40,46 @@ lib/
 
 ## Getting started
 
+### Just want to see the UI? (no Firebase needed)
+
+```bash
+flutter pub get
+flutter create --platforms=android,ios,web .   # add native folders if missing
+flutter run -d chrome                            # or any connected device
+```
+
+This boots the placeholder UI using `lib/main.dart`. Firebase/AI features won't
+work yet (they're stubbed), but the screens render.
+
+### Full setup with Firebase
+
 ```bash
 flutter pub get
 
-# Generate Firebase config (creates a real project first — see DEPLOY_PLAN.md)
+# 1. Sign in to Firebase (one time)
+firebase login
+
+# 2. CREATE the projects first — flutterfire configure does NOT create them.
+#    Project ids must be 6-30 chars, lowercase letters/numbers/hyphens, and are
+#    GLOBALLY UNIQUE (add a suffix like -yourname if taken).
+firebase projects:create newroots-dev  --display-name "NewRoots Dev"
+firebase projects:create newroots-prod --display-name "NewRoots"
+
+# 3. Generate the Firebase config for each project/flavor
 flutterfire configure --project=newroots-dev  --out=lib/firebase_options_dev.dart
 flutterfire configure --project=newroots-prod --out=lib/firebase_options_prod.dart
 
+# 4. Run
 flutter run
 ```
 
+> See `DEPLOY_PLAN.md` §0–§5 for the complete cloud setup (Firestore, Auth,
+> Cloud Functions, App Check, etc.).
+
 ## Next steps
 
-1. `flutter create .` to generate native platform folders (android/ios) if not present.
-2. Create Firebase projects (dev + prod) and run `flutterfire configure`.
+1. `flutter create --platforms=android,ios,web .` to generate native platform folders if not present (additive — won't touch your `lib/`).
+2. `firebase projects:create ...` (dev + prod), then `flutterfire configure`.
 3. Initialize Firebase + App Check in `main.dart`.
 4. Implement `AuthService` and the auth flow.
 5. Build the flagship features first: Integration Roadmap and ScamShield.
