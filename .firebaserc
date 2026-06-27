@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "newroots-dev",
+    "dev": "newroots-dev",
+    "prod": "newroots-prod"
+  }
+}

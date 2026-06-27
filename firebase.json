@@ -1,1 +1,72 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"newroots-prod","appId":"1:9734463147:android:1a4d5ec8a0120f780421ee","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"newroots-prod","appId":"1:9734463147:ios:78c33650461c0c400421ee","uploadDebugSymbols":true,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"newroots-prod","appId":"1:9734463147:ios:78c33650461c0c400421ee","uploadDebugSymbols":true,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options_dev.dart":{"projectId":"newroots-dev","configurations":{"android":"1:45847088927:android:7701218daa41e368072a2a","ios":"1:45847088927:ios:48e02162b4c50201072a2a","macos":"1:45847088927:ios:48e02162b4c50201072a2a","web":"1:45847088927:web:09043ac8737886f0072a2a","windows":"1:45847088927:web:6ed858879235abe7072a2a"}},"lib/firebase_options_prod.dart":{"projectId":"newroots-prod","configurations":{"android":"1:9734463147:android:1a4d5ec8a0120f780421ee","ios":"1:9734463147:ios:78c33650461c0c400421ee","macos":"1:9734463147:ios:78c33650461c0c400421ee","web":"1:9734463147:web:9114f39b8c5b187c0421ee","windows":"1:9734463147:web:6a38d91b04077f5f0421ee"}}}}}}
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "newroots-prod",
+          "appId": "1:9734463147:android:1a4d5ec8a0120f780421ee",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "newroots-prod",
+          "appId": "1:9734463147:ios:78c33650461c0c400421ee",
+          "uploadDebugSymbols": true,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "newroots-prod",
+          "appId": "1:9734463147:ios:78c33650461c0c400421ee",
+          "uploadDebugSymbols": true,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options_dev.dart": {
+          "projectId": "newroots-dev",
+          "configurations": {
+            "android": "1:45847088927:android:7701218daa41e368072a2a",
+            "ios": "1:45847088927:ios:48e02162b4c50201072a2a",
+            "macos": "1:45847088927:ios:48e02162b4c50201072a2a",
+            "web": "1:45847088927:web:09043ac8737886f0072a2a",
+            "windows": "1:45847088927:web:6ed858879235abe7072a2a"
+          }
+        },
+        "lib/firebase_options_prod.dart": {
+          "projectId": "newroots-prod",
+          "configurations": {
+            "android": "1:9734463147:android:1a4d5ec8a0120f780421ee",
+            "ios": "1:9734463147:ios:78c33650461c0c400421ee",
+            "macos": "1:9734463147:ios:78c33650461c0c400421ee",
+            "web": "1:9734463147:web:9114f39b8c5b187c0421ee",
+            "windows": "1:9734463147:web:6a38d91b04077f5f0421ee"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "disallowLegacyRuntimeConfig": true,
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ]
+}

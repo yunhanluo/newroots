@@ -1,0 +1,31 @@
+rules_version = '2';
+
+// NewRoots California — Cloud Storage Security Rules
+// See DESIGN_PLAN.md §8 and DEPLOY_PLAN.md §4.
+//
+// ScamShield uploads (suspicious screenshots/emails) are private to the user
+// who uploaded them. Everything else is denied by default.
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    // scamshield-uploads/{uid}/... — owner-only read/write.
+    match /scamshield-uploads/{uid}/{allPaths=**} {
+      allow read: if isOwner(uid);
+      // Limit uploads to images/text under ~10 MB.
+      allow write: if isOwner(uid)
+        && request.resource.size < 10 * 1024 * 1024
+        && (request.resource.contentType.matches('image/.*')
+            || request.resource.contentType.matches('text/.*'));
+    }
+
+    // Default deny.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

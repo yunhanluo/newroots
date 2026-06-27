@@ -1,0 +1,88 @@
+rules_version = '2';
+
+// NewRoots California — Firestore Security Rules
+// See DESIGN_PLAN.md §5 and DEPLOY_PLAN.md §4.
+//
+// Model:
+//   - Private user data: owner-only (the signed-in user).
+//   - Curated content (resources, scamAlerts, emergencyContacts): public read,
+//     admin-only write (admin = custom auth claim `admin == true`).
+//   - Support groups: readable/writable by group members only.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---- helpers ----
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isGroupMember(groupId) {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid));
+    }
+
+    // ---- per-user private data ----
+    // users/{uid} and everything beneath it (profile, roadmaps, scamReports).
+    match /users/{uid} {
+      allow read, write: if isOwner(uid);
+
+      match /{document=**} {
+        allow read, write: if isOwner(uid);
+      }
+    }
+
+    // ---- curated, public-read content ----
+    match /resources/{resourceId} {
+      allow read: if true;            // public, even when signed out
+      allow write: if isAdmin();
+    }
+
+    match /scamAlerts/{alertId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /emergencyContacts/{contactId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ---- support groups ----
+    match /groups/{groupId} {
+      // Group metadata is visible to any signed-in user (so they can discover
+      // and join); only admins create/edit the group document itself.
+      allow read: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+
+      // Membership: a user may add/remove only their own membership doc.
+      match /members/{memberUid} {
+        allow read: if isSignedIn();
+        allow write: if isOwner(memberUid);
+      }
+
+      // Posts: readable and writable by members of the group.
+      match /posts/{postId} {
+        allow read: if isGroupMember(groupId);
+        allow create: if isGroupMember(groupId)
+          && request.resource.data.authorUid == request.auth.uid;
+        allow update, delete: if isSignedIn()
+          && resource.data.authorUid == request.auth.uid;
+      }
+    }
+
+    // ---- default deny ----
+    // Anything not matched above is denied.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
