@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../services/auth_service.dart';
 import '../../features/auth/presentation/auth_screen.dart';
+import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/career/presentation/career_screen.dart';
 import '../../features/community/presentation/community_screen.dart';
 import '../../features/education/presentation/education_screen.dart';
@@ -19,6 +23,7 @@ import '../../features/support_groups/presentation/support_groups_screen.dart';
 /// Central route table. Names are referenced by screens via [context.goNamed].
 abstract class Routes {
   static const auth = 'auth';
+  static const signup = 'signup';
   static const home = 'home';
   static const profile = 'profile';
   static const roadmap = 'roadmap';
@@ -34,14 +39,30 @@ abstract class Routes {
 }
 
 final routerProvider = Provider<GoRouter>((ref) {
-  // TODO: add redirect/guard based on authStateProvider once auth is wired.
+  final authService = ref.watch(authServiceProvider);
+
   return GoRouter(
     initialLocation: '/',
+    refreshListenable: _GoRouterRefreshStream(authService.authStateChanges()),
+    redirect: (context, state) {
+      final loggedIn = authService.currentUser != null;
+      final atAuth = state.matchedLocation == '/auth' ||
+          state.matchedLocation == '/signup';
+
+      if (!loggedIn) return atAuth ? null : '/auth';
+      if (loggedIn && atAuth) return '/';
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/auth',
         name: Routes.auth,
         builder: (context, state) => const AuthScreen(),
+      ),
+      GoRoute(
+        path: '/signup',
+        name: Routes.signup,
+        builder: (context, state) => const SignupScreen(),
       ),
       GoRoute(
         path: '/',
@@ -111,3 +132,20 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
   );
 });
+
+/// Bridges a [Stream] (auth state) to a [Listenable] so GoRouter re-runs its
+/// redirect logic whenever the user logs in or out.
+class _GoRouterRefreshStream extends ChangeNotifier {
+  _GoRouterRefreshStream(Stream<dynamic> stream) {
+    notifyListeners();
+    _subscription = stream.asBroadcastStream().listen((_) => notifyListeners());
+  }
+
+  late final StreamSubscription<dynamic> _subscription;
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
+}
