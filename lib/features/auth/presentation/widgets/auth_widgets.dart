@@ -24,14 +24,12 @@ class AuthHeader extends StatelessWidget {
           child: const Icon(Icons.eco_outlined, color: Colors.white, size: 40),
         ),
         const SizedBox(height: 20),
-        Text(
-          'NewRoots',
-          style: theme.textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.w700,
-            color: kBrandGreen,
-          ),
+        Image.asset(
+          'assets/images/logo.png',
+          height: 40,
+          fit: BoxFit.contain,
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 10),
         Text(
           subtitle,
           textAlign: TextAlign.center,
@@ -71,6 +69,7 @@ class AuthTextField extends StatelessWidget {
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       onSubmitted: onSubmitted,
+      style: const TextStyle(color: Colors.black87, fontSize: 16),
       decoration: InputDecoration(
         labelText: label,
         hintText: hintText,
@@ -84,7 +83,7 @@ class AuthTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: kBrandGreen, width: 2),
         ),
-        labelStyle: const TextStyle(color: Colors.black54),
+        labelStyle: const TextStyle(color: Colors.black87),
       ),
     );
   }

@@ -45,3 +45,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true # enables gen-l10n from .arb files
+  assets:
+    - assets/images/

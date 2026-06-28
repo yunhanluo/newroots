@@ -1,4 +1,4 @@
-# NewRoots California
+# newroots California
 
 AI-powered integration, community, and safety navigator for immigrant families.
 Cross-platform mobile app built with **Flutter + Firebase**.

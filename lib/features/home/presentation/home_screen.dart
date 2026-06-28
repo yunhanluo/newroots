@@ -25,7 +25,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NewRoots'),
+        title: Image.asset(
+          'assets/images/logo.png',
+          height: 28,
+          fit: BoxFit.contain,
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.person_outline),

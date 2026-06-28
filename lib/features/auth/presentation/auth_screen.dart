@@ -54,8 +54,24 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Center(
+      body: Stack(
+        children: [
+          // Faint, green-tinted Statue of Liberty backdrop, full-bleed.
+          Positioned.fill(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.asset(
+                  'assets/images/liberty.png',
+                  fit: BoxFit.cover,
+                  opacity: const AlwaysStoppedAnimation(0.22),
+                ),
+                Container(color: kBrandGreen.withOpacity(0.30)),
+              ],
+            ),
+          ),
+          SafeArea(
+            child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
             child: ConstrainedBox(
@@ -115,6 +131,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
             ),
           ),
         ),
+      ),
+        ],
       ),
     );
   }
