@@ -92,71 +92,82 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
           ),
           SafeArea(
             child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 420),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const AuthHeader(
-                    subtitle: 'Create your account to get started.',
-                  ),
-                  const SizedBox(height: 36),
-                  AuthTextField(
-                    controller: _emailController,
-                    label: 'Email',
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                  ),
-                  const SizedBox(height: 16),
-                  AuthTextField(
-                    controller: _passwordController,
-                    label: 'Password',
-                    obscureText: true,
-                    textInputAction: TextInputAction.next,
-                  ),
-                  const SizedBox(height: 16),
-                  AuthTextField(
-                    controller: _confirmController,
-                    label: 'Confirm password',
-                    obscureText: true,
-                    textInputAction: TextInputAction.done,
-                    onSubmitted: (_) => _createAccount(),
-                  ),
-                  if (_error != null) ...[
-                    const SizedBox(height: 16),
-                    Text(_error!, style: const TextStyle(color: Colors.red)),
-                  ],
-                  const SizedBox(height: 24),
-                  AuthPrimaryButton(
-                    label: 'Create account',
-                    loading: _loading,
-                    onPressed: _createAccount,
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 28,
+                  vertical: 24,
+                ),
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 420),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Text(
-                        'Already have an account?',
-                        style: TextStyle(color: Colors.black54),
+                      const AuthHeader(
+                        subtitle: 'Create your account to get started.',
                       ),
-                      TextButton(
-                        onPressed:
-                            _loading ? null : () => context.goNamed(Routes.auth),
-                        style: TextButton.styleFrom(foregroundColor: kBrandGreen),
-                        child: const Text('Log in'),
+                      const SizedBox(height: 36),
+                      AuthTextField(
+                        controller: _emailController,
+                        prefixIcon: Icons.email_outlined,
+                        label: 'Email',
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                      ),
+                      const SizedBox(height: 16),
+                      AuthTextField(
+                        controller: _passwordController,
+                        label: 'Password',
+                        prefixIcon: Icons.lock_outline,
+                        obscureText: true,
+                        textInputAction: TextInputAction.next,
+                      ),
+                      const SizedBox(height: 16),
+                      AuthTextField(
+                        controller: _confirmController,
+                        label: 'Confirm password',
+                        obscureText: true,
+                        textInputAction: TextInputAction.done,
+                        onSubmitted: (_) => _createAccount(),
+                      ),
+                      if (_error != null) ...[
+                        const SizedBox(height: 16),
+                        Text(
+                          _error!,
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                      ],
+                      const SizedBox(height: 24),
+                      AuthPrimaryButton(
+                        label: 'Create account',
+                        loading: _loading,
+                        onPressed: _createAccount,
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Already have an account?',
+                            style: TextStyle(color: Colors.black54),
+                          ),
+                          TextButton(
+                            onPressed: _loading
+                                ? null
+                                : () => context.goNamed(Routes.auth),
+                            style: TextButton.styleFrom(
+                              foregroundColor: kBrandGreen,
+                            ),
+                            child: const Text('Log in'),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
         ],
       ),
     );
