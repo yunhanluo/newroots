@@ -135,6 +135,15 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                           ),
                         ],
                       ),
+                      TextButton(
+                        onPressed: _loading
+                            ? null
+                            : () => context.pushNamed(Routes.about),
+                        style: TextButton.styleFrom(
+                          foregroundColor: kBrandGreen,
+                        ),
+                        child: const Text('What is NewRoots?'),
+                      ),
                     ],
                   ),
                 ),
