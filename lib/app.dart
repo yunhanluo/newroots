@@ -19,6 +19,7 @@ class NewRootsApp extends ConsumerWidget {
       debugShowCheckedModeBanner: !FlavorConfig.instance.isProd,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
+      themeMode: ThemeMode.light,
       routerConfig: router,
       // TODO: switch to AppLocalizations.delegate / supportedLocales once
       // `flutter gen-l10n` has run (generate: true in pubspec.yaml).

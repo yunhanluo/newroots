@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../auth/presentation/widgets/auth_widgets.dart';
+import '../../../core/theme/brand_colors.dart';
 
 /// Short intro to NewRoots — kept minimal for now.
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
-
-  static const _pageBg = Color(0xFFF4F8F6);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: _pageBg,
+      backgroundColor: kBrandPageBg,
       appBar: AppBar(
-        backgroundColor: _pageBg,
+        backgroundColor: kBrandGreen,
         surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
         elevation: 0,
-        foregroundColor: kBrandGreen,
+        foregroundColor: Colors.white,
+        title: const Text('About'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),

@@ -14,6 +14,7 @@
 import {onCall, HttpsError, CallableRequest} from "firebase-functions/v2/https";
 import {defineSecret} from "firebase-functions/params";
 import {setGlobalOptions} from "firebase-functions/v2";
+import {handleRoadmapAi, roadmapCallableOptions} from "./roadmap_ai.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -57,6 +58,10 @@ export const generateRoadmap = onCall(callableOptions, async (request) => {
       {timeframe: "First Year", title: "Build credit history"},
     ],
   };
+});
+
+export const roadmapAi = onCall(roadmapCallableOptions, async (request) => {
+  return handleRoadmapAi(request, requireAuth);
 });
 
 // --- Feature 9: ScamShield ---------------------------------------------------

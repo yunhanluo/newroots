@@ -56,7 +56,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       await ref
           .read(authServiceProvider)
           .createAccountWithEmail(email, password);
-      // On success, the router redirect sends the user home automatically.
+      if (mounted) context.goNamed(Routes.onboarding);
     } on AuthException catch (e) {
       if (mounted) setState(() => _error = e.message);
     } finally {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Brand green used across the auth screens.
-const Color kBrandGreen = Color(0xFF1B6B5A);
+import '../../../../core/theme/brand_colors.dart';
+
+export '../../../../core/theme/brand_colors.dart';
 
 /// Logo + title header shown at the top of the auth screens.
 class AuthHeader extends StatelessWidget {

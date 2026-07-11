@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/router/app_router.dart';
-import '../../auth/presentation/widgets/auth_widgets.dart';
+import '../../../core/theme/brand_colors.dart';
 
 /// Home dashboard: entry point to all navigators (see DESIGN_PLAN.md §4).
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   static const _cardBg = Colors.white;
-  static const _pageBg = Color(0xFFF4F8F6);
 
   static const _features = <_FeatureEntry>[
     _FeatureEntry('Integration Roadmap', Icons.map_outlined, Routes.roadmap),
@@ -27,9 +26,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _pageBg,
+      backgroundColor: kBrandPageBg,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1B6B5A),
+        backgroundColor: kBrandGreen,
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
         elevation: 0,

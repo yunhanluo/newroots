@@ -15,6 +15,7 @@ import '../../features/english_resources/presentation/english_resources_screen.d
 import '../../features/healthcare/presentation/healthcare_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/housing/presentation/housing_screen.dart';
+import '../../features/onboarding/presentation/onboarding_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/roadmap/presentation/roadmap_screen.dart';
 import '../../features/safety_guide/presentation/safety_guide_screen.dart';
@@ -26,6 +27,7 @@ abstract class Routes {
   static const auth = 'auth';
   static const signup = 'signup';
   static const about = 'about';
+  static const onboarding = 'onboarding';
   static const home = 'home';
   static const profile = 'profile';
   static const roadmap = 'roadmap';
@@ -75,6 +77,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/about',
         name: Routes.about,
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding',
+        name: Routes.onboarding,
+        builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
         path: '/',
