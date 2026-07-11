@@ -2,6 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../models/career.dart';
 import '../models/roadmap.dart';
 import '../models/scam_report.dart';
 import 'roadmap_ai_local.dart';
@@ -24,12 +25,72 @@ class AiService {
     throw UnimplementedError('analyzeScam Cloud Function not wired yet');
   }
 
-  /// Calls the `careerMap` Cloud Function.
-  Future<List<String>> mapCareer({
-    required String priorRole,
-    required String language,
+  /// Calls the `careerMap` Cloud Function to generate career pathways.
+  Future<List<CareerPath>> generateCareerPaths({
+    required UserProfileData profile,
+    required String additionalNotes,
   }) async {
-    throw UnimplementedError('careerMap Cloud Function not wired yet');
+    return _callCareerMap(
+      profile: profile,
+      additionalNotes: additionalNotes,
+      action: 'generate',
+    );
+  }
+
+  Future<CareerPath> regenerateCareerPath({
+    required UserProfileData profile,
+    required String additionalNotes,
+    required List<CareerPath> existingPaths,
+    required int pathIndex,
+  }) async {
+    final path = existingPaths[pathIndex];
+    final result = await _functions
+        .httpsCallable('careerMap')
+        .call<Map<String, dynamic>>({
+      'action': 'regenerate_path',
+      'profile': _careerProfilePayload(profile),
+      'additionalNotes': additionalNotes.trim(),
+      'language': profile.languageCode,
+      'pathIndex': pathIndex,
+      'pathId': path.id,
+      'replacePathTitle': path.title,
+      'existingPaths': existingPaths
+          .map((p) => {'title': p.title, 'summary': p.summary})
+          .toList(),
+    });
+    final data = Map<String, dynamic>.from(result.data);
+    final rawPath = data['path'];
+    if (rawPath is! Map) {
+      throw StateError('No career path returned.');
+    }
+    return CareerPath.fromMap(Map<String, dynamic>.from(rawPath));
+  }
+
+  Future<List<CareerPath>> _callCareerMap({
+    required UserProfileData profile,
+    required String additionalNotes,
+    required String action,
+  }) async {
+    try {
+      final result = await _functions
+          .httpsCallable('careerMap')
+          .call<Map<String, dynamic>>({
+        'action': action,
+        'profile': _careerProfilePayload(profile),
+        'additionalNotes': additionalNotes.trim(),
+        'language': profile.languageCode,
+      });
+      final data = Map<String, dynamic>.from(result.data);
+      final rawPaths = data['paths'];
+      if (rawPaths is! List) return [];
+      return rawPaths
+          .whereType<Map>()
+          .map((item) => CareerPath.fromMap(Map<String, dynamic>.from(item)))
+          .toList();
+    } catch (error, stack) {
+      debugPrint('careerMap Cloud Function failed: $error\n$stack');
+      rethrow;
+    }
   }
 
   Future<RoadmapAiResponse> _callRoadmapAi(
@@ -191,6 +252,15 @@ class AiService {
       'onboardingComplete': profile.onboardingComplete,
     };
   }
+
+  Map<String, dynamic> _careerProfilePayload(UserProfileData profile) {
+    return {
+      'languageCode': profile.languageCode,
+      'location': profile.location,
+      'employmentBackground': profile.employmentBackground,
+      'topPriorities': profile.topPriorities,
+    };
+  }
 }
 
 /// Debug status from the `roadmapAi` `debug` action.
@@ -209,13 +279,16 @@ class RoadmapAiDebugStatus {
       !apiKeyConfigured || openAiReachable == false;
 }
 
-/// User-facing message for roadmap AI failures.
-String describeRoadmapAiError(Object error) {
+/// User-facing message for AI Cloud Function failures.
+String describeAiServiceError(Object error) {
   if (error is FirebaseFunctionsException) {
     return error.message ?? 'AI service error. Try again shortly.';
   }
   return 'Could not reach the AI service. Try again shortly.';
 }
+
+@Deprecated('Use describeAiServiceError')
+String describeRoadmapAiError(Object error) => describeAiServiceError(error);
 
 final aiServiceProvider = Provider<AiService>(
   (ref) => AiService(FirebaseFunctions.instanceFor(region: 'us-west1')),

@@ -15,6 +15,7 @@ import {onCall, HttpsError, CallableRequest} from "firebase-functions/v2/https";
 import {defineSecret} from "firebase-functions/params";
 import {setGlobalOptions} from "firebase-functions/v2";
 import {handleRoadmapAi, roadmapCallableOptions} from "./roadmap_ai.js";
+import {handleCareerAi, careerCallableOptions} from "./career_ai.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -89,20 +90,6 @@ export const analyzeScam = onCall(callableOptions, async (request) => {
 });
 
 // --- Feature 3: Career Bridge ------------------------------------------------
-interface CareerInput {
-  priorRole: string;
-  language: string;
-}
-
-export const careerMap = onCall(callableOptions, async (request) => {
-  requireAuth(request);
-  const {priorRole} = (request.data ?? {}) as CareerInput;
-  if (!priorRole) {
-    throw new HttpsError("invalid-argument", "priorRole is required.");
-  }
-
-  // TODO: call the LLM to produce a US career pathway for `priorRole`.
-  return {
-    pathway: [priorRole, "Entry-level US role", "Certification", "Target role"],
-  };
+export const careerMap = onCall(careerCallableOptions, async (request) => {
+  return handleCareerAi(request, requireAuth);
 });
