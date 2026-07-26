@@ -33,6 +33,7 @@ interface CareerPathStep {
   id: string;
   title: string;
   description: string;
+  timeEstimate: string;
   isCurrent?: boolean;
   certifications: string[];
   skills: string[];
@@ -59,6 +60,15 @@ const CAREER_ADVISOR_PROMPT =
   "focus on California when location is known. Be specific about licenses, " +
   "certifications, exams, apprenticeships, and regulated trades. Never " +
   "provide legal or immigration advice.";
+
+const PRIORITIES_NOTE =
+  "IMPORTANT — survey topPriorities are NOT job interests or desired " +
+  "industries. They are life areas the person wants to learn about or navigate " +
+  "in the US (e.g. Healthcare means they want to understand America's " +
+  "healthcare system, NOT that they want a healthcare career). Base career " +
+  "pathways on priorEmployment and additional notes. Do not invent career " +
+  "paths just because a priority like Healthcare, Housing, Education, or " +
+  "Safety appears in the survey.";
 
 const JSON_RULES =
   "Respond with ONLY valid JSON — no markdown fences, no commentary.";
@@ -158,17 +168,20 @@ function normalizeSteps(raw: CareerPathStep[] | undefined, pathIndex: number): C
     id: step.id?.trim() || `p${pathIndex + 1}s${stepIndex + 1}`,
     title: step.title?.trim() || `Step ${stepIndex + 1}`,
     description: step.description?.trim() || "",
+    timeEstimate: step.timeEstimate?.trim() || "",
     isCurrent: stepIndex === 0 || step.isCurrent === true,
     certifications: normalizeStringList(step.certifications),
     skills: normalizeStringList(step.skills),
   }));
 }
 
+const CAREER_PATH_COUNT = 3;
+
 function normalizePaths(raw: CareerPath[] | undefined): CareerPath[] {
   if (!raw?.length) return [];
   return raw
     .filter((path) => path.title?.trim() || path.steps?.length)
-    .slice(0, 4)
+    .slice(0, CAREER_PATH_COUNT)
     .map((path, index) => ({
       id: path.id?.trim() || `path${index + 1}`,
       title: path.title?.trim() || `Career path ${index + 1}`,
@@ -220,6 +233,7 @@ async function regenerateCareerPath(
         "future role (bottom).\n\n" +
         "Survey / profile:\n" +
         `${profileContext(profile)}\n\n` +
+        `${PRIORITIES_NOTE}\n\n` +
         "Additional notes from the user:\n" +
         `${notes}\n\n` +
         `Location context: ${location}\n\n` +
@@ -227,11 +241,21 @@ async function regenerateCareerPath(
         `Other paths to keep distinct from: ${otherPaths}\n\n` +
         "Requirements:\n" +
         "- Propose a MEANINGFULLY DIFFERENT career direction from the other paths.\n" +
+        "- Ground the path in prior employment / notes — NOT survey priorities.\n" +
         "- 3–6 steps from CURRENT (first step, isCurrent: true) to FUTURE.\n" +
+        "- EVERY step MUST include a non-empty description (1–3 sentences) that " +
+        "grounds the step in the big picture: what this stage means, why it matters, " +
+        "and what the person is working toward. Do NOT return title + skills alone.\n" +
+        "- EVERY step MUST include a realistic timeEstimate (e.g. \"2–3 months\", " +
+        "\"6–12 months\", \"1–2 years\"). For the current step, estimate remaining " +
+        "time if applicable, or say \"Ongoing\".\n" +
         "- Include REAL, SPECIFIC certifications, licenses, and exams at each step.\n" +
-        "- Include concrete skills at each step.\n\n" +
+        "- Include concrete skills at each step (skills are secondary to the description).\n\n" +
         "Return JSON:\n" +
-        '{ "path": { "id": "...", "title": "...", "summary": "...", "steps": [...] } }',
+        '{ "path": { "id": "...", "title": "...", "summary": "...", "steps": [' +
+        '{ "id": "...", "title": "...", "description": "1-3 sentence overview of this step", ' +
+        '"timeEstimate": "2–3 months", "isCurrent": true, "certifications": [], ' +
+        '"skills": ["..."] }] } }',
     },
   ]);
 
@@ -263,21 +287,32 @@ async function generateCareerPaths(
     {
       role: "user",
       content:
-        "Create 2–4 distinct, realistic US career pathways based on this person's " +
+        "Create EXACTLY 3 distinct, realistic US career pathways based on this person's " +
         "background. Each pathway is a linear progression from their current " +
         "situation (top) toward a future role (bottom).\n\n" +
         "Survey / profile:\n" +
         `${profileContext(profile)}\n\n` +
+        `${PRIORITIES_NOTE}\n\n` +
         "Additional notes from the user (skills, education, goals):\n" +
         `${notes}\n\n` +
         `Location context: ${location}\n\n` +
         "Requirements:\n" +
+        "- Return EXACTLY 3 paths in the paths array — no fewer, no more.\n" +
+        "- Base pathways on priorEmployment and additional notes, NOT topPriorities.\n" +
         "- Each path has 3–6 steps ordered from CURRENT (first step, isCurrent: true) " +
         "to FUTURE (last step).\n" +
+        "- EVERY step MUST include a non-empty description (1–3 sentences) that " +
+        "grounds the step in the big picture: what this stage means, why it matters, " +
+        "and what the person is working toward. Never return a step that is only a " +
+        "title plus skills tags — description comes first, then certifications/skills.\n" +
+        "- EVERY step MUST include a realistic timeEstimate (e.g. \"2–3 months\", " +
+        "\"6–12 months\", \"1–2 years\"). For the current step, estimate remaining " +
+        "time if applicable, or say \"Ongoing\".\n" +
         "- Include REAL, SPECIFIC certifications, licenses, exams, or registrations " +
         "needed at each step — e.g. for a plumber: California C-36 license, " +
         "apprenticeship hours, OSHA 10, etc.\n" +
-        "- Include concrete skills to develop at each step.\n" +
+        "- Include concrete skills to develop at each step (skills support the " +
+        "description; they must not replace it).\n" +
         "- Paths should be meaningfully different (not minor variations).\n" +
         "- Use plain language.\n\n" +
         "Return JSON:\n" +
@@ -291,7 +326,8 @@ async function generateCareerPaths(
         "        {\n" +
         '          "id": "s1",\n' +
         '          "title": "Current experience",\n' +
-        '          "description": "...",\n' +
+        '          "description": "1-3 sentences explaining this step in context",\n' +
+        '          "timeEstimate": "Ongoing",\n' +
         '          "isCurrent": true,\n' +
         '          "certifications": [],\n' +
         '          "skills": ["..."]\n' +

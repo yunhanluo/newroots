@@ -16,6 +16,15 @@ import {defineSecret} from "firebase-functions/params";
 import {setGlobalOptions} from "firebase-functions/v2";
 import {handleRoadmapAi, roadmapCallableOptions} from "./roadmap_ai.js";
 import {handleCareerAi, careerCallableOptions} from "./career_ai.js";
+import {handleHousingAi, housingCallableOptions} from "./housing_ai.js";
+import {
+  handleFindEnglishResources,
+  findEnglishCallableOptions,
+} from "./find_english_resources.js";
+import {
+  handleSeedEnglishResources,
+  seedEnglishCallableOptions,
+} from "./seed_english_resources.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -93,3 +102,23 @@ export const analyzeScam = onCall(callableOptions, async (request) => {
 export const careerMap = onCall(careerCallableOptions, async (request) => {
   return handleCareerAi(request, requireAuth);
 });
+
+// --- Feature 2: Housing Navigator --------------------------------------------
+export const housingAi = onCall(housingCallableOptions, async (request) => {
+  return handleHousingAi(request, requireAuth);
+});
+
+// --- Feature 4: English Resource Finder (live Places + seed fallback) --------
+export const seedEnglishResources = onCall(
+  seedEnglishCallableOptions,
+  async (request) => {
+    return handleSeedEnglishResources(request, requireAuth);
+  },
+);
+
+export const findEnglishResources = onCall(
+  findEnglishCallableOptions,
+  async (request) => {
+    return handleFindEnglishResources(request, requireAuth);
+  },
+);
