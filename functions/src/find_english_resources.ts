@@ -1,7 +1,7 @@
 /**
- * English Resource Finder — live nearby ESL via OpenStreetMap Overpass.
- * No Google API key required. Falls back to seeded Firestore if Overpass
- * returns nothing or is unavailable.
+ * English Resource Finder — live nearby ESL via Photon (OpenStreetMap).
+ * Photon is a fast geocoder; no API key required. Falls back to seeded
+ * Firestore data if live search fails or returns nothing.
  */
 import {HttpsError, CallableRequest} from "firebase-functions/v2/https";
 import {getFirestore} from "firebase-admin/firestore";
@@ -14,6 +14,7 @@ if (getApps().length === 0) {
 
 export const findEnglishCallableOptions = {
   enforceAppCheck: false,
+  timeoutSeconds: 30,
 };
 
 const BASE32 = "0123456789bcdefghjkmnpqrstuvwxyz";
@@ -167,184 +168,195 @@ async function geocode(locationText: string): Promise<{
   url.searchParams.set("limit", "1");
   url.searchParams.set("countrycodes", "us");
 
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "NewRootsCalifornia/0.1 (english-resource-finder)",
+        "Accept": "application/json",
+      },
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      throw new HttpsError(
+        "unavailable",
+        `Geocoding failed (HTTP ${response.status}).`,
+      );
+    }
+    const data = (await response.json()) as {
+      lat?: string;
+      lon?: string;
+      display_name?: string;
+    }[];
+    if (!data.length || !data[0].lat || !data[0].lon) {
+      throw new HttpsError(
+        "not-found",
+        "Could not find that location. Try a California city or ZIP code.",
+      );
+    }
+    return {
+      latitude: Number(data[0].lat),
+      longitude: Number(data[0].lon),
+      label: data[0].display_name ?? query,
+    };
+  } catch (error) {
+    if (error instanceof HttpsError) throw error;
+    throw new HttpsError(
+      "unavailable",
+      "Could not look up that location. Try again shortly.",
+    );
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+interface PhotonFeature {
+  geometry?: {coordinates?: [number, number]};
+  properties?: {
+    osm_id?: number;
+    osm_type?: string;
+    osm_key?: string;
+    osm_value?: string;
+    name?: string;
+    street?: string;
+    housenumber?: string;
+    city?: string;
+    state?: string;
+    postcode?: string;
+    country?: string;
+    countrycode?: string;
+    type?: string;
+  };
+}
+
+function isRelevantEnglishHit(name: string, osmValue: string): boolean {
+  const blob = `${name} ${osmValue}`.toLowerCase();
+  if (osmValue === "language_school") return true;
+  return (
+    /\besl\b/.test(blob) ||
+    /english as a second language/.test(blob) ||
+    /adult (english|school|education)/.test(blob) ||
+    /english (class|classes|school|learning|conversation|literacy)/.test(
+      blob,
+    ) ||
+    /learn english/.test(blob) ||
+    /language school/.test(blob) ||
+    /esl/.test(blob)
+  );
+}
+
+async function photonQuery(
+  textQuery: string,
+  latitude: number,
+  longitude: number,
+  signal: AbortSignal,
+): Promise<PhotonFeature[]> {
+  const url = new URL("https://photon.komoot.io/api/");
+  url.searchParams.set("q", textQuery);
+  url.searchParams.set("lat", String(latitude));
+  url.searchParams.set("lon", String(longitude));
+  url.searchParams.set("limit", "15");
+  url.searchParams.set("lang", "en");
+
   const response = await fetch(url, {
     headers: {
       "User-Agent": "NewRootsCalifornia/0.1 (english-resource-finder)",
       "Accept": "application/json",
     },
+    signal,
   });
   if (!response.ok) {
-    throw new HttpsError(
-      "unavailable",
-      `Geocoding failed (HTTP ${response.status}).`,
-    );
+    throw new Error(`Photon HTTP ${response.status}`);
   }
-  const data = (await response.json()) as {
-    lat?: string;
-    lon?: string;
-    display_name?: string;
-  }[];
-  if (!data.length || !data[0].lat || !data[0].lon) {
-    throw new HttpsError(
-      "not-found",
-      "Could not find that location. Try a California city or ZIP code.",
-    );
-  }
-  return {
-    latitude: Number(data[0].lat),
-    longitude: Number(data[0].lon),
-    label: data[0].display_name ?? query,
-  };
+  const json = (await response.json()) as {features?: PhotonFeature[]};
+  return json.features ?? [];
 }
 
-interface OverpassElement {
-  type: "node" | "way" | "relation";
-  id: number;
-  lat?: number;
-  lon?: number;
-  center?: {lat: number; lon: number};
-  tags?: Record<string, string>;
-}
-
-function buildAddress(tags: Record<string, string>): string {
-  const parts = [
-    tags["addr:housenumber"],
-    tags["addr:street"],
-  ].filter(Boolean);
-  const street = parts.join(" ").trim();
-  const city = tags["addr:city"] || tags["addr:place"] || "";
-  const state = tags["addr:state"] || "";
-  const postcode = tags["addr:postcode"] || "";
-  return [street, city, state, postcode].filter(Boolean).join(", ");
-}
-
-function looksLikeEnglishLearning(tags: Record<string, string>): boolean {
-  const blob = [
-    tags.name,
-    tags.alt_name,
-    tags.official_name,
-    tags.description,
-    tags["name:en"],
-    tags.amenity,
-    tags.office,
-    tags.education,
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-
-  if (tags.amenity === "language_school") return true;
-  if (tags.education === "language") return true;
-
-  return (
-    /\besl\b/.test(blob) ||
-    /english as a second language/.test(blob) ||
-    /adult (english|school|education)/.test(blob) ||
-    /english (class|classes|school|learning|conversation)/.test(blob) ||
-    /learn english/.test(blob) ||
-    /language school/.test(blob)
-  );
-}
-
-async function searchOverpassNearby(
+async function searchPhotonNearby(
   latitude: number,
   longitude: number,
 ): Promise<ResourcePayload[]> {
-  const radiusMeters = 40000;
-  // Broad nearby education POIs, then filter for ESL / English learning.
-  const query = `
-[out:json][timeout:25];
-(
-  nwr(around:${radiusMeters},${latitude},${longitude})["amenity"="language_school"];
-  nwr(around:${radiusMeters},${latitude},${longitude})["education"="language"];
-  nwr(around:${radiusMeters},${latitude},${longitude})["amenity"="school"]["name"~"ESL|English|Adult",i];
-  nwr(around:${radiusMeters},${latitude},${longitude})["amenity"="college"]["name"~"ESL|English|Adult",i];
-  nwr(around:${radiusMeters},${latitude},${longitude})["amenity"="community_centre"]["name"~"ESL|English|Adult",i];
-  nwr(around:${radiusMeters},${latitude},${longitude})["amenity"="library"]["name"~"ESL|English",i];
-  nwr(around:${radiusMeters},${latitude},${longitude})["office"="educational_institution"]["name"~"ESL|English|Adult",i];
-  nwr(around:${radiusMeters},${latitude},${longitude})["amenity"="social_facility"]["name"~"ESL|English|Adult",i];
-);
-out center tags;
-`.trim();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 6000);
+  const queries = [
+    "ESL",
+    "English as a Second Language",
+    "adult English class",
+    "language school English",
+  ];
 
-  const response = await fetch("https://overpass-api.de/api/interpreter", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      "User-Agent": "NewRootsCalifornia/0.1 (english-resource-finder)",
-    },
-    body: `data=${encodeURIComponent(query)}`,
-  });
-
-  const bodyText = await response.text();
-  if (!response.ok) {
-    console.error("Overpass error", response.status, bodyText.slice(0, 500));
-    throw new HttpsError(
-      "unavailable",
-      `Nearby search failed (HTTP ${response.status}).`,
-    );
-  }
-
-  let json: {elements?: OverpassElement[]};
   try {
-    json = JSON.parse(bodyText) as {elements?: OverpassElement[]};
-  } catch {
-    console.error("Overpass returned non-JSON", bodyText.slice(0, 500));
-    throw new HttpsError("unavailable", "Nearby search returned invalid data.");
+    const settled = await Promise.allSettled(
+      queries.map((q) => photonQuery(q, latitude, longitude, controller.signal)),
+    );
+
+    const byId = new Map<string, ResourcePayload>();
+    for (const result of settled) {
+      if (result.status !== "fulfilled") continue;
+      for (const feature of result.value) {
+        const props = feature.properties ?? {};
+        const coords = feature.geometry?.coordinates;
+        if (!coords || coords.length < 2) continue;
+        const [lng, lat] = coords;
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) continue;
+
+        const name = props.name?.trim() ?? "";
+        const osmValue = props.osm_value ?? "";
+        if (!name || !isRelevantEnglishHit(name, osmValue)) continue;
+
+        const distance = distanceKm(latitude, longitude, lat, lng);
+        if (distance > 50) continue;
+
+        const country = (props.countrycode || props.country || "").toLowerCase();
+        if (country && !country.includes("us") && country !== "usa") continue;
+
+        const osmType = props.osm_type || "N";
+        const osmId = props.osm_id ?? 0;
+        const id = `photon-${osmType}-${osmId}-${name.toLowerCase()}`;
+        if (byId.has(id)) continue;
+
+        const street = [props.housenumber, props.street]
+          .filter(Boolean)
+          .join(" ")
+          .trim();
+        const address = [
+          street,
+          props.city,
+          props.state,
+          props.postcode,
+        ]
+          .filter(Boolean)
+          .join(", ");
+        const mapsUrl = osmId ?
+          `https://www.openstreetmap.org/${
+            osmType === "W" ? "way" : osmType === "R" ? "relation" : "node"
+          }/${osmId}` :
+          null;
+
+        byId.set(id, {
+          id,
+          type: "english",
+          title: name,
+          description:
+            "Live nearby result for English / ESL learning.",
+          address,
+          city: props.city ?? "",
+          geohash: encodeGeohash(lat, lng, 9),
+          latitude: lat,
+          longitude: lng,
+          languages: ["en"],
+          sourceUrl: mapsUrl,
+          verified: false,
+          distanceKm: distance,
+        });
+      }
+    }
+
+    return [...byId.values()].sort((a, b) => a.distanceKm - b.distanceKm);
+  } finally {
+    clearTimeout(timer);
   }
-
-  const byId = new Map<string, ResourcePayload>();
-
-  for (const el of json.elements ?? []) {
-    const tags = el.tags ?? {};
-    if (!looksLikeEnglishLearning(tags)) continue;
-
-    const lat = el.lat ?? el.center?.lat;
-    const lng = el.lon ?? el.center?.lon;
-    if (lat == null || lng == null) continue;
-
-    const distance = distanceKm(latitude, longitude, lat, lng);
-    if (distance > 80) continue;
-
-    const id = `osm-${el.type}-${el.id}`;
-    if (byId.has(id)) continue;
-
-    const title =
-      tags.name?.trim() ||
-      tags.alt_name?.trim() ||
-      "English learning resource";
-    const address = buildAddress(tags);
-    const city = tags["addr:city"] || tags["addr:place"] || "";
-    const website = tags.website || tags["contact:website"] || null;
-    const mapsUrl =
-      `https://www.openstreetmap.org/${el.type}/${el.id}`;
-    const amenity = tags.amenity || tags.office || tags.education || "";
-    const description = [
-      "Live nearby result from OpenStreetMap.",
-      amenity ? `Listed as ${amenity.replaceAll("_", " ")}.` : "",
-      tags.description?.trim() || "",
-    ]
-      .filter(Boolean)
-      .join(" ");
-
-    byId.set(id, {
-      id,
-      type: "english",
-      title,
-      description,
-      address,
-      city,
-      geohash: encodeGeohash(lat, lng, 9),
-      latitude: lat,
-      longitude: lng,
-      languages: ["en"],
-      sourceUrl: website || mapsUrl,
-      verified: false,
-      distanceKm: distance,
-    });
-  }
-
-  return [...byId.values()].sort((a, b) => a.distanceKm - b.distanceKm);
 }
 
 async function searchSeededNearby(
@@ -356,20 +368,22 @@ async function searchSeededNearby(
   const db = getFirestore();
   const byId = new Map<string, Record<string, unknown> & {id: string}>();
 
-  for (const p of prefixes) {
-    const snap = await db
-      .collection("resources")
-      .where("type", "==", "english")
-      .where("geohash", ">=", p)
-      .where("geohash", "<", p + "\uf8ff")
-      .limit(40)
-      .get();
-    for (const doc of snap.docs) {
-      if (!byId.has(doc.id)) {
-        byId.set(doc.id, {id: doc.id, ...doc.data()});
+  await Promise.all(
+    [...prefixes].map(async (p) => {
+      const snap = await db
+        .collection("resources")
+        .where("type", "==", "english")
+        .where("geohash", ">=", p)
+        .where("geohash", "<", p + "\uf8ff")
+        .limit(40)
+        .get();
+      for (const doc of snap.docs) {
+        if (!byId.has(doc.id)) {
+          byId.set(doc.id, {id: doc.id, ...doc.data()});
+        }
       }
-    }
-  }
+    }),
+  );
 
   return [...byId.values()]
     .map((raw) => {
@@ -416,18 +430,22 @@ export async function handleFindEnglishResources(
   const point = await geocode(location);
 
   let resources: ResourcePayload[] = [];
-  let source = "overpass";
+  let source = "photon";
 
   try {
-    resources = await searchOverpassNearby(point.latitude, point.longitude);
+    resources = await searchPhotonNearby(point.latitude, point.longitude);
   } catch (error) {
-    console.error("Overpass search failed, falling back to seed data", error);
+    console.error("Photon search failed, falling back to seed data", error);
     source = "seed_fallback";
   }
 
   if (!resources.length) {
-    await handleSeedEnglishResources(request, requireAuth);
+    // Read-only fallback first (fast). Seed only if nothing is stored yet.
     resources = await searchSeededNearby(point.latitude, point.longitude);
+    if (!resources.length) {
+      await handleSeedEnglishResources(request, requireAuth);
+      resources = await searchSeededNearby(point.latitude, point.longitude);
+    }
     source = "seed_fallback";
   }
 

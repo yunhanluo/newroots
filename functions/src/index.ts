@@ -17,6 +17,7 @@ import {setGlobalOptions} from "firebase-functions/v2";
 import {handleRoadmapAi, roadmapCallableOptions} from "./roadmap_ai.js";
 import {handleCareerAi, careerCallableOptions} from "./career_ai.js";
 import {handleHousingAi, housingCallableOptions} from "./housing_ai.js";
+import {handleAnalyzeScam, scamCallableOptions} from "./scam_ai.js";
 import {
   handleFindEnglishResources,
   findEnglishCallableOptions,
@@ -75,27 +76,8 @@ export const roadmapAi = onCall(roadmapCallableOptions, async (request) => {
 });
 
 // --- Feature 9: ScamShield ---------------------------------------------------
-interface ScamInput {
-  text?: string;
-  contentRef?: string; // Cloud Storage path for uploaded screenshots
-  language: string;
-}
-
-export const analyzeScam = onCall(callableOptions, async (request) => {
-  requireAuth(request);
-  const {text, contentRef, language} = (request.data ?? {}) as ScamInput;
-  if (!text && !contentRef) {
-    throw new HttpsError("invalid-argument", "Provide text or contentRef.");
-  }
-
-  // TODO: (OCR contentRef if image) then call the LLM for a risk assessment.
-  return {
-    id: "placeholder",
-    language: language ?? "en",
-    riskLevel: "moderate",
-    reasons: ["Placeholder — LLM analysis not wired yet."],
-    recommendedActions: ["Do not share personal info or send money."],
-  };
+export const analyzeScam = onCall(scamCallableOptions, async (request) => {
+  return handleAnalyzeScam(request, requireAuth);
 });
 
 // --- Feature 3: Career Bridge ------------------------------------------------
