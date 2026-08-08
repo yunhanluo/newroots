@@ -11,11 +11,18 @@ export const housingCallableOptions = {
   secrets: [OPENAI_API_KEY],
 };
 
+interface HousingChatTurn {
+  role?: string;
+  content?: string;
+}
+
 interface HousingAiInput {
   question?: string;
   sectionTitle?: string;
   sectionSummary?: string;
   language?: string;
+  /** Prior turns in this temporary session (user/assistant), excluding the latest question. */
+  history?: HousingChatTurn[];
 }
 
 const HOUSING_ADVISOR_PROMPT =
@@ -83,16 +90,27 @@ export async function handleHousingAi(
   const sectionSummary = data.sectionSummary?.trim() || "";
   const language = data.language?.trim() || "en";
 
+  const history: {role: string; content: string}[] = [];
+  for (const turn of data.history ?? []) {
+    const role = turn.role?.trim();
+    const content = turn.content?.trim() ?? "";
+    if (!content) continue;
+    if (role !== "user" && role !== "assistant") continue;
+    history.push({role, content});
+  }
+
+  const sectionContext =
+    `Current tutorial section: ${sectionTitle}\n` +
+    (sectionSummary ? `Section summary: ${sectionSummary}\n` : "") +
+    `Reply language preference: ${language}\n` +
+    "Use the section context for grounding. The user may ask follow-ups " +
+    "that refer to earlier messages in this temporary conversation.";
+
   const answer = await askOpenAi(apiKey, [
     {role: "system", content: HOUSING_ADVISOR_PROMPT},
-    {
-      role: "user",
-      content:
-        `Current tutorial section: ${sectionTitle}\n` +
-        (sectionSummary ? `Section summary: ${sectionSummary}\n` : "") +
-        `Reply language preference: ${language}\n\n` +
-        `User question: ${question}`,
-    },
+    {role: "system", content: sectionContext},
+    ...history,
+    {role: "user", content: question},
   ]);
 
   return {answer};

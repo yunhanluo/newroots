@@ -26,6 +26,10 @@ import {
   handleSeedEnglishResources,
   seedEnglishCallableOptions,
 } from "./seed_english_resources.js";
+import {
+  handleFindHealthCenters,
+  healthCentersCallableOptions,
+} from "./find_health_centers.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -102,5 +106,13 @@ export const findEnglishResources = onCall(
   findEnglishCallableOptions,
   async (request) => {
     return handleFindEnglishResources(request, requireAuth);
+  },
+);
+
+// --- Feature 6: Healthcare Navigator (HRSA community health centers) ---------
+export const findHealthCenters = onCall(
+  healthCentersCallableOptions,
+  async (request) => {
+    return handleFindHealthCenters(request, requireAuth);
   },
 );

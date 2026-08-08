@@ -28,6 +28,11 @@ interface ScamAiInput {
   contentRef?: string;
   category?: string;
   language?: string;
+  /** Existing conversation thread text, for follow-up reevaluation. */
+  priorThread?: string;
+  priorRiskLevel?: string;
+  /** Keep the same report id when continuing a check. */
+  reportId?: string;
 }
 
 interface ScamAiResult {
@@ -228,15 +233,34 @@ export async function handleAnalyzeScam(
 
   const category = normalizeCategory(data.category);
   const language = data.language?.trim() || "en";
+  const priorThread = data.priorThread?.trim() ?? "";
+  const priorRiskLevel = data.priorRiskLevel?.trim() ?? "";
+  const reportId = data.reportId?.trim() || `scam_${Date.now()}`;
   const parts: ContentPart[] = [];
 
   let prompt =
     `Content category: ${CATEGORY_LABELS[category]} (${category})\n` +
-    `Reply language preference: ${language}\n\n` +
-    "Analyze the following for scam / fraud risk.";
+    `Reply language preference: ${language}\n\n`;
+
+  if (priorThread) {
+    prompt +=
+      "This is a FOLLOW-UP. Reassess scam / fraud risk for the FULL " +
+      "conversation thread, including earlier messages and the new content. " +
+      "Explain what changed if risk went up or down.\n";
+    if (priorRiskLevel) {
+      prompt += `Previous risk assessment: ${priorRiskLevel}\n`;
+    }
+    prompt +=
+      `\nEarlier messages in the thread:\n"""\n` +
+      `${priorThread.slice(0, 10000)}\n"""\n`;
+  } else {
+    prompt += "Analyze the following for scam / fraud risk.\n";
+  }
 
   if (text) {
-    prompt += `\n\nPasted content:\n"""\n${text.slice(0, 12000)}\n"""`;
+    prompt += priorThread ?
+      `\nNew follow-up message:\n"""\n${text.slice(0, 8000)}\n"""` :
+      `\nPasted content:\n"""\n${text.slice(0, 12000)}\n"""`;
   }
 
   if (contentRef) {
@@ -246,7 +270,9 @@ export async function handleAnalyzeScam(
         `\n\nUploaded text file content:\n"""\n` +
         `${upload.text.slice(0, 12000)}\n"""`;
     } else {
-      prompt +=
+      prompt += priorThread ?
+        "\n\nA new follow-up screenshot is attached. Read any visible text " +
+        "and reassess the full conversation." :
         "\n\nA screenshot image is attached. Read any visible text and " +
         "assess scam risk based on what you see.";
       parts.push({
@@ -259,10 +285,9 @@ export async function handleAnalyzeScam(
   parts.unshift({type: "text", text: prompt});
 
   const analysis = await callOpenAiJson(apiKey, parts);
-  const id = `scam_${Date.now()}`;
 
   return {
-    id,
+    id: reportId,
     language,
     category,
     riskLevel: analysis.riskLevel,
@@ -270,6 +295,7 @@ export async function handleAnalyzeScam(
     reasons: analysis.reasons,
     recommendedActions: analysis.recommendedActions,
     contentRef: contentRef || null,
+    previousRiskLevel: priorRiskLevel || null,
     createdAt: new Date().toISOString(),
   };
 }

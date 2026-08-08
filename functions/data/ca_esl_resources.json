@@ -1,0 +1,3335 @@
+[
+  {
+    "id": "esl-alameda-adult",
+    "title": "Alameda Adult School — ESL",
+    "description": "Adult ESL classes in the City of Alameda.",
+    "address": "2200 Central Ave",
+    "city": "Alameda",
+    "zip": "94501",
+    "lat": 37.77,
+    "lng": -122.255,
+    "website": "https://www.alamedaunified.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-coa-alameda",
+    "title": "College of Alameda — ESL",
+    "description": "ESL courses on Alameda Island for English learners.",
+    "address": "555 Ralph Appezzato Memorial Pkwy",
+    "city": "Alameda",
+    "zip": "94501",
+    "lat": 37.78,
+    "lng": -122.28,
+    "website": "https://alameda.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-alhambra-adult",
+    "title": "Alhambra Adult Education — ESL",
+    "description": "Adult ESL classes in Alhambra.",
+    "address": "15 W Alhambra Rd",
+    "city": "Alhambra",
+    "zip": "91801",
+    "lat": 34.095,
+    "lng": -118.127,
+    "website": "https://www.ausd.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-anaheim-library",
+    "title": "Anaheim Public Library — ESL Support",
+    "description": "Library English learning resources in Anaheim.",
+    "address": "500 W Broadway",
+    "city": "Anaheim",
+    "zip": "92805",
+    "lat": 33.832,
+    "lng": -117.914,
+    "website": "https://www.anaheim.net/library",
+    "category": "library",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-anaheim-union-adult",
+    "title": "Anaheim Union Adult Education — ESL",
+    "description": "Adult ESL classes serving Anaheim and nearby cities.",
+    "address": "1800 W Ball Rd",
+    "city": "Anaheim",
+    "zip": "92804",
+    "lat": 33.818,
+    "lng": -117.95,
+    "website": "https://www.auhsd.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-noce",
+    "title": "North Orange Continuing Education — ESL",
+    "description": "Free and low-cost ESL classes across North Orange County.",
+    "address": "1830 W Romneya Dr",
+    "city": "Anaheim",
+    "zip": "92801",
+    "lat": 33.848,
+    "lng": -117.94,
+    "website": "https://www.noce.edu/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "vi",
+      "ko"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-cabrillo-esl",
+    "title": "Cabrillo College — ESL",
+    "description": "ESL pathways serving Aptos, Santa Cruz, and Watsonville.",
+    "address": "6500 Soquel Dr",
+    "city": "Aptos",
+    "zip": "95003",
+    "lat": 36.99,
+    "lng": -121.92,
+    "website": "https://www.cabrillo.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-bakersfield-adult",
+    "title": "Bakersfield Adult School — ESL",
+    "description": "ESL and citizenship classes for adults in Bakersfield.",
+    "address": "501 S Mt Vernon Ave",
+    "city": "Bakersfield",
+    "zip": "93307",
+    "lat": 35.36,
+    "lng": -118.99,
+    "website": "https://bas.kernhigh.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-bc-esl",
+    "title": "Bakersfield College — ESL",
+    "description": "ESL pathways and support for English learners in Kern County.",
+    "address": "1801 Panorama Dr",
+    "city": "Bakersfield",
+    "zip": "93305",
+    "lat": 35.41,
+    "lng": -118.97,
+    "website": "https://www.bakersfieldcollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-bakersfield-library",
+    "title": "Kern County Library — Learn English",
+    "description": "Library English learning resources across Kern County.",
+    "address": "701 Truxtun Ave",
+    "city": "Bakersfield",
+    "zip": "93301",
+    "lat": 35.375,
+    "lng": -119.018,
+    "website": "https://www.kerncountylibrary.org/",
+    "category": "library",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-berkeley-adult",
+    "title": "Berkeley Adult School — ESL",
+    "description": "ESL and citizenship preparation classes for adults in Berkeley.",
+    "address": "1701 San Pablo Ave",
+    "city": "Berkeley",
+    "zip": "94702",
+    "lat": 37.8725,
+    "lng": -122.292,
+    "website": "https://bas.berkeley.net/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-berkeley-city",
+    "title": "Berkeley City College — ESL",
+    "description": "ESL support and courses in downtown Berkeley.",
+    "address": "2050 Center St",
+    "city": "Berkeley",
+    "zip": "94704",
+    "lat": 37.87,
+    "lng": -122.269,
+    "website": "https://www.berkeleycitycollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-burbank-adult",
+    "title": "Burbank Adult School — ESL",
+    "description": "Adult ESL classes in Burbank.",
+    "address": "3811 W Allan Ave",
+    "city": "Burbank",
+    "zip": "91505",
+    "lat": 34.175,
+    "lng": -118.34,
+    "website": "https://www.burbankusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-carlsbad-adult",
+    "title": "Carlsbad Adult Education — ESL",
+    "description": "Adult ESL classes in Carlsbad.",
+    "address": "3557 Monroe St",
+    "city": "Carlsbad",
+    "zip": "92008",
+    "lat": 33.16,
+    "lng": -117.335,
+    "website": "https://www.carlsbadusd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-abc-adult",
+    "title": "ABC Adult School — ESL",
+    "description": "Adult ESL classes serving Cerritos, Artesia, and Hawaiian Gardens.",
+    "address": "12254 Cuesta Dr",
+    "city": "Cerritos",
+    "zip": "90703",
+    "lat": 33.87,
+    "lng": -118.065,
+    "website": "https://www.abcadultschool.edu/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-chico-usd-adult",
+    "title": "Chico Adult Education — ESL",
+    "description": "Adult ESL classes in Chico.",
+    "address": "901 Esplanade",
+    "city": "Chico",
+    "zip": "95926",
+    "lat": 39.74,
+    "lng": -121.84,
+    "website": "https://www.chicousd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-southwestern-esl",
+    "title": "Southwestern College — ESL",
+    "description": "ESL courses serving Chula Vista and South Bay San Diego.",
+    "address": "900 Otay Lakes Rd",
+    "city": "Chula Vista",
+    "zip": "91910",
+    "lat": 32.64,
+    "lng": -116.995,
+    "website": "https://www.swccd.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-san-juan-adult",
+    "title": "San Juan Adult Education — ESL",
+    "description": "Adult ESL classes serving Carmichael, Citrus Heights, and northeast Sacramento.",
+    "address": "7322 Wonder St",
+    "city": "Citrus Heights",
+    "zip": "95610",
+    "lat": 38.695,
+    "lng": -121.29,
+    "website": "https://www.sanjuan.edu/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-clovis-adult",
+    "title": "Clovis Adult Education — ESL",
+    "description": "Adult ESL classes serving Clovis and northeast Fresno.",
+    "address": "1452 David E Cook Way",
+    "city": "Clovis",
+    "zip": "93611",
+    "lat": 36.825,
+    "lng": -119.701,
+    "website": "https://www.cusd.com/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-west-hills-coalinga",
+    "title": "West Hills College Coalinga — ESL",
+    "description": "ESL pathways serving Coalinga and western Fresno County.",
+    "address": "300 Cherry Ln",
+    "city": "Coalinga",
+    "zip": "93210",
+    "lat": 36.145,
+    "lng": -120.36,
+    "website": "https://www.westhillscollege.com/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-compton-cc",
+    "title": "Compton College — ESL",
+    "description": "ESL courses serving Compton and South LA communities.",
+    "address": "1111 E Artesia Blvd",
+    "city": "Compton",
+    "zip": "90221",
+    "lat": 33.876,
+    "lng": -118.21,
+    "website": "https://www.compton.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-ojusd-adult",
+    "title": "Mt. Diablo Adult Education — ESL",
+    "description": "Adult ESL classes serving Concord, Pleasant Hill, and nearby cities.",
+    "address": "1266 San Carlos Ave",
+    "city": "Concord",
+    "zip": "94518",
+    "lat": 37.953,
+    "lng": -122.018,
+    "website": "https://www.mdusd.org/adulted",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-corona-norco-adult",
+    "title": "Corona-Norco Adult Education — ESL",
+    "description": "Adult ESL classes serving Corona and Norco.",
+    "address": "1820 Fullerton Ave",
+    "city": "Corona",
+    "zip": "92881",
+    "lat": 33.875,
+    "lng": -117.54,
+    "website": "https://www.cnusd.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-orange-coast",
+    "title": "Orange Coast College — ESL",
+    "description": "ESL courses in Costa Mesa.",
+    "address": "2701 Fairview Rd",
+    "city": "Costa Mesa",
+    "zip": "92626",
+    "lat": 33.67,
+    "lng": -117.91,
+    "website": "https://www.orangecoastcollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-west-la-college",
+    "title": "West Los Angeles College — ESL",
+    "description": "ESL courses near Culver City and west Los Angeles.",
+    "address": "9000 Overland Ave",
+    "city": "Culver City",
+    "zip": "90230",
+    "lat": 34.005,
+    "lng": -118.39,
+    "website": "https://www.wlac.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-deanza-esl",
+    "title": "De Anza College — ESL",
+    "description": "ESL courses for international and immigrant students in Cupertino.",
+    "address": "21250 Stevens Creek Blvd",
+    "city": "Cupertino",
+    "zip": "95014",
+    "lat": 37.3193,
+    "lng": -122.0448,
+    "website": "https://www.deanza.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "zh"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-cypress-college",
+    "title": "Cypress College — ESL",
+    "description": "ESL pathways in Cypress and west Orange County.",
+    "address": "9200 Valley View St",
+    "city": "Cypress",
+    "zip": "90630",
+    "lat": 33.828,
+    "lng": -118.024,
+    "website": "https://www.cypresscollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-daly-city-adult",
+    "title": "Jefferson Adult Education — ESL",
+    "description": "Adult ESL classes serving Daly City and northern San Mateo County.",
+    "address": "699 Serramonte Blvd",
+    "city": "Daly City",
+    "zip": "94015",
+    "lat": 37.67,
+    "lng": -122.47,
+    "website": "https://www.jsd.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-delano-adult",
+    "title": "Delano Adult School — ESL",
+    "description": "Adult ESL classes serving Delano and northern Kern County.",
+    "address": "1720 Norwalk St",
+    "city": "Delano",
+    "zip": "93215",
+    "lat": 35.77,
+    "lng": -119.25,
+    "website": "https://www.duesd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-downey-adult",
+    "title": "Downey Adult School — ESL",
+    "description": "Adult ESL classes in Downey.",
+    "address": "12340 Woodruff Ave",
+    "city": "Downey",
+    "zip": "90241",
+    "lat": 33.935,
+    "lng": -118.125,
+    "website": "https://www.das.edu/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-cuyamaca-esl",
+    "title": "Cuyamaca College — ESL",
+    "description": "ESL courses serving Rancho San Diego and East County.",
+    "address": "900 Rancho San Diego Pkwy",
+    "city": "El Cajon",
+    "zip": "92019",
+    "lat": 32.745,
+    "lng": -116.94,
+    "website": "https://www.cuyamaca.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-grossmont-esl",
+    "title": "Grossmont College — ESL",
+    "description": "ESL pathways in El Cajon and East County San Diego.",
+    "address": "8800 Grossmont College Dr",
+    "city": "El Cajon",
+    "zip": "92020",
+    "lat": 32.775,
+    "lng": -116.935,
+    "website": "https://www.grossmont.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-el-centro-adult",
+    "title": "Central Union Adult Education — ESL",
+    "description": "Adult ESL classes serving El Centro and Imperial Valley.",
+    "address": "1050 Regina Way",
+    "city": "El Centro",
+    "zip": "92243",
+    "lat": 32.79,
+    "lng": -115.565,
+    "website": "https://www.cusd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-escondido-adult",
+    "title": "Escondido Adult School — ESL",
+    "description": "Adult ESL classes in Escondido and inland North County.",
+    "address": "220 W Crest St",
+    "city": "Escondido",
+    "zip": "92025",
+    "lat": 33.12,
+    "lng": -117.085,
+    "website": "https://www.euhsd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-humboldt-cr",
+    "title": "College of the Redwoods — ESL",
+    "description": "ESL pathways serving Eureka and Humboldt County.",
+    "address": "7351 Tompkins Hill Rd",
+    "city": "Eureka",
+    "zip": "95501",
+    "lat": 40.7,
+    "lng": -124.2,
+    "website": "https://www.redwoods.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-solano-cc",
+    "title": "Solano Community College — ESL",
+    "description": "ESL courses for adult learners in Fairfield and Solano County.",
+    "address": "4000 Suisun Valley Rd",
+    "city": "Fairfield",
+    "zip": "94534",
+    "lat": 38.236,
+    "lng": -122.123,
+    "website": "https://www.solano.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-folsom-lake",
+    "title": "Folsom Lake College — ESL",
+    "description": "ESL pathways serving Folsom, Rancho Cordova, and eastern Sacramento County.",
+    "address": "10 College Pkwy",
+    "city": "Folsom",
+    "zip": "95630",
+    "lat": 38.66,
+    "lng": -121.13,
+    "website": "https://flc.losrios.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-fontana-adult",
+    "title": "Fontana Adult School — ESL",
+    "description": "Adult ESL classes serving Fontana and nearby communities.",
+    "address": "9453 Citrus Ave",
+    "city": "Fontana",
+    "zip": "92335",
+    "lat": 34.092,
+    "lng": -117.435,
+    "website": "https://www.fusd.net/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-coastline-esl",
+    "title": "Coastline College — ESL / Noncredit",
+    "description": "Noncredit ESL and English options serving coastal Orange County.",
+    "address": "11460 Warner Ave",
+    "city": "Fountain Valley",
+    "zip": "92708",
+    "lat": 33.708,
+    "lng": -117.95,
+    "website": "https://www.coastline.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-fremont-adult",
+    "title": "Fremont Adult & Continuing Education — ESL",
+    "description": "ESL and adult basic education classes in Fremont.",
+    "address": "4700 Calaveras Ave",
+    "city": "Fremont",
+    "zip": "94538",
+    "lat": 37.5483,
+    "lng": -121.971,
+    "website": "https://www.fremontadultschool.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "zh",
+      "hi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-ohlone-esl",
+    "title": "Ohlone College — ESL",
+    "description": "ESL pathways in Fremont and Newark.",
+    "address": "43600 Mission Blvd",
+    "city": "Fremont",
+    "zip": "94539",
+    "lat": 37.53,
+    "lng": -121.915,
+    "website": "https://www.ohlone.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-fresno-adult",
+    "title": "Fresno Adult School — ESL",
+    "description": "ESL classes for adults in the Fresno area, including beginner levels.",
+    "address": "2500 Stanislaus St",
+    "city": "Fresno",
+    "zip": "93721",
+    "lat": 36.74,
+    "lng": -119.785,
+    "website": "https://www.fresnou.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-fresno-city",
+    "title": "Fresno City College — ESL",
+    "description": "ESL courses for English learners at Fresno City College.",
+    "address": "1101 E University Ave",
+    "city": "Fresno",
+    "zip": "93741",
+    "lat": 36.768,
+    "lng": -119.798,
+    "website": "https://www.fresnocitycollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-fresno-library",
+    "title": "Fresno County Public Library — Learn English",
+    "description": "Library English learning resources and conversation support in Fresno County.",
+    "address": "2420 Mariposa St",
+    "city": "Fresno",
+    "zip": "93721",
+    "lat": 36.738,
+    "lng": -119.788,
+    "website": "https://www.fresnolibrary.org/",
+    "category": "library",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-fullerton-college",
+    "title": "Fullerton College — ESL",
+    "description": "ESL courses serving Fullerton and north Orange County.",
+    "address": "321 E Chapman Ave",
+    "city": "Fullerton",
+    "zip": "92832",
+    "lat": 33.874,
+    "lng": -117.918,
+    "website": "https://www.fullcoll.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-garden-grove-adult",
+    "title": "Garden Grove Adult Education — ESL",
+    "description": "Adult ESL classes in Garden Grove and nearby Orange County cities.",
+    "address": "11262 Garden Grove Blvd",
+    "city": "Garden Grove",
+    "zip": "92843",
+    "lat": 33.774,
+    "lng": -117.941,
+    "website": "https://www.ggusd.us/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-gavilan-esl",
+    "title": "Gavilan College — ESL",
+    "description": "ESL courses for Gilroy, Hollister, and South County learners.",
+    "address": "5055 Santa Teresa Blvd",
+    "city": "Gilroy",
+    "zip": "95020",
+    "lat": 37.03,
+    "lng": -121.565,
+    "website": "https://www.gavilan.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-glendale-usd-adult",
+    "title": "Glendale Adult Education — ESL",
+    "description": "Adult ESL and citizenship classes in Glendale.",
+    "address": "1011 N Verdugo Rd",
+    "city": "Glendale",
+    "zip": "91206",
+    "lat": 34.168,
+    "lng": -118.235,
+    "website": "https://www.gusd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-glendale-cc",
+    "title": "Glendale Community College — ESL",
+    "description": "Noncredit and credit ESL options in Glendale.",
+    "address": "1500 N Verdugo Rd",
+    "city": "Glendale",
+    "zip": "91208",
+    "lat": 34.166,
+    "lng": -118.229,
+    "website": "https://www.glendale.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "hy",
+      "ko"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-citrus-esl",
+    "title": "Citrus College — ESL",
+    "description": "ESL courses for English learners in Glendora and the east San Gabriel Valley.",
+    "address": "1000 W Foothill Blvd",
+    "city": "Glendora",
+    "zip": "91741",
+    "lat": 34.136,
+    "lng": -117.87,
+    "website": "https://www.citruscollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-hanford-adult",
+    "title": "Hanford Adult School — ESL",
+    "description": "Adult ESL classes serving Hanford and Kings County.",
+    "address": "905 Campus Dr",
+    "city": "Hanford",
+    "zip": "93230",
+    "lat": 36.32,
+    "lng": -119.645,
+    "website": "https://www.hjuhsd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-chabot-esl",
+    "title": "Chabot College — ESL",
+    "description": "ESL courses for English learners at Chabot College in Hayward.",
+    "address": "25555 Hesperian Blvd",
+    "city": "Hayward",
+    "zip": "94545",
+    "lat": 37.6414,
+    "lng": -122.105,
+    "website": "https://www.chabotcollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-hayward-adult",
+    "title": "Hayward Adult School — ESL",
+    "description": "ESL classes for adults through Hayward Unified adult education.",
+    "address": "22100 Princeton St",
+    "city": "Hayward",
+    "zip": "94541",
+    "lat": 37.6652,
+    "lng": -122.0808,
+    "website": "https://www.haywardusd.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-golden-west",
+    "title": "Golden West College — ESL",
+    "description": "ESL pathways serving Huntington Beach and coastal Orange County.",
+    "address": "15744 Goldenwest St",
+    "city": "Huntington Beach",
+    "zip": "92647",
+    "lat": 33.734,
+    "lng": -118.004,
+    "website": "https://www.goldenwestcollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-imperial-valley",
+    "title": "Imperial Valley College — ESL",
+    "description": "ESL courses serving Imperial County communities.",
+    "address": "380 E Aten Rd",
+    "city": "Imperial",
+    "zip": "92251",
+    "lat": 32.825,
+    "lng": -115.57,
+    "website": "https://www.imperial.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-inglewood-adult",
+    "title": "Inglewood Adult School — ESL",
+    "description": "Adult ESL classes serving Inglewood.",
+    "address": "106 E Manchester Blvd",
+    "city": "Inglewood",
+    "zip": "90301",
+    "lat": 33.96,
+    "lng": -118.35,
+    "website": "https://www.inglewoodusd.com/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-irvine-valley",
+    "title": "Irvine Valley College — ESL",
+    "description": "ESL courses for English learners in Irvine and south Orange County.",
+    "address": "5500 Irvine Center Dr",
+    "city": "Irvine",
+    "zip": "92618",
+    "lat": 33.676,
+    "lng": -117.775,
+    "website": "https://www.ivc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "ko",
+      "zh",
+      "fa"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-copper-mountain",
+    "title": "Copper Mountain College — ESL",
+    "description": "ESL courses serving Joshua Tree and the Morongo Basin.",
+    "address": "6162 Rotary Way",
+    "city": "Joshua Tree",
+    "zip": "92252",
+    "lat": 34.13,
+    "lng": -116.31,
+    "website": "https://www.cmccd.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-jurupa-adult",
+    "title": "Jurupa Adult Education — ESL",
+    "description": "Adult ESL classes in Jurupa Valley.",
+    "address": "4580 Camino Real",
+    "city": "Jurupa Valley",
+    "zip": "92509",
+    "lat": 34.0,
+    "lng": -117.45,
+    "website": "https://jurupausd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-college-marin",
+    "title": "College of Marin — ESL",
+    "description": "ESL courses for English learners in Marin County.",
+    "address": "835 College Ave",
+    "city": "Kentfield",
+    "zip": "94904",
+    "lat": 37.953,
+    "lng": -122.55,
+    "website": "https://www.marin.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-hacienda-la-puente",
+    "title": "Hacienda La Puente Adult Education — ESL",
+    "description": "Large adult ESL program in the San Gabriel Valley.",
+    "address": "14101 E Nelson Ave",
+    "city": "La Puente",
+    "zip": "91746",
+    "lat": 34.035,
+    "lng": -117.955,
+    "website": "https://www.hlpusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-avuhsd-adult",
+    "title": "Antelope Valley Adult Education — ESL",
+    "description": "Adult ESL classes in Lancaster and Palmdale.",
+    "address": "45100 30th St E",
+    "city": "Lancaster",
+    "zip": "93535",
+    "lat": 34.69,
+    "lng": -118.1,
+    "website": "https://www.avdistrict.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-antelope-valley",
+    "title": "Antelope Valley College — ESL",
+    "description": "ESL courses serving Lancaster, Palmdale, and the Antelope Valley.",
+    "address": "3041 W Ave K",
+    "city": "Lancaster",
+    "zip": "93536",
+    "lat": 34.675,
+    "lng": -118.18,
+    "website": "https://www.avc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-marin-adult",
+    "title": "Marin Adult Education — ESL",
+    "description": "Adult ESL classes serving San Rafael and Marin County.",
+    "address": "750 Magnolia Ave",
+    "city": "Larkspur",
+    "zip": "94939",
+    "lat": 37.94,
+    "lng": -122.53,
+    "website": "https://www.marin.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-lawndale-adult",
+    "title": "Centinela Valley Adult Education — ESL",
+    "description": "Adult ESL classes serving Lawndale, Hawthorne, and Lennox.",
+    "address": "14901 Inglewood Ave",
+    "city": "Lawndale",
+    "zip": "90260",
+    "lat": 33.895,
+    "lng": -118.35,
+    "website": "https://www.centinela.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-lodiusd-adult",
+    "title": "Lodi Adult School — ESL",
+    "description": "Adult ESL classes serving Lodi and nearby communities.",
+    "address": "3 S Pacific Ave",
+    "city": "Lodi",
+    "zip": "95240",
+    "lat": 38.13,
+    "lng": -121.275,
+    "website": "https://www.lodiusd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-lompoc-adult",
+    "title": "Lompoc Adult Education — ESL",
+    "description": "Adult ESL classes serving Lompoc.",
+    "address": "320 N J St",
+    "city": "Lompoc",
+    "zip": "93436",
+    "lat": 34.64,
+    "lng": -120.455,
+    "website": "https://www.lusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-lbcc-esl",
+    "title": "Long Beach City College — ESL",
+    "description": "ESL and English language courses in Long Beach.",
+    "address": "4901 E Carson St",
+    "city": "Long Beach",
+    "zip": "90808",
+    "lat": 33.832,
+    "lng": -118.12,
+    "website": "https://www.lbcc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "km"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-lbpl",
+    "title": "Long Beach Public Library — ESL Support",
+    "description": "Library English learning resources and learner support in Long Beach.",
+    "address": "101 Pacific Ave",
+    "city": "Long Beach",
+    "zip": "90822",
+    "lat": 33.767,
+    "lng": -118.195,
+    "website": "https://www.longbeach.gov/library/",
+    "category": "library",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-foothill-esl",
+    "title": "Foothill College — ESL",
+    "description": "ESL and English language pathways in Los Altos Hills.",
+    "address": "12345 El Monte Rd",
+    "city": "Los Altos Hills",
+    "zip": "94022",
+    "lat": 37.3614,
+    "lng": -122.128,
+    "website": "https://foothill.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-lausd-dace",
+    "title": "LAUSD Adult & Career Education — ESL",
+    "description": "One of California's largest adult ESL programs, with day and evening classes across Los Angeles.",
+    "address": "333 S Beaudry Ave",
+    "city": "Los Angeles",
+    "zip": "90017",
+    "lat": 34.056,
+    "lng": -118.257,
+    "website": "https://www.lausd.org/Page/2448",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "ko",
+      "zh",
+      "hy"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-lacc-esl",
+    "title": "Los Angeles City College — ESL",
+    "description": "ESL courses near Hollywood and central Los Angeles.",
+    "address": "855 N Vermont Ave",
+    "city": "Los Angeles",
+    "zip": "90029",
+    "lat": 34.087,
+    "lng": -118.291,
+    "website": "https://www.lacitycollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "hy",
+      "ko"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-lapl-central",
+    "title": "Los Angeles Public Library — Learn English",
+    "description": "Free English learning programs, conversation clubs, and online ESL tools at LAPL.",
+    "address": "630 W 5th St",
+    "city": "Los Angeles",
+    "zip": "90071",
+    "lat": 34.0505,
+    "lng": -118.2551,
+    "website": "https://www.lapl.org/language-learning",
+    "category": "library",
+    "languages": [
+      "en",
+      "es",
+      "ko",
+      "zh"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-trade-tech",
+    "title": "Los Angeles Trade-Technical College — ESL",
+    "description": "ESL support near downtown Los Angeles.",
+    "address": "400 W Washington Blvd",
+    "city": "Los Angeles",
+    "zip": "90015",
+    "lat": 34.03,
+    "lng": -118.27,
+    "website": "https://www.lattc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-manteca-adult",
+    "title": "Manteca Adult School — ESL",
+    "description": "Adult ESL classes in Manteca and south San Joaquin County.",
+    "address": "5298 Nairn Ct",
+    "city": "Manteca",
+    "zip": "95337",
+    "lat": 37.8,
+    "lng": -121.22,
+    "website": "https://www.mantecausd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-yuba-esl",
+    "title": "Yuba College — ESL",
+    "description": "ESL courses serving Marysville, Yuba City, and surrounding communities.",
+    "address": "2088 N Beale Rd",
+    "city": "Marysville",
+    "zip": "95901",
+    "lat": 39.125,
+    "lng": -121.545,
+    "website": "https://www.yccd.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-merced-adult",
+    "title": "Merced Adult School — ESL",
+    "description": "Adult ESL classes in Merced.",
+    "address": "50 W Olive Ave",
+    "city": "Merced",
+    "zip": "95348",
+    "lat": 37.31,
+    "lng": -120.49,
+    "website": "https://www.muhsd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-merced-college",
+    "title": "Merced College — ESL",
+    "description": "ESL courses for English learners in Merced County.",
+    "address": "3600 M St",
+    "city": "Merced",
+    "zip": "95348",
+    "lat": 37.335,
+    "lng": -120.475,
+    "website": "https://www.mccd.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-saddleback-esl",
+    "title": "Saddleback College — ESL",
+    "description": "ESL pathways serving Mission Viejo and south Orange County.",
+    "address": "28000 Marguerite Pkwy",
+    "city": "Mission Viejo",
+    "zip": "92692",
+    "lat": 33.552,
+    "lng": -117.665,
+    "website": "https://www.saddleback.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-modesto-jc",
+    "title": "Modesto Junior College — ESL",
+    "description": "ESL and English language support in Stanislaus County.",
+    "address": "435 College Ave",
+    "city": "Modesto",
+    "zip": "95350",
+    "lat": 37.652,
+    "lng": -121.008,
+    "website": "https://www.mjc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-montebello-adult",
+    "title": "Montebello Adult School — ESL",
+    "description": "Adult ESL classes serving Montebello and southeast LA County.",
+    "address": "149 N 21st St",
+    "city": "Montebello",
+    "zip": "90640",
+    "lat": 34.016,
+    "lng": -118.11,
+    "website": "https://www.montebello.k12.ca.us/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-mpc-esl",
+    "title": "Monterey Peninsula College — ESL",
+    "description": "ESL courses for adult learners on the Monterey Peninsula.",
+    "address": "980 Fremont St",
+    "city": "Monterey",
+    "zip": "93940",
+    "lat": 36.622,
+    "lng": -121.9,
+    "website": "https://www.mpc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-elac-esl",
+    "title": "East Los Angeles College — ESL",
+    "description": "ESL and English pathways serving East LA and nearby communities.",
+    "address": "1301 Avenida Cesar Chavez",
+    "city": "Monterey Park",
+    "zip": "91754",
+    "lat": 34.041,
+    "lng": -118.15,
+    "website": "https://www.elac.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "zh"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-moorpark-college",
+    "title": "Moorpark College — ESL",
+    "description": "ESL pathways in Moorpark and east Ventura County.",
+    "address": "7075 Campus Rd",
+    "city": "Moorpark",
+    "zip": "93021",
+    "lat": 34.3,
+    "lng": -118.835,
+    "website": "https://www.moorparkcollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-mvc-esl",
+    "title": "Moreno Valley College — ESL",
+    "description": "ESL pathways in Moreno Valley.",
+    "address": "16130 Lasselle St",
+    "city": "Moreno Valley",
+    "zip": "92551",
+    "lat": 33.89,
+    "lng": -117.2,
+    "website": "https://www.mvc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-mvla-adult",
+    "title": "MVLA Adult Education — ESL",
+    "description": "ESL classes serving Mountain View, Los Altos, and nearby Peninsula cities.",
+    "address": "333 Moffett Blvd",
+    "city": "Mountain View",
+    "zip": "94043",
+    "lat": 37.4,
+    "lng": -122.075,
+    "website": "https://www.mvla.net/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "zh"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-napa-valley",
+    "title": "Napa Valley College — ESL",
+    "description": "ESL pathways serving Napa and surrounding communities.",
+    "address": "2277 Napa Vallejo Hwy",
+    "city": "Napa",
+    "zip": "94558",
+    "lat": 38.275,
+    "lng": -122.275,
+    "website": "https://www.napavalley.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-sweetwater-adult",
+    "title": "Sweetwater Adult Education — ESL",
+    "description": "Adult ESL classes serving Chula Vista and South Bay San Diego.",
+    "address": "1001 Elm Ave",
+    "city": "National City",
+    "zip": "91950",
+    "lat": 32.678,
+    "lng": -117.095,
+    "website": "https://www.sweetwaterschools.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-norco-college",
+    "title": "Norco College — ESL",
+    "description": "ESL courses serving Norco and western Riverside County.",
+    "address": "2001 3rd St",
+    "city": "Norco",
+    "zip": "92860",
+    "lat": 33.92,
+    "lng": -117.57,
+    "website": "https://www.norcocollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-cerritos-esl",
+    "title": "Cerritos College — ESL",
+    "description": "ESL courses in Norwalk serving southeast LA County.",
+    "address": "11110 Alondra Blvd",
+    "city": "Norwalk",
+    "zip": "90650",
+    "lat": 33.886,
+    "lng": -118.095,
+    "website": "https://www.cerritos.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-laney-esl",
+    "title": "Laney College — ESL",
+    "description": "Credit and noncredit English pathways for English learners in Oakland.",
+    "address": "900 Fallon St",
+    "city": "Oakland",
+    "zip": "94607",
+    "lat": 37.7935,
+    "lng": -122.2629,
+    "website": "https://laney.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-merritt-esl",
+    "title": "Merritt College — ESL",
+    "description": "ESL courses serving East Oakland and the Oakland hills.",
+    "address": "12500 Campus Dr",
+    "city": "Oakland",
+    "zip": "94619",
+    "lat": 37.79,
+    "lng": -122.17,
+    "website": "https://www.merritt.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-oakland-adult",
+    "title": "Oakland Adult & Career Education — ESL",
+    "description": "Adult ESL classes for beginners through advanced learners in Oakland.",
+    "address": "2607 Myrtle St",
+    "city": "Oakland",
+    "zip": "94607",
+    "lat": 37.8122,
+    "lng": -122.2815,
+    "website": "https://www.ousd.org/oace",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-oakland-library",
+    "title": "Oakland Public Library — English Learners",
+    "description": "Library English learning resources and conversation practice in Oakland.",
+    "address": "125 14th St",
+    "city": "Oakland",
+    "zip": "94612",
+    "lat": 37.803,
+    "lng": -122.27,
+    "website": "https://oaklandlibrary.org/",
+    "category": "library",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-miraCosta-esl",
+    "title": "MiraCosta College — Noncredit ESL",
+    "description": "Noncredit ESL serving Oceanside, Carlsbad, and North County San Diego.",
+    "address": "1 Barnard Dr",
+    "city": "Oceanside",
+    "zip": "92056",
+    "lat": 33.19,
+    "lng": -117.3,
+    "website": "https://www.miracosta.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-ontario-montclair-adult",
+    "title": "Ontario-Montclair Adult Education — ESL",
+    "description": "Adult ESL classes serving Ontario and Montclair.",
+    "address": "950 W D St",
+    "city": "Ontario",
+    "zip": "91762",
+    "lat": 34.065,
+    "lng": -117.66,
+    "website": "https://www.omsd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-sce",
+    "title": "Santiago Canyon College Continuing Education — ESL",
+    "description": "Noncredit ESL through Orange County's Santiago Canyon continuing education.",
+    "address": "8045 E Chapman Ave",
+    "city": "Orange",
+    "zip": "92869",
+    "lat": 33.788,
+    "lng": -117.765,
+    "website": "https://www.sccollege.edu/OEC",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-butte-college",
+    "title": "Butte College — ESL",
+    "description": "ESL pathways for English learners in Oroville and Butte County.",
+    "address": "3536 Butte Campus Dr",
+    "city": "Oroville",
+    "zip": "95965",
+    "lat": 39.495,
+    "lng": -121.62,
+    "website": "https://www.butte.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-oxnard-college",
+    "title": "Oxnard College — ESL",
+    "description": "ESL courses for English learners in Oxnard and Ventura County.",
+    "address": "4000 S Rose Ave",
+    "city": "Oxnard",
+    "zip": "93033",
+    "lat": 34.16,
+    "lng": -119.155,
+    "website": "https://www.oxnardcollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-palo-alto-adult",
+    "title": "Palo Alto Adult School — ESL",
+    "description": "Adult ESL and English classes in Palo Alto.",
+    "address": "50 Embarcadero Rd",
+    "city": "Palo Alto",
+    "zip": "94301",
+    "lat": 37.445,
+    "lng": -122.16,
+    "website": "https://www.paadultschool.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-pasadena-cc",
+    "title": "Pasadena City College — ESL",
+    "description": "ESL courses for adult learners in Pasadena and the San Gabriel Valley.",
+    "address": "1570 E Colorado Blvd",
+    "city": "Pasadena",
+    "zip": "91106",
+    "lat": 34.145,
+    "lng": -118.118,
+    "website": "https://pasadena.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "zh",
+      "hy"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-los-medanos",
+    "title": "Los Medanos College — ESL",
+    "description": "ESL courses serving Pittsburg, Antioch, and East Contra Costa.",
+    "address": "2700 E Leland Rd",
+    "city": "Pittsburg",
+    "zip": "94565",
+    "lat": 38.006,
+    "lng": -121.862,
+    "website": "https://www.losmedanos.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-dvc-esl",
+    "title": "Diablo Valley College — ESL",
+    "description": "ESL pathways for English learners in Pleasant Hill and central Contra Costa.",
+    "address": "321 Golf Club Rd",
+    "city": "Pleasant Hill",
+    "zip": "94523",
+    "lat": 37.97,
+    "lng": -122.07,
+    "website": "https://www.dvc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-pomona-adult",
+    "title": "Pomona Unified Adult & Career Education — ESL",
+    "description": "Adult ESL classes serving Pomona and nearby Inland Valley communities.",
+    "address": "1460 E Holt Ave",
+    "city": "Pomona",
+    "zip": "91767",
+    "lat": 34.062,
+    "lng": -117.74,
+    "website": "https://www.pusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-porterville-college",
+    "title": "Porterville College — ESL",
+    "description": "ESL courses serving Porterville and southern Tulare County.",
+    "address": "100 E College Ave",
+    "city": "Porterville",
+    "zip": "93257",
+    "lat": 36.065,
+    "lng": -119.02,
+    "website": "https://www.portervillecollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-poway-adult",
+    "title": "Poway Adult School — ESL",
+    "description": "Adult ESL classes serving Poway and north inland San Diego.",
+    "address": "13626 Twin Peaks Rd",
+    "city": "Poway",
+    "zip": "92064",
+    "lat": 32.97,
+    "lng": -117.035,
+    "website": "https://www.powayusd.com/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-chaffey-esl",
+    "title": "Chaffey College — ESL",
+    "description": "ESL courses for English learners in Rancho Cucamonga and the Inland Empire.",
+    "address": "5885 Haven Ave",
+    "city": "Rancho Cucamonga",
+    "zip": "91737",
+    "lat": 34.147,
+    "lng": -117.56,
+    "website": "https://www.chaffey.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-redding-adult",
+    "title": "Shasta Adult Education — ESL",
+    "description": "Adult ESL classes in the Redding area.",
+    "address": "2200 Eureka Way",
+    "city": "Redding",
+    "zip": "96001",
+    "lat": 40.586,
+    "lng": -122.4,
+    "website": "https://www.suhsd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-shasta-college",
+    "title": "Shasta College — ESL",
+    "description": "ESL courses serving Redding and Shasta County.",
+    "address": "11555 Old Oregon Trail",
+    "city": "Redding",
+    "zip": "96003",
+    "lat": 40.615,
+    "lng": -122.3,
+    "website": "https://www.shastacollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-redwood-city-adult",
+    "title": "Sequoia Adult School — ESL",
+    "description": "Adult ESL classes serving Redwood City and nearby communities.",
+    "address": "1201 Brewster Ave",
+    "city": "Redwood City",
+    "zip": "94062",
+    "lat": 37.481,
+    "lng": -122.24,
+    "website": "https://www.seq.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-reedley-college",
+    "title": "Reedley College — ESL",
+    "description": "ESL pathways in Reedley and eastern Fresno County.",
+    "address": "995 N Reed Ave",
+    "city": "Reedley",
+    "zip": "93654",
+    "lat": 36.605,
+    "lng": -119.445,
+    "website": "https://www.reedleycollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-rialto-adult",
+    "title": "Rialto Adult Education — ESL",
+    "description": "Adult ESL classes in Rialto.",
+    "address": "260 S Cactus Ave",
+    "city": "Rialto",
+    "zip": "92376",
+    "lat": 34.1,
+    "lng": -117.37,
+    "website": "https://www.rialto.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-richmond-adult",
+    "title": "West Contra Costa Adult Education — ESL",
+    "description": "Adult ESL and English literacy classes serving Richmond and nearby communities.",
+    "address": "1017 Macdonald Ave",
+    "city": "Richmond",
+    "zip": "94801",
+    "lat": 37.9358,
+    "lng": -122.347,
+    "website": "https://www.wccusd.net/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-rcc-esl",
+    "title": "Riverside City College — ESL",
+    "description": "ESL courses for adult learners in Riverside.",
+    "address": "4800 Magnolia Ave",
+    "city": "Riverside",
+    "zip": "92506",
+    "lat": 33.972,
+    "lng": -117.381,
+    "website": "https://www.rcc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-riverside-library",
+    "title": "Riverside Public Library — English Learners",
+    "description": "Library English learning resources for Riverside residents.",
+    "address": "3581 Mission Inn Ave",
+    "city": "Riverside",
+    "zip": "92501",
+    "lat": 33.982,
+    "lng": -117.374,
+    "website": "https://www.riversideca.gov/library/",
+    "category": "library",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-garvey-adult",
+    "title": "Garvey/EMC Adult Education — ESL",
+    "description": "Adult ESL classes serving Rosemead and the west San Gabriel Valley.",
+    "address": "8701 E Garvey Ave",
+    "city": "Rosemead",
+    "zip": "91770",
+    "lat": 34.062,
+    "lng": -118.075,
+    "website": "https://www.garvey.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-hancock-adult",
+    "title": "Rowland Adult & Community Education — ESL",
+    "description": "Adult ESL classes serving Rowland Heights and nearby cities.",
+    "address": "2100 Desire Ave",
+    "city": "Rowland Heights",
+    "zip": "91748",
+    "lat": 33.99,
+    "lng": -117.89,
+    "website": "https://www.rowlandschools.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-american-river",
+    "title": "American River College — ESL",
+    "description": "ESL pathways for adult learners in the greater Sacramento area.",
+    "address": "4700 College Oak Dr",
+    "city": "Sacramento",
+    "zip": "95841",
+    "lat": 38.664,
+    "lng": -121.347,
+    "website": "https://arc.losrios.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-cosumnes-river",
+    "title": "Cosumnes River College — ESL",
+    "description": "ESL courses in south Sacramento.",
+    "address": "8401 Center Pkwy",
+    "city": "Sacramento",
+    "zip": "95823",
+    "lat": 38.47,
+    "lng": -121.42,
+    "website": "https://crc.losrios.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-elk-grove-adult",
+    "title": "Elk Grove Adult & Community Education — ESL",
+    "description": "Adult ESL classes in Elk Grove and south Sacramento County.",
+    "address": "8401 - A Gerber Rd",
+    "city": "Sacramento",
+    "zip": "95828",
+    "lat": 38.485,
+    "lng": -121.39,
+    "website": "https://www.egusd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-scc-esl",
+    "title": "Sacramento City College — ESL",
+    "description": "ESL courses and support services for English learners in Sacramento.",
+    "address": "3835 Freeport Blvd",
+    "city": "Sacramento",
+    "zip": "95822",
+    "lat": 38.54,
+    "lng": -121.486,
+    "website": "https://scc.losrios.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-scusd-adult",
+    "title": "Sacramento City Unified — Adult ESL",
+    "description": "Adult education ESL classes for immigrants and English learners in Sacramento.",
+    "address": "5451 Lemon Hill Ave",
+    "city": "Sacramento",
+    "zip": "95824",
+    "lat": 38.518,
+    "lng": -121.445,
+    "website": "https://www.scusd.edu/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "hmn"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sac-library",
+    "title": "Sacramento Public Library — Learn English",
+    "description": "Free English learning resources and conversation practice through Sacramento libraries.",
+    "address": "828 I St",
+    "city": "Sacramento",
+    "zip": "95814",
+    "lat": 38.5816,
+    "lng": -121.4944,
+    "website": "https://www.saclibrary.org/",
+    "category": "library",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-hartnell-esl",
+    "title": "Hartnell College — ESL",
+    "description": "ESL pathways serving Salinas and the Salinas Valley.",
+    "address": "411 Central Ave",
+    "city": "Salinas",
+    "zip": "93901",
+    "lat": 36.674,
+    "lng": -121.665,
+    "website": "https://www.hartnell.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sbvc-esl",
+    "title": "San Bernardino Valley College — ESL",
+    "description": "ESL and English support serving San Bernardino.",
+    "address": "701 S Mount Vernon Ave",
+    "city": "San Bernardino",
+    "zip": "92410",
+    "lat": 34.088,
+    "lng": -117.31,
+    "website": "https://www.valleycollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-smccd-skyline",
+    "title": "Skyline College — ESL",
+    "description": "ESL courses on the San Mateo County coastside and peninsula.",
+    "address": "3300 College Dr",
+    "city": "San Bruno",
+    "zip": "94066",
+    "lat": 37.629,
+    "lng": -122.467,
+    "website": "https://skylinecollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-city-sd",
+    "title": "San Diego City College — ESL",
+    "description": "ESL courses near downtown San Diego.",
+    "address": "1313 Park Blvd",
+    "city": "San Diego",
+    "zip": "92101",
+    "lat": 32.719,
+    "lng": -117.152,
+    "website": "https://www.sdcity.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sdccd-continuing",
+    "title": "San Diego College of Continuing Education — ESL",
+    "description": "Large free noncredit ESL program across San Diego campuses.",
+    "address": "4343 Ocean View Blvd",
+    "city": "San Diego",
+    "zip": "92113",
+    "lat": 32.7,
+    "lng": -117.11,
+    "website": "https://www.sdcce.edu/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-mesa-sd",
+    "title": "San Diego Mesa College — ESL",
+    "description": "ESL pathways for English learners in central San Diego.",
+    "address": "7250 Mesa College Dr",
+    "city": "San Diego",
+    "zip": "92111",
+    "lat": 32.805,
+    "lng": -117.168,
+    "website": "https://www.sdmesa.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sdpl",
+    "title": "San Diego Public Library — ESL Conversation",
+    "description": "English conversation groups and learner resources at San Diego libraries.",
+    "address": "330 Park Blvd",
+    "city": "San Diego",
+    "zip": "92101",
+    "lat": 32.7087,
+    "lng": -117.1637,
+    "website": "https://www.sandiego.gov/public-library",
+    "category": "library",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-ccsf-noncredit",
+    "title": "City College of San Francisco — Noncredit ESL",
+    "description": "Large free and low-cost noncredit ESL program for adults across San Francisco campuses.",
+    "address": "50 Frida Kahlo Way",
+    "city": "San Francisco",
+    "zip": "94112",
+    "lat": 37.7257,
+    "lng": -122.4511,
+    "website": "https://www.ccsf.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "zh"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sfpl-main",
+    "title": "San Francisco Public Library — Learn English",
+    "description": "Free English conversation practice, learner materials, and ESL resources at SFPL branches.",
+    "address": "100 Larkin St",
+    "city": "San Francisco",
+    "zip": "94102",
+    "lat": 37.7793,
+    "lng": -122.4192,
+    "website": "https://sfpl.org/services/immigrants",
+    "category": "library",
+    "languages": [
+      "en",
+      "es",
+      "zh"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-msjc-esl",
+    "title": "Mt. San Jacinto College — ESL",
+    "description": "ESL courses serving Menifee, San Jacinto, and southwest Riverside County.",
+    "address": "1499 N State St",
+    "city": "San Jacinto",
+    "zip": "92583",
+    "lat": 33.8,
+    "lng": -116.96,
+    "website": "https://www.msjc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-eas-sj",
+    "title": "East Side Adult Education — ESL",
+    "description": "Adult ESL classes through East Side Union High School District.",
+    "address": "2155 Cunningham Ave",
+    "city": "San Jose",
+    "zip": "95122",
+    "lat": 37.328,
+    "lng": -121.829,
+    "website": "https://www.esuhsd.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-evc-esl",
+    "title": "Evergreen Valley College — ESL",
+    "description": "ESL courses and support for English learners in east San José.",
+    "address": "3095 Yerba Buena Rd",
+    "city": "San Jose",
+    "zip": "95135",
+    "lat": 37.305,
+    "lng": -121.763,
+    "website": "https://www.evc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sjcc-esl",
+    "title": "San José City College — ESL",
+    "description": "ESL and English pathways for adult learners in San José.",
+    "address": "2100 Moorpark Ave",
+    "city": "San Jose",
+    "zip": "95128",
+    "lat": 37.3146,
+    "lng": -121.9283,
+    "website": "https://www.sjcc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-sjpl",
+    "title": "San José Public Library — Learn English",
+    "description": "Library ESL conversation groups, learner cards, and free English resources.",
+    "address": "150 E San Fernando St",
+    "city": "San Jose",
+    "zip": "95112",
+    "lat": 37.3352,
+    "lng": -121.885,
+    "website": "https://www.sjpl.org/",
+    "category": "library",
+    "languages": [
+      "en",
+      "es",
+      "vi"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-capistrano-adult",
+    "title": "Capistrano Adult Education — ESL",
+    "description": "Adult ESL classes serving south Orange County coastal communities.",
+    "address": "31522 El Camino Real",
+    "city": "San Juan Capistrano",
+    "zip": "92675",
+    "lat": 33.5,
+    "lng": -117.66,
+    "website": "https://www.capousd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-cuesta-esl",
+    "title": "Cuesta College — ESL",
+    "description": "ESL courses serving San Luis Obispo County.",
+    "address": "Highway 1",
+    "city": "San Luis Obispo",
+    "zip": "93403",
+    "lat": 35.33,
+    "lng": -120.743,
+    "website": "https://www.cuesta.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-palomar-esl",
+    "title": "Palomar College — ESL",
+    "description": "ESL courses for English learners in San Marcos and North County.",
+    "address": "1140 W Mission Rd",
+    "city": "San Marcos",
+    "zip": "92069",
+    "lat": 33.148,
+    "lng": -117.185,
+    "website": "https://www.palomar.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-csm-esl",
+    "title": "College of San Mateo — ESL",
+    "description": "ESL and English support courses in San Mateo.",
+    "address": "1700 W Hillsdale Blvd",
+    "city": "San Mateo",
+    "zip": "94402",
+    "lat": 37.536,
+    "lng": -122.335,
+    "website": "https://collegeofsanmateo.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-contra-costa-cc",
+    "title": "Contra Costa College — ESL",
+    "description": "ESL courses in San Pablo serving West Contra Costa.",
+    "address": "2600 Mission Bell Dr",
+    "city": "San Pablo",
+    "zip": "94806",
+    "lat": 37.968,
+    "lng": -122.342,
+    "website": "https://www.contracosta.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-santa-ana-college",
+    "title": "Santa Ana College — ESL / Noncredit",
+    "description": "Credit and noncredit ESL serving Santa Ana and central Orange County.",
+    "address": "1530 W 17th St",
+    "city": "Santa Ana",
+    "zip": "92706",
+    "lat": 33.758,
+    "lng": -117.89,
+    "website": "https://www.sac.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-sbcc-esl",
+    "title": "Santa Barbara City College — ESL / Noncredit",
+    "description": "ESL and continuing education English classes in Santa Barbara.",
+    "address": "721 Cliff Dr",
+    "city": "Santa Barbara",
+    "zip": "93109",
+    "lat": 34.406,
+    "lng": -119.698,
+    "website": "https://www.sbcc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-mission-college",
+    "title": "Mission College — ESL",
+    "description": "ESL courses for English learners in Santa Clara.",
+    "address": "3000 Mission College Blvd",
+    "city": "Santa Clara",
+    "zip": "95054",
+    "lat": 37.391,
+    "lng": -121.982,
+    "website": "https://missioncollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-college-canyons",
+    "title": "College of the Canyons — ESL",
+    "description": "ESL courses in Santa Clarita Valley.",
+    "address": "26455 Rockwell Canyon Rd",
+    "city": "Santa Clarita",
+    "zip": "91355",
+    "lat": 34.405,
+    "lng": -118.57,
+    "website": "https://www.canyons.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-santa-clarita-adult",
+    "title": "Golden Oak Adult School — ESL",
+    "description": "Adult ESL classes serving Santa Clarita.",
+    "address": "23245 W Valencia Blvd",
+    "city": "Santa Clarita",
+    "zip": "91355",
+    "lat": 34.415,
+    "lng": -118.56,
+    "website": "https://www.goldenoak.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-allan-hancock",
+    "title": "Allan Hancock College — ESL",
+    "description": "ESL courses serving Santa Maria and northern Santa Barbara County.",
+    "address": "800 S College Dr",
+    "city": "Santa Maria",
+    "zip": "93454",
+    "lat": 34.94,
+    "lng": -120.42,
+    "website": "https://www.hancockcollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-santa-maria-adult",
+    "title": "Santa Maria Joint Union Adult Education — ESL",
+    "description": "Adult ESL classes in Santa Maria.",
+    "address": "2560 Skyway Dr",
+    "city": "Santa Maria",
+    "zip": "93455",
+    "lat": 34.9,
+    "lng": -120.435,
+    "website": "https://www.smjuhsd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-smc-esl",
+    "title": "Santa Monica College — ESL",
+    "description": "ESL courses for residents and adult learners in Santa Monica.",
+    "address": "1900 Pico Blvd",
+    "city": "Santa Monica",
+    "zip": "90405",
+    "lat": 34.018,
+    "lng": -118.47,
+    "website": "https://www.smc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "fa",
+      "ru"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-santarosa-jc",
+    "title": "Santa Rosa Junior College — ESL",
+    "description": "Credit and noncredit ESL courses in Sonoma County.",
+    "address": "1501 Mendocino Ave",
+    "city": "Santa Rosa",
+    "zip": "95401",
+    "lat": 38.455,
+    "lng": -122.718,
+    "website": "https://www.santarosa.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-west-valley",
+    "title": "West Valley College — ESL",
+    "description": "ESL courses serving Saratoga and west San José.",
+    "address": "14000 Fruitvale Ave",
+    "city": "Saratoga",
+    "zip": "95070",
+    "lat": 37.263,
+    "lng": -122.01,
+    "website": "https://www.westvalley.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-simi-adult",
+    "title": "Simi Valley Adult School — ESL",
+    "description": "Adult ESL classes serving Simi Valley.",
+    "address": "3150 E Los Angeles Ave",
+    "city": "Simi Valley",
+    "zip": "93065",
+    "lat": 34.27,
+    "lng": -118.72,
+    "website": "https://www.simivalleyusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-santa-cruz-adult",
+    "title": "Santa Cruz Adult Education — ESL",
+    "description": "Adult ESL classes in Santa Cruz County.",
+    "address": "400 Old San Jose Rd",
+    "city": "Soquel",
+    "zip": "95073",
+    "lat": 36.99,
+    "lng": -121.95,
+    "website": "https://www.sccs.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-ssf-adult",
+    "title": "South San Francisco Adult Education — ESL",
+    "description": "Adult ESL classes in South San Francisco.",
+    "address": "825 Southwood Dr",
+    "city": "South San Francisco",
+    "zip": "94080",
+    "lat": 37.655,
+    "lng": -122.425,
+    "website": "https://www.ssfusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-delta-college",
+    "title": "San Joaquin Delta College — ESL",
+    "description": "ESL courses for adult learners in Stockton.",
+    "address": "5151 Pacific Ave",
+    "city": "Stockton",
+    "zip": "95207",
+    "lat": 38.002,
+    "lng": -121.32,
+    "website": "https://www.deltacollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-stockton-usd",
+    "title": "Stockton Unified Adult Education — ESL",
+    "description": "Adult ESL classes for Stockton and nearby communities.",
+    "address": "1425 S Center St",
+    "city": "Stockton",
+    "zip": "95206",
+    "lat": 37.934,
+    "lng": -121.278,
+    "website": "https://www.stocktonusd.net/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-stockton-library",
+    "title": "Stockton-San Joaquin Public Library — ESL",
+    "description": "Library English learner resources in Stockton.",
+    "address": "605 N El Dorado St",
+    "city": "Stockton",
+    "zip": "95202",
+    "lat": 37.958,
+    "lng": -121.288,
+    "website": "https://www.ssjcpl.org/",
+    "category": "library",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-mission-college-sylmar",
+    "title": "Los Angeles Mission College — ESL",
+    "description": "ESL pathways serving Sylmar and the northeast San Fernando Valley.",
+    "address": "13356 Eldridge Ave",
+    "city": "Sylmar",
+    "zip": "91342",
+    "lat": 34.315,
+    "lng": -118.42,
+    "website": "https://www.lamission.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-taft-college",
+    "title": "Taft College — ESL",
+    "description": "ESL courses in Taft and western Kern County.",
+    "address": "29 Cougar Ct",
+    "city": "Taft",
+    "zip": "93268",
+    "lat": 35.145,
+    "lng": -119.455,
+    "website": "https://www.taftcollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-elcamino-esl",
+    "title": "El Camino College — ESL",
+    "description": "ESL pathways for English learners in Torrance and the South Bay.",
+    "address": "16007 Crenshaw Blvd",
+    "city": "Torrance",
+    "zip": "90506",
+    "lat": 33.886,
+    "lng": -118.33,
+    "website": "https://www.elcamino.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "ko",
+      "ja"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-torrance-adult",
+    "title": "Torrance Adult School — ESL",
+    "description": "Adult ESL classes in Torrance and the South Bay.",
+    "address": "2291 Washington Ave",
+    "city": "Torrance",
+    "zip": "90501",
+    "lat": 33.84,
+    "lng": -118.32,
+    "website": "https://www.tusd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-turlock-adult",
+    "title": "Turlock Adult School — ESL",
+    "description": "Adult ESL classes serving Turlock and nearby communities.",
+    "address": "1574 E Canal Dr",
+    "city": "Turlock",
+    "zip": "95380",
+    "lat": 37.5,
+    "lng": -120.84,
+    "website": "https://www.turlock.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-vallejo-adult",
+    "title": "Vallejo Regional Education Center — ESL",
+    "description": "Adult ESL classes serving Vallejo and nearby cities.",
+    "address": "100 Whitney Ave",
+    "city": "Vallejo",
+    "zip": "94589",
+    "lat": 38.13,
+    "lng": -122.23,
+    "website": "https://www.vallejo.k12.ca.us/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-valley-esl",
+    "title": "Los Angeles Valley College — ESL",
+    "description": "ESL and English language support in Van Nuys.",
+    "address": "5800 Fulton Ave",
+    "city": "Valley Glen",
+    "zip": "91401",
+    "lat": 34.176,
+    "lng": -118.422,
+    "website": "https://www.lavc.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "hy",
+      "ko"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-ventura-adult",
+    "title": "Ventura Adult and Continuing Education — ESL",
+    "description": "Adult ESL classes in Ventura.",
+    "address": "5200 Valentine Rd",
+    "city": "Ventura",
+    "zip": "93003",
+    "lat": 34.265,
+    "lng": -119.22,
+    "website": "https://www.adultedventura.edu/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-ventura-college",
+    "title": "Ventura College — ESL",
+    "description": "ESL courses serving Ventura and nearby coastal communities.",
+    "address": "4667 Telegraph Rd",
+    "city": "Ventura",
+    "zip": "93003",
+    "lat": 34.277,
+    "lng": -119.23,
+    "website": "https://www.venturacollege.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-victor-valley",
+    "title": "Victor Valley College — ESL",
+    "description": "ESL pathways serving Victorville and the High Desert.",
+    "address": "18422 Bear Valley Rd",
+    "city": "Victorville",
+    "zip": "92395",
+    "lat": 34.48,
+    "lng": -117.29,
+    "website": "https://www.vvc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-college-sequoias",
+    "title": "College of the Sequoias — ESL",
+    "description": "ESL courses in Visalia and Tulare County.",
+    "address": "915 S Mooney Blvd",
+    "city": "Visalia",
+    "zip": "93277",
+    "lat": 36.32,
+    "lng": -119.315,
+    "website": "https://www.cos.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-visalia-adult",
+    "title": "Visalia Adult School — ESL",
+    "description": "Adult ESL classes serving Visalia and Tulare County communities.",
+    "address": "3110 E Houston Ave",
+    "city": "Visalia",
+    "zip": "93292",
+    "lat": 36.33,
+    "lng": -119.27,
+    "website": "https://www.vusd.org/",
+    "category": "adult_school",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-mtsac-esl",
+    "title": "Mt. San Antonio College — ESL",
+    "description": "Large ESL program serving Walnut and the San Gabriel Valley.",
+    "address": "1100 N Grand Ave",
+    "city": "Walnut",
+    "zip": "91789",
+    "lat": 34.047,
+    "lng": -117.845,
+    "website": "https://www.mtsac.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-watsonville-adult",
+    "title": "Pajaro Valley Adult Education — ESL",
+    "description": "Adult ESL classes serving Watsonville and the Pajaro Valley.",
+    "address": "294 Green Valley Rd",
+    "city": "Watsonville",
+    "zip": "95076",
+    "lat": 36.92,
+    "lng": -121.78,
+    "website": "https://www.pvusd.net/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-rio-hondo",
+    "title": "Rio Hondo College — ESL",
+    "description": "ESL pathways serving Whittier and southeast LA County.",
+    "address": "3600 Workman Mill Rd",
+    "city": "Whittier",
+    "zip": "90601",
+    "lat": 34.018,
+    "lng": -118.035,
+    "website": "https://www.riohondo.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-whittier-adult",
+    "title": "Whittier Adult School — ESL",
+    "description": "Adult ESL classes in Whittier.",
+    "address": "9401 S Painter Ave",
+    "city": "Whittier",
+    "zip": "90605",
+    "lat": 33.96,
+    "lng": -118.03,
+    "website": "https://www.wuhsd.org/",
+    "category": "adult_school",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-harbor-college",
+    "title": "Los Angeles Harbor College — ESL",
+    "description": "ESL courses serving Wilmington and the Harbor area.",
+    "address": "1111 Figueroa Pl",
+    "city": "Wilmington",
+    "zip": "90744",
+    "lat": 33.785,
+    "lng": -118.285,
+    "website": "https://www.lahc.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-woodland-cc",
+    "title": "Woodland Community College — ESL",
+    "description": "ESL courses serving Woodland and Yolo County.",
+    "address": "2300 E Gibson Rd",
+    "city": "Woodland",
+    "zip": "95776",
+    "lat": 38.68,
+    "lng": -121.74,
+    "website": "https://wcc.yccd.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-pierce-esl",
+    "title": "Los Angeles Pierce College — ESL",
+    "description": "ESL courses for English learners in the San Fernando Valley.",
+    "address": "6201 Winnetka Ave",
+    "city": "Woodland Hills",
+    "zip": "91371",
+    "lat": 34.184,
+    "lng": -118.58,
+    "website": "https://www.piercecollege.edu/",
+    "category": "community_college",
+    "languages": [
+      "en",
+      "es",
+      "hy",
+      "ko"
+    ],
+    "statewide": false,
+    "verified": true
+  },
+  {
+    "id": "esl-crafton-hills",
+    "title": "Crafton Hills College — ESL",
+    "description": "ESL courses in Yucaipa and the east Inland Empire.",
+    "address": "11711 Sand Canyon Rd",
+    "city": "Yucaipa",
+    "zip": "92399",
+    "lat": 34.04,
+    "lng": -117.1,
+    "website": "https://www.craftonhills.edu/",
+    "category": "community_college",
+    "statewide": false,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-cde-directory",
+    "title": "CDE Adult Education Provider Directory",
+    "description": "California Department of Education directory of public adult schools and ESL providers by ZIP code.",
+    "address": "Online",
+    "city": "California",
+    "zip": "",
+    "lat": 36.7783,
+    "lng": -119.4179,
+    "website": "https://www.cde.ca.gov/sp/ae/ds/",
+    "category": "online",
+    "languages": [
+      "en"
+    ],
+    "statewide": true,
+    "verified": true
+  },
+  {
+    "id": "esl-caep-find",
+    "title": "California Adult Education — Find a Program",
+    "description": "Official statewide directory to locate adult schools and community college ESL near you.",
+    "address": "Online",
+    "city": "California",
+    "zip": "",
+    "lat": 36.7783,
+    "lng": -119.4179,
+    "website": "https://www.caladulted.org/",
+    "category": "online",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": true,
+    "verified": true
+  },
+  {
+    "id": "esl-literacypro",
+    "title": "LiteracyPro / ProLiteracy Finder",
+    "description": "Find local adult literacy and ESL tutoring programs across the US, including California.",
+    "address": "Online",
+    "city": "California",
+    "zip": "",
+    "lat": 36.7783,
+    "lng": -119.4179,
+    "website": "https://www.proliteracy.org/",
+    "category": "online",
+    "statewide": true,
+    "languages": [
+      "en"
+    ],
+    "verified": true
+  },
+  {
+    "id": "esl-usahello-classes",
+    "title": "USAHello — Find Local Classes",
+    "description": "Immigrant-focused guide to finding free local and online English classes.",
+    "address": "Online",
+    "city": "California",
+    "zip": "",
+    "lat": 36.7783,
+    "lng": -119.4179,
+    "website": "https://usahello.org/education/english/find-english-classes/",
+    "category": "online",
+    "statewide": true,
+    "verified": true,
+    "languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "esl-usahello",
+    "title": "USAHello — Free Online English",
+    "description": "Free online English lessons and immigrant resources available statewide.",
+    "address": "Online",
+    "city": "California",
+    "zip": "",
+    "lat": 36.7783,
+    "lng": -119.4179,
+    "website": "https://usahello.org/english/",
+    "category": "online",
+    "languages": [
+      "en",
+      "es"
+    ],
+    "statewide": true,
+    "verified": true
+  }
+]
