@@ -30,6 +30,18 @@ import {
   handleFindHealthCenters,
   healthCentersCallableOptions,
 } from "./find_health_centers.js";
+import {
+  handleFindEducationResources,
+  educationResourcesCallableOptions,
+} from "./find_education_resources.js";
+import {
+  handleEducationSchoolSummary,
+  educationAiCallableOptions,
+} from "./education_ai.js";
+import {
+  handleSeedSupportGroups,
+  seedSupportGroupsCallableOptions,
+} from "./seed_support_groups.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -114,5 +126,28 @@ export const findHealthCenters = onCall(
   healthCentersCallableOptions,
   async (request) => {
     return handleFindHealthCenters(request, requireAuth);
+  },
+);
+
+// --- Feature 5: Education Navigator (CDE schools + support programs) ---------
+export const findEducationResources = onCall(
+  educationResourcesCallableOptions,
+  async (request) => {
+    return handleFindEducationResources(request, requireAuth);
+  },
+);
+
+export const educationSchoolSummary = onCall(
+  educationAiCallableOptions,
+  async (request) => {
+    return handleEducationSchoolSummary(request, requireAuth);
+  },
+);
+
+// --- Feature 8: Mutual Support Groups ---------------------------------------
+export const seedSupportGroups = onCall(
+  seedSupportGroupsCallableOptions,
+  async (request) => {
+    return handleSeedSupportGroups(request, requireAuth);
   },
 );
