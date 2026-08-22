@@ -61,13 +61,67 @@ class CareerService {
   }
 
   Future<void> replacePath(int index, CareerPath path) async {
-    final current = await getCareer();
-    if (index < 0 || index >= current.paths.length) {
+    if (index < 0 || index >= CareerBridgeData.pathSlotCount) {
       throw RangeError('Invalid path index: $index');
     }
-    final paths = [...current.paths];
-    paths[index] = path;
+    final current = await getCareer();
+    final paths = List<CareerPath>.generate(
+      CareerBridgeData.pathSlotCount,
+      (i) {
+        if (i == index) return path;
+        if (i < current.paths.length && current.paths[i].hasContent) {
+          return current.paths[i];
+        }
+        return CareerPath.emptySlot(i);
+      },
+    );
     await saveCareer(current.copyWith(paths: paths));
+  }
+
+  Future<void> setChecklistItemDone({
+    required int pathIndex,
+    required String stepId,
+    required bool isSkill,
+    required int itemIndex,
+    required bool done,
+  }) async {
+    if (pathIndex < 0 || pathIndex >= CareerBridgeData.pathSlotCount) {
+      throw RangeError('Invalid path index: $pathIndex');
+    }
+    final current = await getCareer();
+    if (pathIndex >= current.paths.length) {
+      throw StateError('Career path not found.');
+    }
+
+    final path = current.paths[pathIndex];
+    final stepIndex = path.steps.indexWhere((step) => step.id == stepId);
+    if (stepIndex < 0) {
+      throw StateError('Career step not found.');
+    }
+
+    final step = path.steps[stepIndex];
+    final items = List<CareerChecklistItem>.from(
+      isSkill ? step.skills : step.certifications,
+    );
+    if (itemIndex < 0 || itemIndex >= items.length) {
+      throw RangeError('Invalid checklist item index: $itemIndex');
+    }
+
+    items[itemIndex] = items[itemIndex].copyWith(done: done);
+    final updatedStep = isSkill
+        ? step.copyWith(skills: items)
+        : step.copyWith(certifications: items);
+    final updatedSteps = [...path.steps];
+    updatedSteps[stepIndex] = updatedStep;
+
+    final updatedPaths = [...current.paths];
+    updatedPaths[pathIndex] = CareerPath(
+      id: path.id,
+      title: path.title,
+      summary: path.summary,
+      steps: updatedSteps,
+    );
+    await saveCareer(current.copyWith(paths: updatedPaths));
   }
 }
 

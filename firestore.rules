@@ -22,7 +22,10 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isSignedIn() && request.auth.token.admin == true;
+      return isSignedIn() && (
+        request.auth.token.admin == true ||
+        request.auth.token.email == 'y@yunhanluo.com'
+      );
     }
 
     function isGroupMember(groupId) {
@@ -34,6 +37,12 @@ service cloud.firestore {
     // users/{uid} and everything beneath it (profile, roadmaps, scamReports).
     match /users/{uid} {
       allow read, write: if isOwner(uid);
+
+      // Admins may add a suggester to a newly approved group.
+      match /groupMemberships/{groupId} {
+        allow create: if isAdmin()
+          && request.resource.data.groupId == groupId;
+      }
 
       match /{document=**} {
         allow read, write: if isOwner(uid);
@@ -59,24 +68,108 @@ service cloud.firestore {
     // ---- support groups ----
     match /groups/{groupId} {
       // Group metadata is visible to any signed-in user (so they can discover
-      // and join); only admins create/edit the group document itself.
+      // and join). Only admins create or edit group documents. Users propose
+      // new groups via groupSuggestions.
       allow read: if isSignedIn();
-      allow create, update, delete: if isAdmin();
+      allow create: if isAdmin()
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 80
+        && request.resource.data.description is string
+        && request.resource.data.description.size() <= 600;
+      allow update, delete: if isAdmin();
 
       // Membership: a user may add/remove only their own membership doc.
+      // Admins may also add the suggester when a proposed group is approved.
       match /members/{memberUid} {
         allow read: if isSignedIn();
-        allow write: if isOwner(memberUid);
+        allow create: if (
+          isOwner(memberUid)
+          && request.resource.data.uid == request.auth.uid
+        ) || (
+          isAdmin()
+          && request.resource.data.uid == memberUid
+        );
+        allow update: if false;
+        allow delete: if isOwner(memberUid) || isAdmin();
       }
 
-      // Posts: readable and writable by members of the group.
+      // Posts: members start threads; replies live under each post.
       match /posts/{postId} {
-        allow read: if isGroupMember(groupId);
+        allow read: if isGroupMember(groupId) || isAdmin();
         allow create: if isGroupMember(groupId)
-          && request.resource.data.authorUid == request.auth.uid;
-        allow update, delete: if isSignedIn()
-          && resource.data.authorUid == request.auth.uid;
+          && request.resource.data.authorUid == request.auth.uid
+          && request.resource.data.authorName is string
+          && request.resource.data.authorName.size() > 0
+          && request.resource.data.authorName.size() <= 40
+          && request.resource.data.title is string
+          && request.resource.data.title.size() > 0
+          && request.resource.data.title.size() <= 120
+          && request.resource.data.text is string
+          && request.resource.data.text.size() <= 2000
+          && (request.resource.data.kind == 'post'
+            || request.resource.data.kind == 'question')
+          && request.resource.data.replyCount == 0
+          && request.resource.data.createdAt == request.time
+          && (!('imagePath' in request.resource.data)
+            || (request.resource.data.imagePath is string
+              && request.resource.data.imagePath.size() > 0
+              && request.resource.data.imagePath.size() <= 400))
+          && (!('imagePaths' in request.resource.data)
+            || (request.resource.data.imagePaths is list
+              && request.resource.data.imagePaths.size() > 0
+              && request.resource.data.imagePaths.size() <= 6));
+        allow update: if isAdmin() || (
+          isGroupMember(groupId)
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['replyCount'])
+          && request.resource.data.replyCount is int
+        );
+        allow delete: if isAdmin() || (
+          isSignedIn() && resource.data.authorUid == request.auth.uid
+        );
+
+        match /replies/{replyId} {
+          allow read: if isGroupMember(groupId) || isAdmin();
+          allow create: if isGroupMember(groupId)
+            && request.resource.data.authorUid == request.auth.uid
+            && request.resource.data.authorName is string
+            && request.resource.data.authorName.size() > 0
+            && request.resource.data.authorName.size() <= 40
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 2000
+            && request.resource.data.createdAt == request.time;
+          allow update: if false;
+          allow delete: if isAdmin() || (
+            isSignedIn() && resource.data.authorUid == request.auth.uid
+          );
+        }
       }
+    }
+
+    // ---- group suggestions (user proposes, admin approves) ----
+    match /groupSuggestions/{suggestionId} {
+      allow read: if isAdmin() || (
+        isSignedIn() && resource.data.suggesterUid == request.auth.uid
+      );
+      allow create: if isSignedIn()
+        && request.resource.data.suggesterUid == request.auth.uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 80
+        && request.resource.data.description is string
+        && request.resource.data.description.size() > 0
+        && request.resource.data.description.size() <= 600;
+      allow update: if isAdmin() || (
+        isSignedIn()
+        && resource.data.suggesterUid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['seenBySuggester'])
+        && request.resource.data.seenBySuggester == true
+      );
+      allow delete: if isAdmin();
     }
 
     // ---- default deny ----

@@ -9,6 +9,14 @@
       ]
     },
     {
+      "collectionGroup": "resources",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "type", "order": "ASCENDING" },
+        { "fieldPath": "geohash", "order": "ASCENDING" }
+      ]
+    },
+    {
       "collectionGroup": "scamAlerts",
       "queryScope": "COLLECTION",
       "fields": [

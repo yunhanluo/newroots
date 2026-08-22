@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/router/app_router.dart';
+import '../../../core/services/admin_service.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/user_profile_service.dart';
 import '../../../core/theme/brand_colors.dart';
@@ -16,6 +17,7 @@ class ProfileScreen extends ConsumerWidget {
     final user = ref.watch(authStateProvider).value;
     final profile = ref.watch(userProfileProvider).value;
     final hasSurvey = profile?.hasSurveyData ?? false;
+    final isAdmin = ref.watch(isAdminProvider);
 
     return Scaffold(
       backgroundColor: kBrandPageBg,
@@ -65,6 +67,16 @@ class ProfileScreen extends ConsumerWidget {
                         height: 1.3,
                       ),
                     ),
+                    if (isAdmin) ...[
+                      const SizedBox(height: 10),
+                      const Center(child: _AdminBadge()),
+                      const SizedBox(height: 8),
+                      TextButton(
+                        onPressed: () =>
+                            context.pushNamed(Routes.groupAdmin),
+                        child: const Text('Review group suggestions'),
+                      ),
+                    ],
                     const SizedBox(height: 24),
                     if (hasSurvey) ...[
                       _ProfileFieldRow(
@@ -110,21 +122,21 @@ class ProfileScreen extends ConsumerWidget {
                         value: _fieldValue(
                           profile,
                           step: 3,
-                          value: profile.familySize <= 0
+                          value: profile.skippedQuestions.contains(3)
                               ? ''
                               : '${profile.familySize}',
                         ),
                         skipped: _isSkippedField(
                           profile,
                           3,
-                          empty: profile.familySize <= 0,
+                          empty: profile.skippedQuestions.contains(3),
                         ),
                         onEdit: () => _editTextField(
                           context,
                           ref,
                           key: 'familySize',
                           title: 'Family size',
-                          initialValue: profile.familySize <= 0
+                          initialValue: profile.skippedQuestions.contains(3)
                               ? ''
                               : '${profile.familySize}',
                           numeric: true,
@@ -551,6 +563,29 @@ class _ProfileFieldRow extends StatelessWidget {
           constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
         ),
         ],
+      ),
+    );
+  }
+}
+
+class _AdminBadge extends StatelessWidget {
+  const _AdminBadge();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: kBrandGreen.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: const Text(
+        'Admin',
+        style: TextStyle(
+          color: kBrandGreen,
+          fontWeight: FontWeight.w700,
+          fontSize: 13,
+        ),
       ),
     );
   }

@@ -20,9 +20,38 @@ class AiService {
   Future<ScamReport> analyzeScam({
     String? text,
     String? contentRef,
+    required ScamCategory category,
     required String language,
+    String? priorThread,
+    RiskLevel? priorRiskLevel,
+    String? reportId,
   }) async {
-    throw UnimplementedError('analyzeScam Cloud Function not wired yet');
+    try {
+      final result = await _functions
+          .httpsCallable('analyzeScam')
+          .call<Map<String, dynamic>>({
+        if (text != null && text.trim().isNotEmpty) 'text': text.trim(),
+        if (contentRef != null && contentRef.trim().isNotEmpty)
+          'contentRef': contentRef.trim(),
+        'category': category.apiValue,
+        'language': language,
+        if (priorThread != null && priorThread.trim().isNotEmpty)
+          'priorThread': priorThread.trim(),
+        if (priorRiskLevel != null) 'priorRiskLevel': priorRiskLevel.name,
+        if (reportId != null && reportId.trim().isNotEmpty)
+          'reportId': reportId.trim(),
+      });
+      final data = Map<String, dynamic>.from(result.data);
+      final id = (data['id'] as String?)?.trim().isNotEmpty == true
+          ? data['id'] as String
+          : (reportId?.trim().isNotEmpty == true
+              ? reportId!.trim()
+              : 'scam_${DateTime.now().millisecondsSinceEpoch}');
+      return ScamReport.fromMap(id, data);
+    } catch (error, stack) {
+      debugPrint('analyzeScam Cloud Function failed: $error\n$stack');
+      rethrow;
+    }
   }
 
   /// Calls the `careerMap` Cloud Function to generate career pathways.
@@ -40,10 +69,12 @@ class AiService {
   Future<CareerPath> regenerateCareerPath({
     required UserProfileData profile,
     required String additionalNotes,
-    required List<CareerPath> existingPaths,
+    required List<CareerPath?> existingPaths,
     required int pathIndex,
   }) async {
-    final path = existingPaths[pathIndex];
+    final path = pathIndex < existingPaths.length
+        ? existingPaths[pathIndex]
+        : null;
     final result = await _functions
         .httpsCallable('careerMap')
         .call<Map<String, dynamic>>({
@@ -52,11 +83,22 @@ class AiService {
       'additionalNotes': additionalNotes.trim(),
       'language': profile.languageCode,
       'pathIndex': pathIndex,
-      'pathId': path.id,
-      'replacePathTitle': path.title,
-      'existingPaths': existingPaths
-          .map((p) => {'title': p.title, 'summary': p.summary})
-          .toList(),
+      'pathId': path?.id.isNotEmpty == true
+          ? path!.id
+          : 'path${pathIndex + 1}',
+      'replacePathTitle':
+          path?.title.isNotEmpty == true ? path!.title : 'this path',
+      'existingPaths': List.generate(
+        CareerBridgeData.pathSlotCount,
+        (index) {
+          final item =
+              index < existingPaths.length ? existingPaths[index] : null;
+          return {
+            'title': item?.title ?? '',
+            'summary': item?.summary ?? '',
+          };
+        },
+      ),
     });
     final data = Map<String, dynamic>.from(result.data);
     final rawPath = data['path'];
@@ -89,6 +131,39 @@ class AiService {
           .toList();
     } catch (error, stack) {
       debugPrint('careerMap Cloud Function failed: $error\n$stack');
+      rethrow;
+    }
+  }
+
+  /// Asks the `housingAi` Cloud Function a question about the current section.
+  ///
+  /// [history] is prior turns in this temporary session (`role` + `content`),
+  /// excluding the latest [question].
+  Future<String> askHousingQuestion({
+    required String question,
+    required String sectionTitle,
+    required String sectionSummary,
+    List<Map<String, String>> history = const [],
+    String language = 'en',
+  }) async {
+    try {
+      final result = await _functions
+          .httpsCallable('housingAi')
+          .call<Map<String, dynamic>>({
+        'question': question.trim(),
+        'sectionTitle': sectionTitle,
+        'sectionSummary': sectionSummary,
+        'language': language,
+        if (history.isNotEmpty) 'history': history,
+      });
+      final data = Map<String, dynamic>.from(result.data);
+      final answer = (data['answer'] as String?)?.trim() ?? '';
+      if (answer.isEmpty) {
+        throw StateError('No answer returned.');
+      }
+      return answer;
+    } catch (error, stack) {
+      debugPrint('housingAi Cloud Function failed: $error\n$stack');
       rethrow;
     }
   }

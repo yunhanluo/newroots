@@ -1,5 +1,7 @@
 /// Career Bridge data stored at `users/{uid}/career/main`.
 class CareerBridgeData {
+  static const pathSlotCount = 3;
+
   const CareerBridgeData({
     required this.paths,
     this.additionalNotes = '',
@@ -12,7 +14,17 @@ class CareerBridgeData {
   final DateTime? generatedAt;
   final DateTime? updatedAt;
 
-  bool get isEmpty => paths.isEmpty;
+  bool get isEmpty => paths.every((path) => !path.hasContent);
+
+  /// Exactly [pathSlotCount] slots; missing/empty entries are null.
+  List<CareerPath?> get pathSlots => List<CareerPath?>.generate(
+        pathSlotCount,
+        (index) {
+          if (index >= paths.length) return null;
+          final path = paths[index];
+          return path.hasContent ? path : null;
+        },
+      );
 
   CareerBridgeData copyWith({
     List<CareerPath>? paths,
@@ -76,6 +88,17 @@ class CareerPath {
   final String summary;
   final List<CareerPathStep> steps;
 
+  bool get hasContent => title.trim().isNotEmpty && steps.isNotEmpty;
+
+  factory CareerPath.emptySlot(int index) {
+    return CareerPath(
+      id: 'path${index + 1}',
+      title: '',
+      summary: '',
+      steps: const [],
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -104,11 +127,43 @@ class CareerPath {
   }
 }
 
+class CareerChecklistItem {
+  const CareerChecklistItem({
+    required this.label,
+    this.done = false,
+  });
+
+  final String label;
+  final bool done;
+
+  CareerChecklistItem copyWith({String? label, bool? done}) {
+    return CareerChecklistItem(
+      label: label ?? this.label,
+      done: done ?? this.done,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'label': label,
+      'done': done,
+    };
+  }
+
+  factory CareerChecklistItem.fromMap(Map<String, dynamic> map) {
+    return CareerChecklistItem(
+      label: (map['label'] as String?)?.trim() ?? '',
+      done: (map['done'] as bool?) ?? false,
+    );
+  }
+}
+
 class CareerPathStep {
   const CareerPathStep({
     required this.id,
     required this.title,
     required this.description,
+    this.timeEstimate = '',
     this.isCurrent = false,
     this.certifications = const [],
     this.skills = const [],
@@ -117,18 +172,40 @@ class CareerPathStep {
   final String id;
   final String title;
   final String description;
+  final String timeEstimate;
   final bool isCurrent;
-  final List<String> certifications;
-  final List<String> skills;
+  final List<CareerChecklistItem> certifications;
+  final List<CareerChecklistItem> skills;
+
+  CareerPathStep copyWith({
+    String? id,
+    String? title,
+    String? description,
+    String? timeEstimate,
+    bool? isCurrent,
+    List<CareerChecklistItem>? certifications,
+    List<CareerChecklistItem>? skills,
+  }) {
+    return CareerPathStep(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      timeEstimate: timeEstimate ?? this.timeEstimate,
+      isCurrent: isCurrent ?? this.isCurrent,
+      certifications: certifications ?? this.certifications,
+      skills: skills ?? this.skills,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
       'description': description,
+      'timeEstimate': timeEstimate,
       'isCurrent': isCurrent,
-      'certifications': certifications,
-      'skills': skills,
+      'certifications': certifications.map((item) => item.toMap()).toList(),
+      'skills': skills.map((item) => item.toMap()).toList(),
     };
   }
 
@@ -137,14 +214,29 @@ class CareerPathStep {
       id: (map['id'] as String?) ?? '',
       title: (map['title'] as String?) ?? '',
       description: (map['description'] as String?) ?? '',
+      timeEstimate: (map['timeEstimate'] as String?) ?? '',
       isCurrent: (map['isCurrent'] as bool?) ?? false,
-      certifications: _parseStringList(map['certifications']),
-      skills: _parseStringList(map['skills']),
+      certifications: _parseChecklist(map['certifications']),
+      skills: _parseChecklist(map['skills']),
     );
   }
 
-  static List<String> _parseStringList(Object? raw) {
+  static List<CareerChecklistItem> _parseChecklist(Object? raw) {
     if (raw is! List) return [];
-    return raw.whereType<String>().where((value) => value.trim().isNotEmpty).toList();
+    final items = <CareerChecklistItem>[];
+    for (final entry in raw) {
+      if (entry is String) {
+        final label = entry.trim();
+        if (label.isNotEmpty) {
+          items.add(CareerChecklistItem(label: label));
+        }
+      } else if (entry is Map) {
+        final item = CareerChecklistItem.fromMap(
+          Map<String, dynamic>.from(entry),
+        );
+        if (item.label.isNotEmpty) items.add(item);
+      }
+    }
+    return items;
   }
 }

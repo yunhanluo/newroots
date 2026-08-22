@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/config/flavor_config.dart';
 import 'core/router/app_router.dart';
+import 'core/services/admin_service.dart';
 import 'core/theme/app_theme.dart';
 
 /// Root widget. Wires theme, routing, and localization.
@@ -13,6 +14,7 @@ class NewRootsApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+    ref.watch(adminSyncProvider);
 
     return MaterialApp.router(
       title: FlavorConfig.instance.appTitle,

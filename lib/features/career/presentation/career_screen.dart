@@ -46,7 +46,8 @@ class _CareerScreenState extends ConsumerState<CareerScreen> {
     final career = ref.watch(careerProvider).value ?? CareerBridgeData.empty();
     _syncNotesFromCareer(career);
 
-    final hasPaths = !career.isEmpty;
+    final pathSlots = career.pathSlots;
+    final hasAnyPath = pathSlots.any((path) => path != null);
     final hasPriorJob = profile?.employmentBackground.isNotEmpty ?? false;
     final canGenerate = profile != null &&
         (hasPriorJob || _notesController.text.trim().isNotEmpty);
@@ -85,32 +86,55 @@ class _CareerScreenState extends ConsumerState<CareerScreen> {
               const SizedBox(height: 16),
               if (_generatingAll) ...[
                 const _GeneratingCard(),
-              ] else if (hasPaths) ...[
+              ] else ...[
                 Text(
-                  'Possible career paths based on your background.',
+                  hasAnyPath
+                      ? 'Possible career paths based on your background.'
+                      : 'Three career path slots — generate to fill them from your background.',
                   style: TextStyle(
                     color: Colors.black87.withValues(alpha: 0.7),
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(height: 16),
-                ...career.paths.asMap().entries.map(
-                  (entry) => CareerPathCard(
-                    path: entry.value,
-                    index: entry.key,
-                    regenerating: _regeneratingPathIndex == entry.key,
-                    onRegenerate: () => _confirmRegeneratePath(
-                      profile,
-                      career,
-                      entry.key,
+                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: FilledButton(
+                    onPressed: canGenerate ? () => _generatePaths(profile) : null,
+                    style: FilledButton.styleFrom(backgroundColor: kBrandGreen),
+                    child: Text(
+                      hasAnyPath
+                          ? 'Regenerate all paths'
+                          : 'Generate career paths',
                     ),
                   ),
                 ),
-              ] else ...[
-                _EmptyStateCard(
-                  canGenerate: canGenerate ||
-                      _notesController.text.trim().isNotEmpty,
-                  onGenerate: () => _generatePaths(profile),
+                const SizedBox(height: 16),
+                ...List.generate(
+                  CareerBridgeData.pathSlotCount,
+                  (index) => CareerPathCard(
+                    path: pathSlots[index],
+                    index: index,
+                    regenerating: _regeneratingPathIndex == index,
+                    onRegenerate: () => _confirmRegeneratePath(
+                      profile,
+                      career,
+                      index,
+                    ),
+                    onToggleChecklist: ({
+                      required String stepId,
+                      required bool isSkill,
+                      required int itemIndex,
+                      required bool done,
+                    }) =>
+                        _toggleChecklistItem(
+                      pathIndex: index,
+                      stepId: stepId,
+                      isSkill: isSkill,
+                      itemIndex: itemIndex,
+                      done: done,
+                    ),
+                  ),
                 ),
               ],
               if (_error != null) ...[
@@ -127,19 +151,47 @@ class _CareerScreenState extends ConsumerState<CareerScreen> {
     );
   }
 
+  Future<void> _toggleChecklistItem({
+    required int pathIndex,
+    required String stepId,
+    required bool isSkill,
+    required int itemIndex,
+    required bool done,
+  }) async {
+    try {
+      await ref.read(careerServiceProvider).setChecklistItemDone(
+            pathIndex: pathIndex,
+            stepId: stepId,
+            isSkill: isSkill,
+            itemIndex: itemIndex,
+            done: done,
+          );
+    } catch (error) {
+      if (mounted) {
+        setState(() => _error = 'Could not save checklist progress.');
+      }
+    }
+  }
+
   Future<void> _confirmRegeneratePath(
     UserProfileData profile,
     CareerBridgeData career,
     int pathIndex,
   ) async {
-    final path = career.paths[pathIndex];
+    final path = pathIndex < career.pathSlots.length
+        ? career.pathSlots[pathIndex]
+        : null;
+    final isEmpty = path == null;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Regenerate this path?'),
+        title: Text(isEmpty ? 'Generate this path?' : 'Regenerate this path?'),
         content: Text(
-          'Replace "${path.title}" with a new AI-generated career path. '
-          'Your other paths and notes are kept.',
+          isEmpty
+              ? 'Create an AI-generated career path for Path ${pathIndex + 1}. '
+                  'Your other paths and notes are kept.'
+              : 'Replace "${path.title}" with a new AI-generated career path. '
+                  'Your other paths and notes are kept.',
         ),
         actions: [
           TextButton(
@@ -149,7 +201,7 @@ class _CareerScreenState extends ConsumerState<CareerScreen> {
           FilledButton(
             onPressed: () => Navigator.of(context).pop(true),
             style: FilledButton.styleFrom(backgroundColor: kBrandGreen),
-            child: const Text('Regenerate'),
+            child: Text(isEmpty ? 'Generate' : 'Regenerate'),
           ),
         ],
       ),
@@ -180,7 +232,7 @@ class _CareerScreenState extends ConsumerState<CareerScreen> {
       final path = await ref.read(aiServiceProvider).regenerateCareerPath(
             profile: profile,
             additionalNotes: notes,
-            existingPaths: career.paths,
+            existingPaths: career.pathSlots,
             pathIndex: pathIndex,
           );
       await ref.read(careerServiceProvider).replacePath(pathIndex, path);
@@ -212,9 +264,15 @@ class _CareerScreenState extends ConsumerState<CareerScreen> {
       if (paths.isEmpty) {
         throw StateError('No career paths returned.');
       }
+      final padded = List<CareerPath>.generate(
+        CareerBridgeData.pathSlotCount,
+        (index) => index < paths.length && paths[index].hasContent
+            ? paths[index]
+            : CareerPath.emptySlot(index),
+      );
       await ref.read(careerServiceProvider).saveCareer(
             CareerBridgeData(
-              paths: paths,
+              paths: padded,
               additionalNotes: notes,
               generatedAt: DateTime.now(),
             ),
@@ -325,50 +383,6 @@ class _NotesInputCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _EmptyStateCard extends StatelessWidget {
-  const _EmptyStateCard({
-    required this.canGenerate,
-    required this.onGenerate,
-  });
-
-  final bool canGenerate;
-  final VoidCallback onGenerate;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: kBrandGreen.withValues(alpha: 0.18)),
-      ),
-      child: Column(
-        children: [
-          const Icon(Icons.work_outline, size: 48, color: kBrandGreen),
-          const SizedBox(height: 16),
-          Text(
-            'No career paths yet. Add notes above, then generate pathways '
-            'tailored to your experience.',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.black87.withValues(alpha: 0.75),
-              height: 1.4,
-            ),
-          ),
-          const SizedBox(height: 20),
-          FilledButton(
-            onPressed: canGenerate ? onGenerate : null,
-            style: FilledButton.styleFrom(backgroundColor: kBrandGreen),
-            child: const Text('Generate career paths'),
           ),
         ],
       ),

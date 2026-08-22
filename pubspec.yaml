@@ -36,6 +36,11 @@ dependencies:
 
   # ScamShield: capture/upload suspicious screenshots
   image_picker:
+  url_launcher: ^6.3.2
+  http: ^1.6.0
+  flutter_map: ^8.3.1
+  latlong2: ^0.10.1
+  csv: ^8.0.0
 
 dev_dependencies:
   flutter_test:
@@ -47,3 +52,6 @@ flutter:
   generate: true # enables gen-l10n from .arb files
   assets:
     - assets/images/
+    - assets/data/hrsa_ca_health_centers.json
+    - assets/data/ca_esl_resources.json
+    - assets/data/ca_education_resources.json

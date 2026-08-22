@@ -116,12 +116,6 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get navHome;
 
-  /// No description provided for @navCommunity.
-  ///
-  /// In en, this message translates to:
-  /// **'Community'**
-  String get navCommunity;
-
   /// No description provided for @navScamShield.
   ///
   /// In en, this message translates to:
@@ -169,12 +163,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Healthcare Navigator'**
   String get featureHealthcare;
-
-  /// No description provided for @featureCommunity.
-  ///
-  /// In en, this message translates to:
-  /// **'Community Connection'**
-  String get featureCommunity;
 
   /// No description provided for @featureSupportGroups.
   ///

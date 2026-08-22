@@ -42,6 +42,10 @@ import {
   handleSeedSupportGroups,
   seedSupportGroupsCallableOptions,
 } from "./seed_support_groups.js";
+import {
+  handleEnsureAdminClaim,
+  ensureAdminClaimCallableOptions,
+} from "./ensure_admin_claim.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -149,5 +153,12 @@ export const seedSupportGroups = onCall(
   seedSupportGroupsCallableOptions,
   async (request) => {
     return handleSeedSupportGroups(request, requireAuth);
+  },
+);
+
+export const ensureAdminClaim = onCall(
+  ensureAdminClaimCallableOptions,
+  async (request) => {
+    return handleEnsureAdminClaim(request, requireAuth);
   },
 );

@@ -98,9 +98,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           : (profile.languageCode.isEmpty ? null : profile.languageCode);
       _locationController.text =
           _skippedQuestions.contains(2) ? '' : profile.location;
-      _familySize = _skippedQuestions.contains(3)
-          ? null
-          : (profile.familySize <= 0 ? null : profile.familySize);
+      _familySize =
+          _skippedQuestions.contains(3) ? null : profile.familySize;
       if (_skippedQuestions.contains(4)) {
         _selectedPriorities.clear();
         _otherPrioritySelected = false;
@@ -337,10 +336,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           decoration: _inputDecoration('Select family size'),
           hint: const Text('Select family size'),
           items: List.generate(
-            8,
+            9,
             (i) => DropdownMenuItem(
-              value: i + 1,
-              child: Text('${i + 1}${i == 7 ? '+' : ''}'),
+              value: i,
+              child: Text('${i}${i == 8 ? '+' : ''}'),
             ),
           ),
           onChanged: (v) => setState(() {

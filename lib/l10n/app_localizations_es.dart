@@ -18,9 +18,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get navHome => 'Inicio';
 
   @override
-  String get navCommunity => 'Comunidad';
-
-  @override
   String get navScamShield => 'ScamShield';
 
   @override
@@ -43,9 +40,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get featureHealthcare => 'Guía de salud';
-
-  @override
-  String get featureCommunity => 'Conexión comunitaria';
 
   @override
   String get featureSupportGroups => 'Grupos de apoyo';

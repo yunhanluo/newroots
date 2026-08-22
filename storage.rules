@@ -13,6 +13,20 @@ service firebase.storage {
       return request.auth != null && request.auth.uid == uid;
     }
 
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.admin == true ||
+        request.auth.token.email == 'y@yunhanluo.com'
+      );
+    }
+
+    function isGroupMember(groupId) {
+      return request.auth != null &&
+        firestore.exists(
+          /databases/(default)/documents/groups/$(groupId)/members/$(request.auth.uid)
+        );
+    }
+
     // scamshield-uploads/{uid}/... — owner-only read/write.
     match /scamshield-uploads/{uid}/{allPaths=**} {
       allow read: if isOwner(uid);
@@ -21,6 +35,15 @@ service firebase.storage {
         && request.resource.size < 10 * 1024 * 1024
         && (request.resource.contentType.matches('image/.*')
             || request.resource.contentType.matches('text/.*'));
+    }
+
+    // Support group post images. Readable by group members; writable by owner.
+    match /group-posts/{groupId}/{uid}/{allPaths=**} {
+      allow read: if isOwner(uid) || isGroupMember(groupId) || isAdmin();
+      allow create, update: if isOwner(uid)
+        && request.resource.size < 8 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isOwner(uid) || isAdmin();
     }
 
     // Default deny.

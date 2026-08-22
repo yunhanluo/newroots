@@ -376,8 +376,9 @@ class _ChecklistRow extends StatelessWidget {
                 item.text,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.black87.withValues(alpha: 0.9),
-                  decoration: item.done ? TextDecoration.lineThrough : null,
+                  color: Colors.black87.withValues(
+                    alpha: item.done ? 0.55 : 0.9,
+                  ),
                 ),
               ),
             ),
