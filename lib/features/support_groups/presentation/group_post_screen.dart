@@ -7,7 +7,10 @@ import '../../../core/services/admin_service.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import 'widgets/delete_post_dialog.dart';
+import 'widgets/group_moderation_banner.dart';
 import 'widgets/group_post_image.dart';
+import 'widgets/removed_post_banner.dart';
 
 /// One post or question and the replies under it.
 class GroupPostScreen extends ConsumerStatefulWidget {
@@ -64,31 +67,73 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
   }
 
   Future<void> _deletePost() async {
-    final confirmed = await showDialog<bool>(
+    final post = ref.read(groupPostProvider(_key)).value;
+    if (post == null) return;
+    final uid = ref.read(authStateProvider).value?.uid;
+    final requireReason =
+        ref.read(isAdminProvider) && uid != null && post.authorUid != uid;
+    final reason = await showDeletePostDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete this post?'),
-        content: const Text('Replies will be removed too. This cannot be undone.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Delete'),
-          ),
-        ],
-      ),
+      requireReason: requireReason,
     );
-    if (confirmed != true || !mounted) return;
+    if (reason == null || !mounted) return;
     try {
       await ref.read(supportGroupServiceProvider).deletePost(
             groupId: widget.groupId,
             postId: widget.postId,
+            removalReason: requireReason ? reason : null,
           );
       if (!mounted) return;
       Navigator.of(context).maybePop();
+    } on SupportGroupException catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.message);
+    }
+  }
+
+  Future<void> _editReply(GroupReply reply) async {
+    final controller = TextEditingController(text: reply.text);
+    final saved = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Edit reply'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          minLines: 3,
+          maxLines: 8,
+          maxLength: 2000,
+          textCapitalization: TextCapitalization.sentences,
+          decoration: const InputDecoration(
+            hintText: 'Write a reply…',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, controller.text.trim()),
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (saved == null || !mounted) return;
+    if (saved.isEmpty) {
+      setState(() => _error = 'Write a reply first.');
+      return;
+    }
+    if (saved == reply.text) return;
+    try {
+      await ref.read(supportGroupServiceProvider).updateReply(
+            groupId: widget.groupId,
+            postId: widget.postId,
+            replyId: reply.id,
+            text: saved,
+          );
     } on SupportGroupException catch (e) {
       if (!mounted) return;
       setState(() => _error = e.message);
@@ -154,8 +199,17 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
         }
 
         final mine = uid != null && post.authorUid == uid;
-        final canDeletePost = mine || isAdmin;
+        final canDeletePost = !post.removed && (mine || isAdmin);
         final isQuestion = post.kind == GroupPostKind.question;
+        final visible = post.isVisibleInFeed(viewerUid: uid, isAdmin: isAdmin);
+        if (!visible) {
+          return Scaffold(
+            backgroundColor: kBrandPageBg,
+            appBar: AppBar(title: const Text('Post')),
+            body: const Center(child: Text('This post was removed.')),
+          );
+        }
+        final canReply = post.moderation.isApproved && !post.removed;
 
         return Scaffold(
           backgroundColor: kBrandPageBg,
@@ -163,10 +217,18 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
             title: Text(isQuestion ? 'Question' : 'Post'),
             actions: [
               if (canDeletePost)
-                IconButton(
-                  tooltip: 'Delete',
-                  onPressed: _deletePost,
-                  icon: const Icon(Icons.delete_outline),
+                PopupMenuButton<String>(
+                  tooltip: 'Post options',
+                  icon: const Icon(Icons.more_vert),
+                  onSelected: (value) {
+                    if (value == 'delete') _deletePost();
+                  },
+                  itemBuilder: (context) => const [
+                    PopupMenuItem(
+                      value: 'delete',
+                      child: Text('Delete'),
+                    ),
+                  ],
                 ),
             ],
           ),
@@ -176,7 +238,13 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
                 child: ListView(
                   padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                   children: [
-                    _OriginalPost(post: post, mine: mine),
+                    _OriginalPost(
+                      post: post,
+                      mine: mine,
+                      isAdmin: isAdmin,
+                      canDelete: canDeletePost,
+                      onDelete: _deletePost,
+                    ),
                     if (_error != null) ...[
                       const SizedBox(height: 12),
                       Text(
@@ -188,62 +256,68 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
                       ),
                     ],
                     const SizedBox(height: 20),
-                    Text(
-                      isQuestion ? 'Answers' : 'Replies',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
+                    if (canReply) ...[
+                      Text(
+                        isQuestion ? 'Answers' : 'Replies',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    repliesAsync.when(
-                      loading: () => const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 24),
-                        child: Center(child: CircularProgressIndicator()),
-                      ),
-                      error: (error, _) => const Text(
-                        'Could not load replies.',
-                      ),
-                      data: (replies) {
-                        if (replies.isEmpty) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Text(
-                              isQuestion
-                                  ? 'No answers yet. Be the first to help.'
-                                  : 'No replies yet. Start the conversation.',
-                              style: TextStyle(
-                                fontSize: 14,
-                                height: 1.4,
-                                color: Colors.black87.withValues(alpha: 0.65),
+                      const SizedBox(height: 10),
+                      repliesAsync.when(
+                        loading: () => const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 24),
+                          child: Center(child: CircularProgressIndicator()),
+                        ),
+                        error: (error, _) => const Text(
+                          'Could not load replies.',
+                        ),
+                        data: (replies) {
+                          if (replies.isEmpty) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              child: Text(
+                                isQuestion
+                                    ? 'No answers yet. Be the first to help.'
+                                    : 'No replies yet. Start the conversation.',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  height: 1.4,
+                                  color: Colors.black87.withValues(alpha: 0.65),
+                                ),
                               ),
-                            ),
+                            );
+                          }
+                          return Column(
+                            children: [
+                              for (final reply in replies)
+                                _ReplyTile(
+                                  reply: reply,
+                                  mine: uid != null && reply.authorUid == uid,
+                                  isAdmin: isAdmin,
+                                  canEdit: uid != null && reply.authorUid == uid,
+                                  canDelete: isAdmin ||
+                                      (uid != null && reply.authorUid == uid),
+                                  onEdit: () => _editReply(reply),
+                                  onDelete: () => _deleteReply(reply),
+                                ),
+                            ],
                           );
-                        }
-                        return Column(
-                          children: [
-                            for (final reply in replies)
-                              _ReplyTile(
-                                reply: reply,
-                                mine: uid != null && reply.authorUid == uid,
-                                canDelete: isAdmin ||
-                                    (uid != null && reply.authorUid == uid),
-                                onDelete: () => _deleteReply(reply),
-                              ),
-                          ],
-                        );
-                      },
-                    ),
+                        },
+                      ),
+                    ],
                   ],
                 ),
               ),
-              _ReplyComposer(
-                controller: _replyController,
-                focusNode: _focusNode,
-                sending: _sending,
-                hint: isQuestion ? 'Write an answer…' : 'Write a reply…',
-                onSend: _send,
-              ),
+              if (canReply)
+                _ReplyComposer(
+                  controller: _replyController,
+                  focusNode: _focusNode,
+                  sending: _sending,
+                  hint: isQuestion ? 'Write an answer…' : 'Write a reply…',
+                  onSend: _send,
+                ),
             ],
           ),
         );
@@ -253,10 +327,19 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
 }
 
 class _OriginalPost extends StatelessWidget {
-  const _OriginalPost({required this.post, required this.mine});
+  const _OriginalPost({
+    required this.post,
+    required this.mine,
+    this.isAdmin = false,
+    this.canDelete = false,
+    this.onDelete,
+  });
 
   final GroupPost post;
   final bool mine;
+  final bool isAdmin;
+  final bool canDelete;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -308,8 +391,40 @@ class _OriginalPost extends StatelessWidget {
                   ),
                 ),
               ),
+              if (canDelete)
+                PopupMenuButton<String>(
+                  tooltip: 'Post options',
+                  padding: EdgeInsets.zero,
+                  icon: const Icon(
+                    Icons.more_vert,
+                    size: 20,
+                    color: Colors.black54,
+                  ),
+                  onSelected: (value) {
+                    if (value == 'delete') onDelete?.call();
+                  },
+                  itemBuilder: (context) => const [
+                    PopupMenuItem(
+                      value: 'delete',
+                      child: Text('Delete'),
+                    ),
+                  ],
+                ),
             ],
           ),
+          if (post.removed) ...[
+            const SizedBox(height: 10),
+            RemovedPostBanner(
+              post: post,
+              isAuthor: mine,
+            ),
+          ] else if (!post.moderation.isApproved) ...[
+            const SizedBox(height: 10),
+            GroupModerationBanner(
+              moderation: post.moderation,
+              isAdmin: isAdmin,
+            ),
+          ],
           const SizedBox(height: 10),
           Text(
             post.displayTitle,
@@ -329,7 +444,7 @@ class _OriginalPost extends StatelessWidget {
               ),
             ),
           ],
-          if (post.hasImage) ...[
+          if (post.hasImage && !post.moderation.isRejected) ...[
             const SizedBox(height: 12),
             GroupPostImageGallery(imagePaths: post.imagePaths),
           ],
@@ -343,13 +458,19 @@ class _ReplyTile extends StatelessWidget {
   const _ReplyTile({
     required this.reply,
     required this.mine,
+    required this.canEdit,
     required this.canDelete,
+    required this.onEdit,
     required this.onDelete,
+    this.isAdmin = false,
   });
 
   final GroupReply reply;
   final bool mine;
+  final bool canEdit;
   final bool canDelete;
+  final bool isAdmin;
+  final VoidCallback onEdit;
   final VoidCallback onDelete;
 
   @override
@@ -357,11 +478,17 @@ class _ReplyTile extends StatelessWidget {
     final time = reply.createdAt == null
         ? ''
         : DateFormat('MMM d · h:mm a').format(reply.createdAt!.toLocal());
+    final edited = reply.editedAt != null;
+    final meta = [
+      if (mine) 'You' else reply.authorName,
+      if (time.isNotEmpty) time,
+      if (edited) 'Edited',
+    ].join(' · ');
 
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.fromLTRB(14, 12, 8, 12),
+      padding: const EdgeInsets.fromLTRB(14, 12, 4, 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
@@ -377,7 +504,7 @@ class _ReplyTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${mine ? 'You' : reply.authorName}${time.isEmpty ? '' : ' · $time'}',
+                    meta,
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -385,6 +512,14 @@ class _ReplyTile extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 6),
+                  if (!reply.moderation.isApproved) ...[
+                    GroupModerationBanner(
+                      moderation: reply.moderation,
+                      compact: true,
+                      isAdmin: isAdmin,
+                    ),
+                    const SizedBox(height: 8),
+                  ],
                   SelectableText(
                     reply.text,
                     style: const TextStyle(
@@ -396,12 +531,27 @@ class _ReplyTile extends StatelessWidget {
               ),
             ),
           ),
-          if (canDelete)
-            IconButton(
-              tooltip: 'Delete',
-              onPressed: onDelete,
-              icon: const Icon(Icons.close, size: 18),
-              visualDensity: VisualDensity.compact,
+          if (canEdit || canDelete)
+            PopupMenuButton<String>(
+              tooltip: 'Reply options',
+              padding: EdgeInsets.zero,
+              icon: const Icon(Icons.more_vert, size: 20, color: Colors.black54),
+              onSelected: (value) {
+                if (value == 'edit') onEdit();
+                if (value == 'delete') onDelete();
+              },
+              itemBuilder: (context) => [
+                if (canEdit)
+                  const PopupMenuItem(
+                    value: 'edit',
+                    child: Text('Edit'),
+                  ),
+                if (canDelete)
+                  const PopupMenuItem(
+                    value: 'delete',
+                    child: Text('Delete'),
+                  ),
+              ],
             ),
         ],
       ),

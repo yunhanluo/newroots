@@ -95,3 +95,16 @@ final authServiceProvider = Provider<AuthService>(
 final authStateProvider = StreamProvider<AppUser?>((ref) {
   return ref.watch(authServiceProvider).authStateChanges();
 });
+
+/// Per-user Firestore streams must restart on sign-in/out. Yields
+/// [whenSignedOut] first so the previous account's data is never shown.
+Stream<T> watchForSignedInUser<T>({
+  required Ref ref,
+  required T whenSignedOut,
+  required Stream<T> Function(String uid) watch,
+}) async* {
+  final uid = ref.watch(authStateProvider).value?.uid;
+  yield whenSignedOut;
+  if (uid == null) return;
+  yield* watch(uid);
+}

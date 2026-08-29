@@ -12,6 +12,8 @@
  * a deterministic placeholder so the app can be wired end-to-end first.
  */
 import {onCall, HttpsError, CallableRequest} from "firebase-functions/v2/https";
+import {onDocumentCreated} from "firebase-functions/v2/firestore";
+import {onSchedule} from "firebase-functions/v2/scheduler";
 import {defineSecret} from "firebase-functions/params";
 import {setGlobalOptions} from "firebase-functions/v2";
 import {handleRoadmapAi, roadmapCallableOptions} from "./roadmap_ai.js";
@@ -46,6 +48,15 @@ import {
   handleEnsureAdminClaim,
   ensureAdminClaimCallableOptions,
 } from "./ensure_admin_claim.js";
+import {
+  groupModerationTriggerOptions,
+  handleGroupPostCreated,
+  handleGroupReplyCreated,
+} from "./group_moderation.js";
+import {
+  purgeRemovedGroupPostsOptions,
+  handlePurgeRemovedGroupPosts,
+} from "./group_post_purge.js";
 
 // Run close to California users (matches Firestore region).
 setGlobalOptions({region: "us-west1", maxInstances: 10});
@@ -161,4 +172,25 @@ export const ensureAdminClaim = onCall(
   async (request) => {
     return handleEnsureAdminClaim(request, requireAuth);
   },
+);
+
+export const moderateGroupPost = onDocumentCreated(
+  {
+    document: "groups/{groupId}/posts/{postId}",
+    ...groupModerationTriggerOptions,
+  },
+  handleGroupPostCreated,
+);
+
+export const moderateGroupReply = onDocumentCreated(
+  {
+    document: "groups/{groupId}/posts/{postId}/replies/{replyId}",
+    ...groupModerationTriggerOptions,
+  },
+  handleGroupReplyCreated,
+);
+
+export const purgeRemovedGroupPosts = onSchedule(
+  purgeRemovedGroupPostsOptions,
+  handlePurgeRemovedGroupPosts,
 );

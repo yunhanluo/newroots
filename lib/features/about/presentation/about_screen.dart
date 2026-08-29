@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/router/app_router.dart';
 import '../../../core/theme/brand_colors.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Short intro to NewRoots — kept minimal for now.
 class AboutScreen extends StatelessWidget {
@@ -10,6 +12,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: kBrandPageBg,
@@ -19,7 +22,7 @@ class AboutScreen extends StatelessWidget {
         scrolledUnderElevation: 0,
         elevation: 0,
         foregroundColor: Colors.white,
-        title: const Text('About'),
+        title: Text(l10n.aboutTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -62,14 +65,7 @@ class AboutScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'America brims with opportunities. \n\n'
-                              'It is an economic powerhouse. It boasts a constitution so strong and effective that it has set the standard for dozens of other countries. It is a land of many unique cultures. \n\n'
-                              'But it\'s hard to find your footing in a new country - especially in America.\n\n'
-                              'NewRoots is here to solve these problems. We\'ll help you find your place. \n'
-                              'We\'ll help you make new connections. We\'ll help you steer clear of traps.'
-                              ' We\'ll help you take advantage of resources near you.\n'
-                              'Let us show you what America is all about. \n \n'
-                              'Find your new roots.',
+                              l10n.aboutBody,
                               style: theme.textTheme.bodyLarge?.copyWith(
                                 color: Colors.black87,
                                 height: 1.5,
@@ -84,6 +80,12 @@ class AboutScreen extends StatelessWidget {
                                 color: Colors.black54,
                                 height: 1.4,
                               ),
+                            ),
+                            const SizedBox(height: 16),
+                            TextButton(
+                              onPressed: () =>
+                                  context.pushNamed(Routes.privacy),
+                              child: const Text('Privacy policy'),
                             ),
                           ],
                         ),

@@ -5,8 +5,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../auth/presentation/widgets/auth_widgets.dart';
+import '../../../../core/l10n/app_languages.dart';
+import '../../../../core/l10n/app_locale.dart';
+import '../../../../core/l10n/l10n_labels.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/user_profile_service.dart';
+import '../../../../core/widgets/children_ages_editor.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// Intro + survey flow shown right after account creation.
 class OnboardingScreen extends ConsumerStatefulWidget {
@@ -19,8 +24,8 @@ class OnboardingScreen extends ConsumerStatefulWidget {
 class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _locationController = TextEditingController();
   final _employmentController = TextEditingController();
-  final _childrenController = TextEditingController();
   final _otherPriorityController = TextEditingController();
+  final _childrenAges = ChildrenAgesDraft();
 
   String? _languageCode;
   int? _familySize;
@@ -44,8 +49,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   void dispose() {
     _locationController.dispose();
     _employmentController.dispose();
-    _childrenController.dispose();
     _otherPriorityController.dispose();
+    _childrenAges.dispose();
     super.dispose();
   }
 
@@ -53,32 +58,26 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Skip onboarding survey?'),
-        content: const Text(
-          'Taking the survey lets us understand your situation and design '
-          'solutions (individual questions can be skipped).',
-        ),
+        title: Text(AppLocalizations.of(context).onboardingSkipTitle),
+        content: Text(AppLocalizations.of(context).onboardingSkipBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Continue survey'),
+            child: Text(AppLocalizations.of(context).actionContinueSurvey),
           ),
           FilledButton(
             onPressed: () => Navigator.of(context).pop(true),
             style: FilledButton.styleFrom(minimumSize: const Size(120, 44)),
-            child: const Text('Skip for now'),
+            child: Text(AppLocalizations.of(context).actionSkipForNow),
           ),
         ],
       ),
     );
 
     if (confirmed == true && mounted) {
+      final later = AppLocalizations.of(context).onboardingSurveyLater;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            'The survey can be taken at any time on the profile page.',
-          ),
-        ),
+        SnackBar(content: Text(later)),
       );
       context.go('/');
     }
@@ -100,6 +99,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           _skippedQuestions.contains(2) ? '' : profile.location;
       _familySize =
           _skippedQuestions.contains(3) ? null : profile.familySize;
+      _syncChildrenAgeFields(
+        ages: _skippedQuestions.contains(6) ? '' : profile.childrenInfo,
+      );
       if (_skippedQuestions.contains(4)) {
         _selectedPriorities.clear();
         _otherPrioritySelected = false;
@@ -110,14 +112,27 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       _employmentController.text = _skippedQuestions.contains(5)
           ? ''
           : profile.employmentBackground;
-      _childrenController.text =
-          _skippedQuestions.contains(6) ? '' : profile.childrenInfo;
     });
+  }
+
+  int get _childCountFromFamilySize => surveyChildCount(
+        _skippedQuestions.contains(3) ? null : _familySize,
+      );
+
+  void _syncChildrenAgeFields({String? ages}) {
+    if (ages != null) {
+      _childrenAges.loadFrom(ages, count: _childCountFromFamilySize);
+    } else {
+      _childrenAges.setCount(_childCountFromFamilySize);
+    }
   }
 
   void _nextQuestion() {
     if (_step >= _totalQuestions) return;
-    setState(() => _step += 1);
+    setState(() {
+      if (_step == 5) _syncChildrenAgeFields();
+      _step += 1;
+    });
   }
 
   void _previousQuestion() {
@@ -140,6 +155,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _saveAndContinue() async {
+    if (_step == 6 && !_skippedQuestions.contains(6)) {
+      final agesError = _childrenAges.validationError();
+      if (agesError != null) {
+        setState(() => _error = agesError);
+        return;
+      }
+    }
+
     setState(() {
       _saving = true;
       _error = null;
@@ -158,7 +181,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             familySize: _familySize ?? 0,
             topPriorities: _resolvedTopPriorities,
             employmentBackground: _employmentController.text,
-            childrenInfo: _childrenController.text,
+            childrenInfo: _skippedQuestions.contains(6)
+                ? ''
+                : _childrenAges.toStorage(),
             skippedQuestions: _skippedQuestions.toList()..sort(),
           );
     } on FirebaseException catch (e) {
@@ -204,23 +229,24 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     if (_step == 0) {
       return Scaffold(
         backgroundColor: kBrandGreen,
-        body: SafeArea(child: _buildIntroPage(theme)),
+        body: SafeArea(child: _buildIntroPage(theme, l10n)),
       );
     }
 
     return _buildQuestionScaffold(
       questionNumber: _step,
-      title: _questionTitle(_step),
+      title: _questionTitle(_step, l10n),
       isLast: _step == _totalQuestions,
-      child: _questionField(_step),
+      child: _questionField(_step, l10n),
     );
   }
 
-  Widget _buildIntroPage(ThemeData theme) {
+  Widget _buildIntroPage(ThemeData theme, AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Center(
@@ -230,7 +256,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Onboarding Survey',
+                l10n.onboardingTitle,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.displaySmall?.copyWith(
                   color: Colors.white,
@@ -239,7 +265,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Take a quick survey for personalization.',
+                l10n.onboardingIntro,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.titleMedium?.copyWith(
                   color: Colors.white.withValues(alpha: 0.9),
@@ -257,13 +283,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   ),
                 ),
                 onPressed: _nextQuestion,
-                child: const Text('Start Survey'),
+                child: Text(l10n.actionStartSurvey),
               ),
               const SizedBox(height: 16),
               TextButton(
                 style: TextButton.styleFrom(foregroundColor: Colors.white70),
                 onPressed: _showSkipSurveyDialog,
-                child: const Text('Skip for now'),
+                child: Text(l10n.actionSkipForNow),
               ),
             ],
           ),
@@ -272,24 +298,24 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     );
   }
 
-  String _questionTitle(int step) {
+  String _questionTitle(int step, AppLocalizations l10n) {
     switch (step) {
       case 1:
-        return 'Preferred language';
+        return l10n.onboardingQuestionLanguage;
       case 2:
-        return 'Where are you located?';
+        return l10n.onboardingQuestionLocation;
       case 3:
-        return 'Family size';
+        return l10n.onboardingQuestionChildren;
       case 4:
-        return 'Top priorities right now';
+        return l10n.onboardingQuestionPriorities;
       case 5:
-        return 'Employment background';
+        return l10n.onboardingQuestionEmployment;
       default:
-        return 'Children ages';
+        return l10n.onboardingQuestionAges;
     }
   }
 
-  Widget _questionField(int step) {
+  Widget _questionField(int step, AppLocalizations l10n) {
     if (_skippedQuestions.contains(step)) {
       return _skippedField(step);
     }
@@ -300,20 +326,21 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           value: _languageCode,
           style: _dropdownValueStyle,
           dropdownColor: Colors.white,
-          decoration: _inputDecoration('Select language'),
-          hint: const Text('Select language'),
-          items: const [
-            DropdownMenuItem(value: 'en', child: Text('English')),
-            DropdownMenuItem(value: 'es', child: Text('Spanish')),
-            DropdownMenuItem(value: 'zh', child: Text('Chinese')),
-            DropdownMenuItem(value: 'vi', child: Text('Vietnamese')),
-            DropdownMenuItem(value: 'ko', child: Text('Korean')),
-            DropdownMenuItem(value: 'hi', child: Text('Hindi')),
-            DropdownMenuItem(value: 'ar', child: Text('Arabic')),
+          decoration: _inputDecoration(l10n.selectLanguage),
+          hint: Text(l10n.selectLanguage),
+          items: [
+            for (final language in kAppLanguages)
+              DropdownMenuItem(
+                value: language.code,
+                child: Text(language.nativeName),
+              ),
           ],
           onChanged: (v) => setState(() {
             _skippedQuestions.remove(step);
             _languageCode = v;
+            if (v != null) {
+              ref.read(localeOverrideProvider.notifier).setCode(v);
+            }
           }),
         );
       case 2:
@@ -326,15 +353,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
           cursorColor: kBrandGreen,
           onChanged: (_) => setState(() => _skippedQuestions.remove(step)),
-          decoration: _inputDecoration('City or ZIP code'),
+          decoration: _inputDecoration(l10n.onboardingCityOrZip),
         );
       case 3:
         return DropdownButtonFormField<int>(
           value: _familySize,
           style: _dropdownValueStyle,
           dropdownColor: Colors.white,
-          decoration: _inputDecoration('Select family size'),
-          hint: const Text('Select family size'),
+          decoration: _inputDecoration(l10n.onboardingSelectChildren),
+          hint: Text(l10n.onboardingSelectChildren),
           items: List.generate(
             9,
             (i) => DropdownMenuItem(
@@ -345,13 +372,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           onChanged: (v) => setState(() {
             _skippedQuestions.remove(step);
             _familySize = v;
+            _syncChildrenAgeFields();
           }),
         );
       case 4:
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            for (final (value, label) in surveyPriorityOptions)
+            for (final (value, _) in surveyPriorityOptions)
               CheckboxListTile(
                 value: _selectedPriorities.contains(value),
                 onChanged: (checked) => setState(() {
@@ -363,7 +391,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   }
                 }),
                 title: Text(
-                  label,
+                  localizedPriorityLabel(l10n, value),
                   style: const TextStyle(color: Colors.black87, fontSize: 16),
                 ),
                 activeColor: kBrandGreen,
@@ -380,9 +408,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   _otherPriorityController.clear();
                 }
               }),
-              title: const Text(
-                'Other',
-                style: TextStyle(color: Colors.black87, fontSize: 16),
+              title: Text(
+                l10n.priorityOther,
+                style: const TextStyle(color: Colors.black87, fontSize: 16),
               ),
               activeColor: kBrandGreen,
               controlAffinity: ListTileControlAffinity.leading,
@@ -401,7 +429,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 cursorColor: kBrandGreen,
                 onChanged: (_) =>
                     setState(() => _skippedQuestions.remove(step)),
-                decoration: _inputDecoration('Describe your priority'),
+                decoration: _inputDecoration(l10n.priorityOtherHint),
               ),
             ],
           ],
@@ -419,16 +447,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           decoration: _inputDecoration('Your background'),
         );
       default:
-        return TextField(
-          controller: _childrenController,
-          style: const TextStyle(
-            color: Colors.black87,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-          ),
-          cursorColor: kBrandGreen,
-          onChanged: (_) => setState(() => _skippedQuestions.remove(step)),
-          decoration: _inputDecoration('e.g. 6, 10'),
+        return ChildrenAgesEditor(
+          draft: _childrenAges,
+          emptyMessage: _skippedQuestions.contains(3) || _familySize == null
+              ? 'Answer how many children you have first, or skip this question.'
+              : 'No children’s ages to add.',
+          onChanged: () => setState(() {
+            _skippedQuestions.remove(step);
+            _error = null;
+          }),
         );
     }
   }
@@ -468,6 +495,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         break;
       case 3:
         _familySize = null;
+        _syncChildrenAgeFields();
         break;
       case 4:
         _selectedPriorities.clear();
@@ -478,7 +506,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         _employmentController.clear();
         break;
       case 6:
-        _childrenController.clear();
+        _childrenAges.setCount(0);
         break;
     }
   }
@@ -489,6 +517,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     required Widget child,
     bool isLast = false,
   }) {
+    final l10n = AppLocalizations.of(context);
     final progress = questionNumber / _totalQuestions;
 
     return Scaffold(
@@ -503,7 +532,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                   const Spacer(),
                   TextButton(
                     onPressed: _showSkipSurveyDialog,
-                    child: const Text('Skip Survey'),
+                    child: Text(l10n.actionSkipSurvey),
                   ),
                 ],
               ),
@@ -565,7 +594,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                             child: questionNumber > 1
                                 ? OutlinedButton(
                                     onPressed: _previousQuestion,
-                                    child: const Text('Previous'),
+                                    child: Text(l10n.actionPrevious),
                                   )
                                 : const SizedBox.shrink(),
                           ),
@@ -575,7 +604,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                             child: TextButton(
                               onPressed: () =>
                                   _skipCurrentQuestion(isLast: isLast),
-                              child: const Text('Skip question'),
+                              child: Text(l10n.actionSkipQuestion),
                             ),
                           ),
                         ),
@@ -593,7 +622,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                                   vertical: 10,
                                 ),
                               ),
-                              child: Text(isLast ? 'Finish' : 'Next'),
+                              child: Text(isLast ? l10n.actionFinish : l10n.actionNext),
                             ),
                           ),
                         ),

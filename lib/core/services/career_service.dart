@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/career.dart';
+import 'auth_service.dart';
 
 /// Persists career bridge state under `users/{uid}/career/main`.
 class CareerService {
@@ -17,10 +18,14 @@ class CareerService {
     return _firestore.collection('users').doc(uid).collection('career').doc('main');
   }
 
-  Stream<CareerBridgeData> watchCareer() {
-    final ref = _docRef();
-    if (ref == null) return Stream.value(CareerBridgeData.empty());
-    return ref.snapshots().map((snap) {
+  Stream<CareerBridgeData> watchCareer(String uid) {
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('career')
+        .doc('main')
+        .snapshots()
+        .map((snap) {
       if (!snap.exists || snap.data() == null) {
         return CareerBridgeData.empty();
       }
@@ -130,5 +135,9 @@ final careerServiceProvider = Provider<CareerService>(
 );
 
 final careerProvider = StreamProvider<CareerBridgeData>((ref) {
-  return ref.watch(careerServiceProvider).watchCareer();
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: CareerBridgeData.empty(),
+    watch: (uid) => ref.watch(careerServiceProvider).watchCareer(uid),
+  );
 });

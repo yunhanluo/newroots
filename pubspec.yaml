@@ -41,6 +41,7 @@ dependencies:
   flutter_map: ^8.3.1
   latlong2: ^0.10.1
   csv: ^8.0.0
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
@@ -55,3 +56,4 @@ flutter:
     - assets/data/hrsa_ca_health_centers.json
     - assets/data/ca_esl_resources.json
     - assets/data/ca_education_resources.json
+    - assets/guides/

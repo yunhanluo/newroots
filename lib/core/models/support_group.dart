@@ -166,6 +166,90 @@ class GroupMembership {
   }
 }
 
+/// How long a hidden post is kept before it is permanently deleted.
+const kPostRemovalAppealDuration = Duration(days: 7);
+
+String postDeletionNoticeId(String groupId, String postId) =>
+    '${groupId}_$postId';
+
+enum PostAppealStatus { none, open, pending, approved, denied, expired }
+
+extension PostAppealStatusX on PostAppealStatus {
+  bool get canAppeal => this == PostAppealStatus.open;
+
+  static PostAppealStatus parse(Object? raw) {
+    switch ('$raw'.trim().toLowerCase()) {
+      case 'open':
+        return PostAppealStatus.open;
+      case 'pending':
+        return PostAppealStatus.pending;
+      case 'approved':
+        return PostAppealStatus.approved;
+      case 'denied':
+        return PostAppealStatus.denied;
+      case 'expired':
+        return PostAppealStatus.expired;
+      default:
+        return PostAppealStatus.none;
+    }
+  }
+}
+
+/// Maps to Firestore `users/{uid}/postDeletionNotices/{id}`.
+class PostDeletionNotice {
+  const PostDeletionNotice({
+    required this.id,
+    required this.authorUid,
+    this.groupId = '',
+    this.postId = '',
+    this.groupTitle = '',
+    this.postTitle = '',
+    this.reason = '',
+    this.appealMessage = '',
+    this.appealStatus = PostAppealStatus.none,
+    this.seen = false,
+    this.createdAt,
+    this.purgeAt,
+  });
+
+  final String id;
+  final String authorUid;
+  final String groupId;
+  final String postId;
+  final String groupTitle;
+  final String postTitle;
+  final String reason;
+  final String appealMessage;
+  final PostAppealStatus appealStatus;
+  final bool seen;
+  final DateTime? createdAt;
+  final DateTime? purgeAt;
+
+  bool get canAppeal {
+    if (appealStatus != PostAppealStatus.open || postId.isEmpty) return false;
+    final deadline = purgeAt;
+    if (deadline == null) return true;
+    return deadline.isAfter(DateTime.now());
+  }
+
+  factory PostDeletionNotice.fromMap(String id, Map<String, dynamic> map) {
+    return PostDeletionNotice(
+      id: id,
+      authorUid: (map['authorUid'] as String?) ?? '',
+      groupId: (map['groupId'] as String?)?.trim() ?? '',
+      postId: (map['postId'] as String?)?.trim() ?? '',
+      groupTitle: (map['groupTitle'] as String?)?.trim() ?? 'a group',
+      postTitle: (map['postTitle'] as String?)?.trim() ?? 'Your post',
+      reason: (map['reason'] as String?)?.trim() ?? '',
+      appealMessage: (map['appealMessage'] as String?)?.trim() ?? '',
+      appealStatus: PostAppealStatusX.parse(map['appealStatus']),
+      seen: map['seen'] == true,
+      createdAt: parseFirestoreDate(map['createdAt']),
+      purgeAt: parseFirestoreDate(map['purgeAt']),
+    );
+  }
+}
+
 enum GroupSuggestionStatus { pending, approved, rejected }
 
 extension GroupSuggestionStatusX on GroupSuggestionStatus {
@@ -259,25 +343,48 @@ class GroupPost {
     required this.id,
     required this.authorUid,
     required this.authorName,
+    this.groupId = '',
     this.title = '',
     this.text = '',
     this.kind = GroupPostKind.post,
     this.replyCount = 0,
     this.imagePaths = const [],
     this.createdAt,
+    this.moderation = const GroupModeration(),
+    this.removed = false,
+    this.removedReason = '',
+    this.removedAt,
+    this.purgeAt,
+    this.appealStatus = PostAppealStatus.none,
+    this.appealMessage = '',
   });
 
   final String id;
   final String authorUid;
   final String authorName;
+  final String groupId;
   final String title;
   final String text;
   final GroupPostKind kind;
   final int replyCount;
   final List<String> imagePaths;
   final DateTime? createdAt;
+  final GroupModeration moderation;
+  final bool removed;
+  final String removedReason;
+  final DateTime? removedAt;
+  final DateTime? purgeAt;
+  final PostAppealStatus appealStatus;
+  final String appealMessage;
 
   bool get hasImage => imagePaths.isNotEmpty;
+
+  bool get canAppealRemoval {
+    if (!removed || appealStatus != PostAppealStatus.open) return false;
+    final deadline = purgeAt;
+    if (deadline == null) return true;
+    return deadline.isAfter(DateTime.now());
+  }
 
   String get displayTitle {
     if (title.isNotEmpty) return title;
@@ -287,17 +394,40 @@ class GroupPost {
     return '${first.substring(0, 77).trim()}…';
   }
 
-  factory GroupPost.fromMap(String id, Map<String, dynamic> map) {
+  bool isVisibleInFeed({String? viewerUid, bool isAdmin = false}) {
+    if (removed) {
+      return isAdmin || (viewerUid != null && viewerUid == authorUid);
+    }
+    return moderation.isVisibleTo(
+      authorUid: authorUid,
+      viewerUid: viewerUid,
+      isAdmin: isAdmin,
+    );
+  }
+
+  factory GroupPost.fromMap(
+    String id,
+    Map<String, dynamic> map, {
+    String groupId = '',
+  }) {
     return GroupPost(
       id: id,
       authorUid: (map['authorUid'] as String?) ?? '',
       authorName: (map['authorName'] as String?)?.trim() ?? 'Member',
+      groupId: groupId,
       title: (map['title'] as String?)?.trim() ?? '',
       text: (map['text'] as String?)?.trim() ?? '',
       kind: GroupPostKindX.parse(map['kind']),
       replyCount: (map['replyCount'] as num?)?.toInt() ?? 0,
       imagePaths: _imagePathsFromMap(map),
       createdAt: parseFirestoreDate(map['createdAt']),
+      moderation: GroupModeration.fromMap(map),
+      removed: map['removed'] == true,
+      removedReason: (map['removedReason'] as String?)?.trim() ?? '',
+      removedAt: parseFirestoreDate(map['removedAt']),
+      purgeAt: parseFirestoreDate(map['purgeAt']),
+      appealStatus: PostAppealStatusX.parse(map['appealStatus']),
+      appealMessage: (map['appealMessage'] as String?)?.trim() ?? '',
     );
   }
 }
@@ -335,6 +465,69 @@ extension GroupPostKindX on GroupPostKind {
   }
 }
 
+enum GroupModerationStatus { pending, approved, rejected }
+
+extension GroupModerationStatusX on GroupModerationStatus {
+  static GroupModerationStatus parse(Object? raw) {
+    switch ('$raw'.trim().toLowerCase()) {
+      case 'pending':
+        return GroupModerationStatus.pending;
+      case 'rejected':
+        return GroupModerationStatus.rejected;
+      case 'approved':
+        return GroupModerationStatus.approved;
+      default:
+        // Older posts have no status and stay visible.
+        return GroupModerationStatus.approved;
+    }
+  }
+}
+
+/// Server-side review result for a group post or reply.
+class GroupModeration {
+  const GroupModeration({
+    this.status = GroupModerationStatus.approved,
+    this.message = '',
+    this.category = '',
+  });
+
+  final GroupModerationStatus status;
+  final String message;
+  final String category;
+
+  bool get isPending => status == GroupModerationStatus.pending;
+  bool get isRejected => status == GroupModerationStatus.rejected;
+  bool get isApproved => status == GroupModerationStatus.approved;
+
+  String get authorMessage {
+    if (isPending) {
+      return 'We are checking this before others can see it. It should appear in a moment.';
+    }
+    if (isRejected) {
+      if (message.isNotEmpty) return message;
+      return 'This was hidden because it did not meet community guidelines.';
+    }
+    return '';
+  }
+
+  bool isVisibleTo({
+    required String authorUid,
+    String? viewerUid,
+    bool isAdmin = false,
+  }) {
+    if (isAdmin || isApproved) return true;
+    return viewerUid != null && viewerUid == authorUid;
+  }
+
+  factory GroupModeration.fromMap(Map<String, dynamic> map) {
+    return GroupModeration(
+      status: GroupModerationStatusX.parse(map['moderationStatus']),
+      message: (map['moderationMessage'] as String?)?.trim() ?? '',
+      category: (map['moderationCategory'] as String?)?.trim() ?? '',
+    );
+  }
+}
+
 /// Maps to Firestore `groups/{id}/posts/{postId}/replies/{replyId}`.
 class GroupReply {
   const GroupReply({
@@ -343,6 +536,8 @@ class GroupReply {
     required this.authorName,
     required this.text,
     this.createdAt,
+    this.editedAt,
+    this.moderation = const GroupModeration(),
   });
 
   final String id;
@@ -350,6 +545,12 @@ class GroupReply {
   final String authorName;
   final String text;
   final DateTime? createdAt;
+  final DateTime? editedAt;
+  final GroupModeration moderation;
+
+  bool isVisibleInFeed({String? viewerUid, bool isAdmin = false}) {
+    return moderation.isVisibleTo(authorUid: authorUid, viewerUid: viewerUid, isAdmin: isAdmin);
+  }
 
   factory GroupReply.fromMap(String id, Map<String, dynamic> map) {
     return GroupReply(
@@ -358,6 +559,8 @@ class GroupReply {
       authorName: (map['authorName'] as String?)?.trim() ?? 'Member',
       text: (map['text'] as String?)?.trim() ?? '',
       createdAt: parseFirestoreDate(map['createdAt']),
+      editedAt: parseFirestoreDate(map['editedAt']),
+      moderation: GroupModeration.fromMap(map),
     );
   }
 }

@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../core/l10n/app_languages.dart';
+import '../../../core/l10n/app_locale.dart';
+import '../../../core/l10n/l10n_labels.dart';
 import '../../../core/models/scam_report.dart';
 import '../../../core/services/ai_service.dart';
 import '../../../core/services/scam_service.dart';
-import '../../../core/services/user_profile_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../core/widgets/storage_image.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/screenshot_drop_zone.dart';
 
 /// Feature 9: ScamShield — AI-powered fraud prevention.
@@ -38,6 +42,12 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
     super.dispose();
   }
 
+  String get _preferredLanguage {
+    return appLanguageByCode(ref.read(appLocaleProvider).languageCode)
+            ?.englishName ??
+        'English';
+  }
+
   Future<void> _pickImage(ImageSource source) async {
     try {
       final file = await _picker.pickImage(
@@ -51,7 +61,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
       _applyScreenshot(bytes: bytes, name: file.name);
     } catch (error) {
       if (!mounted) return;
-      setState(() => _error = 'Could not open that image. Try another photo.');
+      setState(() => _error = AppLocalizations.of(context).scamImageOpenError);
     }
   }
 
@@ -116,19 +126,17 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
       context: context,
       builder: (context) => SelectionArea(
         child: AlertDialog(
-          title: const Text('Delete this check?'),
-          content: const Text(
-            'This removes the saved report from your past checks.',
-          ),
+          title: Text(AppLocalizations.of(context).scamDeleteTitle),
+          content: Text(AppLocalizations.of(context).scamDeleteBody),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel'),
+              child: Text(AppLocalizations.of(context).actionCancel),
             ),
             TextButton(
               onPressed: () => Navigator.pop(context, true),
               style: TextButton.styleFrom(foregroundColor: Colors.red),
-              child: const Text('Delete'),
+              child: Text(AppLocalizations.of(context).scamDelete),
             ),
           ],
         ),
@@ -147,7 +155,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
       });
     } catch (_) {
       if (!mounted) return;
-      setState(() => _error = 'Could not delete that check. Try again.');
+      setState(() => _error = AppLocalizations.of(context).scamDeleteError);
     }
   }
 
@@ -155,7 +163,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
     final text = _textController.text.trim();
     if (text.isEmpty && _imageBytes == null) {
       setState(() {
-        _error = 'Paste a message or add a screenshot to analyze.';
+        _error = AppLocalizations.of(context).scamNeedInput;
       });
       return;
     }
@@ -178,18 +186,13 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
             );
       }
 
-      final profile = ref.read(userProfileProvider).value;
-      final language = profile?.languageCode.trim().isNotEmpty == true
-          ? profile!.languageCode
-          : 'en';
-
       final report = await ref
           .read(aiServiceProvider)
           .analyzeScam(
             text: text.isEmpty ? null : text,
             contentRef: contentRef,
             category: _category,
-            language: language,
+            language: _preferredLanguage,
           );
 
       final now = DateTime.now();
@@ -252,11 +255,6 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
           );
     }
 
-    final profile = ref.read(userProfileProvider).value;
-    final language = profile?.languageCode.trim().isNotEmpty == true
-        ? profile!.languageCode
-        : 'en';
-
     final priorThread = existing.threadDisplayText;
     final analysis = await ref
         .read(aiServiceProvider)
@@ -264,7 +262,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
           text: trimmed.isEmpty ? null : trimmed,
           contentRef: contentRef,
           category: existing.category,
-          language: language,
+          language: _preferredLanguage,
           priorThread: priorThread,
           priorRiskLevel: existing.riskLevel,
           reportId: existing.id,
@@ -317,7 +315,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
               children: [
                 ListTile(
                   leading: const Icon(Icons.photo_library_outlined),
-                  title: const Text('Choose from gallery'),
+                  title: Text(AppLocalizations.of(context).scamChooseGallery),
                   onTap: () {
                     Navigator.pop(context);
                     _pickImage(ImageSource.gallery);
@@ -325,7 +323,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_camera_outlined),
-                  title: const Text('Take a photo'),
+                  title: Text(AppLocalizations.of(context).scamTakePhoto),
                   onTap: () {
                     Navigator.pop(context);
                     _pickImage(ImageSource.camera);
@@ -341,16 +339,15 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return SelectionArea(
       child: BrandScaffold(
-        title: 'ScamShield',
+        title: l10n.featureScamShield,
         body: ListView(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
           children: [
             Text(
-              'Check suspicious messages, emails, job offers, rental ads, and '
-              'government-related content. ScamShield explains why something '
-              'may be risky so you can decide what to do next.',
+              l10n.scamIntro,
               style: TextStyle(
                 fontSize: 15,
                 height: 1.4,
@@ -359,7 +356,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
             ),
             const SizedBox(height: 20),
             Text(
-              'What are you checking?',
+              l10n.scamWhatChecking,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: Colors.black87,
@@ -372,7 +369,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
               children: ScamCategory.values.map((category) {
                 final selected = _category == category;
                 return ChoiceChip(
-                  label: Text(category.label),
+                  label: Text(localizedScamCategory(l10n, category)),
                   selected: selected,
                   onSelected: _analyzing
                       ? null
@@ -408,8 +405,8 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
                 }
               },
               decoration: InputDecoration(
-                labelText: 'Paste the message or listing',
-                hintText: 'Paste the full text here…',
+                labelText: l10n.scamPasteLabel,
+                hintText: l10n.scamPasteHint,
                 alignLabelWithHint: true,
                 filled: true,
                 fillColor: Colors.white,
@@ -439,7 +436,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
                     : OutlinedButton.icon(
                         onPressed: _analyzing ? null : _showImageSourceSheet,
                         icon: const Icon(Icons.add_photo_alternate_outlined),
-                        label: const Text('Add screenshot'),
+                        label: Text(l10n.scamAddScreenshot),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: kBrandGreen,
                           side: BorderSide(
@@ -452,7 +449,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
             else
               _ScreenshotPreview(
                 bytes: _imageBytes!,
-                name: _imageName ?? 'Screenshot',
+                name: _imageName ?? l10n.scamScreenshot,
                 onClear: _analyzing ? null : _clearImage,
                 onReplace: _analyzing
                     ? null
@@ -473,7 +470,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
                         color: Colors.white,
                       ),
                     )
-                  : const Text('Analyze for scam risk'),
+                  : Text(l10n.scamAnalyze),
             ),
             if (_error != null) ...[
               const SizedBox(height: 12),
@@ -508,7 +505,7 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
             ],
             const SizedBox(height: 28),
             Text(
-              'Past checks',
+              l10n.scamPastChecks,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: Colors.black87,
@@ -565,7 +562,7 @@ class _WebScreenshotDropButton extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                'Drag and drop a screenshot here',
+                AppLocalizations.of(context).scamDropHint,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
@@ -577,7 +574,7 @@ class _WebScreenshotDropButton extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                'or click to browse',
+                AppLocalizations.of(context).scamBrowseHint,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 13,
@@ -636,8 +633,14 @@ class _ScreenshotPreview extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              TextButton(onPressed: onReplace, child: const Text('Replace')),
-              TextButton(onPressed: onClear, child: const Text('Remove')),
+              TextButton(
+                onPressed: onReplace,
+                child: Text(AppLocalizations.of(context).scamReplace),
+              ),
+              TextButton(
+                onPressed: onClear,
+                child: Text(AppLocalizations.of(context).scamRemove),
+              ),
             ],
           ),
         ],
@@ -672,8 +675,8 @@ class _PastChecksList extends ConsumerWidget {
           ),
         ),
       ),
-      error: (_, __) => Text(
-        'Could not load past checks right now.',
+      error: (_, _) => Text(
+        AppLocalizations.of(context).scamPastLoadError,
         style: TextStyle(
           fontSize: 14,
           color: Colors.black87.withValues(alpha: 0.6),
@@ -682,7 +685,7 @@ class _PastChecksList extends ConsumerWidget {
       data: (reports) {
         if (reports.isEmpty) {
           return Text(
-            'No past checks yet. Analyze a message to save one here.',
+            AppLocalizations.of(context).scamPastEmpty,
             style: TextStyle(
               fontSize: 14,
               height: 1.4,
@@ -721,9 +724,10 @@ class _PastCheckTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final accent = _riskAccent(report.riskLevel);
     final when = report.createdAt;
-    final whenLabel = when == null ? '' : _formatRelativeDate(when);
+    final whenLabel = when == null ? '' : formatScamRelativeDate(l10n, when);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -763,7 +767,7 @@ class _PastCheckTile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
-                              _riskLabel(report.riskLevel),
+                              localizedScamRisk(l10n, report.riskLevel),
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
@@ -774,7 +778,7 @@ class _PastCheckTile extends StatelessWidget {
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
-                              report.category.label,
+                              localizedScamCategory(l10n, report.category),
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
@@ -819,7 +823,7 @@ class _PastCheckTile extends StatelessWidget {
                       ] else if (report.hasScreenshot) ...[
                         const SizedBox(height: 8),
                         Text(
-                          'Screenshot check',
+                          l10n.scamScreenshotCheck,
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.black87.withValues(alpha: 0.65),
@@ -831,7 +835,7 @@ class _PastCheckTile extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: onDelete,
-                  tooltip: 'Delete',
+                  tooltip: l10n.scamDelete,
                   icon: Icon(
                     Icons.delete_outline,
                     color: Colors.black87.withValues(alpha: 0.45),
@@ -855,34 +859,6 @@ Color _riskAccent(RiskLevel level) {
     case RiskLevel.high:
       return const Color(0xFFC62828);
   }
-}
-
-String _riskLabel(RiskLevel level) {
-  switch (level) {
-    case RiskLevel.low:
-      return 'Low Risk';
-    case RiskLevel.moderate:
-      return 'Moderate Risk';
-    case RiskLevel.high:
-      return 'High Risk';
-  }
-}
-
-String _formatRelativeDate(DateTime when) {
-  final local = when.toLocal();
-  final now = DateTime.now();
-  final today = DateTime(now.year, now.month, now.day);
-  final day = DateTime(local.year, local.month, local.day);
-  final diffDays = today.difference(day).inDays;
-  if (diffDays == 0) {
-    final hour = local.hour % 12 == 0 ? 12 : local.hour % 12;
-    final minute = local.minute.toString().padLeft(2, '0');
-    final ampm = local.hour >= 12 ? 'PM' : 'AM';
-    return '$hour:$minute $ampm';
-  }
-  if (diffDays == 1) return 'Yesterday';
-  if (diffDays < 7) return '$diffDays days ago';
-  return '${local.month}/${local.day}/${local.year}';
 }
 
 class _RiskResultCard extends StatefulWidget {
@@ -909,7 +885,7 @@ class _RiskResultCard extends StatefulWidget {
 class _RiskResultCardState extends State<_RiskResultCard> {
   final _followUpController = TextEditingController();
   final _picker = ImagePicker();
-  bool _submittedCollapsed = true;
+  late bool _submittedCollapsed = !widget.report.hasScreenshot;
   bool _addingMessage = false;
   bool _reevaluating = false;
   Uint8List? _followUpBytes;
@@ -922,8 +898,6 @@ class _RiskResultCardState extends State<_RiskResultCard> {
 
   Color get _accent => _riskAccent(report.riskLevel);
 
-  String get _label => _riskLabel(report.riskLevel);
-
   IconData get _icon {
     switch (report.riskLevel) {
       case RiskLevel.low:
@@ -935,17 +909,17 @@ class _RiskResultCardState extends State<_RiskResultCard> {
     }
   }
 
-  String get _submittedPreview {
+  String _submittedPreview(AppLocalizations l10n) {
     final thread = report.thread;
     if (thread.length > 1) {
-      return '${thread.length} messages in this thread';
+      return l10n.scamThreadCount(thread.length);
     }
     final text = report.threadDisplayText.trim();
     if (text.isNotEmpty && report.hasScreenshot) {
-      return '$text  ·  Screenshot attached';
+      return '$text  ·  ${l10n.scamScreenshotAttached}';
     }
     if (text.isNotEmpty) return text;
-    if (report.hasScreenshot) return 'Screenshot attached';
+    if (report.hasScreenshot) return l10n.scamScreenshotAttached;
     return '';
   }
 
@@ -986,7 +960,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
       });
     } catch (_) {
       if (!mounted) return;
-      setState(() => _followUpError = 'Could not open that image.');
+      setState(() => _followUpError = AppLocalizations.of(context).scamFollowUpImageError);
     }
   }
 
@@ -994,7 +968,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
     final text = _followUpController.text.trim();
     if (text.isEmpty && _followUpBytes == null) {
       setState(() {
-        _followUpError = 'Paste a follow-up message or add a screenshot.';
+        _followUpError = AppLocalizations.of(context).scamFollowUpNeedInput;
       });
       return;
     }
@@ -1031,6 +1005,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final thread = report.thread;
 
     return Container(
@@ -1049,7 +1024,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  _label,
+                  localizedScamRisk(l10n, report.riskLevel),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
@@ -1062,7 +1037,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
           if (report.riskChanged) ...[
             const SizedBox(height: 8),
             Text(
-              'Updated from ${_riskLabel(report.previousRiskLevel!)}',
+              l10n.scamUpdatedFrom(localizedScamRisk(l10n, report.previousRiskLevel!)),
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
@@ -1099,13 +1074,15 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                       children: [
                         Expanded(
                           child: Text(
-                            'What you submitted',
+                            l10n.scamWhatYouSubmitted,
                             style: Theme.of(context).textTheme.titleSmall
                                 ?.copyWith(fontWeight: FontWeight.w700),
                           ),
                         ),
                         IconButton(
-                          tooltip: _submittedCollapsed ? 'Expand' : 'Collapse',
+                          tooltip: _submittedCollapsed
+                              ? l10n.scamExpand
+                              : l10n.scamCollapse,
                           onPressed: () => setState(
                             () => _submittedCollapsed = !_submittedCollapsed,
                           ),
@@ -1123,7 +1100,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
                       child: Text(
-                        _submittedPreview,
+                        _submittedPreview(l10n),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -1143,8 +1120,8 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                             if (i > 0) const SizedBox(height: 12),
                             Text(
                               thread.length == 1
-                                  ? 'Message'
-                                  : 'Message ${i + 1}',
+                                  ? l10n.scamMessage
+                                  : l10n.scamMessageNumber(i + 1),
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
@@ -1164,26 +1141,9 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                             if (thread[i].hasScreenshot) ...[
                               if (thread[i].text.trim().isNotEmpty)
                                 const SizedBox(height: 6),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.image_outlined,
-                                    size: 18,
-                                    color: Colors.black87.withValues(
-                                      alpha: 0.55,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    'Included a screenshot',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.black87.withValues(
-                                        alpha: 0.65,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              StorageImage(
+                                path: thread[i].contentRef!,
+                                height: 180,
                               ),
                             ],
                           ],
@@ -1197,7 +1157,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
           if (report.reasons.isNotEmpty) ...[
             const SizedBox(height: 16),
             Text(
-              'Why this may be risky',
+              l10n.scamWhyRisky,
               style: Theme.of(
                 context,
               ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -1232,7 +1192,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
           if (report.recommendedActions.isNotEmpty) ...[
             const SizedBox(height: 8),
             Text(
-              'What you can do',
+              l10n.scamWhatYouCanDo,
               style: Theme.of(
                 context,
               ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -1271,7 +1231,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                       _followUpError = null;
                     }),
               icon: const Icon(Icons.add_comment_outlined),
-              label: const Text('Add message'),
+              label: Text(l10n.scamAddMessage),
               style: OutlinedButton.styleFrom(
                 foregroundColor: kBrandGreen,
                 side: BorderSide(color: kBrandGreen.withValues(alpha: 0.45)),
@@ -1279,7 +1239,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
             )
           else ...[
             Text(
-              'Add a follow-up from the conversation',
+              l10n.scamFollowUpTitle,
               style: Theme.of(
                 context,
               ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -1291,7 +1251,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
               maxLines: 6,
               enabled: !_reevaluating,
               decoration: InputDecoration(
-                hintText: 'Paste the next text or email…',
+                hintText: l10n.scamFollowUpHint,
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(
@@ -1304,7 +1264,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
               TextButton.icon(
                 onPressed: _reevaluating ? null : _pickFollowUpImage,
                 icon: const Icon(Icons.add_photo_alternate_outlined),
-                label: const Text('Add screenshot'),
+                label: Text(l10n.scamAddScreenshot),
               )
             else
               Row(
@@ -1317,7 +1277,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                   const SizedBox(width: 6),
                   Expanded(
                     child: Text(
-                      _followUpName ?? 'Screenshot',
+                      _followUpName ?? l10n.scamScreenshot,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -1333,7 +1293,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                             _followUpBytes = null;
                             _followUpName = null;
                           }),
-                    child: const Text('Remove'),
+                    child: Text(l10n.scamRemove),
                   ),
                 ],
               ),
@@ -1363,7 +1323,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                             color: Colors.white,
                           ),
                         )
-                      : const Text('Reevaluate'),
+                      : Text(l10n.scamReevaluate),
                 ),
                 const SizedBox(width: 8),
                 TextButton(
@@ -1375,7 +1335,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                           _followUpController.clear();
                           _followUpBytes = null;
                         }),
-                  child: const Text('Cancel'),
+                  child: Text(l10n.actionCancel),
                 ),
               ],
             ),

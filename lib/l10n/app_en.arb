@@ -4,22 +4,173 @@
   "@appTitle": { "description": "Application name" },
 
   "tagline": "From arrival to belonging.",
+
   "navHome": "Home",
   "navScamShield": "ScamShield",
   "navProfile": "Profile",
 
   "featureRoadmap": "Integration Roadmap",
-  "featureHousing": "Housing Navigator",
+  "featureHousing": "Housing",
   "featureCareer": "Career Bridge",
   "featureEnglish": "English Learning",
-  "featureEducation": "Education Navigator",
-  "featureHealthcare": "Healthcare Navigator",
+  "featureEducation": "Education",
+  "featureHealthcare": "Healthcare",
   "featureSupportGroups": "Support Groups",
   "featureScamShield": "ScamShield",
-  "featureSafety": "Community Safety Guide",
+  "featureSafety": "Safety Guide",
 
   "placeholderComingSoon": "Coming soon",
   "@placeholderComingSoon": { "description": "Generic placeholder for unbuilt screens" },
 
-  "disclaimer": "NewRoots is a navigation tool, not a substitute for legal, medical, or financial professionals."
+  "disclaimer": "NewRoots is a navigation tool, not a substitute for legal, medical, or financial professionals.",
+
+  "actionSave": "Save",
+  "actionCancel": "Cancel",
+  "actionEdit": "Edit {label}",
+  "@actionEdit": {
+    "placeholders": {
+      "label": { "type": "String" }
+    }
+  },
+  "actionSignOut": "Sign out",
+  "actionLogIn": "Log in",
+  "actionSignUp": "Sign up",
+  "actionCreateAccount": "Create account",
+  "actionPrevious": "Previous",
+  "actionNext": "Next",
+  "actionFinish": "Finish",
+  "actionSkipQuestion": "Skip question",
+  "actionSkipForNow": "Skip for now",
+  "actionContinueSurvey": "Continue survey",
+  "actionStartSurvey": "Start Survey",
+  "actionSkipSurvey": "Skip Survey",
+  "actionTakeSurvey": "Take Survey",
+  "actionRetakeSurvey": "Retake Survey",
+
+  "authWelcomeBack": "Welcome back. Log in to continue.",
+  "authCreateAccountSubtitle": "Create your account to get started.",
+  "authEmail": "Email",
+  "authPassword": "Password",
+  "authConfirmPassword": "Confirm password",
+  "authNoAccount": "Don't have an account?",
+  "authHaveAccount": "Already have an account?",
+  "authWhatIsNewRoots": "What is NewRoots?",
+  "authPrivacyPolicy": "Privacy policy",
+  "authEmailPasswordRequired": "Please enter your email and password.",
+  "authFillAllFields": "Please fill in all fields.",
+  "authPasswordTooShort": "Password must be at least 6 characters.",
+  "authPasswordsDoNotMatch": "Passwords do not match.",
+
+  "aboutTitle": "About",
+  "aboutBody": "America brims with opportunities.\n\nIt is an economic powerhouse. It boasts a constitution so strong and effective that it has set the standard for dozens of other countries. It is a land of many unique cultures.\n\nBut it's hard to find your footing in a new country - especially in America.\n\nNewRoots is here to solve these problems. We'll help you find your place.\nWe'll help you make new connections. We'll help you steer clear of traps. We'll help you take advantage of resources near you.\nLet us show you what America is all about.\n\nFind your new roots.",
+
+  "language": "Language",
+  "preferredLanguage": "Preferred language",
+  "selectLanguage": "Select language",
+  "editPreferredLanguage": "Edit preferred language",
+
+  "profileTitle": "Profile",
+  "profileSignedIn": "Signed in",
+  "profileLocation": "Location",
+  "profileChildrenCount": "How many children",
+  "profilePriorities": "Top priorities",
+  "profileEmployment": "Employment background",
+  "profileChildrenAges": "Children ages",
+  "profileSkipped": "Skipped",
+  "profileNoSurvey": "No survey data yet.",
+  "profileReviewSuggestions": "Review group suggestions",
+  "profileAdmin": "Admin",
+
+  "priorityHousing": "Housing",
+  "priorityEmployment": "Employment",
+  "priorityEducation": "Education",
+  "priorityHealthcare": "Healthcare",
+  "priorityEnglish": "English learning",
+  "prioritySafety": "Safety",
+  "priorityOther": "Other",
+  "priorityOtherHint": "Describe your priority",
+
+  "onboardingTitle": "Onboarding Survey",
+  "onboardingIntro": "Take a quick survey for personalization.",
+  "onboardingSkipTitle": "Skip onboarding survey?",
+  "onboardingSkipBody": "Taking the survey lets us understand your situation and design solutions (individual questions can be skipped).",
+  "onboardingSurveyLater": "The survey can be taken at any time on the profile page.",
+  "onboardingQuestionLanguage": "Preferred language",
+  "onboardingQuestionLocation": "Where are you located?",
+  "onboardingQuestionChildren": "How many children?",
+  "onboardingQuestionPriorities": "Top priorities right now",
+  "onboardingQuestionEmployment": "Employment background",
+  "onboardingQuestionAges": "Children ages",
+  "onboardingSelectChildren": "Select number of children",
+  "onboardingCityOrZip": "City or ZIP code",
+
+  "scamIntro": "Check suspicious messages, emails, job offers, rental ads, and government-related content. ScamShield explains why something may be risky so you can decide what to do next.",
+  "scamWhatChecking": "What are you checking?",
+  "scamPasteLabel": "Paste the message or listing",
+  "scamPasteHint": "Paste the full text here…",
+  "scamAddScreenshot": "Add screenshot",
+  "scamAnalyze": "Analyze for scam risk",
+  "scamPastChecks": "Past checks",
+  "scamDropHint": "Drag and drop a screenshot here",
+  "scamBrowseHint": "or click to browse",
+  "scamReplace": "Replace",
+  "scamRemove": "Remove",
+  "scamPastLoadError": "Could not load past checks right now.",
+  "scamPastEmpty": "No past checks yet. Analyze a message to save one here.",
+  "scamScreenshotCheck": "Screenshot check",
+  "scamDelete": "Delete",
+  "scamDeleteTitle": "Delete this check?",
+  "scamDeleteBody": "This removes the saved report from your past checks.",
+  "scamNeedInput": "Paste a message or add a screenshot to analyze.",
+  "scamImageOpenError": "Could not open that image. Try another photo.",
+  "scamDeleteError": "Could not delete that check. Try again.",
+  "scamChooseGallery": "Choose from gallery",
+  "scamTakePhoto": "Take a photo",
+  "scamScreenshot": "Screenshot",
+  "scamRiskLow": "Low Risk",
+  "scamRiskModerate": "Moderate Risk",
+  "scamRiskHigh": "High Risk",
+  "scamYesterday": "Yesterday",
+  "scamDaysAgo": "{count} days ago",
+  "@scamDaysAgo": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "scamCategorySms": "Text message",
+  "scamCategoryEmail": "Email",
+  "scamCategoryJob": "Job offer",
+  "scamCategoryRental": "Rental ad",
+  "scamCategoryGovernment": "Government",
+  "scamUpdatedFrom": "Updated from {level}",
+  "@scamUpdatedFrom": {
+    "placeholders": {
+      "level": { "type": "String" }
+    }
+  },
+  "scamWhatYouSubmitted": "What you submitted",
+  "scamExpand": "Expand",
+  "scamCollapse": "Collapse",
+  "scamMessage": "Message",
+  "scamMessageNumber": "Message {number}",
+  "@scamMessageNumber": {
+    "placeholders": {
+      "number": { "type": "int" }
+    }
+  },
+  "scamWhyRisky": "Why this may be risky",
+  "scamWhatYouCanDo": "What you can do",
+  "scamAddMessage": "Add message",
+  "scamFollowUpTitle": "Add a follow-up from the conversation",
+  "scamFollowUpHint": "Paste the next text or email…",
+  "scamReevaluate": "Reevaluate",
+  "scamFollowUpNeedInput": "Paste a follow-up message or add a screenshot.",
+  "scamFollowUpImageError": "Could not open that image.",
+  "scamScreenshotAttached": "Screenshot attached",
+  "scamThreadCount": "{count} messages in this thread",
+  "@scamThreadCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  }
 }

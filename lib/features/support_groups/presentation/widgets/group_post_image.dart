@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/services/support_group_service.dart';
-import '../../../../core/theme/brand_colors.dart';
+import '../../../../core/widgets/storage_image.dart';
 
 /// One or more support-group post images from Firebase Storage.
 class GroupPostImageGallery extends StatefulWidget {
@@ -29,7 +27,7 @@ class _GroupPostImageGalleryState extends State<GroupPostImageGallery> {
     final paths = widget.imagePaths.where((p) => p.isNotEmpty).toList();
     if (paths.isEmpty) return const SizedBox.shrink();
     if (paths.length == 1) {
-      return GroupPostImage(imagePath: paths.first, height: widget.height);
+      return StorageImage(path: paths.first, height: widget.height);
     }
 
     final height = widget.height ?? 240.0;
@@ -44,8 +42,8 @@ class _GroupPostImageGalleryState extends State<GroupPostImageGallery> {
             itemCount: paths.length,
             onPageChanged: (value) => setState(() => _index = value),
             itemBuilder: (context, index) {
-              return GroupPostImage(
-                imagePath: paths[index],
+              return StorageImage(
+                path: paths[index],
                 height: height,
               );
             },
@@ -61,80 +59,6 @@ class _GroupPostImageGalleryState extends State<GroupPostImageGallery> {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// Loads a support-group post image from Firebase Storage.
-class GroupPostImage extends ConsumerWidget {
-  const GroupPostImage({
-    super.key,
-    required this.imagePath,
-    this.height,
-    this.borderRadius = 12,
-  });
-
-  final String imagePath;
-  final double? height;
-  final double borderRadius;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    if (imagePath.isEmpty) return const SizedBox.shrink();
-    final async = ref.watch(groupPostImageProvider(imagePath));
-    return async.when(
-      loading: () => _Frame(
-        height: height ?? 180,
-        borderRadius: borderRadius,
-        child: const Center(
-          child: SizedBox(
-            width: 22,
-            height: 22,
-            child: CircularProgressIndicator(strokeWidth: 2),
-          ),
-        ),
-      ),
-      error: (error, stackTrace) => const SizedBox.shrink(),
-      data: (bytes) {
-        if (bytes == null || bytes.isEmpty) return const SizedBox.shrink();
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(borderRadius),
-          child: SizedBox(
-            width: double.infinity,
-            height: height,
-            child: Image.memory(
-              bytes,
-              fit: height == null ? BoxFit.fitWidth : BoxFit.cover,
-              gaplessPlayback: true,
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _Frame extends StatelessWidget {
-  const _Frame({
-    required this.height,
-    required this.borderRadius,
-    required this.child,
-  });
-
-  final double height;
-  final double borderRadius;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: Container(
-        height: height,
-        width: double.infinity,
-        color: kBrandGreen.withValues(alpha: 0.08),
-        child: child,
-      ),
     );
   }
 }

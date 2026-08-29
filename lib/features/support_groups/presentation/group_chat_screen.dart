@@ -5,10 +5,14 @@ import 'package:intl/intl.dart';
 
 import '../../../core/models/support_group.dart';
 import '../../../core/router/app_router.dart';
+import '../../../core/services/admin_service.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import 'widgets/delete_post_dialog.dart';
+import 'widgets/group_moderation_banner.dart';
 import 'widgets/group_post_image.dart';
+import 'widgets/removed_post_banner.dart';
 
 /// Member feed for one support group: posts and questions, not a live chat.
 class GroupChatScreen extends ConsumerStatefulWidget {
@@ -91,6 +95,27 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
         'postId': post.id,
       },
     );
+  }
+
+  Future<void> _deletePost(GroupPost post) async {
+    final uid = ref.read(authStateProvider).value?.uid;
+    final requireReason =
+        ref.read(isAdminProvider) && uid != null && post.authorUid != uid;
+    final reason = await showDeletePostDialog(
+      context: context,
+      requireReason: requireReason,
+    );
+    if (reason == null || !mounted) return;
+    try {
+      await ref.read(supportGroupServiceProvider).deletePost(
+            groupId: widget.groupId,
+            postId: post.id,
+            removalReason: requireReason ? reason : null,
+          );
+    } on SupportGroupException catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.message);
+    }
   }
 
   @override
@@ -187,8 +212,9 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'Posts and questions are private to members. Be kind, and never '
-                      'share immigration status, IDs, or passwords.',
+                      'Posts and questions are private to members. They are checked '
+                      'for safety before others can see them. Be kind, and do not '
+                      'paste ID numbers, passwords, or account numbers.',
                       style: TextStyle(
                         fontSize: 13,
                         height: 1.4,
@@ -239,6 +265,7 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                         groupId: widget.groupId,
                         uid: uid,
                         onOpen: _openPost,
+                        onDelete: _deletePost,
                       )
                     : _JoinPrompt(
                         joining: _joining,
@@ -316,15 +343,18 @@ class _PostFeed extends ConsumerWidget {
     required this.groupId,
     required this.uid,
     required this.onOpen,
+    required this.onDelete,
   });
 
   final String groupId;
   final String? uid;
   final ValueChanged<GroupPost> onOpen;
+  final ValueChanged<GroupPost> onDelete;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final postsAsync = ref.watch(groupPostsProvider(groupId));
+    final isAdmin = ref.watch(isAdminProvider);
     return postsAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, _) => const Center(
@@ -363,7 +393,12 @@ class _PostFeed extends ConsumerWidget {
             return _PostCard(
               post: post,
               mine: uid != null && post.authorUid == uid,
+              isAdmin: isAdmin,
               onOpen: () => onOpen(post),
+              onDelete: !post.removed &&
+                      (isAdmin || (uid != null && post.authorUid == uid))
+                  ? () => onDelete(post)
+                  : null,
             );
           },
         );
@@ -377,11 +412,15 @@ class _PostCard extends StatelessWidget {
     required this.post,
     required this.mine,
     required this.onOpen,
+    this.onDelete,
+    this.isAdmin = false,
   });
 
   final GroupPost post;
   final bool mine;
+  final bool isAdmin;
   final VoidCallback onOpen;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -391,6 +430,7 @@ class _PostCard extends StatelessWidget {
     final replies = post.replyCount < 0 ? 0 : post.replyCount;
     final isQuestion = post.kind == GroupPostKind.question;
     final preview = post.text.trim();
+    final showBody = post.moderation.isApproved || mine || isAdmin;
 
     return Material(
       color: Colors.white,
@@ -418,64 +458,102 @@ class _PostCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (onDelete != null)
+                    PopupMenuButton<String>(
+                      tooltip: 'Post options',
+                      padding: EdgeInsets.zero,
+                      icon: const Icon(
+                        Icons.more_vert,
+                        size: 20,
+                        color: Colors.black54,
+                      ),
+                      onSelected: (value) {
+                        if (value == 'delete') onDelete!();
+                      },
+                      itemBuilder: (context) => const [
+                        PopupMenuItem(
+                          value: 'delete',
+                          child: Text('Delete'),
+                        ),
+                      ],
+                    ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Text(
-                post.displayTitle,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
-                  height: 1.25,
-                ),
-              ),
-              if (preview.isNotEmpty &&
-                  (post.title.isNotEmpty || preview != post.displayTitle)) ...[
-                const SizedBox(height: 6),
-                Text(
-                  preview,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 14,
-                    height: 1.4,
-                    color: Colors.black87.withValues(alpha: 0.72),
-                  ),
-                ),
-              ],
-              if (post.hasImage) ...[
+              if (post.removed) ...[
                 const SizedBox(height: 10),
-                IgnorePointer(
-                  child: GroupPostImageGallery(
-                    imagePaths: post.imagePaths,
-                    height: 160,
-                    interactive: false,
-                  ),
+                RemovedPostBanner(
+                  post: post,
+                  compact: true,
+                  isAuthor: mine,
+                ),
+              ] else if (!post.moderation.isApproved) ...[
+                const SizedBox(height: 10),
+                GroupModerationBanner(
+                  moderation: post.moderation,
+                  compact: true,
+                  isAdmin: isAdmin,
                 ),
               ],
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Icon(
-                    isQuestion
-                        ? Icons.forum_outlined
-                        : Icons.chat_bubble_outline,
-                    size: 16,
-                    color: kBrandGreen,
+              if (showBody) ...[
+                const SizedBox(height: 8),
+                Text(
+                  post.displayTitle,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    height: 1.25,
                   ),
-                  const SizedBox(width: 6),
+                ),
+                if (preview.isNotEmpty &&
+                    (post.title.isNotEmpty || preview != post.displayTitle)) ...[
+                  const SizedBox(height: 6),
                   Text(
-                    replies == 0
-                        ? (isQuestion ? 'No answers yet' : 'No replies yet')
-                        : '$replies ${replies == 1 ? 'reply' : 'replies'}',
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: kBrandGreen,
+                    preview,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+                      height: 1.4,
+                      color: Colors.black87.withValues(alpha: 0.72),
                     ),
                   ),
                 ],
-              ),
+                if (post.hasImage && !post.moderation.isRejected) ...[
+                  const SizedBox(height: 10),
+                  IgnorePointer(
+                    child: GroupPostImageGallery(
+                      imagePaths: post.imagePaths,
+                      height: 160,
+                      interactive: false,
+                    ),
+                  ),
+                ],
+              ],
+              if (post.moderation.isApproved) ...[
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Icon(
+                      isQuestion
+                          ? Icons.forum_outlined
+                          : Icons.chat_bubble_outline,
+                      size: 16,
+                      color: kBrandGreen,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      replies == 0
+                          ? (isQuestion ? 'No answers yet' : 'No replies yet')
+                          : '$replies ${replies == 1 ? 'reply' : 'replies'}',
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: kBrandGreen,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),

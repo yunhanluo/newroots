@@ -1,0 +1,127 @@
+{
+  "id": "healthcare",
+  "title": "Healthcare basics",
+  "subtitle": "Insurance, clinic visits, and community health centers.",
+  "landingTitle": "Healthcare basics",
+        "landingBody": "A short guide to insurance, clinic visits, community health centers, and asking for an interpreter in California.",
+  "icon": "health",
+  "finishRoute": "healthcare",
+  "version": 1,
+  "sections": [
+    {
+      "title": "Welcome",
+      "intro": "",
+      "body": "Getting care in California can feel confusing when you are new to the US. Insurance names, clinic types, and paperwork are different from many other countries.\n\nThis short guide covers insurance basics, what to expect at a visit, why community health centers are a trusted first stop, and how to ask for an interpreter.\n\nThis is general information, not medical or legal advice. For your own health decisions, talk with a clinician or a trusted counselor.",
+      "topics": []
+    },
+    {
+      "title": "Insurance basics",
+      "intro": "Health insurance helps pay for doctor visits, hospital care, and medicines. California has several common options. You do not need to memorize every rule; start by knowing which program might fit you.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Medi-Cal",
+          "paragraph": "Medi-Cal is California Medicaid. It covers many low income residents, including many immigrants who qualify under state rules. Coverage can include doctor visits, emergency care, pregnancy care, and more. Apply through Covered California or your county social services office. Bring ID, income info, and immigration documents if you have them. Ask for help in your language.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Covered California",
+          "paragraph": "Covered California is the state marketplace where you can buy a private plan and see if you qualify for help paying premiums. Open enrollment usually runs in the fall, but you may qualify for a special enrollment period after a life change such as moving or losing other coverage.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Employer and school plans",
+          "paragraph": "Some jobs and schools offer insurance. Ask HR or student services what is available, when you can enroll, and what it costs each month. Compare the premium (monthly cost) with the deductible (what you pay before insurance starts paying more)."
+        },
+        {
+          "heading": "If you are uninsured",
+          "paragraph": "You can still get care. Community health centers (next section) often offer sliding scale fees based on income. Emergency rooms must stabilize emergency conditions, but ER care can be very expensive for non emergencies. For routine care, a community clinic is usually a better first step."
+        }
+      ]
+    },
+    {
+      "title": "How care works",
+      "intro": "In the US, people often start with a primary care clinic for checkups and common problems, then get referrals to specialists when needed.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Primary care",
+          "paragraph": "Primary care is your main doctor or clinic for colds, chronic conditions like diabetes, checkups, vaccines, and referrals. Building a relationship with one clinic helps them know your history and keep records together."
+        },
+        {
+          "heading": "Urgent care vs emergency room",
+          "paragraph": "Urgent care is for problems that need same day attention but are not life threatening, such as a sprained ankle or a bad cold. Go to the emergency room or call 911 for severe chest pain, trouble breathing, heavy bleeding, or other life threatening symptoms."
+        },
+        {
+          "heading": "What to bring",
+          "paragraph": "Bring photo ID if you have it, insurance card or Medi-Cal info, a list of medicines you take, and any past test results you have. Arrive early for paperwork. Ask the front desk what forms you need and whether walk ins are accepted."
+        },
+        {
+          "heading": "Paying and bills",
+          "paragraph": "Ask about cost before non urgent visits when you can. You may get a bill weeks later for lab work or a specialist. Call the billing office if something looks wrong or you cannot pay. Many clinics offer payment plans or financial assistance applications."
+        }
+      ]
+    },
+    {
+      "title": "Community health centers",
+      "intro": "Federally supported community health centers are a trusted place to start. In this app, clinic pins come from the US Health Resources and Services Administration (HRSA) list of Health Center Service Delivery and Look Alike sites in California.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "What they are",
+          "paragraph": "These clinics (often called FQHCs or look alikes) provide primary care in underserved areas. Many offer dental, behavioral health, and pharmacy services too. They serve people with insurance, Medi-Cal, and people with no insurance."
+        },
+        {
+          "heading": "Sliding scale and welcoming care",
+          "paragraph": "Fees often adjust based on income. Staff are used to helping patients with paperwork and different languages. You do not need to be a citizen to seek care at many of these sites. Ask the clinic what documents they need for a sliding scale visit."
+        },
+        {
+          "heading": "Why we show them on the map",
+          "paragraph": "HRSA publishes an official directory of these sites. NewRoots uses that California extract so pins point to verified community health locations, not random listings. Always call ahead to confirm hours, services, and whether they accept new patients.",
+          "url": "https://data.hrsa.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Language and interpreters",
+      "intro": "You have the right to understand your care. Many clinics must provide language help at no cost for common languages. Do not rely on a child to interpret medical details when you can ask for a professional.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Ask when you book",
+          "paragraph": "When you call or check in, say: “I need an interpreter in [your language].” Ask whether they have in person staff, phone interpreters, or video interpreters. Confirm the language before your appointment starts."
+        },
+        {
+          "heading": "What clinics can usually provide",
+          "paragraph": "Many community health centers and hospitals offer interpreter services. Availability varies by language and location. If your language is less common, ask how much notice they need. Bring a trusted adult only if you want extra support, not as a substitute for clinic interpreting when one is available."
+        },
+        {
+          "heading": "During the visit",
+          "paragraph": "Speak to the clinician through the interpreter. Pause so they can translate fully. Ask them to repeat anything you did not understand, including medicine names, doses, and follow up dates. You can ask for written instructions in simple English or your language when available."
+        }
+      ]
+    },
+    {
+      "title": "Trusted starting points",
+      "intro": "Use official sites and local clinics for the latest rules. Programs change, so verify details before you apply or travel far for care.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Covered California",
+          "paragraph": "Find Medi-Cal and marketplace coverage options, and get help in multiple languages.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Find a Health Center (HRSA)",
+          "paragraph": "Official federal tool to search community health centers. Our app map uses the same California directory data for nearby pins.",
+          "url": "https://findahealthcenter.hrsa.gov/"
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Call 211 or search online for local health, food, and social service referrals near you.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

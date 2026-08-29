@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/models/support_group.dart';
+import '../../../core/router/app_router.dart';
 import '../../../core/services/admin_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
@@ -20,6 +22,7 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
   bool _pendingOnly = true;
   bool _rejecting = false;
   String? _busyId;
+  String? _busyAppealId;
   String? _error;
   String? _confirmRejectId;
   final _rejectReasonController = TextEditingController();
@@ -91,12 +94,68 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
     }
   }
 
+  Future<void> _restoreAppeal(GroupPost post) async {
+    setState(() {
+      _busyAppealId = post.id;
+      _error = null;
+    });
+    try {
+      await ref.read(supportGroupServiceProvider).restoreRemovedPost(
+            groupId: post.groupId,
+            postId: post.id,
+          );
+    } on SupportGroupException catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.message);
+    } finally {
+      if (mounted) setState(() => _busyAppealId = null);
+    }
+  }
+
+  Future<void> _denyAppeal(GroupPost post) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Decline this appeal?'),
+        content: const Text(
+          'The post will be permanently deleted. The author will be told the appeal was declined.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Delete post'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() {
+      _busyAppealId = post.id;
+      _error = null;
+    });
+    try {
+      await ref.read(supportGroupServiceProvider).denyPostAppeal(
+            groupId: post.groupId,
+            postId: post.id,
+          );
+    } on SupportGroupException catch (e) {
+      if (!mounted) return;
+      setState(() => _error = e.message);
+    } finally {
+      if (mounted) setState(() => _busyAppealId = null);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isAdmin = ref.watch(isAdminProvider);
     if (!isAdmin) {
       return const BrandScaffold(
-        title: 'Review suggestions',
+        title: 'Group admin',
         body: Center(
           child: Padding(
             padding: EdgeInsets.all(24),
@@ -110,9 +169,14 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
     }
 
     final suggestionsAsync = ref.watch(groupSuggestionsProvider);
+    final appealsAsync = ref.watch(pendingPostAppealsProvider);
+    final groupTitles = {
+      for (final group in ref.watch(supportGroupsProvider).value ?? const [])
+        group.id: group.title,
+    };
 
     return BrandScaffold(
-      title: 'Review suggestions',
+      title: 'Group admin',
       body: suggestionsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => const Center(
@@ -130,9 +194,68 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
                   .where((s) => s.status == GroupSuggestionStatus.pending)
                   .toList()
               : suggestions;
+          final appeals = appealsAsync.value ?? const <GroupPost>[];
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 28),
             children: [
+              const Text(
+                'Post appeals',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Hidden posts stay for 7 days. Restore one to show it in the group again.',
+                style: TextStyle(
+                  fontSize: 15,
+                  height: 1.45,
+                  color: Colors.black87.withValues(alpha: 0.75),
+                ),
+              ),
+              const SizedBox(height: 12),
+              if (appealsAsync.hasError)
+                const Text(
+                  'Could not load appeals. Deploy Firestore indexes, then try again.',
+                )
+              else if (appeals.isEmpty)
+                Text(
+                  'No pending appeals.',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.black87.withValues(alpha: 0.65),
+                  ),
+                )
+              else
+                for (final post in appeals) ...[
+                  _AppealCard(
+                    post: post,
+                    groupTitle: groupTitles[post.groupId] ?? 'Group',
+                    busy: _busyAppealId == post.id,
+                    onOpen: post.groupId.isEmpty
+                        ? null
+                        : () => context.pushNamed(
+                              Routes.supportGroupPost,
+                              pathParameters: {
+                                'groupId': post.groupId,
+                                'postId': post.id,
+                              },
+                            ),
+                    onRestore: () => _restoreAppeal(post),
+                    onDeny: () => _denyAppeal(post),
+                  ),
+                  const SizedBox(height: 12),
+                ],
+              const SizedBox(height: 28),
+              const Text(
+                'Group suggestions',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 8),
               Text(
                 'Approve a suggestion to open the group for everyone to join.',
                 style: TextStyle(
@@ -167,12 +290,11 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
               const SizedBox(height: 16),
               if (visible.isEmpty)
                 Padding(
-                  padding: const EdgeInsets.only(top: 32),
+                  padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     _pendingOnly
                         ? 'No pending suggestions right now.'
                         : 'No suggestions yet.',
-                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black87.withValues(alpha: 0.65),
@@ -401,6 +523,119 @@ class _StatusChip extends StatelessWidget {
           color: color,
           fontWeight: FontWeight.w700,
           fontSize: 12,
+        ),
+      ),
+    );
+  }
+}
+
+class _AppealCard extends StatelessWidget {
+  const _AppealCard({
+    required this.post,
+    required this.groupTitle,
+    required this.busy,
+    required this.onRestore,
+    required this.onDeny,
+    this.onOpen,
+  });
+
+  final GroupPost post;
+  final String groupTitle;
+  final bool busy;
+  final VoidCallback? onOpen;
+  final VoidCallback onRestore;
+  final VoidCallback onDeny;
+
+  @override
+  Widget build(BuildContext context) {
+    final deadline = post.purgeAt == null
+        ? ''
+        : DateFormat('MMM d').format(post.purgeAt!.toLocal());
+    final appeal = post.appealMessage.trim();
+
+    return Material(
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: kBrandGreen.withValues(alpha: 0.18)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              post.displayTitle,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              [
+                groupTitle,
+                if (deadline.isNotEmpty) 'Held until $deadline',
+              ].join(' · '),
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.black87.withValues(alpha: 0.6),
+              ),
+            ),
+            if (post.removedReason.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Removed: ${post.removedReason}',
+                style: const TextStyle(fontSize: 14, height: 1.4),
+              ),
+            ],
+            if (appeal.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Appeal: $appeal',
+                style: const TextStyle(fontSize: 14, height: 1.4),
+              ),
+            ],
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                if (onOpen != null) ...[
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: busy ? null : onOpen,
+                      child: const Text('Open'),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: busy ? null : onDeny,
+                    child: const Text('Decline'),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      minimumSize: const Size(0, 48),
+                    ),
+                    onPressed: busy ? null : onRestore,
+                    child: busy
+                        ? const SizedBox(
+                            height: 18,
+                            width: 18,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : const Text('Restore'),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

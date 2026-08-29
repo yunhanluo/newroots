@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/models/support_group.dart';
+import '../../../core/services/group_content_policy.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/widgets/brand_scaffold.dart';
 
@@ -185,6 +186,15 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
               fontSize: 15,
               height: 1.45,
               color: Colors.black87.withValues(alpha: 0.75),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            GroupContentPolicy.guidelines,
+            style: TextStyle(
+              fontSize: 13,
+              height: 1.4,
+              color: Colors.black87.withValues(alpha: 0.62),
             ),
           ),
           const SizedBox(height: 16),

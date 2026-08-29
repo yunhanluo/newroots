@@ -11,6 +11,7 @@ import '../../../core/services/user_profile_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
 import '../../../core/widgets/finder_controls.dart';
+import '../../../core/widgets/finder_map.dart';
 
 /// Grade scale used by the range slider and the dataset: -1 = PK, 0 = K, 1-12.
 const _gradeFloor = -1.0;
@@ -494,86 +495,22 @@ class _FindEducationResourcesScreenState
                   children: [
                     SizedBox(
                       height: mapHeight,
-                      child: Stack(
-                        children: [
-                          FlutterMap(
-                            mapController: _mapController,
-                            options: MapOptions(
-                              initialCenter: mapCenter,
-                              initialZoom: _searchCenter == null ? 6 : 11,
-                              interactionOptions: const InteractionOptions(
-                                flags:
-                                    InteractiveFlag.all &
-                                    ~InteractiveFlag.rotate,
+                      child: FinderMap(
+                        controller: _mapController,
+                        center: mapCenter,
+                        initialZoom: _searchCenter == null ? 6 : 11,
+                        searchCenter: _searchCenter,
+                        badge: 'CDE schools + programs',
+                        pins: [
+                          for (final resource in mapResources)
+                            FinderMapPin(
+                              point: LatLng(
+                                resource.latitude,
+                                resource.longitude,
                               ),
+                              selected: _selected?.id == resource.id,
+                              onTap: () => _selectResource(resource),
                             ),
-                            children: [
-                              TileLayer(
-                                urlTemplate:
-                                    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                                userAgentPackageName: 'org.newroots.california',
-                              ),
-                              MarkerLayer(
-                                markers: [
-                                  if (_searchCenter != null)
-                                    Marker(
-                                      point: _searchCenter!,
-                                      width: 36,
-                                      height: 36,
-                                      child: const Icon(
-                                        Icons.my_location,
-                                        color: Colors.blueAccent,
-                                        size: 28,
-                                      ),
-                                    ),
-                                  for (final resource in mapResources)
-                                    Marker(
-                                      point: LatLng(
-                                        resource.latitude,
-                                        resource.longitude,
-                                      ),
-                                      width: 40,
-                                      height: 40,
-                                      child: GestureDetector(
-                                        onTap: () => _selectResource(resource),
-                                        child: Icon(
-                                          Icons.location_on,
-                                          size: 36,
-                                          color: _selected?.id == resource.id
-                                              ? Colors.redAccent
-                                              : kBrandGreen,
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Positioned(
-                            left: 10,
-                            bottom: 10,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.92),
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                  color: kBrandGreen.withValues(alpha: 0.25),
-                                ),
-                              ),
-                              child: const Text(
-                                'CDE schools + programs',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: kBrandGreen,
-                                ),
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                     ),

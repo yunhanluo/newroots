@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/scam_report.dart';
+import 'auth_service.dart';
 
 /// Persists ScamShield reports and uploads screenshots.
 class ScamService {
@@ -88,10 +89,11 @@ class ScamService {
     }
   }
 
-  Stream<List<ScamReport>> watchRecentReports({int limit = 10}) {
-    final col = _reportsCol();
-    if (col == null) return Stream.value(const []);
-    return col
+  Stream<List<ScamReport>> watchRecentReports(String uid, {int limit = 10}) {
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('scamReports')
         .orderBy('createdAt', descending: true)
         .limit(limit)
         .snapshots()
@@ -112,5 +114,10 @@ final scamServiceProvider = Provider<ScamService>(
 );
 
 final recentScamReportsProvider = StreamProvider<List<ScamReport>>((ref) {
-  return ref.watch(scamServiceProvider).watchRecentReports(limit: 20);
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: const <ScamReport>[],
+    watch: (uid) =>
+        ref.watch(scamServiceProvider).watchRecentReports(uid, limit: 20),
+  );
 });

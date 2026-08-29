@@ -1,0 +1,127 @@
+{
+  "id": "education",
+  "title": "Education basics",
+  "subtitle": "California public schools, enrollment, and academic support.",
+  "landingTitle": "Education basics",
+  "landingBody": "A short guide to California public schools, enrollment, English learner support, and academic programs.",
+  "icon": "school",
+  "finishRoute": "education",
+  "version": 1,
+  "sections": [
+    {
+      "title": "Welcome",
+      "intro": "",
+      "body": "California public schools are free for children who live in the state. Rules, paperwork, and grade names can feel unfamiliar if you are new to the US.\n\nThis short guide explains how K–12 schools are organized, how to find your district, what enrollment usually requires, English learner support, and where to find tutoring, libraries, and STEM programs.\n\nThis is general information, not legal advice. District policies vary, so confirm details with your local school office.",
+      "topics": []
+    },
+    {
+      "title": "How California K–12 works",
+      "intro": "Most children attend a public school assigned by where the family lives. Districts run the schools. Statewide rules come from the California Department of Education (CDE).",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Public, charter, and private",
+          "paragraph": "Public schools are tuition free and open to local residents. Charter schools are public schools with more flexible programs; they may have lotteries or waitlists. Private schools charge tuition and set their own admissions rules. This app lists public and private schools, plus free or low cost support programs."
+        },
+        {
+          "heading": "Grade bands",
+          "paragraph": "Elementary usually covers kindergarten through grade 5 or 6. Middle school covers grades 6–8 or 7–8. High school covers grades 9–12. Some schools are K–8 or other combinations. Ask the district which school serves your child’s age."
+        },
+        {
+          "heading": "California Department of Education",
+          "paragraph": "CDE publishes school directories, enrollment guidance, and English learner resources. Use official CDE and district sites when you need the latest rules.",
+          "url": "https://www.cde.ca.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Find your district and school",
+      "intro": "Your home address usually decides which school your child attends. Start with the district that serves your neighborhood.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "School Locator",
+          "paragraph": "Use the CDE School Directory or your city/county district website to look up schools by address or city. In this app, the Find schools & programs map shows nearby public schools from the official California directory.",
+          "url": "https://www.cde.ca.gov/SchoolDirectory/"
+        },
+        {
+          "heading": "Call the district office",
+          "paragraph": "If the website is confusing, call the district enrollment or student services office. Say your address, your child’s age or grade, and ask which school to contact. Ask for help in your language."
+        },
+        {
+          "heading": "Open enrollment and transfers",
+          "paragraph": "Some districts allow requests to attend a school outside your assigned boundary. Rules and deadlines vary. Ask early; spots may be limited."
+        }
+      ]
+    },
+    {
+      "title": "Enrollment documents",
+      "intro": "Schools need basic information to register a child. Exact lists vary by district, but these items are commonly requested.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Proof of age",
+          "paragraph": "A birth certificate, passport, or other official age document is usually enough. Ask what substitutes the district accepts if you do not have a US birth certificate."
+        },
+        {
+          "heading": "Proof of address",
+          "paragraph": "Utility bills, a lease, or a letter from a shelter or host family may work. If you are temporarily living with relatives or in unstable housing, tell the school — California has protections for students experiencing homelessness."
+        },
+        {
+          "heading": "Immunization records",
+          "paragraph": "California requires certain vaccines for school entry. Bring any immunization records you have. Ask the school nurse or county clinic how to catch up if records are incomplete."
+        },
+        {
+          "heading": "Immigration status",
+          "paragraph": "Public schools must enroll children who live in the district regardless of immigration status. You should not be required to provide a Social Security number or immigration papers to enroll in K–12 public school.",
+          "url": "https://www.cde.ca.gov/sp/hs/"
+        }
+      ]
+    },
+    {
+      "title": "English learners and academic support",
+      "intro": "Schools are used to helping children who are learning English and students who need extra academic or disability related support.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "English learner (EL) programs",
+          "paragraph": "Schools assess English skills and provide English Language Development (ELD) support. Tell the school what languages your family speaks at home. Ask for interpreters at meetings.",
+          "url": "https://www.cde.ca.gov/sp/el/"
+        },
+        {
+          "heading": "IEP and 504 plans",
+          "paragraph": "If your child has a disability or learning difference, ask about an evaluation. An IEP or 504 plan can provide classroom supports. You can request meetings and bring an advocate or interpreter.\n\nAn IEP is created under the Individuals with Disabilities Education Act for a student who qualifies for special education. It is a written plan with learning goals, specialized instruction, services such as speech or occupational therapy, and a schedule for measuring progress. A 504 plan is for a student whose disability substantially limits a major life activity but who may not need special education; it focuses on equal access through accommodations such as extra test time, accessible seating, health supports, or assistive technology. You can request an evaluation in writing, and the school must follow formal timelines and obtain your consent before evaluating. You are part of the decision-making team, may ask for a free interpreter and copies of documents, and can request another meeting if the plan is not helping. Ask the school for its procedural safeguards if you disagree with an evaluation, eligibility decision, services, or placement.",
+          "url": "https://www.cde.ca.gov/sp/se/qa/caprntorg.asp"
+        },
+        {
+          "heading": "After school and tutoring",
+          "paragraph": "Many districts, libraries, and nonprofits offer free or low cost homework help. Ask the school counselor and use this app’s program finder for nearby tutoring and STEM options."
+        }
+      ]
+    },
+    {
+      "title": "Libraries, tutoring, and STEM",
+      "intro": "Support does not stop at the classroom. Local libraries and youth programs help with reading, homework, and hands on science.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Public libraries",
+          "paragraph": "Libraries offer free cards, books, Wi Fi, homework help, and family programs. Ask about bilingual storytimes and digital resources you can use at home."
+        },
+        {
+          "heading": "Tutoring and enrichment",
+          "paragraph": "Look for district after school programs, community centers, and nonprofit tutoring. Confirm cost, ages served, and transportation before you enroll."
+        },
+        {
+          "heading": "STEM opportunities",
+          "paragraph": "Museums, coding clubs, and science programs can build skills and confidence. Start with free public options near you, then ask the school about clubs and summer programs."
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Call 211 or search online for local education, youth, and family service referrals in your language when available.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,17 +1,21 @@
 /**
  * Build ca_education_resources.json from the official CDE Public Schools
- * directory (tab-delimited), the CDE private schools GIS layer, and curated
- * support programs.
+ * directory (tab-delimited), the CDE private schools GIS layer, the IMLS
+ * Public Libraries Survey outlets, and curated support programs.
  *
  * Usage:
  *   node scripts/build_education_resources.mjs
  *   node scripts/build_education_resources.mjs /path/to/pubschls.txt [private.csv]
+ *   node scripts/build_education_resources.mjs --support-only
+ *   node scripts/build_education_resources.mjs --libraries
  *
  * If no local files are passed, downloads:
  *   https://www.cde.ca.gov/schooldirectory/report?rid=dl1&tp=txt
  *   https://gis.data.ca.gov/api/download/v1/items/261ee2533c3945afbaf3458ee32fae56/csv?layers=0
+ *   https://www.imls.gov/sites/default/files/2026-06/pls_fy2024_csv.zip
  */
-import {mkdirSync, readFileSync, writeFileSync} from "fs";
+import {execFileSync} from "child_process";
+import {mkdirSync, readFileSync, rmSync, writeFileSync} from "fs";
 import {dirname, join, resolve} from "path";
 import {fileURLToPath} from "url";
 
@@ -22,6 +26,9 @@ const OUT_ASSETS = resolve(ROOT, "..", "assets", "data", "ca_education_resources
 const CDE_URL = "https://www.cde.ca.gov/schooldirectory/report?rid=dl1&tp=txt";
 const CDE_PRIVATE_URL =
   "https://gis.data.ca.gov/api/download/v1/items/261ee2533c3945afbaf3458ee32fae56/csv?layers=0";
+const IMLS_ZIP_URL =
+  "https://www.imls.gov/sites/default/files/2026-06/pls_fy2024_csv.zip";
+const IMLS_OUTLET_ENTRY = "CSV/pls_fy24_outlet_pud24i.csv";
 
 /// Private school rows carry no contact columns, so link the official CDE
 /// directory record where phone and website are published.
@@ -385,6 +392,600 @@ const SUPPORT_PROGRAMS = [
     verified: true,
     source: "curated",
   },
+  {
+    id: "edu-support-cde-newcomer",
+    title: "CDE — Newcomer student enrollment",
+    kind: "enrollment_help",
+    category: "statewide",
+    description:
+      "Official guidance for enrolling children who are new to U.S. schools, including language support.",
+    address: "",
+    city: "Sacramento",
+    zip: "95814",
+    district: "",
+    website: "https://www.cde.ca.gov/sp/el/er/newcomerstudnts.asp",
+    phone: "",
+    gradeLow: null,
+    gradeHigh: null,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 38.5767,
+    lng: -121.4934,
+    statewide: true,
+    verified: true,
+    source: "cde",
+  },
+  {
+    id: "edu-support-cde-immigrant-families",
+    title: "CDE — Immigrant families in schools",
+    kind: "enrollment_help",
+    category: "statewide",
+    description:
+      "Family-facing information that every child can enroll in California public school, regardless of immigration status.",
+    address: "",
+    city: "Sacramento",
+    zip: "95814",
+    district: "",
+    website: "https://www.cde.ca.gov/ls/pf/if/immigration-toolkit.asp",
+    phone: "",
+    gradeLow: null,
+    gradeHigh: null,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 38.5767,
+    lng: -121.4934,
+    statewide: true,
+    verified: true,
+    source: "cde",
+  },
+  {
+    id: "edu-tutor-homeworkca",
+    title: "Homework CA — free 24/7 online tutoring",
+    kind: "tutoring",
+    category: "online",
+    description:
+      "Free live tutoring in English and Spanish for California K–12 students, offered through the California State Library. No library card required.",
+    address: "",
+    city: "Sacramento",
+    zip: "95814",
+    district: "",
+    website: "https://www.tutor.com/homeworkca",
+    phone: "800-411-1970",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 38.5767,
+    lng: -121.4934,
+    statewide: true,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-sac",
+    title: "Sacramento Public Library — student resources",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, live online tutoring, computers, and homework help for Sacramento students.",
+    address: "828 I St",
+    city: "Sacramento",
+    zip: "95814",
+    district: "",
+    website: "https://www.saclibrary.org/",
+    phone: "916-264-2920",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 38.5816,
+    lng: -121.4952,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-fresno",
+    title: "Fresno County Public Library — homework help",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and student research tools for Fresno County families.",
+    address: "2420 Mariposa St",
+    city: "Fresno",
+    zip: "93721",
+    district: "",
+    website: "https://www.fresnolibrary.org/",
+    phone: "559-600-7323",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 36.7379,
+    lng: -119.7867,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-kern",
+    title: "Kern County Library — Beale Memorial",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and homework support for Bakersfield and Kern County students.",
+    address: "701 Truxtun Ave",
+    city: "Bakersfield",
+    zip: "93301",
+    district: "",
+    website: "https://www.kerncountylibrary.org/",
+    phone: "661-868-0701",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 35.3727,
+    lng: -119.0101,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-riverside",
+    title: "Riverside Public Library — homework help",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, Wi‑Fi, and student homework resources in Riverside.",
+    address: "3900 Mission Inn Ave",
+    city: "Riverside",
+    zip: "92501",
+    district: "",
+    website: "https://www.riversideca.gov/library",
+    phone: "951-826-5201",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 33.9838,
+    lng: -117.3764,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-stockton",
+    title: "Stockton-San Joaquin County Public Library — Cesar Chavez Central",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and homework help for Stockton and San Joaquin County students.",
+    address: "605 N El Dorado St",
+    city: "Stockton",
+    zip: "95202",
+    district: "",
+    website: "https://www.ssjcpl.org/",
+    phone: "209-937-8221",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 37.959,
+    lng: -121.292,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-elcentro",
+    title: "El Centro Public Library — student support",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and literacy programs for Imperial Valley families.",
+    address: "1198 N Imperial Ave",
+    city: "El Centro",
+    zip: "92243",
+    district: "",
+    website: "https://www.cityofelcentro.org/1268/Library",
+    phone: "760-337-4565",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 32.8039,
+    lng: -115.57,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-modesto",
+    title: "Stanislaus County Library — Modesto",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and homework resources for Modesto-area students.",
+    address: "1500 I St",
+    city: "Modesto",
+    zip: "95354",
+    district: "",
+    website: "https://www.stanislauslibrary.org/",
+    phone: "209-558-7800",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 37.6432,
+    lng: -120.9935,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-redding",
+    title: "Shasta Public Libraries — Redding",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and student resources for Redding and Shasta County families.",
+    address: "1100 Parkview Ave",
+    city: "Redding",
+    zip: "96001",
+    district: "",
+    website: "https://www.shastalibraries.org/",
+    phone: "530-245-7252",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 40.5678,
+    lng: -122.3708,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-longbeach",
+    title: "Long Beach Public Library — Billie Jean King Main",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and homework databases for Long Beach students.",
+    address: "200 W Broadway",
+    city: "Long Beach",
+    zip: "90802",
+    district: "",
+    website: "https://www.longbeach.gov/library/",
+    phone: "562-570-7500",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 33.7688,
+    lng: -118.1944,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-sanbernardino",
+    title: "San Bernardino Public Library — Feldheym Central",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and children’s and teen homework help in San Bernardino.",
+    address: "555 W 6th St",
+    city: "San Bernardino",
+    zip: "92410",
+    district: "",
+    website: "https://sbpl.org/",
+    phone: "909-998-4251",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 34.1095,
+    lng: -117.2955,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-santaana",
+    title: "Santa Ana Public Library — student resources",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and bilingual homework resources for Santa Ana families.",
+    address: "26 Civic Center Plaza",
+    city: "Santa Ana",
+    zip: "92701",
+    district: "",
+    website: "https://www.santa-ana.org/library",
+    phone: "714-647-5250",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 33.7505,
+    lng: -117.8732,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-santabarbara",
+    title: "Santa Barbara Public Library — Central",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and student homework resources on the Central Coast.",
+    address: "40 E Anapamu St",
+    city: "Santa Barbara",
+    zip: "93101",
+    district: "",
+    website: "https://library.santabarbaraca.gov/",
+    phone: "805-962-7653",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 34.4239,
+    lng: -119.7032,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-visalia",
+    title: "Tulare County Library — Visalia",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and homework help for Visalia and Tulare County students.",
+    address: "200 W Oak Ave",
+    city: "Visalia",
+    zip: "93291",
+    district: "",
+    website: "https://www.tularecountylibrary.org/",
+    phone: "559-713-2700",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 36.3325,
+    lng: -119.294,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-eureka",
+    title: "Humboldt County Library — Eureka Main",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and student resources for Eureka and Humboldt County families.",
+    address: "1313 3rd St",
+    city: "Eureka",
+    zip: "95501",
+    district: "",
+    website: "https://humboldtgov.org/1351/Library",
+    phone: "707-269-1915",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 40.8047,
+    lng: -124.1574,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-lib-salinas",
+    title: "Salinas Public Library — John Steinbeck",
+    kind: "library",
+    category: "library",
+    description:
+      "Free library card, computers, and homework help for Salinas students.",
+    address: "350 Lincoln Ave",
+    city: "Salinas",
+    zip: "93901",
+    district: "",
+    website: "https://library.salinas.gov/",
+    phone: "831-758-7311",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 36.672,
+    lng: -121.6572,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-mosac",
+    title: "SMUD Museum of Science and Curiosity (MOSAC)",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Hands-on science museum and youth STEM programs along the Sacramento River.",
+    address: "400 Jibboom St",
+    city: "Sacramento",
+    zip: "95811",
+    district: "",
+    website: "https://visitmosac.org/",
+    phone: "916-674-5000",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 38.5932,
+    lng: -121.5055,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-discovery-cube",
+    title: "Discovery Cube Orange County — science center",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Hands-on science exhibits and school programs for Orange County families.",
+    address: "2500 N Main St",
+    city: "Santa Ana",
+    zip: "92705",
+    district: "",
+    website: "https://www.discoverycube.org/",
+    phone: "714-542-2823",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 33.77,
+    lng: -117.8675,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-csc",
+    title: "California Science Center — Exposition Park",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Large science museum with free core galleries and school programs in Los Angeles.",
+    address: "700 Exposition Park Dr",
+    city: "Los Angeles",
+    zip: "90037",
+    district: "",
+    website: "https://californiasciencecenter.org/",
+    phone: "323-724-3623",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 34.016,
+    lng: -118.2863,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-fleet",
+    title: "Fleet Science Center — Balboa Park",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Hands-on science museum, planetarium, and youth STEM programs in San Diego.",
+    address: "1875 El Prado",
+    city: "San Diego",
+    zip: "92101",
+    district: "",
+    website: "https://www.fleetscience.org/",
+    phone: "619-238-1233",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 32.7314,
+    lng: -117.1481,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-gvm",
+    title: "Great Valley Museum — Modesto Junior College",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Natural history museum and planetarium with Central Valley science programs for students.",
+    address: "2201 Blue Gum Ave",
+    city: "Modesto",
+    zip: "95358",
+    district: "",
+    website: "https://www.mjc.edu/gvm/",
+    phone: "209-575-6196",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 37.6609,
+    lng: -121.0386,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-turtlebay",
+    title: "Turtle Bay Exploration Park — Redding",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Science museum, wildlife exhibits, and outdoor learning along the Sacramento River.",
+    address: "844 Sundial Bridge Dr",
+    city: "Redding",
+    zip: "96001",
+    district: "",
+    website: "https://www.turtlebay.org/",
+    phone: "530-243-8850",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 40.5911,
+    lng: -122.3766,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-fresno-dc",
+    title: "Fresno Discovery Center — hands-on science",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Indoor science exhibits and outdoor STEM play for Central Valley children and families.",
+    address: "1944 N Winery Ave",
+    city: "Fresno",
+    zip: "93703",
+    district: "",
+    website: "https://fresnodiscoverycenter.org/",
+    phone: "559-251-5533",
+    gradeLow: 0,
+    gradeHigh: 8,
+    gradeBands: ["elementary", "middle"],
+    lat: 36.7681,
+    lng: -119.7314,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-wsc",
+    title: "Western Science Center — Hemet",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Natural history museum and family science programs serving the Inland Empire.",
+    address: "2345 Searl Pkwy",
+    city: "Hemet",
+    zip: "92543",
+    district: "",
+    website: "https://www.westernsciencecenter.org/",
+    phone: "951-791-0033",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 33.7066,
+    lng: -116.993,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
+  {
+    id: "edu-stem-tech",
+    title: "The Tech Interactive — San Jose",
+    kind: "stem",
+    category: "museum",
+    description:
+      "Hands-on technology and engineering museum with youth STEM programs in San Jose.",
+    address: "201 S Market St",
+    city: "San Jose",
+    zip: "95113",
+    district: "",
+    website: "https://www.thetech.org/",
+    phone: "408-294-8324",
+    gradeLow: 0,
+    gradeHigh: 12,
+    gradeBands: ["elementary", "middle", "high"],
+    lat: 37.3314,
+    lng: -121.8902,
+    statewide: false,
+    verified: true,
+    source: "curated",
+  },
 ];
 
 function parseGradeToken(raw) {
@@ -670,7 +1271,210 @@ function normalizePrivateSchools(rows) {
   return out;
 }
 
+function prettyLabel(raw) {
+  const text = String(raw ?? "").trim();
+  if (!text || /^(-1|-3|-4|-9)$/.test(text)) return "";
+  return text
+    .toLowerCase()
+    .replace(/(^|[\s/().'-])([a-z])/g, (full, prefix, letter) =>
+      `${prefix}${letter.toUpperCase()}`,
+    )
+    .replace(/\bMc([a-z])/g, (_, letter) => `Mc${letter.toUpperCase()}`);
+}
+
+function formatPhone(raw) {
+  const digits = String(raw ?? "").replace(/\D/g, "");
+  if (digits.length === 10) {
+    return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+  if (digits.length === 11 && digits.startsWith("1")) {
+    return `${digits.slice(1, 4)}-${digits.slice(4, 7)}-${digits.slice(7)}`;
+  }
+  return "";
+}
+
+async function loadImlsOutletText() {
+  console.log("Downloading IMLS Public Libraries Survey outlets…");
+  const response = await fetch(IMLS_ZIP_URL, {
+    headers: {
+      "User-Agent": "NewRootsCalifornia/0.1 (education-resource-builder)",
+      Accept: "application/zip,*/*",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`IMLS download failed: HTTP ${response.status}`);
+  }
+  const zipPath = join(ROOT, "data", ".imls-pls.zip");
+  mkdirSync(dirname(zipPath), {recursive: true});
+  writeFileSync(zipPath, Buffer.from(await response.arrayBuffer()));
+  try {
+    return execFileSync("unzip", ["-p", zipPath, IMLS_OUTLET_ENTRY], {
+      encoding: "latin1",
+      maxBuffer: 20 * 1024 * 1024,
+    });
+  } finally {
+    rmSync(zipPath, {force: true});
+  }
+}
+
+function isActivePublicLibrary(row) {
+  if ((row.STABR || "").trim() !== "CA") return false;
+  const type = (row.C_OUT_TY || "").trim();
+  if (type !== "CE" && type !== "BR") return false;
+  const status = (row.STATSTRU || "").trim();
+  if (!["00", "01", "02"].includes(status)) return false;
+  const name = (row.LIBNAME || "").trim();
+  if (!name || /law library/i.test(name)) return false;
+  const lat = Number(row.LATITUDE);
+  const lng = Number(row.LONGITUD);
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return false;
+  if (lat < 32 || lat > 42.2 || lng < -125 || lng > -114) return false;
+  return true;
+}
+
+function attachCuratedLibraryWebsites(libraries) {
+  const curated = SUPPORT_PROGRAMS.filter(
+    (item) => item.kind === "library" && item.website,
+  );
+  for (const library of libraries) {
+    if (library.website) continue;
+    let best = null;
+    let bestKm = 0.6;
+    for (const extra of curated) {
+      const km = distanceKm(
+        library.lat,
+        library.lng,
+        extra.lat,
+        extra.lng,
+      );
+      if (km < bestKm) {
+        bestKm = km;
+        best = extra;
+      }
+    }
+    if (best) {
+      library.website = best.website;
+      if (!library.phone && best.phone) library.phone = best.phone;
+    }
+  }
+  return libraries;
+}
+
+function distanceKm(lat1, lng1, lat2, lng2) {
+  const toRad = (deg) => (deg * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function normalizeLibraries(rows) {
+  const out = [];
+  for (const row of rows) {
+    if (!isActivePublicLibrary(row)) continue;
+    const fscs = (row.FSCSKEY || "").trim();
+    const seq = String(row.FSCS_SEQ || "").trim().padStart(3, "0");
+    if (!fscs) continue;
+    const title = prettyLabel(row.LIBNAME);
+    const city = prettyLabel(row.CITY);
+    const county = prettyLabel(row.CNTY);
+    out.push({
+      id: `imls-${fscs}-${seq}`,
+      title,
+      kind: "library",
+      category: "library",
+      description:
+        "Public library with books, computers, Wi‑Fi, and homework help for students.",
+      address: prettyLabel(row.ADDRESS),
+      city,
+      zip: (row.ZIP || "").split("-")[0] || "",
+      district: county ? `${county} County` : "",
+      website: "",
+      phone: formatPhone(row.PHONE),
+      gradeLow: 0,
+      gradeHigh: 12,
+      gradeBands: ["elementary", "middle", "high"],
+      lat: Number(Number(row.LATITUDE).toFixed(6)),
+      lng: Number(Number(row.LONGITUD).toFixed(6)),
+      statewide: false,
+      verified: true,
+      source: "imls",
+    });
+  }
+  return attachCuratedLibraryWebsites(out);
+}
+
+function supportPrograms() {
+  return SUPPORT_PROGRAMS.filter((item) => item.kind !== "library");
+}
+
+function writeCombined(schools, privateSchools, libraries) {
+  const support = supportPrograms();
+  const ids = new Set();
+  const combined = [
+    ...schools,
+    ...privateSchools,
+    ...libraries,
+    ...support,
+  ].filter((item) => {
+    if (ids.has(item.id)) return false;
+    ids.add(item.id);
+    return true;
+  });
+
+  const json = `${JSON.stringify(combined)}\n`;
+  mkdirSync(dirname(OUT_FUNCTIONS), {recursive: true});
+  mkdirSync(dirname(OUT_ASSETS), {recursive: true});
+  writeFileSync(OUT_FUNCTIONS, json);
+  writeFileSync(OUT_ASSETS, json);
+
+  console.log(
+    `Wrote ${combined.length} resources ` +
+      `(${schools.length} public + ${privateSchools.length} private + ` +
+      `${libraries.length} libraries + ${support.length} support) →\n` +
+      `  ${OUT_FUNCTIONS}\n` +
+      `  ${OUT_ASSETS}`,
+  );
+}
+
+function loadExistingEducationJson() {
+  const existing = JSON.parse(readFileSync(OUT_FUNCTIONS, "utf8"));
+  const schools = existing.filter((item) => item.kind === "school");
+  const privateSchools = existing.filter(
+    (item) => item.kind === "private_school",
+  );
+  const libraries = existing.filter((item) => item.kind === "library");
+  if (schools.length < 1000 || privateSchools.length < 500) {
+    throw new Error(
+      "Existing education JSON looks incomplete. Run a full rebuild instead.",
+    );
+  }
+  return {schools, privateSchools, libraries};
+}
+
 async function main() {
+  if (process.argv.includes("--support-only")) {
+    const {schools, privateSchools, libraries} = loadExistingEducationJson();
+    writeCombined(schools, privateSchools, libraries);
+    return;
+  }
+
+  if (process.argv.includes("--libraries")) {
+    const {schools, privateSchools} = loadExistingEducationJson();
+    const libraries = normalizeLibraries(
+      parseCsvFile(await loadImlsOutletText()),
+    );
+    if (libraries.length < 800) {
+      throw new Error(
+        `Expected hundreds of CA library outlets, got ${libraries.length}. Aborting.`,
+      );
+    }
+    writeCombined(schools, privateSchools, libraries);
+    return;
+  }
+
   const publicPath = process.argv[2] ? resolve(process.argv[2]) : "";
   const privatePath = process.argv[3] ? resolve(process.argv[3]) : "";
 
@@ -698,29 +1502,16 @@ async function main() {
     );
   }
 
-  const ids = new Set();
-  const combined = [...schools, ...privateSchools, ...SUPPORT_PROGRAMS].filter(
-    (item) => {
-      if (ids.has(item.id)) return false;
-      ids.add(item.id);
-      return true;
-    },
+  const libraries = normalizeLibraries(
+    parseCsvFile(await loadImlsOutletText()),
   );
+  if (libraries.length < 800) {
+    throw new Error(
+      `Expected hundreds of CA library outlets, got ${libraries.length}. Aborting.`,
+    );
+  }
 
-  const json = `${JSON.stringify(combined)}\n`;
-  mkdirSync(dirname(OUT_FUNCTIONS), {recursive: true});
-  mkdirSync(dirname(OUT_ASSETS), {recursive: true});
-  writeFileSync(OUT_FUNCTIONS, json);
-  writeFileSync(OUT_ASSETS, json);
-
-  const supportCount = SUPPORT_PROGRAMS.length;
-  console.log(
-    `Wrote ${combined.length} resources ` +
-      `(${schools.length} public + ${privateSchools.length} private + ` +
-      `${supportCount} support) →\n` +
-      `  ${OUT_FUNCTIONS}\n` +
-      `  ${OUT_ASSETS}`,
-  );
+  writeCombined(schools, privateSchools, libraries);
 }
 
 main().catch((error) => {

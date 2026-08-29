@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/router/app_router.dart';
 import '../../../core/services/auth_service.dart';
+import '../../../core/widgets/language_menu_button.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/auth_widgets.dart';
 
 /// Create-account screen (email/password). Minimalist green & white UI.
@@ -35,15 +37,15 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     final confirm = _confirmController.text;
 
     if (email.isEmpty || password.isEmpty) {
-      setState(() => _error = 'Please fill in all fields.');
+      setState(() => _error = AppLocalizations.of(context).authFillAllFields);
       return;
     }
     if (password.length < 6) {
-      setState(() => _error = 'Password must be at least 6 characters.');
+      setState(() => _error = AppLocalizations.of(context).authPasswordTooShort);
       return;
     }
     if (password != confirm) {
-      setState(() => _error = 'Passwords do not match.');
+      setState(() => _error = AppLocalizations.of(context).authPasswordsDoNotMatch);
       return;
     }
 
@@ -66,6 +68,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
@@ -73,6 +76,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Colors.white,
+        actions: const [LanguageMenuButton()],
       ),
       body: Stack(
         children: [
@@ -103,21 +107,21 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const AuthHeader(
-                        subtitle: 'Create your account to get started.',
+                      AuthHeader(
+                        subtitle: l10n.authCreateAccountSubtitle,
                       ),
                       const SizedBox(height: 36),
                       AuthTextField(
                         controller: _emailController,
                         prefixIcon: Icons.email_outlined,
-                        label: 'Email',
+                        label: l10n.authEmail,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                       ),
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _passwordController,
-                        label: 'Password',
+                        label: l10n.authPassword,
                         prefixIcon: Icons.lock_outline,
                         obscureText: true,
                         textInputAction: TextInputAction.next,
@@ -125,7 +129,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _confirmController,
-                        label: 'Confirm password',
+                        label: l10n.authConfirmPassword,
                         obscureText: true,
                         textInputAction: TextInputAction.done,
                         onSubmitted: (_) => _createAccount(),
@@ -139,7 +143,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                       ],
                       const SizedBox(height: 24),
                       AuthPrimaryButton(
-                        label: 'Create account',
+                        label: l10n.actionCreateAccount,
                         loading: _loading,
                         onPressed: _createAccount,
                       ),
@@ -147,9 +151,9 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            'Already have an account?',
-                            style: TextStyle(color: Colors.black54),
+                          Text(
+                            l10n.authHaveAccount,
+                            style: const TextStyle(color: Colors.black54),
                           ),
                           TextButton(
                             onPressed: _loading
@@ -158,7 +162,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                             style: TextButton.styleFrom(
                               foregroundColor: kBrandGreen,
                             ),
-                            child: const Text('Log in'),
+                            child: Text(l10n.actionLogIn),
                           ),
                         ],
                       ),

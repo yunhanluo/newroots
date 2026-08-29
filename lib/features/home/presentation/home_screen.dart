@@ -5,7 +5,9 @@ import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../support_groups/presentation/widgets/deleted_group_notice.dart';
+import '../../support_groups/presentation/widgets/deleted_post_notice.dart';
 import '../../support_groups/presentation/widgets/suggestion_review_notice.dart';
 
 /// Home dashboard: entry point to all navigators (see DESIGN_PLAN.md §4).
@@ -14,22 +16,33 @@ class HomeScreen extends ConsumerWidget {
 
   static const _cardBg = Colors.white;
 
-  static const _features = <_FeatureEntry>[
-    _FeatureEntry('Integration Roadmap', Icons.map_outlined, Routes.roadmap),
-    _FeatureEntry('Career Bridge', Icons.work_outline, Routes.career),
-    _FeatureEntry('Housing', Icons.home_outlined, Routes.housing),
-    _FeatureEntry('Healthcare', Icons.local_hospital_outlined, Routes.healthcare),
-    _FeatureEntry('Safety Guide', Icons.emergency_outlined, Routes.safety),
-    _FeatureEntry('ScamShield', Icons.shield_outlined, Routes.scamShield),
-    _FeatureEntry('English Learning', Icons.translate_outlined, Routes.english),
-    _FeatureEntry('Education', Icons.school_outlined, Routes.education),
-    _FeatureEntry('Support Groups', Icons.diversity_3_outlined, Routes.supportGroups),
+  static List<_FeatureEntry> _features(AppLocalizations l10n) => [
+    _FeatureEntry(l10n.featureRoadmap, Icons.map_outlined, Routes.roadmap),
+    _FeatureEntry(l10n.featureCareer, Icons.work_outline, Routes.career),
+    _FeatureEntry(l10n.featureHousing, Icons.home_outlined, Routes.housing),
+    _FeatureEntry(
+      l10n.featureHealthcare,
+      Icons.local_hospital_outlined,
+      Routes.healthcare,
+    ),
+    _FeatureEntry(l10n.featureSafety, Icons.emergency_outlined, Routes.safety),
+    _FeatureEntry(l10n.featureScamShield, Icons.shield_outlined, Routes.scamShield),
+    _FeatureEntry(l10n.featureEnglish, Icons.translate_outlined, Routes.english),
+    _FeatureEntry(l10n.featureEducation, Icons.school_outlined, Routes.education),
+    _FeatureEntry(
+      l10n.featureSupportGroups,
+      Icons.diversity_3_outlined,
+      Routes.supportGroups,
+    ),
   ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final reviews = ref.watch(unseenSuggestionReviewsProvider);
     final deletedNotices = ref.watch(deletedGroupNoticesProvider);
+    final deletedPosts =
+        ref.watch(unseenPostDeletionNoticesProvider).value ?? const [];
 
     return Scaffold(
       backgroundColor: kBrandPageBg,
@@ -53,7 +66,9 @@ class HomeScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          if (reviews.isNotEmpty || deletedNotices.isNotEmpty)
+          if (reviews.isNotEmpty ||
+              deletedNotices.isNotEmpty ||
+              deletedPosts.isNotEmpty)
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: Column(
@@ -66,6 +81,10 @@ class HomeScreen extends ConsumerWidget {
                     DeletedGroupNotice(group: group),
                     const SizedBox(height: 8),
                   ],
+                  for (final notice in deletedPosts) ...[
+                    DeletedPostNotice(notice: notice),
+                    const SizedBox(height: 8),
+                  ],
                 ],
               ),
             ),
@@ -76,7 +95,7 @@ class HomeScreen extends ConsumerWidget {
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               children: [
-                for (final f in _features)
+                for (final f in _features(l10n))
                   Material(
                     color: _cardBg,
                     elevation: 0,

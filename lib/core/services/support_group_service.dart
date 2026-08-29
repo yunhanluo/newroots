@@ -8,6 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/support_group.dart';
 import 'auth_service.dart';
+import 'group_content_policy.dart';
+import 'admin_service.dart';
 
 const _maxPostLength = 2000;
 const _maxImageBytes = 8 * 1024 * 1024;
@@ -56,9 +58,7 @@ class SupportGroupService {
     });
   }
 
-  Stream<List<GroupMembership>> watchMyMemberships() {
-    final uid = _uid;
-    if (uid == null) return Stream.value(const <GroupMembership>[]);
+  Stream<List<GroupMembership>> watchMyMemberships(String uid) {
     return _firestore
         .collection('users')
         .doc(uid)
@@ -86,7 +86,7 @@ class SupportGroupService {
         .snapshots()
         .map((snapshot) {
       return snapshot.docs
-          .map((doc) => GroupPost.fromMap(doc.id, doc.data()))
+          .map((doc) => GroupPost.fromMap(doc.id, doc.data(), groupId: groupId))
           .where((post) => post.title.isNotEmpty || post.text.isNotEmpty)
           .toList();
     });
@@ -183,7 +183,7 @@ class SupportGroupService {
     return _groups.doc(groupId).collection('posts').doc(postId).snapshots().map(
       (doc) {
         if (!doc.exists || doc.data() == null) return null;
-        return GroupPost.fromMap(doc.id, doc.data()!);
+        return GroupPost.fromMap(doc.id, doc.data()!, groupId: groupId);
       },
     );
   }
@@ -229,6 +229,13 @@ class SupportGroupService {
         'Please keep posts under 2,000 characters.',
       );
     }
+    final blocked = GroupContentPolicy.blockedReason(
+      title: trimmedTitle,
+      text: trimmed,
+    );
+    if (blocked != null) {
+      throw SupportGroupException(blocked);
+    }
     if (images.length > kMaxGroupPostImages) {
       throw const SupportGroupException(
         'You can add up to 6 photos.',
@@ -272,6 +279,7 @@ class SupportGroupService {
         'text': trimmed,
         'kind': kind.name,
         'replyCount': 0,
+        'moderationStatus': 'pending',
         'createdAt': FieldValue.serverTimestamp(),
       };
       if (imagePaths.isNotEmpty) {
@@ -348,6 +356,10 @@ class SupportGroupService {
         'Please keep replies under 2,000 characters.',
       );
     }
+    final blocked = GroupContentPolicy.blockedReason(text: trimmed);
+    if (blocked != null) {
+      throw SupportGroupException(blocked);
+    }
     try {
       final postRef = _groups.doc(groupId).collection('posts').doc(postId);
       final batch = _firestore.batch();
@@ -355,6 +367,7 @@ class SupportGroupService {
         'authorUid': uid,
         'authorName': currentDisplayName,
         'text': trimmed,
+        'moderationStatus': 'pending',
         'createdAt': FieldValue.serverTimestamp(),
       });
       batch.update(postRef, {
@@ -369,18 +382,309 @@ class SupportGroupService {
   Future<void> deletePost({
     required String groupId,
     required String postId,
+    String? removalReason,
   }) async {
     try {
       final postRef = _groups.doc(groupId).collection('posts').doc(postId);
       final snap = await postRef.get();
-      final imagePaths = _storagePathsFromPost(snap.data());
-      // Only the post doc is deleted here. Replies may only be deleted by
-      // their authors or an admin, so bundling them in one batch would block
-      // an OP from removing their own thread.
-      await postRef.delete();
-      await _deleteUploadedImages(imagePaths);
+      final data = snap.data();
+      if (data == null) {
+        throw const SupportGroupException('This post was already removed.');
+      }
+      if (data['removed'] == true) {
+        throw const SupportGroupException(
+          'This post is already hidden from the group.',
+        );
+      }
+      final authorUid = (data['authorUid'] as String?) ?? '';
+      final imagePaths = _storagePathsFromPost(data);
+      final ownPost = authorUid.isNotEmpty && authorUid == _uid;
+      final reason = removalReason?.trim() ?? '';
+
+      if (ownPost) {
+        await _hardDeletePost(postRef: postRef, imagePaths: imagePaths);
+        return;
+      }
+
+      if (reason.isEmpty) {
+        throw const SupportGroupException(
+          'Please say why this post is being removed.',
+        );
+      }
+      if (reason.length > 400) {
+        throw const SupportGroupException(
+          'Keep the reason under 400 characters.',
+        );
+      }
+      if (authorUid.isEmpty) {
+        throw const SupportGroupException('Could not find who wrote that post.');
+      }
+
+      final groupSnap = await _groups.doc(groupId).get();
+      final groupTitle =
+          (groupSnap.data()?['title'] as String?)?.trim() ?? 'a group';
+      final postTitle = _postTitleFromMap(data);
+      final purgeAt = Timestamp.fromDate(
+        DateTime.now().toUtc().add(kPostRemovalAppealDuration),
+      );
+      final noticeRef = _firestore
+          .collection('users')
+          .doc(authorUid)
+          .collection('postDeletionNotices')
+          .doc(postDeletionNoticeId(groupId, postId));
+
+      final batch = _firestore.batch();
+      batch.update(postRef, {
+        'removed': true,
+        'removedReason': reason,
+        'removedAt': FieldValue.serverTimestamp(),
+        'removedByUid': _uid,
+        'purgeAt': purgeAt,
+        'appealStatus': 'open',
+        'appealMessage': '',
+      });
+      batch.set(noticeRef, {
+        'authorUid': authorUid,
+        'groupId': groupId,
+        'postId': postId,
+        'groupTitle': groupTitle,
+        'postTitle': postTitle,
+        'reason': reason,
+        'appealStatus': 'open',
+        'appealMessage': '',
+        'seen': false,
+        'purgeAt': purgeAt,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+      await batch.commit();
+    } on SupportGroupException {
+      rethrow;
     } on FirebaseException catch (e) {
       throw SupportGroupException(_friendly(e, 'Could not delete that post.'));
+    }
+  }
+
+  Future<void> appealPostRemoval({
+    required String groupId,
+    required String postId,
+    String? message,
+  }) async {
+    final uid = _uid;
+    if (uid == null) {
+      throw const SupportGroupException('Sign in to appeal.');
+    }
+    final trimmed = (message ?? '').trim();
+    if (trimmed.length > 400) {
+      throw const SupportGroupException(
+        'Keep the appeal under 400 characters.',
+      );
+    }
+    try {
+      final postRef = _groups.doc(groupId).collection('posts').doc(postId);
+      final snap = await postRef.get();
+      final data = snap.data();
+      if (data == null || data['removed'] != true) {
+        throw const SupportGroupException('That post is not waiting for an appeal.');
+      }
+      if (data['authorUid'] != uid) {
+        throw const SupportGroupException('Only the author can appeal.');
+      }
+      if ('${data['appealStatus'] ?? ''}' != 'open') {
+        throw const SupportGroupException('This post was already appealed.');
+      }
+      final purgeAt = parseFirestoreDate(data['purgeAt']);
+      if (purgeAt != null && !purgeAt.isAfter(DateTime.now())) {
+        throw const SupportGroupException(
+          'The window to appeal this post has ended.',
+        );
+      }
+      final noticeRef = _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('postDeletionNotices')
+          .doc(postDeletionNoticeId(groupId, postId));
+      final batch = _firestore.batch();
+      batch.update(postRef, {
+        'appealStatus': 'pending',
+        'appealMessage': trimmed,
+        'appealedAt': FieldValue.serverTimestamp(),
+      });
+      batch.update(noticeRef, {
+        'appealStatus': 'pending',
+        'appealMessage': trimmed,
+        'appealedAt': FieldValue.serverTimestamp(),
+      });
+      await batch.commit();
+    } on SupportGroupException {
+      rethrow;
+    } on FirebaseException catch (e) {
+      throw SupportGroupException(_friendly(e, 'Could not send that appeal.'));
+    }
+  }
+
+  Future<void> restoreRemovedPost({
+    required String groupId,
+    required String postId,
+  }) async {
+    try {
+      final postRef = _groups.doc(groupId).collection('posts').doc(postId);
+      final snap = await postRef.get();
+      final data = snap.data();
+      if (data == null) {
+        throw const SupportGroupException('This post was already removed.');
+      }
+      final authorUid = (data['authorUid'] as String?) ?? '';
+      await postRef.update({
+        'removed': FieldValue.delete(),
+        'removedReason': FieldValue.delete(),
+        'removedAt': FieldValue.delete(),
+        'removedByUid': FieldValue.delete(),
+        'purgeAt': FieldValue.delete(),
+        'appealStatus': FieldValue.delete(),
+        'appealMessage': FieldValue.delete(),
+        'appealedAt': FieldValue.delete(),
+      });
+      if (authorUid.isEmpty) return;
+      try {
+        await _firestore
+            .collection('users')
+            .doc(authorUid)
+            .collection('postDeletionNotices')
+            .doc(postDeletionNoticeId(groupId, postId))
+            .update({
+          'appealStatus': 'approved',
+          'seen': false,
+          'decidedAt': FieldValue.serverTimestamp(),
+        });
+      } on FirebaseException {
+        // Notice may already be gone.
+      }
+    } on SupportGroupException {
+      rethrow;
+    } on FirebaseException catch (e) {
+      throw SupportGroupException(
+        _friendly(e, 'Could not restore that post.'),
+      );
+    }
+  }
+
+  Future<void> denyPostAppeal({
+    required String groupId,
+    required String postId,
+  }) async {
+    try {
+      final postRef = _groups.doc(groupId).collection('posts').doc(postId);
+      final snap = await postRef.get();
+      final data = snap.data();
+      if (data == null) {
+        throw const SupportGroupException('This post was already removed.');
+      }
+      final authorUid = (data['authorUid'] as String?) ?? '';
+      final imagePaths = _storagePathsFromPost(data);
+      await _hardDeletePost(postRef: postRef, imagePaths: imagePaths);
+      if (authorUid.isEmpty) return;
+      try {
+        await _firestore
+            .collection('users')
+            .doc(authorUid)
+            .collection('postDeletionNotices')
+            .doc(postDeletionNoticeId(groupId, postId))
+            .update({
+          'appealStatus': 'denied',
+          'seen': false,
+          'decidedAt': FieldValue.serverTimestamp(),
+        });
+      } on FirebaseException {
+        // Notice may already be gone.
+      }
+    } on SupportGroupException {
+      rethrow;
+    } on FirebaseException catch (e) {
+      throw SupportGroupException(
+        _friendly(e, 'Could not finish removing that post.'),
+      );
+    }
+  }
+
+  Future<void> _hardDeletePost({
+    required DocumentReference<Map<String, dynamic>> postRef,
+    required List<String> imagePaths,
+  }) async {
+    final replies = await postRef.collection('replies').get();
+    final batch = _firestore.batch();
+    for (final doc in replies.docs) {
+      batch.delete(doc.reference);
+    }
+    batch.delete(postRef);
+    await batch.commit();
+    await _deleteUploadedImages(imagePaths);
+  }
+
+  Stream<List<GroupPost>> watchPendingPostAppeals() {
+    return _firestore
+        .collectionGroup('posts')
+        .where('appealStatus', isEqualTo: 'pending')
+        .snapshots()
+        .map((snapshot) {
+      final items = snapshot.docs.map((doc) {
+        final groupId = doc.reference.parent.parent?.id ?? '';
+        return GroupPost.fromMap(doc.id, doc.data(), groupId: groupId);
+      }).toList()
+        ..sort(
+          (a, b) => (b.removedAt ?? DateTime.fromMillisecondsSinceEpoch(0))
+              .compareTo(a.removedAt ?? DateTime.fromMillisecondsSinceEpoch(0)),
+        );
+      return items;
+    });
+  }
+
+  String _postTitleFromMap(Map<String, dynamic> map) {
+    final title = (map['title'] as String?)?.trim() ?? '';
+    if (title.isNotEmpty) return title;
+    final text = (map['text'] as String?)?.trim() ?? '';
+    if (text.isEmpty) return 'Your post';
+    final first = text.split('\n').first.trim();
+    if (first.length <= 80) return first;
+    return '${first.substring(0, 77).trim()}…';
+  }
+
+  Future<void> updateReply({
+    required String groupId,
+    required String postId,
+    required String replyId,
+    required String text,
+  }) async {
+    final uid = _uid;
+    if (uid == null) {
+      throw const SupportGroupException('Sign in to edit.');
+    }
+    final trimmed = text.trim();
+    if (trimmed.isEmpty) {
+      throw const SupportGroupException('Write a reply first.');
+    }
+    if (trimmed.length > _maxPostLength) {
+      throw const SupportGroupException(
+        'Please keep replies under 2,000 characters.',
+      );
+    }
+    final blocked = GroupContentPolicy.blockedReason(text: trimmed);
+    if (blocked != null) {
+      throw SupportGroupException(blocked);
+    }
+    try {
+      await _groups
+          .doc(groupId)
+          .collection('posts')
+          .doc(postId)
+          .collection('replies')
+          .doc(replyId)
+          .update({
+        'text': trimmed,
+        'editedAt': FieldValue.serverTimestamp(),
+        'moderationStatus': 'pending',
+      });
+    } on FirebaseException catch (e) {
+      throw SupportGroupException(_friendly(e, 'Could not save that edit.'));
     }
   }
 
@@ -460,9 +764,7 @@ class SupportGroupService {
     });
   }
 
-  Stream<List<GroupSuggestion>> watchMySuggestions() {
-    final uid = _uid;
-    if (uid == null) return Stream.value(const <GroupSuggestion>[]);
+  Stream<List<GroupSuggestion>> watchMySuggestions(String uid) {
     return _suggestions
         .where('suggesterUid', isEqualTo: uid)
         .snapshots()
@@ -580,6 +882,44 @@ class SupportGroupService {
         _friendly(e, 'Could not dismiss that notice.'),
       );
     }
+  }
+
+  Future<void> markPostDeletionNoticeSeen(String noticeId) async {
+    final uid = _uid;
+    if (uid == null) {
+      throw const SupportGroupException('Sign in to dismiss that notice.');
+    }
+    try {
+      await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('postDeletionNotices')
+          .doc(noticeId)
+          .update({'seen': true});
+    } on FirebaseException catch (e) {
+      throw SupportGroupException(
+        _friendly(e, 'Could not dismiss that notice.'),
+      );
+    }
+  }
+
+  Stream<List<PostDeletionNotice>> watchPostDeletionNotices(String uid) {
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('postDeletionNotices')
+        .where('seen', isEqualTo: false)
+        .snapshots()
+        .map((snapshot) {
+      final items = snapshot.docs
+          .map((doc) => PostDeletionNotice.fromMap(doc.id, doc.data()))
+          .toList()
+        ..sort(
+          (a, b) => (b.createdAt ?? DateTime.fromMillisecondsSinceEpoch(0))
+              .compareTo(a.createdAt ?? DateTime.fromMillisecondsSinceEpoch(0)),
+        );
+      return items;
+    });
   }
 
   Future<void> markSuggestionSeen(String suggestionId) async {
@@ -704,18 +1044,17 @@ final supportGroupServiceProvider = Provider<SupportGroupService>(
   ),
 );
 
-final groupPostImageProvider =
-    FutureProvider.family<Uint8List?, String>((ref, imagePath) {
-  if (imagePath.isEmpty) return Future.value(null);
-  return ref.watch(supportGroupServiceProvider).downloadPostImage(imagePath);
-});
-
 final supportGroupsProvider = StreamProvider<List<SupportGroup>>((ref) {
   return ref.watch(supportGroupServiceProvider).watchGroups();
 });
 
 final myMembershipsProvider = StreamProvider<List<GroupMembership>>((ref) {
-  return ref.watch(supportGroupServiceProvider).watchMyMemberships();
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: const <GroupMembership>[],
+    watch: (uid) =>
+        ref.watch(supportGroupServiceProvider).watchMyMemberships(uid),
+  );
 });
 
 final myGroupIdsProvider = Provider<Set<String>>((ref) {
@@ -750,7 +1089,15 @@ final supportGroupProvider =
 
 final groupPostsProvider =
     StreamProvider.family<List<GroupPost>, String>((ref, groupId) {
-  return ref.watch(supportGroupServiceProvider).watchPosts(groupId);
+  final uid = ref.watch(authStateProvider).value?.uid;
+  final isAdmin = ref.watch(isAdminProvider);
+  return ref.watch(supportGroupServiceProvider).watchPosts(groupId).map(
+        (posts) => posts
+            .where(
+              (post) => post.isVisibleInFeed(viewerUid: uid, isAdmin: isAdmin),
+            )
+            .toList(),
+      );
 });
 
 final groupPostProvider =
@@ -760,7 +1107,15 @@ final groupPostProvider =
 
 final groupRepliesProvider =
     StreamProvider.family<List<GroupReply>, (String, String)>((ref, key) {
-  return ref.watch(supportGroupServiceProvider).watchReplies(key.$1, key.$2);
+  final uid = ref.watch(authStateProvider).value?.uid;
+  final isAdmin = ref.watch(isAdminProvider);
+  return ref.watch(supportGroupServiceProvider).watchReplies(key.$1, key.$2).map(
+        (replies) => replies
+            .where(
+              (reply) => reply.isVisibleInFeed(viewerUid: uid, isAdmin: isAdmin),
+            )
+            .toList(),
+      );
 });
 
 final groupMemberCountProvider =
@@ -774,7 +1129,29 @@ final groupSuggestionsProvider = StreamProvider<List<GroupSuggestion>>((ref) {
 
 final myGroupSuggestionsProvider =
     StreamProvider<List<GroupSuggestion>>((ref) {
-  return ref.watch(supportGroupServiceProvider).watchMySuggestions();
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: const <GroupSuggestion>[],
+    watch: (uid) =>
+        ref.watch(supportGroupServiceProvider).watchMySuggestions(uid),
+  );
+});
+
+final unseenPostDeletionNoticesProvider =
+    StreamProvider<List<PostDeletionNotice>>((ref) {
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: const <PostDeletionNotice>[],
+    watch: (uid) =>
+        ref.watch(supportGroupServiceProvider).watchPostDeletionNotices(uid),
+  );
+});
+
+final pendingPostAppealsProvider = StreamProvider<List<GroupPost>>((ref) {
+  if (!ref.watch(isAdminProvider)) {
+    return Stream.value(const <GroupPost>[]);
+  }
+  return ref.watch(supportGroupServiceProvider).watchPendingPostAppeals();
 });
 
 final unseenSuggestionReviewsProvider = Provider<List<GroupSuggestion>>((ref) {

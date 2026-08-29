@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'auth_service.dart';
+
 const surveyPriorityOptions = <(String, String)>[
   ('Housing', 'Housing'),
   ('Employment', 'Employment'),
@@ -39,14 +41,10 @@ class UserProfileService {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
 
-  Stream<UserProfileData?> watchCurrentUserProfile() {
-    final user = _auth.currentUser;
-    if (user == null) return const Stream<UserProfileData?>.empty();
-    return _firestore
-        .collection('users')
-        .doc(user.uid)
-        .snapshots()
-        .map((doc) => doc.exists ? UserProfileData.fromMap(doc.data()!) : null);
+  Stream<UserProfileData?> watchProfile(String uid) {
+    return _firestore.collection('users').doc(uid).snapshots().map(
+          (doc) => doc.exists ? UserProfileData.fromMap(doc.data()!) : null,
+        );
   }
 
   Future<UserProfileData?> getCurrentUserProfile() async {
@@ -132,7 +130,11 @@ final userProfileServiceProvider = Provider<UserProfileService>(
 );
 
 final userProfileProvider = StreamProvider<UserProfileData?>((ref) {
-  return ref.watch(userProfileServiceProvider).watchCurrentUserProfile();
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: null,
+    watch: (uid) => ref.watch(userProfileServiceProvider).watchProfile(uid),
+  );
 });
 
 class UserProfileData {

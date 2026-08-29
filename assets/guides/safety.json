@@ -1,0 +1,158 @@
+{
+  "id": "safety",
+  "title": "Community Safety Guide",
+  "subtitle": "Emergency numbers, your rights, and how to prepare.",
+  "landingTitle": "Community Safety Guide",
+  "landingBody": "Emergency numbers, your rights, and how to prepare.",
+  "icon": "emergency",
+  "finishRoute": "home",
+  "version": 1,
+  "sections": [
+    {
+      "title": "Welcome",
+      "intro": "",
+      "body": "Feeling safe in a new country takes time. Knowing who to call, what your rights are, and how to prepare for emergencies can reduce fear and help your family act quickly when something goes wrong.\n\nThis guide covers emergency numbers you can tap to call, Know Your Rights basics, disaster preparedness, and trusted safety resources in California and the US.\n\nThis is general information, not legal advice. For your own case, talk to a lawyer or a trusted legal aid clinic.",
+      "topics": []
+    },
+    {
+      "title": "Emergency numbers",
+      "intro": "Save these numbers in your phone. In a real emergency, call right away. Tap a number below to dial. If you are not sure whether something is an emergency, call anyway and explain what is happening.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "911 — Police, fire, and medical emergency",
+          "paragraph": "Use 911 for immediate danger: fire, serious injury, a crime in progress, or someone who cannot breathe. Tell the dispatcher your location first, then what happened. You can ask for an interpreter. Stay on the line until they say you can hang up.",
+          "phone": "911",
+          "phoneLabel": "Call 911"
+        },
+        {
+          "heading": "988 — Suicide and Crisis Lifeline",
+          "paragraph": "Call or text 988 if you or someone you love is in emotional crisis, thinking about suicide, or needs urgent mental health support. Help is free and confidential. Interpreters are available.",
+          "phone": "988",
+          "phoneLabel": "Call 988"
+        },
+        {
+          "heading": "211 — Local help and community resources",
+          "paragraph": "211 connects you to local food, shelter, utilities help, and community services. It is useful when you need support but it is not a life threatening emergency.",
+          "phone": "211",
+          "phoneLabel": "Call 211"
+        },
+        {
+          "heading": "Poison Control — 1-800-222-1222",
+          "paragraph": "Call if someone may have swallowed medicine, cleaning products, plants, or chemicals by mistake. Have the product nearby if you can. They will tell you what to do next.",
+          "phone": "18002221222",
+          "phoneLabel": "Call Poison Control"
+        },
+        {
+          "heading": "National Domestic Violence Hotline — 1-800-799-7233",
+          "paragraph": "Call if you or someone you know is being hurt, controlled, or threatened by a partner or family member. Help is confidential. You can also visit thehotline.org for chat options.",
+          "phone": "18007997233",
+          "phoneLabel": "Call the hotline"
+        },
+        {
+          "heading": "Non-emergency police line",
+          "paragraph": "For noise complaints, theft reports after the fact, or questions that are not urgent, use your city non-emergency police number instead of 911. Search “[your city] police non emergency” or ask a librarian. Save that number next to 911."
+        }
+      ]
+    },
+    {
+      "title": "Know Your Rights",
+      "intro": "In the United States, people have important rights when dealing with police and immigration officers. Rules can be complex, and every situation is different. The points below are common basics many newcomers find useful. They are not a substitute for advice from an immigration or criminal defense lawyer. If you are ever unsure, ask for a lawyer and avoid guessing.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "You can stay silent",
+          "paragraph": "You generally have the right to remain silent. You can say clearly, “I want to remain silent. I want a lawyer.” Then stop answering questions about your immigration status, where you were born, or how you entered the country. Do not lie and do not show fake documents. Lying to federal officers can create serious legal problems. Staying silent is not the same as running away or arguing. Speak calmly, keep your hands visible, and repeat that you want a lawyer if questions continue."
+        },
+        {
+          "heading": "Ask if you are free to leave",
+          "paragraph": "If officers stop you on the street or in a public place, you can ask, “Am I free to leave?” If they say yes, you may calmly walk away. If they say no, you can remain silent and ask for a lawyer. You do not have to consent to a search of your bag, pockets, or phone. You can say, “I do not consent to a search.” Officers may still search in some situations, but clear words help protect you later. Do not physically resist a search. Stay calm and remember details so you can tell a lawyer what happened."
+        },
+        {
+          "heading": "Home entry",
+          "paragraph": "In many situations, officers need a warrant signed by a judge to enter your home. You can ask them to slide the warrant under the door or hold it up to a window so you can read it. Check that it has your address and a judge’s signature. You do not have to open the door just because someone knocks or says they are the police. If you are unsure, do not open the door. Call a trusted lawyer, legal aid hotline, or a family member who can help you get advice in your language. Opening the door and inviting someone in can make it harder to challenge the entry later."
+        },
+        {
+          "heading": "Carry important documents carefully",
+          "paragraph": "Keep copies of key documents in a safe place at home, and consider a small set of copies in a locked folder if you travel. Useful copies can include ID, immigration paperwork, and emergency contacts. Only share sensitive papers when you trust the person or office asking, such as a court, licensed lawyer, or official government appointment. Be careful with people who demand money or original documents for “immigration help” without a license. If someone pressures you to hand over passports or pay cash immediately, pause and check with a legal aid clinic first."
+        },
+        {
+          "heading": "Get help from trusted legal organizations",
+          "paragraph": "For immigration questions, use licensed attorneys or accredited representatives. The Executive Office for Immigration Review and nonprofit legal aid clinics can help you find low cost help. Be careful of anyone who is not a licensed lawyer or accredited representative but offers immigration legal advice, fills out forms for a fee, or promises a guaranteed visa or green card. Scammers sometimes use official sounding titles to look trustworthy. Ask for their full name, license or accreditation, and a written receipt. If they refuse, walk away and check with a legal aid clinic before you pay.",
+          "url": "https://www.justice.gov/eoir/find-legal-representation"
+        }
+      ]
+    },
+    {
+      "title": "Disaster preparedness",
+      "intro": "California faces earthquakes, wildfires, heat waves, and floods. A simple family plan makes emergencies less chaotic, especially if English is not your first language. You do not need expensive gear. Start with a meeting place, a small bag, and a way to get alerts.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Make a family plan",
+          "paragraph": "Decide where you will meet if phones stop working, such as a neighbor’s house, a school, or a park nearby. Also choose a second meeting place farther away in case your block is closed. Write down out of area contact numbers for a relative or friend who lives in another city. Practice how you would leave your home quickly, including at night. Make sure children know their full name, address, and a parent phone number. If someone in your home needs medicine, mobility help, or language support, plan who will assist them."
+        },
+        {
+          "heading": "Build a small go bag",
+          "paragraph": "Keep a bag ready that you can grab in one minute. Include water, snacks, flashlight, batteries, copies of IDs and important papers, a small first aid kit, masks, medications, cash in small bills, and phone chargers. Add a whistle, a warm layer, and any baby or elder supplies your family needs. Store the bag where everyone can reach it. Check it every few months and replace expired food, water, and medicine. Keep a shorter version in your car if you drive."
+        },
+        {
+          "heading": "Know local alerts",
+          "paragraph": "Turn on Wireless Emergency Alerts on your phone so urgent warnings can reach you even if you are not watching the news. Sign up for your city or county emergency alerts if available. During wildfires, storms, and floods, follow official updates from your city, county Office of Emergency Services, or Cal OES. Do not rely only on social media rumors. If an alert says to evacuate, leave early rather than waiting to see if conditions improve.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "Earthquakes",
+          "paragraph": "If you feel shaking, Drop, Cover, and Hold On under a sturdy table or desk if you can. Protect your head and neck. Stay away from windows, mirrors, and tall furniture that can fall. If you are outside, move to an open area away from buildings, trees, and power lines. If you are in bed, stay there and cover your head with a pillow unless you are under a heavy light fixture. After shaking stops, check for injuries and gas smells. If you smell gas, leave the building and call for help from outside. Expect aftershocks. If you must evacuate, take your go bag and follow official instructions."
+        },
+        {
+          "heading": "Wildfire and smoke",
+          "paragraph": "If officials tell you to evacuate, leave early. Roads can close quickly. Pack documents, medications, phones, chargers, and pets first. Wear long sleeves and sturdy shoes if you can. During heavy smoke, stay indoors when possible, close windows, and set air conditioning to recirculate if you have it. If you must go outside, use a well fitted mask designed to filter fine particles when you have one. Check airnow.gov for air quality. People with asthma, heart problems, young children, and older adults should be especially careful during smoke days.",
+          "url": "https://www.airnow.gov/"
+        },
+        {
+          "heading": "Floods",
+          "paragraph": "Floods can happen after heavy rain, dam releases, or when storm drains overflow. Move to higher ground as soon as local officials warn you. Never walk, swim, or drive through flood water. Water that looks shallow can hide strong currents, open drains, or washed out roads. Six inches of moving water can knock a person down, and one to two feet can carry a car away. If your car stalls in rising water, get out and move to higher ground if it is safe. Turn around if a road is closed or covered with water. After a flood, avoid damaged buildings until they are checked, throw out food that touched flood water, and watch for contaminated water and downed power lines. Listen for boil water notices from your city or county.",
+          "url": "https://www.ready.gov/floods"
+        },
+        {
+          "heading": "Heat waves",
+          "paragraph": "Extreme heat can be dangerous, especially for children, older adults, pregnant people, and anyone working outside. Drink water often, even if you do not feel thirsty. Stay in cool indoor places during the hottest part of the day. Use fans, cool showers, and damp cloths if you do not have air conditioning. Check on neighbors and family members who live alone. Never leave children or pets in a parked car. Warning signs of heat illness include dizziness, headache, nausea, confusion, and stopping sweat. If someone becomes confused or passes out from heat, call 911.",
+          "url": "https://www.ready.gov/heat"
+        }
+      ]
+    },
+    {
+      "title": "Trusted safety resources",
+      "intro": "Use official and well known organizations when you need deeper help. These sites are a safe starting point.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Ready.gov",
+          "paragraph": "Federal emergency preparedness guides for families, including checklists and hazard information in multiple languages.",
+          "url": "https://www.ready.gov/"
+        },
+        {
+          "heading": "California Office of Emergency Services (Cal OES)",
+          "paragraph": "State emergency information, alerts, and preparedness resources for California residents.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "American Red Cross",
+          "paragraph": "Disaster relief, first aid classes, and local chapter support after fires, floods, and other emergencies.",
+          "url": "https://www.redcross.org/"
+        },
+        {
+          "heading": "Immigrant Legal Resource Center (ILRC)",
+          "paragraph": "Educational Know Your Rights materials and referrals related to immigration. This is information, not a substitute for your own lawyer.",
+          "url": "https://www.ilrc.org/"
+        },
+        {
+          "heading": "findhelp.org",
+          "paragraph": "Search by ZIP code for free or low cost local help with food, housing, health, and more.",
+          "url": "https://www.findhelp.org/"
+        }
+      ]
+    }
+  ]
+}

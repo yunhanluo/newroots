@@ -5,8 +5,8 @@ rules_version = '2';
 //
 // Model:
 //   - Private user data: owner-only (the signed-in user).
-//   - Curated content (resources, scamAlerts, emergencyContacts): public read,
-//     admin-only write (admin = custom auth claim `admin == true`).
+//   - Curated content (resources, scamAlerts, emergencyContacts, guides):
+//     public read, admin-only write (admin = custom auth claim `admin == true`).
 //   - Support groups: readable/writable by group members only.
 
 service cloud.firestore {
@@ -44,6 +44,46 @@ service cloud.firestore {
           && request.resource.data.groupId == groupId;
       }
 
+      match /postDeletionNotices/{noticeId} {
+        allow read, delete: if isOwner(uid);
+        allow update: if isAdmin()
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['appealStatus', 'seen', 'decidedAt'])
+          && (request.resource.data.appealStatus == 'approved'
+            || request.resource.data.appealStatus == 'denied')
+        || (
+          isOwner(uid)
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['seen'])
+          && request.resource.data.seen == true
+          && resource.data.appealStatus != 'open'
+        ) || (
+          isOwner(uid)
+          && resource.data.appealStatus == 'open'
+          && request.resource.data.appealStatus == 'pending'
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['appealStatus', 'appealMessage', 'appealedAt'])
+          && request.resource.data.appealMessage is string
+          && request.resource.data.appealMessage.size() <= 400
+          && request.resource.data.appealedAt == request.time
+          && request.time < resource.data.purgeAt
+        );
+        allow create: if isAdmin()
+          && request.resource.data.authorUid == uid
+          && request.resource.data.groupId is string
+          && request.resource.data.postId is string
+          && request.resource.data.groupTitle is string
+          && request.resource.data.postTitle is string
+          && request.resource.data.reason is string
+          && request.resource.data.reason.size() > 0
+          && request.resource.data.reason.size() <= 400
+          && request.resource.data.appealStatus == 'open'
+          && request.resource.data.appealMessage is string
+          && request.resource.data.seen == false
+          && request.resource.data.purgeAt is timestamp
+          && request.resource.data.createdAt == request.time;
+      }
+
       match /{document=**} {
         allow read, write: if isOwner(uid);
       }
@@ -61,6 +101,13 @@ service cloud.firestore {
     }
 
     match /emergencyContacts/{contactId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Static guides (safety, education, healthcare, housing). Bundled in the
+    // app for first-launch offline; Firestore holds optional newer copies.
+    match /guides/{guideId} {
       allow read: if true;
       allow write: if isAdmin();
     }
@@ -118,12 +165,30 @@ service cloud.firestore {
           && (!('imagePaths' in request.resource.data)
             || (request.resource.data.imagePaths is list
               && request.resource.data.imagePaths.size() > 0
-              && request.resource.data.imagePaths.size() <= 6));
+              && request.resource.data.imagePaths.size() <= 6))
+          && request.resource.data.moderationStatus == 'pending'
+          && !('moderationReason' in request.resource.data)
+          && !('moderationMessage' in request.resource.data)
+          && !('moderationCategory' in request.resource.data)
+          && !('moderationSources' in request.resource.data)
+          && !('moderatedAt' in request.resource.data);
         allow update: if isAdmin() || (
           isGroupMember(groupId)
           && request.resource.data.diff(resource.data).affectedKeys()
               .hasOnly(['replyCount'])
           && request.resource.data.replyCount is int
+        ) || (
+          isSignedIn()
+          && resource.data.authorUid == request.auth.uid
+          && resource.data.removed == true
+          && resource.data.appealStatus == 'open'
+          && request.resource.data.appealStatus == 'pending'
+          && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['appealStatus', 'appealMessage', 'appealedAt'])
+          && request.resource.data.appealMessage is string
+          && request.resource.data.appealMessage.size() <= 400
+          && request.resource.data.appealedAt == request.time
+          && request.time < resource.data.purgeAt
         );
         allow delete: if isAdmin() || (
           isSignedIn() && resource.data.authorUid == request.auth.uid
@@ -139,8 +204,24 @@ service cloud.firestore {
             && request.resource.data.text is string
             && request.resource.data.text.size() > 0
             && request.resource.data.text.size() <= 2000
-            && request.resource.data.createdAt == request.time;
-          allow update: if false;
+            && request.resource.data.createdAt == request.time
+            && request.resource.data.moderationStatus == 'pending'
+            && !('moderationReason' in request.resource.data)
+            && !('moderationMessage' in request.resource.data)
+            && !('moderationCategory' in request.resource.data)
+            && !('moderationSources' in request.resource.data)
+            && !('moderatedAt' in request.resource.data);
+          allow update: if isAdmin() || (
+            isSignedIn()
+            && resource.data.authorUid == request.auth.uid
+            && request.resource.data.diff(resource.data).affectedKeys()
+                .hasOnly(['text', 'editedAt', 'moderationStatus'])
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 2000
+            && request.resource.data.moderationStatus == 'pending'
+            && request.resource.data.editedAt == request.time
+          );
           allow delete: if isAdmin() || (
             isSignedIn() && resource.data.authorUid == request.auth.uid
           );

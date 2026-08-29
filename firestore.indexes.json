@@ -23,7 +23,30 @@
         { "fieldPath": "region", "order": "ASCENDING" },
         { "fieldPath": "createdAt", "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "posts",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "removed", "order": "ASCENDING" },
+        { "fieldPath": "purgeAt", "order": "ASCENDING" }
+      ]
     }
   ],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "collectionGroup": "posts",
+      "fieldPath": "appealStatus",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
 }

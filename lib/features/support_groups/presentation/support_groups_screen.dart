@@ -9,6 +9,7 @@ import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
 import 'widgets/deleted_group_notice.dart';
+import 'widgets/deleted_post_notice.dart';
 import 'widgets/suggestion_review_notice.dart';
 
 /// Feature 8: Mutual Support Groups — discover and join.
@@ -169,15 +170,23 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
     final groupsAsync = ref.watch(supportGroupsProvider);
     final myIds = ref.watch(myGroupIdsProvider);
     final isAdmin = ref.watch(isAdminProvider);
-    final pendingCount = isAdmin
+    final pendingSuggestions = isAdmin
         ? (ref.watch(groupSuggestionsProvider).value ?? const [])
             .where((s) => s.status == GroupSuggestionStatus.pending)
             .length
         : 0;
+    final pendingAppeals = isAdmin
+        ? (ref.watch(pendingPostAppealsProvider).value ?? const []).length
+        : 0;
+    final pendingCount = pendingSuggestions + pendingAppeals;
     final mySuggestions =
-        ref.watch(myGroupSuggestionsProvider).value ?? const <GroupSuggestion>[];
+        (ref.watch(myGroupSuggestionsProvider).value ?? const <GroupSuggestion>[])
+            .where((s) => s.status == GroupSuggestionStatus.pending)
+            .toList();
     final reviews = ref.watch(unseenSuggestionReviewsProvider);
     final deletedNotices = ref.watch(deletedGroupNoticesProvider);
+    final deletedPosts =
+        ref.watch(unseenPostDeletionNoticesProvider).value ?? const [];
 
     return BrandScaffold(
       title: 'Support Groups',
@@ -185,8 +194,8 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
         if (isAdmin)
           IconButton(
             tooltip: pendingCount == 0
-                ? 'Review suggestions'
-                : 'Review suggestions ($pendingCount pending)',
+                ? 'Review groups'
+                : 'Review groups ($pendingCount pending)',
             onPressed: () => context.pushNamed(Routes.groupAdmin),
             icon: Badge(
               isLabelVisible: pendingCount > 0,
@@ -227,15 +236,6 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                   color: Colors.black87.withValues(alpha: 0.75),
                 ),
               ),
-              const SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: () => context.pushNamed(Routes.suggestGroup),
-                icon: const Icon(Icons.add),
-                label: const Text('Suggest a new group'),
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 48),
-                ),
-              ),
               if (reviews.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 for (final suggestion in reviews) ...[
@@ -250,9 +250,12 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                   const SizedBox(height: 8),
                 ],
               ],
-              if (mySuggestions.isNotEmpty) ...[
-                const SizedBox(height: 16),
-                _MySuggestionsList(suggestions: mySuggestions),
+              if (deletedPosts.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                for (final notice in deletedPosts) ...[
+                  DeletedPostNotice(notice: notice),
+                  const SizedBox(height: 8),
+                ],
               ],
               if (_banner != null) ...[
                 const SizedBox(height: 12),
@@ -261,7 +264,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                   onDismiss: () => setState(() => _banner = null),
                 ),
               ],
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
               _ScopeToggle(
                 mineOnly: _mineOnly,
                 myCount: myIds.length,
@@ -351,6 +354,19 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                   ),
                   const SizedBox(height: 12),
                 ],
+              const SizedBox(height: 8),
+              if (mySuggestions.isNotEmpty) ...[
+                _MySuggestionsList(suggestions: mySuggestions),
+                const SizedBox(height: 12),
+              ],
+              OutlinedButton.icon(
+                onPressed: () => context.pushNamed(Routes.suggestGroup),
+                icon: const Icon(Icons.add),
+                label: const Text('Suggest a new group'),
+                style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 48),
+                ),
+              ),
             ],
           );
         },
@@ -424,102 +440,35 @@ class _MySuggestionTile extends StatelessWidget {
 
   final GroupSuggestion suggestion;
 
-  Color get _statusColor => switch (suggestion.status) {
-        GroupSuggestionStatus.pending => const Color(0xFFB78103),
-        GroupSuggestionStatus.approved => kBrandGreen,
-        GroupSuggestionStatus.rejected => const Color(0xFFB3261E),
-      };
-
   @override
   Widget build(BuildContext context) {
-    final approvedGroupId = suggestion.status == GroupSuggestionStatus.approved
-        ? suggestion.groupId
-        : null;
-    final canOpen = approvedGroupId != null && approvedGroupId.isNotEmpty;
-    final reason = suggestion.rejectReason?.trim() ?? '';
-
     return Material(
       color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
         side: BorderSide(color: kBrandGreen.withValues(alpha: 0.16)),
       ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: canOpen
-            ? () => context.pushNamed(
-                  Routes.supportGroupDetail,
-                  pathParameters: {'groupId': approvedGroupId},
-                )
-            : null,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      suggestion.title,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: _statusColor.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                    child: Text(
-                      suggestion.status.label,
-                      style: TextStyle(
-                        color: _statusColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                  if (canOpen) ...[
-                    const SizedBox(width: 4),
-                    Icon(
-                      Icons.chevron_right,
-                      color: kBrandGreen.withValues(alpha: 0.7),
-                    ),
-                  ],
-                ],
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              suggestion.title,
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
               ),
-              if (suggestion.status == GroupSuggestionStatus.rejected &&
-                  reason.isNotEmpty) ...[
-                const SizedBox(height: 6),
-                Text(
-                  reason,
-                  style: TextStyle(
-                    fontSize: 13,
-                    height: 1.35,
-                    color: Colors.black87.withValues(alpha: 0.65),
-                  ),
-                ),
-              ],
-              if (suggestion.status == GroupSuggestionStatus.pending) ...[
-                const SizedBox(height: 6),
-                Text(
-                  'Waiting for an admin to review.',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black87.withValues(alpha: 0.6),
-                  ),
-                ),
-              ],
-            ],
-          ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              'Waiting for an admin to review.',
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.black87.withValues(alpha: 0.6),
+              ),
+            ),
+          ],
         ),
       ),
     );

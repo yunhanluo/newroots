@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/router/app_router.dart';
 import '../../../core/services/auth_service.dart';
+import '../../../core/widgets/language_menu_button.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/auth_widgets.dart';
 
 /// Log-in screen (email/password). Minimalist green & white UI.
@@ -31,7 +33,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     final email = _emailController.text.trim();
     final password = _passwordController.text;
     if (email.isEmpty || password.isEmpty) {
-      setState(() => _error = 'Please enter your email and password.');
+      setState(() => _error = AppLocalizations.of(context).authEmailPasswordRequired);
       return;
     }
 
@@ -52,6 +54,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -70,6 +73,12 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               ],
             ),
           ),
+          const SafeArea(
+            child: Align(
+              alignment: AlignmentDirectional.topEnd,
+              child: LanguageMenuButton(),
+            ),
+          ),
           SafeArea(
             child: Center(
               child: SingleChildScrollView(
@@ -83,13 +92,13 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const AuthHeader(
-                        subtitle: 'Welcome back. Log in to continue.',
+                      AuthHeader(
+                        subtitle: l10n.authWelcomeBack,
                       ),
                       const SizedBox(height: 36),
                       AuthTextField(
                         controller: _emailController,
-                        label: 'Email',
+                        label: l10n.authEmail,
                         prefixIcon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
@@ -97,7 +106,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       const SizedBox(height: 16),
                       AuthTextField(
                         controller: _passwordController,
-                        label: 'Password',
+                        label: l10n.authPassword,
                         prefixIcon: Icons.lock_outline,
                         obscureText: true,
                         textInputAction: TextInputAction.done,
@@ -112,7 +121,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       ],
                       const SizedBox(height: 24),
                       AuthPrimaryButton(
-                        label: 'Log in',
+                        label: l10n.actionLogIn,
                         loading: _loading,
                         onPressed: _logIn,
                       ),
@@ -120,9 +129,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            "Don't have an account?",
-                            style: TextStyle(color: Colors.black54),
+                          Text(
+                            l10n.authNoAccount,
+                            style: const TextStyle(color: Colors.black54),
                           ),
                           TextButton(
                             onPressed: _loading
@@ -131,7 +140,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                             style: TextButton.styleFrom(
                               foregroundColor: kBrandGreen,
                             ),
-                            child: const Text('Sign up'),
+                            child: Text(l10n.actionSignUp),
                           ),
                         ],
                       ),
@@ -142,7 +151,16 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                         style: TextButton.styleFrom(
                           foregroundColor: kBrandGreen,
                         ),
-                        child: const Text('What is NewRoots?'),
+                        child: Text(l10n.authWhatIsNewRoots),
+                      ),
+                      TextButton(
+                        onPressed: _loading
+                            ? null
+                            : () => context.pushNamed(Routes.privacy),
+                        style: TextButton.styleFrom(
+                          foregroundColor: kBrandGreen,
+                        ),
+                        child: Text(l10n.authPrivacyPolicy),
                       ),
                     ],
                   ),

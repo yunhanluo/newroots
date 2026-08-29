@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/roadmap.dart';
+import 'auth_service.dart';
 
 /// Persists roadmap state under `users/{uid}/roadmap/main`.
 class RoadmapService {
@@ -17,10 +18,14 @@ class RoadmapService {
     return _firestore.collection('users').doc(uid).collection('roadmap').doc('main');
   }
 
-  Stream<IntegrationRoadmap> watchRoadmap() {
-    final ref = _docRef();
-    if (ref == null) return Stream.value(IntegrationRoadmap.empty());
-    return ref.snapshots().map((snap) {
+  Stream<IntegrationRoadmap> watchRoadmap(String uid) {
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('roadmap')
+        .doc('main')
+        .snapshots()
+        .map((snap) {
       if (!snap.exists || snap.data() == null) {
         return IntegrationRoadmap.empty();
       }
@@ -105,5 +110,9 @@ final roadmapServiceProvider = Provider<RoadmapService>(
 );
 
 final roadmapProvider = StreamProvider<IntegrationRoadmap>((ref) {
-  return ref.watch(roadmapServiceProvider).watchRoadmap();
+  return watchForSignedInUser(
+    ref: ref,
+    whenSignedOut: IntegrationRoadmap.empty(),
+    watch: (uid) => ref.watch(roadmapServiceProvider).watchRoadmap(uid),
+  );
 });

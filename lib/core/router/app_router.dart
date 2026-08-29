@@ -19,6 +19,7 @@ import '../../features/healthcare/presentation/healthcare_tutorial_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/housing/presentation/housing_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
+import '../../features/privacy/presentation/privacy_policy_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/roadmap/presentation/roadmap_screen.dart';
 import '../../features/safety_guide/presentation/safety_guide_screen.dart';
@@ -36,6 +37,7 @@ abstract class Routes {
   static const auth = 'auth';
   static const signup = 'signup';
   static const about = 'about';
+  static const privacy = 'privacy';
   static const onboarding = 'onboarding';
   static const home = 'home';
   static const profile = 'profile';
@@ -69,7 +71,8 @@ final routerProvider = Provider<GoRouter>((ref) {
       final loggedIn = authService.currentUser != null;
       final atPublicRoute = state.matchedLocation == '/auth' ||
           state.matchedLocation == '/signup' ||
-          state.matchedLocation == '/about';
+          state.matchedLocation == '/about' ||
+          state.matchedLocation == '/privacy';
 
       if (!loggedIn) return atPublicRoute ? null : '/auth';
       if (loggedIn &&
@@ -94,6 +97,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/about',
         name: Routes.about,
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        path: '/privacy',
+        name: Routes.privacy,
+        builder: (context, state) => const PrivacyPolicyScreen(),
       ),
       GoRoute(
         path: '/onboarding',
