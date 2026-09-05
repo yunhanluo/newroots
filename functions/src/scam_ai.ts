@@ -68,13 +68,43 @@ const SCAM_ADVISOR_PROMPT =
   "requests for SSN/ITIN/bank details, government impersonation, " +
   "too-good-to-be-true jobs or rentals, and pressure to act in secret.";
 
-const JSON_RULES =
-  "Respond with ONLY valid JSON — no markdown fences, no commentary. " +
-  "Schema: {\"riskLevel\":\"low\"|\"moderate\"|\"high\"," +
-  "\"summary\":string,\"reasons\":string[],\"recommendedActions\":string[]}. " +
-  "reasons should be 2-5 short explanations of risk signals (or why risk " +
-  "appears low). recommendedActions should be 2-4 practical next steps. " +
-  "summary should be 1-2 sentences.";
+const LANGUAGE_NAMES: Record<string, string> = {
+  en: "English",
+  es: "Spanish",
+  zh: "Chinese",
+  vi: "Vietnamese",
+  ko: "Korean",
+  hi: "Hindi",
+  ar: "Arabic",
+  english: "English",
+  spanish: "Spanish",
+  chinese: "Chinese",
+  vietnamese: "Vietnamese",
+  korean: "Korean",
+  hindi: "Hindi",
+  arabic: "Arabic",
+};
+
+function replyLanguageName(raw: string | undefined): string {
+  const value = (raw ?? "en").trim();
+  if (!value) return "English";
+  const mapped = LANGUAGE_NAMES[value.toLowerCase()];
+  return mapped ?? value;
+}
+
+function jsonRules(languageName: string): string {
+  return (
+    "Respond with ONLY valid JSON — no markdown fences, no commentary. " +
+    "Schema: {\"riskLevel\":\"low\"|\"moderate\"|\"high\"," +
+    "\"summary\":string,\"reasons\":string[],\"recommendedActions\":string[]}. " +
+    "Keep JSON keys and riskLevel values in English. " +
+    `Write summary, reasons, and recommendedActions entirely in ${languageName}. ` +
+    `Do not use English for those strings unless ${languageName} is English. ` +
+    "reasons should be 2-5 short explanations of risk signals (or why risk " +
+    "appears low). recommendedActions should be 2-4 practical next steps. " +
+    "summary should be 1-2 sentences."
+  );
+}
 
 type ContentPart =
   | {type: "text"; text: string}
@@ -155,6 +185,7 @@ async function loadUploadContent(
 async function callOpenAiJson(
   apiKey: string,
   userParts: ContentPart[],
+  languageName: string,
 ): Promise<ScamAiResult> {
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -167,7 +198,13 @@ async function callOpenAiJson(
       temperature: 0.2,
       response_format: {type: "json_object"},
       messages: [
-        {role: "system", content: `${SCAM_ADVISOR_PROMPT}\n${JSON_RULES}`},
+        {
+          role: "system",
+          content:
+            `${SCAM_ADVISOR_PROMPT}\n${jsonRules(languageName)}\n` +
+            `Output language: ${languageName}. Every human-readable sentence ` +
+            `in the JSON must be in ${languageName}.`,
+        },
         {role: "user", content: userParts},
       ],
     }),
@@ -232,7 +269,7 @@ export async function handleAnalyzeScam(
   }
 
   const category = normalizeCategory(data.category);
-  const language = data.language?.trim() || "en";
+  const language = replyLanguageName(data.language);
   const priorThread = data.priorThread?.trim() ?? "";
   const priorRiskLevel = data.priorRiskLevel?.trim() ?? "";
   const reportId = data.reportId?.trim() || `scam_${Date.now()}`;
@@ -240,7 +277,7 @@ export async function handleAnalyzeScam(
 
   let prompt =
     `Content category: ${CATEGORY_LABELS[category]} (${category})\n` +
-    `Reply language preference: ${language}\n\n`;
+    `Write your entire analysis in ${language}.\n\n`;
 
   if (priorThread) {
     prompt +=
@@ -284,7 +321,7 @@ export async function handleAnalyzeScam(
 
   parts.unshift({type: "text", text: prompt});
 
-  const analysis = await callOpenAiJson(apiKey, parts);
+  const analysis = await callOpenAiJson(apiKey, parts, language);
 
   return {
     id: reportId,

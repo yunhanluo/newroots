@@ -3,12 +3,14 @@
  */
 import {HttpsError, CallableRequest} from "firebase-functions/v2/https";
 import {defineSecret} from "firebase-functions/params";
+import {outputLanguageInstructions, localizeJson, replyLanguageName} from "./ai_language.js";
 
 const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 
 export const careerCallableOptions = {
   enforceAppCheck: false,
   secrets: [OPENAI_API_KEY],
+  timeoutSeconds: 180,
 };
 
 interface ProfileInput {
@@ -19,14 +21,18 @@ interface ProfileInput {
 }
 
 interface CareerAiInput {
-  action?: "generate" | "regenerate_path";
+  action?: "generate" | "regenerate_path" | "ask";
   profile: ProfileInput;
   additionalNotes?: string;
   language?: string;
+  languageCode?: string;
   existingPaths?: {title: string; summary?: string}[];
   pathIndex?: number;
   pathId?: string;
   replacePathTitle?: string;
+  question?: string;
+  path?: Record<string, unknown>;
+  qaHistory?: {question: string; answer: string}[];
 }
 
 interface CareerPathStep {
@@ -72,6 +78,19 @@ const PRIORITIES_NOTE =
 
 const JSON_RULES =
   "Respond with ONLY valid JSON — no markdown fences, no commentary.";
+
+function careerJsonRules(languageName: string): string {
+  return (
+    `${JSON_RULES} ${outputLanguageInstructions(languageName)} ` +
+    "Path title, summary, step title, step description, certifications, and " +
+    `skills must be in ${languageName}. ` +
+    "JSON example values in this prompt are SCHEMA PLACEHOLDERS — do not copy " +
+    `the English placeholder words. Fill them in ${languageName}. ` +
+    'The ONLY allowed English token inside a string value is timeEstimate "Now" ' +
+    "when the person is already in that step with no remaining wait. " +
+    `Any other timeEstimate must be a duration phrase in ${languageName}.`
+  );
+}
 
 interface OpenAiFailure {
   ok: false;
@@ -141,10 +160,10 @@ async function tryOpenAiJson<T>(
   }
 }
 
-function profileContext(profile: ProfileInput): string {
+function profileContext(profile: ProfileInput, languageName: string): string {
   return JSON.stringify(
     {
-      languageCode: profile.languageCode ?? "en",
+      replyLanguage: languageName,
       location: profile.location?.trim() || null,
       priorEmployment: profile.employmentBackground?.trim() || null,
       topPriorities: profile.topPriorities ?? [],
@@ -162,13 +181,19 @@ function normalizeStringList(raw: unknown): string[] {
     .filter(Boolean);
 }
 
+function normalizeTimeEstimate(raw: string | undefined): string {
+  const value = raw?.trim() ?? "";
+  if (value.toLowerCase() === "ongoing") return "Now";
+  return value;
+}
+
 function normalizeSteps(raw: CareerPathStep[] | undefined, pathIndex: number): CareerPathStep[] {
   if (!raw?.length) return [];
   return raw.map((step, stepIndex) => ({
     id: step.id?.trim() || `p${pathIndex + 1}s${stepIndex + 1}`,
     title: step.title?.trim() || `Step ${stepIndex + 1}`,
     description: step.description?.trim() || "",
-    timeEstimate: step.timeEstimate?.trim() || "",
+    timeEstimate: normalizeTimeEstimate(step.timeEstimate),
     isCurrent: stepIndex === 0 || step.isCurrent === true,
     certifications: normalizeStringList(step.certifications),
     skills: normalizeStringList(step.skills),
@@ -215,6 +240,7 @@ async function regenerateCareerPath(
   pathIndex: number,
   pathId: string,
   replacePathTitle: string,
+  languageName: string,
 ): Promise<Record<string, unknown>> {
   const notes = additionalNotes.trim() || "None provided.";
   const location = profile.location?.trim() || "the United States";
@@ -224,15 +250,21 @@ async function regenerateCareerPath(
     .join(", ") || "None";
 
   const result = await tryOpenAiJson<SinglePathResult>(apiKey, [
-    {role: "system", content: `${CAREER_ADVISOR_PROMPT}\n${JSON_RULES}`},
+    {
+      role: "system",
+      content:
+        `${outputLanguageInstructions(languageName)}\n` +
+        `${CAREER_ADVISOR_PROMPT}\n${careerJsonRules(languageName)}`,
+    },
     {
       role: "user",
       content:
+        `Write this entire career path in ${languageName}.\n\n` +
         "Create ONE new, realistic US career pathway to replace an existing option. " +
         "The pathway is a linear progression from current situation (top) to a " +
         "future role (bottom).\n\n" +
         "Survey / profile:\n" +
-        `${profileContext(profile)}\n\n` +
+        `${profileContext(profile, languageName)}\n\n` +
         `${PRIORITIES_NOTE}\n\n` +
         "Additional notes from the user:\n" +
         `${notes}\n\n` +
@@ -243,19 +275,18 @@ async function regenerateCareerPath(
         "- Propose a MEANINGFULLY DIFFERENT career direction from the other paths.\n" +
         "- Ground the path in prior employment / notes — NOT survey priorities.\n" +
         "- 3–6 steps from CURRENT (first step, isCurrent: true) to FUTURE.\n" +
-        "- EVERY step MUST include a non-empty description (1–3 sentences) that " +
-        "grounds the step in the big picture: what this stage means, why it matters, " +
-        "and what the person is working toward. Do NOT return title + skills alone.\n" +
-        "- EVERY step MUST include a realistic timeEstimate (e.g. \"2–3 months\", " +
-        "\"6–12 months\", \"1–2 years\"). For the current step, estimate remaining " +
-        "time if applicable, or say \"Ongoing\".\n" +
-        "- Include REAL, SPECIFIC certifications, licenses, and exams at each step.\n" +
-        "- Include concrete skills at each step (skills are secondary to the description).\n\n" +
-        "Return JSON:\n" +
-        '{ "path": { "id": "...", "title": "...", "summary": "...", "steps": [' +
-        '{ "id": "...", "title": "...", "description": "1-3 sentence overview of this step", ' +
-        '"timeEstimate": "2–3 months", "isCurrent": true, "certifications": [], ' +
-        '"skills": ["..."] }] } }',
+        "- EVERY step MUST include a non-empty description (1–3 sentences) in " +
+        `${languageName}.\n` +
+        `- EVERY timeEstimate except the English token "Now" must be in ${languageName}.\n` +
+        "- Include REAL, SPECIFIC certifications, licenses, and exams at each step, " +
+        `with labels in ${languageName}.\n` +
+        `- Include concrete skills in ${languageName}.\n\n` +
+        "Return JSON (placeholder strings must be replaced with " +
+        `${languageName} text):\n` +
+        '{ "path": { "id": "pathId", "title": "<title>", "summary": "<summary>", ' +
+        '"steps": [{ "id": "s1", "title": "<title>", "description": "<description>", ' +
+        '"timeEstimate": "Now", "isCurrent": true, "certifications": [], ' +
+        '"skills": ["<skill>"] }] } }',
     },
   ]);
 
@@ -271,27 +302,46 @@ async function regenerateCareerPath(
     );
   }
 
-  return {path};
+  const localized = await localizeJson(apiKey, {path}, languageName);
+  const next = normalizePath(
+    localized.path as CareerPath | undefined,
+    pathIndex,
+    pathId,
+  );
+  if (!next) {
+    throw new HttpsError(
+      "internal",
+      "Could not write this career path in the requested language.",
+    );
+  }
+  return {path: next};
 }
 
 async function generateCareerPaths(
   apiKey: string,
   profile: ProfileInput,
   additionalNotes: string,
+  languageName: string,
 ): Promise<Record<string, unknown>> {
   const notes = additionalNotes.trim() || "None provided.";
   const location = profile.location?.trim() || "the United States";
 
   const result = await tryOpenAiJson<CareerAiResult>(apiKey, [
-    {role: "system", content: `${CAREER_ADVISOR_PROMPT}\n${JSON_RULES}`},
+    {
+      role: "system",
+      content:
+        `${outputLanguageInstructions(languageName)}\n` +
+        `${CAREER_ADVISOR_PROMPT}\n${careerJsonRules(languageName)}`,
+    },
     {
       role: "user",
       content:
+        `Write your entire career map in ${languageName}.\n\n` +
         "Create EXACTLY 3 distinct, realistic US career pathways based on this person's " +
         "background. Each pathway is a linear progression from their current " +
         "situation (top) toward a future role (bottom).\n\n" +
         "Survey / profile:\n" +
-        `${profileContext(profile)}\n\n` +
+        `${profileContext(profile, languageName)}\n\n` +
         `${PRIORITIES_NOTE}\n\n` +
         "Additional notes from the user (skills, education, goals):\n" +
         `${notes}\n\n` +
@@ -301,36 +351,30 @@ async function generateCareerPaths(
         "- Base pathways on priorEmployment and additional notes, NOT topPriorities.\n" +
         "- Each path has 3–6 steps ordered from CURRENT (first step, isCurrent: true) " +
         "to FUTURE (last step).\n" +
-        "- EVERY step MUST include a non-empty description (1–3 sentences) that " +
-        "grounds the step in the big picture: what this stage means, why it matters, " +
-        "and what the person is working toward. Never return a step that is only a " +
-        "title plus skills tags — description comes first, then certifications/skills.\n" +
-        "- EVERY step MUST include a realistic timeEstimate (e.g. \"2–3 months\", " +
-        "\"6–12 months\", \"1–2 years\"). For the current step, estimate remaining " +
-        "time if applicable, or say \"Ongoing\".\n" +
+        "- EVERY step MUST include a non-empty description (1–3 sentences) in " +
+        `${languageName}.\n` +
+        `- EVERY timeEstimate except the English token "Now" must be in ${languageName}.\n` +
         "- Include REAL, SPECIFIC certifications, licenses, exams, or registrations " +
-        "needed at each step — e.g. for a plumber: California C-36 license, " +
-        "apprenticeship hours, OSHA 10, etc.\n" +
-        "- Include concrete skills to develop at each step (skills support the " +
-        "description; they must not replace it).\n" +
-        "- Paths should be meaningfully different (not minor variations).\n" +
-        "- Use plain language.\n\n" +
-        "Return JSON:\n" +
+        "needed at each step (keep official exam/license codes, but write surrounding " +
+        `labels in ${languageName}).\n` +
+        `- Include concrete skills in ${languageName}.\n` +
+        "- Paths should be meaningfully different (not minor variations).\n\n" +
+        `Return JSON. Replace every <placeholder> with ${languageName} text:\n` +
         "{\n" +
         '  "paths": [\n' +
         "    {\n" +
         '      "id": "path1",\n' +
-        '      "title": "Licensed Plumber",\n' +
-        '      "summary": "2-3 sentence overview",\n' +
+        '      "title": "<path title>",\n' +
+        '      "summary": "<2-3 sentence overview>",\n' +
         '      "steps": [\n' +
         "        {\n" +
         '          "id": "s1",\n' +
-        '          "title": "Current experience",\n' +
-        '          "description": "1-3 sentences explaining this step in context",\n' +
-        '          "timeEstimate": "Ongoing",\n' +
+        '          "title": "<step title>",\n' +
+        '          "description": "<1-3 sentences>",\n' +
+        '          "timeEstimate": "Now",\n' +
         '          "isCurrent": true,\n' +
         '          "certifications": [],\n' +
-        '          "skills": ["..."]\n' +
+        '          "skills": ["<skill>"]\n' +
         "        }\n" +
         "      ]\n" +
         "    }\n" +
@@ -351,7 +395,89 @@ async function generateCareerPaths(
     );
   }
 
-  return {paths};
+  const localized = await localizeJson(apiKey, {paths}, languageName);
+  if (!Array.isArray(localized.paths)) {
+    throw new HttpsError(
+      "internal",
+      "Could not write career paths in the requested language.",
+    );
+  }
+  const next = normalizePaths(localized.paths as CareerPath[]);
+  if (!next.length) {
+    throw new HttpsError(
+      "internal",
+      "Could not write career paths in the requested language.",
+    );
+  }
+  return {paths: next};
+}
+
+interface AskResult {
+  answer?: string;
+}
+
+async function askCareerQuestion(
+  apiKey: string,
+  profile: ProfileInput,
+  additionalNotes: string,
+  languageName: string,
+  path: Record<string, unknown> | undefined,
+  qaHistory: {question: string; answer: string}[],
+  question: string,
+  otherPathTitles: string[],
+): Promise<Record<string, unknown>> {
+  const notes = additionalNotes.trim() || "None provided.";
+  const priorQa = qaHistory
+    .map((item) => `Q: ${item.question}\nA: ${item.answer}`)
+    .join("\n\n") || "None yet.";
+  const otherPaths = otherPathTitles.filter(Boolean).join(", ") || "None";
+
+  const result = await tryOpenAiJson<AskResult>(apiKey, [
+    {
+      role: "system",
+      content:
+        `${outputLanguageInstructions(languageName)}\n` +
+        `${CAREER_ADVISOR_PROMPT}\n${JSON_RULES} ` +
+        `The answer field must be entirely in ${languageName}.`,
+    },
+    {
+      role: "user",
+      content:
+        `Answer entirely in ${languageName}. Do not answer in English ` +
+        `unless ${languageName} is English.\n\n` +
+        "Survey / profile:\n" +
+        `${profileContext(profile, languageName)}\n\n` +
+        `${PRIORITIES_NOTE}\n\n` +
+        "Additional background notes from the user:\n" +
+        `${notes}\n\n` +
+        "This career path (steps, progress, saved notes):\n" +
+        `${JSON.stringify(path ?? {}, null, 2)}\n\n` +
+        `Other paths (titles only, for contrast): ${otherPaths}\n\n` +
+        "Prior questions and answers in this session:\n" +
+        `${priorQa}\n\n` +
+        `User question: ${question}\n\n` +
+        'Return JSON: { "answer": "..." }',
+    },
+  ]);
+
+  if (!result.ok) {
+    throw new HttpsError("unavailable", result.reason);
+  }
+
+  const answer = result.data.answer?.trim() ?? "";
+  if (!answer) {
+    throw new HttpsError("internal", "AI returned an empty answer.");
+  }
+
+  const localized = await localizeJson(apiKey, {answer}, languageName);
+  const next = localized.answer?.trim();
+  if (!next) {
+    throw new HttpsError(
+      "internal",
+      "Could not write the answer in the requested language.",
+    );
+  }
+  return {answer: next};
 }
 
 export async function handleCareerAi(
@@ -363,12 +489,40 @@ export async function handleCareerAi(
   const action = data.action ?? "generate";
   const profile = data.profile ?? {};
   const additionalNotes = data.additionalNotes ?? "";
+  const languageName = replyLanguageName(
+    data.language || data.languageCode,
+  );
+  console.info("careerMap language", {
+    language: data.language,
+    languageCode: data.languageCode,
+    profileLanguage: profile.languageCode,
+    resolved: languageName,
+  });
 
   const apiKey = OPENAI_API_KEY.value();
   if (!apiKey) {
     throw new HttpsError(
       "failed-precondition",
       "OPENAI_API_KEY is not configured on the server.",
+    );
+  }
+
+  if (action === "ask") {
+    const question = data.question?.trim() ?? "";
+    if (!question) {
+      throw new HttpsError("invalid-argument", "Provide a question.");
+    }
+    return askCareerQuestion(
+      apiKey,
+      profile,
+      additionalNotes,
+      languageName,
+      data.path,
+      data.qaHistory ?? [],
+      question,
+      (data.existingPaths ?? [])
+        .map((item) => item.title?.trim() ?? "")
+        .filter(Boolean),
     );
   }
 
@@ -394,8 +548,9 @@ export async function handleCareerAi(
       pathIndex,
       data.pathId ?? `path${pathIndex + 1}`,
       data.replacePathTitle ?? "this path",
+      languageName,
     );
   }
 
-  return generateCareerPaths(apiKey, profile, additionalNotes);
+  return generateCareerPaths(apiKey, profile, additionalNotes, languageName);
 }

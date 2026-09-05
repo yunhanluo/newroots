@@ -1,0 +1,158 @@
+{
+  "id": "safety",
+  "title": "Guía de seguridad comunitaria",
+  "subtitle": "Números de emergencia, sus derechos y cómo prepararse.",
+  "landingTitle": "Guía de seguridad comunitaria",
+  "landingBody": "Números de emergencia, sus derechos y cómo prepararse.",
+  "icon": "emergency",
+  "finishRoute": "home",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Bienvenida",
+      "intro": "",
+      "body": "Sentirse seguro en un país nuevo toma tiempo. Saber a quién llamar, cuáles son sus derechos y cómo prepararse para emergencias puede reducir el miedo y ayudar a su familia a actuar rápido cuando algo sale mal.\n\nEsta guía cubre números de emergencia que puede tocar para llamar, lo básico de Conozca sus derechos, preparación para desastres y recursos de seguridad de confianza en California y Estados Unidos.\n\nEsto es información general, no asesoría legal. Para su propio caso, hable con un abogado o una clínica de ayuda legal de confianza.",
+      "topics": []
+    },
+    {
+      "title": "Números de emergencia",
+      "intro": "Guarde estos números en su teléfono. En una emergencia real, llame de inmediato. Toque un número abajo para marcar. Si no está seguro de si algo es una emergencia, llame de todos modos y explique lo que está pasando.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "911 — Policía, incendios y emergencia médica",
+          "paragraph": "Use el 911 para peligro inmediato: incendio, lesión grave, un crimen en curso o alguien que no puede respirar. Diga primero su ubicación al operador y luego qué pasó. Puede pedir un intérprete. Quédese en la línea hasta que le digan que puede colgar.",
+          "phone": "911",
+          "phoneLabel": "Llamar al 911"
+        },
+        {
+          "heading": "988 — Línea de Prevención del Suicidio y Crisis",
+          "paragraph": "Llame o envíe un mensaje de texto al 988 si usted o alguien que quiere está en crisis emocional, pensando en el suicidio o necesita apoyo urgente de salud mental. La ayuda es gratuita y confidencial. Hay intérpretes disponibles.",
+          "phone": "988",
+          "phoneLabel": "Llamar al 988"
+        },
+        {
+          "heading": "211 — Ayuda local y recursos comunitarios",
+          "paragraph": "El 211 lo conecta con comida local, refugio, ayuda con servicios públicos y servicios comunitarios. Es útil cuando necesita apoyo pero no es una emergencia que pone en riesgo la vida.",
+          "phone": "211",
+          "phoneLabel": "Llamar al 211"
+        },
+        {
+          "heading": "Control de Envenenamientos — 1-800-222-1222",
+          "paragraph": "Llame si alguien pudo haber tragado medicina, productos de limpieza, plantas o químicos por error. Tenga el producto cerca si puede. Le dirán qué hacer después.",
+          "phone": "18002221222",
+          "phoneLabel": "Llamar a Control de Envenenamientos"
+        },
+        {
+          "heading": "Línea Nacional contra la Violencia Doméstica — 1-800-799-7233",
+          "paragraph": "Llame si usted o alguien que conoce está siendo lastimado, controlado o amenazado por una pareja o un familiar. La ayuda es confidencial. También puede visitar thehotline.org para opciones de chat.",
+          "phone": "18007997233",
+          "phoneLabel": "Llamar a la línea de ayuda"
+        },
+        {
+          "heading": "Línea de policía que no es de emergencia",
+          "paragraph": "Para quejas de ruido, reportes de robo después de que ocurrió o preguntas que no son urgentes, use el número de policía de no emergencia de su ciudad en lugar del 911. Busque “[su ciudad] police non emergency” o pregunte a un bibliotecario. Guarde ese número junto al 911."
+        }
+      ]
+    },
+    {
+      "title": "Conozca sus derechos",
+      "intro": "En Estados Unidos, las personas tienen derechos importantes al tratar con la policía y oficiales de inmigración. Las reglas pueden ser complejas y cada situación es diferente. Los puntos de abajo son bases comunes que muchas personas recién llegadas encuentran útiles. No sustituyen el consejo de un abogado de inmigración o de defensa penal. Si alguna vez no está seguro, pida un abogado y evite adivinar.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Puede permanecer en silencio",
+          "paragraph": "En general tiene derecho a permanecer en silencio. Puede decir con claridad, en inglés: “I want to remain silent. I want a lawyer.” (Quiero permanecer en silencio. Quiero un abogado.) Luego deje de responder preguntas sobre su estatus migratorio, dónde nació o cómo entró al país. No mienta y no muestre documentos falsos. Mentir a oficiales federales puede crear problemas legales graves. Permanecer en silencio no es lo mismo que huir o discutir. Hable con calma, mantenga las manos visibles y repita que quiere un abogado si las preguntas continúan."
+        },
+        {
+          "heading": "Pregunte si es libre de irse",
+          "paragraph": "Si oficiales lo detienen en la calle o en un lugar público, puede preguntar, en inglés: “Am I free to leave?” (¿Soy libre de irme?) Si dicen que sí, puede irse con calma. Si dicen que no, puede permanecer en silencio y pedir un abogado. No tiene que consentir una búsqueda de su bolsa, bolsillos o teléfono. Puede decir: “I do not consent to a search.” (No consiento una búsqueda.) Los oficiales aún pueden registrar en algunas situaciones, pero palabras claras lo ayudan después. No resista físicamente un registro. Manténgase en calma y recuerde los detalles para contarle a un abogado lo que pasó."
+        },
+        {
+          "heading": "Entrada a la casa",
+          "paragraph": "En muchas situaciones, los oficiales necesitan una orden firmada por un juez para entrar a su casa. Puede pedirles que deslicen la orden debajo de la puerta o la muestren en una ventana para que usted la lea. Verifique que tenga su dirección y la firma de un juez. No tiene que abrir la puerta solo porque alguien toca o dice que es la policía. Si no está seguro, no abra la puerta. Llame a un abogado de confianza, a una línea de ayuda legal o a un familiar que pueda ayudarle a obtener consejo en su idioma. Abrir la puerta e invitar a alguien a entrar puede hacer más difícil cuestionar la entrada después."
+        },
+        {
+          "heading": "Lleve documentos importantes con cuidado",
+          "paragraph": "Guarde copias de documentos clave en un lugar seguro en casa y considere un pequeño juego de copias en una carpeta cerrada si viaja. Copias útiles pueden incluir identificación, papeles de inmigración y contactos de emergencia. Comparta papeles sensibles solo cuando confíe en la persona u oficina que los pide, como un tribunal, un abogado con licencia o una cita oficial del gobierno. Tenga cuidado con personas que exigen dinero o documentos originales por “ayuda de inmigración” sin licencia. Si alguien lo presiona a entregar pasaportes o pagar en efectivo de inmediato, pause y consulte primero con una clínica de ayuda legal."
+        },
+        {
+          "heading": "Obtenga ayuda de organizaciones legales de confianza",
+          "paragraph": "Para preguntas de inmigración, use abogados con licencia o representantes acreditados. La Oficina Ejecutiva de Revisión de Inmigración y las clínicas de ayuda legal sin fines de lucro pueden ayudarle a encontrar apoyo de bajo costo. Tenga cuidado de cualquiera que no sea abogado con licencia ni representante acreditado pero ofrezca asesoría legal de inmigración, llene formularios por una tarifa o prometa una visa o green card garantizada. Los estafadores a veces usan títulos que suenan oficiales para parecer confiables. Pida su nombre completo, licencia o acreditación y un recibo por escrito. Si se niegan, aléjese y consulte con una clínica de ayuda legal antes de pagar.",
+          "url": "https://www.justice.gov/eoir/find-legal-representation"
+        }
+      ]
+    },
+    {
+      "title": "Preparación para desastres",
+      "intro": "California enfrenta terremotos, incendios forestales, olas de calor e inundaciones. Un plan familiar simple hace las emergencias menos caóticas, especialmente si el inglés no es su primer idioma. No necesita equipo caro. Empiece con un punto de reunión, una bolsa pequeña y una forma de recibir alertas.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Haga un plan familiar",
+          "paragraph": "Decida dónde se reunirán si los teléfonos dejan de funcionar, como la casa de un vecino, una escuela o un parque cercano. También elija un segundo punto de reunión más lejos por si su cuadra está cerrada. Anote números de contacto fuera de la zona de un pariente o amigo que viva en otra ciudad. Practique cómo saldrían de casa rápido, incluso de noche. Asegúrese de que los niños sepan su nombre completo, dirección y el teléfono de un padre. Si alguien en su casa necesita medicina, ayuda para moverse o apoyo de idioma, planifique quién lo asistirá."
+        },
+        {
+          "heading": "Prepare una bolsa para salir rápido",
+          "paragraph": "Tenga lista una bolsa que pueda agarrar en un minuto. Incluya agua, refrigerios, linterna, baterías, copias de identificaciones y papeles importantes, un botiquín pequeño, mascarillas, medicamentos, efectivo en billetes pequeños y cargadores de teléfono. Agregue un silbato, una prenda abrigada y cualquier suministro para bebés o adultos mayores que su familia necesite. Guarde la bolsa donde todos puedan alcanzarla. Revísela cada pocos meses y reemplace comida, agua y medicina vencidas. Tenga una versión más corta en el auto si maneja."
+        },
+        {
+          "heading": "Conozca las alertas locales",
+          "paragraph": "Active las Alertas de Emergencia Inalámbricas en su teléfono para que las advertencias urgentes le lleguen aunque no esté viendo las noticias. Inscríbase en las alertas de emergencia de su ciudad o condado si están disponibles. Durante incendios forestales, tormentas e inundaciones, siga actualizaciones oficiales de su ciudad, la Oficina de Servicios de Emergencia del condado o Cal OES. No confíe solo en rumores de redes sociales. Si una alerta dice que evacúe, salga temprano en lugar de esperar a ver si las condiciones mejoran.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "Terremotos",
+          "paragraph": "Si siente temblor, Agáchese, Cúbrase y Afírmese (Drop, Cover, and Hold On) debajo de una mesa o escritorio firme si puede. Proteja su cabeza y cuello. Aléjese de ventanas, espejos y muebles altos que puedan caer. Si está afuera, muévase a un área abierta lejos de edificios, árboles y cables eléctricos. Si está en la cama, quédese ahí y cubra su cabeza con una almohada, a menos que esté bajo una lámpara pesada. Después de que pare el temblor, revise si hay heridos y olor a gas. Si huele gas, salga del edificio y pida ayuda desde afuera. Espere réplicas. Si debe evacuar, lleve su bolsa y siga las instrucciones oficiales."
+        },
+        {
+          "heading": "Incendios forestales y humo",
+          "paragraph": "Si las autoridades le dicen que evacúe, salga temprano. Las carreteras pueden cerrarse rápido. Empaque primero documentos, medicamentos, teléfonos, cargadores y mascotas. Use mangas largas y zapatos resistentes si puede. Durante humo denso, quédese adentro cuando sea posible, cierre ventanas y ponga el aire acondicionado en recirculación si lo tiene. Si debe salir, use una mascarilla bien ajustada diseñada para filtrar partículas finas cuando tenga una. Consulte airnow.gov para la calidad del aire. Las personas con asma, problemas del corazón, niños pequeños y adultos mayores deben tener especial cuidado en días de humo.",
+          "url": "https://www.airnow.gov/"
+        },
+        {
+          "heading": "Inundaciones",
+          "paragraph": "Las inundaciones pueden ocurrir después de lluvias fuertes, descargas de presas o cuando los drenajes se desbordan. Muévase a terreno más alto tan pronto como las autoridades locales le avisen. Nunca camine, nade ni maneje por agua de inundación. El agua que parece poco profunda puede esconder corrientes fuertes, drenajes abiertos o carreteras destruidas. Seis pulgadas de agua en movimiento pueden derribar a una persona, y uno o dos pies pueden llevarse un auto. Si su auto se detiene en agua que sube, salga y muévase a terreno más alto si es seguro. Dé la vuelta si una carretera está cerrada o cubierta de agua. Después de una inundación, evite edificios dañados hasta que los revisen, tire comida que tocó el agua y tenga cuidado con agua contaminada y cables caídos. Escuche avisos de hervir el agua de su ciudad o condado.",
+          "url": "https://www.ready.gov/floods"
+        },
+        {
+          "heading": "Olas de calor",
+          "paragraph": "El calor extremo puede ser peligroso, especialmente para niños, adultos mayores, personas embarazadas y cualquiera que trabaje afuera. Beba agua seguido, aunque no sienta sed. Quédese en lugares frescos durante la parte más caliente del día. Use ventiladores, duchas frías y paños húmedos si no tiene aire acondicionado. Revise a vecinos y familiares que viven solos. Nunca deje niños ni mascotas en un auto estacionado. Señales de alerta de enfermedad por calor incluyen mareo, dolor de cabeza, náusea, confusión y dejar de sudar. Si alguien se confunde o se desmaya por el calor, llame al 911.",
+          "url": "https://www.ready.gov/heat"
+        }
+      ]
+    },
+    {
+      "title": "Recursos de seguridad de confianza",
+      "intro": "Use organizaciones oficiales y bien conocidas cuando necesite ayuda más profunda. Estos sitios son un punto de partida seguro.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Ready.gov",
+          "paragraph": "Guías federales de preparación para emergencias para familias, con listas de verificación e información sobre peligros en varios idiomas.",
+          "url": "https://www.ready.gov/"
+        },
+        {
+          "heading": "Oficina de Servicios de Emergencia de California (Cal OES)",
+          "paragraph": "Información de emergencias del estado, alertas y recursos de preparación para residentes de California.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "Cruz Roja Americana",
+          "paragraph": "Ayuda en desastres, clases de primeros auxilios y apoyo de capítulos locales después de incendios, inundaciones y otras emergencias.",
+          "url": "https://www.redcross.org/"
+        },
+        {
+          "heading": "Immigrant Legal Resource Center (ILRC)",
+          "paragraph": "Materiales educativos de Conozca sus derechos y referencias relacionadas con inmigración. Esto es información, no un sustituto de su propio abogado.",
+          "url": "https://www.ilrc.org/"
+        },
+        {
+          "heading": "findhelp.org",
+          "paragraph": "Busque por código postal ayuda local gratuita o de bajo costo con comida, vivienda, salud y más.",
+          "url": "https://www.findhelp.org/"
+        }
+      ]
+    }
+  ]
+}

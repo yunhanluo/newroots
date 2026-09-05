@@ -3,6 +3,7 @@
  */
 import {HttpsError, CallableRequest} from "firebase-functions/v2/https";
 import {defineSecret} from "firebase-functions/params";
+import {outputLanguageInstructions, replyLanguageName} from "./ai_language.js";
 
 const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 
@@ -88,7 +89,7 @@ export async function handleHousingAi(
 
   const sectionTitle = data.sectionTitle?.trim() || "Housing";
   const sectionSummary = data.sectionSummary?.trim() || "";
-  const language = data.language?.trim() || "en";
+  const languageName = replyLanguageName(data.language);
 
   const history: {role: string; content: string}[] = [];
   for (const turn of data.history ?? []) {
@@ -102,12 +103,19 @@ export async function handleHousingAi(
   const sectionContext =
     `Current tutorial section: ${sectionTitle}\n` +
     (sectionSummary ? `Section summary: ${sectionSummary}\n` : "") +
-    `Reply language preference: ${language}\n` +
+    `${outputLanguageInstructions(languageName)}\n` +
+    `Reply language: ${languageName}. Write the entire answer in ${languageName}. ` +
+    `Do not use English unless ${languageName} is English.\n` +
     "Use the section context for grounding. The user may ask follow-ups " +
     "that refer to earlier messages in this temporary conversation.";
 
   const answer = await askOpenAi(apiKey, [
-    {role: "system", content: HOUSING_ADVISOR_PROMPT},
+    {
+      role: "system",
+      content:
+        `${HOUSING_ADVISOR_PROMPT}\n${outputLanguageInstructions(languageName)} ` +
+        `Write the entire answer in ${languageName}.`,
+    },
     {role: "system", content: sectionContext},
     ...history,
     {role: "user", content: question},

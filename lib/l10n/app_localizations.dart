@@ -246,6 +246,12 @@ abstract class AppLocalizations {
   /// **'Create account'**
   String get actionCreateAccount;
 
+  /// No description provided for @actionStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get actionStart;
+
   /// No description provided for @actionPrevious.
   ///
   /// In en, this message translates to:
@@ -905,6 +911,564 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} messages in this thread'**
   String scamThreadCount(int count);
+
+  /// No description provided for @actionSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get actionSend;
+
+  /// No description provided for @actionDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get actionDelete;
+
+  /// No description provided for @followupAsk.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask'**
+  String get followupAsk;
+
+  /// No description provided for @followupSaveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Save note'**
+  String get followupSaveNote;
+
+  /// No description provided for @followupDeleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete note'**
+  String get followupDeleteNote;
+
+  /// No description provided for @followupQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Q: {question}'**
+  String followupQuestion(String question);
+
+  /// No description provided for @careerSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to explore career pathways.'**
+  String get careerSignIn;
+
+  /// No description provided for @careerAddPriorJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your prior job in your profile survey, or describe your background in the notes below.'**
+  String get careerAddPriorJob;
+
+  /// No description provided for @careerGoToProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to profile'**
+  String get careerGoToProfile;
+
+  /// No description provided for @careerPriorEmployment.
+  ///
+  /// In en, this message translates to:
+  /// **'Prior employment (from your survey)'**
+  String get careerPriorEmployment;
+
+  /// No description provided for @careerAdditionalBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional background'**
+  String get careerAdditionalBackground;
+
+  /// No description provided for @careerAdditionalBackgroundHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills, education, certifications, languages, or career goals that will help the AI suggest better paths.'**
+  String get careerAdditionalBackgroundHelp;
+
+  /// No description provided for @careerAdditionalBackgroundHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 5 years as an electrician, vocational diploma, interested in solar installation…'**
+  String get careerAdditionalBackgroundHint;
+
+  /// No description provided for @careerGenerateAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate career paths'**
+  String get careerGenerateAll;
+
+  /// No description provided for @careerRegenerateAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Regenerate all paths'**
+  String get careerRegenerateAll;
+
+  /// No description provided for @careerGenerating.
+  ///
+  /// In en, this message translates to:
+  /// **'Mapping career pathways…'**
+  String get careerGenerating;
+
+  /// No description provided for @careerNeedBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Add notes about your skills or education first.'**
+  String get careerNeedBackground;
+
+  /// No description provided for @careerCouldNotSaveChecklist.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save checklist progress.'**
+  String get careerCouldNotSaveChecklist;
+
+  /// No description provided for @careerCouldNotSaveStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save step progress.'**
+  String get careerCouldNotSaveStep;
+
+  /// No description provided for @careerCouldNotSaveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save note.'**
+  String get careerCouldNotSaveNote;
+
+  /// No description provided for @careerCouldNotDeleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete that note.'**
+  String get careerCouldNotDeleteNote;
+
+  /// No description provided for @careerDeleteNoteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this note?'**
+  String get careerDeleteNoteTitle;
+
+  /// No description provided for @careerDeleteNoteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This removes the note from this career path.'**
+  String get careerDeleteNoteBody;
+
+  /// No description provided for @careerGeneratePathTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate this path?'**
+  String get careerGeneratePathTitle;
+
+  /// No description provided for @careerRegeneratePathTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Regenerate this path?'**
+  String get careerRegeneratePathTitle;
+
+  /// No description provided for @careerGeneratePathBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an AI-generated career path for Path {number}. Your other paths and notes are kept.'**
+  String careerGeneratePathBody(int number);
+
+  /// No description provided for @careerRegeneratePathBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace \"{title}\" with a new AI-generated career path. Your other paths and notes are kept.'**
+  String careerRegeneratePathBody(String title);
+
+  /// No description provided for @careerGenerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate'**
+  String get careerGenerate;
+
+  /// No description provided for @careerRegenerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Regenerate'**
+  String get careerRegenerate;
+
+  /// No description provided for @careerPathNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Path {number}'**
+  String careerPathNumber(int number);
+
+  /// No description provided for @careerPathHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Path {number}: {title}'**
+  String careerPathHeading(int number, String title);
+
+  /// No description provided for @careerPlaceholderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A career pathway will appear here once generated.'**
+  String get careerPlaceholderBody;
+
+  /// No description provided for @careerPlaceholderStartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting point'**
+  String get careerPlaceholderStartTitle;
+
+  /// No description provided for @careerPlaceholderStartBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your current experience and background.'**
+  String get careerPlaceholderStartBody;
+
+  /// No description provided for @careerPlaceholderCredsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Build credentials'**
+  String get careerPlaceholderCredsTitle;
+
+  /// No description provided for @careerPlaceholderCredsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Licenses, training, and skills to develop.'**
+  String get careerPlaceholderCredsBody;
+
+  /// No description provided for @careerPlaceholderTargetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Target role'**
+  String get careerPlaceholderTargetTitle;
+
+  /// No description provided for @careerPlaceholderTargetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your future career goal in the US.'**
+  String get careerPlaceholderTargetBody;
+
+  /// No description provided for @careerCertifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Certifications & licenses'**
+  String get careerCertifications;
+
+  /// No description provided for @careerSkills.
+  ///
+  /// In en, this message translates to:
+  /// **'Skills to develop'**
+  String get careerSkills;
+
+  /// No description provided for @careerTimeEstimate.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Estimate'**
+  String get careerTimeEstimate;
+
+  /// No description provided for @careerStepCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get careerStepCompleted;
+
+  /// No description provided for @careerStepNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get careerStepNow;
+
+  /// No description provided for @careerStepNowWithDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Now ({duration})'**
+  String careerStepNowWithDuration(String duration);
+
+  /// No description provided for @careerTimePending.
+  ///
+  /// In en, this message translates to:
+  /// **'Time estimate pending'**
+  String get careerTimePending;
+
+  /// No description provided for @careerUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get careerUndo;
+
+  /// No description provided for @careerMarkComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark complete'**
+  String get careerMarkComplete;
+
+  /// No description provided for @careerFinishStepAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish the step above first.'**
+  String get careerFinishStepAbove;
+
+  /// No description provided for @careerUndoLaterStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo the later step first.'**
+  String get careerUndoLaterStep;
+
+  /// No description provided for @careerAskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about this path'**
+  String get careerAskTitle;
+
+  /// No description provided for @careerAskSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions use this path\'s steps, notes, and your background. Answers stay on this page until you leave. Save anything you want to keep as a note.'**
+  String get careerAskSubtitle;
+
+  /// No description provided for @careerAskHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about a step, license, or how to get started…'**
+  String get careerAskHint;
+
+  /// No description provided for @careerNotesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes for this path'**
+  String get careerNotesTitle;
+
+  /// No description provided for @careerNotesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track progress on this pathway. Saved and shared with the AI.'**
+  String get careerNotesSubtitle;
+
+  /// No description provided for @careerNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What have you done for this path?'**
+  String get careerNotesHint;
+
+  /// No description provided for @roadmapSettlementPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Your settlement plan based on your survey answers.'**
+  String get roadmapSettlementPlan;
+
+  /// No description provided for @roadmapRegenerateAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Regenerate all'**
+  String get roadmapRegenerateAll;
+
+  /// No description provided for @roadmapRegenerateAllTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Regenerate entire roadmap?'**
+  String get roadmapRegenerateAllTitle;
+
+  /// No description provided for @roadmapRegenerateAllBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This replaces all three sections with a fresh AI plan. Your section notes are kept.'**
+  String get roadmapRegenerateAllBody;
+
+  /// No description provided for @roadmapCreating.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating your personalized roadmap…'**
+  String get roadmapCreating;
+
+  /// No description provided for @roadmapAnswerQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer the questions below so we can finish your roadmap.'**
+  String get roadmapAnswerQuestions;
+
+  /// No description provided for @roadmapUpdating.
+  ///
+  /// In en, this message translates to:
+  /// **'Updating your roadmap…'**
+  String get roadmapUpdating;
+
+  /// No description provided for @roadmapGenerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate Roadmap'**
+  String get roadmapGenerate;
+
+  /// No description provided for @roadmapNoRoadmap.
+  ///
+  /// In en, this message translates to:
+  /// **'No roadmap yet. Tap below to generate one from your survey.'**
+  String get roadmapNoRoadmap;
+
+  /// No description provided for @roadmapEmptySurvey.
+  ///
+  /// In en, this message translates to:
+  /// **'Take the onboarding survey so we can build a personalized roadmap.'**
+  String get roadmapEmptySurvey;
+
+  /// No description provided for @roadmapRegenerateSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Regenerate {section}?'**
+  String roadmapRegenerateSectionTitle(String section);
+
+  /// No description provided for @roadmapRegenerateSectionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This section will be replaced with a new AI-generated plan. Your notes for this section are kept.'**
+  String get roadmapRegenerateSectionBody;
+
+  /// No description provided for @roadmapAskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about this section'**
+  String get roadmapAskTitle;
+
+  /// No description provided for @roadmapAskSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions use this section\'s checklist, notes, and your survey. Answers stay on this page until you leave. Save anything you want to keep as a note.'**
+  String get roadmapAskSubtitle;
+
+  /// No description provided for @roadmapAskHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about a step in this section…'**
+  String get roadmapAskHint;
+
+  /// No description provided for @roadmapNotesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes for this section'**
+  String get roadmapNotesTitle;
+
+  /// No description provided for @roadmapNotesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track progress on these steps. Saved and shared with the AI.'**
+  String get roadmapNotesSubtitle;
+
+  /// No description provided for @roadmapNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What have you done for this section?'**
+  String get roadmapNotesHint;
+
+  /// No description provided for @roadmapNoChecklist.
+  ///
+  /// In en, this message translates to:
+  /// **'No checklist items yet.'**
+  String get roadmapNoChecklist;
+
+  /// No description provided for @roadmapCouldNotSaveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save note.'**
+  String get roadmapCouldNotSaveNote;
+
+  /// No description provided for @roadmapCouldNotDeleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not delete that note.'**
+  String get roadmapCouldNotDeleteNote;
+
+  /// No description provided for @roadmapDeleteNoteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this note?'**
+  String get roadmapDeleteNoteTitle;
+
+  /// No description provided for @roadmapDeleteNoteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This removes the note from this section.'**
+  String get roadmapDeleteNoteBody;
+
+  /// No description provided for @roadmapAiUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'AI service is unavailable.'**
+  String get roadmapAiUnavailable;
+
+  /// No description provided for @roadmapAiCouldNotAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'AI could not answer.'**
+  String get roadmapAiCouldNotAnswer;
+
+  /// No description provided for @roadmapSectionFirstMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'First Month'**
+  String get roadmapSectionFirstMonth;
+
+  /// No description provided for @roadmapSectionFirstThreeMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'First 3 Months'**
+  String get roadmapSectionFirstThreeMonths;
+
+  /// No description provided for @roadmapSectionFirstYear.
+  ///
+  /// In en, this message translates to:
+  /// **'First Year'**
+  String get roadmapSectionFirstYear;
+
+  /// No description provided for @roadmapQuestionOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String roadmapQuestionOf(int current, int total);
+
+  /// No description provided for @roadmapOneQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'One quick question'**
+  String get roadmapOneQuestion;
+
+  /// No description provided for @roadmapUpNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Up next: {question}'**
+  String roadmapUpNext(String question);
+
+  /// No description provided for @roadmapYourAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer'**
+  String get roadmapYourAnswer;
+
+  /// No description provided for @guideLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'This guide could not be loaded. Try again when you are online.'**
+  String get guideLoadError;
+
+  /// No description provided for @guideNoSections.
+  ///
+  /// In en, this message translates to:
+  /// **'This guide has no sections.'**
+  String get guideNoSections;
+
+  /// No description provided for @guideSectionOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Section {current} of {total}'**
+  String guideSectionOf(int current, int total);
+
+  /// No description provided for @housingAskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about housing'**
+  String get housingAskTitle;
+
+  /// No description provided for @housingAskHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a question…'**
+  String get housingAskHint;
+
+  /// No description provided for @housingAskFollowUpHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask a follow-up…'**
+  String get housingAskFollowUpHint;
 }
 
 class _AppLocalizationsDelegate

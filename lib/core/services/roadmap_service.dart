@@ -64,10 +64,30 @@ class RoadmapService {
       text: text.trim(),
       createdAt: DateTime.now(),
     );
-    await ref.set({
-      '${key.firestoreKey}.notes': FieldValue.arrayUnion([note.toMap()]),
+    await _appendToSectionList(ref, key, 'notes', note.toMap());
+  }
+
+  Future<void> deleteNote(RoadmapSectionKey key, RoadmapNote note) async {
+    final ref = _docRef();
+    if (ref == null) throw StateError('No signed-in user.');
+    final current = await getRoadmap();
+    final remaining = current
+        .sectionFor(key)
+        .notes
+        .where((item) => !_sameNote(item, note))
+        .map((item) => item.toMap())
+        .toList();
+    await ref.update({
+      '${key.firestoreKey}.notes': remaining,
+      FieldPath(['${key.firestoreKey}.notes']): FieldValue.delete(),
       'updatedAt': DateTime.now().toIso8601String(),
-    }, SetOptions(merge: true));
+    });
+  }
+
+  bool _sameNote(RoadmapNote left, RoadmapNote right) {
+    if (left.id.isNotEmpty && right.id.isNotEmpty) return left.id == right.id;
+    return left.text == right.text &&
+        left.createdAt.toIso8601String() == right.createdAt.toIso8601String();
   }
 
   Future<void> updateSection(
@@ -82,17 +102,30 @@ class RoadmapService {
     }, SetOptions(merge: true));
   }
 
-  Future<void> addQaExchange(
+  /// `set(merge: true)` treats `'firstMonth.notes'` as a literal field name.
+  /// `update()` is required so dotted paths write into the nested section map.
+  Future<void> _appendToSectionList(
+    DocumentReference<Map<String, dynamic>> ref,
     RoadmapSectionKey key,
-    RoadmapQaExchange exchange,
+    String listField,
+    Map<String, dynamic> item,
   ) async {
-    final ref = _docRef();
-    if (ref == null) throw StateError('No signed-in user.');
-    await ref.set({
-      '${key.firestoreKey}.qaHistory':
-          FieldValue.arrayUnion([exchange.toMap()]),
+    final path = '${key.firestoreKey}.$listField';
+    final payload = {
+      path: FieldValue.arrayUnion([item]),
       'updatedAt': DateTime.now().toIso8601String(),
-    }, SetOptions(merge: true));
+    };
+    try {
+      await ref.update(payload);
+    } on FirebaseException catch (error) {
+      if (error.code != 'not-found') rethrow;
+      await ref.set({
+        key.firestoreKey: {
+          listField: [item],
+        },
+        'updatedAt': DateTime.now().toIso8601String(),
+      }, SetOptions(merge: true));
+    }
   }
 
   Future<void> addClarification(ClarificationExchange exchange) async {

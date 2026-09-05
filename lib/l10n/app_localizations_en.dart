@@ -81,6 +81,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get actionCreateAccount => 'Create account';
 
   @override
+  String get actionStart => 'Start';
+
+  @override
   String get actionPrevious => 'Previous';
 
   @override
@@ -426,4 +429,326 @@ class AppLocalizationsEn extends AppLocalizations {
   String scamThreadCount(int count) {
     return '$count messages in this thread';
   }
+
+  @override
+  String get actionSend => 'Send';
+
+  @override
+  String get actionDelete => 'Delete';
+
+  @override
+  String get followupAsk => 'Ask';
+
+  @override
+  String get followupSaveNote => 'Save note';
+
+  @override
+  String get followupDeleteNote => 'Delete note';
+
+  @override
+  String followupQuestion(String question) {
+    return 'Q: $question';
+  }
+
+  @override
+  String get careerSignIn => 'Sign in to explore career pathways.';
+
+  @override
+  String get careerAddPriorJob =>
+      'Add your prior job in your profile survey, or describe your background in the notes below.';
+
+  @override
+  String get careerGoToProfile => 'Go to profile';
+
+  @override
+  String get careerPriorEmployment => 'Prior employment (from your survey)';
+
+  @override
+  String get careerAdditionalBackground => 'Additional background';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      'Skills, education, certifications, languages, or career goals that will help the AI suggest better paths.';
+
+  @override
+  String get careerAdditionalBackgroundHint =>
+      'e.g. 5 years as an electrician, vocational diploma, interested in solar installation…';
+
+  @override
+  String get careerGenerateAll => 'Generate career paths';
+
+  @override
+  String get careerRegenerateAll => 'Regenerate all paths';
+
+  @override
+  String get careerGenerating => 'Mapping career pathways…';
+
+  @override
+  String get careerNeedBackground =>
+      'Add notes about your skills or education first.';
+
+  @override
+  String get careerCouldNotSaveChecklist =>
+      'Could not save checklist progress.';
+
+  @override
+  String get careerCouldNotSaveStep => 'Could not save step progress.';
+
+  @override
+  String get careerCouldNotSaveNote => 'Could not save note.';
+
+  @override
+  String get careerCouldNotDeleteNote => 'Could not delete that note.';
+
+  @override
+  String get careerDeleteNoteTitle => 'Delete this note?';
+
+  @override
+  String get careerDeleteNoteBody =>
+      'This removes the note from this career path.';
+
+  @override
+  String get careerGeneratePathTitle => 'Generate this path?';
+
+  @override
+  String get careerRegeneratePathTitle => 'Regenerate this path?';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return 'Create an AI-generated career path for Path $number. Your other paths and notes are kept.';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return 'Replace \"$title\" with a new AI-generated career path. Your other paths and notes are kept.';
+  }
+
+  @override
+  String get careerGenerate => 'Generate';
+
+  @override
+  String get careerRegenerate => 'Regenerate';
+
+  @override
+  String careerPathNumber(int number) {
+    return 'Path $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return 'Path $number: $title';
+  }
+
+  @override
+  String get careerPlaceholderBody =>
+      'A career pathway will appear here once generated.';
+
+  @override
+  String get careerPlaceholderStartTitle => 'Starting point';
+
+  @override
+  String get careerPlaceholderStartBody =>
+      'Your current experience and background.';
+
+  @override
+  String get careerPlaceholderCredsTitle => 'Build credentials';
+
+  @override
+  String get careerPlaceholderCredsBody =>
+      'Licenses, training, and skills to develop.';
+
+  @override
+  String get careerPlaceholderTargetTitle => 'Target role';
+
+  @override
+  String get careerPlaceholderTargetBody =>
+      'Your future career goal in the US.';
+
+  @override
+  String get careerCertifications => 'Certifications & licenses';
+
+  @override
+  String get careerSkills => 'Skills to develop';
+
+  @override
+  String get careerTimeEstimate => 'Time Estimate';
+
+  @override
+  String get careerStepCompleted => 'Completed';
+
+  @override
+  String get careerStepNow => 'Now';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return 'Now ($duration)';
+  }
+
+  @override
+  String get careerTimePending => 'Time estimate pending';
+
+  @override
+  String get careerUndo => 'Undo';
+
+  @override
+  String get careerMarkComplete => 'Mark complete';
+
+  @override
+  String get careerFinishStepAbove => 'Finish the step above first.';
+
+  @override
+  String get careerUndoLaterStep => 'Undo the later step first.';
+
+  @override
+  String get careerAskTitle => 'Ask about this path';
+
+  @override
+  String get careerAskSubtitle =>
+      'Questions use this path\'s steps, notes, and your background. Answers stay on this page until you leave. Save anything you want to keep as a note.';
+
+  @override
+  String get careerAskHint =>
+      'Ask about a step, license, or how to get started…';
+
+  @override
+  String get careerNotesTitle => 'Notes for this path';
+
+  @override
+  String get careerNotesSubtitle =>
+      'Track progress on this pathway. Saved and shared with the AI.';
+
+  @override
+  String get careerNotesHint => 'What have you done for this path?';
+
+  @override
+  String get roadmapSettlementPlan =>
+      'Your settlement plan based on your survey answers.';
+
+  @override
+  String get roadmapRegenerateAll => 'Regenerate all';
+
+  @override
+  String get roadmapRegenerateAllTitle => 'Regenerate entire roadmap?';
+
+  @override
+  String get roadmapRegenerateAllBody =>
+      'This replaces all three sections with a fresh AI plan. Your section notes are kept.';
+
+  @override
+  String get roadmapCreating => 'Creating your personalized roadmap…';
+
+  @override
+  String get roadmapAnswerQuestions =>
+      'Answer the questions below so we can finish your roadmap.';
+
+  @override
+  String get roadmapUpdating => 'Updating your roadmap…';
+
+  @override
+  String get roadmapGenerate => 'Generate Roadmap';
+
+  @override
+  String get roadmapNoRoadmap =>
+      'No roadmap yet. Tap below to generate one from your survey.';
+
+  @override
+  String get roadmapEmptySurvey =>
+      'Take the onboarding survey so we can build a personalized roadmap.';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return 'Regenerate $section?';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody =>
+      'This section will be replaced with a new AI-generated plan. Your notes for this section are kept.';
+
+  @override
+  String get roadmapAskTitle => 'Ask about this section';
+
+  @override
+  String get roadmapAskSubtitle =>
+      'Questions use this section\'s checklist, notes, and your survey. Answers stay on this page until you leave. Save anything you want to keep as a note.';
+
+  @override
+  String get roadmapAskHint => 'Ask about a step in this section…';
+
+  @override
+  String get roadmapNotesTitle => 'Notes for this section';
+
+  @override
+  String get roadmapNotesSubtitle =>
+      'Track progress on these steps. Saved and shared with the AI.';
+
+  @override
+  String get roadmapNotesHint => 'What have you done for this section?';
+
+  @override
+  String get roadmapNoChecklist => 'No checklist items yet.';
+
+  @override
+  String get roadmapCouldNotSaveNote => 'Could not save note.';
+
+  @override
+  String get roadmapCouldNotDeleteNote => 'Could not delete that note.';
+
+  @override
+  String get roadmapDeleteNoteTitle => 'Delete this note?';
+
+  @override
+  String get roadmapDeleteNoteBody =>
+      'This removes the note from this section.';
+
+  @override
+  String get roadmapAiUnavailable => 'AI service is unavailable.';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'AI could not answer.';
+
+  @override
+  String get roadmapSectionFirstMonth => 'First Month';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => 'First 3 Months';
+
+  @override
+  String get roadmapSectionFirstYear => 'First Year';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get roadmapOneQuestion => 'One quick question';
+
+  @override
+  String roadmapUpNext(String question) {
+    return 'Up next: $question';
+  }
+
+  @override
+  String get roadmapYourAnswer => 'Your answer';
+
+  @override
+  String get guideLoadError =>
+      'This guide could not be loaded. Try again when you are online.';
+
+  @override
+  String get guideNoSections => 'This guide has no sections.';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return 'Section $current of $total';
+  }
+
+  @override
+  String get housingAskTitle => 'Ask about housing';
+
+  @override
+  String get housingAskHint => 'Type a question…';
+
+  @override
+  String get housingAskFollowUpHint => 'Ask a follow-up…';
 }

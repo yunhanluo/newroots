@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/models/career.dart';
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../core/widgets/ai_body_text.dart';
+import '../../../../core/widgets/followup_panels.dart';
+import '../../../../l10n/app_localizations.dart';
 
 typedef CareerChecklistToggle = void Function({
   required String stepId,
   required bool isSkill,
   required int itemIndex,
   required bool done,
+});
+
+typedef CareerStepCompleteToggle = void Function({
+  required String stepId,
+  required bool complete,
 });
 
 class CareerPathCard extends StatelessWidget {
@@ -18,6 +26,16 @@ class CareerPathCard extends StatelessWidget {
     this.path,
     this.regenerating = false,
     this.onToggleChecklist,
+    this.onToggleStepComplete,
+    this.qaController,
+    this.noteController,
+    this.qaHistory = const [],
+    this.qaLoading = false,
+    this.noteSubmitting = false,
+    this.deletingNoteId,
+    this.onAskQuestion,
+    this.onSubmitNote,
+    this.onDeleteNote,
   });
 
   final CareerPath? path;
@@ -25,6 +43,16 @@ class CareerPathCard extends StatelessWidget {
   final VoidCallback onRegenerate;
   final bool regenerating;
   final CareerChecklistToggle? onToggleChecklist;
+  final CareerStepCompleteToggle? onToggleStepComplete;
+  final TextEditingController? qaController;
+  final TextEditingController? noteController;
+  final List<CareerQaExchange> qaHistory;
+  final bool qaLoading;
+  final bool noteSubmitting;
+  final String? deletingNoteId;
+  final VoidCallback? onAskQuestion;
+  final VoidCallback? onSubmitNote;
+  final ValueChanged<CareerNote>? onDeleteNote;
 
   bool get _isPlaceholder => path == null || !path!.hasContent;
 
@@ -39,6 +67,7 @@ class CareerPathCard extends StatelessWidget {
     }
 
     final path = this.path!;
+    final l10n = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(20),
@@ -54,7 +83,7 @@ class CareerPathCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Path ${index + 1}: ${path.title}',
+                  l10n.careerPathHeading(index + 1, path.title),
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -72,14 +101,14 @@ class CareerPathCard extends StatelessWidget {
                 TextButton.icon(
                   onPressed: onRegenerate,
                   icon: const Icon(Icons.refresh, size: 18),
-                  label: const Text('Regenerate'),
+                  label: Text(l10n.careerRegenerate),
                   style: TextButton.styleFrom(foregroundColor: kBrandGreen),
                 ),
             ],
           ),
           if (path.summary.isNotEmpty) ...[
             const SizedBox(height: 8),
-            Text(
+            AiBodyText(
               path.summary,
               style: TextStyle(
                 fontSize: 14,
@@ -90,18 +119,78 @@ class CareerPathCard extends StatelessWidget {
           ],
           const SizedBox(height: 16),
           ..._buildTimeline(path.steps),
+          if (qaController != null &&
+              noteController != null &&
+              onAskQuestion != null &&
+              onSubmitNote != null &&
+              onDeleteNote != null) ...[
+            const SizedBox(height: 20),
+            Divider(color: kBrandGreen.withValues(alpha: 0.15)),
+            const SizedBox(height: 16),
+            FollowupAskPanel(
+              title: l10n.careerAskTitle,
+              subtitle: l10n.careerAskSubtitle,
+              hint: l10n.careerAskHint,
+              controller: qaController!,
+              loading: qaLoading,
+              history: [
+                for (final item in qaHistory)
+                  FollowupQaTurn(
+                    question: item.question,
+                    answer: item.answer,
+                  ),
+              ],
+              onSubmit: onAskQuestion!,
+            ),
+            const SizedBox(height: 20),
+            Divider(color: kBrandGreen.withValues(alpha: 0.15)),
+            const SizedBox(height: 16),
+            FollowupNotesPanel(
+              title: l10n.careerNotesTitle,
+              subtitle: l10n.careerNotesSubtitle,
+              hint: l10n.careerNotesHint,
+              controller: noteController!,
+              submitting: noteSubmitting,
+              deletingNoteId: deletingNoteId,
+              notes: [
+                for (final note in path.notes)
+                  FollowupNote(
+                    id: note.id,
+                    text: note.text,
+                    createdAt: note.createdAt,
+                  ),
+              ],
+              onSubmit: onSubmitNote!,
+              onDelete: (item) {
+                for (final note in path.notes) {
+                  if (note.id.isNotEmpty && note.id == item.id) {
+                    onDeleteNote!(note);
+                    return;
+                  }
+                  if (note.text == item.text &&
+                      note.createdAt == item.createdAt) {
+                    onDeleteNote!(note);
+                    return;
+                  }
+                }
+              },
+            ),
+          ],
         ],
       ),
     );
   }
 
   List<Widget> _buildTimeline(List<CareerPathStep> steps) {
+    final nowIndex = steps.indexWhere((step) => !step.isComplete);
     final widgets = <Widget>[];
     for (var i = 0; i < steps.length; i++) {
       widgets.add(
         _CareerStepNode(
           step: steps[i],
+          isNow: nowIndex == i,
           onToggleChecklist: onToggleChecklist,
+          onToggleStepComplete: onToggleStepComplete,
         ),
       );
       if (i < steps.length - 1) {
@@ -125,6 +214,7 @@ class _PlaceholderPathCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final muted = Colors.black87.withValues(alpha: 0.45);
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -141,7 +231,7 @@ class _PlaceholderPathCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Path ${index + 1}',
+                  l10n.careerPathNumber(index + 1),
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -159,20 +249,20 @@ class _PlaceholderPathCard extends StatelessWidget {
                 TextButton.icon(
                   onPressed: onGenerate,
                   icon: const Icon(Icons.auto_awesome, size: 18),
-                  label: const Text('Generate'),
+                  label: Text(l10n.careerGenerate),
                   style: TextButton.styleFrom(foregroundColor: kBrandGreen),
                 ),
             ],
           ),
           const SizedBox(height: 8),
           Text(
-            'A career pathway will appear here once generated.',
+            l10n.careerPlaceholderBody,
             style: TextStyle(fontSize: 14, color: muted, height: 1.4),
           ),
           const SizedBox(height: 16),
-          const _PlaceholderStep(
-            title: 'Starting point',
-            body: 'Your current experience and background.',
+          _PlaceholderStep(
+            title: l10n.careerPlaceholderStartTitle,
+            body: l10n.careerPlaceholderStartBody,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 4),
@@ -183,9 +273,9 @@ class _PlaceholderPathCard extends StatelessWidget {
               ],
             ),
           ),
-          const _PlaceholderStep(
-            title: 'Build credentials',
-            body: 'Licenses, training, and skills to develop.',
+          _PlaceholderStep(
+            title: l10n.careerPlaceholderCredsTitle,
+            body: l10n.careerPlaceholderCredsBody,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 4),
@@ -196,9 +286,9 @@ class _PlaceholderPathCard extends StatelessWidget {
               ],
             ),
           ),
-          const _PlaceholderStep(
-            title: 'Target role',
-            body: 'Your future career goal in the US.',
+          _PlaceholderStep(
+            title: l10n.careerPlaceholderTargetTitle,
+            body: l10n.careerPlaceholderTargetBody,
           ),
         ],
       ),
@@ -271,25 +361,42 @@ class _TimelineArrow extends StatelessWidget {
 class _CareerStepNode extends StatelessWidget {
   const _CareerStepNode({
     required this.step,
+    required this.isNow,
     this.onToggleChecklist,
+    this.onToggleStepComplete,
   });
 
   final CareerPathStep step;
+  final bool isNow;
   final CareerChecklistToggle? onToggleChecklist;
+  final CareerStepCompleteToggle? onToggleStepComplete;
 
   @override
   Widget build(BuildContext context) {
-    final isCurrent = step.isCurrent;
+    final l10n = AppLocalizations.of(context);
+    final isComplete = step.isComplete;
+    final duration = step.durationLabel;
+    final timeLabel = isComplete
+        ? l10n.careerStepCompleted
+        : isNow
+            ? (duration.isEmpty
+                ? l10n.careerStepNow
+                : l10n.careerStepNowWithDuration(duration))
+            : (duration.isEmpty ? l10n.careerTimePending : duration);
 
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: isCurrent
+        color: isComplete
+            ? kBrandGreen.withValues(alpha: 0.06)
+            : isNow
             ? kBrandGreen.withValues(alpha: 0.08)
             : kBrandPageBg,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isCurrent
+          color: isComplete
+              ? kBrandGreen.withValues(alpha: 0.45)
+              : isNow
               ? kBrandGreen.withValues(alpha: 0.35)
               : kBrandGreen.withValues(alpha: 0.12),
         ),
@@ -297,40 +404,19 @@ class _CareerStepNode extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              if (isCurrent)
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                  margin: const EdgeInsets.only(right: 8),
-                  decoration: BoxDecoration(
-                    color: kBrandGreen,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: const Text(
-                    'Current',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              Expanded(
-                child: Text(
-                  step.title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black87,
-                  ),
-                ),
+          Text(
+            step.title,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: Colors.black87.withValues(
+                alpha: isComplete ? 0.55 : 1,
               ),
-            ],
+            ),
           ),
           if (step.description.isNotEmpty) ...[
             const SizedBox(height: 6),
-            Text(
+            AiBodyText(
               step.description,
               style: TextStyle(
                 fontSize: 14,
@@ -342,7 +428,7 @@ class _CareerStepNode extends StatelessWidget {
           if (step.certifications.isNotEmpty) ...[
             const SizedBox(height: 10),
             Text(
-              'Certifications & licenses',
+              l10n.careerCertifications,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
@@ -367,7 +453,7 @@ class _CareerStepNode extends StatelessWidget {
           if (step.skills.isNotEmpty) ...[
             const SizedBox(height: 8),
             Text(
-              'Skills to develop',
+              l10n.careerSkills,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
@@ -390,26 +476,55 @@ class _CareerStepNode extends StatelessWidget {
             ),
           ],
           const SizedBox(height: 12),
+          Text(
+            l10n.careerTimeEstimate,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: kBrandGreen.withValues(alpha: 0.9),
+            ),
+          ),
+          const SizedBox(height: 2),
           Row(
             children: [
               Icon(
-                Icons.hourglass_empty,
+                isComplete ? Icons.check_circle : Icons.hourglass_empty,
                 size: 16,
                 color: kBrandGreen.withValues(alpha: 0.85),
               ),
               const SizedBox(width: 6),
               Expanded(
                 child: Text(
-                  step.timeEstimate.isNotEmpty
-                      ? step.timeEstimate
-                      : 'Time estimate pending',
+                  timeLabel,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87.withValues(
-                      alpha: step.timeEstimate.isNotEmpty ? 0.75 : 0.45,
-                    ),
+                    color: Colors.black87.withValues(alpha: 0.75),
                   ),
+                ),
+              ),
+              TextButton.icon(
+                onPressed: onToggleStepComplete == null
+                    ? null
+                    : () => onToggleStepComplete!(
+                          stepId: step.id,
+                          complete: !step.isComplete,
+                        ),
+                icon: Icon(
+                  step.isComplete
+                      ? Icons.undo
+                      : Icons.check_circle_outline,
+                  size: 20,
+                ),
+                label: Text(
+                  step.isComplete ? l10n.careerUndo : l10n.careerMarkComplete,
+                ),
+                style: TextButton.styleFrom(
+                  foregroundColor: kBrandGreen,
+                  visualDensity: VisualDensity.compact,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
               ),
             ],

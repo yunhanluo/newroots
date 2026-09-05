@@ -1,0 +1,167 @@
+{
+  "id": "housing",
+  "title": "Hướng dẫn nhà ở",
+  "subtitle": "Thuê nhà, quyền của người thuê, và cách tránh lừa đảo nhà ở.",
+  "landingTitle": "Hướng dẫn nhà ở",
+  "landingBody": "Tìm hiểu về nhà ở ở California.",
+  "icon": "home",
+  "finishRoute": "home",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Chào mừng",
+      "intro": "",
+      "body": "Thuê hoặc mua nhà ở California có nhiều thách thức. Quy định, giấy tờ và chi phí có thể lạ, đặc biệt nếu bạn mới đến Hoa Kỳ.\n\nHãy tiếp tục đọc để tìm hiểu yêu cầu thuê nhà, cách khác để đủ điều kiện, nguồn hỗ trợ nhà ở đáng tin, quyền của người thuê, và cách tránh lừa đảo nhà ở.\n\nNếu bạn cảm thấy lạc, hãy hỏi AI ở cuối màn hình. Nó có thể giải thích phần hiện tại bằng lời đơn giản hơn, hoặc trả lời câu hỏi về tình huống của bạn.",
+      "topics": []
+    },
+    {
+      "title": "Hiểu yêu cầu thuê nhà",
+      "intro": "Hầu hết chủ nhà yêu cầu cùng những giấy tờ cơ bản khi bạn nộp đơn thuê. Chuẩn bị trước sẽ giúp nộp đơn nhanh hơn và ít căng thẳng hơn. Đây là ý nghĩa thường gặp của từng mục.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Đơn xin thuê nhà",
+          "paragraph": "Đây là mẫu đơn chủ nhà hoặc người quản lý dùng để thu thập thông tin của bạn. Thường hỏi họ tên, địa chỉ hiện tại và trước đây, số điện thoại, email, việc làm, thu nhập, và tên mọi người sẽ sống trong căn hộ. Một số mẫu trên giấy, một số trực tuyến. Điền cẩn thận và dùng đúng tên trên giấy tờ tùy thân. Giữ bản sao hoặc ảnh chàn màn hình những gì bạn nộp để nhớ mình đã chia sẻ gì."
+        },
+        {
+          "heading": "Giấy tờ có ảnh",
+          "paragraph": "Chủ nhà cần giấy tờ tùy thân có ảnh do chính phủ cấp để xác nhận bạn là ai. Hộ chiếu, bằng lái xe Hoa Kỳ, thẻ căn cước tiểu bang, hoặc giấy tờ chính thức khác có ảnh thường được chấp nhận. Mang bản gốc để đưa trực tiếp, và hỏi trước khi gửi bản sao qua mạng. Chỉ chia sẻ ảnh giấy tờ qua cổng nộp đơn đáng tin hoặc trực tiếp với văn phòng tòa nhà, không qua tin nhắn hay mạng xã hội ngẫu nhiên."
+        },
+        {
+          "heading": "Chứng minh thu nhập",
+          "paragraph": "Điều này cho thấy bạn có thể trả tiền thuê mỗi tháng. Bằng chứng thường gồm phiếu lương gần đây, thư mời làm việc có mức lương, sao kê ngân hàng, tờ khai thuế, hoặc thư của chủ lao động. Nhiều chủ nhà muốn thu nhập hàng tháng khoảng gấp hai đến ba lần tiền thuê, nhưng chính sách khác nhau. Nếu bạn được trả tiền mặt, tự kinh doanh, hoặc mới bắt đầu việc, hãy hỏi họ chấp nhận giấy tờ nào. In hoặc lưu bản sao rõ ràng để tải lên hoặc nộp nhanh."
+        },
+        {
+          "heading": "Người tham khảo",
+          "paragraph": "Người tham khảo là những người chủ nhà có thể gọi để biết bạn có đáng tin không. Chủ nhà cũ hữu ích nhất. Nếu bạn chưa từng thuê nhà ở Hoa Kỳ, thường có thể dùng chủ lao động, giáo viên, nhân viên xã hội, hoặc liên hệ tổ chức cộng đồng. Hãy xin phép trước, rồi đưa họ tên đầy đủ, mối quan hệ với bạn, số điện thoại và email. Báo cho họ biết chủ nhà có thể gọi để họ sẵn sàng trả lời."
+        },
+        {
+          "heading": "Kiểm tra tín dụng và lý lịch",
+          "paragraph": "Kiểm tra tín dụng xem bạn đã xử lý hóa đơn và khoản vay ở Hoa Kỳ thế nào. Kiểm tra lý lịch có thể tìm hồ sơ đuổi nhà hoặc hình sự. Người mới đến thường có ít hoặc không có lịch sử tín dụng Hoa Kỳ; điều này phổ biến và khác với tín dụng xấu. Hãy hỏi chủ nhà họ kiểm tra gì và họ làm gì nếu ai đó không có hồ sơ tín dụng Hoa Kỳ. Bạn thường ủy quyền các bước này trên đơn. Ở California, phí sàng lọc bị luật giới hạn, và bạn có thể yêu cầu bản sao báo cáo người tiêu dùng dùng để từ chối đơn của bạn."
+        },
+        {
+          "heading": "Phí nộp đơn",
+          "paragraph": "Đây là khoản phí một số chủ nhà thu để trả chi phí sàng lọc như kiểm tra tín dụng hoặc lý lịch. Ở California, số tiền bị giới hạn và chỉ nên gồm chi phí sàng lọc thực tế. Hãy hỏi phí có bắt buộc không, bao nhiêu, và có hoàn lại không trước khi trả. Trả qua văn phòng hoặc cổng chính thức, lấy biên lai, và không bao giờ chuyển tiền hoặc dùng thẻ quà tặng cho người tự xưng là chủ nhà."
+        }
+      ]
+    },
+    {
+      "title": "Tìm cách khác để đủ điều kiện",
+      "intro": "Nhiều người mới đến chưa có lịch sử tín dụng Hoa Kỳ. Điều đó không phải lúc nào cũng nghĩa là bạn không thể thuê. Chủ nhà đôi khi chấp nhận cách khác để cho thấy bạn đáng tin. Hãy hỏi họ cho phép gì, và xem các lựa chọn phổ biến này.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Người đồng ký hoặc bảo lãnh",
+          "paragraph": "Người đồng ký là người có tín dụng hoặc thu nhập mạnh hơn, đồng ý trả tiền thuê nếu bạn không thể. Thường là người thân, bạn bè, hoặc nhà tài trợ sống ở Hoa Kỳ. Chủ nhà thường yêu cầu người đó cũng điền đơn và vượt qua kiểm tra tín dụng. Chỉ nhờ người bạn tin tưởng, và đảm bảo họ hiểu mình chịu trách nhiệm pháp lý nếu tiền thuê không được trả."
+        },
+        {
+          "heading": "Tiền đặt cọc cao hơn",
+          "paragraph": "Một số chủ nhà sẽ chấp nhận đặt cọc cao hơn khi lịch sử tín dụng của bạn ngắn hoặc chưa có. Việc này nhằm giảm rủi ro cho họ. California giới hạn số tiền đặt cọc chủ nhà được thu, nên hãy hỏi mức được phép cho căn đó. Ghi mọi số tiền đặt cọc bằng văn bản, và giữ bằng chứng bạn đã trả."
+        },
+        {
+          "heading": "Chứng minh thu nhập hoặc tiết kiệm",
+          "paragraph": "Dù không có lịch sử tín dụng, sao kê ngân hàng mạnh, phiếu lương, hoặc bằng chứng tiết kiệm vẫn có thể giúp. Một số chủ nhà muốn thấy vài tháng thu nhập, hoặc đủ tiền trong ngân hàng để trả thuê trong một khoảng thời gian. Mang giấy tờ rõ ràng, gần đây. Nếu thu nhập đến từ nhiều nguồn, hãy gồm tất cả và ghi rõ mỗi giấy tờ cho thấy gì."
+        },
+        {
+          "heading": "Thư chủ lao động hoặc thư mời làm việc",
+          "paragraph": "Thư từ chủ lao động có thể xác nhận công việc, ngày bắt đầu và mức lương. Nếu bạn có lời mời làm việc mới, thư mời có thể dùng trong lúc chờ phiếu lương đầu tiên. Hãy xin chủ lao động hoặc phòng nhân sự một lá thư có chữ ký trên giấy tiêu đề công ty. Gồm tên liên hệ và số điện thoại mà chủ nhà có thể gọi để xác minh."
+        },
+        {
+          "heading": "Chương trình cho người mới đến và nhà ở",
+          "paragraph": "Một số tổ chức phi lợi nhuận, cơ quan tái định cư, và chương trình nhà ở địa phương giúp người nhập cư tìm chỗ thuê hoặc kết nối với chủ nhà làm việc với người mới đến. Các chương trình này có thể giúp nộp đơn, làm người tham khảo, hỗ trợ tiền thuê, hoặc danh sách nhà thân thiện. Hãy hỏi tại thư viện, trung tâm cộng đồng, hoặc văn phòng dịch vụ nhập cư gần bạn về hỗ trợ nhà ở bằng ngôn ngữ của bạn."
+        }
+      ]
+    },
+    {
+      "title": "Tiếp cận nguồn hỗ trợ nhà ở",
+      "intro": "Bạn không phải tự mình tìm hiểu nhà ở. Thư viện, cố vấn phi lợi nhuận, và trang web chính phủ có thể giúp bạn tìm chỗ thuê, học quy định, và nhận hỗ trợ địa phương. Đây là một vài trang đáng tin để bắt đầu.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "HUD (Bộ Nhà ở và Phát triển Đô thị Hoa Kỳ)",
+          "paragraph": "HUD là cơ quan nhà ở liên bang chính. Trang web giải thích hỗ trợ thuê nhà, quy tắc nhà ở công bằng, và cách tìm cố vấn nhà ở được duyệt gần bạn. Dùng trang này khi bạn muốn thông tin chính thức của chính phủ Hoa Kỳ.",
+          "url": "https://www.hud.gov/"
+        },
+        {
+          "heading": "HUD: Tìm cố vấn nhà ở",
+          "paragraph": "Công cụ HUD này giúp bạn tìm cố vấn nhà ở được HUD duyệt. Cố vấn có thể giải thích đơn, ngân sách, và lựa chọn thuê. Nhiều nơi hỗ trợ qua điện thoại hoặc gặp trực tiếp, và một số nói hơn một ngôn ngữ.",
+          "url": "https://www.hud.gov/program_offices/housing/sfh/hcc"
+        },
+        {
+          "heading": "Tự trợ giúp của tòa California về nhà ở",
+          "paragraph": "Đây là trang tự trợ giúp chính thức của tòa California về nhà ở. Trang nói về đuổi nhà, đặt cọc, sửa chữa, và các vấn đề người thuê khác bằng ngôn ngữ dễ hiểu. Đây là nơi tốt để biết quy trình tòa nếu bạn có vấn đề nhà ở.",
+          "url": "https://selfhelp.courts.ca.gov/housing"
+        },
+        {
+          "heading": "Hướng dẫn chủ nhà–người thuê California",
+          "paragraph": "Sở Bảo vệ Người tiêu dùng California xuất bản hướng dẫn miễn phí về chủ nhà và người thuê. Hướng dẫn giải thích đặt cọc, tăng tiền thuê, sửa chữa, và thông báo. Đọc khi bạn muốn cái nhìn rõ về các quy tắc thuê phổ biến ở California.",
+          "url": "https://www.dca.ca.gov/publications/landlordbook.shtml"
+        },
+        {
+          "heading": "Nhà ở và Phát triển Cộng đồng California",
+          "paragraph": "California HCD chia sẻ chương trình nhà ở của tiểu bang và nguồn cho người tiêu dùng. Xem trang này để biết thông tin nhà ở toàn bang và liên kết giúp tìm lựa chọn giá phải chăng.",
+          "url": "https://www.hcd.ca.gov/"
+        },
+        {
+          "heading": "211",
+          "paragraph": "211 kết nối bạn với dịch vụ sức khỏe và xã hội địa phương, gồm hỗ trợ nhà ở và tiền thuê ở nhiều khu vực. Bạn có thể tìm trên mạng hoặc gọi 211 để hỏi về hỗ trợ gần bạn bằng ngôn ngữ của bạn khi có sẵn.",
+          "url": "https://www.211.org/"
+        }
+      ]
+    },
+    {
+      "title": "Hiểu quyền của người thuê",
+      "intro": "Người thuê ở California có quyền quan trọng. Quy định có thể khác theo thành phố, nên hãy luôn kiểm tra luật địa phương. Đây là những điểm cơ bản, giải thích từng chủ đề.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Tiền đặt cọc",
+          "paragraph": "Tiền đặt cọc là khoản bạn trả trước mà chủ nhà giữ trong thời gian bạn thuê. Nó có thể dùng cho tiền thuê chưa trả hoặc thiệt hại vượt quá hao mòn bình thường. California giới hạn số tiền chủ nhà được thu. Khi bạn chuyển đi, chủ nhà phải trả lại phần còn lại và đưa danh sách chi tiết mọi khoản khấu trừ trong thời hạn luật yêu cầu. Chụp ảnh có ngày khi dọn vào và khi rời đi để có bằng chứng về tình trạng căn hộ."
+        },
+        {
+          "heading": "Sửa chữa và nhà ở đủ sống",
+          "paragraph": "Chỗ thuê của bạn phải an toàn và đủ sống. Thường gồm hệ thống sưởi, ống nước, điện, khóa cửa hoạt động, và không có nguy hiểm nghiêm trọng như rò rỉ lớn hoặc sâu bọ. Báo chủ nhà bằng văn bản khi cần sửa, giữ bản sao, và cho thời gian hợp lý để sửa. Nếu vấn đề nghiêm trọng mà bị bỏ qua, hãy tìm lựa chọn địa phương hoặc nói chuyện với cố vấn nhà ở hay nhóm hỗ trợ pháp lý trước khi giữ tiền thuê hoặc chuyển đi."
+        },
+        {
+          "heading": "Quyền riêng tư",
+          "paragraph": "Bạn có quyền riêng tư trong nhà mình. Trong hầu hết trường hợp, chủ nhà phải báo trước trước khi vào, trừ khẩn cấp. Hãy hỏi hợp đồng thuê và luật địa phương yêu cầu thông báo thế nào. Bạn có thể từ chối việc vào nhà không theo quy tắc. Giữ ghi chép bằng văn bản nếu chủ nhà vào mà không báo đúng cách."
+        },
+        {
+          "heading": "Thông báo đuổi nhà",
+          "paragraph": "Nói chung, chủ nhà không thể khóa bạn ra ngoài hoặc cắt tiện ích để buộc bạn rời đi. Việc đuổi nhà thường bắt đầu bằng thông báo bằng văn bản và, nếu cần, một vụ tại tòa. Đọc mọi thông báo cẩn thận, ghi hạn chót, và nhanh chóng nhờ hỗ trợ pháp lý hoặc trang tự trợ giúp của tòa. Đừng bỏ qua giấy tờ tòa. Có mặt và trả lời đúng hạn bảo vệ quyền của bạn."
+        },
+        {
+          "heading": "Bảo vệ khỏi phân biệt đối xử",
+          "paragraph": "Luật nhà ở công bằng liên bang và California cấm phân biệt đối xử dựa trên chủng tộc, nguồn gốc quốc gia, tôn giáo, giới tính, khuyết tật, tình trạng gia đình, và các nhóm được luật tiểu bang bảo vệ khác. Chủ nhà nói chung không thể từ chối cho thuê, đặt điều kiện khác, hoặc quấy rối bạn vì những lý do đó. Nếu bạn nghĩ mình bị đối xử không công bằng, bạn có thể liên hệ HUD nhà ở công bằng, cơ quan dân quyền California, hoặc tổ chức phi lợi nhuận nhà ở công bằng địa phương."
+        }
+      ]
+    },
+    {
+      "title": "Tránh lừa đảo nhà ở",
+      "intro": "Lừa đảo nhà ở cố thúc bạn gửi tiền hoặc thông tin cá nhân trước khi bạn kiểm tra chỗ thuê có thật không. Đây là các mánh phổ biến, chúng thường hoạt động thế nào, và cách nhận ra.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Chuyển tiền và thẻ quà tặng",
+          "paragraph": "Kẻ lừa có thể nói họ đang ở xa và bảo bạn chuyển tiền, gửi lệnh chuyển tiền, dùng Zelle, tiền mã hóa, hoặc mua thẻ quà tặng để giữ căn hộ. Khi tiền đã gửi, thường mất luôn. Chủ nhà thật hầu như không bao giờ đòi thẻ quà tặng hoặc chuyển tiền gấp trước khi ký hợp đồng. Chỉ trả qua văn phòng đã biết hoặc cổng đáng tin, và lấy biên lai bằng văn bản."
+        },
+        {
+          "heading": "Trả tiền trước khi xem nhà",
+          "paragraph": "Một số vụ lừa đòi đặt cọc, phí nộp đơn, hoặc tiền thuê tháng đầu trước khi bạn xem nhà hoặc gặp ai từ tòa nhà. Họ có thể nói nhiều người muốn và bạn phải trả hôm nay. Quy trình thuê thật thường cho bạn xem căn hộ trước. Nếu ai đó chặn việc xem nhà mà vẫn đòi tiền, hãy xem đó là cảnh báo."
+        },
+        {
+          "heading": "Chỗ thuê bạn không thể đến xem",
+          "paragraph": "Kẻ lừa thường đăng ảnh đẹp của ngôi nhà họ không kiểm soát. Họ có thể nói chìa khóa ở người thân, căn đang sửa, hoặc bạn chỉ được xem sau khi trả tiền. Bạn đến sau và thấy nó chưa từng cho thuê, hoặc đã có người ở. Hãy đòi xem đúng căn đó trực tiếp, hoặc xem video trực tiếp với môi giới đã xác minh, trước khi gửi tiền."
+        },
+        {
+          "heading": "Tin đăng giả và chủ nhà giả",
+          "paragraph": "Ảnh bị đánh cắp, quảng cáo sao chép, và tên chủ nhà giả xuất hiện trên mạng xã hội và trang đăng tin. Giá thấp hơn nhiều so với mức trung bình khu vực là mồi nhử phổ biến. Kiểm tra người đó có thể chứng minh họ sở hữu hoặc quản lý tài sản. Tra cứu công ty quản lý, đến văn phòng cho thuê, và so sánh tin với các tin khác cùng địa chỉ. Nếu chi tiết không khớp, hãy bỏ đi."
+        },
+        {
+          "heading": "Lừa lấy giấy tờ và danh tính",
+          "paragraph": "Kẻ lừa có thể gửi liên kết và đòi hộ chiếu, số An sinh Xã hội, thông tin đăng nhập ngân hàng, hoặc ảnh giấy tờ qua email, tin nhắn, hoặc trò chuyện. Họ có thể dùng thông tin đó để đánh cắp danh tính hoặc tiền. Chỉ chia sẻ giấy tờ nhạy cảm qua chủ nhà hoặc cổng bạn đã xác minh. Đừng nhấp liên kết bất ngờ, và đừng gửi trọn bộ giấy tờ tùy thân cho người lạ liên hệ bạn trước."
+        }
+      ]
+    }
+  ]
+}

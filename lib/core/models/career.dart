@@ -81,14 +81,44 @@ class CareerPath {
     required this.title,
     required this.summary,
     required this.steps,
+    this.notes = const [],
   });
 
   final String id;
   final String title;
   final String summary;
   final List<CareerPathStep> steps;
+  final List<CareerNote> notes;
 
   bool get hasContent => title.trim().isNotEmpty && steps.isNotEmpty;
+
+  int get nowStepIndex => steps.indexWhere((step) => !step.isComplete);
+
+  CareerPath withCurrentOnNextOpenStep() {
+    final nowIndex = nowStepIndex;
+    return copyWith(
+      steps: [
+        for (var i = 0; i < steps.length; i++)
+          steps[i].copyWith(isCurrent: i == nowIndex),
+      ],
+    );
+  }
+
+  CareerPath copyWith({
+    String? id,
+    String? title,
+    String? summary,
+    List<CareerPathStep>? steps,
+    List<CareerNote>? notes,
+  }) {
+    return CareerPath(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      summary: summary ?? this.summary,
+      steps: steps ?? this.steps,
+      notes: notes ?? this.notes,
+    );
+  }
 
   factory CareerPath.emptySlot(int index) {
     return CareerPath(
@@ -105,6 +135,7 @@ class CareerPath {
       'title': title,
       'summary': summary,
       'steps': steps.map((step) => step.toMap()).toList(),
+      'notes': notes.map((note) => note.toMap()).toList(),
     };
   }
 
@@ -123,8 +154,57 @@ class CareerPath {
               )
               .toList()
           : [],
+      notes: _parseNotes(map['notes']),
     );
   }
+
+  static List<CareerNote> _parseNotes(Object? raw) {
+    if (raw is! List) return [];
+    return raw
+        .whereType<Map>()
+        .map((item) => CareerNote.fromMap(Map<String, dynamic>.from(item)))
+        .toList();
+  }
+}
+
+class CareerNote {
+  const CareerNote({
+    required this.id,
+    required this.text,
+    required this.createdAt,
+  });
+
+  final String id;
+  final String text;
+  final DateTime createdAt;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'text': text,
+      'createdAt': createdAt.toIso8601String(),
+    };
+  }
+
+  factory CareerNote.fromMap(Map<String, dynamic> map) {
+    return CareerNote(
+      id: (map['id'] as String?) ?? '',
+      text: (map['text'] as String?) ?? '',
+      createdAt: CareerBridgeData._parseDate(map['createdAt']) ?? DateTime.now(),
+    );
+  }
+}
+
+class CareerQaExchange {
+  const CareerQaExchange({
+    required this.question,
+    required this.answer,
+    required this.askedAt,
+  });
+
+  final String question;
+  final String answer;
+  final DateTime askedAt;
 }
 
 class CareerChecklistItem {
@@ -165,6 +245,7 @@ class CareerPathStep {
     required this.description,
     this.timeEstimate = '',
     this.isCurrent = false,
+    this.isComplete = false,
     this.certifications = const [],
     this.skills = const [],
   });
@@ -174,8 +255,28 @@ class CareerPathStep {
   final String description;
   final String timeEstimate;
   final bool isCurrent;
+  final bool isComplete;
   final List<CareerChecklistItem> certifications;
   final List<CareerChecklistItem> skills;
+
+  /// Duration the AI gave for this stage, or empty when it only said Now.
+  String get durationLabel {
+    final value = timeEstimate.trim();
+    if (value.isEmpty) return '';
+    final lower = value.toLowerCase();
+    if (lower == 'now' || lower == 'ongoing') return '';
+    return value;
+  }
+
+  /// Bottom-left status: Completed, Now, Now (2–3 months), or the duration.
+  String progressTimeLabel({required bool isNow}) {
+    if (isComplete) return 'Completed';
+    final duration = durationLabel;
+    if (isNow) {
+      return duration.isEmpty ? 'Now' : 'Now ($duration)';
+    }
+    return duration.isEmpty ? 'Time estimate pending' : duration;
+  }
 
   CareerPathStep copyWith({
     String? id,
@@ -183,6 +284,7 @@ class CareerPathStep {
     String? description,
     String? timeEstimate,
     bool? isCurrent,
+    bool? isComplete,
     List<CareerChecklistItem>? certifications,
     List<CareerChecklistItem>? skills,
   }) {
@@ -192,6 +294,7 @@ class CareerPathStep {
       description: description ?? this.description,
       timeEstimate: timeEstimate ?? this.timeEstimate,
       isCurrent: isCurrent ?? this.isCurrent,
+      isComplete: isComplete ?? this.isComplete,
       certifications: certifications ?? this.certifications,
       skills: skills ?? this.skills,
     );
@@ -204,6 +307,7 @@ class CareerPathStep {
       'description': description,
       'timeEstimate': timeEstimate,
       'isCurrent': isCurrent,
+      'isComplete': isComplete,
       'certifications': certifications.map((item) => item.toMap()).toList(),
       'skills': skills.map((item) => item.toMap()).toList(),
     };
@@ -216,6 +320,7 @@ class CareerPathStep {
       description: (map['description'] as String?) ?? '',
       timeEstimate: (map['timeEstimate'] as String?) ?? '',
       isCurrent: (map['isCurrent'] as bool?) ?? false,
+      isComplete: (map['isComplete'] as bool?) ?? false,
       certifications: _parseChecklist(map['certifications']),
       skills: _parseChecklist(map['skills']),
     );

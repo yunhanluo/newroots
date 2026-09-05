@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/models/roadmap.dart';
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../core/widgets/ai_body_text.dart';
+import '../../../../core/widgets/followup_panels.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class RoadmapSectionCard extends StatelessWidget {
   const RoadmapSectionCard({
     super.key,
     required this.title,
     required this.section,
+    this.qaHistory = const [],
     required this.onChecklistChanged,
     required this.onRegenerate,
     required this.qaController,
@@ -17,11 +20,14 @@ class RoadmapSectionCard extends StatelessWidget {
     required this.noteSubmitting,
     required this.onAskQuestion,
     required this.onSubmitNote,
+    required this.onDeleteNote,
+    this.deletingNoteId,
     this.regenerating = false,
   });
 
   final String title;
   final RoadmapSection section;
+  final List<RoadmapQaExchange> qaHistory;
   final ValueChanged<RoadmapSection> onChecklistChanged;
   final VoidCallback onRegenerate;
   final TextEditingController qaController;
@@ -30,10 +36,13 @@ class RoadmapSectionCard extends StatelessWidget {
   final bool noteSubmitting;
   final VoidCallback onAskQuestion;
   final VoidCallback onSubmitNote;
+  final ValueChanged<RoadmapNote> onDeleteNote;
+  final String? deletingNoteId;
   final bool regenerating;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(20),
@@ -67,14 +76,14 @@ class RoadmapSectionCard extends StatelessWidget {
                 TextButton.icon(
                   onPressed: onRegenerate,
                   icon: const Icon(Icons.refresh, size: 18),
-                  label: const Text('Regenerate'),
+                  label: Text(l10n.careerRegenerate),
                   style: TextButton.styleFrom(foregroundColor: kBrandGreen),
                 ),
             ],
           ),
           if (section.summary.isNotEmpty) ...[
             const SizedBox(height: 12),
-            Text(
+            AiBodyText(
               section.summary,
               style: TextStyle(
                 fontSize: 15,
@@ -86,7 +95,7 @@ class RoadmapSectionCard extends StatelessWidget {
           const SizedBox(height: 16),
           if (section.checklist.isEmpty)
             Text(
-              'No checklist items yet.',
+              l10n.roadmapNoChecklist,
               style: TextStyle(
                 color: Colors.black87.withValues(alpha: 0.5),
                 fontStyle: FontStyle.italic,
@@ -110,240 +119,53 @@ class RoadmapSectionCard extends StatelessWidget {
           const SizedBox(height: 20),
           Divider(color: kBrandGreen.withValues(alpha: 0.15)),
           const SizedBox(height: 16),
-          _SectionQaPanel(
+          FollowupAskPanel(
+            title: l10n.roadmapAskTitle,
+            subtitle: l10n.roadmapAskSubtitle,
+            hint: l10n.roadmapAskHint,
             controller: qaController,
             loading: qaLoading,
-            history: section.qaHistory,
+            history: [
+              for (final item in qaHistory)
+                FollowupQaTurn(question: item.question, answer: item.answer),
+            ],
             onSubmit: onAskQuestion,
           ),
           const SizedBox(height: 20),
           Divider(color: kBrandGreen.withValues(alpha: 0.15)),
           const SizedBox(height: 16),
-          _SectionNotesPanel(
+          FollowupNotesPanel(
+            title: l10n.roadmapNotesTitle,
+            subtitle: l10n.roadmapNotesSubtitle,
+            hint: l10n.roadmapNotesHint,
             controller: noteController,
             submitting: noteSubmitting,
-            notes: section.notes,
+            deletingNoteId: deletingNoteId,
+            notes: [
+              for (final note in section.notes)
+                FollowupNote(
+                  id: note.id,
+                  text: note.text,
+                  createdAt: note.createdAt,
+                ),
+            ],
             onSubmit: onSubmitNote,
+            onDelete: (item) {
+              for (final note in section.notes) {
+                if (note.id.isNotEmpty && note.id == item.id) {
+                  onDeleteNote(note);
+                  return;
+                }
+                if (note.text == item.text &&
+                    note.createdAt == item.createdAt) {
+                  onDeleteNote(note);
+                  return;
+                }
+              }
+            },
           ),
         ],
       ),
-    );
-  }
-}
-
-class _SectionQaPanel extends StatelessWidget {
-  const _SectionQaPanel({
-    required this.controller,
-    required this.loading,
-    required this.history,
-    required this.onSubmit,
-  });
-
-  final TextEditingController controller;
-  final bool loading;
-  final List<RoadmapQaExchange> history;
-  final VoidCallback onSubmit;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Text(
-          'Ask about this section',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          'Questions use this section\'s checklist, notes, and your survey.',
-          style: TextStyle(
-            fontSize: 13,
-            color: Colors.black87.withValues(alpha: 0.6),
-          ),
-        ),
-        if (history.isNotEmpty) ...[
-          const SizedBox(height: 12),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxHeight: 160),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: history.length,
-              separatorBuilder: (_, _) => const Divider(height: 14),
-              itemBuilder: (context, index) {
-                final item = history[history.length - 1 - index];
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Q: ${item.question}',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                        fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      item.answer,
-                      style: TextStyle(
-                        color: Colors.black87.withValues(alpha: 0.85),
-                        height: 1.4,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
-        const SizedBox(height: 10),
-        TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            hintText: 'Ask about a step in this section…',
-            filled: true,
-            fillColor: kBrandPageBg,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-          onSubmitted: (_) => onSubmit(),
-        ),
-        const SizedBox(height: 8),
-        Align(
-          alignment: Alignment.centerRight,
-          child: loading
-              ? const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                )
-              : FilledButton(
-                  onPressed: onSubmit,
-                  style: FilledButton.styleFrom(
-                    backgroundColor: kBrandGreen,
-                    minimumSize: const Size(72, 44),
-                  ),
-                  child: const Text('Ask'),
-                ),
-        ),
-      ],
-    );
-  }
-}
-
-class _SectionNotesPanel extends StatelessWidget {
-  const _SectionNotesPanel({
-    required this.controller,
-    required this.submitting,
-    required this.notes,
-    required this.onSubmit,
-  });
-
-  final TextEditingController controller;
-  final bool submitting;
-  final List<RoadmapNote> notes;
-  final VoidCallback onSubmit;
-
-  @override
-  Widget build(BuildContext context) {
-    final dateFormat = DateFormat('MMM d, y • h:mm a');
-    final sorted = [...notes]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Text(
-          'Notes for this section',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          'Track progress on these steps. Saved and shared with the AI.',
-          style: TextStyle(
-            fontSize: 13,
-            color: Colors.black87.withValues(alpha: 0.6),
-          ),
-        ),
-        if (sorted.isNotEmpty) ...[
-          const SizedBox(height: 12),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxHeight: 160),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: sorted.length,
-              separatorBuilder: (_, _) => const Divider(height: 14),
-              itemBuilder: (context, index) {
-                final note = sorted[index];
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      dateFormat.format(note.createdAt),
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black87.withValues(alpha: 0.5),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      note.text,
-                      style: TextStyle(
-                        color: Colors.black87.withValues(alpha: 0.9),
-                        height: 1.4,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
-        const SizedBox(height: 10),
-        TextField(
-          controller: controller,
-          minLines: 2,
-          maxLines: 3,
-          decoration: InputDecoration(
-            hintText: 'What have you done for this section?',
-            filled: true,
-            fillColor: kBrandPageBg,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-        Align(
-          alignment: Alignment.centerRight,
-          child: FilledButton(
-            onPressed: submitting ? null : onSubmit,
-            style: FilledButton.styleFrom(backgroundColor: kBrandGreen),
-            child: submitting
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: Colors.white,
-                    ),
-                  )
-                : const Text('Save note'),
-          ),
-        ),
-      ],
     );
   }
 }

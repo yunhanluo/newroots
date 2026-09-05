@@ -10,6 +10,7 @@ import '../../../core/services/education_resource_service.dart';
 import '../../../core/services/user_profile_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../core/widgets/ai_body_text.dart';
 import '../../../core/widgets/finder_controls.dart';
 import '../../../core/widgets/finder_map.dart';
 
@@ -946,7 +947,7 @@ class _SchoolSummarySheet extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 18),
-                    Text(
+                    AiBodyText(
                       summary.overview,
                       style: const TextStyle(
                         fontSize: 15,
@@ -1035,7 +1036,7 @@ class _SummaryBullet extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(
+            child: AiBodyText(
               text,
               style: const TextStyle(
                 fontSize: 14,

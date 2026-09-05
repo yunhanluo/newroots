@@ -1,0 +1,158 @@
+{
+  "id": "safety",
+  "title": "Hướng dẫn an toàn cộng đồng",
+  "subtitle": "Số khẩn cấp, quyền của bạn, và cách chuẩn bị.",
+  "landingTitle": "Hướng dẫn an toàn cộng đồng",
+  "landingBody": "Số khẩn cấp, quyền của bạn, và cách chuẩn bị.",
+  "icon": "emergency",
+  "finishRoute": "home",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Chào mừng",
+      "intro": "",
+      "body": "Cảm thấy an toàn ở một quốc gia mới cần thời gian. Biết phải gọi ai, quyền của bạn là gì, và cách chuẩn bị cho tình huống khẩn cấp có thể giảm sợ hãi và giúp gia đình hành động nhanh khi có chuyện xảy ra.\n\nHướng dẫn này gồm các số khẩn cấp bạn có thể nhấn để gọi, những điều cơ bản về Biết quyền của bạn, chuẩn bị thiên tai, và các nguồn hỗ trợ an toàn đáng tin cậy ở California và Hoa Kỳ.\n\nĐây là thông tin chung, không phải tư vấn pháp lý. Với trường hợp của bạn, hãy nói chuyện với luật sư hoặc phòng khám trợ giúp pháp lý đáng tin cậy.",
+      "topics": []
+    },
+    {
+      "title": "Số khẩn cấp",
+      "intro": "Lưu các số này trong điện thoại. Khi thật sự khẩn cấp, hãy gọi ngay. Nhấn một số bên dưới để quay số. Nếu bạn không chắc đó có phải tình huống khẩn cấp không, vẫn hãy gọi và giải thích chuyện đang xảy ra.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "911 — Cảnh sát, cháy, và cấp cứu y tế",
+          "paragraph": "Dùng 911 khi có nguy hiểm ngay lập tức: cháy, chấn thương nặng, tội phạm đang xảy ra, hoặc người không thở được. Nói vị trí của bạn trước với tổng đài, rồi nói chuyện gì đã xảy ra. Bạn có thể yêu cầu thông dịch viên. Giữ máy cho đến khi họ nói bạn có thể cúp.",
+          "phone": "911",
+          "phoneLabel": "Gọi 911"
+        },
+        {
+          "heading": "988 — Đường dây ngăn tự tử và khủng hoảng",
+          "paragraph": "Gọi hoặc nhắn tin 988 nếu bạn hoặc người thân đang khủng hoảng cảm xúc, nghĩ đến tự tử, hoặc cần hỗ trợ sức khỏe tâm thần khẩn cấp. Trợ giúp miễn phí và bảo mật. Có thông dịch viên.",
+          "phone": "988",
+          "phoneLabel": "Gọi 988"
+        },
+        {
+          "heading": "211 — Trợ giúp địa phương và nguồn lực cộng đồng",
+          "paragraph": "211 kết nối bạn với thực phẩm, chỗ ở, trợ giúp tiện ích, và dịch vụ cộng đồng tại địa phương. Hữu ích khi bạn cần hỗ trợ nhưng không phải trường hợp nguy hiểm đến tính mạng.",
+          "phone": "211",
+          "phoneLabel": "Gọi 211"
+        },
+        {
+          "heading": "Kiểm soát chất độc — 1-800-222-1222",
+          "paragraph": "Gọi nếu ai đó có thể đã nuốt nhầm thuốc, chất tẩy rửa, cây, hoặc hóa chất. Nếu có thể, để sản phẩm gần bên. Họ sẽ nói bạn nên làm gì tiếp theo.",
+          "phone": "18002221222",
+          "phoneLabel": "Gọi Kiểm soát chất độc"
+        },
+        {
+          "heading": "Đường dây bạo lực gia đình toàn quốc — 1-800-799-7233",
+          "paragraph": "Gọi nếu bạn hoặc người bạn biết đang bị người yêu hoặc người trong gia đình làm tổn thương, kiểm soát, hoặc đe dọa. Trợ giúp được giữ bí mật. Bạn cũng có thể vào thehotline.org để chat.",
+          "phone": "18007997233",
+          "phoneLabel": "Gọi đường dây hỗ trợ"
+        },
+        {
+          "heading": "Số cảnh sát không khẩn cấp",
+          "paragraph": "Với khiếu nại ồn ào, báo trộm sau khi việc đã xảy ra, hoặc câu hỏi không gấp, hãy dùng số cảnh sát không khẩn cấp của thành phố thay vì 911. Tìm “[thành phố của bạn] police non emergency” hoặc hỏi thủ thư. Lưu số đó cạnh 911."
+        }
+      ]
+    },
+    {
+      "title": "Biết quyền của bạn",
+      "intro": "Ở Hoa Kỳ, mọi người có quyền quan trọng khi tiếp xúc với cảnh sát và nhân viên di trú. Quy tắc có thể phức tạp, và mỗi tình huống khác nhau. Các điểm dưới đây là những điều cơ bản mà nhiều người mới đến thấy hữu ích. Chúng không thay thế lời khuyên của luật sư di trú hoặc luật sư bào chữa hình sự. Nếu không chắc, hãy xin gặp luật sư và đừng đoán.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Bạn có thể giữ im lặng",
+          "paragraph": "Bạn thường có quyền giữ im lặng. Bạn có thể nói rõ bằng tiếng Anh: “I want to remain silent. I want a lawyer.” (Tôi muốn giữ im lặng. Tôi muốn luật sư.) Sau đó ngừng trả lời câu hỏi về tình trạng di trú, nơi bạn sinh ra, hoặc cách bạn vào nước này. Đừng nói dối và đừng đưa giấy tờ giả. Nói dối nhân viên liên bang có thể gây rắc rối pháp lý nghiêm trọng. Im lặng không giống chạy trốn hay tranh cãi. Nói bình tĩnh, để tay lộ ra, và nhắc lại rằng bạn muốn luật sư nếu họ tiếp tục hỏi."
+        },
+        {
+          "heading": "Hỏi xem bạn có được phép rời đi không",
+          "paragraph": "Nếu nhân viên dừng bạn trên đường hoặc nơi công cộng, bạn có thể hỏi bằng tiếng Anh: “Am I free to leave?” (Tôi có được phép rời đi không?) Nếu họ nói có, bạn có thể đi một cách bình tĩnh. Nếu họ nói không, bạn có thể im lặng và xin gặp luật sư. Bạn không phải đồng ý để họ lục túi, túi quần, hoặc điện thoại. Bạn có thể nói: “I do not consent to a search.” (Tôi không đồng ý bị lục soát.) Nhân viên vẫn có thể lục soát trong một số tình huống, nhưng lời nói rõ ràng giúp bảo vệ bạn sau này. Đừng chống cự bằng thân thể. Giữ bình tĩnh và nhớ chi tiết để kể lại cho luật sư."
+        },
+        {
+          "heading": "Vào nhà",
+          "paragraph": "Trong nhiều tình huống, nhân viên cần lệnh có chữ ký của thẩm phán mới được vào nhà bạn. Bạn có thể nhờ họ luồn lệnh dưới cửa hoặc giơ lên cửa sổ để bạn đọc. Kiểm tra lệnh có địa chỉ nhà bạn và chữ ký thẩm phán. Bạn không phải mở cửa chỉ vì có người gõ hoặc nói họ là cảnh sát. Nếu không chắc, đừng mở cửa. Gọi luật sư đáng tin, đường dây trợ giúp pháp lý, hoặc người thân có thể giúp bạn nhận lời khuyên bằng ngôn ngữ của bạn. Mở cửa và mời người vào có thể khiến việc phản đối việc vào nhà sau này khó hơn."
+        },
+        {
+          "heading": "Mang giấy tờ quan trọng một cách cẩn thận",
+          "paragraph": "Giữ bản sao giấy tờ quan trọng ở nơi an toàn trong nhà, và cân nhắc một bộ bản sao nhỏ trong thư mục khóa nếu bạn đi xa. Bản sao hữu ích có thể gồm giấy tờ tùy thân, hồ sơ di trú, và liên hệ khẩn cấp. Chỉ chia sẻ giấy tờ nhạy cảm khi bạn tin người hoặc cơ quan đang hỏi, như tòa án, luật sư có giấy phép, hoặc buổi hẹn chính thức của chính phủ. Hãy cẩn thận với người đòi tiền hoặc giấy tờ gốc để “giúp di trú” mà không có giấy phép. Nếu ai đó thúc bạn giao hộ chiếu hoặc trả tiền mặt ngay, hãy dừng lại và kiểm tra với phòng khám trợ giúp pháp lý trước."
+        },
+        {
+          "heading": "Nhờ các tổ chức pháp lý đáng tin cậy",
+          "paragraph": "Với câu hỏi di trú, hãy dùng luật sư có giấy phép hoặc đại diện được công nhận. Văn phòng Điều hành Xét duyệt Di trú và các phòng khám trợ giúp pháp lý phi lợi nhuận có thể giúp bạn tìm hỗ trợ chi phí thấp. Hãy cẩn thận với người không phải luật sư có giấy phép hay đại diện được công nhận nhưng vẫn tư vấn pháp lý di trú, điền đơn lấy phí, hoặc hứa bảo đảm visa hay thẻ xanh. Kẻ lừa đảo đôi khi dùng chức danh nghe như chính thức để gây tin tưởng. Hãy hỏi tên đầy đủ, giấy phép hoặc chứng nhận, và biên lai viết tay. Nếu họ từ chối, hãy bỏ đi và kiểm tra với phòng khám trợ giúp pháp lý trước khi trả tiền.",
+          "url": "https://www.justice.gov/eoir/find-legal-representation"
+        }
+      ]
+    },
+    {
+      "title": "Chuẩn bị thiên tai",
+      "intro": "California đối mặt động đất, cháy rừng, nắng nóng và lũ lụt. Một kế hoạch gia đình đơn giản làm tình huống khẩn cấp bớt hỗn loạn, nhất là nếu tiếng Anh không phải ngôn ngữ mẹ đẻ của bạn. Bạn không cần đồ đắt tiền. Bắt đầu với điểm họp mặt, một túi nhỏ, và cách nhận cảnh báo.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Lập kế hoạch gia đình",
+          "paragraph": "Quyết định sẽ gặp nhau ở đâu nếu điện thoại không hoạt động, như nhà hàng xóm, trường học, hoặc công viên gần đó. Cũng chọn điểm họp mặt thứ hai xa hơn phòng khi khu phố bị đóng. Ghi số liên lạc ngoài khu vực của người thân hoặc bạn sống ở thành phố khác. Tập cách rời nhà nhanh, kể cả ban đêm. Đảm bảo trẻ biết họ tên đầy đủ, địa chỉ, và số điện thoại phụ huynh. Nếu ai trong nhà cần thuốc, hỗ trợ di chuyển, hoặc hỗ trợ ngôn ngữ, hãy lên kế hoạch ai sẽ giúp họ."
+        },
+        {
+          "heading": "Chuẩn bị túi mang đi khẩn cấp",
+          "paragraph": "Giữ sẵn một túi bạn có thể cầm trong một phút. Gồm nước, đồ ăn nhẹ, đèn pin, pin, bản sao giấy tờ tùy thân và giấy tờ quan trọng, bộ sơ cứu nhỏ, khẩu trang, thuốc, tiền mặt mệnh giá nhỏ, và sạc điện thoại. Thêm còi, một lớp áo ấm, và đồ cho em bé hoặc người lớn tuổi nếu gia đình cần. Để túi nơi mọi người đều lấy được. Kiểm tra vài tháng một lần và thay thức ăn, nước, thuốc hết hạn. Nếu bạn lái xe, để một phiên bản ngắn hơn trong xe."
+        },
+        {
+          "heading": "Biết cảnh báo địa phương",
+          "paragraph": "Bật Cảnh báo Khẩn cấp Không dây trên điện thoại để cảnh báo khẩn cấp đến được dù bạn không đang xem tin. Đăng ký cảnh báo khẩn cấp của thành phố hoặc quận nếu có. Trong cháy rừng, bão, và lũ, hãy theo cập nhật chính thức từ thành phố, Văn phòng Dịch vụ Khẩn cấp của quận, hoặc Cal OES. Đừng chỉ tin tin đồn trên mạng xã hội. Nếu cảnh báo bảo sơ tán, hãy đi sớm thay vì chờ xem tình hình có khá hơn không.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "Động đất",
+          "paragraph": "Nếu cảm thấy rung, hãy Cúi xuống, Trú ẩn, và Bám chặt (Drop, Cover, and Hold On) dưới bàn chắc nếu có thể. Bảo vệ đầu và cổ. Tránh cửa sổ, gương, và đồ nội thất cao có thể đổ. Nếu ở ngoài, đi ra chỗ trống, xa tòa nhà, cây, và dây điện. Nếu đang trên giường, ở lại đó và lấy gối che đầu trừ khi phía trên có đèn nặng. Sau khi hết rung, kiểm tra thương tích và mùi gas. Nếu ngửi thấy gas, rời tòa nhà và gọi giúp từ bên ngoài. Hãy chờ dư chấn. Nếu phải sơ tán, mang túi khẩn cấp và làm theo hướng dẫn chính thức."
+        },
+        {
+          "heading": "Cháy rừng và khói",
+          "paragraph": "Nếu cơ quan chức năng bảo sơ tán, hãy đi sớm. Đường có thể đóng nhanh. Đóng gói giấy tờ, thuốc, điện thoại, sạc, và thú cưng trước. Mặc áo dài tay và giày chắc nếu được. Khi khói dày, ở trong nhà nếu có thể, đóng cửa sổ, và đặt máy lạnh ở chế độ tuần hoàn nếu có. Nếu phải ra ngoài, dùng khẩu trang khít được thiết kế để lọc hạt mịn khi bạn có. Xem airnow.gov để biết chất lượng không khí. Người hen suyễn, bệnh tim, trẻ nhỏ, và người lớn tuổi cần đặc biệt cẩn thận trong ngày có khói.",
+          "url": "https://www.airnow.gov/"
+        },
+        {
+          "heading": "Lũ lụt",
+          "paragraph": "Lũ có thể xảy ra sau mưa lớn, xả đập, hoặc khi cống thoát nước tràn. Đi lên chỗ cao ngay khi chính quyền địa phương cảnh báo. Đừng bao giờ đi bộ, bơi, hoặc lái xe qua nước lũ. Nước trông nông có thể che dòng chảy mạnh, cống mở, hoặc đường bị cuốn. Sáu inch nước chảy có thể làm một người ngã, và một đến hai feet có thể cuốn xe đi. Nếu xe chết máy trong nước đang dâng, hãy ra khỏi xe và lên chỗ cao nếu an toàn. Quay đầu nếu đường đóng hoặc bị nước phủ. Sau lũ, tránh nhà bị hư cho đến khi được kiểm tra, vứt thức ăn đã chạm nước lũ, và chú ý nước bẩn cùng dây điện đổ. Lắng nghe thông báo đun sôi nước từ thành phố hoặc quận.",
+          "url": "https://www.ready.gov/floods"
+        },
+        {
+          "heading": "Nắng nóng",
+          "paragraph": "Nóng cực đoan có thể nguy hiểm, đặc biệt với trẻ em, người lớn tuổi, người mang thai, và ai làm việc ngoài trời. Uống nước thường xuyên, dù không thấy khát. Ở trong chỗ mát vào lúc nóng nhất trong ngày. Dùng quạt, tắm mát, và khăn ướt nếu không có máy lạnh. Kiểm tra hàng xóm và người thân sống một mình. Đừng bao giờ để trẻ em hoặc thú cưng trong xe đỗ. Dấu hiệu cảnh báo bệnh vì nóng gồm chóng mặt, đau đầu, buồn nôn, lú lẫn, và ngừng đổ mồ hôi. Nếu ai đó lú lẫn hoặc ngất vì nóng, hãy gọi 911.",
+          "url": "https://www.ready.gov/heat"
+        }
+      ]
+    },
+    {
+      "title": "Nguồn hỗ trợ an toàn đáng tin cậy",
+      "intro": "Dùng các tổ chức chính thức và nổi tiếng khi bạn cần trợ giúp sâu hơn. Những trang này là điểm bắt đầu an toàn.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Ready.gov",
+          "paragraph": "Hướng dẫn chuẩn bị khẩn cấp liên bang cho gia đình, gồm danh sách kiểm tra và thông tin rủi ro bằng nhiều ngôn ngữ.",
+          "url": "https://www.ready.gov/"
+        },
+        {
+          "heading": "Văn phòng Dịch vụ Khẩn cấp California (Cal OES)",
+          "paragraph": "Thông tin khẩn cấp của bang, cảnh báo, và tài nguyên chuẩn bị cho cư dân California.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "Hội Chữ thập đỏ Hoa Kỳ",
+          "paragraph": "Cứu trợ thiên tai, lớp sơ cứu, và hỗ trợ chi hội địa phương sau cháy, lũ, và các tình huống khẩn cấp khác.",
+          "url": "https://www.redcross.org/"
+        },
+        {
+          "heading": "Trung tâm Tài nguyên Pháp lý cho Người nhập cư (ILRC)",
+          "paragraph": "Tài liệu giáo dục Biết quyền của bạn và giới thiệu liên quan đến di trú. Đây là thông tin, không thay thế luật sư của bạn.",
+          "url": "https://www.ilrc.org/"
+        },
+        {
+          "heading": "findhelp.org",
+          "paragraph": "Tìm theo mã ZIP trợ giúp địa phương miễn phí hoặc chi phí thấp về thực phẩm, nhà ở, sức khỏe, và hơn thế.",
+          "url": "https://www.findhelp.org/"
+        }
+      ]
+    }
+  ]
+}

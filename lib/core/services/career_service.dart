@@ -70,10 +70,16 @@ class CareerService {
       throw RangeError('Invalid path index: $index');
     }
     final current = await getCareer();
+    final existingNotes =
+        index < current.paths.length ? current.paths[index].notes : const <CareerNote>[];
     final paths = List<CareerPath>.generate(
       CareerBridgeData.pathSlotCount,
       (i) {
-        if (i == index) return path;
+        if (i == index) {
+          return path.copyWith(
+            notes: path.notes.isNotEmpty ? path.notes : existingNotes,
+          );
+        }
         if (i < current.paths.length && current.paths[i].hasContent) {
           return current.paths[i];
         }
@@ -81,6 +87,46 @@ class CareerService {
       },
     );
     await saveCareer(current.copyWith(paths: paths));
+  }
+
+  Future<void> addNote(int pathIndex, String text) async {
+    final trimmed = text.trim();
+    if (trimmed.isEmpty) return;
+    final current = await _requirePath(pathIndex);
+    final path = current.paths[pathIndex];
+    final note = CareerNote(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      text: trimmed,
+      createdAt: DateTime.now(),
+    );
+    final paths = [...current.paths];
+    paths[pathIndex] = path.copyWith(notes: [...path.notes, note]);
+    await saveCareer(current.copyWith(paths: paths));
+  }
+
+  Future<void> deleteNote(int pathIndex, CareerNote note) async {
+    final current = await _requirePath(pathIndex);
+    final path = current.paths[pathIndex];
+    final remaining = path.notes.where((item) {
+      if (note.id.isNotEmpty && item.id.isNotEmpty) return item.id != note.id;
+      return !(item.text == note.text &&
+          item.createdAt.toIso8601String() == note.createdAt.toIso8601String());
+    }).toList();
+    final paths = [...current.paths];
+    paths[pathIndex] = path.copyWith(notes: remaining);
+    await saveCareer(current.copyWith(paths: paths));
+  }
+
+  Future<CareerBridgeData> _requirePath(int pathIndex) async {
+    if (pathIndex < 0 || pathIndex >= CareerBridgeData.pathSlotCount) {
+      throw RangeError('Invalid path index: $pathIndex');
+    }
+    final current = await getCareer();
+    if (pathIndex >= current.paths.length ||
+        !current.paths[pathIndex].hasContent) {
+      throw StateError('Career path not found.');
+    }
+    return current;
   }
 
   Future<void> setChecklistItemDone({
@@ -120,15 +166,63 @@ class CareerService {
     updatedSteps[stepIndex] = updatedStep;
 
     final updatedPaths = [...current.paths];
-    updatedPaths[pathIndex] = CareerPath(
-      id: path.id,
-      title: path.title,
-      summary: path.summary,
-      steps: updatedSteps,
+    updatedPaths[pathIndex] = path.copyWith(steps: updatedSteps);
+    await saveCareer(current.copyWith(paths: updatedPaths));
+  }
+
+  Future<void> setStepComplete({
+    required int pathIndex,
+    required String stepId,
+    required bool complete,
+  }) async {
+    if (pathIndex < 0 || pathIndex >= CareerBridgeData.pathSlotCount) {
+      throw RangeError('Invalid path index: $pathIndex');
+    }
+    final current = await getCareer();
+    if (pathIndex >= current.paths.length) {
+      throw StateError('Career path not found.');
+    }
+
+    final path = current.paths[pathIndex];
+    final stepIndex = path.steps.indexWhere((step) => step.id == stepId);
+    if (stepIndex < 0) {
+      throw StateError('Career step not found.');
+    }
+
+    if (complete) {
+      final blocked = path.steps.take(stepIndex).any((step) => !step.isComplete);
+      if (blocked) {
+        throw const CareerStepOrderException(CareerStepOrderIssue.finishAbove);
+      }
+    } else {
+      final blocked = path.steps.skip(stepIndex + 1).any((step) => step.isComplete);
+      if (blocked) {
+        throw const CareerStepOrderException(CareerStepOrderIssue.undoLater);
+      }
+    }
+
+    final updatedSteps = [...path.steps];
+    updatedSteps[stepIndex] = updatedSteps[stepIndex].copyWith(
+      isComplete: complete,
     );
+    final updatedPaths = [...current.paths];
+    updatedPaths[pathIndex] = path
+        .copyWith(steps: updatedSteps)
+        .withCurrentOnNextOpenStep();
     await saveCareer(current.copyWith(paths: updatedPaths));
   }
 }
+
+class CareerStepOrderException implements Exception {
+  const CareerStepOrderException(this.issue);
+
+  final CareerStepOrderIssue issue;
+
+  @override
+  String toString() => issue.name;
+}
+
+enum CareerStepOrderIssue { finishAbove, undoLater }
 
 final careerServiceProvider = Provider<CareerService>(
   (ref) => CareerService(FirebaseFirestore.instance, FirebaseAuth.instance),

@@ -81,6 +81,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get actionCreateAccount => 'Crear cuenta';
 
   @override
+  String get actionStart => 'Empezar';
+
+  @override
   String get actionPrevious => 'Anterior';
 
   @override
@@ -430,4 +433,327 @@ class AppLocalizationsEs extends AppLocalizations {
   String scamThreadCount(int count) {
     return '$count mensajes en esta conversación';
   }
+
+  @override
+  String get actionSend => 'Enviar';
+
+  @override
+  String get actionDelete => 'Eliminar';
+
+  @override
+  String get followupAsk => 'Preguntar';
+
+  @override
+  String get followupSaveNote => 'Guardar nota';
+
+  @override
+  String get followupDeleteNote => 'Eliminar nota';
+
+  @override
+  String followupQuestion(String question) {
+    return 'P: $question';
+  }
+
+  @override
+  String get careerSignIn =>
+      'Inicie sesión para explorar trayectorias profesionales.';
+
+  @override
+  String get careerAddPriorJob =>
+      'Agregue su trabajo anterior en la encuesta del perfil, o describa su experiencia en las notas de abajo.';
+
+  @override
+  String get careerGoToProfile => 'Ir al perfil';
+
+  @override
+  String get careerPriorEmployment => 'Empleo anterior (de su encuesta)';
+
+  @override
+  String get careerAdditionalBackground => 'Antecedentes adicionales';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      'Habilidades, estudios, certificaciones, idiomas o metas profesionales para que la IA sugiera mejores caminos.';
+
+  @override
+  String get careerAdditionalBackgroundHint =>
+      'p. ej. 5 años como electricista, diploma vocacional, interés en instalación solar…';
+
+  @override
+  String get careerGenerateAll => 'Generar trayectorias';
+
+  @override
+  String get careerRegenerateAll => 'Volver a generar todas';
+
+  @override
+  String get careerGenerating => 'Trazando trayectorias profesionales…';
+
+  @override
+  String get careerNeedBackground =>
+      'Primero agregue notas sobre sus habilidades o estudios.';
+
+  @override
+  String get careerCouldNotSaveChecklist =>
+      'No se pudo guardar el progreso de la lista.';
+
+  @override
+  String get careerCouldNotSaveStep =>
+      'No se pudo guardar el progreso del paso.';
+
+  @override
+  String get careerCouldNotSaveNote => 'No se pudo guardar la nota.';
+
+  @override
+  String get careerCouldNotDeleteNote => 'No se pudo eliminar esa nota.';
+
+  @override
+  String get careerDeleteNoteTitle => '¿Eliminar esta nota?';
+
+  @override
+  String get careerDeleteNoteBody =>
+      'Esto quita la nota de esta trayectoria profesional.';
+
+  @override
+  String get careerGeneratePathTitle => '¿Generar esta trayectoria?';
+
+  @override
+  String get careerRegeneratePathTitle => '¿Volver a generar esta trayectoria?';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return 'Crear una trayectoria generada por IA para la Trayectoria $number. Se conservan las demás trayectorias y notas.';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return 'Reemplazar \"$title\" con una nueva trayectoria generada por IA. Se conservan las demás trayectorias y notas.';
+  }
+
+  @override
+  String get careerGenerate => 'Generar';
+
+  @override
+  String get careerRegenerate => 'Volver a generar';
+
+  @override
+  String careerPathNumber(int number) {
+    return 'Trayectoria $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return 'Trayectoria $number: $title';
+  }
+
+  @override
+  String get careerPlaceholderBody =>
+      'Aquí aparecerá una trayectoria profesional cuando se genere.';
+
+  @override
+  String get careerPlaceholderStartTitle => 'Punto de partida';
+
+  @override
+  String get careerPlaceholderStartBody =>
+      'Su experiencia y antecedentes actuales.';
+
+  @override
+  String get careerPlaceholderCredsTitle => 'Obtener credenciales';
+
+  @override
+  String get careerPlaceholderCredsBody =>
+      'Licencias, capacitación y habilidades a desarrollar.';
+
+  @override
+  String get careerPlaceholderTargetTitle => 'Puesto objetivo';
+
+  @override
+  String get careerPlaceholderTargetBody =>
+      'Su meta profesional en Estados Unidos.';
+
+  @override
+  String get careerCertifications => 'Certificaciones y licencias';
+
+  @override
+  String get careerSkills => 'Habilidades a desarrollar';
+
+  @override
+  String get careerTimeEstimate => 'Tiempo estimado';
+
+  @override
+  String get careerStepCompleted => 'Completado';
+
+  @override
+  String get careerStepNow => 'Ahora';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return 'Ahora ($duration)';
+  }
+
+  @override
+  String get careerTimePending => 'Tiempo estimado pendiente';
+
+  @override
+  String get careerUndo => 'Deshacer';
+
+  @override
+  String get careerMarkComplete => 'Marcar como completado';
+
+  @override
+  String get careerFinishStepAbove => 'Termine primero el paso de arriba.';
+
+  @override
+  String get careerUndoLaterStep => 'Deshaga primero el paso posterior.';
+
+  @override
+  String get careerAskTitle => 'Preguntar sobre esta trayectoria';
+
+  @override
+  String get careerAskSubtitle =>
+      'Las preguntas usan los pasos, las notas y sus antecedentes. Las respuestas se quedan en esta página hasta que salga. Guarde como nota lo que quiera conservar.';
+
+  @override
+  String get careerAskHint =>
+      'Pregunte sobre un paso, una licencia o cómo empezar…';
+
+  @override
+  String get careerNotesTitle => 'Notas de esta trayectoria';
+
+  @override
+  String get careerNotesSubtitle =>
+      'Registre su progreso. Se guardan y se comparten con la IA.';
+
+  @override
+  String get careerNotesHint => '¿Qué ha hecho en esta trayectoria?';
+
+  @override
+  String get roadmapSettlementPlan =>
+      'Su plan de asentamiento según las respuestas de la encuesta.';
+
+  @override
+  String get roadmapRegenerateAll => 'Volver a generar todo';
+
+  @override
+  String get roadmapRegenerateAllTitle => '¿Volver a generar todo el plan?';
+
+  @override
+  String get roadmapRegenerateAllBody =>
+      'Esto reemplaza las tres secciones con un plan nuevo de IA. Se conservan las notas de cada sección.';
+
+  @override
+  String get roadmapCreating => 'Creando su plan personalizado…';
+
+  @override
+  String get roadmapAnswerQuestions =>
+      'Responda las preguntas de abajo para terminar su plan.';
+
+  @override
+  String get roadmapUpdating => 'Actualizando su plan…';
+
+  @override
+  String get roadmapGenerate => 'Generar plan';
+
+  @override
+  String get roadmapNoRoadmap =>
+      'Aún no hay un plan. Pulse abajo para generar uno con su encuesta.';
+
+  @override
+  String get roadmapEmptySurvey =>
+      'Complete la encuesta inicial para crear un plan personalizado.';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return '¿Volver a generar $section?';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody =>
+      'Esta sección se reemplazará con un plan nuevo de IA. Se conservan las notas de esta sección.';
+
+  @override
+  String get roadmapAskTitle => 'Preguntar sobre esta sección';
+
+  @override
+  String get roadmapAskSubtitle =>
+      'Las preguntas usan la lista, las notas y su encuesta. Las respuestas se quedan en esta página hasta que salga. Guarde como nota lo que quiera conservar.';
+
+  @override
+  String get roadmapAskHint => 'Pregunte sobre un paso de esta sección…';
+
+  @override
+  String get roadmapNotesTitle => 'Notas de esta sección';
+
+  @override
+  String get roadmapNotesSubtitle =>
+      'Registre su progreso en estos pasos. Se guardan y se comparten con la IA.';
+
+  @override
+  String get roadmapNotesHint => '¿Qué ha hecho en esta sección?';
+
+  @override
+  String get roadmapNoChecklist => 'Aún no hay elementos en la lista.';
+
+  @override
+  String get roadmapCouldNotSaveNote => 'No se pudo guardar la nota.';
+
+  @override
+  String get roadmapCouldNotDeleteNote => 'No se pudo eliminar esa nota.';
+
+  @override
+  String get roadmapDeleteNoteTitle => '¿Eliminar esta nota?';
+
+  @override
+  String get roadmapDeleteNoteBody => 'Esto quita la nota de esta sección.';
+
+  @override
+  String get roadmapAiUnavailable => 'El servicio de IA no está disponible.';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'La IA no pudo responder.';
+
+  @override
+  String get roadmapSectionFirstMonth => 'Primer mes';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => 'Primeros 3 meses';
+
+  @override
+  String get roadmapSectionFirstYear => 'Primer año';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return 'Pregunta $current de $total';
+  }
+
+  @override
+  String get roadmapOneQuestion => 'Una pregunta rápida';
+
+  @override
+  String roadmapUpNext(String question) {
+    return 'Siguiente: $question';
+  }
+
+  @override
+  String get roadmapYourAnswer => 'Su respuesta';
+
+  @override
+  String get guideLoadError =>
+      'No se pudo cargar esta guía. Inténtelo de nuevo cuando tenga conexión.';
+
+  @override
+  String get guideNoSections => 'Esta guía no tiene secciones.';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return 'Sección $current de $total';
+  }
+
+  @override
+  String get housingAskTitle => 'Preguntar sobre vivienda';
+
+  @override
+  String get housingAskHint => 'Escriba una pregunta…';
+
+  @override
+  String get housingAskFollowUpHint => 'Haga una pregunta de seguimiento…';
 }

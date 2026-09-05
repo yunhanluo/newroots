@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../core/l10n/app_languages.dart';
 import '../../../core/l10n/app_locale.dart';
 import '../../../core/l10n/l10n_labels.dart';
 import '../../../core/models/scam_report.dart';
@@ -11,6 +10,7 @@ import '../../../core/services/ai_service.dart';
 import '../../../core/services/scam_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../core/widgets/ai_body_text.dart';
 import '../../../core/widgets/storage_image.dart';
 import '../../../l10n/app_localizations.dart';
 import 'widgets/screenshot_drop_zone.dart';
@@ -42,11 +42,8 @@ class _ScamShieldScreenState extends ConsumerState<ScamShieldScreen> {
     super.dispose();
   }
 
-  String get _preferredLanguage {
-    return appLanguageByCode(ref.read(appLocaleProvider).languageCode)
-            ?.englishName ??
-        'English';
-  }
+  String get _preferredLanguage =>
+      ref.read(appLocaleProvider).languageCode;
 
   Future<void> _pickImage(ImageSource source) async {
     try {
@@ -798,7 +795,7 @@ class _PastCheckTile extends StatelessWidget {
                       ),
                       if (report.summary.isNotEmpty) ...[
                         const SizedBox(height: 8),
-                        Text(
+                        AiBodyText(
                           report.summary,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -1047,7 +1044,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
           ],
           if (report.summary.isNotEmpty) ...[
             const SizedBox(height: 12),
-            Text(
+            AiBodyText(
               report.summary,
               style: const TextStyle(
                 fontSize: 15,
@@ -1175,7 +1172,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: Text(
+                      child: AiBodyText(
                         reason,
                         style: TextStyle(
                           fontSize: 14,
@@ -1207,7 +1204,7 @@ class _RiskResultCardState extends State<_RiskResultCard> {
                     Icon(Icons.check_circle_outline, size: 18, color: _accent),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: Text(
+                      child: AiBodyText(
                         action,
                         style: TextStyle(
                           fontSize: 14,

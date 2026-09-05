@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/l10n/app_locale.dart';
 import '../../../core/models/roadmap.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/ai_service.dart';
@@ -11,6 +12,7 @@ import '../../../core/services/roadmap_service.dart';
 import '../../../core/services/user_profile_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/roadmap_section_card.dart';
 
 /// Personalized integration roadmap generated from onboarding survey data.
@@ -29,7 +31,9 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
   bool _generating = false;
   RoadmapSectionKey? _qaLoadingSection;
   RoadmapSectionKey? _noteSubmittingSection;
+  String? _deletingNoteId;
   RoadmapSectionKey? _regeneratingSection;
+  final _sessionQa = <RoadmapSectionKey, List<RoadmapQaExchange>>{};
   List<String> _pendingQuestions = [];
   int _clarificationQueueTotal = 0;
   String? _error;
@@ -78,19 +82,19 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
     final hasPendingClarifications = _pendingQuestions.isNotEmpty;
     final clarificationIndex =
         _clarificationQueueTotal - _pendingQuestions.length + 1;
+    final l10n = AppLocalizations.of(context);
 
     return BrandScaffold(
-      title: 'Integration Roadmap',
+      title: l10n.featureRoadmap,
       actions: [
         if (hasRoadmap)
           IconButton(
-            tooltip: 'Regenerate all',
+            tooltip: l10n.roadmapRegenerateAll,
             onPressed: _generating || profile == null
                 ? null
                 : () => _confirmRegenerate(
-                    title: 'Regenerate entire roadmap?',
-                    message:
-                        'This replaces all three sections with a fresh AI plan. Your section notes and Q&A are kept.',
+                    title: l10n.roadmapRegenerateAllTitle,
+                    message: l10n.roadmapRegenerateAllBody,
                     onConfirm: () => _regenerateAll(profile!, roadmap),
                   ),
             icon: const Icon(Icons.refresh),
@@ -110,21 +114,22 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
                     children: [
                       if (profile == null || !profile.hasSurveyData) ...[
                         _EmptySurveyCard(
+                          message: l10n.roadmapEmptySurvey,
+                          actionLabel: l10n.actionTakeSurvey,
                           onTakeSurvey: () =>
                               context.pushNamed(Routes.onboarding),
                         ),
                       ] else if (_generating && !hasRoadmap) ...[
-                        const _GeneratingCard(
-                          message: 'Creating your personalized roadmap…',
+                        _GeneratingCard(
+                          message: l10n.roadmapCreating,
                         ),
                       ] else if (hasPendingClarifications && !hasRoadmap) ...[
-                        const _GeneratingCard(
-                          message:
-                              'Answer the questions below so we can finish your roadmap.',
+                        _GeneratingCard(
+                          message: l10n.roadmapAnswerQuestions,
                         ),
                       ] else if (hasRoadmap) ...[
                         Text(
-                          'Your settlement plan based on your survey answers.',
+                          l10n.roadmapSettlementPlan,
                           style: TextStyle(
                             color: Colors.black87.withValues(alpha: 0.7),
                             fontSize: 15,
@@ -133,17 +138,19 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
                         const SizedBox(height: 16),
                         ...RoadmapSectionKey.values.map(
                           (key) => RoadmapSectionCard(
-                            title: key.label,
+                            title: _roadmapSectionTitle(l10n, key),
                             section: roadmap.sectionFor(key),
+                            qaHistory: _sessionQa[key] ?? const [],
                             regenerating: _regeneratingSection == key,
                             qaController: _qaControllers[key]!,
                             noteController: _noteControllers[key]!,
                             qaLoading: _qaLoadingSection == key,
                             noteSubmitting: _noteSubmittingSection == key,
                             onRegenerate: () => _confirmRegenerate(
-                              title: 'Regenerate ${key.label}?',
-                              message:
-                                  'This section will be replaced with a new AI-generated plan. Notes and Q&A for this section are kept.',
+                              title: l10n.roadmapRegenerateSectionTitle(
+                                _roadmapSectionTitle(l10n, key),
+                              ),
+                              message: l10n.roadmapRegenerateSectionBody,
                               onConfirm: () => _regenerateSection(
                                 profile!,
                                 roadmap,
@@ -155,13 +162,14 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
                             onAskQuestion: () =>
                                 _askQuestion(profile!, roadmap, key),
                             onSubmitNote: () => _submitNote(key),
+                            onDeleteNote: (note) => _deleteNote(key, note),
+                            deletingNoteId: _deletingNoteId,
                           ),
                         ),
                       ] else if (!_generating) ...[
                         _EmptySurveyCard(
-                          message:
-                              'No roadmap yet. Tap below to generate one from your survey.',
-                          actionLabel: 'Generate Roadmap',
+                          message: l10n.roadmapNoRoadmap,
+                          actionLabel: l10n.roadmapGenerate,
                           onTakeSurvey: () =>
                               _generateRoadmap(profile!, roadmap),
                         ),
@@ -195,16 +203,16 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
           if (_generating && hasRoadmap && !hasPendingClarifications)
             Container(
               color: Colors.black.withValues(alpha: 0.08),
-              child: const Center(
+              child: Center(
                 child: Card(
                   child: Padding(
-                    padding: EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(24),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircularProgressIndicator(),
-                        SizedBox(height: 16),
-                        Text('Updating your roadmap…'),
+                        const CircularProgressIndicator(),
+                        const SizedBox(height: 16),
+                        Text(l10n.roadmapUpdating),
                       ],
                     ),
                   ),
@@ -229,17 +237,25 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).actionCancel),
           ),
           FilledButton(
             onPressed: () => Navigator.of(context).pop(true),
             style: FilledButton.styleFrom(backgroundColor: kBrandGreen),
-            child: const Text('Regenerate'),
+            child: Text(AppLocalizations.of(context).careerRegenerate),
           ),
         ],
       ),
     );
     if (confirmed == true) await onConfirm();
+  }
+
+  String _roadmapSectionTitle(AppLocalizations l10n, RoadmapSectionKey key) {
+    return switch (key) {
+      RoadmapSectionKey.firstMonth => l10n.roadmapSectionFirstMonth,
+      RoadmapSectionKey.firstThreeMonths => l10n.roadmapSectionFirstThreeMonths,
+      RoadmapSectionKey.firstYear => l10n.roadmapSectionFirstYear,
+    };
   }
 
   Future<void> _generateRoadmap(
@@ -258,6 +274,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
             profile: profile,
             clarifications: existing.clarifications,
             existing: existing.isEmpty ? null : existing,
+            language: ref.read(appLocaleProvider).languageCode,
           );
       await _handleAiResponse(response, profile, existing);
     } catch (error) {
@@ -310,6 +327,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
             question: question,
             answer: answer,
             existing: updated.isEmpty ? null : updated,
+            language: ref.read(appLocaleProvider).languageCode,
           );
       await _handleAiResponse(response, profile, updated);
     } catch (error) {
@@ -342,7 +360,8 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
     if (response.status == RoadmapAiStatus.error) {
       setState(() {
         _setClarificationQueue(const []);
-        _error = response.errorMessage ?? 'AI service is unavailable.';
+        _error = response.errorMessage ??
+            AppLocalizations.of(context).roadmapAiUnavailable;
       });
       return;
     }
@@ -357,15 +376,15 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
             : response.roadmap!.clarifications,
         firstMonth: response.roadmap!.firstMonth.copyWith(
           notes: existing.firstMonth.notes,
-          qaHistory: existing.firstMonth.qaHistory,
+          qaHistory: const [],
         ),
         firstThreeMonths: response.roadmap!.firstThreeMonths.copyWith(
           notes: existing.firstThreeMonths.notes,
-          qaHistory: existing.firstThreeMonths.qaHistory,
+          qaHistory: const [],
         ),
         firstYear: response.roadmap!.firstYear.copyWith(
           notes: existing.firstYear.notes,
-          qaHistory: existing.firstYear.qaHistory,
+          qaHistory: const [],
         ),
         generatedAt: DateTime.now(),
       );
@@ -381,7 +400,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
       final existingSection = current.sectionFor(key);
       final regenerated = response.sectionData!.copyWith(
         notes: existingSection.notes,
-        qaHistory: existingSection.qaHistory,
+        qaHistory: const [],
       );
       final updated = current.withSection(key, regenerated);
       await ref.read(roadmapServiceProvider).saveRoadmap(updated);
@@ -395,6 +414,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
     setState(() {
       _generating = true;
       _error = null;
+      _sessionQa.clear();
       _setClarificationQueue(const []);
     });
 
@@ -405,6 +425,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
             profile: profile,
             clarifications: existing.clarifications,
             existing: existing,
+            language: ref.read(appLocaleProvider).languageCode,
           );
       await _handleAiResponse(response, profile, existing);
     } catch (error) {
@@ -421,6 +442,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
   ) async {
     setState(() {
       _regeneratingSection = section;
+      _sessionQa.remove(section);
       _error = null;
     });
 
@@ -432,6 +454,7 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
             section: section,
             clarifications: existing.clarifications,
             existing: existing,
+            language: ref.read(appLocaleProvider).languageCode,
           );
       await _handleAiResponse(response, profile, existing);
     } catch (error) {
@@ -445,7 +468,10 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
     RoadmapSectionKey key,
     RoadmapSection section,
   ) async {
-    await ref.read(roadmapServiceProvider).updateSection(key, section);
+    await ref.read(roadmapServiceProvider).updateSection(
+          key,
+          section.copyWith(qaHistory: const []),
+        );
   }
 
   Future<void> _askQuestion(
@@ -466,25 +492,32 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
           .read(aiServiceProvider)
           .askRoadmapQuestion(
             profile: profile,
-            roadmap: roadmap,
+            roadmap: _withSessionQa(roadmap),
             section: section,
             question: question,
+            language: ref.read(appLocaleProvider).languageCode,
           );
       if (response.status == RoadmapAiStatus.answer &&
           response.answer != null) {
-        await ref.read(roadmapServiceProvider).addQaExchange(
-              section,
-              RoadmapQaExchange(
-                question: question,
-                answer: response.answer!,
-                askedAt: DateTime.now(),
-              ),
-            );
+        final exchange = RoadmapQaExchange(
+          question: question,
+          answer: response.answer!,
+          askedAt: DateTime.now(),
+        );
         _qaControllers[section]!.clear();
+        if (mounted) {
+          setState(() {
+            _sessionQa[section] = [
+              ..._sessionQa[section] ?? const [],
+              exchange,
+            ];
+          });
+        }
       } else if (response.status == RoadmapAiStatus.error) {
         if (mounted) {
           setState(
-            () => _error = response.errorMessage ?? 'AI could not answer.',
+            () => _error = response.errorMessage ??
+                AppLocalizations.of(context).roadmapAiCouldNotAnswer,
           );
         }
       }
@@ -493,6 +526,19 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
     } finally {
       if (mounted) setState(() => _qaLoadingSection = null);
     }
+  }
+
+  IntegrationRoadmap _withSessionQa(IntegrationRoadmap roadmap) {
+    var next = roadmap;
+    for (final key in RoadmapSectionKey.values) {
+      next = next.withSection(
+        key,
+        next.sectionFor(key).copyWith(
+          qaHistory: _sessionQa[key] ?? const [],
+        ),
+      );
+    }
+    return next;
   }
 
   Future<void> _submitNote(RoadmapSectionKey section) async {
@@ -504,9 +550,52 @@ class _RoadmapScreenState extends ConsumerState<RoadmapScreen> {
       await ref.read(roadmapServiceProvider).addNote(section, text);
       _noteControllers[section]!.clear();
     } catch (_) {
-      if (mounted) setState(() => _error = 'Could not save note.');
+      if (mounted) {
+        setState(
+          () => _error = AppLocalizations.of(context).roadmapCouldNotSaveNote,
+        );
+      }
     } finally {
       if (mounted) setState(() => _noteSubmittingSection = null);
+    }
+  }
+
+  Future<void> _deleteNote(RoadmapSectionKey section, RoadmapNote note) async {
+    final l10n = AppLocalizations.of(context);
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.roadmapDeleteNoteTitle),
+        content: Text(l10n.roadmapDeleteNoteBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(l10n.actionCancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: Text(l10n.actionDelete),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+
+    setState(() {
+      _deletingNoteId = note.id;
+      _error = null;
+    });
+    try {
+      await ref.read(roadmapServiceProvider).deleteNote(section, note);
+    } catch (_) {
+      if (mounted) {
+        setState(
+          () => _error = AppLocalizations.of(context).roadmapCouldNotDeleteNote,
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _deletingNoteId = null);
     }
   }
 }
@@ -585,9 +674,8 @@ class _GeneratingCard extends StatelessWidget {
 class _EmptySurveyCard extends StatelessWidget {
   const _EmptySurveyCard({
     required this.onTakeSurvey,
-    this.message =
-        'Take the onboarding survey so we can build a personalized roadmap.',
-    this.actionLabel = 'Take survey',
+    required this.message,
+    required this.actionLabel,
   });
 
   final VoidCallback onTakeSurvey;
@@ -647,6 +735,7 @@ class _ClarificationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Material(
       elevation: 8,
       color: Colors.white,
@@ -665,8 +754,8 @@ class _ClarificationBar extends StatelessWidget {
                   Expanded(
                     child: Text(
                       totalCount > 1
-                          ? 'Question $currentIndex of $totalCount'
-                          : 'One quick question',
+                          ? l10n.roadmapQuestionOf(currentIndex, totalCount)
+                          : l10n.roadmapOneQuestion,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.black87.withValues(alpha: 0.7),
@@ -700,7 +789,7 @@ class _ClarificationBar extends StatelessWidget {
               if (upcomingQuestions.isNotEmpty) ...[
                 const SizedBox(height: 10),
                 Text(
-                  'Up next: ${upcomingQuestions.first}',
+                  l10n.roadmapUpNext(upcomingQuestions.first),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -717,7 +806,7 @@ class _ClarificationBar extends StatelessWidget {
                     child: TextField(
                       controller: controller,
                       decoration: InputDecoration(
-                        hintText: 'Your answer',
+                        hintText: l10n.roadmapYourAnswer,
                         filled: true,
                         fillColor: kBrandPageBg,
                         border: OutlineInputBorder(
@@ -739,8 +828,8 @@ class _ClarificationBar extends StatelessWidget {
                     ),
                     child: Text(
                       totalCount > 1 && currentIndex < totalCount
-                          ? 'Next'
-                          : 'Send',
+                          ? l10n.actionNext
+                          : l10n.actionSend,
                     ),
                   ),
                 ],

@@ -36,6 +36,7 @@
   "actionLogIn": "Log in",
   "actionSignUp": "Sign up",
   "actionCreateAccount": "Create account",
+  "actionStart": "Start",
   "actionPrevious": "Previous",
   "actionNext": "Next",
   "actionFinish": "Finish",
@@ -172,5 +173,156 @@
     "placeholders": {
       "count": { "type": "int" }
     }
-  }
+  },
+
+  "actionSend": "Send",
+  "actionDelete": "Delete",
+
+  "followupAsk": "Ask",
+  "followupSaveNote": "Save note",
+  "followupDeleteNote": "Delete note",
+  "followupQuestion": "Q: {question}",
+  "@followupQuestion": {
+    "placeholders": {
+      "question": { "type": "String" }
+    }
+  },
+
+  "careerSignIn": "Sign in to explore career pathways.",
+  "careerAddPriorJob": "Add your prior job in your profile survey, or describe your background in the notes below.",
+  "careerGoToProfile": "Go to profile",
+  "careerPriorEmployment": "Prior employment (from your survey)",
+  "careerAdditionalBackground": "Additional background",
+  "careerAdditionalBackgroundHelp": "Skills, education, certifications, languages, or career goals that will help the AI suggest better paths.",
+  "careerAdditionalBackgroundHint": "e.g. 5 years as an electrician, vocational diploma, interested in solar installation…",
+  "careerGenerateAll": "Generate career paths",
+  "careerRegenerateAll": "Regenerate all paths",
+  "careerGenerating": "Mapping career pathways…",
+  "careerNeedBackground": "Add notes about your skills or education first.",
+  "careerCouldNotSaveChecklist": "Could not save checklist progress.",
+  "careerCouldNotSaveStep": "Could not save step progress.",
+  "careerCouldNotSaveNote": "Could not save note.",
+  "careerCouldNotDeleteNote": "Could not delete that note.",
+  "careerDeleteNoteTitle": "Delete this note?",
+  "careerDeleteNoteBody": "This removes the note from this career path.",
+  "careerGeneratePathTitle": "Generate this path?",
+  "careerRegeneratePathTitle": "Regenerate this path?",
+  "careerGeneratePathBody": "Create an AI-generated career path for Path {number}. Your other paths and notes are kept.",
+  "@careerGeneratePathBody": {
+    "placeholders": {
+      "number": { "type": "int" }
+    }
+  },
+  "careerRegeneratePathBody": "Replace \"{title}\" with a new AI-generated career path. Your other paths and notes are kept.",
+  "@careerRegeneratePathBody": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "careerGenerate": "Generate",
+  "careerRegenerate": "Regenerate",
+  "careerPathNumber": "Path {number}",
+  "@careerPathNumber": {
+    "placeholders": {
+      "number": { "type": "int" }
+    }
+  },
+  "careerPathHeading": "Path {number}: {title}",
+  "@careerPathHeading": {
+    "placeholders": {
+      "number": { "type": "int" },
+      "title": { "type": "String" }
+    }
+  },
+  "careerPlaceholderBody": "A career pathway will appear here once generated.",
+  "careerPlaceholderStartTitle": "Starting point",
+  "careerPlaceholderStartBody": "Your current experience and background.",
+  "careerPlaceholderCredsTitle": "Build credentials",
+  "careerPlaceholderCredsBody": "Licenses, training, and skills to develop.",
+  "careerPlaceholderTargetTitle": "Target role",
+  "careerPlaceholderTargetBody": "Your future career goal in the US.",
+  "careerCertifications": "Certifications & licenses",
+  "careerSkills": "Skills to develop",
+  "careerTimeEstimate": "Time Estimate",
+  "careerStepCompleted": "Completed",
+  "careerStepNow": "Now",
+  "careerStepNowWithDuration": "Now ({duration})",
+  "@careerStepNowWithDuration": {
+    "placeholders": {
+      "duration": { "type": "String" }
+    }
+  },
+  "careerTimePending": "Time estimate pending",
+  "careerUndo": "Undo",
+  "careerMarkComplete": "Mark complete",
+  "careerFinishStepAbove": "Finish the step above first.",
+  "careerUndoLaterStep": "Undo the later step first.",
+  "careerAskTitle": "Ask about this path",
+  "careerAskSubtitle": "Questions use this path's steps, notes, and your background. Answers stay on this page until you leave. Save anything you want to keep as a note.",
+  "careerAskHint": "Ask about a step, license, or how to get started…",
+  "careerNotesTitle": "Notes for this path",
+  "careerNotesSubtitle": "Track progress on this pathway. Saved and shared with the AI.",
+  "careerNotesHint": "What have you done for this path?",
+
+  "roadmapSettlementPlan": "Your settlement plan based on your survey answers.",
+  "roadmapRegenerateAll": "Regenerate all",
+  "roadmapRegenerateAllTitle": "Regenerate entire roadmap?",
+  "roadmapRegenerateAllBody": "This replaces all three sections with a fresh AI plan. Your section notes are kept.",
+  "roadmapCreating": "Creating your personalized roadmap…",
+  "roadmapAnswerQuestions": "Answer the questions below so we can finish your roadmap.",
+  "roadmapUpdating": "Updating your roadmap…",
+  "roadmapGenerate": "Generate Roadmap",
+  "roadmapNoRoadmap": "No roadmap yet. Tap below to generate one from your survey.",
+  "roadmapEmptySurvey": "Take the onboarding survey so we can build a personalized roadmap.",
+  "roadmapRegenerateSectionTitle": "Regenerate {section}?",
+  "@roadmapRegenerateSectionTitle": {
+    "placeholders": {
+      "section": { "type": "String" }
+    }
+  },
+  "roadmapRegenerateSectionBody": "This section will be replaced with a new AI-generated plan. Your notes for this section are kept.",
+  "roadmapAskTitle": "Ask about this section",
+  "roadmapAskSubtitle": "Questions use this section's checklist, notes, and your survey. Answers stay on this page until you leave. Save anything you want to keep as a note.",
+  "roadmapAskHint": "Ask about a step in this section…",
+  "roadmapNotesTitle": "Notes for this section",
+  "roadmapNotesSubtitle": "Track progress on these steps. Saved and shared with the AI.",
+  "roadmapNotesHint": "What have you done for this section?",
+  "roadmapNoChecklist": "No checklist items yet.",
+  "roadmapCouldNotSaveNote": "Could not save note.",
+  "roadmapCouldNotDeleteNote": "Could not delete that note.",
+  "roadmapDeleteNoteTitle": "Delete this note?",
+  "roadmapDeleteNoteBody": "This removes the note from this section.",
+  "roadmapAiUnavailable": "AI service is unavailable.",
+  "roadmapAiCouldNotAnswer": "AI could not answer.",
+  "roadmapSectionFirstMonth": "First Month",
+  "roadmapSectionFirstThreeMonths": "First 3 Months",
+  "roadmapSectionFirstYear": "First Year",
+  "roadmapQuestionOf": "Question {current} of {total}",
+  "@roadmapQuestionOf": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "roadmapOneQuestion": "One quick question",
+  "roadmapUpNext": "Up next: {question}",
+  "@roadmapUpNext": {
+    "placeholders": {
+      "question": { "type": "String" }
+    }
+  },
+  "roadmapYourAnswer": "Your answer",
+
+  "guideLoadError": "This guide could not be loaded. Try again when you are online.",
+  "guideNoSections": "This guide has no sections.",
+  "guideSectionOf": "Section {current} of {total}",
+  "@guideSectionOf": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "housingAskTitle": "Ask about housing",
+  "housingAskHint": "Type a question…",
+  "housingAskFollowUpHint": "Ask a follow-up…"
 }

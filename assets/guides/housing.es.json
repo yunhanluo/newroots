@@ -1,0 +1,167 @@
+{
+  "id": "housing",
+  "title": "Navegador de vivienda",
+  "subtitle": "Alquiler, derechos de inquilinos y cómo evitar estafas de vivienda.",
+  "landingTitle": "Navegador de vivienda",
+  "landingBody": "Aprenda todo sobre la vivienda en California.",
+  "icon": "home",
+  "finishRoute": "home",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Bienvenida",
+      "intro": "",
+      "body": "Alquilar o comprar en California trae desafíos. Las reglas, el papeleo y los costos pueden sentirse desconocidos, sobre todo si es nuevo en Estados Unidos.\n\nSiga leyendo para conocer los requisitos de alquiler, otras formas de calificar, recursos de vivienda de confianza, derechos de inquilinos y cómo evitar estafas de vivienda.\n\nSi en algún momento se siente perdido, pregunte a la IA al final de la pantalla. Puede explicar la sección actual con palabras más simples o responder una pregunta sobre su situación.",
+      "topics": []
+    },
+    {
+      "title": "Entienda los requisitos de alquiler",
+      "intro": "La mayoría de los propietarios piden los mismos datos básicos cuando usted solicita un alquiler. Reunirlos con anticipación hace que aplicar sea más rápido y menos estresante. Esto es lo que suele significar cada uno.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Solicitud de alquiler",
+          "paragraph": "Este es el formulario que el propietario o administrador usa para reunir su información. Por lo general pide su nombre completo, direcciones actuales y anteriores, teléfono, correo, empleo, ingresos y los nombres de todas las personas que vivirán en la unidad. Algunos formularios son en papel y otros en línea. Llénele con cuidado y use el mismo nombre que aparece en su identificación. Guarde una copia o captura de lo que envíe para recordar lo que compartió."
+        },
+        {
+          "heading": "Identificación con foto",
+          "paragraph": "Los propietarios necesitan una identificación oficial con foto para confirmar quién es usted. Por lo general se acepta un pasaporte, licencia de conducir de EE. UU., identificación estatal u otra identificación oficial con foto. Lleve el original para mostrarlo en persona y pregunte antes de enviar copias por internet. Comparta imágenes de su identificación solo por un portal de solicitud de confianza o directamente con la oficina de la propiedad, no por mensajes de texto o redes sociales al azar."
+        },
+        {
+          "heading": "Comprobante de ingresos",
+          "paragraph": "Esto muestra que puede pagar la renta cada mes. Las pruebas comunes incluyen talones de pago recientes, una carta de oferta con su salario, estados de cuenta bancarios, formularios de impuestos o una carta de su empleador. Muchos propietarios buscan ingresos mensuales de unas dos o tres veces la renta, pero las políticas varían. Si le pagan en efectivo, es independiente o es nuevo en un trabajo, pregunte qué documentos aceptan. Imprima o guarde copias claras para poder subirlas o entregarlas rápido."
+        },
+        {
+          "heading": "Referencias",
+          "paragraph": "Las referencias son personas a las que el propietario puede contactar para saber si usted es confiable. Los propietarios anteriores son los más útiles. Si nunca ha alquilado en EE. UU., a menudo puede usar a un empleador, maestro, trabajador social o contacto de una organización comunitaria. Pida permiso primero y luego dé su nombre completo, relación con usted, teléfono y correo. Avise a sus referencias que un propietario puede llamar para que estén listas para responder."
+        },
+        {
+          "heading": "Verificación de crédito e historial",
+          "paragraph": "Una verificación de crédito mira cómo ha manejado cuentas y préstamos en EE. UU. Una verificación de antecedentes puede buscar desalojos o antecedentes penales. Es común que las personas recién llegadas tengan poco o ningún historial de crédito en EE. UU., y eso no es lo mismo que un mal crédito. Pregunte al propietario qué revisan y qué hacen si alguien no tiene expediente de crédito en EE. UU. Por lo general usted autoriza estas verificaciones en la solicitud. En California, las tarifas de investigación están limitadas por ley, y puede pedir una copia de cualquier informe del consumidor usado para denegar su solicitud."
+        },
+        {
+          "heading": "Tarifa de solicitud",
+          "paragraph": "Es una tarifa que algunos propietarios cobran para cubrir costos de investigación, como crédito o antecedentes. En California el monto está limitado y solo debe cubrir los costos reales de la investigación. Pregunte si la tarifa es obligatoria, cuánto es y si es reembolsable antes de pagar. Pague por la oficina o el portal oficial, pida un recibo y nunca envíe dinero por transferencia ni use tarjetas de regalo para alguien que dice ser el propietario."
+        }
+      ]
+    },
+    {
+      "title": "Conozca otras formas de calificar",
+      "intro": "Muchas personas recién llegadas aún no tienen historial de crédito en EE. UU. Eso no siempre significa que no puedan alquilar. A veces los propietarios aceptan otras formas de mostrar que usted es confiable. Pregunte qué permiten y considere estas opciones comunes.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Codeudor o garante",
+          "paragraph": "Un codeudor es alguien con mejor crédito o ingresos que acepta pagar la renta si usted no puede. A menudo es un familiar, amigo o patrocinador que vive en EE. UU. El propietario suele pedirle a esa persona que llene una solicitud y también pase una verificación de crédito. Solo pídaselo a alguien de confianza y asegúrese de que entienda que es legalmente responsable si la renta no se paga."
+        },
+        {
+          "heading": "Depósito de seguridad más alto",
+          "paragraph": "Algunos propietarios aceptan un depósito más alto cuando su historial de crédito es corto o no existe. Esto busca bajar su riesgo. California limita cuánto depósito puede cobrar un propietario, así que pregunte qué está permitido para esa unidad. Deje por escrito cualquier monto de depósito y conserve prueba de lo que pagó."
+        },
+        {
+          "heading": "Comprobante de ingresos o ahorros",
+          "paragraph": "Aunque no tenga historial de crédito, estados de cuenta fuertes, talones de pago o prueba de ahorros pueden ayudar. Algunos propietarios quieren ver varios meses de ingresos o suficiente dinero en el banco para cubrir la renta por un período. Lleve documentos claros y recientes. Si el ingreso viene de más de una fuente, incluya todo y etiquete qué muestra cada documento."
+        },
+        {
+          "heading": "Carta del empleador o de oferta",
+          "paragraph": "Una carta de su empleador puede confirmar su trabajo, fecha de inicio y pago. Si tiene una oferta de trabajo nueva, la carta de oferta puede servir mientras espera sus primeros talones de pago. Pida a su empleador o a recursos humanos una carta firmada en papel membretado de la empresa. Incluya un nombre de contacto y un teléfono que el propietario pueda llamar para verificar."
+        },
+        {
+          "heading": "Programas para recién llegados y de vivienda",
+          "paragraph": "Algunas organizaciones sin fines de lucro, agencias de reasentamiento y programas locales de vivienda ayudan a inmigrantes a encontrar alquileres o a conectar con propietarios que trabajan con personas recién llegadas. Estos programas pueden ofrecer ayuda con la solicitud, referencias, asistencia para la renta o listas de propiedades amigables. Pregunte en una biblioteca, centro comunitario u oficina de servicios para inmigrantes cerca de usted sobre ayuda de vivienda en su idioma."
+        }
+      ]
+    },
+    {
+      "title": "Acceda a recursos de vivienda",
+      "intro": "No tiene que resolver la vivienda solo. Bibliotecas, consejeros de organizaciones sin fines de lucro y sitios del gobierno pueden ayudarle a encontrar alquileres, aprender las reglas y obtener apoyo local. Aquí hay algunos sitios confiables para empezar.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "HUD (Departamento de Vivienda y Desarrollo Urbano de EE. UU.)",
+          "paragraph": "HUD es la principal agencia federal de vivienda. Su sitio explica ayuda para alquilar, reglas de vivienda justa y cómo encontrar consejeros de vivienda aprobados cerca de usted. Úselo cuando quiera información oficial del gobierno de EE. UU.",
+          "url": "https://www.hud.gov/"
+        },
+        {
+          "heading": "HUD: Encuentre un consejero de vivienda",
+          "paragraph": "Esta herramienta de HUD le ayuda a encontrar un consejero de vivienda aprobado. Los consejeros pueden explicar solicitudes, presupuestos y opciones de alquiler. Muchos ofrecen ayuda por teléfono o en persona, y algunos hablan más de un idioma.",
+          "url": "https://www.hud.gov/program_offices/housing/sfh/hcc"
+        },
+        {
+          "heading": "Ayuda personal de los tribunales de California: vivienda",
+          "paragraph": "Este es el sitio oficial de autoayuda de los tribunales de California para vivienda. Cubre desalojos, depósitos, reparaciones y otros temas de inquilinos en lenguaje sencillo. Es un buen lugar para aprender cómo se ve el proceso judicial si tiene un problema de vivienda.",
+          "url": "https://selfhelp.courts.ca.gov/housing"
+        },
+        {
+          "heading": "Guía de propietario e inquilino de California",
+          "paragraph": "El Departamento de Asuntos del Consumidor de California publica una guía gratuita de propietario e inquilino. Explica depósitos, aumentos de renta, reparaciones y avisos. Léala cuando quiera un resumen claro de las reglas comunes de alquiler en California.",
+          "url": "https://www.dca.ca.gov/publications/landlordbook.shtml"
+        },
+        {
+          "heading": "Vivienda y Desarrollo Comunitario de California",
+          "paragraph": "California HCD comparte programas estatales de vivienda y recursos para consumidores. Consulte este sitio para información estatal de vivienda y enlaces para encontrar opciones asequibles.",
+          "url": "https://www.hcd.ca.gov/"
+        },
+        {
+          "heading": "211",
+          "paragraph": "211 le conecta con servicios locales de salud y humanos, incluida la asistencia de vivienda y renta en muchas áreas. Puede buscar en línea o marcar 211 para preguntar por ayuda cerca de usted en su idioma cuando esté disponible.",
+          "url": "https://www.211.org/"
+        }
+      ]
+    },
+    {
+      "title": "Conozca los derechos de los inquilinos",
+      "intro": "Los inquilinos en California tienen derechos importantes. Las reglas pueden variar según la ciudad, así que también revise las leyes locales. Estos son los puntos básicos, explicados un tema a la vez.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Depósitos de seguridad",
+          "paragraph": "Un depósito de seguridad es dinero que usted paga al inicio y que el propietario guarda mientras usted alquila. Puede cubrir renta impaga o daños más allá del uso normal. California limita cuánto puede cobrar un propietario. Cuando se mude, el propietario debe devolver lo que quede y dar una lista detallada de cualquier deducción dentro del plazo que exige la ley. Tome fotos con fecha al mudarse y al irse para tener prueba del estado de la unidad."
+        },
+        {
+          "heading": "Reparaciones y vivienda habitable",
+          "paragraph": "Su alquiler debe ser seguro y habitable. Eso suele incluir calefacción, plomería, electricidad y cerraduras que funcionen, y estar libre de peligros graves como fugas grandes o infestaciones. Avise al propietario por escrito cuando algo necesite reparación, conserve una copia y dé un tiempo razonable para arreglarlo. Si el problema es grave y se ignora, busque opciones locales o hable con un consejero de vivienda o un grupo de asistencia legal antes de retener la renta o mudarse."
+        },
+        {
+          "heading": "Privacidad",
+          "paragraph": "Usted tiene derecho a la privacidad en su hogar. En la mayoría de los casos, un propietario debe avisar con anticipación antes de entrar, excepto en emergencias. Pregunte qué aviso exigen su contrato y la ley local. Puede rechazar una entrada que no siga las reglas. Lleve un registro escrito si un propietario entra sin el aviso adecuado."
+        },
+        {
+          "heading": "Avisos de desalojo",
+          "paragraph": "En general, un propietario no puede cerrarle con llave ni cortar los servicios para obligarle a irse. El desalojo suele empezar con un aviso por escrito y, si hace falta, un caso en la corte. Lea cualquier aviso con cuidado, anote las fechas límite y pida ayuda pronto a asistencia legal o a un sitio de autoayuda de la corte. No ignore papeles de la corte. Presentarse y responder a tiempo protege sus derechos."
+        },
+        {
+          "heading": "Protección contra la discriminación",
+          "paragraph": "Las leyes federales y de California de vivienda justa prohíben la discriminación por motivos como raza, origen nacional, religión, sexo, discapacidad, situación familiar y otras categorías protegidas por la ley estatal. En general, un propietario no puede negarse a alquilar, poner condiciones distintas ni acosarle por esas razones. Si cree que lo trataron de forma injusta, puede contactar a HUD, a la agencia de derechos civiles de California o a una organización local de vivienda justa."
+        }
+      ]
+    },
+    {
+      "title": "Evite estafas de vivienda",
+      "intro": "Las estafas de vivienda intentan apresurarle a enviar dinero o información personal antes de que pueda comprobar que el alquiler es real. Estos son trucos comunes, cómo suelen funcionar y cómo detectarlos.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Transferencias de dinero y tarjetas de regalo",
+          "paragraph": "Un estafador puede decir que está fuera de la ciudad y pedirle que envíe dinero por transferencia, giro, Zelle, criptomonedas o que compre tarjetas de regalo para reservar la unidad. Una vez enviado el dinero, a menudo desaparece. Los propietarios reales casi nunca piden tarjetas de regalo ni transferencias urgentes antes de un contrato firmado. Pague solo por una oficina conocida o un portal de confianza y pida un recibo por escrito."
+        },
+        {
+          "heading": "Pagar antes de visitar",
+          "paragraph": "Algunas estafas exigen un depósito, tarifa de solicitud o el primer mes de renta antes de que haya visto el lugar o conocido a alguien de la propiedad. Pueden decir que mucha gente lo quiere y que debe pagar hoy. Un proceso real de alquiler suele dejarle ver la unidad primero. Si alguien bloquea una visita y aun así quiere dinero, tómelo como una señal de alerta."
+        },
+        {
+          "heading": "Alquileres que no puede visitar",
+          "paragraph": "Los estafadores a menudo publican fotos bonitas de una casa que no controlan. Pueden decir que las llaves las tiene un familiar, que la unidad está en remodelación o que solo puede verla después de pagar. Luego llega y descubre que nunca estuvo en alquiler, o que ya vive otra persona. Insista en ver la unidad exacta en persona, o en un recorrido en video en vivo con un agente verificado, antes de enviar dinero."
+        },
+        {
+          "heading": "Anuncios falsos y dueños falsos",
+          "paragraph": "Fotos robadas, anuncios copiados y nombres falsos de propietarios aparecen en redes sociales y sitios de listados. Precios muy por debajo del promedio del vecindario son un gancho común. Compruebe que la persona pueda demostrar que posee o administra la propiedad. Busque la empresa administradora, visite la oficina de alquiler y compare el anuncio con otros del mismo domicilio. Si los datos no coinciden, aléjese."
+        },
+        {
+          "heading": "Robo de documentos e identidad",
+          "paragraph": "Los estafadores pueden enviar un enlace y pedir su pasaporte, número de Seguro Social, acceso al banco o fotos de su identificación por correo, texto o chat. Pueden usar esa información para robar su identidad o su dinero. Comparta documentos sensibles solo a través de un propietario o portal que haya verificado. Nunca haga clic en enlaces inesperados y nunca envíe un paquete completo de identificación a extraños que lo contactaron primero."
+        }
+      ]
+    }
+  ]
+}

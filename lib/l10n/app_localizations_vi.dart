@@ -81,6 +81,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get actionCreateAccount => 'Tạo tài khoản';
 
   @override
+  String get actionStart => 'Bắt đầu';
+
+  @override
   String get actionPrevious => 'Trước';
 
   @override
@@ -426,4 +429,323 @@ class AppLocalizationsVi extends AppLocalizations {
   String scamThreadCount(int count) {
     return '$count tin nhắn trong cuộc trò chuyện này';
   }
+
+  @override
+  String get actionSend => 'Gửi';
+
+  @override
+  String get actionDelete => 'Xóa';
+
+  @override
+  String get followupAsk => 'Hỏi';
+
+  @override
+  String get followupSaveNote => 'Lưu ghi chú';
+
+  @override
+  String get followupDeleteNote => 'Xóa ghi chú';
+
+  @override
+  String followupQuestion(String question) {
+    return 'H: $question';
+  }
+
+  @override
+  String get careerSignIn => 'Đăng nhập để khám phá lộ trình nghề nghiệp.';
+
+  @override
+  String get careerAddPriorJob =>
+      'Thêm công việc trước đây trong khảo sát hồ sơ, hoặc mô tả nền tảng của bạn ở phần ghi chú bên dưới.';
+
+  @override
+  String get careerGoToProfile => 'Đến hồ sơ';
+
+  @override
+  String get careerPriorEmployment => 'Việc làm trước đây (từ khảo sát)';
+
+  @override
+  String get careerAdditionalBackground => 'Thông tin bổ sung';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      'Kỹ năng, học vấn, chứng chỉ, ngôn ngữ hoặc mục tiêu nghề nghiệp để AI gợi ý lộ trình phù hợp hơn.';
+
+  @override
+  String get careerAdditionalBackgroundHint =>
+      'vd. 5 năm làm thợ điện, bằng nghề, quan tâm lắp đặt năng lượng mặt trời…';
+
+  @override
+  String get careerGenerateAll => 'Tạo lộ trình nghề nghiệp';
+
+  @override
+  String get careerRegenerateAll => 'Tạo lại tất cả lộ trình';
+
+  @override
+  String get careerGenerating => 'Đang lập lộ trình nghề nghiệp…';
+
+  @override
+  String get careerNeedBackground =>
+      'Hãy thêm ghi chú về kỹ năng hoặc học vấn trước.';
+
+  @override
+  String get careerCouldNotSaveChecklist => 'Không lưu được tiến độ danh sách.';
+
+  @override
+  String get careerCouldNotSaveStep => 'Không lưu được tiến độ bước.';
+
+  @override
+  String get careerCouldNotSaveNote => 'Không lưu được ghi chú.';
+
+  @override
+  String get careerCouldNotDeleteNote => 'Không xóa được ghi chú đó.';
+
+  @override
+  String get careerDeleteNoteTitle => 'Xóa ghi chú này?';
+
+  @override
+  String get careerDeleteNoteBody =>
+      'Thao tác này gỡ ghi chú khỏi lộ trình nghề nghiệp này.';
+
+  @override
+  String get careerGeneratePathTitle => 'Tạo lộ trình này?';
+
+  @override
+  String get careerRegeneratePathTitle => 'Tạo lại lộ trình này?';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return 'Tạo lộ trình AI cho Lộ trình $number. Các lộ trình và ghi chú khác được giữ lại.';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return 'Thay \"$title\" bằng lộ trình AI mới. Các lộ trình và ghi chú khác được giữ lại.';
+  }
+
+  @override
+  String get careerGenerate => 'Tạo';
+
+  @override
+  String get careerRegenerate => 'Tạo lại';
+
+  @override
+  String careerPathNumber(int number) {
+    return 'Lộ trình $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return 'Lộ trình $number: $title';
+  }
+
+  @override
+  String get careerPlaceholderBody =>
+      'Lộ trình nghề nghiệp sẽ xuất hiện ở đây sau khi được tạo.';
+
+  @override
+  String get careerPlaceholderStartTitle => 'Điểm bắt đầu';
+
+  @override
+  String get careerPlaceholderStartBody =>
+      'Kinh nghiệm và nền tảng hiện tại của bạn.';
+
+  @override
+  String get careerPlaceholderCredsTitle => 'Xây dựng chứng chỉ';
+
+  @override
+  String get careerPlaceholderCredsBody =>
+      'Giấy phép, đào tạo và kỹ năng cần phát triển.';
+
+  @override
+  String get careerPlaceholderTargetTitle => 'Vị trí mục tiêu';
+
+  @override
+  String get careerPlaceholderTargetBody =>
+      'Mục tiêu nghề nghiệp của bạn tại Hoa Kỳ.';
+
+  @override
+  String get careerCertifications => 'Chứng chỉ và giấy phép';
+
+  @override
+  String get careerSkills => 'Kỹ năng cần phát triển';
+
+  @override
+  String get careerTimeEstimate => 'Ước tính thời gian';
+
+  @override
+  String get careerStepCompleted => 'Đã hoàn thành';
+
+  @override
+  String get careerStepNow => 'Hiện tại';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return 'Hiện tại ($duration)';
+  }
+
+  @override
+  String get careerTimePending => 'Chưa có ước tính thời gian';
+
+  @override
+  String get careerUndo => 'Hoàn tác';
+
+  @override
+  String get careerMarkComplete => 'Đánh dấu hoàn thành';
+
+  @override
+  String get careerFinishStepAbove => 'Hãy hoàn thành bước phía trên trước.';
+
+  @override
+  String get careerUndoLaterStep => 'Hãy hoàn tác bước sau trước.';
+
+  @override
+  String get careerAskTitle => 'Hỏi về lộ trình này';
+
+  @override
+  String get careerAskSubtitle =>
+      'Câu hỏi dùng các bước, ghi chú và nền tảng của bạn. Câu trả lời ở lại trang này cho đến khi bạn rời đi. Hãy lưu thành ghi chú những gì muốn giữ.';
+
+  @override
+  String get careerAskHint => 'Hỏi về một bước, giấy phép hoặc cách bắt đầu…';
+
+  @override
+  String get careerNotesTitle => 'Ghi chú cho lộ trình này';
+
+  @override
+  String get careerNotesSubtitle =>
+      'Theo dõi tiến độ trên lộ trình này. Được lưu và chia sẻ với AI.';
+
+  @override
+  String get careerNotesHint => 'Bạn đã làm gì cho lộ trình này?';
+
+  @override
+  String get roadmapSettlementPlan =>
+      'Kế hoạch ổn định dựa trên câu trả lời khảo sát của bạn.';
+
+  @override
+  String get roadmapRegenerateAll => 'Tạo lại tất cả';
+
+  @override
+  String get roadmapRegenerateAllTitle => 'Tạo lại toàn bộ lộ trình?';
+
+  @override
+  String get roadmapRegenerateAllBody =>
+      'Thao tác này thay ba phần bằng kế hoạch AI mới. Ghi chú từng phần được giữ lại.';
+
+  @override
+  String get roadmapCreating => 'Đang tạo lộ trình cá nhân hóa…';
+
+  @override
+  String get roadmapAnswerQuestions =>
+      'Hãy trả lời các câu hỏi bên dưới để hoàn tất lộ trình.';
+
+  @override
+  String get roadmapUpdating => 'Đang cập nhật lộ trình…';
+
+  @override
+  String get roadmapGenerate => 'Tạo lộ trình';
+
+  @override
+  String get roadmapNoRoadmap =>
+      'Chưa có lộ trình. Nhấn bên dưới để tạo từ khảo sát.';
+
+  @override
+  String get roadmapEmptySurvey =>
+      'Hãy làm khảo sát ban đầu để chúng tôi tạo lộ trình cá nhân hóa.';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return 'Tạo lại $section?';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody =>
+      'Phần này sẽ được thay bằng kế hoạch AI mới. Ghi chú của phần này được giữ lại.';
+
+  @override
+  String get roadmapAskTitle => 'Hỏi về phần này';
+
+  @override
+  String get roadmapAskSubtitle =>
+      'Câu hỏi dùng danh sách, ghi chú và khảo sát. Câu trả lời ở lại trang này cho đến khi bạn rời đi. Hãy lưu thành ghi chú những gì muốn giữ.';
+
+  @override
+  String get roadmapAskHint => 'Hỏi về một bước trong phần này…';
+
+  @override
+  String get roadmapNotesTitle => 'Ghi chú cho phần này';
+
+  @override
+  String get roadmapNotesSubtitle =>
+      'Theo dõi tiến độ các bước này. Được lưu và chia sẻ với AI.';
+
+  @override
+  String get roadmapNotesHint => 'Bạn đã làm gì cho phần này?';
+
+  @override
+  String get roadmapNoChecklist => 'Chưa có mục trong danh sách.';
+
+  @override
+  String get roadmapCouldNotSaveNote => 'Không lưu được ghi chú.';
+
+  @override
+  String get roadmapCouldNotDeleteNote => 'Không xóa được ghi chú đó.';
+
+  @override
+  String get roadmapDeleteNoteTitle => 'Xóa ghi chú này?';
+
+  @override
+  String get roadmapDeleteNoteBody => 'Thao tác này gỡ ghi chú khỏi phần này.';
+
+  @override
+  String get roadmapAiUnavailable => 'Dịch vụ AI hiện không khả dụng.';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'AI không thể trả lời.';
+
+  @override
+  String get roadmapSectionFirstMonth => 'Tháng đầu';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => '3 tháng đầu';
+
+  @override
+  String get roadmapSectionFirstYear => 'Năm đầu';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return 'Câu $current / $total';
+  }
+
+  @override
+  String get roadmapOneQuestion => 'Một câu hỏi nhanh';
+
+  @override
+  String roadmapUpNext(String question) {
+    return 'Tiếp theo: $question';
+  }
+
+  @override
+  String get roadmapYourAnswer => 'Câu trả lời của bạn';
+
+  @override
+  String get guideLoadError =>
+      'Không tải được hướng dẫn này. Hãy thử lại khi bạn có mạng.';
+
+  @override
+  String get guideNoSections => 'Hướng dẫn này không có phần nào.';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return 'Phần $current / $total';
+  }
+
+  @override
+  String get housingAskTitle => 'Hỏi về nhà ở';
+
+  @override
+  String get housingAskHint => 'Nhập câu hỏi…';
+
+  @override
+  String get housingAskFollowUpHint => 'Hỏi thêm…';
 }

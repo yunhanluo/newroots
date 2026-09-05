@@ -80,6 +80,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get actionCreateAccount => '계정 만들기';
 
   @override
+  String get actionStart => '시작';
+
+  @override
   String get actionPrevious => '이전';
 
   @override
@@ -419,4 +422,308 @@ class AppLocalizationsKo extends AppLocalizations {
   String scamThreadCount(int count) {
     return '이 대화에 메시지 $count개';
   }
+
+  @override
+  String get actionSend => '보내기';
+
+  @override
+  String get actionDelete => '삭제';
+
+  @override
+  String get followupAsk => '질문';
+
+  @override
+  String get followupSaveNote => '메모 저장';
+
+  @override
+  String get followupDeleteNote => '메모 삭제';
+
+  @override
+  String followupQuestion(String question) {
+    return 'Q: $question';
+  }
+
+  @override
+  String get careerSignIn => '로그인하여 진로 경로를 살펴보세요.';
+
+  @override
+  String get careerAddPriorJob => '프로필 설문에 이전 직업을 추가하거나, 아래 메모에 경력을 적어 주세요.';
+
+  @override
+  String get careerGoToProfile => '프로필로 이동';
+
+  @override
+  String get careerPriorEmployment => '이전 경력 (설문에서)';
+
+  @override
+  String get careerAdditionalBackground => '추가 배경';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      '기술, 학력, 자격증, 언어, 진로 목표를 적으면 AI가 더 나은 경로를 제안합니다.';
+
+  @override
+  String get careerAdditionalBackgroundHint =>
+      '예: 전기공 5년, 직업 디플로마, 태양광 설치에 관심…';
+
+  @override
+  String get careerGenerateAll => '진로 경로 만들기';
+
+  @override
+  String get careerRegenerateAll => '모든 경로 다시 만들기';
+
+  @override
+  String get careerGenerating => '진로 경로를 작성하는 중…';
+
+  @override
+  String get careerNeedBackground => '먼저 기술이나 학력에 대한 메모를 추가하세요.';
+
+  @override
+  String get careerCouldNotSaveChecklist => '체크리스트 진행 상황을 저장하지 못했습니다.';
+
+  @override
+  String get careerCouldNotSaveStep => '단계 진행 상황을 저장하지 못했습니다.';
+
+  @override
+  String get careerCouldNotSaveNote => '메모를 저장하지 못했습니다.';
+
+  @override
+  String get careerCouldNotDeleteNote => '그 메모를 삭제하지 못했습니다.';
+
+  @override
+  String get careerDeleteNoteTitle => '이 메모를 삭제할까요?';
+
+  @override
+  String get careerDeleteNoteBody => '이 진로 경로에서 메모가 삭제됩니다.';
+
+  @override
+  String get careerGeneratePathTitle => '이 경로를 만들까요?';
+
+  @override
+  String get careerRegeneratePathTitle => '이 경로를 다시 만들까요?';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return '경로 $number에 대한 AI 진로 경로를 만듭니다. 다른 경로와 메모는 유지됩니다.';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return '\"$title\"을(를) 새 AI 진로 경로로 바꿉니다. 다른 경로와 메모는 유지됩니다.';
+  }
+
+  @override
+  String get careerGenerate => '만들기';
+
+  @override
+  String get careerRegenerate => '다시 만들기';
+
+  @override
+  String careerPathNumber(int number) {
+    return '경로 $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return '경로 $number: $title';
+  }
+
+  @override
+  String get careerPlaceholderBody => '생성되면 여기에 진로 경로가 표시됩니다.';
+
+  @override
+  String get careerPlaceholderStartTitle => '시작점';
+
+  @override
+  String get careerPlaceholderStartBody => '현재 경험과 배경.';
+
+  @override
+  String get careerPlaceholderCredsTitle => '자격 쌓기';
+
+  @override
+  String get careerPlaceholderCredsBody => '면허, 교육, 키워야 할 기술.';
+
+  @override
+  String get careerPlaceholderTargetTitle => '목표 직무';
+
+  @override
+  String get careerPlaceholderTargetBody => '미국에서의 진로 목표.';
+
+  @override
+  String get careerCertifications => '자격증 및 면허';
+
+  @override
+  String get careerSkills => '키워야 할 기술';
+
+  @override
+  String get careerTimeEstimate => '예상 시간';
+
+  @override
+  String get careerStepCompleted => '완료됨';
+
+  @override
+  String get careerStepNow => '지금';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return '지금 ($duration)';
+  }
+
+  @override
+  String get careerTimePending => '예상 시간 없음';
+
+  @override
+  String get careerUndo => '실행 취소';
+
+  @override
+  String get careerMarkComplete => '완료로 표시';
+
+  @override
+  String get careerFinishStepAbove => '위의 단계를 먼저 완료하세요.';
+
+  @override
+  String get careerUndoLaterStep => '나중 단계를 먼저 실행 취소하세요.';
+
+  @override
+  String get careerAskTitle => '이 경로에 질문하기';
+
+  @override
+  String get careerAskSubtitle =>
+      '질문은 이 경로의 단계, 메모, 배경을 사용합니다. 답변은 이 페이지를 떠날 때까지 유지됩니다. 남기고 싶은 내용은 메모로 저장하세요.';
+
+  @override
+  String get careerAskHint => '단계, 면허, 시작 방법에 대해 물어보세요…';
+
+  @override
+  String get careerNotesTitle => '이 경로 메모';
+
+  @override
+  String get careerNotesSubtitle => '이 경로의 진행 상황을 기록합니다. 저장되며 AI와 공유됩니다.';
+
+  @override
+  String get careerNotesHint => '이 경로에서 무엇을 했나요?';
+
+  @override
+  String get roadmapSettlementPlan => '설문 답변을 바탕으로 한 정착 계획입니다.';
+
+  @override
+  String get roadmapRegenerateAll => '전체 다시 만들기';
+
+  @override
+  String get roadmapRegenerateAllTitle => '전체 로드맵을 다시 만들까요?';
+
+  @override
+  String get roadmapRegenerateAllBody => '세 구간이 새 AI 계획으로 바뀝니다. 구간별 메모는 유지됩니다.';
+
+  @override
+  String get roadmapCreating => '맞춤 로드맵을 만드는 중…';
+
+  @override
+  String get roadmapAnswerQuestions => '아래 질문에 답해 로드맵을 완성해 주세요.';
+
+  @override
+  String get roadmapUpdating => '로드맵을 업데이트하는 중…';
+
+  @override
+  String get roadmapGenerate => '로드맵 만들기';
+
+  @override
+  String get roadmapNoRoadmap => '아직 로드맵이 없습니다. 아래를 눌러 설문으로 만드세요.';
+
+  @override
+  String get roadmapEmptySurvey => '맞춤 로드맵을 만들려면 온보딩 설문을 작성하세요.';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return '$section을(를) 다시 만들까요?';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody =>
+      '이 구간이 새 AI 계획으로 바뀝니다. 이 구간의 메모는 유지됩니다.';
+
+  @override
+  String get roadmapAskTitle => '이 구간에 질문하기';
+
+  @override
+  String get roadmapAskSubtitle =>
+      '질문은 이 구간의 체크리스트, 메모, 설문을 사용합니다. 답변은 이 페이지를 떠날 때까지 유지됩니다. 남기고 싶은 내용은 메모로 저장하세요.';
+
+  @override
+  String get roadmapAskHint => '이 구간의 단계에 대해 물어보세요…';
+
+  @override
+  String get roadmapNotesTitle => '이 구간 메모';
+
+  @override
+  String get roadmapNotesSubtitle => '이 단계들의 진행 상황을 기록합니다. 저장되며 AI와 공유됩니다.';
+
+  @override
+  String get roadmapNotesHint => '이 구간에서 무엇을 했나요?';
+
+  @override
+  String get roadmapNoChecklist => '아직 체크리스트 항목이 없습니다.';
+
+  @override
+  String get roadmapCouldNotSaveNote => '메모를 저장하지 못했습니다.';
+
+  @override
+  String get roadmapCouldNotDeleteNote => '그 메모를 삭제하지 못했습니다.';
+
+  @override
+  String get roadmapDeleteNoteTitle => '이 메모를 삭제할까요?';
+
+  @override
+  String get roadmapDeleteNoteBody => '이 구간에서 메모가 삭제됩니다.';
+
+  @override
+  String get roadmapAiUnavailable => 'AI 서비스를 사용할 수 없습니다.';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'AI가 답할 수 없습니다.';
+
+  @override
+  String get roadmapSectionFirstMonth => '첫 달';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => '처음 3개월';
+
+  @override
+  String get roadmapSectionFirstYear => '첫 해';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return '질문 $current / $total';
+  }
+
+  @override
+  String get roadmapOneQuestion => '간단한 질문 하나';
+
+  @override
+  String roadmapUpNext(String question) {
+    return '다음: $question';
+  }
+
+  @override
+  String get roadmapYourAnswer => '답변';
+
+  @override
+  String get guideLoadError => '이 가이드를 불러올 수 없습니다. 인터넷에 연결된 뒤 다시 시도하세요.';
+
+  @override
+  String get guideNoSections => '이 가이드에는 구간이 없습니다.';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return '구간 $current / $total';
+  }
+
+  @override
+  String get housingAskTitle => '주거에 대해 묻기';
+
+  @override
+  String get housingAskHint => '질문을 입력하세요…';
+
+  @override
+  String get housingAskFollowUpHint => '이어서 질문하기…';
 }

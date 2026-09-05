@@ -6,7 +6,7 @@
   "landingBody": "Emergency numbers, your rights, and how to prepare.",
   "icon": "emergency",
   "finishRoute": "home",
-  "version": 1,
+  "version": 2,
   "sections": [
     {
       "title": "Welcome",

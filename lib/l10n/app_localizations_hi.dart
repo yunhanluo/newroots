@@ -81,6 +81,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get actionCreateAccount => 'खाता बनाएँ';
 
   @override
+  String get actionStart => 'शुरू करें';
+
+  @override
   String get actionPrevious => 'पिछला';
 
   @override
@@ -427,4 +430,320 @@ class AppLocalizationsHi extends AppLocalizations {
   String scamThreadCount(int count) {
     return 'इस बातचीत में $count संदेश';
   }
+
+  @override
+  String get actionSend => 'भेजें';
+
+  @override
+  String get actionDelete => 'हटाएँ';
+
+  @override
+  String get followupAsk => 'पूछें';
+
+  @override
+  String get followupSaveNote => 'नोट सहेजें';
+
+  @override
+  String get followupDeleteNote => 'नोट हटाएँ';
+
+  @override
+  String followupQuestion(String question) {
+    return 'प्र: $question';
+  }
+
+  @override
+  String get careerSignIn => 'करियर पथ देखने के लिए साइन इन करें।';
+
+  @override
+  String get careerAddPriorJob =>
+      'प्रोफ़ाइल सर्वे में अपनी पिछली नौकरी जोड़ें, या नीचे नोट्स में अपना अनुभव लिखें।';
+
+  @override
+  String get careerGoToProfile => 'प्रोफ़ाइल पर जाएँ';
+
+  @override
+  String get careerPriorEmployment => 'पिछला रोज़गार (सर्वे से)';
+
+  @override
+  String get careerAdditionalBackground => 'अतिरिक्त पृष्ठभूमि';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      'कौशल, शिक्षा, प्रमाणपत्र, भाषाएँ या करियर लक्ष्य, ताकि AI बेहतर पथ सुझा सके।';
+
+  @override
+  String get careerAdditionalBackgroundHint =>
+      'जैसे 5 साल बिजली मिस्त्री, व्यावसायिक डिप्लोमा, सोलर इंस्टॉलेशन में रुचि…';
+
+  @override
+  String get careerGenerateAll => 'करियर पथ बनाएँ';
+
+  @override
+  String get careerRegenerateAll => 'सभी पथ फिर बनाएँ';
+
+  @override
+  String get careerGenerating => 'करियर पथ बनाए जा रहे हैं…';
+
+  @override
+  String get careerNeedBackground =>
+      'पहले अपने कौशल या शिक्षा के बारे में नोट्स जोड़ें।';
+
+  @override
+  String get careerCouldNotSaveChecklist =>
+      'चेकलिस्ट प्रगति सहेजी नहीं जा सकी।';
+
+  @override
+  String get careerCouldNotSaveStep => 'चरण प्रगति सहेजी नहीं जा सकी।';
+
+  @override
+  String get careerCouldNotSaveNote => 'नोट सहेजा नहीं जा सका।';
+
+  @override
+  String get careerCouldNotDeleteNote => 'वह नोट हटाया नहीं जा सका।';
+
+  @override
+  String get careerDeleteNoteTitle => 'यह नोट हटाएँ?';
+
+  @override
+  String get careerDeleteNoteBody => 'यह नोट इस करियर पथ से हट जाएगा।';
+
+  @override
+  String get careerGeneratePathTitle => 'यह पथ बनाएँ?';
+
+  @override
+  String get careerRegeneratePathTitle => 'यह पथ फिर बनाएँ?';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return 'पथ $number के लिए AI करियर पथ बनाएँ। अन्य पथ और नोट्स बने रहेंगे।';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return '\"$title\" को नए AI करियर पथ से बदलें। अन्य पथ और नोट्स बने रहेंगे।';
+  }
+
+  @override
+  String get careerGenerate => 'बनाएँ';
+
+  @override
+  String get careerRegenerate => 'फिर बनाएँ';
+
+  @override
+  String careerPathNumber(int number) {
+    return 'पथ $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return 'पथ $number: $title';
+  }
+
+  @override
+  String get careerPlaceholderBody => 'बनने के बाद यहाँ करियर पथ दिखेगा।';
+
+  @override
+  String get careerPlaceholderStartTitle => 'शुरुआत';
+
+  @override
+  String get careerPlaceholderStartBody => 'आपका वर्तमान अनुभव और पृष्ठभूमि।';
+
+  @override
+  String get careerPlaceholderCredsTitle => 'योग्यता बनाएँ';
+
+  @override
+  String get careerPlaceholderCredsBody =>
+      'लाइसेंस, प्रशिक्षण और विकसित करने वाले कौशल।';
+
+  @override
+  String get careerPlaceholderTargetTitle => 'लक्ष्य भूमिका';
+
+  @override
+  String get careerPlaceholderTargetBody => 'अमेरिका में आपका करियर लक्ष्य।';
+
+  @override
+  String get careerCertifications => 'प्रमाणपत्र और लाइसेंस';
+
+  @override
+  String get careerSkills => 'विकसित करने वाले कौशल';
+
+  @override
+  String get careerTimeEstimate => 'समय अनुमान';
+
+  @override
+  String get careerStepCompleted => 'पूरा हुआ';
+
+  @override
+  String get careerStepNow => 'अभी';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return 'अभी ($duration)';
+  }
+
+  @override
+  String get careerTimePending => 'समय अनुमान बाकी';
+
+  @override
+  String get careerUndo => 'पूर्ववत';
+
+  @override
+  String get careerMarkComplete => 'पूरा चिह्नित करें';
+
+  @override
+  String get careerFinishStepAbove => 'पहले ऊपर वाला चरण पूरा करें।';
+
+  @override
+  String get careerUndoLaterStep => 'पहले बाद वाला चरण पूर्ववत करें।';
+
+  @override
+  String get careerAskTitle => 'इस पथ के बारे में पूछें';
+
+  @override
+  String get careerAskSubtitle =>
+      'प्रश्न इस पथ के चरणों, नोट्स और आपकी पृष्ठभूमि का उपयोग करते हैं। उत्तर इस पेज पर रहते हैं जब तक आप जाते नहीं। जो रखना हो उसे नोट के रूप में सहेजें।';
+
+  @override
+  String get careerAskHint => 'किसी चरण, लाइसेंस या शुरुआत के बारे में पूछें…';
+
+  @override
+  String get careerNotesTitle => 'इस पथ के नोट्स';
+
+  @override
+  String get careerNotesSubtitle =>
+      'इस पथ की प्रगति लिखें। सहेजे जाते हैं और AI के साथ साझा होते हैं।';
+
+  @override
+  String get careerNotesHint => 'आपने इस पथ पर क्या किया?';
+
+  @override
+  String get roadmapSettlementPlan =>
+      'आपके सर्वे उत्तरों पर आधारित बसने की योजना।';
+
+  @override
+  String get roadmapRegenerateAll => 'सब फिर बनाएँ';
+
+  @override
+  String get roadmapRegenerateAllTitle => 'पूरी रोडमैप फिर बनाएँ?';
+
+  @override
+  String get roadmapRegenerateAllBody =>
+      'तीनों खंड नई AI योजना से बदल जाएँगे। खंडों के नोट्स बने रहेंगे।';
+
+  @override
+  String get roadmapCreating => 'आपकी व्यक्तिगत रोडमैप बनाई जा रही है…';
+
+  @override
+  String get roadmapAnswerQuestions =>
+      'रोडमैप पूरी करने के लिए नीचे के प्रश्न उत्तर दें।';
+
+  @override
+  String get roadmapUpdating => 'रोडमैप अपडेट हो रही है…';
+
+  @override
+  String get roadmapGenerate => 'रोडमैप बनाएँ';
+
+  @override
+  String get roadmapNoRoadmap =>
+      'अभी रोडमैप नहीं है। सर्वे से बनाने के लिए नीचे टैप करें।';
+
+  @override
+  String get roadmapEmptySurvey =>
+      'व्यक्तिगत रोडमैप बनाने के लिए ऑनबोर्डिंग सर्वे भरें।';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return '$section फिर बनाएँ?';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody =>
+      'यह खंड नई AI योजना से बदल जाएगा। इस खंड के नोट्स बने रहेंगे।';
+
+  @override
+  String get roadmapAskTitle => 'इस खंड के बारे में पूछें';
+
+  @override
+  String get roadmapAskSubtitle =>
+      'प्रश्न इस खंड की चेकलिस्ट, नोट्स और सर्वे का उपयोग करते हैं। उत्तर इस पेज पर रहते हैं जब तक आप जाते नहीं। जो रखना हो उसे नोट के रूप में सहेजें।';
+
+  @override
+  String get roadmapAskHint => 'इस खंड के किसी चरण के बारे में पूछें…';
+
+  @override
+  String get roadmapNotesTitle => 'इस खंड के नोट्स';
+
+  @override
+  String get roadmapNotesSubtitle =>
+      'इन चरणों की प्रगति लिखें। सहेजे जाते हैं और AI के साथ साझा होते हैं।';
+
+  @override
+  String get roadmapNotesHint => 'आपने इस खंड में क्या किया?';
+
+  @override
+  String get roadmapNoChecklist => 'अभी चेकलिस्ट में कुछ नहीं है।';
+
+  @override
+  String get roadmapCouldNotSaveNote => 'नोट सहेजा नहीं जा सका।';
+
+  @override
+  String get roadmapCouldNotDeleteNote => 'वह नोट हटाया नहीं जा सका।';
+
+  @override
+  String get roadmapDeleteNoteTitle => 'यह नोट हटाएँ?';
+
+  @override
+  String get roadmapDeleteNoteBody => 'यह नोट इस खंड से हट जाएगा।';
+
+  @override
+  String get roadmapAiUnavailable => 'AI सेवा उपलब्ध नहीं है।';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'AI उत्तर नहीं दे सकी।';
+
+  @override
+  String get roadmapSectionFirstMonth => 'पहला महीना';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => 'पहले 3 महीने';
+
+  @override
+  String get roadmapSectionFirstYear => 'पहला साल';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return 'प्रश्न $current / $total';
+  }
+
+  @override
+  String get roadmapOneQuestion => 'एक छोटा प्रश्न';
+
+  @override
+  String roadmapUpNext(String question) {
+    return 'अगला: $question';
+  }
+
+  @override
+  String get roadmapYourAnswer => 'आपका उत्तर';
+
+  @override
+  String get guideLoadError =>
+      'यह गाइड लोड नहीं हो सकी। ऑनलाइन होने पर फिर कोशिश करें।';
+
+  @override
+  String get guideNoSections => 'इस गाइड में कोई खंड नहीं है।';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return 'खंड $current / $total';
+  }
+
+  @override
+  String get housingAskTitle => 'आवास के बारे में पूछें';
+
+  @override
+  String get housingAskHint => 'प्रश्न लिखें…';
+
+  @override
+  String get housingAskFollowUpHint => 'आगे का प्रश्न पूछें…';
 }

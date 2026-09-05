@@ -81,6 +81,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get actionCreateAccount => 'إنشاء حساب';
 
   @override
+  String get actionStart => 'ابدأ';
+
+  @override
   String get actionPrevious => 'السابق';
 
   @override
@@ -423,4 +426,320 @@ class AppLocalizationsAr extends AppLocalizations {
   String scamThreadCount(int count) {
     return '$count رسائل في هذه المحادثة';
   }
+
+  @override
+  String get actionSend => 'إرسال';
+
+  @override
+  String get actionDelete => 'حذف';
+
+  @override
+  String get followupAsk => 'اسأل';
+
+  @override
+  String get followupSaveNote => 'حفظ الملاحظة';
+
+  @override
+  String get followupDeleteNote => 'حذف الملاحظة';
+
+  @override
+  String followupQuestion(String question) {
+    return 'س: $question';
+  }
+
+  @override
+  String get careerSignIn => 'سجّل الدخول لاستكشاف المسارات المهنية.';
+
+  @override
+  String get careerAddPriorJob =>
+      'أضف عملك السابق في استبيان الملف، أو صف خبرتك في الملاحظات أدناه.';
+
+  @override
+  String get careerGoToProfile => 'الذهاب إلى الملف';
+
+  @override
+  String get careerPriorEmployment => 'العمل السابق (من الاستبيان)';
+
+  @override
+  String get careerAdditionalBackground => 'خلفية إضافية';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      'المهارات والتعليم والشهادات واللغات أو الأهداف المهنية لمساعدة الذكاء الاصطناعي على اقتراح مسارات أفضل.';
+
+  @override
+  String get careerAdditionalBackgroundHint =>
+      'مثال: 5 سنوات كهربائي، دبلوم مهني، اهتمام بتركيب الطاقة الشمسية…';
+
+  @override
+  String get careerGenerateAll => 'إنشاء المسارات المهنية';
+
+  @override
+  String get careerRegenerateAll => 'إعادة إنشاء كل المسارات';
+
+  @override
+  String get careerGenerating => 'جارٍ رسم المسارات المهنية…';
+
+  @override
+  String get careerNeedBackground => 'أضف أولاً ملاحظات عن مهاراتك أو تعليمك.';
+
+  @override
+  String get careerCouldNotSaveChecklist => 'تعذر حفظ تقدم القائمة.';
+
+  @override
+  String get careerCouldNotSaveStep => 'تعذر حفظ تقدم الخطوة.';
+
+  @override
+  String get careerCouldNotSaveNote => 'تعذر حفظ الملاحظة.';
+
+  @override
+  String get careerCouldNotDeleteNote => 'تعذر حذف تلك الملاحظة.';
+
+  @override
+  String get careerDeleteNoteTitle => 'حذف هذه الملاحظة؟';
+
+  @override
+  String get careerDeleteNoteBody =>
+      'سيؤدي هذا إلى إزالة الملاحظة من هذا المسار المهني.';
+
+  @override
+  String get careerGeneratePathTitle => 'إنشاء هذا المسار؟';
+
+  @override
+  String get careerRegeneratePathTitle => 'إعادة إنشاء هذا المسار؟';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return 'إنشاء مسار مهني بالذكاء الاصطناعي للمسار $number. تُحفظ المسارات والملاحظات الأخرى.';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return 'استبدال \"$title\" بمسار مهني جديد من الذكاء الاصطناعي. تُحفظ المسارات والملاحظات الأخرى.';
+  }
+
+  @override
+  String get careerGenerate => 'إنشاء';
+
+  @override
+  String get careerRegenerate => 'إعادة الإنشاء';
+
+  @override
+  String careerPathNumber(int number) {
+    return 'المسار $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return 'المسار $number: $title';
+  }
+
+  @override
+  String get careerPlaceholderBody => 'سيظهر المسار المهني هنا بعد إنشائه.';
+
+  @override
+  String get careerPlaceholderStartTitle => 'نقطة البداية';
+
+  @override
+  String get careerPlaceholderStartBody => 'خبرتك وخلفيتك الحالية.';
+
+  @override
+  String get careerPlaceholderCredsTitle => 'بناء المؤهلات';
+
+  @override
+  String get careerPlaceholderCredsBody =>
+      'التراخيص والتدريب والمهارات المطلوب تطويرها.';
+
+  @override
+  String get careerPlaceholderTargetTitle => 'الدور المستهدف';
+
+  @override
+  String get careerPlaceholderTargetBody => 'هدفك المهني في الولايات المتحدة.';
+
+  @override
+  String get careerCertifications => 'الشهادات والتراخيص';
+
+  @override
+  String get careerSkills => 'مهارات للتطوير';
+
+  @override
+  String get careerTimeEstimate => 'تقدير الوقت';
+
+  @override
+  String get careerStepCompleted => 'مكتمل';
+
+  @override
+  String get careerStepNow => 'الآن';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return 'الآن ($duration)';
+  }
+
+  @override
+  String get careerTimePending => 'تقدير الوقت غير جاهز';
+
+  @override
+  String get careerUndo => 'تراجع';
+
+  @override
+  String get careerMarkComplete => 'تحديد كمكتمل';
+
+  @override
+  String get careerFinishStepAbove => 'أكمل الخطوة أعلاه أولاً.';
+
+  @override
+  String get careerUndoLaterStep => 'تراجع عن الخطوة اللاحقة أولاً.';
+
+  @override
+  String get careerAskTitle => 'اسأل عن هذا المسار';
+
+  @override
+  String get careerAskSubtitle =>
+      'تستخدم الأسئلة خطوات هذا المسار وملاحظاتك وخلفيتك. تبقى الإجابات في هذه الصفحة حتى تغادر. احفظ ما تريد الاحتفاظ به كملاحظة.';
+
+  @override
+  String get careerAskHint => 'اسأل عن خطوة أو ترخيص أو كيف تبدأ…';
+
+  @override
+  String get careerNotesTitle => 'ملاحظات هذا المسار';
+
+  @override
+  String get careerNotesSubtitle =>
+      'تتبع التقدم في هذا المسار. تُحفظ وتُشارك مع الذكاء الاصطناعي.';
+
+  @override
+  String get careerNotesHint => 'ماذا أنجزت في هذا المسار؟';
+
+  @override
+  String get roadmapSettlementPlan =>
+      'خطة استقرارك بناءً على إجابات الاستبيان.';
+
+  @override
+  String get roadmapRegenerateAll => 'إعادة إنشاء الكل';
+
+  @override
+  String get roadmapRegenerateAllTitle => 'إعادة إنشاء خارطة الطريق بالكامل؟';
+
+  @override
+  String get roadmapRegenerateAllBody =>
+      'يستبدل هذا الأقسام الثلاثة بخطة جديدة من الذكاء الاصطناعي. تُحفظ ملاحظات كل قسم.';
+
+  @override
+  String get roadmapCreating => 'جارٍ إنشاء خارطة طريقك الشخصية…';
+
+  @override
+  String get roadmapAnswerQuestions =>
+      'أجب عن الأسئلة أدناه لنكمل خارطة طريقك.';
+
+  @override
+  String get roadmapUpdating => 'جارٍ تحديث خارطة طريقك…';
+
+  @override
+  String get roadmapGenerate => 'إنشاء خارطة الطريق';
+
+  @override
+  String get roadmapNoRoadmap =>
+      'لا توجد خارطة طريق بعد. اضغط أدناه لإنشاء واحدة من استبيانك.';
+
+  @override
+  String get roadmapEmptySurvey =>
+      'أكمل استبيان البداية لنتمكن من بناء خارطة طريق شخصية.';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return 'إعادة إنشاء $section؟';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody =>
+      'سيُستبدل هذا القسم بخطة جديدة من الذكاء الاصطناعي. تُحفظ ملاحظات هذا القسم.';
+
+  @override
+  String get roadmapAskTitle => 'اسأل عن هذا القسم';
+
+  @override
+  String get roadmapAskSubtitle =>
+      'تستخدم الأسئلة قائمة هذا القسم وملاحظاتك واستبيانك. تبقى الإجابات في هذه الصفحة حتى تغادر. احفظ ما تريد الاحتفاظ به كملاحظة.';
+
+  @override
+  String get roadmapAskHint => 'اسأل عن خطوة في هذا القسم…';
+
+  @override
+  String get roadmapNotesTitle => 'ملاحظات هذا القسم';
+
+  @override
+  String get roadmapNotesSubtitle =>
+      'تتبع التقدم في هذه الخطوات. تُحفظ وتُشارك مع الذكاء الاصطناعي.';
+
+  @override
+  String get roadmapNotesHint => 'ماذا أنجزت في هذا القسم؟';
+
+  @override
+  String get roadmapNoChecklist => 'لا توجد عناصر في القائمة بعد.';
+
+  @override
+  String get roadmapCouldNotSaveNote => 'تعذر حفظ الملاحظة.';
+
+  @override
+  String get roadmapCouldNotDeleteNote => 'تعذر حذف تلك الملاحظة.';
+
+  @override
+  String get roadmapDeleteNoteTitle => 'حذف هذه الملاحظة؟';
+
+  @override
+  String get roadmapDeleteNoteBody =>
+      'سيؤدي هذا إلى إزالة الملاحظة من هذا القسم.';
+
+  @override
+  String get roadmapAiUnavailable => 'خدمة الذكاء الاصطناعي غير متاحة.';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'تعذر على الذكاء الاصطناعي الإجابة.';
+
+  @override
+  String get roadmapSectionFirstMonth => 'الشهر الأول';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => 'الأشهر الثلاثة الأولى';
+
+  @override
+  String get roadmapSectionFirstYear => 'السنة الأولى';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return 'السؤال $current من $total';
+  }
+
+  @override
+  String get roadmapOneQuestion => 'سؤال سريع';
+
+  @override
+  String roadmapUpNext(String question) {
+    return 'التالي: $question';
+  }
+
+  @override
+  String get roadmapYourAnswer => 'إجابتك';
+
+  @override
+  String get guideLoadError =>
+      'تعذر تحميل هذا الدليل. حاول مرة أخرى عند الاتصال بالإنترنت.';
+
+  @override
+  String get guideNoSections => 'لا يحتوي هذا الدليل على أقسام.';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return 'القسم $current من $total';
+  }
+
+  @override
+  String get housingAskTitle => 'اسأل عن السكن';
+
+  @override
+  String get housingAskHint => 'اكتب سؤالاً…';
+
+  @override
+  String get housingAskFollowUpHint => 'اطرح سؤالاً متابعة…';
 }

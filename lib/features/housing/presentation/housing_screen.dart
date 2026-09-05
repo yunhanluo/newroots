@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/l10n/app_locale.dart';
 import '../../../core/models/static_guide.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/ai_service.dart';
 import '../../../core/services/static_guide_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import '../../../core/widgets/ai_body_text.dart';
 import '../../../core/widgets/static_guide_pager.dart';
 import '../../../core/widgets/static_guide_section_view.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Feature 2: Housing Navigator.
 class HousingScreen extends ConsumerStatefulWidget {
@@ -36,21 +39,19 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final guideAsync = ref.watch(staticGuideProvider(StaticGuideIds.housing));
     return guideAsync.when(
       loading: () => const GuideStatusScaffold(busy: true),
-      error: (error, _) => const GuideStatusScaffold(
-        message:
-            'This guide could not be loaded. Try again when you are online.',
-      ),
+      error: (error, _) => GuideStatusScaffold(message: l10n.guideLoadError),
       data: (guide) {
-        if (!_started) return _buildIntro(guide);
-        return _buildTutorial(guide);
+        if (!_started) return _buildIntro(guide, l10n);
+        return _buildTutorial(guide, l10n);
       },
     );
   }
 
-  Widget _buildIntro(StaticGuide guide) {
+  Widget _buildIntro(StaticGuide guide, AppLocalizations l10n) {
     return Scaffold(
       backgroundColor: kBrandGreen,
       appBar: AppBar(
@@ -110,7 +111,7 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
                       _aiError = null;
                       _questionController.clear();
                     }),
-                    child: const Text('Start'),
+                    child: Text(l10n.actionStart),
                   ),
                   const Spacer(),
                 ],
@@ -122,10 +123,10 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
     );
   }
 
-  Widget _buildTutorial(StaticGuide guide) {
+  Widget _buildTutorial(StaticGuide guide, AppLocalizations l10n) {
     final total = guide.sections.length;
     if (total == 0) {
-      return const GuideStatusScaffold(message: 'This guide has no sections.');
+      return GuideStatusScaffold(message: l10n.guideNoSections);
     }
     final step = _step.clamp(0, total - 1);
     final section = guide.sections[step];
@@ -171,7 +172,7 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
                           child: _step > 0
                               ? OutlinedButton(
                                   onPressed: _previous,
-                                  child: const Text('Previous'),
+                                  child: Text(l10n.actionPrevious),
                                 )
                               : const SizedBox.shrink(),
                         ),
@@ -189,7 +190,9 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
                                 vertical: 10,
                               ),
                             ),
-                            child: Text(isLast ? 'Finish' : 'Next'),
+                            child: Text(
+                              isLast ? l10n.actionFinish : l10n.actionNext,
+                            ),
                           ),
                         ),
                       ),
@@ -213,7 +216,7 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Section ${_step + 1} of $total',
+                    l10n.guideSectionOf(_step + 1, total),
                     textAlign: TextAlign.center,
                     style: const TextStyle(color: Colors.black54),
                   ),
@@ -308,6 +311,7 @@ class _HousingScreenState extends ConsumerState<HousingScreen> {
                 ].join('\n'),
             ].join('\n\n'),
             history: history,
+            language: ref.read(appLocaleProvider).languageCode,
           );
       if (!mounted) return;
       setState(() {
@@ -359,9 +363,9 @@ class _AiAskBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Ask about housing',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context).housingAskTitle,
+              style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
                 color: Colors.black87,
@@ -419,8 +423,8 @@ class _AiAskBar extends StatelessWidget {
                     onSubmitted: (_) => onAsk(),
                     decoration: InputDecoration(
                       hintText: messages.isEmpty
-                          ? 'Type a question…'
-                          : 'Ask a follow-up…',
+                          ? AppLocalizations.of(context).housingAskHint
+                          : AppLocalizations.of(context).housingAskFollowUpHint,
                       filled: true,
                       fillColor: Colors.white,
                       contentPadding: const EdgeInsets.symmetric(
@@ -492,14 +496,23 @@ class _ChatBubble extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: Text(
-                message.text,
-                style: const TextStyle(
-                  fontSize: 14,
-                  height: 1.4,
-                  color: Colors.black87,
-                ),
-              ),
+              child: isUser
+                  ? Text(
+                      message.text,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        height: 1.4,
+                        color: Colors.black87,
+                      ),
+                    )
+                  : AiBodyText(
+                      message.text,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        height: 1.4,
+                        color: Colors.black87,
+                      ),
+                    ),
             ),
           ),
         ),

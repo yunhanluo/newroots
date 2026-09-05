@@ -54,20 +54,24 @@ class IntegrationRoadmap {
     final legacyNotes = _parseList(map['notes'], RoadmapNote.fromMap);
     final legacyQa = _parseList(map['qaHistory'], RoadmapQaExchange.fromMap);
 
-    var firstMonth = RoadmapSection.fromMap(map['firstMonth']);
-    if (firstMonth.notes.isEmpty &&
-        firstMonth.qaHistory.isEmpty &&
-        (legacyNotes.isNotEmpty || legacyQa.isNotEmpty)) {
-      firstMonth = firstMonth.copyWith(
-        notes: legacyNotes,
-        qaHistory: legacyQa,
-      );
-    }
-
     return IntegrationRoadmap(
-      firstMonth: firstMonth,
-      firstThreeMonths: RoadmapSection.fromMap(map['firstThreeMonths']),
-      firstYear: RoadmapSection.fromMap(map['firstYear']),
+      firstMonth: _hydrateSection(
+        RoadmapSection.fromMap(map['firstMonth']),
+        map,
+        'firstMonth',
+        extraNotes: legacyNotes,
+        extraQa: legacyQa,
+      ),
+      firstThreeMonths: _hydrateSection(
+        RoadmapSection.fromMap(map['firstThreeMonths']),
+        map,
+        'firstThreeMonths',
+      ),
+      firstYear: _hydrateSection(
+        RoadmapSection.fromMap(map['firstYear']),
+        map,
+        'firstYear',
+      ),
       clarifications: _parseList(
         map['clarifications'],
         ClarificationExchange.fromMap,
@@ -103,6 +107,54 @@ class IntegrationRoadmap {
       firstThreeMonths: RoadmapSection.empty(),
       firstYear: RoadmapSection.empty(),
     );
+  }
+
+  /// Pulls notes/Q&A saved under dotted keys like `firstMonth.notes` (a
+  /// previous `set(merge: true)` bug) back into the nested section.
+  static RoadmapSection _hydrateSection(
+    RoadmapSection section,
+    Map<String, dynamic> map,
+    String key, {
+    List<RoadmapNote> extraNotes = const [],
+    List<RoadmapQaExchange> extraQa = const [],
+  }) {
+    final dottedNotes = _parseList(map['$key.notes'], RoadmapNote.fromMap);
+    final dottedQa = _parseList(map['$key.qaHistory'], RoadmapQaExchange.fromMap);
+    final notes = _mergeNotes(section.notes, [...dottedNotes, ...extraNotes]);
+    final qa = _mergeQa(section.qaHistory, [...dottedQa, ...extraQa]);
+    if (identical(notes, section.notes) && identical(qa, section.qaHistory)) {
+      return section;
+    }
+    return section.copyWith(notes: notes, qaHistory: qa);
+  }
+
+  static List<RoadmapNote> _mergeNotes(
+    List<RoadmapNote> primary,
+    List<RoadmapNote> extra,
+  ) {
+    if (extra.isEmpty) return primary;
+    final seen = {for (final note in primary) note.id};
+    final merged = [...primary];
+    for (final note in extra) {
+      final id = note.id.isEmpty ? '${note.text}|${note.createdAt.toIso8601String()}' : note.id;
+      if (seen.add(id)) merged.add(note);
+    }
+    return merged;
+  }
+
+  static List<RoadmapQaExchange> _mergeQa(
+    List<RoadmapQaExchange> primary,
+    List<RoadmapQaExchange> extra,
+  ) {
+    if (extra.isEmpty) return primary;
+    final seen = {
+      for (final item in primary) '${item.question}\n${item.answer}',
+    };
+    final merged = [...primary];
+    for (final item in extra) {
+      if (seen.add('${item.question}\n${item.answer}')) merged.add(item);
+    }
+    return merged;
   }
 
   static List<T> _parseList<T>(

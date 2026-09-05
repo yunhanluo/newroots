@@ -3,12 +3,14 @@
  */
 import {HttpsError, CallableRequest} from "firebase-functions/v2/https";
 import {defineSecret} from "firebase-functions/params";
+import {outputLanguageInstructions, localizeJson, replyLanguageName} from "./ai_language.js";
 
 const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 
 export const roadmapCallableOptions = {
   enforceAppCheck: false,
   secrets: [OPENAI_API_KEY],
+  timeoutSeconds: 180,
 };
 
 interface ProfileInput {
@@ -64,6 +66,8 @@ interface RoadmapAiInput {
   };
   userMessage?: string;
   section?: string;
+  language?: string;
+  languageCode?: string;
 }
 
 interface PlanResult {
@@ -92,6 +96,14 @@ const ROADMAP_ADVISOR_PROMPT =
 
 const JSON_RULES =
   "Respond with ONLY valid JSON — no markdown fences, no commentary.";
+
+function roadmapJsonRules(languageName: string): string {
+  return (
+    `${JSON_RULES} ${outputLanguageInstructions(languageName)} ` +
+    "status must stay English (needs_clarification or complete). " +
+    `Write questions, summaries, and checklist text entirely in ${languageName}.`
+  );
+}
 
 function normalizeChecklist(
   raw: ChecklistItem[] | undefined,
@@ -125,14 +137,14 @@ function normalizeRoadmap(raw: RoadmapData | undefined): RoadmapData {
   };
 }
 
-function profileContext(profile: ProfileInput): string {
+function profileContext(profile: ProfileInput, languageName: string): string {
   const skipped = (profile.skippedQuestions ?? [])
     .map((step) => SURVEY_STEP_LABELS[step] ?? `question ${step}`)
     .join(", ");
 
   return JSON.stringify(
     {
-      languageCode: profile.languageCode ?? "unknown",
+      replyLanguage: languageName,
       location: profile.location?.trim() || null,
       familySize: profile.familySize ?? null,
       topPriorities: profile.topPriorities ?? [],
@@ -315,9 +327,10 @@ async function planRoadmapWithAi(
   apiKey: string,
   profile: ProfileInput,
   clarifications: ClarificationInput[],
-  options: {forceComplete?: boolean} = {},
+  options: {forceComplete?: boolean; languageName?: string} = {},
 ): Promise<Record<string, unknown>> {
   const forceComplete = options.forceComplete ?? false;
+  const languageName = options.languageName ?? "English";
 
   const instruction = forceComplete ?
     "You MUST produce a complete roadmap now. Do not ask clarifying questions." :
@@ -328,13 +341,19 @@ async function planRoadmapWithAi(
     "survey topics the user skipped. Do not repeat questions already answered.";
 
   const result = await tryOpenAiJson<PlanResult>(apiKey, [
-    {role: "system", content: `${ROADMAP_ADVISOR_PROMPT}\n${JSON_RULES}`},
+    {
+      role: "system",
+      content:
+        `${outputLanguageInstructions(languageName)}\n` +
+        `${ROADMAP_ADVISOR_PROMPT}\n${roadmapJsonRules(languageName)}`,
+    },
     {
       role: "user",
       content:
+        `Write your entire roadmap in ${languageName}.\n\n` +
         `${instruction}\n\n` +
         "Survey profile:\n" +
-        `${profileContext(profile)}\n\n` +
+        `${profileContext(profile, languageName)}\n\n` +
         "Prior clarification Q&A:\n" +
         `${clarificationsContext(clarifications)}\n\n` +
         "Return JSON shaped like:\n" +
@@ -348,7 +367,8 @@ async function planRoadmapWithAi(
         "  }\n" +
         "}\n\n" +
         "Each section needs a warm 2–3 sentence summary and 4–7 concrete checklist " +
-        "steps tailored to this family. Reference their location and priorities when known.",
+        "steps tailored to this family. Reference their location and priorities when known. " +
+        `Write those summaries and steps in ${languageName}.`,
     },
   ]);
 
@@ -361,10 +381,18 @@ async function planRoadmapWithAi(
   if (!forceComplete && plan.status === "needs_clarification") {
     const questions = sanitizeQuestions(plan.questions);
     if (questions.length) {
+      const localized = await localizeJson(apiKey, {questions}, languageName);
+      const next = sanitizeQuestions(localized.questions);
+      if (!next.length) {
+        throw new HttpsError(
+          "internal",
+          "Could not write questions in the requested language.",
+        );
+      }
       return {
         status: "needs_clarification",
-        questions,
-        question: questions[0],
+        questions: next,
+        question: next[0],
       };
     }
   }
@@ -376,7 +404,17 @@ async function planRoadmapWithAi(
     roadmap.firstThreeMonths.checklist.length ||
     roadmap.firstYear.checklist.length
   ) {
-    return {status: "complete", roadmap};
+    const localized = await localizeJson(apiKey, {roadmap}, languageName);
+    if (!localized.roadmap) {
+      throw new HttpsError(
+        "internal",
+        "Could not write the roadmap in the requested language.",
+      );
+    }
+    return {
+      status: "complete",
+      roadmap: normalizeRoadmap(localized.roadmap as RoadmapData),
+    };
   }
 
   throw new HttpsError(
@@ -391,6 +429,7 @@ async function regenerateSectionWithAi(
   clarifications: ClarificationInput[],
   section: string,
   existingRoadmap: RoadmapAiInput["roadmap"],
+  languageName: string,
 ): Promise<Record<string, unknown>> {
   const sectionLabels: Record<string, string> = {
     firstMonth: "First Month",
@@ -409,13 +448,19 @@ async function regenerateSectionWithAi(
       "y";
 
   const result = await tryOpenAiJson<SectionResult>(apiKey, [
-    {role: "system", content: `${ROADMAP_ADVISOR_PROMPT}\n${JSON_RULES}`},
+    {
+      role: "system",
+      content:
+        `${outputLanguageInstructions(languageName)}\n` +
+        `${ROADMAP_ADVISOR_PROMPT}\n${roadmapJsonRules(languageName)}`,
+    },
     {
       role: "user",
       content:
+        `Write your entire ${label} section in ${languageName}.\n\n` +
         `Regenerate ONLY the "${label}" section of this integration roadmap.\n\n` +
         "Survey profile:\n" +
-        `${profileContext(profile)}\n\n` +
+        `${profileContext(profile, languageName)}\n\n` +
         "Clarification Q&A:\n" +
         `${clarificationsContext(clarifications)}\n\n` +
         "Existing roadmap (keep other sections consistent in tone):\n" +
@@ -436,10 +481,18 @@ async function regenerateSectionWithAi(
     );
   }
 
+  const sectionData = normalizeSection(result.data.sectionData, prefix);
+  const localized = await localizeJson(apiKey, {sectionData}, languageName);
+  if (!localized.sectionData) {
+    throw new HttpsError(
+      "internal",
+      "Could not write this section in the requested language.",
+    );
+  }
   return {
     status: "complete",
     section,
-    sectionData: normalizeSection(result.data.sectionData, prefix),
+    sectionData: normalizeSection(localized.sectionData as SectionData, prefix),
   };
 }
 
@@ -452,6 +505,15 @@ export async function handleRoadmapAi(
   const action = data.action ?? "generate";
   const profile = data.profile ?? {};
   const clarifications = data.clarifications ?? [];
+  const languageName = replyLanguageName(
+    data.language || data.languageCode,
+  );
+  console.info("roadmapAi language", {
+    language: data.language,
+    languageCode: data.languageCode,
+    profileLanguage: profile.languageCode,
+    resolved: languageName,
+  });
 
   if (action === "debug") {
     const apiKey = OPENAI_API_KEY.value();
@@ -498,14 +560,20 @@ export async function handleRoadmapAi(
       "the roadmap";
 
     const aiAnswer = await tryOpenAiText(apiKey, [
-      {role: "system", content: ROADMAP_ADVISOR_PROMPT},
+      {
+        role: "system",
+        content:
+          `${outputLanguageInstructions(languageName)}\n${ROADMAP_ADVISOR_PROMPT}`,
+      },
       {
         role: "user",
         content:
-          `Answer the user's question about the "${sectionLabel}" section of ` +
+          `Answer entirely in ${languageName}. Do not answer in English ` +
+          `unless ${languageName} is English.\n\n` +
+          `The question is about the "${sectionLabel}" section of ` +
           "their settlement roadmap.\n\n" +
           "Survey profile:\n" +
-          `${profileContext(profile)}\n\n` +
+          `${profileContext(profile, languageName)}\n\n` +
           "Focused section (summary, checklist, notes, prior Q&A):\n" +
           `${focusedSectionContext(sectionKey, data.roadmap)}\n\n` +
           "Full roadmap for broader context:\n" +
@@ -518,7 +586,19 @@ export async function handleRoadmapAi(
       throw new HttpsError("unavailable", aiAnswer.reason);
     }
 
-    return {status: "answer", answer: aiAnswer.data};
+    const localized = await localizeJson(
+      apiKey,
+      {answer: aiAnswer.data},
+      languageName,
+    );
+    const answer = localized.answer?.trim();
+    if (!answer) {
+      throw new HttpsError(
+        "internal",
+        "Could not write the answer in the requested language.",
+      );
+    }
+    return {status: "answer", answer};
   }
 
   if (action === "regenerate_section") {
@@ -532,16 +612,20 @@ export async function handleRoadmapAi(
       clarifications,
       section,
       data.roadmap,
+      languageName,
     );
   }
 
   if (action === "generate" || action === "clarify") {
-    return planRoadmapWithAi(apiKey, profile, clarifications);
+    return planRoadmapWithAi(apiKey, profile, clarifications, {
+      languageName,
+    });
   }
 
   if (action === "regenerate_all") {
     return planRoadmapWithAi(apiKey, profile, clarifications, {
       forceComplete: true,
+      languageName,
     });
   }
 

@@ -80,6 +80,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get actionCreateAccount => '创建账户';
 
   @override
+  String get actionStart => '开始';
+
+  @override
   String get actionPrevious => '上一步';
 
   @override
@@ -418,4 +421,306 @@ class AppLocalizationsZh extends AppLocalizations {
   String scamThreadCount(int count) {
     return '此对话有 $count 条消息';
   }
+
+  @override
+  String get actionSend => '发送';
+
+  @override
+  String get actionDelete => '删除';
+
+  @override
+  String get followupAsk => '提问';
+
+  @override
+  String get followupSaveNote => '保存笔记';
+
+  @override
+  String get followupDeleteNote => '删除笔记';
+
+  @override
+  String followupQuestion(String question) {
+    return '问：$question';
+  }
+
+  @override
+  String get careerSignIn => '请登录以探索职业路径。';
+
+  @override
+  String get careerAddPriorJob => '请在个人资料问卷中填写过往工作，或在下方备注中描述您的背景。';
+
+  @override
+  String get careerGoToProfile => '前往个人资料';
+
+  @override
+  String get careerPriorEmployment => '过往工作（来自问卷）';
+
+  @override
+  String get careerAdditionalBackground => '补充背景';
+
+  @override
+  String get careerAdditionalBackgroundHelp =>
+      '技能、学历、证书、语言或职业目标，有助于 AI 给出更合适的路径。';
+
+  @override
+  String get careerAdditionalBackgroundHint => '例如：电工工作 5 年、职业文凭、对太阳能安装感兴趣…';
+
+  @override
+  String get careerGenerateAll => '生成职业路径';
+
+  @override
+  String get careerRegenerateAll => '重新生成全部路径';
+
+  @override
+  String get careerGenerating => '正在规划职业路径…';
+
+  @override
+  String get careerNeedBackground => '请先补充技能或学历相关备注。';
+
+  @override
+  String get careerCouldNotSaveChecklist => '无法保存清单进度。';
+
+  @override
+  String get careerCouldNotSaveStep => '无法保存步骤进度。';
+
+  @override
+  String get careerCouldNotSaveNote => '无法保存笔记。';
+
+  @override
+  String get careerCouldNotDeleteNote => '无法删除该笔记。';
+
+  @override
+  String get careerDeleteNoteTitle => '删除这条笔记？';
+
+  @override
+  String get careerDeleteNoteBody => '这将从该职业路径中移除这条笔记。';
+
+  @override
+  String get careerGeneratePathTitle => '生成这条路径？';
+
+  @override
+  String get careerRegeneratePathTitle => '重新生成这条路径？';
+
+  @override
+  String careerGeneratePathBody(int number) {
+    return '为路径 $number 创建一条 AI 职业路径。其他路径和笔记会保留。';
+  }
+
+  @override
+  String careerRegeneratePathBody(String title) {
+    return '用新的 AI 职业路径替换“$title”。其他路径和笔记会保留。';
+  }
+
+  @override
+  String get careerGenerate => '生成';
+
+  @override
+  String get careerRegenerate => '重新生成';
+
+  @override
+  String careerPathNumber(int number) {
+    return '路径 $number';
+  }
+
+  @override
+  String careerPathHeading(int number, String title) {
+    return '路径 $number：$title';
+  }
+
+  @override
+  String get careerPlaceholderBody => '生成后，这里会显示职业路径。';
+
+  @override
+  String get careerPlaceholderStartTitle => '起点';
+
+  @override
+  String get careerPlaceholderStartBody => '您目前的经验和背景。';
+
+  @override
+  String get careerPlaceholderCredsTitle => '积累资质';
+
+  @override
+  String get careerPlaceholderCredsBody => '需要考取的执照、培训和技能。';
+
+  @override
+  String get careerPlaceholderTargetTitle => '目标职位';
+
+  @override
+  String get careerPlaceholderTargetBody => '您在美国的职业目标。';
+
+  @override
+  String get careerCertifications => '证书与执照';
+
+  @override
+  String get careerSkills => '需要培养的技能';
+
+  @override
+  String get careerTimeEstimate => '时间估计';
+
+  @override
+  String get careerStepCompleted => '已完成';
+
+  @override
+  String get careerStepNow => '现在';
+
+  @override
+  String careerStepNowWithDuration(String duration) {
+    return '现在（$duration）';
+  }
+
+  @override
+  String get careerTimePending => '时间估计待补充';
+
+  @override
+  String get careerUndo => '撤销';
+
+  @override
+  String get careerMarkComplete => '标记完成';
+
+  @override
+  String get careerFinishStepAbove => '请先完成上一步。';
+
+  @override
+  String get careerUndoLaterStep => '请先撤销后面的步骤。';
+
+  @override
+  String get careerAskTitle => '询问这条路径';
+
+  @override
+  String get careerAskSubtitle =>
+      '问题会用到本路径的步骤、笔记和您的背景。回答只保留在本页，离开后消失。想保留的内容请存为笔记。';
+
+  @override
+  String get careerAskHint => '询问某个步骤、执照或如何起步…';
+
+  @override
+  String get careerNotesTitle => '本路径笔记';
+
+  @override
+  String get careerNotesSubtitle => '记录这条路径的进展。会保存并提供给 AI。';
+
+  @override
+  String get careerNotesHint => '您在这条路径上做了什么？';
+
+  @override
+  String get roadmapSettlementPlan => '根据问卷答案为您制定的安顿计划。';
+
+  @override
+  String get roadmapRegenerateAll => '全部重新生成';
+
+  @override
+  String get roadmapRegenerateAllTitle => '重新生成整个计划？';
+
+  @override
+  String get roadmapRegenerateAllBody => '这将用新的 AI 计划替换三个部分。各部分的笔记会保留。';
+
+  @override
+  String get roadmapCreating => '正在创建您的个性化计划…';
+
+  @override
+  String get roadmapAnswerQuestions => '请回答下面的问题，以便完成您的计划。';
+
+  @override
+  String get roadmapUpdating => '正在更新您的计划…';
+
+  @override
+  String get roadmapGenerate => '生成计划';
+
+  @override
+  String get roadmapNoRoadmap => '还没有计划。点下方按钮根据问卷生成。';
+
+  @override
+  String get roadmapEmptySurvey => '请先完成入门问卷，以便生成个性化计划。';
+
+  @override
+  String roadmapRegenerateSectionTitle(String section) {
+    return '重新生成$section？';
+  }
+
+  @override
+  String get roadmapRegenerateSectionBody => '此部分将替换为新的 AI 计划。本部分的笔记会保留。';
+
+  @override
+  String get roadmapAskTitle => '询问此部分';
+
+  @override
+  String get roadmapAskSubtitle =>
+      '问题会用到本部分清单、笔记和问卷。回答只保留在本页，离开后消失。想保留的内容请存为笔记。';
+
+  @override
+  String get roadmapAskHint => '询问此部分的某个步骤…';
+
+  @override
+  String get roadmapNotesTitle => '本部分笔记';
+
+  @override
+  String get roadmapNotesSubtitle => '记录这些步骤的进展。会保存并提供给 AI。';
+
+  @override
+  String get roadmapNotesHint => '您在此部分做了什么？';
+
+  @override
+  String get roadmapNoChecklist => '暂无清单项目。';
+
+  @override
+  String get roadmapCouldNotSaveNote => '无法保存笔记。';
+
+  @override
+  String get roadmapCouldNotDeleteNote => '无法删除该笔记。';
+
+  @override
+  String get roadmapDeleteNoteTitle => '删除这条笔记？';
+
+  @override
+  String get roadmapDeleteNoteBody => '这将从此部分移除这条笔记。';
+
+  @override
+  String get roadmapAiUnavailable => 'AI 服务暂不可用。';
+
+  @override
+  String get roadmapAiCouldNotAnswer => 'AI 无法回答。';
+
+  @override
+  String get roadmapSectionFirstMonth => '第一个月';
+
+  @override
+  String get roadmapSectionFirstThreeMonths => '前 3 个月';
+
+  @override
+  String get roadmapSectionFirstYear => '第一年';
+
+  @override
+  String roadmapQuestionOf(int current, int total) {
+    return '第 $current 题，共 $total 题';
+  }
+
+  @override
+  String get roadmapOneQuestion => '一个简短问题';
+
+  @override
+  String roadmapUpNext(String question) {
+    return '接下来：$question';
+  }
+
+  @override
+  String get roadmapYourAnswer => '您的回答';
+
+  @override
+  String get guideLoadError => '无法加载本指南。请在联网后再试。';
+
+  @override
+  String get guideNoSections => '本指南没有章节。';
+
+  @override
+  String guideSectionOf(int current, int total) {
+    return '第 $current 节，共 $total 节';
+  }
+
+  @override
+  String get housingAskTitle => '询问住房问题';
+
+  @override
+  String get housingAskHint => '输入问题…';
+
+  @override
+  String get housingAskFollowUpHint => '继续提问…';
 }

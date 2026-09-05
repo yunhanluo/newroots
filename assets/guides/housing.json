@@ -6,7 +6,7 @@
   "landingBody": "Learn all about housing in California.",
   "icon": "home",
   "finishRoute": "home",
-  "version": 1,
+  "version": 2,
   "sections": [
     {
       "title": "Welcome",

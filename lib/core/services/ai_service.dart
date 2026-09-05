@@ -16,6 +16,19 @@ class AiService {
 
   final FirebaseFunctions _functions;
 
+  static const _aiTimeout = Duration(seconds: 180);
+
+  HttpsCallable _callable(String name) => _functions.httpsCallable(
+        name,
+        options: HttpsCallableOptions(timeout: _aiTimeout),
+      );
+
+  String _replyLanguage(UserProfileData profile, String? language) {
+    final code = language?.trim() ?? '';
+    if (code.isNotEmpty) return code;
+    return profile.languageCode;
+  }
+
   /// Calls the `analyzeScam` Cloud Function.
   Future<ScamReport> analyzeScam({
     String? text,
@@ -27,9 +40,7 @@ class AiService {
     String? reportId,
   }) async {
     try {
-      final result = await _functions
-          .httpsCallable('analyzeScam')
-          .call<Map<String, dynamic>>({
+      final result = await _callable('analyzeScam').call<Map<String, dynamic>>({
         if (text != null && text.trim().isNotEmpty) 'text': text.trim(),
         if (contentRef != null && contentRef.trim().isNotEmpty)
           'contentRef': contentRef.trim(),
@@ -58,11 +69,13 @@ class AiService {
   Future<List<CareerPath>> generateCareerPaths({
     required UserProfileData profile,
     required String additionalNotes,
+    String? language,
   }) async {
     return _callCareerMap(
       profile: profile,
       additionalNotes: additionalNotes,
       action: 'generate',
+      language: language,
     );
   }
 
@@ -71,17 +84,18 @@ class AiService {
     required String additionalNotes,
     required List<CareerPath?> existingPaths,
     required int pathIndex,
+    String? language,
   }) async {
     final path = pathIndex < existingPaths.length
         ? existingPaths[pathIndex]
         : null;
-    final result = await _functions
-        .httpsCallable('careerMap')
-        .call<Map<String, dynamic>>({
+    final replyLanguage = _replyLanguage(profile, language);
+    final result = await _callable('careerMap').call<Map<String, dynamic>>({
       'action': 'regenerate_path',
-      'profile': _careerProfilePayload(profile),
+      'profile': _careerProfilePayload(profile, replyLanguage),
       'additionalNotes': additionalNotes.trim(),
-      'language': profile.languageCode,
+      'language': replyLanguage,
+      'languageCode': replyLanguage,
       'pathIndex': pathIndex,
       'pathId': path?.id.isNotEmpty == true
           ? path!.id
@@ -108,19 +122,67 @@ class AiService {
     return CareerPath.fromMap(Map<String, dynamic>.from(rawPath));
   }
 
+  Future<String> askCareerQuestion({
+    required UserProfileData profile,
+    required String additionalNotes,
+    required CareerPath path,
+    required List<CareerQaExchange> qaHistory,
+    required List<CareerPath?> existingPaths,
+    required String question,
+    String? language,
+  }) async {
+    try {
+      final replyLanguage = _replyLanguage(profile, language);
+      final result = await _callable('careerMap').call<Map<String, dynamic>>({
+        'action': 'ask',
+        'profile': _careerProfilePayload(profile, replyLanguage),
+        'additionalNotes': additionalNotes.trim(),
+        'language': replyLanguage,
+        'languageCode': replyLanguage,
+        'question': question.trim(),
+        'path': path.toMap(),
+        'qaHistory': [
+          for (final item in qaHistory)
+            {'question': item.question, 'answer': item.answer},
+        ],
+        'existingPaths': List.generate(
+          CareerBridgeData.pathSlotCount,
+          (index) {
+            final item =
+                index < existingPaths.length ? existingPaths[index] : null;
+            return {
+              'title': item?.title ?? '',
+              'summary': item?.summary ?? '',
+            };
+          },
+        ),
+      });
+      final data = Map<String, dynamic>.from(result.data);
+      final answer = (data['answer'] as String?)?.trim() ?? '';
+      if (answer.isEmpty) {
+        throw StateError('No answer returned.');
+      }
+      return answer;
+    } catch (error, stack) {
+      debugPrint('careerMap ask failed: $error\n$stack');
+      rethrow;
+    }
+  }
+
   Future<List<CareerPath>> _callCareerMap({
     required UserProfileData profile,
     required String additionalNotes,
     required String action,
+    String? language,
   }) async {
     try {
-      final result = await _functions
-          .httpsCallable('careerMap')
-          .call<Map<String, dynamic>>({
+      final replyLanguage = _replyLanguage(profile, language);
+      final result = await _callable('careerMap').call<Map<String, dynamic>>({
         'action': action,
-        'profile': _careerProfilePayload(profile),
+        'profile': _careerProfilePayload(profile, replyLanguage),
         'additionalNotes': additionalNotes.trim(),
-        'language': profile.languageCode,
+        'language': replyLanguage,
+        'languageCode': replyLanguage,
       });
       final data = Map<String, dynamic>.from(result.data);
       final rawPaths = data['paths'];
@@ -147,9 +209,7 @@ class AiService {
     String language = 'en',
   }) async {
     try {
-      final result = await _functions
-          .httpsCallable('housingAi')
-          .call<Map<String, dynamic>>({
+      final result = await _callable('housingAi').call<Map<String, dynamic>>({
         'question': question.trim(),
         'sectionTitle': sectionTitle,
         'sectionSummary': sectionSummary,
@@ -172,9 +232,8 @@ class AiService {
     Map<String, dynamic> payload,
   ) async {
     try {
-      final result = await _functions
-          .httpsCallable('roadmapAi')
-          .call<Map<String, dynamic>>(payload);
+      final result =
+          await _callable('roadmapAi').call<Map<String, dynamic>>(payload);
       final data = result.data;
       return RoadmapAiResponse.fromMap(Map<String, dynamic>.from(data));
     } catch (error, stack) {
@@ -187,12 +246,14 @@ class AiService {
     required UserProfileData profile,
     required List<ClarificationExchange> clarifications,
     IntegrationRoadmap? existing,
+    String? language,
   }) async {
     final payload = _basePayload(
       action: 'generate',
       profile: profile,
       clarifications: clarifications,
       roadmap: existing,
+      language: language,
     );
     return _callRoadmapAi(payload);
   }
@@ -203,6 +264,7 @@ class AiService {
     required String question,
     required String answer,
     IntegrationRoadmap? existing,
+    String? language,
   }) async {
     final updated = [
       ...clarifications,
@@ -217,6 +279,7 @@ class AiService {
       profile: profile,
       clarifications: updated,
       roadmap: existing,
+      language: language,
     );
     return _callRoadmapAi(payload);
   }
@@ -226,6 +289,7 @@ class AiService {
     required IntegrationRoadmap roadmap,
     required RoadmapSectionKey section,
     required String question,
+    String? language,
   }) async {
     final payload = _basePayload(
       action: 'ask',
@@ -233,6 +297,7 @@ class AiService {
       roadmap: roadmap,
       userMessage: question,
       section: section.firestoreKey,
+      language: language,
     );
     try {
       return await _callRoadmapAi(payload);
@@ -250,12 +315,14 @@ class AiService {
     required UserProfileData profile,
     required List<ClarificationExchange> clarifications,
     IntegrationRoadmap? existing,
+    String? language,
   }) async {
     final payload = _basePayload(
       action: 'regenerate_all',
       profile: profile,
       clarifications: clarifications,
       roadmap: existing,
+      language: language,
     );
     return _callRoadmapAi(payload);
   }
@@ -265,6 +332,7 @@ class AiService {
     required RoadmapSectionKey section,
     required List<ClarificationExchange> clarifications,
     IntegrationRoadmap? existing,
+    String? language,
   }) async {
     final payload = _basePayload(
       action: 'regenerate_section',
@@ -272,6 +340,7 @@ class AiService {
       clarifications: clarifications,
       roadmap: existing,
       section: section.firestoreKey,
+      language: language,
     );
     return _callRoadmapAi(payload);
   }
@@ -279,8 +348,7 @@ class AiService {
   /// Debug-only: checks server AI configuration and OpenAI connectivity.
   Future<RoadmapAiDebugStatus?> fetchDebugStatus() async {
     try {
-      final result = await _functions
-          .httpsCallable('roadmapAi')
+      final result = await _callable('roadmapAi')
           .call<Map<String, dynamic>>({'action': 'debug'});
       final data = Map<String, dynamic>.from(result.data);
       return RoadmapAiDebugStatus(
@@ -301,10 +369,14 @@ class AiService {
     IntegrationRoadmap? roadmap,
     String? userMessage,
     String? section,
+    String? language,
   }) {
+    final replyLanguage = _replyLanguage(profile, language);
     return {
       'action': action,
-      'profile': _profilePayload(profile),
+      'profile': _profilePayload(profile, replyLanguage),
+      'language': replyLanguage,
+      'languageCode': replyLanguage,
       if (clarifications.isNotEmpty)
         'clarifications': clarifications.map((c) => c.toMap()).toList(),
       if (roadmap != null &&
@@ -315,9 +387,12 @@ class AiService {
     };
   }
 
-  Map<String, dynamic> _profilePayload(UserProfileData profile) {
+  Map<String, dynamic> _profilePayload(
+    UserProfileData profile,
+    String replyLanguage,
+  ) {
     return {
-      'languageCode': profile.languageCode,
+      'languageCode': replyLanguage,
       'location': profile.location,
       'familySize': profile.familySize,
       'topPriorities': profile.topPriorities,
@@ -328,9 +403,12 @@ class AiService {
     };
   }
 
-  Map<String, dynamic> _careerProfilePayload(UserProfileData profile) {
+  Map<String, dynamic> _careerProfilePayload(
+    UserProfileData profile,
+    String replyLanguage,
+  ) {
     return {
-      'languageCode': profile.languageCode,
+      'languageCode': replyLanguage,
       'location': profile.location,
       'employmentBackground': profile.employmentBackground,
       'topPriorities': profile.topPriorities,

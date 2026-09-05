@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../models/static_guide.dart';
 import '../services/static_guide_service.dart';
 import '../theme/brand_colors.dart';
@@ -36,21 +37,19 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final guideAsync = ref.watch(staticGuideProvider(widget.guideId));
     return guideAsync.when(
       loading: () => const GuideStatusScaffold(busy: true),
-      error: (error, _) => const GuideStatusScaffold(
-        message:
-            'This guide could not be loaded. Try again when you are online.',
-      ),
+      error: (error, _) => GuideStatusScaffold(message: l10n.guideLoadError),
       data: (guide) {
-        if (!_started) return _buildLanding(guide);
-        return _buildTutorial(guide);
+        if (!_started) return _buildLanding(guide, l10n);
+        return _buildTutorial(guide, l10n);
       },
     );
   }
 
-  Widget _buildLanding(StaticGuide guide) {
+  Widget _buildLanding(StaticGuide guide, AppLocalizations l10n) {
     final icon = staticGuideIcon(guide.icon);
     final compact = widget.landingStyle == GuideLandingStyle.compact;
 
@@ -99,7 +98,7 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
                       ),
                     ),
                     const SizedBox(height: 36),
-                    _StartButton(onPressed: _start),
+                    _StartButton(label: l10n.actionStart, onPressed: _start),
                     const Spacer(),
                   ] else ...[
                     Text(
@@ -124,7 +123,7 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
                       ),
                     ),
                     const SizedBox(height: 36),
-                    _StartButton(onPressed: _start),
+                    _StartButton(label: l10n.actionStart, onPressed: _start),
                     const Spacer(),
                   ],
                 ],
@@ -136,10 +135,10 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
     );
   }
 
-  Widget _buildTutorial(StaticGuide guide) {
+  Widget _buildTutorial(StaticGuide guide, AppLocalizations l10n) {
     final total = guide.sections.length;
     if (total == 0) {
-      return const GuideStatusScaffold(message: 'This guide has no sections.');
+      return GuideStatusScaffold(message: l10n.guideNoSections);
     }
     final step = _step.clamp(0, total - 1);
     final section = guide.sections[step];
@@ -177,7 +176,7 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
                           child: step > 0
                               ? OutlinedButton(
                                   onPressed: _previous,
-                                  child: const Text('Previous'),
+                                  child: Text(l10n.actionPrevious),
                                 )
                               : const SizedBox.shrink(),
                         ),
@@ -197,7 +196,9 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
                                 vertical: 10,
                               ),
                             ),
-                            child: Text(isLast ? 'Finish' : 'Next'),
+                            child: Text(
+                              isLast ? l10n.actionFinish : l10n.actionNext,
+                            ),
                           ),
                         ),
                       ),
@@ -221,7 +222,7 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Section ${step + 1} of $total',
+                    l10n.guideSectionOf(step + 1, total),
                     textAlign: TextAlign.center,
                     style: const TextStyle(color: Colors.black54),
                   ),
@@ -258,8 +259,9 @@ class _StaticGuidePagerState extends ConsumerState<StaticGuidePager> {
 }
 
 class _StartButton extends StatelessWidget {
-  const _StartButton({required this.onPressed});
+  const _StartButton({required this.label, required this.onPressed});
 
+  final String label;
   final VoidCallback onPressed;
 
   @override
@@ -272,7 +274,7 @@ class _StartButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       ),
       onPressed: onPressed,
-      child: const Text('Start'),
+      child: Text(label),
     );
   }
 }
@@ -299,7 +301,7 @@ class GuideStatusScaffold extends StatelessWidget {
           child: busy
               ? const CircularProgressIndicator(color: Colors.white)
               : Text(
-                  message ?? 'Unable to load this guide.',
+                  message ?? AppLocalizations.of(context).guideLoadError,
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.white, fontSize: 16),
                 ),
