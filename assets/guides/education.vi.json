@@ -1,0 +1,127 @@
+{
+  "id": "education",
+  "title": "Kiến thức cơ bản về giáo dục",
+  "subtitle": "Trường công California, ghi danh, và hỗ trợ học tập.",
+  "landingTitle": "Kiến thức cơ bản về giáo dục",
+  "landingBody": "Hướng dẫn ngắn về trường công California, ghi danh, hỗ trợ học sinh học tiếng Anh, và chương trình học thuật.",
+  "icon": "school",
+  "finishRoute": "education",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Chào mừng",
+      "intro": "",
+      "body": "Trường công California miễn phí cho trẻ em sống trong bang. Quy tắc, giấy tờ, và tên khối lớp có thể lạ nếu bạn mới đến Hoa Kỳ.\n\nHướng dẫn ngắn này giải thích cách tổ chức trường K–12, cách tìm học khu, ghi danh thường cần gì, hỗ trợ học sinh học tiếng Anh, và nơi tìm gia sư, thư viện, cùng chương trình STEM.\n\nĐây là thông tin chung, không phải tư vấn pháp lý. Chính sách khác nhau theo học khu, vì vậy hãy xác nhận chi tiết với văn phòng trường địa phương.",
+      "topics": []
+    },
+    {
+      "title": "K–12 ở California hoạt động thế nào",
+      "intro": "Hầu hết trẻ em học trường công được chỉ định theo nơi gia đình sống. Học khu điều hành các trường. Quy tắc toàn bang đến từ Bộ Giáo dục California (CDE).",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Công lập, charter, và tư thục",
+          "paragraph": "Trường công không thu học phí và mở cho cư dân địa phương. Trường charter là trường công có chương trình linh hoạt hơn; có thể có rút thăm hoặc danh sách chờ. Trường tư thu học phí và tự đặt quy tắc tuyển sinh. Ứng dụng này liệt kê trường công và tư, cùng chương trình hỗ trợ miễn phí hoặc chi phí thấp."
+        },
+        {
+          "heading": "Các khối lớp",
+          "paragraph": "Tiểu học thường gồm mẫu giáo đến lớp 5 hoặc 6. Trung học cơ sở gồm lớp 6–8 hoặc 7–8. Trung học phổ thông gồm lớp 9–12. Một số trường là K–8 hoặc tổ hợp khác. Hỏi học khu trường nào phục vụ độ tuổi của con bạn."
+        },
+        {
+          "heading": "Bộ Giáo dục California",
+          "paragraph": "CDE công bố danh mục trường, hướng dẫn ghi danh, và tài nguyên cho học sinh học tiếng Anh. Dùng trang chính thức của CDE và học khu khi bạn cần quy tắc mới nhất.",
+          "url": "https://www.cde.ca.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Tìm học khu và trường",
+      "intro": "Địa chỉ nhà thường quyết định con bạn học trường nào. Bắt đầu với học khu phục vụ khu phố của bạn.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Công cụ tìm trường",
+          "paragraph": "Dùng Danh mục Trường của CDE hoặc trang web học khu thành phố/quận để tra trường theo địa chỉ hoặc thành phố. Trong ứng dụng này, bản đồ Tìm trường và chương trình hiện trường công gần bạn từ danh mục chính thức của California.",
+          "url": "https://www.cde.ca.gov/SchoolDirectory/"
+        },
+        {
+          "heading": "Gọi văn phòng học khu",
+          "paragraph": "Nếu trang web khó hiểu, hãy gọi văn phòng ghi danh hoặc dịch vụ học sinh của học khu. Nói địa chỉ, tuổi hoặc khối lớp của con, và hỏi nên liên hệ trường nào. Xin trợ giúp bằng ngôn ngữ của bạn."
+        },
+        {
+          "heading": "Ghi danh mở và chuyển trường",
+          "paragraph": "Một số học khu cho phép xin học trường ngoài ranh giới được chỉ định. Quy tắc và hạn chót khác nhau. Hỏi sớm; chỗ có thể hạn chế."
+        }
+      ]
+    },
+    {
+      "title": "Giấy tờ ghi danh",
+      "intro": "Trường cần thông tin cơ bản để đăng ký cho trẻ. Danh sách chính xác khác nhau theo học khu, nhưng những mục này thường được yêu cầu.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Giấy tờ chứng minh tuổi",
+          "paragraph": "Giấy khai sinh, hộ chiếu, hoặc giấy tờ tuổi chính thức khác thường đủ. Hỏi học khu chấp nhận giấy tờ thay thế nào nếu bạn không có giấy khai sinh Hoa Kỳ."
+        },
+        {
+          "heading": "Giấy tờ chứng minh địa chỉ",
+          "paragraph": "Hóa đơn tiện ích, hợp đồng thuê, hoặc thư từ nhà tạm trú hay gia đình chủ nhà có thể dùng được. Nếu bạn đang ở tạm với người thân hoặc nhà ở không ổn định, hãy nói với trường — California có bảo vệ cho học sinh đang vô gia cư."
+        },
+        {
+          "heading": "Hồ sơ tiêm chủng",
+          "paragraph": "California yêu cầu một số vắc-xin để vào trường. Mang mọi hồ sơ tiêm chủng bạn có. Hỏi y tá trường hoặc phòng khám quận cách bổ sung nếu hồ sơ chưa đủ."
+        },
+        {
+          "heading": "Tình trạng di trú",
+          "paragraph": "Trường công phải ghi danh trẻ em sống trong học khu bất kể tình trạng di trú. Bạn không nên bị yêu cầu cung cấp số An sinh Xã hội hoặc giấy tờ di trú để ghi danh trường công K–12.",
+          "url": "https://www.cde.ca.gov/sp/hs/"
+        }
+      ]
+    },
+    {
+      "title": "Học sinh học tiếng Anh và hỗ trợ học tập",
+      "intro": "Trường quen giúp trẻ đang học tiếng Anh và học sinh cần hỗ trợ học tập thêm hoặc hỗ trợ liên quan đến khuyết tật.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Chương trình học sinh học tiếng Anh (EL)",
+          "paragraph": "Trường đánh giá kỹ năng tiếng Anh và cung cấp hỗ trợ Phát triển Ngôn ngữ Anh (ELD). Nói với trường ngôn ngữ gia đình dùng ở nhà. Xin thông dịch viên khi họp.",
+          "url": "https://www.cde.ca.gov/sp/el/"
+        },
+        {
+          "heading": "Kế hoạch IEP và 504",
+          "paragraph": "Nếu con bạn có khuyết tật hoặc khác biệt học tập, hãy xin đánh giá. IEP hoặc kế hoạch 504 có thể cung cấp hỗ trợ trong lớp. Bạn có thể yêu cầu họp và mang người biện hộ hoặc thông dịch viên.\n\nIEP được tạo theo Đạo luật Giáo dục cho Người Khuyết tật cho học sinh đủ điều kiện giáo dục đặc biệt. Đây là kế hoạch viết với mục tiêu học tập, hướng dẫn chuyên biệt, dịch vụ như trị liệu ngôn ngữ hoặc trị liệu nghề nghiệp, và lịch đo tiến bộ. Kế hoạch 504 dành cho học sinh có khuyết tật hạn chế đáng kể một hoạt động sống chính nhưng có thể không cần giáo dục đặc biệt; tập trung vào quyền tiếp cận bình đẳng qua điều chỉnh như thêm thời gian thi, chỗ ngồi tiếp cận được, hỗ trợ sức khỏe, hoặc công nghệ hỗ trợ. Bạn có thể yêu cầu đánh giá bằng văn bản, và trường phải theo thời hạn chính thức và lấy sự đồng ý của bạn trước khi đánh giá. Bạn là một phần của nhóm quyết định, có thể xin thông dịch viên miễn phí và bản sao tài liệu, và có thể yêu cầu họp lại nếu kế hoạch không giúp ích. Xin biện pháp bảo vệ thủ tục của trường nếu bạn không đồng ý với đánh giá, quyết định đủ điều kiện, dịch vụ, hoặc xếp chỗ.",
+          "url": "https://www.cde.ca.gov/sp/se/qa/caprntorg.asp"
+        },
+        {
+          "heading": "Sau giờ học và gia sư",
+          "paragraph": "Nhiều học khu, thư viện, và tổ chức phi lợi nhuận cung cấp giúp bài tập miễn phí hoặc chi phí thấp. Hỏi cố vấn trường và dùng công cụ tìm chương trình trong ứng dụng này cho gia sư và lựa chọn STEM gần bạn."
+        }
+      ]
+    },
+    {
+      "title": "Thư viện, gia sư, và STEM",
+      "intro": "Hỗ trợ không dừng ở lớp học. Thư viện địa phương và chương trình thanh thiếu niên giúp đọc, bài tập, và khoa học thực hành.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Thư viện công cộng",
+          "paragraph": "Thư viện cấp thẻ miễn phí, sách, Wi-Fi, giúp bài tập, và chương trình gia đình. Hỏi về giờ kể chuyện song ngữ và tài nguyên số dùng được ở nhà."
+        },
+        {
+          "heading": "Gia sư và bồi dưỡng",
+          "paragraph": "Tìm chương trình sau giờ học của học khu, trung tâm cộng đồng, và gia sư phi lợi nhuận. Xác nhận chi phí, độ tuổi phục vụ, và đi lại trước khi ghi danh."
+        },
+        {
+          "heading": "Cơ hội STEM",
+          "paragraph": "Bảo tàng, câu lạc bộ lập trình, và chương trình khoa học có thể xây kỹ năng và tự tin. Bắt đầu với lựa chọn công cộng miễn phí gần bạn, rồi hỏi trường về câu lạc bộ và chương trình hè."
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Gọi 211 hoặc tìm trực tuyến giới thiệu dịch vụ giáo dục, thanh thiếu niên, và gia đình địa phương bằng ngôn ngữ của bạn khi có.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

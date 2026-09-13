@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Feature 6: Healthcare Navigator hub.
 class HealthcareScreen extends StatelessWidget {
@@ -11,14 +12,14 @@ class HealthcareScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return BrandScaffold(
-      title: 'Healthcare Navigator',
+      title: l10n.healthcareNavigatorTitle,
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 28),
         children: [
           Text(
-            'Learn how care works in California, then find trusted community '
-            'health centers near you.',
+            l10n.healthcareHubIntro,
             style: TextStyle(
               fontSize: 15,
               height: 1.45,
@@ -28,17 +29,15 @@ class HealthcareScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _HubCard(
             icon: Icons.menu_book_outlined,
-            title: 'Healthcare basics',
-            subtitle:
-                'Insurance, how visits work, community health centers, and language help.',
+            title: l10n.healthcareBasicsTitle,
+            subtitle: l10n.healthcareBasicsSubtitle,
             onTap: () => context.goNamed(Routes.healthcareTutorial),
           ),
           const SizedBox(height: 12),
           _HubCard(
             icon: Icons.local_hospital_outlined,
-            title: 'Find a clinic',
-            subtitle:
-                'Map and list of nearby HRSA community health centers by city or ZIP.',
+            title: l10n.healthcareFindTitle,
+            subtitle: l10n.healthcareFindSubtitle,
             onTap: () => context.goNamed(Routes.healthcareClinics),
           ),
         ],

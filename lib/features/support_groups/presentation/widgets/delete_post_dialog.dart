@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../l10n/app_localizations.dart';
+
 /// Confirms deleting a post. Admins removing someone else's post must give a reason.
 ///
 /// Returns `null` if cancelled, an empty string for a self-delete, or the
@@ -8,22 +10,21 @@ Future<String?> showDeletePostDialog({
   required BuildContext context,
   required bool requireReason,
 }) {
+  final l10n = AppLocalizations.of(context);
   if (!requireReason) {
     return showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete this post?'),
-        content: const Text(
-          'Replies will be removed too. This cannot be undone.',
-        ),
+        title: Text(l10n.groupsDeletePostTitle),
+        content: Text(l10n.groupsDeletePostBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l10n.actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, ''),
-            child: const Text('Delete'),
+            child: Text(l10n.actionDelete),
           ),
         ],
       ),
@@ -56,7 +57,9 @@ class _AdminDeletePostDialogState extends State<_AdminDeletePostDialog> {
   void _submit() {
     final reason = _reasonController.text.trim();
     if (reason.isEmpty) {
-      setState(() => _error = 'Please say why this post is being removed.');
+      setState(
+        () => _error = AppLocalizations.of(context).groupsRemovePostReasonRequired,
+      );
       return;
     }
     Navigator.pop(context, reason);
@@ -64,16 +67,15 @@ class _AdminDeletePostDialogState extends State<_AdminDeletePostDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return AlertDialog(
-      title: const Text('Remove this post?'),
+      title: Text(l10n.groupsRemovePostTitle),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'The post will be hidden from the group. The author has 7 days to appeal. If they do not, or a moderator declines the appeal, it will be deleted.',
-            ),
+            Text(l10n.groupsRemovePostBody),
             const SizedBox(height: 16),
             TextField(
               controller: _reasonController,
@@ -82,9 +84,9 @@ class _AdminDeletePostDialogState extends State<_AdminDeletePostDialog> {
               maxLines: 5,
               maxLength: 400,
               textCapitalization: TextCapitalization.sentences,
-              decoration: const InputDecoration(
-                labelText: 'Reason',
-                hintText: 'e.g. This broke the group rules.',
+              decoration: InputDecoration(
+                labelText: l10n.groupsRemovePostReason,
+                hintText: l10n.groupsRemovePostHint,
               ),
               onChanged: (_) {
                 if (_error != null) setState(() => _error = null);
@@ -106,11 +108,11 @@ class _AdminDeletePostDialogState extends State<_AdminDeletePostDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel'),
+          child: Text(l10n.actionCancel),
         ),
         TextButton(
           onPressed: _submit,
-          child: const Text('Remove post'),
+          child: Text(l10n.groupsRemovePostAction),
         ),
       ],
     );

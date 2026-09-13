@@ -13,6 +13,7 @@ import '../../../core/widgets/brand_scaffold.dart';
 import '../../../core/widgets/ai_body_text.dart';
 import '../../../core/widgets/finder_controls.dart';
 import '../../../core/widgets/finder_map.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Grade scale used by the range slider and the dataset: -1 = PK, 0 = K, 1-12.
 const _gradeFloor = -1.0;
@@ -24,76 +25,9 @@ String _gradeName(int grade) {
   return '$grade';
 }
 
-/// Grouped Type filter options. A null value marks a non-selectable section
-/// header so the dropdown reads as clustered categories before searching.
-const _kindGroups = <(String, List<(String, String)>)>[
-  ('', [('all', 'All types')]),
-  (
-    'Schools',
-    [('school', 'Public schools'), ('private_school', 'Private schools')],
-  ),
-  (
-    'Programs & support',
-    [
-      ('enrollment_help', 'Enrollment help'),
-      ('library', 'Libraries'),
-      ('tutoring', 'Tutoring'),
-      ('stem', 'STEM / enrichment'),
-    ],
-  ),
-];
-
 const _schoolKinds = {'school', 'private_school'};
 
 const _kindHeaderPrefix = '__header::';
-
-List<DropdownMenuItem<String>> _buildKindItems() {
-  final items = <DropdownMenuItem<String>>[];
-  for (final group in _kindGroups) {
-    final title = group.$1;
-    if (title.isNotEmpty) {
-      items.add(
-        DropdownMenuItem<String>(
-          enabled: false,
-          value: '$_kindHeaderPrefix$title',
-          child: Text(
-            title.toUpperCase(),
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.5,
-              color: kBrandGreen.withValues(alpha: 0.7),
-            ),
-          ),
-        ),
-      );
-    }
-    for (final option in group.$2) {
-      items.add(
-        DropdownMenuItem<String>(
-          value: option.$1,
-          child: Padding(
-            padding: EdgeInsets.only(left: title.isEmpty ? 0 : 10),
-            child: Text(option.$2, overflow: TextOverflow.ellipsis),
-          ),
-        ),
-      );
-    }
-  }
-  return items;
-}
-
-/// Labels aligned 1:1 with [_buildKindItems] for the closed-field display.
-List<String> get _kindSelectedLabels {
-  final labels = <String>[];
-  for (final group in _kindGroups) {
-    if (group.$1.isNotEmpty) labels.add('');
-    for (final option in group.$2) {
-      labels.add(option.$2);
-    }
-  }
-  return labels;
-}
 
 /// Map + list of nearby California schools and education support programs.
 class FindEducationResourcesScreen extends ConsumerStatefulWidget {
@@ -142,12 +76,78 @@ class _FindEducationResourcesScreenState
     _locationController.text = location;
   }
 
+  List<(String, List<(String, String)>)> _kindGroups(AppLocalizations l10n) => [
+    ('', [('all', l10n.educationAllTypes)]),
+    (
+      l10n.educationKindSchools,
+      [
+        ('school', l10n.educationKindPublicSchools),
+        ('private_school', l10n.educationKindPrivateSchools),
+      ],
+    ),
+    (
+      l10n.educationKindPrograms,
+      [
+        ('enrollment_help', l10n.educationKindEnrollmentHelp),
+        ('library', l10n.educationKindLibraries),
+        ('tutoring', l10n.educationKindTutoring),
+        ('stem', l10n.educationKindStem),
+      ],
+    ),
+  ];
+
+  List<DropdownMenuItem<String>> _buildKindItems(AppLocalizations l10n) {
+    final items = <DropdownMenuItem<String>>[];
+    for (final group in _kindGroups(l10n)) {
+      final title = group.$1;
+      if (title.isNotEmpty) {
+        items.add(
+          DropdownMenuItem<String>(
+            enabled: false,
+            value: '$_kindHeaderPrefix$title',
+            child: Text(
+              title.toUpperCase(),
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+                color: kBrandGreen.withValues(alpha: 0.7),
+              ),
+            ),
+          ),
+        );
+      }
+      for (final option in group.$2) {
+        items.add(
+          DropdownMenuItem<String>(
+            value: option.$1,
+            child: Padding(
+              padding: EdgeInsets.only(left: title.isEmpty ? 0 : 10),
+              child: Text(option.$2, overflow: TextOverflow.ellipsis),
+            ),
+          ),
+        );
+      }
+    }
+    return items;
+  }
+
+  List<String> _kindSelectedLabels(AppLocalizations l10n) {
+    final labels = <String>[];
+    for (final group in _kindGroups(l10n)) {
+      if (group.$1.isNotEmpty) labels.add('');
+      for (final option in group.$2) {
+        labels.add(option.$2);
+      }
+    }
+    return labels;
+  }
+
   Future<void> _search() async {
+    final l10n = AppLocalizations.of(context);
     final locationText = _locationController.text.trim();
     if (locationText.isEmpty) {
-      setState(
-        () => _error = 'Enter a city or ZIP code to find nearby schools.',
-      );
+      setState(() => _error = l10n.educationEnterLocation);
       return;
     }
 
@@ -180,8 +180,7 @@ class _FindEducationResourcesScreenState
         // keeps the current location and filters visible.
         if (result.resources.isNotEmpty) _searchExpanded = false;
         if (result.resources.isEmpty) {
-          _error =
-              'No schools or programs found nearby. Try another California city or ZIP, or change the filters.';
+          _error = l10n.educationNoResults;
         }
       });
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -191,7 +190,7 @@ class _FindEducationResourcesScreenState
     } catch (error) {
       if (!mounted) return;
       setState(() {
-        _error = _describeError(error);
+        _error = _describeError(error, l10n);
         _resources = const [];
         _resolvedLabel = null;
         _searchCenter = null;
@@ -230,11 +229,11 @@ class _FindEducationResourcesScreenState
     );
   }
 
-  String _describeError(Object error) {
+  String _describeError(Object error, AppLocalizations l10n) {
     if (error is FirebaseFunctionsException) {
-      return error.message ?? 'Could not load education resources. Try again.';
+      return error.message ?? l10n.educationLoadError;
     }
-    return 'Could not load education resources. Try again shortly.';
+    return l10n.educationLoadErrorShort;
   }
 
   Future<void> _callPhone(String phone) async {
@@ -257,20 +256,22 @@ class _FindEducationResourcesScreenState
   bool get _allGrades =>
       _grades.start <= _gradeFloor && _grades.end >= _gradeCeiling;
 
-  String get _gradeRangeLabel {
-    if (_allGrades) return 'All grades';
+  String _gradeRangeLabel(AppLocalizations l10n) {
+    if (_allGrades) return l10n.educationAllGrades;
     final low = _gradeName(_grades.start.round());
     final high = _gradeName(_grades.end.round());
-    return low == high ? 'Grade $low' : 'Grades $low–$high';
+    return low == high
+        ? l10n.educationGradeSingle(low)
+        : l10n.educationGradesRange(low, high);
   }
 
-  String _labelForKind(String value) {
-    for (final group in _kindGroups) {
+  String _labelForKind(String value, AppLocalizations l10n) {
+    for (final group in _kindGroups(l10n)) {
       for (final option in group.$2) {
         if (option.$1 == value) return option.$2;
       }
     }
-    return 'All types';
+    return l10n.educationAllTypes;
   }
 
   void _resizeMap(double delta, double maxMapHeight) {
@@ -330,16 +331,18 @@ class _FindEducationResourcesScreenState
     final mapResources = _resources
         .where((r) => r.latitude != 0 && r.longitude != 0)
         .toList();
+    final l10n = AppLocalizations.of(context);
 
     return BrandScaffold(
-      title: 'Find schools & programs',
+      title: l10n.educationFindTitle,
       body: Column(
         children: [
           if (!_searchExpanded)
             CollapsedSearchBar(
               location: _resolvedLabel ?? _locationController.text.trim(),
-              emptyLocationHint: 'Set a city or ZIP code',
-              detail: '${_labelForKind(_kind)} · $_gradeRangeLabel',
+              emptyLocationHint: l10n.finderSetCityOrZip,
+              detail:
+                  '${_labelForKind(_kind, l10n)} · ${_gradeRangeLabel(l10n)}',
               loading: _loading,
               onExpand: () => setState(() => _searchExpanded = true),
             ),
@@ -353,9 +356,7 @@ class _FindEducationResourcesScreenState
                     children: [
                       Expanded(
                         child: Text(
-                          'Search California public and private schools from the '
-                          'official CDE directory, plus curated libraries, '
-                          'tutoring, and STEM programs.',
+                          l10n.educationSearchIntro,
                           style: TextStyle(
                             fontSize: 14,
                             height: 1.4,
@@ -375,8 +376,8 @@ class _FindEducationResourcesScreenState
                     textInputAction: TextInputAction.search,
                     onSubmitted: (_) => _search(),
                     decoration: InputDecoration(
-                      labelText: 'City or ZIP code',
-                      hintText: 'e.g. Oakland or 94102',
+                      labelText: l10n.finderCityOrZipLabel,
+                      hintText: l10n.finderCityOrZipHint,
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
@@ -391,7 +392,7 @@ class _FindEducationResourcesScreenState
                   const SizedBox(height: 10),
                   _GradeRangeField(
                     values: _grades,
-                    label: _gradeRangeLabel,
+                    label: _gradeRangeLabel(l10n),
                     enabled: !_loading,
                     onChanged: (values) => setState(() => _grades = values),
                     onReset: _allGrades
@@ -409,7 +410,7 @@ class _FindEducationResourcesScreenState
                       Expanded(
                         child: InputDecorator(
                           decoration: InputDecoration(
-                            labelText: 'Type',
+                            labelText: l10n.educationTypeLabel,
                             filled: true,
                             fillColor: Colors.white,
                             contentPadding: const EdgeInsets.symmetric(
@@ -425,7 +426,7 @@ class _FindEducationResourcesScreenState
                               value: _kind,
                               isExpanded: true,
                               selectedItemBuilder: (context) => [
-                                for (final label in _kindSelectedLabels)
+                                for (final label in _kindSelectedLabels(l10n))
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
@@ -434,7 +435,7 @@ class _FindEducationResourcesScreenState
                                     ),
                                   ),
                               ],
-                              items: _buildKindItems(),
+                              items: _buildKindItems(l10n),
                               onChanged: _loading
                                   ? null
                                   : (value) {
@@ -463,12 +464,12 @@ class _FindEducationResourcesScreenState
                               color: Colors.white,
                             ),
                           )
-                        : const Text('Find nearby'),
+                        : Text(l10n.educationFindButton),
                   ),
                   if (_resolvedLabel != null) ...[
                     const SizedBox(height: 8),
                     Text(
-                      'Near: $_resolvedLabel',
+                      l10n.finderNear(_resolvedLabel!),
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.black87.withValues(alpha: 0.6),
@@ -501,7 +502,7 @@ class _FindEducationResourcesScreenState
                         center: mapCenter,
                         initialZoom: _searchCenter == null ? 6 : 11,
                         searchCenter: _searchCenter,
-                        badge: 'CDE schools + programs',
+                        badge: l10n.educationMapBadge,
                         pins: [
                           for (final resource in mapResources)
                             FinderMapPin(
@@ -574,6 +575,7 @@ class _GradeRangeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final muted = Colors.black87.withValues(alpha: 0.6);
     return Container(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 6),
@@ -587,7 +589,10 @@ class _GradeRangeField extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('Grade', style: TextStyle(fontSize: 12, color: muted)),
+              Text(
+                l10n.educationGradeLabel,
+                style: TextStyle(fontSize: 12, color: muted),
+              ),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -608,7 +613,7 @@ class _GradeRangeField extends StatelessWidget {
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: const Text('All grades'),
+                  child: Text(l10n.educationAllGrades),
                 ),
             ],
           ),
@@ -630,8 +635,14 @@ class _GradeRangeField extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('PK', style: TextStyle(fontSize: 11, color: muted)),
-                Text('12th', style: TextStyle(fontSize: 11, color: muted)),
+                Text(
+                  l10n.educationGradePk,
+                  style: TextStyle(fontSize: 11, color: muted),
+                ),
+                Text(
+                  l10n.educationGrade12,
+                  style: TextStyle(fontSize: 11, color: muted),
+                ),
               ],
             ),
           ),

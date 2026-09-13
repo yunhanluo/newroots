@@ -751,4 +751,582 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get housingAskFollowUpHint => 'Ask a follow-up…';
+
+  @override
+  String get educationNavigatorTitle => 'Education Navigator';
+
+  @override
+  String get educationHubIntro =>
+      'Learn how California schools work, then find nearby public and private schools plus trusted tutoring, library, and STEM programs.';
+
+  @override
+  String get educationBasicsTitle => 'Education basics';
+
+  @override
+  String get educationBasicsSubtitle =>
+      'Enrollment, districts, grade levels, English learner support, and academic help.';
+
+  @override
+  String get educationFindTitle => 'Find schools & programs';
+
+  @override
+  String get educationFindSubtitle =>
+      'Map and list of nearby California public and private schools, libraries, tutoring, and STEM programs.';
+
+  @override
+  String get healthcareNavigatorTitle => 'Healthcare Navigator';
+
+  @override
+  String get healthcareHubIntro =>
+      'Learn how care works in California, then find trusted community health centers near you.';
+
+  @override
+  String get healthcareBasicsTitle => 'Healthcare basics';
+
+  @override
+  String get healthcareBasicsSubtitle =>
+      'Insurance, how visits work, community health centers, and language help.';
+
+  @override
+  String get healthcareFindTitle => 'Find a clinic';
+
+  @override
+  String get healthcareFindSubtitle =>
+      'Map and list of nearby HRSA community health centers by city or ZIP.';
+
+  @override
+  String get finderCityOrZipLabel => 'City or ZIP code';
+
+  @override
+  String get finderCityOrZipHint => 'e.g. Oakland or 94102';
+
+  @override
+  String get finderSetCityOrZip => 'Set a city or ZIP code';
+
+  @override
+  String finderNear(String location) {
+    return 'Near: $location';
+  }
+
+  @override
+  String get finderHideSearchOptions => 'Hide search options';
+
+  @override
+  String get finderResizeMap => 'Resize map';
+
+  @override
+  String get clinicsSearchIntro =>
+      'Search HRSA community health centers near a California city or ZIP. Pins are from the official federal directory.';
+
+  @override
+  String get clinicsFindButton => 'Find nearby clinics';
+
+  @override
+  String get clinicsSearchDetail => 'HRSA community health centers';
+
+  @override
+  String get clinicsEnterLocation =>
+      'Enter a city or ZIP code to find nearby clinics.';
+
+  @override
+  String get clinicsNoResults =>
+      'No community health centers found nearby. Try another California city or ZIP, or widen your search later.';
+
+  @override
+  String get clinicsLoadError => 'Could not load clinics. Try again shortly.';
+
+  @override
+  String get englishSearchIntro =>
+      'Find trusted adult schools, community colleges, and library ESL programs near a California city or ZIP.';
+
+  @override
+  String get englishFindButton => 'Find nearby classes';
+
+  @override
+  String get englishSearchDetail => 'Adult schools, colleges & libraries';
+
+  @override
+  String get englishEnterLocation =>
+      'Enter a city or ZIP code to find nearby classes.';
+
+  @override
+  String get englishNoResults =>
+      'No ESL resources found nearby yet. Try another California city or ZIP.';
+
+  @override
+  String get englishLoadError =>
+      'Could not load English resources. Try again shortly.';
+
+  @override
+  String get englishSourceCurated =>
+      'Source: curated California adult ed, colleges, and libraries';
+
+  @override
+  String englishSourceNamed(String source) {
+    return 'Source: $source';
+  }
+
+  @override
+  String get educationSearchIntro =>
+      'Search California public and private schools from the official CDE directory, plus curated libraries, tutoring, and STEM programs.';
+
+  @override
+  String get educationFindButton => 'Find nearby';
+
+  @override
+  String get educationEnterLocation =>
+      'Enter a city or ZIP code to find nearby schools.';
+
+  @override
+  String get educationNoResults =>
+      'No schools or programs found nearby. Try another California city or ZIP, or change the filters.';
+
+  @override
+  String get educationLoadError =>
+      'Could not load education resources. Try again.';
+
+  @override
+  String get educationLoadErrorShort =>
+      'Could not load education resources. Try again shortly.';
+
+  @override
+  String get educationTypeLabel => 'Type';
+
+  @override
+  String get educationAllTypes => 'All types';
+
+  @override
+  String get educationKindSchools => 'Schools';
+
+  @override
+  String get educationKindPrograms => 'Programs & support';
+
+  @override
+  String get educationKindPublicSchools => 'Public schools';
+
+  @override
+  String get educationKindPrivateSchools => 'Private schools';
+
+  @override
+  String get educationKindEnrollmentHelp => 'Enrollment help';
+
+  @override
+  String get educationKindLibraries => 'Libraries';
+
+  @override
+  String get educationKindTutoring => 'Tutoring';
+
+  @override
+  String get educationKindStem => 'STEM / enrichment';
+
+  @override
+  String get educationAllGrades => 'All grades';
+
+  @override
+  String get educationGradeLabel => 'Grade';
+
+  @override
+  String get educationGradePk => 'PK';
+
+  @override
+  String get educationGrade12 => '12th';
+
+  @override
+  String educationGradeSingle(String grade) {
+    return 'Grade $grade';
+  }
+
+  @override
+  String educationGradesRange(String low, String high) {
+    return 'Grades $low–$high';
+  }
+
+  @override
+  String get educationMapBadge => 'CDE schools + programs';
+
+  @override
+  String get groupsIntro =>
+      'Join a group to post, ask questions, and help other newcomers in California.';
+
+  @override
+  String get groupsDiscover => 'Discover';
+
+  @override
+  String get groupsMine => 'My groups';
+
+  @override
+  String groupsMineCount(int count) {
+    return 'My groups ($count)';
+  }
+
+  @override
+  String get groupsSuggest => 'Suggest a new group';
+
+  @override
+  String get groupsJoin => 'Join';
+
+  @override
+  String get groupsLeave => 'Leave group';
+
+  @override
+  String get groupsSearch => 'Search';
+
+  @override
+  String get groupsSearchClear => 'Clear search';
+
+  @override
+  String get groupsFilterAll => 'All';
+
+  @override
+  String get groupsSearchNoMatch => 'No groups match your search.';
+
+  @override
+  String get groupsMineEmpty =>
+      'You have not joined a group yet. Switch to Discover to find one.';
+
+  @override
+  String get groupsCategoryEmpty => 'No groups in this category yet.';
+
+  @override
+  String get groupsSuggestTitle => 'Suggest a group';
+
+  @override
+  String get groupsSuggestIntro =>
+      'Propose a group for other newcomers in California. An admin reviews every suggestion before it is opened for people to join.';
+
+  @override
+  String get groupsSuggestNameLabel => 'Group name';
+
+  @override
+  String get groupsSuggestNameHint => 'e.g. Newcomers in Fresno';
+
+  @override
+  String get groupsSuggestCategory => 'Category';
+
+  @override
+  String get groupsSuggestPurposeLabel => 'What is this group for?';
+
+  @override
+  String get groupsSuggestPurposeHint =>
+      'Who should join, and what will people talk about?';
+
+  @override
+  String get groupsSuggestSubmit => 'Submit for review';
+
+  @override
+  String get groupsSuggestSent =>
+      'Suggestion sent. An admin will review it before the group appears.';
+
+  @override
+  String get groupsSuggestSendError =>
+      'Could not send that suggestion. Try again.';
+
+  @override
+  String get groupsSuggestNameRequired => 'Give the group a name.';
+
+  @override
+  String get groupsSuggestDescriptionRequired => 'Add a short description.';
+
+  @override
+  String get groupsCategoryParents => 'Parents';
+
+  @override
+  String get groupsCategoryJobs => 'Jobs';
+
+  @override
+  String get groupsCategoryLanguage => 'English';
+
+  @override
+  String get groupsCategoryCareers => 'Careers';
+
+  @override
+  String get groupsCategoryCulture => 'Culture';
+
+  @override
+  String get groupsCategoryHousing => 'Housing';
+
+  @override
+  String get groupsCategoryOther => 'Other';
+
+  @override
+  String get groupsFallbackTitle => 'Support group';
+
+  @override
+  String get groupsLoadError => 'Could not load this group.';
+
+  @override
+  String get groupsUnavailable => 'This group is no longer available.';
+
+  @override
+  String get groupsRemovedAdmin => 'This group was removed by an admin.';
+
+  @override
+  String groupsRemovedWithReason(String reason) {
+    return 'This group was removed. Reason: $reason';
+  }
+
+  @override
+  String get groupsMemberOne => '1 member';
+
+  @override
+  String groupsMemberCount(int count) {
+    return '$count members';
+  }
+
+  @override
+  String get groupsPrivacyNotice =>
+      'Posts and questions are private to members. They are checked for safety before others can see them. Be kind, and do not paste ID numbers, passwords, or account numbers.';
+
+  @override
+  String get groupsNewPost => 'New post';
+
+  @override
+  String get groupsAskQuestion => 'Ask a question';
+
+  @override
+  String get groupsJoinToRead => 'Join to read posts and reply';
+
+  @override
+  String get groupsJoinPrompt =>
+      'Only members can see posts and questions in this group. Join when you are ready to take part.';
+
+  @override
+  String get groupsJoinGroup => 'Join group';
+
+  @override
+  String get groupsLeaveShort => 'Leave';
+
+  @override
+  String get groupsLeaveConfirmTitle => 'Leave this group?';
+
+  @override
+  String groupsLeaveConfirmBody(String title) {
+    return 'You will stop seeing posts in \"$title\". You can join again later.';
+  }
+
+  @override
+  String get groupsPostsLoadError =>
+      'Could not load posts. Join the group and try again.';
+
+  @override
+  String get groupsNoPostsYet =>
+      'No posts yet. Share something, or ask a question the group can help with.';
+
+  @override
+  String get groupsYou => 'You';
+
+  @override
+  String get groupsPostOptions => 'Post options';
+
+  @override
+  String get groupsReplyOptions => 'Reply options';
+
+  @override
+  String get groupsKindPost => 'Post';
+
+  @override
+  String get groupsKindQuestion => 'Question';
+
+  @override
+  String get groupsNoAnswersYet => 'No answers yet';
+
+  @override
+  String get groupsNoRepliesYet => 'No replies yet';
+
+  @override
+  String get groupsReplyOne => '1 reply';
+
+  @override
+  String groupsReplyMany(int count) {
+    return '$count replies';
+  }
+
+  @override
+  String get groupsComposePostIntro =>
+      'Share an update, a tip, or something that might help others in this group.';
+
+  @override
+  String get groupsComposeQuestionIntro =>
+      'Ask the group something they can help with. Other members can reply on this thread.';
+
+  @override
+  String get groupsComposeGuidelines =>
+      'Posts are checked for safety before others can see them. Do not paste ID numbers, passwords, or account numbers. Talking about benefits, visas, and papers is fine.';
+
+  @override
+  String get groupsComposeTitleLabel => 'Title';
+
+  @override
+  String get groupsComposeQuestionLabel => 'Question';
+
+  @override
+  String get groupsComposeTitleHint => 'e.g. A resume tip that helped me';
+
+  @override
+  String get groupsComposeQuestionHint =>
+      'e.g. How did you find a pediatrician?';
+
+  @override
+  String get groupsComposeBodyLabel => 'Description';
+
+  @override
+  String get groupsComposeDetailsLabel => 'Details (optional)';
+
+  @override
+  String get groupsComposeBodyHint =>
+      'Add the story, a link, or anything useful.';
+
+  @override
+  String get groupsComposeDetailsHint =>
+      'Add any details that would help people answer.';
+
+  @override
+  String get groupsAddPhotos => 'Add photos';
+
+  @override
+  String get groupsAdd => 'Add';
+
+  @override
+  String groupsPhotoCount(int count, int max) {
+    return '$count of $max photos';
+  }
+
+  @override
+  String get groupsPublishPost => 'Publish post';
+
+  @override
+  String get groupsPostQuestion => 'Post question';
+
+  @override
+  String get groupsPhotoLibrary => 'Photo library';
+
+  @override
+  String get groupsCamera => 'Camera';
+
+  @override
+  String get groupsPhotoOpenError =>
+      'Could not open that photo. Try another one.';
+
+  @override
+  String get groupsPublishError => 'Could not publish that. Try again.';
+
+  @override
+  String get groupsRemovePhoto => 'Remove photo';
+
+  @override
+  String get groupsPostLoadError => 'Could not load this post.';
+
+  @override
+  String get groupsPostRemoved => 'This post was removed.';
+
+  @override
+  String get groupsAnswers => 'Answers';
+
+  @override
+  String get groupsReplies => 'Replies';
+
+  @override
+  String get groupsRepliesLoadError => 'Could not load replies.';
+
+  @override
+  String get groupsNoAnswersHelp => 'No answers yet. Be the first to help.';
+
+  @override
+  String get groupsNoRepliesHelp => 'No replies yet. Start the conversation.';
+
+  @override
+  String get groupsWriteAnswer => 'Write an answer…';
+
+  @override
+  String get groupsWriteReply => 'Write a reply…';
+
+  @override
+  String get groupsEditReply => 'Edit reply';
+
+  @override
+  String get groupsWriteReplyFirst => 'Write a reply first.';
+
+  @override
+  String get groupsDeleteReplyTitle => 'Delete this reply?';
+
+  @override
+  String get groupsDeleteReplyBody => 'This cannot be undone.';
+
+  @override
+  String get groupsEdit => 'Edit';
+
+  @override
+  String get groupsEdited => 'Edited';
+
+  @override
+  String get groupsReply => 'Reply';
+
+  @override
+  String get groupsDeletePostTitle => 'Delete this post?';
+
+  @override
+  String get groupsDeletePostBody =>
+      'Replies will be removed too. This cannot be undone.';
+
+  @override
+  String get groupsRemovePostTitle => 'Remove this post?';
+
+  @override
+  String get groupsRemovePostBody =>
+      'The post will be hidden from the group. The author has 7 days to appeal. If they do not, or a moderator declines the appeal, it will be deleted.';
+
+  @override
+  String get groupsRemovePostReason => 'Reason';
+
+  @override
+  String get groupsRemovePostHint => 'e.g. This broke the group rules.';
+
+  @override
+  String get groupsRemovePostReasonRequired =>
+      'Please say why this post is being removed.';
+
+  @override
+  String get groupsRemovePostAction => 'Remove post';
+
+  @override
+  String get groupsModerationChecking => 'Checking this';
+
+  @override
+  String get groupsModerationHidden => 'Hidden from the group';
+
+  @override
+  String get groupsAppealSent => 'Appeal sent';
+
+  @override
+  String groupsReasonPrefix(String reason) {
+    return 'Reason: $reason';
+  }
+
+  @override
+  String get groupsHiddenByAdmin => 'An admin hid this post.';
+
+  @override
+  String groupsDeletedAfter(String deadline) {
+    return 'It will be deleted after $deadline unless an appeal is approved.';
+  }
+
+  @override
+  String get groupsAppealPendingReview =>
+      'A moderator will review your appeal.';
+
+  @override
+  String get groupsAppeal => 'Appeal';
+
+  @override
+  String get groupsAppealTitle => 'Appeal this removal?';
+
+  @override
+  String get groupsAppealIntro =>
+      'A moderator will review it. If they agree, the post will show in the group again.';
+
+  @override
+  String get groupsAppealLabel => 'Why should it stay? (optional)';
+
+  @override
+  String get groupsSendAppeal => 'Send appeal';
 }

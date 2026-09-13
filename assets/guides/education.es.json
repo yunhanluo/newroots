@@ -1,0 +1,127 @@
+{
+  "id": "education",
+  "title": "Lo básico de la educación",
+  "subtitle": "Escuelas públicas de California, inscripción y apoyo académico.",
+  "landingTitle": "Lo básico de la educación",
+  "landingBody": "Una guía breve sobre las escuelas públicas de California, la inscripción, el apoyo a estudiantes de inglés y los programas académicos.",
+  "icon": "school",
+  "finishRoute": "education",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Bienvenida",
+      "intro": "",
+      "body": "Las escuelas públicas de California son gratuitas para los niños que viven en el estado. Las reglas, el papeleo y los nombres de los grados pueden sentirse desconocidos si es nuevo en Estados Unidos.\n\nEsta guía breve explica cómo se organizan las escuelas K–12, cómo encontrar su distrito, qué suele pedir la inscripción, el apoyo a estudiantes de inglés y dónde encontrar tutoría, bibliotecas y programas de STEM.\n\nEsto es información general, no asesoría legal. Las políticas varían según el distrito, así que confirme los detalles en la oficina de su escuela local.",
+      "topics": []
+    },
+    {
+      "title": "Cómo funciona K–12 en California",
+      "intro": "La mayoría de los niños asisten a una escuela pública asignada según dónde vive la familia. Los distritos administran las escuelas. Las reglas estatales vienen del Departamento de Educación de California (CDE).",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Públicas, charter y privadas",
+          "paragraph": "Las escuelas públicas no cobran colegiatura y están abiertas a residentes locales. Las escuelas charter son públicas con programas más flexibles; pueden tener loterías o listas de espera. Las escuelas privadas cobran colegiatura y ponen sus propias reglas de admisión. Esta app muestra escuelas públicas y privadas, además de programas de apoyo gratuitos o de bajo costo."
+        },
+        {
+          "heading": "Niveles de grado",
+          "paragraph": "La primaria suele cubrir desde kínder hasta el grado 5 o 6. La secundaria (middle school) cubre los grados 6–8 o 7–8. La preparatoria cubre los grados 9–12. Algunas escuelas son K–8 u otras combinaciones. Pregunte al distrito qué escuela corresponde a la edad de su hijo."
+        },
+        {
+          "heading": "Departamento de Educación de California",
+          "paragraph": "El CDE publica directorios de escuelas, orientación de inscripción y recursos para estudiantes de inglés. Use los sitios oficiales del CDE y del distrito cuando necesite las reglas más recientes.",
+          "url": "https://www.cde.ca.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Encuentre su distrito y escuela",
+      "intro": "La dirección de su casa suele decidir a qué escuela asiste su hijo. Empiece con el distrito que sirve a su vecindario.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Localizador de escuelas",
+          "paragraph": "Use el Directorio de Escuelas del CDE o el sitio del distrito de su ciudad o condado para buscar escuelas por dirección o ciudad. En esta app, el mapa Buscar escuelas y programas muestra escuelas públicas cercanas del directorio oficial de California.",
+          "url": "https://www.cde.ca.gov/SchoolDirectory/"
+        },
+        {
+          "heading": "Llame a la oficina del distrito",
+          "paragraph": "Si el sitio web es confuso, llame a la oficina de inscripción o de servicios estudiantiles del distrito. Diga su dirección, la edad o el grado de su hijo y pregunte a qué escuela debe contactar. Pida ayuda en su idioma."
+        },
+        {
+          "heading": "Inscripción abierta y transferencias",
+          "paragraph": "Algunos distritos permiten pedir una escuela fuera de su zona asignada. Las reglas y fechas límite varían. Pregunte pronto; los cupos pueden ser limitados."
+        }
+      ]
+    },
+    {
+      "title": "Documentos de inscripción",
+      "intro": "Las escuelas necesitan información básica para registrar a un niño. Las listas exactas varían según el distrito, pero estos documentos se piden con frecuencia.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Comprobante de edad",
+          "paragraph": "Por lo general basta un acta de nacimiento, pasaporte u otro documento oficial de edad. Pregunte qué alternativas acepta el distrito si no tiene un acta de nacimiento de Estados Unidos."
+        },
+        {
+          "heading": "Comprobante de domicilio",
+          "paragraph": "Pueden servir facturas de servicios, un contrato de alquiler o una carta de un refugio o familia anfitriona. Si vive temporalmente con familiares o en una vivienda inestable, dígaselo a la escuela: California tiene protecciones para estudiantes que experimentan falta de vivienda."
+        },
+        {
+          "heading": "Registros de vacunas",
+          "paragraph": "California exige ciertas vacunas para entrar a la escuela. Lleve cualquier registro de inmunización que tenga. Pregunte a la enfermera escolar o a una clínica del condado cómo ponerse al día si los registros están incompletos."
+        },
+        {
+          "heading": "Estatus migratorio",
+          "paragraph": "Las escuelas públicas deben inscribir a los niños que viven en el distrito, sin importar su estatus migratorio. No deben exigirle un número de Seguro Social ni papeles de inmigración para inscribirse en una escuela pública K–12.",
+          "url": "https://www.cde.ca.gov/sp/hs/"
+        }
+      ]
+    },
+    {
+      "title": "Estudiantes de inglés y apoyo académico",
+      "intro": "Las escuelas están acostumbradas a ayudar a niños que están aprendiendo inglés y a estudiantes que necesitan apoyo académico extra o relacionado con una discapacidad.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Programas para estudiantes de inglés (EL)",
+          "paragraph": "Las escuelas evalúan el inglés y ofrecen apoyo de Desarrollo del Idioma Inglés (ELD). Diga a la escuela qué idiomas habla su familia en casa. Pida intérpretes en las reuniones.",
+          "url": "https://www.cde.ca.gov/sp/el/"
+        },
+        {
+          "heading": "Planes IEP y 504",
+          "paragraph": "Si su hijo tiene una discapacidad o una diferencia de aprendizaje, pida una evaluación. Un IEP o un plan 504 puede ofrecer apoyos en el aula. Puede solicitar reuniones y llevar a un defensor o intérprete.\n\nUn IEP se crea bajo la Ley de Educación para Personas con Discapacidades para un estudiante que califica para educación especial. Es un plan escrito con metas de aprendizaje, instrucción especializada, servicios como terapia del habla u ocupacional, y un calendario para medir el progreso. Un plan 504 es para un estudiante cuya discapacidad limita de forma sustancial una actividad importante de la vida pero que tal vez no necesite educación especial; se centra en el acceso igualitario mediante adaptaciones como más tiempo en exámenes, asiento accesible, apoyos de salud o tecnología de asistencia. Puede pedir una evaluación por escrito, y la escuela debe seguir plazos formales y obtener su consentimiento antes de evaluar. Usted forma parte del equipo de decisiones, puede pedir un intérprete gratuito y copias de los documentos, y puede pedir otra reunión si el plan no está ayudando. Pida a la escuela sus salvaguardas procesales si no está de acuerdo con una evaluación, una decisión de elegibilidad, los servicios o la colocación.",
+          "url": "https://www.cde.ca.gov/sp/se/qa/caprntorg.asp"
+        },
+        {
+          "heading": "Después de clases y tutoría",
+          "paragraph": "Muchos distritos, bibliotecas y organizaciones sin fines de lucro ofrecen ayuda con la tarea gratuita o de bajo costo. Pregunte al consejero escolar y use el buscador de programas de esta app para tutoría y opciones de STEM cercanas."
+        }
+      ]
+    },
+    {
+      "title": "Bibliotecas, tutoría y STEM",
+      "intro": "El apoyo no termina en el salón. Las bibliotecas locales y los programas juveniles ayudan con la lectura, la tarea y la ciencia práctica.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Bibliotecas públicas",
+          "paragraph": "Las bibliotecas ofrecen tarjetas gratis, libros, Wi-Fi, ayuda con la tarea y programas familiares. Pregunte por horas de cuentos bilingües y recursos digitales que pueda usar en casa."
+        },
+        {
+          "heading": "Tutoría y enriquecimiento",
+          "paragraph": "Busque programas después de clases del distrito, centros comunitarios y tutoría de organizaciones sin fines de lucro. Confirme el costo, las edades que atienden y el transporte antes de inscribirse."
+        },
+        {
+          "heading": "Oportunidades de STEM",
+          "paragraph": "Museos, clubes de programación y programas de ciencia pueden fortalecer habilidades y confianza. Empiece con opciones públicas gratuitas cerca de usted y luego pregunte a la escuela sobre clubes y programas de verano."
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Llame al 211 o busque en línea referencias locales de educación, juventud y servicios familiares en su idioma cuando esté disponible.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

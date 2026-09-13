@@ -1,0 +1,127 @@
+{
+  "id": "healthcare",
+  "title": "Lo básico de la atención médica",
+  "subtitle": "Seguro, visitas a la clínica y centros de salud comunitarios.",
+  "landingTitle": "Lo básico de la atención médica",
+  "landingBody": "Una guía breve sobre el seguro, las visitas a la clínica, los centros de salud comunitarios y cómo pedir un intérprete en California.",
+  "icon": "health",
+  "finishRoute": "healthcare",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Bienvenida",
+      "intro": "",
+      "body": "Recibir atención en California puede sentirse confuso si es nuevo en Estados Unidos. Los nombres de los seguros, los tipos de clínicas y el papeleo son distintos a los de muchos otros países.\n\nEsta guía breve cubre lo básico del seguro, qué esperar en una visita, por qué los centros de salud comunitarios son un primer paso de confianza y cómo pedir un intérprete.\n\nEsto es información general, no asesoría médica ni legal. Para decisiones sobre su propia salud, hable con un profesional clínico o un consejero de confianza.",
+      "topics": []
+    },
+    {
+      "title": "Lo básico del seguro",
+      "intro": "El seguro de salud ayuda a pagar visitas al médico, atención hospitalaria y medicamentos. California tiene varias opciones comunes. No necesita memorizar cada regla; empiece por saber qué programa podría corresponderle.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Medi-Cal",
+          "paragraph": "Medi-Cal es el Medicaid de California. Cubre a muchos residentes de bajos ingresos, incluidos muchos inmigrantes que califican según las reglas del estado. La cobertura puede incluir visitas al médico, atención de emergencia, atención del embarazo y más. Solicite a través de Covered California o de la oficina de servicios sociales de su condado. Lleve identificación, información de ingresos y documentos de inmigración si los tiene. Pida ayuda en su idioma.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Covered California",
+          "paragraph": "Covered California es el mercado estatal donde puede comprar un plan privado y ver si califica para ayuda con las primas. La inscripción abierta suele ser en otoño, pero puede calificar para un período especial de inscripción después de un cambio de vida, como mudarse o perder otra cobertura.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Planes del empleador y de la escuela",
+          "paragraph": "Algunos trabajos y escuelas ofrecen seguro. Pregunte a Recursos Humanos o a servicios estudiantiles qué hay disponible, cuándo puede inscribirse y cuánto cuesta cada mes. Compare la prima (costo mensual) con el deducible (lo que paga antes de que el seguro empiece a cubrir más)."
+        },
+        {
+          "heading": "Si no tiene seguro",
+          "paragraph": "Aun así puede recibir atención. Los centros de salud comunitarios (siguiente sección) suelen ofrecer tarifas según ingresos. Las salas de emergencia deben estabilizar condiciones de emergencia, pero la atención de urgencias puede ser muy cara si no es una emergencia. Para atención de rutina, una clínica comunitaria suele ser un mejor primer paso."
+        }
+      ]
+    },
+    {
+      "title": "Cómo funciona la atención",
+      "intro": "En Estados Unidos, las personas suelen empezar con una clínica de atención primaria para chequeos y problemas comunes, y luego reciben referidos a especialistas cuando hace falta.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Atención primaria",
+          "paragraph": "La atención primaria es su médico o clínica principal para resfriados, condiciones crónicas como la diabetes, chequeos, vacunas y referidos. Tener relación con una sola clínica ayuda a que conozcan su historial y mantengan los registros juntos."
+        },
+        {
+          "heading": "Urgencias vs sala de emergencia",
+          "paragraph": "Urgent care (clínica de urgencias) es para problemas que necesitan atención el mismo día pero no ponen la vida en riesgo, como un tobillo torcido o un resfriado fuerte. Vaya a la sala de emergencia o llame al 911 por dolor fuerte en el pecho, dificultad para respirar, sangrado abundante u otros síntomas que ponen la vida en riesgo."
+        },
+        {
+          "heading": "Qué llevar",
+          "paragraph": "Lleve identificación con foto si la tiene, la tarjeta del seguro o información de Medi-Cal, una lista de los medicamentos que toma y cualquier resultado de pruebas anteriores. Llegue temprano para el papeleo. Pregunte en recepción qué formularios necesita y si aceptan visitas sin cita."
+        },
+        {
+          "heading": "Pagos y facturas",
+          "paragraph": "Pregunte el costo antes de visitas que no son urgentes, cuando pueda. Puede recibir una factura semanas después por análisis de laboratorio o un especialista. Llame a la oficina de facturación si algo se ve mal o no puede pagar. Muchas clínicas ofrecen planes de pago o solicitudes de ayuda financiera."
+        }
+      ]
+    },
+    {
+      "title": "Centros de salud comunitarios",
+      "intro": "Los centros de salud comunitarios con apoyo federal son un lugar de confianza para empezar. En esta app, los pines de clínicas vienen de la lista de la Administración de Recursos y Servicios de Salud de EE. UU. (HRSA) de sitios de prestación de servicios de centros de salud y Look-Alike en California.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Qué son",
+          "paragraph": "Estas clínicas (a menudo llamadas FQHC o Look-Alike) dan atención primaria en zonas con pocos servicios. Muchas también ofrecen odontología, salud conductual y farmacia. Atienden a personas con seguro, con Medi-Cal y sin seguro."
+        },
+        {
+          "heading": "Tarifas según ingresos y atención acogedora",
+          "paragraph": "Las tarifas a menudo se ajustan según los ingresos (sliding scale). El personal está acostumbrado a ayudar con el papeleo y con distintos idiomas. En muchos de estos sitios no necesita ser ciudadano para buscar atención. Pregunte a la clínica qué documentos necesita para una visita con tarifa según ingresos."
+        },
+        {
+          "heading": "Por qué las mostramos en el mapa",
+          "paragraph": "HRSA publica un directorio oficial de estos sitios. NewRoots usa ese extracto de California para que los pines apunten a ubicaciones de salud comunitaria verificadas, no a listados al azar. Siempre llame antes para confirmar horarios, servicios y si aceptan pacientes nuevos.",
+          "url": "https://data.hrsa.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Idioma e intérpretes",
+      "intro": "Tiene derecho a entender su atención. Muchas clínicas deben ofrecer ayuda de idioma sin costo para idiomas comunes. No dependa de un niño para interpretar detalles médicos cuando puede pedir un profesional.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Pida al hacer la cita",
+          "paragraph": "Cuando llame o se registre, diga en inglés: “I need an interpreter in [your language].” (Necesito un intérprete en [su idioma].) Pregunte si tienen personal en persona, intérpretes por teléfono o por video. Confirme el idioma antes de que empiece su cita."
+        },
+        {
+          "heading": "Qué suelen ofrecer las clínicas",
+          "paragraph": "Muchos centros de salud comunitarios y hospitales ofrecen servicios de intérprete. La disponibilidad varía según el idioma y el lugar. Si su idioma es menos común, pregunte con cuánta anticipación necesitan. Lleve a un adulto de confianza solo si quiere apoyo extra, no como sustituto de la interpretación de la clínica cuando hay una disponible."
+        },
+        {
+          "heading": "Durante la visita",
+          "paragraph": "Hable con el profesional clínico a través del intérprete. Pause para que pueda traducir por completo. Pida que repitan cualquier cosa que no entendió, incluidos nombres de medicamentos, dosis y fechas de seguimiento. Puede pedir instrucciones por escrito en inglés sencillo o en su idioma cuando estén disponibles."
+        }
+      ]
+    },
+    {
+      "title": "Puntos de partida de confianza",
+      "intro": "Use sitios oficiales y clínicas locales para las reglas más recientes. Los programas cambian, así que verifique los detalles antes de solicitar o viajar lejos para recibir atención.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Covered California",
+          "paragraph": "Encuentre opciones de Medi-Cal y de cobertura del mercado, y reciba ayuda en varios idiomas.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Find a Health Center (HRSA)",
+          "paragraph": "Herramienta federal oficial para buscar centros de salud comunitarios. El mapa de la app usa los mismos datos del directorio de California para los pines cercanos.",
+          "url": "https://findahealthcenter.hrsa.gov/"
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Llame al 211 o busque en línea referidos locales de salud, comida y servicios sociales cerca de usted.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

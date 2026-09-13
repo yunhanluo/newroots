@@ -7,6 +7,7 @@ import '../../../core/services/admin_service.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/delete_post_dialog.dart';
 import 'widgets/group_moderation_banner.dart';
 import 'widgets/group_post_image.dart';
@@ -92,11 +93,12 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
   }
 
   Future<void> _editReply(GroupReply reply) async {
+    final l10n = AppLocalizations.of(context);
     final controller = TextEditingController(text: reply.text);
     final saved = await showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit reply'),
+        title: Text(l10n.groupsEditReply),
         content: TextField(
           controller: controller,
           autofocus: true,
@@ -104,18 +106,18 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
           maxLines: 8,
           maxLength: 2000,
           textCapitalization: TextCapitalization.sentences,
-          decoration: const InputDecoration(
-            hintText: 'Write a reply…',
+          decoration: InputDecoration(
+            hintText: l10n.groupsWriteReply,
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l10n.actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, controller.text.trim()),
-            child: const Text('Save'),
+            child: Text(l10n.actionSave),
           ),
         ],
       ),
@@ -123,7 +125,7 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
     controller.dispose();
     if (saved == null || !mounted) return;
     if (saved.isEmpty) {
-      setState(() => _error = 'Write a reply first.');
+      setState(() => _error = l10n.groupsWriteReplyFirst);
       return;
     }
     if (saved == reply.text) return;
@@ -141,19 +143,20 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
   }
 
   Future<void> _deleteReply(GroupReply reply) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete this reply?'),
-        content: const Text('This cannot be undone.'),
+        title: Text(l10n.groupsDeleteReplyTitle),
+        content: Text(l10n.groupsDeleteReplyBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(l10n.actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Delete'),
+            child: Text(l10n.actionDelete),
           ),
         ],
       ),
@@ -173,6 +176,7 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final postAsync = ref.watch(groupPostProvider(_key));
     final repliesAsync = ref.watch(groupRepliesProvider(_key));
     final uid = ref.watch(authStateProvider).value?.uid;
@@ -181,20 +185,20 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
     return postAsync.when(
       loading: () => Scaffold(
         backgroundColor: kBrandPageBg,
-        appBar: AppBar(title: const Text('Post')),
+        appBar: AppBar(title: Text(l10n.groupsKindPost)),
         body: const Center(child: CircularProgressIndicator()),
       ),
       error: (error, _) => Scaffold(
         backgroundColor: kBrandPageBg,
-        appBar: AppBar(title: const Text('Post')),
-        body: const Center(child: Text('Could not load this post.')),
+        appBar: AppBar(title: Text(l10n.groupsKindPost)),
+        body: Center(child: Text(l10n.groupsPostLoadError)),
       ),
       data: (post) {
         if (post == null) {
           return Scaffold(
             backgroundColor: kBrandPageBg,
-            appBar: AppBar(title: const Text('Post')),
-            body: const Center(child: Text('This post was removed.')),
+            appBar: AppBar(title: Text(l10n.groupsKindPost)),
+            body: Center(child: Text(l10n.groupsPostRemoved)),
           );
         }
 
@@ -205,8 +209,8 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
         if (!visible) {
           return Scaffold(
             backgroundColor: kBrandPageBg,
-            appBar: AppBar(title: const Text('Post')),
-            body: const Center(child: Text('This post was removed.')),
+            appBar: AppBar(title: Text(l10n.groupsKindPost)),
+            body: Center(child: Text(l10n.groupsPostRemoved)),
           );
         }
         final canReply = post.moderation.isApproved && !post.removed;
@@ -214,19 +218,21 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
         return Scaffold(
           backgroundColor: kBrandPageBg,
           appBar: AppBar(
-            title: Text(isQuestion ? 'Question' : 'Post'),
+            title: Text(
+              isQuestion ? l10n.groupsKindQuestion : l10n.groupsKindPost,
+            ),
             actions: [
               if (canDeletePost)
                 PopupMenuButton<String>(
-                  tooltip: 'Post options',
+                  tooltip: l10n.groupsPostOptions,
                   icon: const Icon(Icons.more_vert),
                   onSelected: (value) {
                     if (value == 'delete') _deletePost();
                   },
-                  itemBuilder: (context) => const [
+                  itemBuilder: (context) => [
                     PopupMenuItem(
                       value: 'delete',
-                      child: Text('Delete'),
+                      child: Text(l10n.actionDelete),
                     ),
                   ],
                 ),
@@ -258,7 +264,7 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
                     const SizedBox(height: 20),
                     if (canReply) ...[
                       Text(
-                        isQuestion ? 'Answers' : 'Replies',
+                        isQuestion ? l10n.groupsAnswers : l10n.groupsReplies,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -270,17 +276,15 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
                           padding: EdgeInsets.symmetric(vertical: 24),
                           child: Center(child: CircularProgressIndicator()),
                         ),
-                        error: (error, _) => const Text(
-                          'Could not load replies.',
-                        ),
+                        error: (error, _) => Text(l10n.groupsRepliesLoadError),
                         data: (replies) {
                           if (replies.isEmpty) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 12),
                               child: Text(
                                 isQuestion
-                                    ? 'No answers yet. Be the first to help.'
-                                    : 'No replies yet. Start the conversation.',
+                                    ? l10n.groupsNoAnswersHelp
+                                    : l10n.groupsNoRepliesHelp,
                                 style: TextStyle(
                                   fontSize: 14,
                                   height: 1.4,
@@ -315,7 +319,9 @@ class _GroupPostScreenState extends ConsumerState<GroupPostScreen> {
                   controller: _replyController,
                   focusNode: _focusNode,
                   sending: _sending,
-                  hint: isQuestion ? 'Write an answer…' : 'Write a reply…',
+                  hint: isQuestion
+                      ? l10n.groupsWriteAnswer
+                      : l10n.groupsWriteReply,
                   onSend: _send,
                 ),
             ],
@@ -343,6 +349,7 @@ class _OriginalPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final time = post.createdAt == null
         ? ''
         : DateFormat('MMM d · h:mm a').format(post.createdAt!.toLocal());
@@ -370,7 +377,7 @@ class _OriginalPost extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  post.kind.label,
+                  isQuestion ? l10n.groupsKindQuestion : l10n.groupsKindPost,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
@@ -382,7 +389,7 @@ class _OriginalPost extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  '${mine ? 'You' : post.authorName}${time.isEmpty ? '' : ' · $time'}',
+                  '${mine ? l10n.groupsYou : post.authorName}${time.isEmpty ? '' : ' · $time'}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -393,7 +400,7 @@ class _OriginalPost extends StatelessWidget {
               ),
               if (canDelete)
                 PopupMenuButton<String>(
-                  tooltip: 'Post options',
+                  tooltip: l10n.groupsPostOptions,
                   padding: EdgeInsets.zero,
                   icon: const Icon(
                     Icons.more_vert,
@@ -403,10 +410,10 @@ class _OriginalPost extends StatelessWidget {
                   onSelected: (value) {
                     if (value == 'delete') onDelete?.call();
                   },
-                  itemBuilder: (context) => const [
+                  itemBuilder: (context) => [
                     PopupMenuItem(
                       value: 'delete',
-                      child: Text('Delete'),
+                      child: Text(l10n.actionDelete),
                     ),
                   ],
                 ),
@@ -475,14 +482,15 @@ class _ReplyTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final time = reply.createdAt == null
         ? ''
         : DateFormat('MMM d · h:mm a').format(reply.createdAt!.toLocal());
     final edited = reply.editedAt != null;
     final meta = [
-      if (mine) 'You' else reply.authorName,
+      if (mine) l10n.groupsYou else reply.authorName,
       if (time.isNotEmpty) time,
-      if (edited) 'Edited',
+      if (edited) l10n.groupsEdited,
     ].join(' · ');
 
     return Container(
@@ -533,7 +541,7 @@ class _ReplyTile extends StatelessWidget {
           ),
           if (canEdit || canDelete)
             PopupMenuButton<String>(
-              tooltip: 'Reply options',
+              tooltip: l10n.groupsReplyOptions,
               padding: EdgeInsets.zero,
               icon: const Icon(Icons.more_vert, size: 20, color: Colors.black54),
               onSelected: (value) {
@@ -542,14 +550,14 @@ class _ReplyTile extends StatelessWidget {
               },
               itemBuilder: (context) => [
                 if (canEdit)
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'edit',
-                    child: Text('Edit'),
+                    child: Text(l10n.groupsEdit),
                   ),
                 if (canDelete)
-                  const PopupMenuItem(
+                  PopupMenuItem(
                     value: 'delete',
-                    child: Text('Delete'),
+                    child: Text(l10n.actionDelete),
                   ),
               ],
             ),
@@ -628,7 +636,7 @@ class _ReplyComposer extends StatelessWidget {
                         ),
                       )
                     : const Icon(Icons.send),
-                tooltip: 'Reply',
+                tooltip: AppLocalizations.of(context).groupsReply,
               ),
             ],
           ),

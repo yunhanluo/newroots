@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../core/models/support_group.dart';
-import '../../../core/services/group_content_policy.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../l10n/app_localizations.dart';
 
 class _DraftPhoto {
   const _DraftPhoto({
@@ -71,6 +71,7 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
     if (!_canAddMore) return;
     ImageSource source = ImageSource.gallery;
     if (!kIsWeb) {
+      final l10n = AppLocalizations.of(context);
       final chosen = await showModalBottomSheet<ImageSource>(
         context: context,
         builder: (context) => SafeArea(
@@ -79,12 +80,12 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
             children: [
               ListTile(
                 leading: const Icon(Icons.photo_library_outlined),
-                title: const Text('Photo library'),
+                title: Text(l10n.groupsPhotoLibrary),
                 onTap: () => Navigator.pop(context, ImageSource.gallery),
               ),
               ListTile(
                 leading: const Icon(Icons.photo_camera_outlined),
-                title: const Text('Camera'),
+                title: Text(l10n.groupsCamera),
                 onTap: () => Navigator.pop(context, ImageSource.camera),
               ),
             ],
@@ -132,7 +133,7 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
       });
     } catch (_) {
       if (!mounted) return;
-      setState(() => _error = 'Could not open that photo. Try another one.');
+      setState(() => _error = AppLocalizations.of(context).groupsPhotoOpenError);
     }
   }
 
@@ -164,7 +165,7 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
       setState(() => _error = e.message);
     } catch (_) {
       if (!mounted) return;
-      setState(() => _error = 'Could not publish that. Try again.');
+      setState(() => _error = AppLocalizations.of(context).groupsPublishError);
     } finally {
       if (mounted) setState(() => _submitting = false);
     }
@@ -172,16 +173,17 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final isQuestion = _kind == GroupPostKind.question;
     return BrandScaffold(
-      title: isQuestion ? 'Ask a question' : 'New post',
+      title: isQuestion ? l10n.groupsAskQuestion : l10n.groupsNewPost,
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 28),
         children: [
           Text(
             isQuestion
-                ? 'Ask the group something they can help with. Other members can reply on this thread.'
-                : 'Share an update, a tip, or something that might help others in this group.',
+                ? l10n.groupsComposeQuestionIntro
+                : l10n.groupsComposePostIntro,
             style: TextStyle(
               fontSize: 15,
               height: 1.45,
@@ -190,7 +192,7 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
           ),
           const SizedBox(height: 10),
           Text(
-            GroupContentPolicy.guidelines,
+            l10n.groupsComposeGuidelines,
             style: TextStyle(
               fontSize: 13,
               height: 1.4,
@@ -199,16 +201,16 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
           ),
           const SizedBox(height: 16),
           SegmentedButton<GroupPostKind>(
-            segments: const [
+            segments: [
               ButtonSegment(
                 value: GroupPostKind.post,
-                label: Text('Post'),
-                icon: Icon(Icons.edit_outlined, size: 18),
+                label: Text(l10n.groupsKindPost),
+                icon: const Icon(Icons.edit_outlined, size: 18),
               ),
               ButtonSegment(
                 value: GroupPostKind.question,
-                label: Text('Question'),
-                icon: Icon(Icons.help_outline, size: 18),
+                label: Text(l10n.groupsKindQuestion),
+                icon: const Icon(Icons.help_outline, size: 18),
               ),
             ],
             selected: {_kind},
@@ -222,10 +224,12 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
             textCapitalization: TextCapitalization.sentences,
             maxLength: 120,
             decoration: InputDecoration(
-              labelText: isQuestion ? 'Question' : 'Title',
+              labelText: isQuestion
+                  ? l10n.groupsComposeQuestionLabel
+                  : l10n.groupsComposeTitleLabel,
               hintText: isQuestion
-                  ? 'e.g. How did you find a pediatrician?'
-                  : 'e.g. A resume tip that helped me',
+                  ? l10n.groupsComposeQuestionHint
+                  : l10n.groupsComposeTitleHint,
               filled: true,
               fillColor: Colors.white,
             ),
@@ -238,10 +242,12 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
             maxLines: 12,
             maxLength: 2000,
             decoration: InputDecoration(
-              labelText: isQuestion ? 'Details (optional)' : 'Description',
+              labelText: isQuestion
+                  ? l10n.groupsComposeDetailsLabel
+                  : l10n.groupsComposeBodyLabel,
               hintText: isQuestion
-                  ? 'Add any details that would help people answer.'
-                  : 'Add the story, a link, or anything useful.',
+                  ? l10n.groupsComposeDetailsHint
+                  : l10n.groupsComposeBodyHint,
               alignLabelWithHint: true,
               filled: true,
               fillColor: Colors.white,
@@ -272,7 +278,7 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              '${_photos.length} of $kMaxGroupPostImages photos',
+              l10n.groupsPhotoCount(_photos.length, kMaxGroupPostImages),
               style: TextStyle(
                 fontSize: 13,
                 color: Colors.black87.withValues(alpha: 0.6),
@@ -282,7 +288,7 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
             OutlinedButton.icon(
               onPressed: _submitting ? null : _addPhotos,
               icon: const Icon(Icons.add_photo_alternate_outlined),
-              label: const Text('Add photos'),
+              label: Text(l10n.groupsAddPhotos),
             ),
           if (_error != null) ...[
             const SizedBox(height: 8),
@@ -306,7 +312,9 @@ class _GroupComposeScreenState extends ConsumerState<GroupComposeScreen> {
                       color: Colors.white,
                     ),
                   )
-                : Text(isQuestion ? 'Post question' : 'Publish post'),
+                : Text(
+                    isQuestion ? l10n.groupsPostQuestion : l10n.groupsPublishPost,
+                  ),
           ),
         ],
       ),
@@ -346,7 +354,7 @@ class _PhotoThumb extends StatelessWidget {
               padding: EdgeInsets.zero,
             ),
             icon: const Icon(Icons.close, size: 16),
-            tooltip: 'Remove photo',
+            tooltip: AppLocalizations.of(context).groupsRemovePhoto,
           ),
         ),
       ],
@@ -376,7 +384,7 @@ class _AddPhotoTile extends StatelessWidget {
               Icon(Icons.add, color: Colors.black87.withValues(alpha: 0.55)),
               const SizedBox(height: 4),
               Text(
-                'Add',
+                AppLocalizations.of(context).groupsAdd,
                 style: TextStyle(
                   fontSize: 13,
                   color: Colors.black87.withValues(alpha: 0.55),

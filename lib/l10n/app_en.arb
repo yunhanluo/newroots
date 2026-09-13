@@ -324,5 +324,247 @@
   },
   "housingAskTitle": "Ask about housing",
   "housingAskHint": "Type a question…",
-  "housingAskFollowUpHint": "Ask a follow-up…"
+  "housingAskFollowUpHint": "Ask a follow-up…",
+
+  "educationNavigatorTitle": "Education Navigator",
+  "educationHubIntro": "Learn how California schools work, then find nearby public and private schools plus trusted tutoring, library, and STEM programs.",
+  "educationBasicsTitle": "Education basics",
+  "educationBasicsSubtitle": "Enrollment, districts, grade levels, English learner support, and academic help.",
+  "educationFindTitle": "Find schools & programs",
+  "educationFindSubtitle": "Map and list of nearby California public and private schools, libraries, tutoring, and STEM programs.",
+
+  "healthcareNavigatorTitle": "Healthcare Navigator",
+  "healthcareHubIntro": "Learn how care works in California, then find trusted community health centers near you.",
+  "healthcareBasicsTitle": "Healthcare basics",
+  "healthcareBasicsSubtitle": "Insurance, how visits work, community health centers, and language help.",
+  "healthcareFindTitle": "Find a clinic",
+  "healthcareFindSubtitle": "Map and list of nearby HRSA community health centers by city or ZIP.",
+
+  "finderCityOrZipLabel": "City or ZIP code",
+  "finderCityOrZipHint": "e.g. Oakland or 94102",
+  "finderSetCityOrZip": "Set a city or ZIP code",
+  "finderNear": "Near: {location}",
+  "@finderNear": {
+    "placeholders": {
+      "location": { "type": "String" }
+    }
+  },
+  "finderHideSearchOptions": "Hide search options",
+  "finderResizeMap": "Resize map",
+
+  "clinicsSearchIntro": "Search HRSA community health centers near a California city or ZIP. Pins are from the official federal directory.",
+  "clinicsFindButton": "Find nearby clinics",
+  "clinicsSearchDetail": "HRSA community health centers",
+  "clinicsEnterLocation": "Enter a city or ZIP code to find nearby clinics.",
+  "clinicsNoResults": "No community health centers found nearby. Try another California city or ZIP, or widen your search later.",
+  "clinicsLoadError": "Could not load clinics. Try again shortly.",
+
+  "englishSearchIntro": "Find trusted adult schools, community colleges, and library ESL programs near a California city or ZIP.",
+  "englishFindButton": "Find nearby classes",
+  "englishSearchDetail": "Adult schools, colleges & libraries",
+  "englishEnterLocation": "Enter a city or ZIP code to find nearby classes.",
+  "englishNoResults": "No ESL resources found nearby yet. Try another California city or ZIP.",
+  "englishLoadError": "Could not load English resources. Try again shortly.",
+  "englishSourceCurated": "Source: curated California adult ed, colleges, and libraries",
+  "englishSourceNamed": "Source: {source}",
+  "@englishSourceNamed": {
+    "placeholders": {
+      "source": { "type": "String" }
+    }
+  },
+
+  "educationSearchIntro": "Search California public and private schools from the official CDE directory, plus curated libraries, tutoring, and STEM programs.",
+  "educationFindButton": "Find nearby",
+  "educationEnterLocation": "Enter a city or ZIP code to find nearby schools.",
+  "educationNoResults": "No schools or programs found nearby. Try another California city or ZIP, or change the filters.",
+  "educationLoadError": "Could not load education resources. Try again.",
+  "educationLoadErrorShort": "Could not load education resources. Try again shortly.",
+  "educationTypeLabel": "Type",
+  "educationAllTypes": "All types",
+  "educationKindSchools": "Schools",
+  "educationKindPrograms": "Programs & support",
+  "educationKindPublicSchools": "Public schools",
+  "educationKindPrivateSchools": "Private schools",
+  "educationKindEnrollmentHelp": "Enrollment help",
+  "educationKindLibraries": "Libraries",
+  "educationKindTutoring": "Tutoring",
+  "educationKindStem": "STEM / enrichment",
+  "educationAllGrades": "All grades",
+  "educationGradeLabel": "Grade",
+  "educationGradePk": "PK",
+  "educationGrade12": "12th",
+  "educationGradeSingle": "Grade {grade}",
+  "@educationGradeSingle": {
+    "placeholders": {
+      "grade": { "type": "String" }
+    }
+  },
+  "educationGradesRange": "Grades {low}–{high}",
+  "@educationGradesRange": {
+    "placeholders": {
+      "low": { "type": "String" },
+      "high": { "type": "String" }
+    }
+  },
+  "educationMapBadge": "CDE schools + programs",
+
+  "groupsIntro": "Join a group to post, ask questions, and help other newcomers in California.",
+  "groupsDiscover": "Discover",
+  "groupsMine": "My groups",
+  "groupsMineCount": "My groups ({count})",
+  "@groupsMineCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groupsSuggest": "Suggest a new group",
+  "groupsJoin": "Join",
+  "groupsLeave": "Leave group",
+  "groupsSearch": "Search",
+  "groupsSearchClear": "Clear search",
+  "groupsFilterAll": "All",
+  "groupsSearchNoMatch": "No groups match your search.",
+  "groupsMineEmpty": "You have not joined a group yet. Switch to Discover to find one.",
+  "groupsCategoryEmpty": "No groups in this category yet.",
+
+  "groupsSuggestTitle": "Suggest a group",
+  "groupsSuggestIntro": "Propose a group for other newcomers in California. An admin reviews every suggestion before it is opened for people to join.",
+  "groupsSuggestNameLabel": "Group name",
+  "groupsSuggestNameHint": "e.g. Newcomers in Fresno",
+  "groupsSuggestCategory": "Category",
+  "groupsSuggestPurposeLabel": "What is this group for?",
+  "groupsSuggestPurposeHint": "Who should join, and what will people talk about?",
+  "groupsSuggestSubmit": "Submit for review",
+  "groupsSuggestSent": "Suggestion sent. An admin will review it before the group appears.",
+  "groupsSuggestSendError": "Could not send that suggestion. Try again.",
+  "groupsSuggestNameRequired": "Give the group a name.",
+  "groupsSuggestDescriptionRequired": "Add a short description.",
+  "groupsCategoryParents": "Parents",
+  "groupsCategoryJobs": "Jobs",
+  "groupsCategoryLanguage": "English",
+  "groupsCategoryCareers": "Careers",
+  "groupsCategoryCulture": "Culture",
+  "groupsCategoryHousing": "Housing",
+  "groupsCategoryOther": "Other",
+
+  "groupsFallbackTitle": "Support group",
+  "groupsLoadError": "Could not load this group.",
+  "groupsUnavailable": "This group is no longer available.",
+  "groupsRemovedAdmin": "This group was removed by an admin.",
+  "groupsRemovedWithReason": "This group was removed. Reason: {reason}",
+  "@groupsRemovedWithReason": {
+    "placeholders": {
+      "reason": { "type": "String" }
+    }
+  },
+  "groupsMemberOne": "1 member",
+  "groupsMemberCount": "{count} members",
+  "@groupsMemberCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groupsPrivacyNotice": "Posts and questions are private to members. They are checked for safety before others can see them. Be kind, and do not paste ID numbers, passwords, or account numbers.",
+  "groupsNewPost": "New post",
+  "groupsAskQuestion": "Ask a question",
+  "groupsJoinToRead": "Join to read posts and reply",
+  "groupsJoinPrompt": "Only members can see posts and questions in this group. Join when you are ready to take part.",
+  "groupsJoinGroup": "Join group",
+  "groupsLeaveShort": "Leave",
+  "groupsLeaveConfirmTitle": "Leave this group?",
+  "groupsLeaveConfirmBody": "You will stop seeing posts in \"{title}\". You can join again later.",
+  "@groupsLeaveConfirmBody": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "groupsPostsLoadError": "Could not load posts. Join the group and try again.",
+  "groupsNoPostsYet": "No posts yet. Share something, or ask a question the group can help with.",
+  "groupsYou": "You",
+  "groupsPostOptions": "Post options",
+  "groupsReplyOptions": "Reply options",
+  "groupsKindPost": "Post",
+  "groupsKindQuestion": "Question",
+  "groupsNoAnswersYet": "No answers yet",
+  "groupsNoRepliesYet": "No replies yet",
+  "groupsReplyOne": "1 reply",
+  "groupsReplyMany": "{count} replies",
+  "@groupsReplyMany": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groupsComposePostIntro": "Share an update, a tip, or something that might help others in this group.",
+  "groupsComposeQuestionIntro": "Ask the group something they can help with. Other members can reply on this thread.",
+  "groupsComposeGuidelines": "Posts are checked for safety before others can see them. Do not paste ID numbers, passwords, or account numbers. Talking about benefits, visas, and papers is fine.",
+  "groupsComposeTitleLabel": "Title",
+  "groupsComposeQuestionLabel": "Question",
+  "groupsComposeTitleHint": "e.g. A resume tip that helped me",
+  "groupsComposeQuestionHint": "e.g. How did you find a pediatrician?",
+  "groupsComposeBodyLabel": "Description",
+  "groupsComposeDetailsLabel": "Details (optional)",
+  "groupsComposeBodyHint": "Add the story, a link, or anything useful.",
+  "groupsComposeDetailsHint": "Add any details that would help people answer.",
+  "groupsAddPhotos": "Add photos",
+  "groupsAdd": "Add",
+  "groupsPhotoCount": "{count} of {max} photos",
+  "@groupsPhotoCount": {
+    "placeholders": {
+      "count": { "type": "int" },
+      "max": { "type": "int" }
+    }
+  },
+  "groupsPublishPost": "Publish post",
+  "groupsPostQuestion": "Post question",
+  "groupsPhotoLibrary": "Photo library",
+  "groupsCamera": "Camera",
+  "groupsPhotoOpenError": "Could not open that photo. Try another one.",
+  "groupsPublishError": "Could not publish that. Try again.",
+  "groupsRemovePhoto": "Remove photo",
+  "groupsPostLoadError": "Could not load this post.",
+  "groupsPostRemoved": "This post was removed.",
+  "groupsAnswers": "Answers",
+  "groupsReplies": "Replies",
+  "groupsRepliesLoadError": "Could not load replies.",
+  "groupsNoAnswersHelp": "No answers yet. Be the first to help.",
+  "groupsNoRepliesHelp": "No replies yet. Start the conversation.",
+  "groupsWriteAnswer": "Write an answer…",
+  "groupsWriteReply": "Write a reply…",
+  "groupsEditReply": "Edit reply",
+  "groupsWriteReplyFirst": "Write a reply first.",
+  "groupsDeleteReplyTitle": "Delete this reply?",
+  "groupsDeleteReplyBody": "This cannot be undone.",
+  "groupsEdit": "Edit",
+  "groupsEdited": "Edited",
+  "groupsReply": "Reply",
+  "groupsDeletePostTitle": "Delete this post?",
+  "groupsDeletePostBody": "Replies will be removed too. This cannot be undone.",
+  "groupsRemovePostTitle": "Remove this post?",
+  "groupsRemovePostBody": "The post will be hidden from the group. The author has 7 days to appeal. If they do not, or a moderator declines the appeal, it will be deleted.",
+  "groupsRemovePostReason": "Reason",
+  "groupsRemovePostHint": "e.g. This broke the group rules.",
+  "groupsRemovePostReasonRequired": "Please say why this post is being removed.",
+  "groupsRemovePostAction": "Remove post",
+  "groupsModerationChecking": "Checking this",
+  "groupsModerationHidden": "Hidden from the group",
+  "groupsAppealSent": "Appeal sent",
+  "groupsReasonPrefix": "Reason: {reason}",
+  "@groupsReasonPrefix": {
+    "placeholders": {
+      "reason": { "type": "String" }
+    }
+  },
+  "groupsHiddenByAdmin": "An admin hid this post.",
+  "groupsDeletedAfter": "It will be deleted after {deadline} unless an appeal is approved.",
+  "@groupsDeletedAfter": {
+    "placeholders": {
+      "deadline": { "type": "String" }
+    }
+  },
+  "groupsAppealPendingReview": "A moderator will review your appeal.",
+  "groupsAppeal": "Appeal",
+  "groupsAppealTitle": "Appeal this removal?",
+  "groupsAppealIntro": "A moderator will review it. If they agree, the post will show in the group again.",
+  "groupsAppealLabel": "Why should it stay? (optional)",
+  "groupsSendAppeal": "Send appeal"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../theme/brand_colors.dart';
 
 /// Shared layout constants for the map + list finder screens (English Learning,
@@ -31,7 +32,7 @@ class MapResizeHandle extends StatelessWidget {
         behavior: HitTestBehavior.opaque,
         onVerticalDragUpdate: (details) => onDrag(details.delta.dy),
         child: Semantics(
-          label: 'Resize map',
+          label: AppLocalizations.of(context).finderResizeMap,
           child: SizedBox(
             height: kMapHandleHeight,
             child: Center(
@@ -163,7 +164,7 @@ class CollapsePanelButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
-      tooltip: 'Hide search options',
+      tooltip: AppLocalizations.of(context).finderHideSearchOptions,
       visualDensity: VisualDensity.compact,
       icon: const Icon(Icons.keyboard_arrow_up),
     );

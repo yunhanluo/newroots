@@ -9,6 +9,7 @@ import '../../../core/services/admin_service.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/delete_post_dialog.dart';
 import 'widgets/group_moderation_banner.dart';
 import 'widgets/group_post_image.dart';
@@ -48,21 +49,20 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
   }
 
   Future<void> _leave(String title) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Leave this group?'),
-        content: Text(
-          'You will stop seeing posts in "$title". You can join again later.',
-        ),
+        title: Text(l10n.groupsLeaveConfirmTitle),
+        content: Text(l10n.groupsLeaveConfirmBody(title)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(l10n.actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Leave'),
+            child: Text(l10n.groupsLeaveShort),
           ),
         ],
       ),
@@ -120,6 +120,7 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final groupAsync = ref.watch(supportGroupProvider(widget.groupId));
     final myIds = ref.watch(myGroupIdsProvider);
     final uid = ref.watch(authStateProvider).value?.uid;
@@ -130,20 +131,20 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
     return groupAsync.when(
       loading: () => Scaffold(
         backgroundColor: kBrandPageBg,
-        appBar: AppBar(title: const Text('Support group')),
+        appBar: AppBar(title: Text(l10n.groupsFallbackTitle)),
         body: const Center(child: CircularProgressIndicator()),
       ),
       error: (error, _) => Scaffold(
         backgroundColor: kBrandPageBg,
-        appBar: AppBar(title: const Text('Support group')),
-        body: const Center(child: Text('Could not load this group.')),
+        appBar: AppBar(title: Text(l10n.groupsFallbackTitle)),
+        body: Center(child: Text(l10n.groupsLoadError)),
       ),
       data: (group) {
         if (group == null) {
           return Scaffold(
             backgroundColor: kBrandPageBg,
-            appBar: AppBar(title: const Text('Support group')),
-            body: const Center(child: Text('This group is no longer available.')),
+            appBar: AppBar(title: Text(l10n.groupsFallbackTitle)),
+            body: Center(child: Text(l10n.groupsUnavailable)),
           );
         }
 
@@ -156,8 +157,8 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                 padding: const EdgeInsets.all(24),
                 child: Text(
                   group.deletedReason.isNotEmpty
-                      ? 'This group was removed. Reason: ${group.deletedReason}'
-                      : 'This group was removed by an admin.',
+                      ? l10n.groupsRemovedWithReason(group.deletedReason)
+                      : l10n.groupsRemovedAdmin,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -175,7 +176,7 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                 Text(
                   memberCount == null
                       ? group.region
-                      : '${group.region} · $memberCount ${memberCount == 1 ? 'member' : 'members'}',
+                      : '${group.region} · ${memberCount == 1 ? l10n.groupsMemberOne : l10n.groupsMemberCount(memberCount)}',
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
@@ -188,9 +189,9 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
               if (isMember)
                 TextButton(
                   onPressed: () => _leave(group.title),
-                  child: const Text(
-                    'Leave',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    l10n.groupsLeaveShort,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
             ],
@@ -212,9 +213,7 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'Posts and questions are private to members. They are checked '
-                      'for safety before others can see them. Be kind, and do not '
-                      'paste ID numbers, passwords, or account numbers.',
+                      l10n.groupsPrivacyNotice,
                       style: TextStyle(
                         fontSize: 13,
                         height: 1.4,
@@ -229,7 +228,7 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                             child: FilledButton.icon(
                               onPressed: () => _openCompose(GroupPostKind.post),
                               icon: const Icon(Icons.edit_outlined, size: 18),
-                              label: const Text('New post'),
+                              label: Text(l10n.groupsNewPost),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -238,7 +237,7 @@ class _GroupChatScreenState extends ConsumerState<GroupChatScreen> {
                               onPressed: () =>
                                   _openCompose(GroupPostKind.question),
                               icon: const Icon(Icons.help_outline, size: 18),
-                              label: const Text('Ask a question'),
+                              label: Text(l10n.groupsAskQuestion),
                             ),
                           ),
                         ],
@@ -288,6 +287,7 @@ class _JoinPrompt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
@@ -300,16 +300,16 @@ class _JoinPrompt extends StatelessWidget {
               color: kBrandGreen.withValues(alpha: 0.8),
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Join to read posts and reply',
-              style: TextStyle(
+            Text(
+              l10n.groupsJoinToRead,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Only members can see posts and questions in this group. Join when you are ready to take part.',
+              l10n.groupsJoinPrompt,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 15,
@@ -329,7 +329,7 @@ class _JoinPrompt extends StatelessWidget {
                         color: Colors.white,
                       ),
                     )
-                  : const Text('Join group'),
+                  : Text(l10n.groupsJoinGroup),
             ),
           ],
         ),
@@ -353,15 +353,16 @@ class _PostFeed extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final postsAsync = ref.watch(groupPostsProvider(groupId));
     final isAdmin = ref.watch(isAdminProvider);
     return postsAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => const Center(
+      error: (error, _) => Center(
         child: Padding(
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
           child: Text(
-            'Could not load posts. Join the group and try again.',
+            l10n.groupsPostsLoadError,
             textAlign: TextAlign.center,
           ),
         ),
@@ -372,7 +373,7 @@ class _PostFeed extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Text(
-                'No posts yet. Share something, or ask a question the group can help with.',
+                l10n.groupsNoPostsYet,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 15,
@@ -424,6 +425,7 @@ class _PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final time = post.createdAt == null
         ? ''
         : DateFormat('MMM d · h:mm a').format(post.createdAt!.toLocal());
@@ -449,7 +451,7 @@ class _PostCard extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      '${mine ? 'You' : post.authorName}${time.isEmpty ? '' : ' · $time'}',
+                      '${mine ? l10n.groupsYou : post.authorName}${time.isEmpty ? '' : ' · $time'}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -460,7 +462,7 @@ class _PostCard extends StatelessWidget {
                   ),
                   if (onDelete != null)
                     PopupMenuButton<String>(
-                      tooltip: 'Post options',
+                      tooltip: l10n.groupsPostOptions,
                       padding: EdgeInsets.zero,
                       icon: const Icon(
                         Icons.more_vert,
@@ -470,10 +472,10 @@ class _PostCard extends StatelessWidget {
                       onSelected: (value) {
                         if (value == 'delete') onDelete!();
                       },
-                      itemBuilder: (context) => const [
+                      itemBuilder: (context) => [
                         PopupMenuItem(
                           value: 'delete',
-                          child: Text('Delete'),
+                          child: Text(l10n.actionDelete),
                         ),
                       ],
                     ),
@@ -543,8 +545,12 @@ class _PostCard extends StatelessWidget {
                     const SizedBox(width: 6),
                     Text(
                       replies == 0
-                          ? (isQuestion ? 'No answers yet' : 'No replies yet')
-                          : '$replies ${replies == 1 ? 'reply' : 'replies'}',
+                          ? (isQuestion
+                              ? l10n.groupsNoAnswersYet
+                              : l10n.groupsNoRepliesYet)
+                          : replies == 1
+                              ? l10n.groupsReplyOne
+                              : l10n.groupsReplyMany(replies),
                       style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -569,6 +575,7 @@ class _KindChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final isQuestion = kind == GroupPostKind.question;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -579,7 +586,7 @@ class _KindChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
-        kind.label,
+        isQuestion ? l10n.groupsKindQuestion : l10n.groupsKindPost,
         style: TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w700,

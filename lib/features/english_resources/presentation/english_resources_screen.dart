@@ -12,6 +12,7 @@ import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
 import '../../../core/widgets/finder_controls.dart';
 import '../../../core/widgets/finder_map.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Feature 4: English Learning Resource Finder (map + list).
 class EnglishResourcesScreen extends ConsumerStatefulWidget {
@@ -59,11 +60,10 @@ class _EnglishResourcesScreenState
   }
 
   Future<void> _search() async {
+    final l10n = AppLocalizations.of(context);
     final locationText = _locationController.text.trim();
     if (locationText.isEmpty) {
-      setState(
-        () => _error = 'Enter a city or ZIP code to find nearby classes.',
-      );
+      setState(() => _error = l10n.englishEnterLocation);
       return;
     }
 
@@ -90,8 +90,7 @@ class _EnglishResourcesScreenState
         // keeps the current location visible.
         if (result.resources.isNotEmpty) _searchExpanded = false;
         if (result.resources.isEmpty) {
-          _error =
-              'No ESL resources found nearby yet. Try another California city or ZIP.';
+          _error = l10n.englishNoResults;
         }
       });
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -101,7 +100,7 @@ class _EnglishResourcesScreenState
     } catch (error) {
       if (!mounted) return;
       setState(() {
-        _error = _describeError(error);
+        _error = _describeError(error, l10n);
         _resources = const [];
         _resolvedLabel = null;
         _source = null;
@@ -160,12 +159,11 @@ class _EnglishResourcesScreenState
     );
   }
 
-  String _describeError(Object error) {
+  String _describeError(Object error, AppLocalizations l10n) {
     if (error is FirebaseFunctionsException) {
-      return error.message ??
-          'Could not load English resources. Try again shortly.';
+      return error.message ?? l10n.englishLoadError;
     }
-    return 'Could not load English resources. Try again shortly.';
+    return l10n.englishLoadError;
   }
 
   Future<void> _openUrl(String url) async {
@@ -200,16 +198,17 @@ class _EnglishResourcesScreenState
 
     final mapCenter = _searchCenter ?? _defaultCenter;
     final mappable = _mappableResources;
+    final l10n = AppLocalizations.of(context);
 
     return BrandScaffold(
-      title: 'English Learning',
+      title: l10n.featureEnglish,
       body: Column(
         children: [
           if (!_searchExpanded)
             CollapsedSearchBar(
               location: _resolvedLabel ?? _locationController.text.trim(),
-              emptyLocationHint: 'Set a city or ZIP code',
-              detail: 'Adult schools, colleges & libraries',
+              emptyLocationHint: l10n.finderSetCityOrZip,
+              detail: l10n.englishSearchDetail,
               loading: _loading,
               onExpand: () => setState(() => _searchExpanded = true),
             ),
@@ -223,8 +222,7 @@ class _EnglishResourcesScreenState
                     children: [
                       Expanded(
                         child: Text(
-                          'Find trusted adult schools, community colleges, and '
-                          'library ESL programs near a California city or ZIP.',
+                          l10n.englishSearchIntro,
                           style: TextStyle(
                             fontSize: 14,
                             height: 1.4,
@@ -244,8 +242,8 @@ class _EnglishResourcesScreenState
                     textInputAction: TextInputAction.search,
                     onSubmitted: (_) => _search(),
                     decoration: InputDecoration(
-                      labelText: 'City or ZIP code',
-                      hintText: 'e.g. Oakland or 94102',
+                      labelText: l10n.finderCityOrZipLabel,
+                      hintText: l10n.finderCityOrZipHint,
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
@@ -270,12 +268,12 @@ class _EnglishResourcesScreenState
                               color: Colors.white,
                             ),
                           )
-                        : const Text('Find nearby classes'),
+                        : Text(l10n.englishFindButton),
                   ),
                   if (_resolvedLabel != null) ...[
                     const SizedBox(height: 8),
                     Text(
-                      'Near: $_resolvedLabel',
+                      l10n.finderNear(_resolvedLabel!),
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.black87.withValues(alpha: 0.6),
@@ -286,8 +284,8 @@ class _EnglishResourcesScreenState
                     const SizedBox(height: 4),
                     Text(
                       _source == 'curated'
-                          ? 'Source: curated California adult ed, colleges, and libraries'
-                          : 'Source: $_source',
+                          ? l10n.englishSourceCurated
+                          : l10n.englishSourceNamed(_source!),
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.black87.withValues(alpha: 0.5),
@@ -320,7 +318,7 @@ class _EnglishResourcesScreenState
                         center: mapCenter,
                         initialZoom: _searchCenter == null ? 6 : 11,
                         searchCenter: _searchCenter,
-                        badge: 'Adult schools, colleges & libraries',
+                        badge: l10n.englishSearchDetail,
                         pins: [
                           for (final resource in mappable)
                             FinderMapPin(

@@ -1,0 +1,127 @@
+{
+  "id": "healthcare",
+  "title": "Cơ bản về chăm sóc sức khỏe",
+  "subtitle": "Bảo hiểm, khám tại phòng khám, và trung tâm y tế cộng đồng.",
+  "landingTitle": "Cơ bản về chăm sóc sức khỏe",
+  "landingBody": "Hướng dẫn ngắn về bảo hiểm, khám tại phòng khám, trung tâm y tế cộng đồng, và cách yêu cầu thông dịch viên ở California.",
+  "icon": "health",
+  "finishRoute": "healthcare",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Chào mừng",
+      "intro": "",
+      "body": "Nhận chăm sóc y tế ở California có thể gây bối rối nếu bạn mới đến Hoa Kỳ. Tên bảo hiểm, loại phòng khám và giấy tờ khác với nhiều quốc gia khác.\n\nHướng dẫn ngắn này nói về bảo hiểm cơ bản, điều nên chờ đợi khi khám, vì sao trung tâm y tế cộng đồng là bước đầu đáng tin, và cách yêu cầu thông dịch viên.\n\nĐây là thông tin chung, không phải lời khuyên y tế hay pháp lý. Với quyết định sức khỏe của chính bạn, hãy nói chuyện với bác sĩ hoặc cố vấn đáng tin.",
+      "topics": []
+    },
+    {
+      "title": "Bảo hiểm cơ bản",
+      "intro": "Bảo hiểm sức khỏe giúp trả tiền khám bác sĩ, nằm viện và thuốc. California có vài lựa chọn phổ biến. Bạn không cần nhớ mọi quy tắc; hãy bắt đầu bằng việc biết chương trình nào có thể phù hợp với bạn.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Medi-Cal",
+          "paragraph": "Medi-Cal là Medicaid của California. Chương trình này bảo hiểm cho nhiều cư dân thu nhập thấp, gồm nhiều người nhập cư đủ điều kiện theo quy định của tiểu bang. Bảo hiểm có thể gồm khám bác sĩ, cấp cứu, chăm sóc thai sản và hơn thế. Đăng ký qua Covered California hoặc văn phòng dịch vụ xã hội của quận. Mang giấy tờ tùy thân, thông tin thu nhập, và giấy tờ nhập cư nếu bạn có. Hãy xin trợ giúp bằng ngôn ngữ của bạn.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Covered California",
+          "paragraph": "Covered California là sàn giao dịch của tiểu bang, nơi bạn có thể mua gói bảo hiểm tư và xem mình có được hỗ trợ đóng phí bảo hiểm hay không. Thời gian đăng ký mở thường vào mùa thu, nhưng bạn có thể đủ điều kiện đăng ký đặc biệt sau thay đổi lớn trong đời như chuyển nhà hoặc mất bảo hiểm khác.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Bảo hiểm từ việc làm và trường học",
+          "paragraph": "Một số công việc và trường học cung cấp bảo hiểm. Hỏi nhân sự (HR) hoặc dịch vụ sinh viên có những gì, khi nào bạn có thể đăng ký, và chi phí mỗi tháng. So sánh phí bảo hiểm (chi phí hàng tháng) với khoản khấu trừ (số tiền bạn trả trước khi bảo hiểm bắt đầu chi trả nhiều hơn)."
+        },
+        {
+          "heading": "Nếu bạn không có bảo hiểm",
+          "paragraph": "Bạn vẫn có thể được khám. Trung tâm y tế cộng đồng (phần tiếp theo) thường tính phí theo thu nhập. Phòng cấp cứu phải ổn định tình trạng khẩn cấp, nhưng khám cấp cứu có thể rất đắt nếu không phải cấp cứu. Với chăm sóc thường xuyên, phòng khám cộng đồng thường là bước đầu tốt hơn."
+        }
+      ]
+    },
+    {
+      "title": "Cách hệ thống chăm sóc hoạt động",
+      "intro": "Ở Hoa Kỳ, mọi người thường bắt đầu với phòng khám chăm sóc ban đầu cho kiểm tra sức khỏe và vấn đề thông thường, rồi được giới thiệu đến bác sĩ chuyên khoa khi cần.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Chăm sóc ban đầu",
+          "paragraph": "Chăm sóc ban đầu là bác sĩ hoặc phòng khám chính của bạn cho cảm lạnh, bệnh mạn tính như tiểu đường, khám định kỳ, vắc-xin và giấy giới thiệu. Gắn bó với một phòng khám giúp họ biết bệnh sử của bạn và giữ hồ sơ cùng một chỗ."
+        },
+        {
+          "heading": "Urgent care so với phòng cấp cứu",
+          "paragraph": "Urgent care (phòng khám khẩn) dành cho vấn đề cần xử lý trong ngày nhưng không đe dọa tính mạng, như bong gân mắt cá hoặc cảm nặng. Đến phòng cấp cứu hoặc gọi 911 nếu đau ngực dữ dội, khó thở, chảy máu nhiều, hoặc triệu chứng khác đe dọa tính mạng."
+        },
+        {
+          "heading": "Nên mang gì",
+          "paragraph": "Mang giấy tờ tùy thân có ảnh nếu có, thẻ bảo hiểm hoặc thông tin Medi-Cal, danh sách thuốc bạn đang dùng, và kết quả xét nghiệm cũ nếu có. Đến sớm để làm giấy tờ. Hỏi quầy lễ tân cần mẫu nào và họ có nhận khám không hẹn trước hay không."
+        },
+        {
+          "heading": "Thanh toán và hóa đơn",
+          "paragraph": "Hãy hỏi chi phí trước các lần khám không khẩn khi có thể. Bạn có thể nhận hóa đơn vài tuần sau cho xét nghiệm hoặc bác sĩ chuyên khoa. Gọi văn phòng thanh toán nếu có gì sai hoặc bạn không thể trả. Nhiều phòng khám có kế hoạch trả góp hoặc đơn xin hỗ trợ tài chính."
+        }
+      ]
+    },
+    {
+      "title": "Trung tâm y tế cộng đồng",
+      "intro": "Trung tâm y tế cộng đồng được liên bang hỗ trợ là nơi đáng tin để bắt đầu. Trong ứng dụng này, ghim phòng khám lấy từ danh sách của Cơ quan Quản lý Tài nguyên và Dịch vụ Y tế Hoa Kỳ (HRSA) về các điểm cung cấp dịch vụ của Health Center và Look-Alike ở California.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Chúng là gì",
+          "paragraph": "Những phòng khám này (thường gọi là FQHC hoặc Look-Alike) cung cấp chăm sóc ban đầu ở khu vực thiếu dịch vụ. Nhiều nơi cũng có nha khoa, sức khỏe tâm thần/hành vi và nhà thuốc. Họ phục vụ người có bảo hiểm, Medi-Cal, và người không có bảo hiểm."
+        },
+        {
+          "heading": "Phí theo thu nhập và sự chào đón",
+          "paragraph": "Phí thường được điều chỉnh theo thu nhập (sliding scale). Nhân viên quen giúp bệnh nhân làm giấy tờ và dùng nhiều ngôn ngữ. Ở nhiều nơi, bạn không cần là công dân để được khám. Hãy hỏi phòng khám cần giấy tờ gì cho lần khám tính phí theo thu nhập."
+        },
+        {
+          "heading": "Vì sao chúng tôi hiện chúng trên bản đồ",
+          "paragraph": "HRSA công bố danh bạ chính thức của những địa điểm này. NewRoots dùng dữ liệu California đó để ghim trỏ tới địa điểm y tế cộng đồng đã xác minh, không phải danh sách ngẫu nhiên. Luôn gọi trước để xác nhận giờ mở cửa, dịch vụ, và họ có nhận bệnh nhân mới hay không.",
+          "url": "https://data.hrsa.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Ngôn ngữ và thông dịch viên",
+      "intro": "Bạn có quyền hiểu việc chăm sóc của mình. Nhiều phòng khám phải cung cấp hỗ trợ ngôn ngữ miễn phí cho các ngôn ngữ phổ biến. Đừng dựa vào trẻ em để thông dịch chi tiết y tế khi bạn có thể nhờ chuyên gia.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Yêu cầu khi đặt lịch",
+          "paragraph": "Khi gọi hoặc làm thủ tục, hãy nói bằng tiếng Anh: “I need an interpreter in [your language].” (Tôi cần thông dịch viên ngôn ngữ [của bạn].) Hỏi họ có nhân viên tại chỗ, thông dịch qua điện thoại, hay qua video. Xác nhận ngôn ngữ trước khi buổi hẹn bắt đầu."
+        },
+        {
+          "heading": "Phòng khám thường cung cấp gì",
+          "paragraph": "Nhiều trung tâm y tế cộng đồng và bệnh viện có dịch vụ thông dịch. Tình trạng sẵn có khác nhau tùy ngôn ngữ và địa điểm. Nếu ngôn ngữ của bạn ít phổ biến hơn, hãy hỏi họ cần báo trước bao lâu. Chỉ mang theo người lớn đáng tin nếu bạn muốn hỗ trợ thêm, không dùng thay cho thông dịch của phòng khám khi đã có."
+        },
+        {
+          "heading": "Trong lúc khám",
+          "paragraph": "Nói với bác sĩ qua thông dịch viên. Tạm dừng để họ dịch đầy đủ. Nhờ họ nhắc lại bất cứ điều gì bạn chưa hiểu, gồm tên thuốc, liều lượng và ngày tái khám. Bạn có thể xin hướng dẫn viết bằng tiếng Anh đơn giản hoặc ngôn ngữ của bạn khi có."
+        }
+      ]
+    },
+    {
+      "title": "Điểm bắt đầu đáng tin",
+      "intro": "Dùng trang chính thức và phòng khám địa phương để biết quy định mới nhất. Chương trình thay đổi, vì vậy hãy xác minh chi tiết trước khi nộp đơn hoặc đi xa để khám.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Covered California",
+          "paragraph": "Tìm lựa chọn Medi-Cal và bảo hiểm trên sàn giao dịch, và nhận trợ giúp bằng nhiều ngôn ngữ.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Find a Health Center (HRSA)",
+          "paragraph": "Công cụ liên bang chính thức để tìm trung tâm y tế cộng đồng. Bản đồ ứng dụng dùng cùng dữ liệu danh bạ California cho các ghim gần bạn.",
+          "url": "https://findahealthcenter.hrsa.gov/"
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Gọi 211 hoặc tìm trực tuyến để được giới thiệu dịch vụ sức khỏe, thực phẩm và xã hội gần bạn.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

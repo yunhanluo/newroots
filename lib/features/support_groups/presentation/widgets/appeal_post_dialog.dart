@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../l10n/app_localizations.dart';
+
 /// Optional message when appealing an admin-hidden post.
 ///
 /// Returns `null` if cancelled, otherwise the (possibly empty) appeal text.
@@ -28,17 +30,15 @@ class _AppealPostDialogState extends State<_AppealPostDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return AlertDialog(
-      title: const Text('Appeal this removal?'),
+      title: Text(l10n.groupsAppealTitle),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'A moderator will review it. If they agree, the post will '
-              'show in the group again.',
-            ),
+            Text(l10n.groupsAppealIntro),
             const SizedBox(height: 16),
             TextField(
               controller: _controller,
@@ -47,8 +47,8 @@ class _AppealPostDialogState extends State<_AppealPostDialog> {
               maxLines: 5,
               maxLength: 400,
               textCapitalization: TextCapitalization.sentences,
-              decoration: const InputDecoration(
-                labelText: 'Why should it stay? (optional)',
+              decoration: InputDecoration(
+                labelText: l10n.groupsAppealLabel,
               ),
             ),
           ],
@@ -57,11 +57,11 @@ class _AppealPostDialogState extends State<_AppealPostDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel'),
+          child: Text(l10n.actionCancel),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, _controller.text.trim()),
-          child: const Text('Send appeal'),
+          child: Text(l10n.groupsSendAppeal),
         ),
       ],
     );

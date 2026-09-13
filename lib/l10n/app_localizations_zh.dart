@@ -723,4 +723,546 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get housingAskFollowUpHint => '继续提问…';
+
+  @override
+  String get educationNavigatorTitle => '教育导航';
+
+  @override
+  String get educationHubIntro =>
+      '了解加州学校如何运作，然后查找附近的公立和私立学校，以及可信的辅导、图书馆和 STEM 项目。';
+
+  @override
+  String get educationBasicsTitle => '教育基础知识';
+
+  @override
+  String get educationBasicsSubtitle => '入学、学区、年级、英语学习者支持和学业帮助。';
+
+  @override
+  String get educationFindTitle => '查找学校和项目';
+
+  @override
+  String get educationFindSubtitle => '附近加州公立和私立学校、图书馆、辅导和 STEM 项目的地图与列表。';
+
+  @override
+  String get healthcareNavigatorTitle => '医疗导航';
+
+  @override
+  String get healthcareHubIntro => '了解加州医疗服务如何运作，然后查找您附近可信的社区健康中心。';
+
+  @override
+  String get healthcareBasicsTitle => '医疗基础知识';
+
+  @override
+  String get healthcareBasicsSubtitle => '保险、就诊流程、社区健康中心和语言帮助。';
+
+  @override
+  String get healthcareFindTitle => '查找诊所';
+
+  @override
+  String get healthcareFindSubtitle => '按城市或邮编显示附近 HRSA 社区健康中心的地图和列表。';
+
+  @override
+  String get finderCityOrZipLabel => '城市或邮编';
+
+  @override
+  String get finderCityOrZipHint => '例如 Oakland 或 94102';
+
+  @override
+  String get finderSetCityOrZip => '请输入城市或邮编';
+
+  @override
+  String finderNear(String location) {
+    return '附近：$location';
+  }
+
+  @override
+  String get finderHideSearchOptions => '隐藏搜索选项';
+
+  @override
+  String get finderResizeMap => '调整地图大小';
+
+  @override
+  String get clinicsSearchIntro => '按加州城市或邮编搜索附近的 HRSA 社区健康中心。地图标记来自联邦官方名录。';
+
+  @override
+  String get clinicsFindButton => '查找附近诊所';
+
+  @override
+  String get clinicsSearchDetail => 'HRSA 社区健康中心';
+
+  @override
+  String get clinicsEnterLocation => '请输入城市或邮编以查找附近诊所。';
+
+  @override
+  String get clinicsNoResults => '附近未找到社区健康中心。请换一个加州城市或邮编，或稍后再扩大搜索范围。';
+
+  @override
+  String get clinicsLoadError => '无法加载诊所。请稍后再试。';
+
+  @override
+  String get englishSearchIntro => '按加州城市或邮编查找可信的成人学校、社区学院和图书馆 ESL 课程。';
+
+  @override
+  String get englishFindButton => '查找附近课程';
+
+  @override
+  String get englishSearchDetail => '成人学校、学院和图书馆';
+
+  @override
+  String get englishEnterLocation => '请输入城市或邮编以查找附近课程。';
+
+  @override
+  String get englishNoResults => '附近暂无 ESL 资源。请换一个加州城市或邮编试试。';
+
+  @override
+  String get englishLoadError => '无法加载英语资源。请稍后再试。';
+
+  @override
+  String get englishSourceCurated => '来源：精选的加州成人教育、学院和图书馆';
+
+  @override
+  String englishSourceNamed(String source) {
+    return '来源：$source';
+  }
+
+  @override
+  String get educationSearchIntro =>
+      '在加州教育部（CDE）官方名录中搜索公立和私立学校，以及精选的图书馆、辅导和 STEM 项目。';
+
+  @override
+  String get educationFindButton => '查找附近';
+
+  @override
+  String get educationEnterLocation => '请输入城市或邮编以查找附近学校。';
+
+  @override
+  String get educationNoResults => '附近未找到学校或项目。请换一个加州城市或邮编，或更改筛选条件。';
+
+  @override
+  String get educationLoadError => '无法加载教育资源。请再试一次。';
+
+  @override
+  String get educationLoadErrorShort => '无法加载教育资源。请稍后再试。';
+
+  @override
+  String get educationTypeLabel => '类型';
+
+  @override
+  String get educationAllTypes => '全部类型';
+
+  @override
+  String get educationKindSchools => '学校';
+
+  @override
+  String get educationKindPrograms => '项目与支持';
+
+  @override
+  String get educationKindPublicSchools => '公立学校';
+
+  @override
+  String get educationKindPrivateSchools => '私立学校';
+
+  @override
+  String get educationKindEnrollmentHelp => '入学帮助';
+
+  @override
+  String get educationKindLibraries => '图书馆';
+
+  @override
+  String get educationKindTutoring => '辅导';
+
+  @override
+  String get educationKindStem => 'STEM / 拓展';
+
+  @override
+  String get educationAllGrades => '全部年级';
+
+  @override
+  String get educationGradeLabel => '年级';
+
+  @override
+  String get educationGradePk => '学前';
+
+  @override
+  String get educationGrade12 => '12年级';
+
+  @override
+  String educationGradeSingle(String grade) {
+    return '$grade年级';
+  }
+
+  @override
+  String educationGradesRange(String low, String high) {
+    return '$low–$high年级';
+  }
+
+  @override
+  String get educationMapBadge => 'CDE 学校 + 项目';
+
+  @override
+  String get groupsIntro => '加入小组可以发帖、提问，并帮助加州的其他新移民。';
+
+  @override
+  String get groupsDiscover => '发现';
+
+  @override
+  String get groupsMine => '我的小组';
+
+  @override
+  String groupsMineCount(int count) {
+    return '我的小组（$count）';
+  }
+
+  @override
+  String get groupsSuggest => '建议新小组';
+
+  @override
+  String get groupsJoin => '加入';
+
+  @override
+  String get groupsLeave => '退出小组';
+
+  @override
+  String get groupsSearch => '搜索';
+
+  @override
+  String get groupsSearchClear => '清除搜索';
+
+  @override
+  String get groupsFilterAll => '全部';
+
+  @override
+  String get groupsSearchNoMatch => '没有符合搜索的小组。';
+
+  @override
+  String get groupsMineEmpty => '您还没有加入小组。切换到“发现”去找一个。';
+
+  @override
+  String get groupsCategoryEmpty => '此分类还没有小组。';
+
+  @override
+  String get groupsSuggestTitle => '建议小组';
+
+  @override
+  String get groupsSuggestIntro => '为加州的其他新移民提议一个小组。管理员会审核每条建议，然后才开放加入。';
+
+  @override
+  String get groupsSuggestNameLabel => '小组名称';
+
+  @override
+  String get groupsSuggestNameHint => '例如：弗雷斯诺新移民';
+
+  @override
+  String get groupsSuggestCategory => '类别';
+
+  @override
+  String get groupsSuggestPurposeLabel => '这个小组是做什么的？';
+
+  @override
+  String get groupsSuggestPurposeHint => '谁应该加入？大家会讨论什么？';
+
+  @override
+  String get groupsSuggestSubmit => '提交审核';
+
+  @override
+  String get groupsSuggestSent => '建议已发送。管理员审核后，小组才会出现。';
+
+  @override
+  String get groupsSuggestSendError => '无法发送该建议。请再试一次。';
+
+  @override
+  String get groupsSuggestNameRequired => '请给小组起个名字。';
+
+  @override
+  String get groupsSuggestDescriptionRequired => '请添加简短说明。';
+
+  @override
+  String get groupsCategoryParents => '家长';
+
+  @override
+  String get groupsCategoryJobs => '工作';
+
+  @override
+  String get groupsCategoryLanguage => '英语';
+
+  @override
+  String get groupsCategoryCareers => '职业';
+
+  @override
+  String get groupsCategoryCulture => '文化';
+
+  @override
+  String get groupsCategoryHousing => '住房';
+
+  @override
+  String get groupsCategoryOther => '其他';
+
+  @override
+  String get groupsFallbackTitle => '互助小组';
+
+  @override
+  String get groupsLoadError => '无法加载此小组。';
+
+  @override
+  String get groupsUnavailable => '此小组已不可用。';
+
+  @override
+  String get groupsRemovedAdmin => '管理员已移除该小组。';
+
+  @override
+  String groupsRemovedWithReason(String reason) {
+    return '此小组已被移除。原因：$reason';
+  }
+
+  @override
+  String get groupsMemberOne => '1 位成员';
+
+  @override
+  String groupsMemberCount(int count) {
+    return '$count 位成员';
+  }
+
+  @override
+  String get groupsPrivacyNotice =>
+      '帖子和问题仅对成员可见。发布前会先进行安全检查。请友善交流，不要粘贴身份证号、密码或账号。';
+
+  @override
+  String get groupsNewPost => '新帖子';
+
+  @override
+  String get groupsAskQuestion => '提问';
+
+  @override
+  String get groupsJoinToRead => '加入后即可阅读和回复';
+
+  @override
+  String get groupsJoinPrompt => '只有成员能看到本小组的帖子和问题。准备好参与时再加入。';
+
+  @override
+  String get groupsJoinGroup => '加入小组';
+
+  @override
+  String get groupsLeaveShort => '退出';
+
+  @override
+  String get groupsLeaveConfirmTitle => '退出此小组？';
+
+  @override
+  String groupsLeaveConfirmBody(String title) {
+    return '您将不再看到“$title”中的帖子。以后还可以再加入。';
+  }
+
+  @override
+  String get groupsPostsLoadError => '无法加载帖子。请加入小组后再试。';
+
+  @override
+  String get groupsNoPostsYet => '还没有帖子。分享一些内容，或提出小组能帮忙的问题。';
+
+  @override
+  String get groupsYou => '你';
+
+  @override
+  String get groupsPostOptions => '帖子选项';
+
+  @override
+  String get groupsReplyOptions => '回复选项';
+
+  @override
+  String get groupsKindPost => '帖子';
+
+  @override
+  String get groupsKindQuestion => '问题';
+
+  @override
+  String get groupsNoAnswersYet => '还没有回答';
+
+  @override
+  String get groupsNoRepliesYet => '还没有回复';
+
+  @override
+  String get groupsReplyOne => '1 条回复';
+
+  @override
+  String groupsReplyMany(int count) {
+    return '$count 条回复';
+  }
+
+  @override
+  String get groupsComposePostIntro => '分享近况、建议，或任何可能帮助本小组成员的内容。';
+
+  @override
+  String get groupsComposeQuestionIntro => '向小组提问，让大家帮忙。其他成员可以在这条讨论中回复。';
+
+  @override
+  String get groupsComposeGuidelines =>
+      '帖子会先经过安全检查再让其他人看到。不要粘贴身份证号、密码或账号。谈论福利、签证和证件没有问题。';
+
+  @override
+  String get groupsComposeTitleLabel => '标题';
+
+  @override
+  String get groupsComposeQuestionLabel => '问题';
+
+  @override
+  String get groupsComposeTitleHint => '例如：一条帮到我的简历建议';
+
+  @override
+  String get groupsComposeQuestionHint => '例如：你是怎么找到儿科医生的？';
+
+  @override
+  String get groupsComposeBodyLabel => '说明';
+
+  @override
+  String get groupsComposeDetailsLabel => '详情（可选）';
+
+  @override
+  String get groupsComposeBodyHint => '补充故事、链接或其他有用信息。';
+
+  @override
+  String get groupsComposeDetailsHint => '补充有助于大家回答的细节。';
+
+  @override
+  String get groupsAddPhotos => '添加照片';
+
+  @override
+  String get groupsAdd => '添加';
+
+  @override
+  String groupsPhotoCount(int count, int max) {
+    return '$count / $max 张照片';
+  }
+
+  @override
+  String get groupsPublishPost => '发布帖子';
+
+  @override
+  String get groupsPostQuestion => '发布问题';
+
+  @override
+  String get groupsPhotoLibrary => '相册';
+
+  @override
+  String get groupsCamera => '相机';
+
+  @override
+  String get groupsPhotoOpenError => '无法打开该照片。请换一张试试。';
+
+  @override
+  String get groupsPublishError => '无法发布。请再试一次。';
+
+  @override
+  String get groupsRemovePhoto => '移除照片';
+
+  @override
+  String get groupsPostLoadError => '无法加载此帖子。';
+
+  @override
+  String get groupsPostRemoved => '此帖子已移除。';
+
+  @override
+  String get groupsAnswers => '回答';
+
+  @override
+  String get groupsReplies => '回复';
+
+  @override
+  String get groupsRepliesLoadError => '无法加载回复。';
+
+  @override
+  String get groupsNoAnswersHelp => '还没有回答。来当第一个帮忙的人。';
+
+  @override
+  String get groupsNoRepliesHelp => '还没有回复。开始对话吧。';
+
+  @override
+  String get groupsWriteAnswer => '写回答…';
+
+  @override
+  String get groupsWriteReply => '写回复…';
+
+  @override
+  String get groupsEditReply => '编辑回复';
+
+  @override
+  String get groupsWriteReplyFirst => '请先写回复。';
+
+  @override
+  String get groupsDeleteReplyTitle => '删除这条回复？';
+
+  @override
+  String get groupsDeleteReplyBody => '此操作无法撤销。';
+
+  @override
+  String get groupsEdit => '编辑';
+
+  @override
+  String get groupsEdited => '已编辑';
+
+  @override
+  String get groupsReply => '回复';
+
+  @override
+  String get groupsDeletePostTitle => '删除此帖子？';
+
+  @override
+  String get groupsDeletePostBody => '回复也会被删除。此操作无法撤销。';
+
+  @override
+  String get groupsRemovePostTitle => '移除此帖子？';
+
+  @override
+  String get groupsRemovePostBody =>
+      '帖子将对本小组隐藏。作者有 7 天可以申诉。如果未申诉，或版主拒绝申诉，帖子将被删除。';
+
+  @override
+  String get groupsRemovePostReason => '原因';
+
+  @override
+  String get groupsRemovePostHint => '例如：这违反了小组规则。';
+
+  @override
+  String get groupsRemovePostReasonRequired => '请说明为何移除此帖子。';
+
+  @override
+  String get groupsRemovePostAction => '移除帖子';
+
+  @override
+  String get groupsModerationChecking => '正在检查';
+
+  @override
+  String get groupsModerationHidden => '已对本小组隐藏';
+
+  @override
+  String get groupsAppealSent => '已提交申诉';
+
+  @override
+  String groupsReasonPrefix(String reason) {
+    return '原因：$reason';
+  }
+
+  @override
+  String get groupsHiddenByAdmin => '管理员隐藏了此帖子。';
+
+  @override
+  String groupsDeletedAfter(String deadline) {
+    return '若申诉未获批准，将在 $deadline 后删除。';
+  }
+
+  @override
+  String get groupsAppealPendingReview => '版主将审核您的申诉。';
+
+  @override
+  String get groupsAppeal => '申诉';
+
+  @override
+  String get groupsAppealTitle => '对此移除提出申诉？';
+
+  @override
+  String get groupsAppealIntro => '版主将审核。若同意，帖子会重新出现在小组中。';
+
+  @override
+  String get groupsAppealLabel => '为什么应该保留？（可选）';
+
+  @override
+  String get groupsSendAppeal => '发送申诉';
 }

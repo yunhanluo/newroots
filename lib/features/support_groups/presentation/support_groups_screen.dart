@@ -8,9 +8,25 @@ import '../../../core/services/admin_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../l10n/app_localizations.dart';
 import 'widgets/deleted_group_notice.dart';
 import 'widgets/deleted_post_notice.dart';
 import 'widgets/suggestion_review_notice.dart';
+
+String _groupsCategoryLabel(
+  AppLocalizations l10n,
+  SupportGroupCategory category,
+) {
+  return switch (category) {
+    SupportGroupCategory.parents => l10n.groupsCategoryParents,
+    SupportGroupCategory.jobs => l10n.groupsCategoryJobs,
+    SupportGroupCategory.language => l10n.groupsCategoryLanguage,
+    SupportGroupCategory.networking => l10n.groupsCategoryCareers,
+    SupportGroupCategory.culture => l10n.groupsCategoryCulture,
+    SupportGroupCategory.housing => l10n.groupsCategoryHousing,
+    SupportGroupCategory.other => l10n.groupsCategoryOther,
+  };
+}
 
 /// Feature 8: Mutual Support Groups — discover and join.
 class SupportGroupsScreen extends ConsumerStatefulWidget {
@@ -41,10 +57,15 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
   bool _matchesSearch(SupportGroup group) {
     final query = _searchController.text.trim().toLowerCase();
     if (query.isEmpty) return true;
+    final category = _groupsCategoryLabel(
+      AppLocalizations.of(context),
+      group.category,
+    );
     return group.title.toLowerCase().contains(query) ||
         group.description.toLowerCase().contains(query) ||
         group.region.toLowerCase().contains(query) ||
         group.category.label.toLowerCase().contains(query) ||
+        category.toLowerCase().contains(query) ||
         group.languageLabel.toLowerCase().contains(query);
   }
 
@@ -122,21 +143,20 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
   }
 
   Future<void> _leave(SupportGroup group) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Leave this group?'),
-        content: Text(
-          'You will stop seeing posts in "${group.title}". You can join again later.',
-        ),
+        title: Text(l10n.groupsLeaveConfirmTitle),
+        content: Text(l10n.groupsLeaveConfirmBody(group.title)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(l10n.actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Leave'),
+            child: Text(l10n.groupsLeaveShort),
           ),
         ],
       ),
@@ -189,7 +209,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
         ref.watch(unseenPostDeletionNoticesProvider).value ?? const [];
 
     return BrandScaffold(
-      title: 'Support Groups',
+      title: AppLocalizations.of(context).featureSupportGroups,
       actions: [
         if (isAdmin)
           IconButton(
@@ -213,6 +233,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
           onRetry: () => ref.invalidate(supportGroupsProvider),
         ),
         data: (groups) {
+          final l10n = AppLocalizations.of(context);
           final visible = groups.where((group) {
             if (group.deleted) {
               return _mineOnly &&
@@ -229,7 +250,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 28),
             children: [
               Text(
-                'Join a group to post, ask questions, and help other newcomers in California.',
+                AppLocalizations.of(context).groupsIntro,
                 style: TextStyle(
                   fontSize: 15,
                   height: 1.45,
@@ -271,41 +292,30 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                 onChanged: (mineOnly) => setState(() => _mineOnly = mineOnly),
               ),
               const SizedBox(height: 12),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 168,
-                    child: _GroupSearchField(
-                      controller: _searchController,
-                      onChanged: () => setState(() {}),
+              _GroupSearchField(
+                controller: _searchController,
+                onChanged: () => setState(() {}),
+              ),
+              const SizedBox(height: 10),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    _FilterChip(
+                      label: l10n.groupsFilterAll,
+                      selected: _filter == null,
+                      onTap: () => setState(() => _filter = null),
                     ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          _FilterChip(
-                            label: 'All',
-                            selected: _filter == null,
-                            onTap: () => setState(() => _filter = null),
-                          ),
-                          for (final category
-                              in SupportGroupCategory.values) ...[
-                            const SizedBox(width: 8),
-                            _FilterChip(
-                              label: category.label,
-                              selected: _filter == category,
-                              onTap: () =>
-                                  setState(() => _filter = category),
-                            ),
-                          ],
-                        ],
+                    for (final category in SupportGroupCategory.values) ...[
+                      const SizedBox(width: 8),
+                      _FilterChip(
+                        label: _groupsCategoryLabel(l10n, category),
+                        selected: _filter == category,
+                        onTap: () => setState(() => _filter = category),
                       ),
-                    ),
-                  ),
-                ],
+                    ],
+                  ],
+                ),
               ),
               const SizedBox(height: 16),
               if (groups.isEmpty)
@@ -318,10 +328,10 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                   padding: const EdgeInsets.only(top: 32),
                   child: Text(
                     _searchController.text.trim().isNotEmpty
-                        ? 'No groups match your search.'
+                        ? l10n.groupsSearchNoMatch
                         : _mineOnly
-                            ? 'You have not joined a group yet. Switch to Discover to find one.'
-                            : 'No groups in this category yet.',
+                            ? l10n.groupsMineEmpty
+                            : l10n.groupsCategoryEmpty,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
@@ -362,7 +372,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
               OutlinedButton.icon(
                 onPressed: () => context.pushNamed(Routes.suggestGroup),
                 icon: const Icon(Icons.add),
-                label: const Text('Suggest a new group'),
+                label: Text(AppLocalizations.of(context).groupsSuggest),
                 style: OutlinedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 48),
                 ),
@@ -488,6 +498,7 @@ class _ScopeToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -497,12 +508,14 @@ class _ScopeToggle extends StatelessWidget {
       child: Row(
         children: [
           _ScopeButton(
-            label: 'Discover',
+            label: l10n.groupsDiscover,
             selected: !mineOnly,
             onTap: () => onChanged(false),
           ),
           _ScopeButton(
-            label: myCount == 0 ? 'My groups' : 'My groups ($myCount)',
+            label: myCount == 0
+                ? l10n.groupsMine
+                : l10n.groupsMineCount(myCount),
             selected: mineOnly,
             onTap: () => onChanged(true),
           ),
@@ -560,6 +573,7 @@ class _GroupSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final hasQuery = controller.text.trim().isNotEmpty;
     return TextField(
       controller: controller,
@@ -568,7 +582,7 @@ class _GroupSearchField extends StatelessWidget {
       style: const TextStyle(fontSize: 14),
       decoration: InputDecoration(
         isDense: true,
-        hintText: 'Search',
+        hintText: l10n.groupsSearch,
         hintStyle: TextStyle(
           color: Colors.black87.withValues(alpha: 0.45),
           fontSize: 14,
@@ -580,7 +594,7 @@ class _GroupSearchField extends StatelessWidget {
         ),
         suffixIcon: hasQuery
             ? IconButton(
-                tooltip: 'Clear search',
+                tooltip: l10n.groupsSearchClear,
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(
                   minWidth: 32,
@@ -631,7 +645,16 @@ class _FilterChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilterChip(
-      label: Text(label),
+      label: Text(
+        label,
+        maxLines: 1,
+        softWrap: false,
+        overflow: TextOverflow.visible,
+      ),
+      labelPadding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      visualDensity: VisualDensity.standard,
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       selected: selected,
       onSelected: (_) => onTap(),
       selectedColor: kBrandGreen.withValues(alpha: 0.16),
@@ -819,7 +842,7 @@ class _GroupCard extends StatelessWidget {
                           ),
                         ),
                         onPressed: onLeave,
-                        child: const Text('Leave group'),
+                        child: Text(AppLocalizations.of(context).groupsLeave),
                       ),
                     const Spacer(),
                     joined
@@ -831,7 +854,7 @@ class _GroupCard extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 18),
                             ),
                             onPressed: onJoin,
-                            child: const Text('Join'),
+                            child: Text(AppLocalizations.of(context).groupsJoin),
                           ),
                   ],
                 ),

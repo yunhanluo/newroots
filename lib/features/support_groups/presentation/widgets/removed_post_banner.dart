@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/models/support_group.dart';
 import '../../../../core/theme/brand_colors.dart';
 import '../../../../core/services/support_group_service.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'appeal_post_dialog.dart';
 
 /// Status when an admin has hidden a post pending appeal or deletion.
@@ -24,21 +25,22 @@ class RemovedPostBanner extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     if (!post.removed) return const SizedBox.shrink();
 
+    final l10n = AppLocalizations.of(context);
     final pending = post.appealStatus == PostAppealStatus.pending;
     final color = kBrandGreen;
     final deadline = post.purgeAt == null
         ? ''
         : DateFormat('MMM d').format(post.purgeAt!.toLocal());
     final title = pending
-        ? 'Appeal sent'
-        : 'Hidden from the group';
+        ? l10n.groupsAppealSent
+        : l10n.groupsModerationHidden;
     var body = post.removedReason.trim().isNotEmpty
-        ? 'Reason: ${post.removedReason}'
-        : 'An admin hid this post.';
+        ? l10n.groupsReasonPrefix(post.removedReason)
+        : l10n.groupsHiddenByAdmin;
     if (!pending && deadline.isNotEmpty) {
-      body = '$body It will be deleted after $deadline unless an appeal is approved.';
+      body = '$body ${l10n.groupsDeletedAfter(deadline)}';
     } else if (pending) {
-      body = '$body A moderator will review your appeal.';
+      body = '$body ${l10n.groupsAppealPendingReview}';
     }
 
     return Container(
@@ -97,7 +99,7 @@ class RemovedPostBanner extends ConsumerWidget {
                 backgroundColor: color,
               ),
               onPressed: () => _appeal(context, ref),
-              child: const Text('Appeal'),
+              child: Text(l10n.groupsAppeal),
             ),
           ],
         ],

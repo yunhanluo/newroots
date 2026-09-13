@@ -3,10 +3,10 @@
   "title": "Healthcare basics",
   "subtitle": "Insurance, clinic visits, and community health centers.",
   "landingTitle": "Healthcare basics",
-        "landingBody": "A short guide to insurance, clinic visits, community health centers, and asking for an interpreter in California.",
+  "landingBody": "A short guide to insurance, clinic visits, community health centers, and asking for an interpreter in California.",
   "icon": "health",
   "finishRoute": "healthcare",
-  "version": 1,
+  "version": 2,
   "sections": [
     {
       "title": "Welcome",

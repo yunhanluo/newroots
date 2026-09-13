@@ -742,4 +742,576 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get housingAskFollowUpHint => 'اطرح سؤالاً متابعة…';
+
+  @override
+  String get educationNavigatorTitle => 'دليل التعليم';
+
+  @override
+  String get educationHubIntro =>
+      'تعرّف كيف تعمل مدارس كاليفورنيا، ثم اعثر على مدارس حكومية وخاصة قريبة بالإضافة إلى دروس خصوصية ومكتبات وبرامج STEM موثوقة.';
+
+  @override
+  String get educationBasicsTitle => 'أساسيات التعليم';
+
+  @override
+  String get educationBasicsSubtitle =>
+      'التسجيل والمناطق التعليمية ومستويات الصفوف ودعم متعلمي الإنجليزية والمساعدة الأكاديمية.';
+
+  @override
+  String get educationFindTitle => 'البحث عن المدارس والبرامج';
+
+  @override
+  String get educationFindSubtitle =>
+      'خريطة وقائمة بالمدارس الحكومية والخاصة القريبة في كاليفورنيا والمكتبات والدروس الخصوصية وبرامج STEM.';
+
+  @override
+  String get healthcareNavigatorTitle => 'دليل الرعاية الصحية';
+
+  @override
+  String get healthcareHubIntro =>
+      'تعرّف كيف تعمل الرعاية في كاليفورنيا، ثم اعثر على مراكز صحة مجتمعية موثوقة بالقرب منك.';
+
+  @override
+  String get healthcareBasicsTitle => 'أساسيات الرعاية الصحية';
+
+  @override
+  String get healthcareBasicsSubtitle =>
+      'التأمين، وكيف تسير الزيارات، ومراكز الصحة المجتمعية، والمساعدة اللغوية.';
+
+  @override
+  String get healthcareFindTitle => 'البحث عن عيادة';
+
+  @override
+  String get healthcareFindSubtitle =>
+      'خريطة وقائمة بمراكز الصحة المجتمعية التابعة لـ HRSA القريبة حسب المدينة أو الرمز البريدي.';
+
+  @override
+  String get finderCityOrZipLabel => 'المدينة أو الرمز البريدي';
+
+  @override
+  String get finderCityOrZipHint => 'مثال: Oakland أو 94102';
+
+  @override
+  String get finderSetCityOrZip => 'أدخل مدينة أو رمزاً بريدياً';
+
+  @override
+  String finderNear(String location) {
+    return 'بالقرب من: $location';
+  }
+
+  @override
+  String get finderHideSearchOptions => 'إخفاء خيارات البحث';
+
+  @override
+  String get finderResizeMap => 'تغيير حجم الخريطة';
+
+  @override
+  String get clinicsSearchIntro =>
+      'ابحث عن مراكز الصحة المجتمعية التابعة لـ HRSA قرب مدينة أو رمز بريدي في كاليفورنيا. الدبابيس من الدليل الفيدرالي الرسمي.';
+
+  @override
+  String get clinicsFindButton => 'العثور على عيادات قريبة';
+
+  @override
+  String get clinicsSearchDetail => 'مراكز الصحة المجتمعية التابعة لـ HRSA';
+
+  @override
+  String get clinicsEnterLocation =>
+      'أدخل مدينة أو رمزاً بريدياً للعثور على عيادات قريبة.';
+
+  @override
+  String get clinicsNoResults =>
+      'لم يُعثر على مراكز صحة مجتمعية قريبة. جرّب مدينة أو رمزاً بريدياً آخر في كاليفورنيا، أو وسّع البحث لاحقاً.';
+
+  @override
+  String get clinicsLoadError => 'تعذر تحميل العيادات. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get englishSearchIntro =>
+      'اعثر على مدارس للبالغين وكليات مجتمعية وبرامج ESL في المكتبات موثوقة قرب مدينة أو رمز بريدي في كاليفورنيا.';
+
+  @override
+  String get englishFindButton => 'العثور على صفوف قريبة';
+
+  @override
+  String get englishSearchDetail => 'مدارس البالغين والكليات والمكتبات';
+
+  @override
+  String get englishEnterLocation =>
+      'أدخل مدينة أو رمزاً بريدياً للعثور على صفوف قريبة.';
+
+  @override
+  String get englishNoResults =>
+      'لا توجد موارد ESL قريبة بعد. جرّب مدينة أو رمزاً بريدياً آخر في كاليفورنيا.';
+
+  @override
+  String get englishLoadError =>
+      'تعذر تحميل موارد الإنجليزية. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get englishSourceCurated =>
+      'المصدر: تعليم البالغين والكليات والمكتبات المختارة في كاليفورنيا';
+
+  @override
+  String englishSourceNamed(String source) {
+    return 'المصدر: $source';
+  }
+
+  @override
+  String get educationSearchIntro =>
+      'ابحث عن مدارس كاليفورنيا الحكومية والخاصة من دليل CDE الرسمي، بالإضافة إلى مكتبات ودروس خصوصية وبرامج STEM مختارة.';
+
+  @override
+  String get educationFindButton => 'البحث بالقرب';
+
+  @override
+  String get educationEnterLocation =>
+      'أدخل مدينة أو رمزاً بريدياً للعثور على مدارس قريبة.';
+
+  @override
+  String get educationNoResults =>
+      'لم يُعثر على مدارس أو برامج قريبة. جرّب مدينة أو رمزاً بريدياً آخر في كاليفورنيا، أو غيّر عوامل التصفية.';
+
+  @override
+  String get educationLoadError => 'تعذر تحميل موارد التعليم. حاول مرة أخرى.';
+
+  @override
+  String get educationLoadErrorShort =>
+      'تعذر تحميل موارد التعليم. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get educationTypeLabel => 'النوع';
+
+  @override
+  String get educationAllTypes => 'كل الأنواع';
+
+  @override
+  String get educationKindSchools => 'المدارس';
+
+  @override
+  String get educationKindPrograms => 'البرامج والدعم';
+
+  @override
+  String get educationKindPublicSchools => 'مدارس حكومية';
+
+  @override
+  String get educationKindPrivateSchools => 'مدارس خاصة';
+
+  @override
+  String get educationKindEnrollmentHelp => 'مساعدة التسجيل';
+
+  @override
+  String get educationKindLibraries => 'المكتبات';
+
+  @override
+  String get educationKindTutoring => 'دروس خصوصية';
+
+  @override
+  String get educationKindStem => 'STEM / إثراء';
+
+  @override
+  String get educationAllGrades => 'كل الصفوف';
+
+  @override
+  String get educationGradeLabel => 'الصف';
+
+  @override
+  String get educationGradePk => 'ما قبل الروضة';
+
+  @override
+  String get educationGrade12 => 'الثاني عشر';
+
+  @override
+  String educationGradeSingle(String grade) {
+    return 'الصف $grade';
+  }
+
+  @override
+  String educationGradesRange(String low, String high) {
+    return 'الصفوف $low–$high';
+  }
+
+  @override
+  String get educationMapBadge => 'مدارس CDE + برامج';
+
+  @override
+  String get groupsIntro =>
+      'انضم إلى مجموعة للنشر وطرح الأسئلة ومساعدة القادمين الجدد الآخرين في كاليفورنيا.';
+
+  @override
+  String get groupsDiscover => 'اكتشف';
+
+  @override
+  String get groupsMine => 'مجموعاتي';
+
+  @override
+  String groupsMineCount(int count) {
+    return 'مجموعاتي ($count)';
+  }
+
+  @override
+  String get groupsSuggest => 'اقترح مجموعة جديدة';
+
+  @override
+  String get groupsJoin => 'انضم';
+
+  @override
+  String get groupsLeave => 'مغادرة المجموعة';
+
+  @override
+  String get groupsSearch => 'بحث';
+
+  @override
+  String get groupsSearchClear => 'مسح البحث';
+
+  @override
+  String get groupsFilterAll => 'الكل';
+
+  @override
+  String get groupsSearchNoMatch => 'لا توجد مجموعات تطابق بحثك.';
+
+  @override
+  String get groupsMineEmpty =>
+      'لم تنضم إلى مجموعة بعد. انتقل إلى اكتشف للعثور على واحدة.';
+
+  @override
+  String get groupsCategoryEmpty => 'لا توجد مجموعات في هذه الفئة بعد.';
+
+  @override
+  String get groupsSuggestTitle => 'اقترح مجموعة';
+
+  @override
+  String get groupsSuggestIntro =>
+      'اقترح مجموعة للقادمين الجدد الآخرين في كاليفورنيا. يراجع مسؤول كل اقتراح قبل فتحها للانضمام.';
+
+  @override
+  String get groupsSuggestNameLabel => 'اسم المجموعة';
+
+  @override
+  String get groupsSuggestNameHint => 'مثال: القادمون الجدد في Fresno';
+
+  @override
+  String get groupsSuggestCategory => 'الفئة';
+
+  @override
+  String get groupsSuggestPurposeLabel => 'ما الغرض من هذه المجموعة؟';
+
+  @override
+  String get groupsSuggestPurposeHint =>
+      'من ينبغي أن ينضم، وماذا سيتحدث الناس عنه؟';
+
+  @override
+  String get groupsSuggestSubmit => 'إرسال للمراجعة';
+
+  @override
+  String get groupsSuggestSent =>
+      'تم إرسال الاقتراح. سيراجعه مسؤول قبل ظهور المجموعة.';
+
+  @override
+  String get groupsSuggestSendError =>
+      'تعذر إرسال ذلك الاقتراح. حاول مرة أخرى.';
+
+  @override
+  String get groupsSuggestNameRequired => 'أعط المجموعة اسماً.';
+
+  @override
+  String get groupsSuggestDescriptionRequired => 'أضف وصفاً قصيراً.';
+
+  @override
+  String get groupsCategoryParents => 'الآباء';
+
+  @override
+  String get groupsCategoryJobs => 'وظائف';
+
+  @override
+  String get groupsCategoryLanguage => 'الإنجليزية';
+
+  @override
+  String get groupsCategoryCareers => 'المسارات المهنية';
+
+  @override
+  String get groupsCategoryCulture => 'الثقافة';
+
+  @override
+  String get groupsCategoryHousing => 'السكن';
+
+  @override
+  String get groupsCategoryOther => 'أخرى';
+
+  @override
+  String get groupsFallbackTitle => 'مجموعة دعم';
+
+  @override
+  String get groupsLoadError => 'تعذر تحميل هذه المجموعة.';
+
+  @override
+  String get groupsUnavailable => 'هذه المجموعة لم تعد متاحة.';
+
+  @override
+  String get groupsRemovedAdmin => 'أزال مسؤول هذه المجموعة.';
+
+  @override
+  String groupsRemovedWithReason(String reason) {
+    return 'أُزيلت هذه المجموعة. السبب: $reason';
+  }
+
+  @override
+  String get groupsMemberOne => 'عضو واحد';
+
+  @override
+  String groupsMemberCount(int count) {
+    return '$count أعضاء';
+  }
+
+  @override
+  String get groupsPrivacyNotice =>
+      'المنشورات والأسئلة خاصة بالأعضاء. تُراجع للسلامة قبل أن يراها الآخرون. كن لطيفاً، ولا تلصق أرقام الهوية أو كلمات المرور أو أرقام الحسابات.';
+
+  @override
+  String get groupsNewPost => 'منشور جديد';
+
+  @override
+  String get groupsAskQuestion => 'اطرح سؤالاً';
+
+  @override
+  String get groupsJoinToRead => 'انضم لقراءة المنشورات والرد';
+
+  @override
+  String get groupsJoinPrompt =>
+      'الأعضاء فقط يمكنهم رؤية المنشورات والأسئلة في هذه المجموعة. انضم عندما تكون جاهزاً للمشاركة.';
+
+  @override
+  String get groupsJoinGroup => 'الانضمام إلى المجموعة';
+
+  @override
+  String get groupsLeaveShort => 'مغادرة';
+
+  @override
+  String get groupsLeaveConfirmTitle => 'مغادرة هذه المجموعة؟';
+
+  @override
+  String groupsLeaveConfirmBody(String title) {
+    return 'ستتوقف عن رؤية منشورات \"$title\". يمكنك الانضمام لاحقاً.';
+  }
+
+  @override
+  String get groupsPostsLoadError =>
+      'تعذر تحميل المنشورات. انضم إلى المجموعة ثم حاول مرة أخرى.';
+
+  @override
+  String get groupsNoPostsYet =>
+      'لا منشورات بعد. شارك شيئاً، أو اطرح سؤالاً يمكن للمجموعة المساعدة فيه.';
+
+  @override
+  String get groupsYou => 'أنت';
+
+  @override
+  String get groupsPostOptions => 'خيارات المنشور';
+
+  @override
+  String get groupsReplyOptions => 'خيارات الرد';
+
+  @override
+  String get groupsKindPost => 'منشور';
+
+  @override
+  String get groupsKindQuestion => 'سؤال';
+
+  @override
+  String get groupsNoAnswersYet => 'لا إجابات بعد';
+
+  @override
+  String get groupsNoRepliesYet => 'لا ردود بعد';
+
+  @override
+  String get groupsReplyOne => 'رد واحد';
+
+  @override
+  String groupsReplyMany(int count) {
+    return '$count ردود';
+  }
+
+  @override
+  String get groupsComposePostIntro =>
+      'شارك تحديثاً أو نصيحة أو شيئاً قد يساعد الآخرين في هذه المجموعة.';
+
+  @override
+  String get groupsComposeQuestionIntro =>
+      'اسأل المجموعة شيئاً يمكنهم المساعدة فيه. يمكن للأعضاء الآخرين الرد في هذا الموضوع.';
+
+  @override
+  String get groupsComposeGuidelines =>
+      'تُراجع المنشورات للسلامة قبل أن يراها الآخرون. لا تلصق أرقام الهوية أو كلمات المرور أو أرقام الحسابات. الحديث عن الإعانات والتأشيرات والأوراق مسموح.';
+
+  @override
+  String get groupsComposeTitleLabel => 'العنوان';
+
+  @override
+  String get groupsComposeQuestionLabel => 'السؤال';
+
+  @override
+  String get groupsComposeTitleHint => 'مثال: نصيحة سيرة ذاتية ساعدتني';
+
+  @override
+  String get groupsComposeQuestionHint => 'مثال: كيف وجدت طبيب أطفال؟';
+
+  @override
+  String get groupsComposeBodyLabel => 'الوصف';
+
+  @override
+  String get groupsComposeDetailsLabel => 'تفاصيل (اختياري)';
+
+  @override
+  String get groupsComposeBodyHint => 'أضف القصة أو رابطاً أو أي شيء مفيد.';
+
+  @override
+  String get groupsComposeDetailsHint => 'أضف تفاصيل تساعد الناس على الإجابة.';
+
+  @override
+  String get groupsAddPhotos => 'إضافة صور';
+
+  @override
+  String get groupsAdd => 'إضافة';
+
+  @override
+  String groupsPhotoCount(int count, int max) {
+    return '$count من $max صور';
+  }
+
+  @override
+  String get groupsPublishPost => 'نشر المنشور';
+
+  @override
+  String get groupsPostQuestion => 'نشر السؤال';
+
+  @override
+  String get groupsPhotoLibrary => 'مكتبة الصور';
+
+  @override
+  String get groupsCamera => 'الكاميرا';
+
+  @override
+  String get groupsPhotoOpenError => 'تعذر فتح تلك الصورة. جرّب صورة أخرى.';
+
+  @override
+  String get groupsPublishError => 'تعذر النشر. حاول مرة أخرى.';
+
+  @override
+  String get groupsRemovePhoto => 'إزالة الصورة';
+
+  @override
+  String get groupsPostLoadError => 'تعذر تحميل هذا المنشور.';
+
+  @override
+  String get groupsPostRemoved => 'أُزيل هذا المنشور.';
+
+  @override
+  String get groupsAnswers => 'الإجابات';
+
+  @override
+  String get groupsReplies => 'الردود';
+
+  @override
+  String get groupsRepliesLoadError => 'تعذر تحميل الردود.';
+
+  @override
+  String get groupsNoAnswersHelp => 'لا إجابات بعد. كن أول من يساعد.';
+
+  @override
+  String get groupsNoRepliesHelp => 'لا ردود بعد. ابدأ المحادثة.';
+
+  @override
+  String get groupsWriteAnswer => 'اكتب إجابة…';
+
+  @override
+  String get groupsWriteReply => 'اكتب رداً…';
+
+  @override
+  String get groupsEditReply => 'تعديل الرد';
+
+  @override
+  String get groupsWriteReplyFirst => 'اكتب رداً أولاً.';
+
+  @override
+  String get groupsDeleteReplyTitle => 'حذف هذا الرد؟';
+
+  @override
+  String get groupsDeleteReplyBody => 'لا يمكن التراجع عن هذا.';
+
+  @override
+  String get groupsEdit => 'تعديل';
+
+  @override
+  String get groupsEdited => 'عُدّل';
+
+  @override
+  String get groupsReply => 'رد';
+
+  @override
+  String get groupsDeletePostTitle => 'حذف هذا المنشور؟';
+
+  @override
+  String get groupsDeletePostBody =>
+      'ستُزال الردود أيضاً. لا يمكن التراجع عن هذا.';
+
+  @override
+  String get groupsRemovePostTitle => 'إزالة هذا المنشور؟';
+
+  @override
+  String get groupsRemovePostBody =>
+      'سيُخفى المنشور عن المجموعة. لدى الكاتب 7 أيام للاستئناف. إن لم يفعل، أو رفض المشرف الاستئناف، سيُحذف.';
+
+  @override
+  String get groupsRemovePostReason => 'السبب';
+
+  @override
+  String get groupsRemovePostHint => 'مثال: هذا خالف قواعد المجموعة.';
+
+  @override
+  String get groupsRemovePostReasonRequired =>
+      'يرجى ذكر سبب إزالة هذا المنشور.';
+
+  @override
+  String get groupsRemovePostAction => 'إزالة المنشور';
+
+  @override
+  String get groupsModerationChecking => 'جارٍ التحقق';
+
+  @override
+  String get groupsModerationHidden => 'مخفي عن المجموعة';
+
+  @override
+  String get groupsAppealSent => 'أُرسل الاستئناف';
+
+  @override
+  String groupsReasonPrefix(String reason) {
+    return 'السبب: $reason';
+  }
+
+  @override
+  String get groupsHiddenByAdmin => 'أخفى مسؤول هذا المنشور.';
+
+  @override
+  String groupsDeletedAfter(String deadline) {
+    return 'سيُحذف بعد $deadline ما لم يُوافق على الاستئناف.';
+  }
+
+  @override
+  String get groupsAppealPendingReview => 'سيراجع مشرف استئنافك.';
+
+  @override
+  String get groupsAppeal => 'استئناف';
+
+  @override
+  String get groupsAppealTitle => 'الاستئناف على هذه الإزالة؟';
+
+  @override
+  String get groupsAppealIntro =>
+      'سيراجعه مشرف. إذا وافق، سيظهر المنشور في المجموعة مرة أخرى.';
+
+  @override
+  String get groupsAppealLabel => 'لماذا ينبغي أن يبقى؟ (اختياري)';
+
+  @override
+  String get groupsSendAppeal => 'إرسال الاستئناف';
 }

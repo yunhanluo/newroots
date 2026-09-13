@@ -6,7 +6,7 @@
   "landingBody": "A short guide to California public schools, enrollment, English learner support, and academic programs.",
   "icon": "school",
   "finishRoute": "education",
-  "version": 1,
+  "version": 2,
   "sections": [
     {
       "title": "Welcome",

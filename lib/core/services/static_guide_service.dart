@@ -26,6 +26,8 @@ class StaticGuideService {
   static const _localizedGuides = <String, Set<String>>{
     StaticGuideIds.housing: _localizedLanguages,
     StaticGuideIds.safety: _localizedLanguages,
+    StaticGuideIds.education: _localizedLanguages,
+    StaticGuideIds.healthcare: _localizedLanguages,
   };
 
   final FirebaseFirestore _db;

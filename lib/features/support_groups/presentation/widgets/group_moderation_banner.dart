@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/models/support_group.dart';
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// Status banner for a post or reply that is still being checked or was hidden.
 class GroupModerationBanner extends StatelessWidget {
@@ -22,7 +23,10 @@ class GroupModerationBanner extends StatelessWidget {
 
     final pending = moderation.isPending;
     final color = pending ? kBrandGreen : const Color(0xFFB3261E);
-    final title = pending ? 'Checking this' : 'Hidden from the group';
+    final l10n = AppLocalizations.of(context);
+    final title = pending
+        ? l10n.groupsModerationChecking
+        : l10n.groupsModerationHidden;
     var body = moderation.authorMessage;
     if (isAdmin && moderation.isRejected && moderation.category.isNotEmpty) {
       body = '$body (admin: ${moderation.category})';

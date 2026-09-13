@@ -746,4 +746,581 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get housingAskFollowUpHint => 'आगे का प्रश्न पूछें…';
+
+  @override
+  String get educationNavigatorTitle => 'शिक्षा नेविगेटर';
+
+  @override
+  String get educationHubIntro =>
+      'जानें कि कैलिफोर्निया की स्कूलें कैसे काम करती हैं, फिर पास की सरकारी और निजी स्कूलें तथा भरोसेमंद ट्यूशन, पुस्तकालय और STEM कार्यक्रम खोजें।';
+
+  @override
+  String get educationBasicsTitle => 'शिक्षा की बुनियादी बातें';
+
+  @override
+  String get educationBasicsSubtitle =>
+      'नामांकन, जिले, कक्षा स्तर, अंग्रेज़ी सीखने वाले छात्रों की सहायता और शैक्षणिक मदद।';
+
+  @override
+  String get educationFindTitle => 'स्कूल और कार्यक्रम खोजें';
+
+  @override
+  String get educationFindSubtitle =>
+      'पास की कैलिफोर्निया सरकारी और निजी स्कूलों, पुस्तकालयों, ट्यूशन और STEM कार्यक्रमों का मैप और सूची।';
+
+  @override
+  String get healthcareNavigatorTitle => 'स्वास्थ्य नेविगेटर';
+
+  @override
+  String get healthcareHubIntro =>
+      'जानें कि कैलिफोर्निया में देखभाल कैसे काम करती है, फिर अपने पास भरोसेमंद सामुदायिक स्वास्थ्य केंद्र खोजें।';
+
+  @override
+  String get healthcareBasicsTitle => 'स्वास्थ्य सेवा की मूल बातें';
+
+  @override
+  String get healthcareBasicsSubtitle =>
+      'बीमा, विज़िट कैसे काम करती है, सामुदायिक स्वास्थ्य केंद्र और भाषा सहायता।';
+
+  @override
+  String get healthcareFindTitle => 'क्लिनिक खोजें';
+
+  @override
+  String get healthcareFindSubtitle =>
+      'शहर या ZIP के अनुसार पास के HRSA सामुदायिक स्वास्थ्य केंद्रों का मैप और सूची।';
+
+  @override
+  String get finderCityOrZipLabel => 'शहर या ZIP कोड';
+
+  @override
+  String get finderCityOrZipHint => 'जैसे Oakland या 94102';
+
+  @override
+  String get finderSetCityOrZip => 'शहर या ZIP कोड दर्ज करें';
+
+  @override
+  String finderNear(String location) {
+    return 'पास: $location';
+  }
+
+  @override
+  String get finderHideSearchOptions => 'खोज विकल्प छिपाएँ';
+
+  @override
+  String get finderResizeMap => 'मैप का आकार बदलें';
+
+  @override
+  String get clinicsSearchIntro =>
+      'कैलिफोर्निया के शहर या ZIP के पास HRSA सामुदायिक स्वास्थ्य केंद्र खोजें। पिन आधिकारिक संघीय निर्देशिका से हैं।';
+
+  @override
+  String get clinicsFindButton => 'पास की क्लिनिक खोजें';
+
+  @override
+  String get clinicsSearchDetail => 'HRSA सामुदायिक स्वास्थ्य केंद्र';
+
+  @override
+  String get clinicsEnterLocation =>
+      'पास की क्लिनिक खोजने के लिए शहर या ZIP कोड दर्ज करें।';
+
+  @override
+  String get clinicsNoResults =>
+      'पास कोई सामुदायिक स्वास्थ्य केंद्र नहीं मिला। कोई अन्य कैलिफोर्निया शहर या ZIP आज़माएँ, या बाद में खोज व्यापक करें।';
+
+  @override
+  String get clinicsLoadError =>
+      'क्लिनिक लोड नहीं हो सकीं। थोड़ी देर बाद फिर कोशिश करें।';
+
+  @override
+  String get englishSearchIntro =>
+      'कैलिफोर्निया के शहर या ZIP के पास भरोसेमंद वयस्क स्कूल, सामुदायिक कॉलेज और पुस्तकालय ESL कार्यक्रम खोजें।';
+
+  @override
+  String get englishFindButton => 'पास की कक्षाएँ खोजें';
+
+  @override
+  String get englishSearchDetail => 'वयस्क स्कूल, कॉलेज और पुस्तकालय';
+
+  @override
+  String get englishEnterLocation =>
+      'पास की कक्षाएँ खोजने के लिए शहर या ZIP कोड दर्ज करें।';
+
+  @override
+  String get englishNoResults =>
+      'पास अभी ESL संसाधन नहीं मिले। कोई अन्य कैलिफोर्निया शहर या ZIP आज़माएँ।';
+
+  @override
+  String get englishLoadError =>
+      'अंग्रेज़ी संसाधन लोड नहीं हो सके। थोड़ी देर बाद फिर कोशिश करें।';
+
+  @override
+  String get englishSourceCurated =>
+      'स्रोत: चयनित कैलिफोर्निया वयस्क शिक्षा, कॉलेज और पुस्तकालय';
+
+  @override
+  String englishSourceNamed(String source) {
+    return 'स्रोत: $source';
+  }
+
+  @override
+  String get educationSearchIntro =>
+      'आधिकारिक CDE निर्देशिका से कैलिफोर्निया की सरकारी और निजी स्कूलें खोजें, साथ ही चयनित पुस्तकालय, ट्यूशन और STEM कार्यक्रम।';
+
+  @override
+  String get educationFindButton => 'पास खोजें';
+
+  @override
+  String get educationEnterLocation =>
+      'पास की स्कूलें खोजने के लिए शहर या ZIP कोड दर्ज करें।';
+
+  @override
+  String get educationNoResults =>
+      'पास स्कूल या कार्यक्रम नहीं मिले। कोई अन्य कैलिफोर्निया शहर या ZIP आज़माएँ, या फ़िल्टर बदलें।';
+
+  @override
+  String get educationLoadError =>
+      'शिक्षा संसाधन लोड नहीं हो सके। फिर कोशिश करें।';
+
+  @override
+  String get educationLoadErrorShort =>
+      'शिक्षा संसाधन लोड नहीं हो सके। थोड़ी देर बाद फिर कोशिश करें।';
+
+  @override
+  String get educationTypeLabel => 'प्रकार';
+
+  @override
+  String get educationAllTypes => 'सभी प्रकार';
+
+  @override
+  String get educationKindSchools => 'स्कूलें';
+
+  @override
+  String get educationKindPrograms => 'कार्यक्रम और सहायता';
+
+  @override
+  String get educationKindPublicSchools => 'सरकारी स्कूलें';
+
+  @override
+  String get educationKindPrivateSchools => 'निजी स्कूलें';
+
+  @override
+  String get educationKindEnrollmentHelp => 'नामांकन सहायता';
+
+  @override
+  String get educationKindLibraries => 'पुस्तकालय';
+
+  @override
+  String get educationKindTutoring => 'ट्यूशन';
+
+  @override
+  String get educationKindStem => 'STEM / संवर्धन';
+
+  @override
+  String get educationAllGrades => 'सभी कक्षाएँ';
+
+  @override
+  String get educationGradeLabel => 'कक्षा';
+
+  @override
+  String get educationGradePk => 'PK';
+
+  @override
+  String get educationGrade12 => '12वीं';
+
+  @override
+  String educationGradeSingle(String grade) {
+    return 'कक्षा $grade';
+  }
+
+  @override
+  String educationGradesRange(String low, String high) {
+    return 'कक्षा $low–$high';
+  }
+
+  @override
+  String get educationMapBadge => 'CDE स्कूल + कार्यक्रम';
+
+  @override
+  String get groupsIntro =>
+      'समूह में शामिल होकर पोस्ट करें, सवाल पूछें, और कैलिफोर्निया में अन्य नए लोगों की मदद करें।';
+
+  @override
+  String get groupsDiscover => 'खोजें';
+
+  @override
+  String get groupsMine => 'मेरे समूह';
+
+  @override
+  String groupsMineCount(int count) {
+    return 'मेरे समूह ($count)';
+  }
+
+  @override
+  String get groupsSuggest => 'नया समूह सुझाएँ';
+
+  @override
+  String get groupsJoin => 'शामिल हों';
+
+  @override
+  String get groupsLeave => 'समूह छोड़ें';
+
+  @override
+  String get groupsSearch => 'खोजें';
+
+  @override
+  String get groupsSearchClear => 'खोज साफ़ करें';
+
+  @override
+  String get groupsFilterAll => 'सभी';
+
+  @override
+  String get groupsSearchNoMatch => 'कोई समूह आपकी खोज से मेल नहीं खाता.';
+
+  @override
+  String get groupsMineEmpty =>
+      'आपने अभी कोई समूह नहीं जोड़ा। खोजने के लिए डिस्कवर पर जाएँ.';
+
+  @override
+  String get groupsCategoryEmpty => 'इस श्रेणी में अभी कोई समूह नहीं है.';
+
+  @override
+  String get groupsSuggestTitle => 'समूह सुझाएँ';
+
+  @override
+  String get groupsSuggestIntro =>
+      'कैलिफोर्निया में अन्य नए लोगों के लिए एक समूह प्रस्तावित करें। जुड़ने के लिए खोलने से पहले एक व्यवस्थापक हर सुझाव की समीक्षा करता है।';
+
+  @override
+  String get groupsSuggestNameLabel => 'समूह का नाम';
+
+  @override
+  String get groupsSuggestNameHint => 'जैसे Fresno में नए लोग';
+
+  @override
+  String get groupsSuggestCategory => 'श्रेणी';
+
+  @override
+  String get groupsSuggestPurposeLabel => 'यह समूह किस लिए है?';
+
+  @override
+  String get groupsSuggestPurposeHint =>
+      'किसे शामिल होना चाहिए, और लोग किस बारे में बात करेंगे?';
+
+  @override
+  String get groupsSuggestSubmit => 'समीक्षा के लिए भेजें';
+
+  @override
+  String get groupsSuggestSent =>
+      'सुझाव भेज दिया गया। समूह दिखने से पहले एक व्यवस्थापक उसकी समीक्षा करेगा।';
+
+  @override
+  String get groupsSuggestSendError =>
+      'वह सुझाव नहीं भेजा जा सका। फिर कोशिश करें।';
+
+  @override
+  String get groupsSuggestNameRequired => 'समूह का नाम दें।';
+
+  @override
+  String get groupsSuggestDescriptionRequired => 'एक छोटी जानकारी जोड़ें।';
+
+  @override
+  String get groupsCategoryParents => 'माता-पिता';
+
+  @override
+  String get groupsCategoryJobs => 'नौकरियाँ';
+
+  @override
+  String get groupsCategoryLanguage => 'अंग्रेज़ी';
+
+  @override
+  String get groupsCategoryCareers => 'करियर';
+
+  @override
+  String get groupsCategoryCulture => 'संस्कृति';
+
+  @override
+  String get groupsCategoryHousing => 'आवास';
+
+  @override
+  String get groupsCategoryOther => 'अन्य';
+
+  @override
+  String get groupsFallbackTitle => 'सहायता समूह';
+
+  @override
+  String get groupsLoadError => 'यह समूह लोड नहीं हो सका.';
+
+  @override
+  String get groupsUnavailable => 'यह समूह अब उपलब्ध नहीं है।';
+
+  @override
+  String get groupsRemovedAdmin => 'एक व्यवस्थापक ने यह समूह हटा दिया।';
+
+  @override
+  String groupsRemovedWithReason(String reason) {
+    return 'यह समूह हटा दिया गया। कारण: $reason';
+  }
+
+  @override
+  String get groupsMemberOne => '1 सदस्य';
+
+  @override
+  String groupsMemberCount(int count) {
+    return '$count सदस्य';
+  }
+
+  @override
+  String get groupsPrivacyNotice =>
+      'पोस्ट और सवाल केवल सदस्यों के लिए हैं। दूसरों को दिखाने से पहले सुरक्षा जाँच होती है। दयालु रहें, और पहचान संख्या, पासवर्ड या खाता संख्या न चिपकाएँ।';
+
+  @override
+  String get groupsNewPost => 'नई पोस्ट';
+
+  @override
+  String get groupsAskQuestion => 'सवाल पूछें';
+
+  @override
+  String get groupsJoinToRead => 'पोस्ट पढ़ने और जवाब देने के लिए शामिल हों';
+
+  @override
+  String get groupsJoinPrompt =>
+      'इस समूह की पोस्ट और सवाल केवल सदस्य देख सकते हैं। जब भाग लेने के लिए तैयार हों तब शामिल हों।';
+
+  @override
+  String get groupsJoinGroup => 'समूह में शामिल हों';
+
+  @override
+  String get groupsLeaveShort => 'छोड़ें';
+
+  @override
+  String get groupsLeaveConfirmTitle => 'यह समूह छोड़ें?';
+
+  @override
+  String groupsLeaveConfirmBody(String title) {
+    return 'आप \"$title\" की पोस्ट देखना बंद कर देंगे। बाद में फिर शामिल हो सकते हैं।';
+  }
+
+  @override
+  String get groupsPostsLoadError =>
+      'पोस्ट लोड नहीं हो सकीं। समूह में शामिल होकर फिर कोशिश करें।';
+
+  @override
+  String get groupsNoPostsYet =>
+      'अभी कोई पोस्ट नहीं। कुछ साझा करें, या समूह से मदद का सवाल पूछें।';
+
+  @override
+  String get groupsYou => 'आप';
+
+  @override
+  String get groupsPostOptions => 'पोस्ट विकल्प';
+
+  @override
+  String get groupsReplyOptions => 'जवाब विकल्प';
+
+  @override
+  String get groupsKindPost => 'पोस्ट';
+
+  @override
+  String get groupsKindQuestion => 'सवाल';
+
+  @override
+  String get groupsNoAnswersYet => 'अभी कोई जवाब नहीं';
+
+  @override
+  String get groupsNoRepliesYet => 'अभी कोई जवाब नहीं';
+
+  @override
+  String get groupsReplyOne => '1 जवाब';
+
+  @override
+  String groupsReplyMany(int count) {
+    return '$count जवाब';
+  }
+
+  @override
+  String get groupsComposePostIntro =>
+      'अपडेट, सुझाव, या ऐसा कुछ साझा करें जो इस समूह के दूसरों की मदद करे।';
+
+  @override
+  String get groupsComposeQuestionIntro =>
+      'समूह से ऐसा सवाल पूछें जिसमें वे मदद कर सकें। अन्य सदस्य इस चर्चा में जवाब दे सकते हैं।';
+
+  @override
+  String get groupsComposeGuidelines =>
+      'पोस्ट दूसरों को दिखाने से पहले सुरक्षा जाँच से गुजरती हैं। पहचान संख्या, पासवर्ड या खाता संख्या न चिपकाएँ। लाभ, वीज़ा और कागज़ों की बात करना ठीक है।';
+
+  @override
+  String get groupsComposeTitleLabel => 'शीर्षक';
+
+  @override
+  String get groupsComposeQuestionLabel => 'सवाल';
+
+  @override
+  String get groupsComposeTitleHint =>
+      'जैसे: एक रिज़्यूमे सुझाव जिसने मेरी मदद की';
+
+  @override
+  String get groupsComposeQuestionHint =>
+      'जैसे: आपने बाल रोग विशेषज्ञ कैसे खोजा?';
+
+  @override
+  String get groupsComposeBodyLabel => 'विवरण';
+
+  @override
+  String get groupsComposeDetailsLabel => 'विवरण (वैकल्पिक)';
+
+  @override
+  String get groupsComposeBodyHint => 'कहानी, लिंक, या कुछ उपयोगी जोड़ें।';
+
+  @override
+  String get groupsComposeDetailsHint =>
+      'ऐसे विवरण जोड़ें जो जवाब देने में मदद करें।';
+
+  @override
+  String get groupsAddPhotos => 'फ़ोटो जोड़ें';
+
+  @override
+  String get groupsAdd => 'जोड़ें';
+
+  @override
+  String groupsPhotoCount(int count, int max) {
+    return '$max में से $count फ़ोटो';
+  }
+
+  @override
+  String get groupsPublishPost => 'पोस्ट प्रकाशित करें';
+
+  @override
+  String get groupsPostQuestion => 'सवाल पोस्ट करें';
+
+  @override
+  String get groupsPhotoLibrary => 'फ़ोटो लाइब्रेरी';
+
+  @override
+  String get groupsCamera => 'कैमरा';
+
+  @override
+  String get groupsPhotoOpenError => 'वह फ़ोटो नहीं खुल सकी। दूसरी आज़माएँ।';
+
+  @override
+  String get groupsPublishError => 'प्रकाशित नहीं हो सका। फिर कोशिश करें।';
+
+  @override
+  String get groupsRemovePhoto => 'फ़ोटो हटाएँ';
+
+  @override
+  String get groupsPostLoadError => 'यह पोस्ट लोड नहीं हो सकी।';
+
+  @override
+  String get groupsPostRemoved => 'यह पोस्ट हटा दी गई।';
+
+  @override
+  String get groupsAnswers => 'जवाब';
+
+  @override
+  String get groupsReplies => 'उत्तर';
+
+  @override
+  String get groupsRepliesLoadError => 'उत्तर लोड नहीं हो सके।';
+
+  @override
+  String get groupsNoAnswersHelp => 'अभी कोई जवाब नहीं। सबसे पहले मदद करें।';
+
+  @override
+  String get groupsNoRepliesHelp => 'अभी कोई उत्तर नहीं। बात शुरू करें।';
+
+  @override
+  String get groupsWriteAnswer => 'जवाब लिखें…';
+
+  @override
+  String get groupsWriteReply => 'उत्तर लिखें…';
+
+  @override
+  String get groupsEditReply => 'उत्तर संपादित करें';
+
+  @override
+  String get groupsWriteReplyFirst => 'पहले उत्तर लिखें।';
+
+  @override
+  String get groupsDeleteReplyTitle => 'यह उत्तर हटाएँ?';
+
+  @override
+  String get groupsDeleteReplyBody => 'इसे वापस नहीं किया जा सकता।';
+
+  @override
+  String get groupsEdit => 'संपादित करें';
+
+  @override
+  String get groupsEdited => 'संपादित';
+
+  @override
+  String get groupsReply => 'उत्तर';
+
+  @override
+  String get groupsDeletePostTitle => 'यह पोस्ट हटाएँ?';
+
+  @override
+  String get groupsDeletePostBody =>
+      'उत्तर भी हट जाएँगे। इसे वापस नहीं किया जा सकता।';
+
+  @override
+  String get groupsRemovePostTitle => 'यह पोस्ट हटाएँ?';
+
+  @override
+  String get groupsRemovePostBody =>
+      'पोस्ट समूह से छिप जाएगी। लेखक के पास अपील के 7 दिन हैं। अगर वे अपील न करें, या मॉडरेटर अस्वीकार करे, तो यह हटा दी जाएगी।';
+
+  @override
+  String get groupsRemovePostReason => 'कारण';
+
+  @override
+  String get groupsRemovePostHint => 'जैसे: इससे समूह के नियम टूटे।';
+
+  @override
+  String get groupsRemovePostReasonRequired =>
+      'बताएँ कि यह पोस्ट क्यों हटाई जा रही है।';
+
+  @override
+  String get groupsRemovePostAction => 'पोस्ट हटाएँ';
+
+  @override
+  String get groupsModerationChecking => 'जाँच हो रही है';
+
+  @override
+  String get groupsModerationHidden => 'समूह से छिपाया गया';
+
+  @override
+  String get groupsAppealSent => 'अपील भेजी गई';
+
+  @override
+  String groupsReasonPrefix(String reason) {
+    return 'कारण: $reason';
+  }
+
+  @override
+  String get groupsHiddenByAdmin => 'एक व्यवस्थापक ने यह पोस्ट छिपाई।';
+
+  @override
+  String groupsDeletedAfter(String deadline) {
+    return 'अपील मंजूर न होने पर $deadline के बाद हटा दी जाएगी।';
+  }
+
+  @override
+  String get groupsAppealPendingReview => 'एक मॉडरेटर आपकी अपील देखेगा।';
+
+  @override
+  String get groupsAppeal => 'अपील';
+
+  @override
+  String get groupsAppealTitle => 'इस हटाने की अपील करें?';
+
+  @override
+  String get groupsAppealIntro =>
+      'एक मॉडरेटर इसकी समीक्षा करेगा। सहमत होने पर पोस्ट फिर समूह में दिखेगी।';
+
+  @override
+  String get groupsAppealLabel => 'यह क्यों रहनी चाहिए? (वैकल्पिक)';
+
+  @override
+  String get groupsSendAppeal => 'अपील भेजें';
 }

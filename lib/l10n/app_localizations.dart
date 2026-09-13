@@ -1469,6 +1469,1032 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ask a follow-up…'**
   String get housingAskFollowUpHint;
+
+  /// No description provided for @educationNavigatorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Education Navigator'**
+  String get educationNavigatorTitle;
+
+  /// No description provided for @educationHubIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn how California schools work, then find nearby public and private schools plus trusted tutoring, library, and STEM programs.'**
+  String get educationHubIntro;
+
+  /// No description provided for @educationBasicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Education basics'**
+  String get educationBasicsTitle;
+
+  /// No description provided for @educationBasicsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enrollment, districts, grade levels, English learner support, and academic help.'**
+  String get educationBasicsSubtitle;
+
+  /// No description provided for @educationFindTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find schools & programs'**
+  String get educationFindTitle;
+
+  /// No description provided for @educationFindSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Map and list of nearby California public and private schools, libraries, tutoring, and STEM programs.'**
+  String get educationFindSubtitle;
+
+  /// No description provided for @healthcareNavigatorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Healthcare Navigator'**
+  String get healthcareNavigatorTitle;
+
+  /// No description provided for @healthcareHubIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn how care works in California, then find trusted community health centers near you.'**
+  String get healthcareHubIntro;
+
+  /// No description provided for @healthcareBasicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Healthcare basics'**
+  String get healthcareBasicsTitle;
+
+  /// No description provided for @healthcareBasicsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Insurance, how visits work, community health centers, and language help.'**
+  String get healthcareBasicsSubtitle;
+
+  /// No description provided for @healthcareFindTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a clinic'**
+  String get healthcareFindTitle;
+
+  /// No description provided for @healthcareFindSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Map and list of nearby HRSA community health centers by city or ZIP.'**
+  String get healthcareFindSubtitle;
+
+  /// No description provided for @finderCityOrZipLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'City or ZIP code'**
+  String get finderCityOrZipLabel;
+
+  /// No description provided for @finderCityOrZipHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Oakland or 94102'**
+  String get finderCityOrZipHint;
+
+  /// No description provided for @finderSetCityOrZip.
+  ///
+  /// In en, this message translates to:
+  /// **'Set a city or ZIP code'**
+  String get finderSetCityOrZip;
+
+  /// No description provided for @finderNear.
+  ///
+  /// In en, this message translates to:
+  /// **'Near: {location}'**
+  String finderNear(String location);
+
+  /// No description provided for @finderHideSearchOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide search options'**
+  String get finderHideSearchOptions;
+
+  /// No description provided for @finderResizeMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Resize map'**
+  String get finderResizeMap;
+
+  /// No description provided for @clinicsSearchIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Search HRSA community health centers near a California city or ZIP. Pins are from the official federal directory.'**
+  String get clinicsSearchIntro;
+
+  /// No description provided for @clinicsFindButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Find nearby clinics'**
+  String get clinicsFindButton;
+
+  /// No description provided for @clinicsSearchDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'HRSA community health centers'**
+  String get clinicsSearchDetail;
+
+  /// No description provided for @clinicsEnterLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a city or ZIP code to find nearby clinics.'**
+  String get clinicsEnterLocation;
+
+  /// No description provided for @clinicsNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No community health centers found nearby. Try another California city or ZIP, or widen your search later.'**
+  String get clinicsNoResults;
+
+  /// No description provided for @clinicsLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load clinics. Try again shortly.'**
+  String get clinicsLoadError;
+
+  /// No description provided for @englishSearchIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Find trusted adult schools, community colleges, and library ESL programs near a California city or ZIP.'**
+  String get englishSearchIntro;
+
+  /// No description provided for @englishFindButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Find nearby classes'**
+  String get englishFindButton;
+
+  /// No description provided for @englishSearchDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Adult schools, colleges & libraries'**
+  String get englishSearchDetail;
+
+  /// No description provided for @englishEnterLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a city or ZIP code to find nearby classes.'**
+  String get englishEnterLocation;
+
+  /// No description provided for @englishNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No ESL resources found nearby yet. Try another California city or ZIP.'**
+  String get englishNoResults;
+
+  /// No description provided for @englishLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load English resources. Try again shortly.'**
+  String get englishLoadError;
+
+  /// No description provided for @englishSourceCurated.
+  ///
+  /// In en, this message translates to:
+  /// **'Source: curated California adult ed, colleges, and libraries'**
+  String get englishSourceCurated;
+
+  /// No description provided for @englishSourceNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'Source: {source}'**
+  String englishSourceNamed(String source);
+
+  /// No description provided for @educationSearchIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Search California public and private schools from the official CDE directory, plus curated libraries, tutoring, and STEM programs.'**
+  String get educationSearchIntro;
+
+  /// No description provided for @educationFindButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Find nearby'**
+  String get educationFindButton;
+
+  /// No description provided for @educationEnterLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a city or ZIP code to find nearby schools.'**
+  String get educationEnterLocation;
+
+  /// No description provided for @educationNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No schools or programs found nearby. Try another California city or ZIP, or change the filters.'**
+  String get educationNoResults;
+
+  /// No description provided for @educationLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load education resources. Try again.'**
+  String get educationLoadError;
+
+  /// No description provided for @educationLoadErrorShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load education resources. Try again shortly.'**
+  String get educationLoadErrorShort;
+
+  /// No description provided for @educationTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get educationTypeLabel;
+
+  /// No description provided for @educationAllTypes.
+  ///
+  /// In en, this message translates to:
+  /// **'All types'**
+  String get educationAllTypes;
+
+  /// No description provided for @educationKindSchools.
+  ///
+  /// In en, this message translates to:
+  /// **'Schools'**
+  String get educationKindSchools;
+
+  /// No description provided for @educationKindPrograms.
+  ///
+  /// In en, this message translates to:
+  /// **'Programs & support'**
+  String get educationKindPrograms;
+
+  /// No description provided for @educationKindPublicSchools.
+  ///
+  /// In en, this message translates to:
+  /// **'Public schools'**
+  String get educationKindPublicSchools;
+
+  /// No description provided for @educationKindPrivateSchools.
+  ///
+  /// In en, this message translates to:
+  /// **'Private schools'**
+  String get educationKindPrivateSchools;
+
+  /// No description provided for @educationKindEnrollmentHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Enrollment help'**
+  String get educationKindEnrollmentHelp;
+
+  /// No description provided for @educationKindLibraries.
+  ///
+  /// In en, this message translates to:
+  /// **'Libraries'**
+  String get educationKindLibraries;
+
+  /// No description provided for @educationKindTutoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Tutoring'**
+  String get educationKindTutoring;
+
+  /// No description provided for @educationKindStem.
+  ///
+  /// In en, this message translates to:
+  /// **'STEM / enrichment'**
+  String get educationKindStem;
+
+  /// No description provided for @educationAllGrades.
+  ///
+  /// In en, this message translates to:
+  /// **'All grades'**
+  String get educationAllGrades;
+
+  /// No description provided for @educationGradeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade'**
+  String get educationGradeLabel;
+
+  /// No description provided for @educationGradePk.
+  ///
+  /// In en, this message translates to:
+  /// **'PK'**
+  String get educationGradePk;
+
+  /// No description provided for @educationGrade12.
+  ///
+  /// In en, this message translates to:
+  /// **'12th'**
+  String get educationGrade12;
+
+  /// No description provided for @educationGradeSingle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade {grade}'**
+  String educationGradeSingle(String grade);
+
+  /// No description provided for @educationGradesRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades {low}–{high}'**
+  String educationGradesRange(String low, String high);
+
+  /// No description provided for @educationMapBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'CDE schools + programs'**
+  String get educationMapBadge;
+
+  /// No description provided for @groupsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Join a group to post, ask questions, and help other newcomers in California.'**
+  String get groupsIntro;
+
+  /// No description provided for @groupsDiscover.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover'**
+  String get groupsDiscover;
+
+  /// No description provided for @groupsMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My groups'**
+  String get groupsMine;
+
+  /// No description provided for @groupsMineCount.
+  ///
+  /// In en, this message translates to:
+  /// **'My groups ({count})'**
+  String groupsMineCount(int count);
+
+  /// No description provided for @groupsSuggest.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggest a new group'**
+  String get groupsSuggest;
+
+  /// No description provided for @groupsJoin.
+  ///
+  /// In en, this message translates to:
+  /// **'Join'**
+  String get groupsJoin;
+
+  /// No description provided for @groupsLeave.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave group'**
+  String get groupsLeave;
+
+  /// No description provided for @groupsSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get groupsSearch;
+
+  /// No description provided for @groupsSearchClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search'**
+  String get groupsSearchClear;
+
+  /// No description provided for @groupsFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get groupsFilterAll;
+
+  /// No description provided for @groupsSearchNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No groups match your search.'**
+  String get groupsSearchNoMatch;
+
+  /// No description provided for @groupsMineEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not joined a group yet. Switch to Discover to find one.'**
+  String get groupsMineEmpty;
+
+  /// No description provided for @groupsCategoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No groups in this category yet.'**
+  String get groupsCategoryEmpty;
+
+  /// No description provided for @groupsSuggestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggest a group'**
+  String get groupsSuggestTitle;
+
+  /// No description provided for @groupsSuggestIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Propose a group for other newcomers in California. An admin reviews every suggestion before it is opened for people to join.'**
+  String get groupsSuggestIntro;
+
+  /// No description provided for @groupsSuggestNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Group name'**
+  String get groupsSuggestNameLabel;
+
+  /// No description provided for @groupsSuggestNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Newcomers in Fresno'**
+  String get groupsSuggestNameHint;
+
+  /// No description provided for @groupsSuggestCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get groupsSuggestCategory;
+
+  /// No description provided for @groupsSuggestPurposeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What is this group for?'**
+  String get groupsSuggestPurposeLabel;
+
+  /// No description provided for @groupsSuggestPurposeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Who should join, and what will people talk about?'**
+  String get groupsSuggestPurposeHint;
+
+  /// No description provided for @groupsSuggestSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit for review'**
+  String get groupsSuggestSubmit;
+
+  /// No description provided for @groupsSuggestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion sent. An admin will review it before the group appears.'**
+  String get groupsSuggestSent;
+
+  /// No description provided for @groupsSuggestSendError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not send that suggestion. Try again.'**
+  String get groupsSuggestSendError;
+
+  /// No description provided for @groupsSuggestNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the group a name.'**
+  String get groupsSuggestNameRequired;
+
+  /// No description provided for @groupsSuggestDescriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a short description.'**
+  String get groupsSuggestDescriptionRequired;
+
+  /// No description provided for @groupsCategoryParents.
+  ///
+  /// In en, this message translates to:
+  /// **'Parents'**
+  String get groupsCategoryParents;
+
+  /// No description provided for @groupsCategoryJobs.
+  ///
+  /// In en, this message translates to:
+  /// **'Jobs'**
+  String get groupsCategoryJobs;
+
+  /// No description provided for @groupsCategoryLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get groupsCategoryLanguage;
+
+  /// No description provided for @groupsCategoryCareers.
+  ///
+  /// In en, this message translates to:
+  /// **'Careers'**
+  String get groupsCategoryCareers;
+
+  /// No description provided for @groupsCategoryCulture.
+  ///
+  /// In en, this message translates to:
+  /// **'Culture'**
+  String get groupsCategoryCulture;
+
+  /// No description provided for @groupsCategoryHousing.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing'**
+  String get groupsCategoryHousing;
+
+  /// No description provided for @groupsCategoryOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get groupsCategoryOther;
+
+  /// No description provided for @groupsFallbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Support group'**
+  String get groupsFallbackTitle;
+
+  /// No description provided for @groupsLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load this group.'**
+  String get groupsLoadError;
+
+  /// No description provided for @groupsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This group is no longer available.'**
+  String get groupsUnavailable;
+
+  /// No description provided for @groupsRemovedAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'This group was removed by an admin.'**
+  String get groupsRemovedAdmin;
+
+  /// No description provided for @groupsRemovedWithReason.
+  ///
+  /// In en, this message translates to:
+  /// **'This group was removed. Reason: {reason}'**
+  String groupsRemovedWithReason(String reason);
+
+  /// No description provided for @groupsMemberOne.
+  ///
+  /// In en, this message translates to:
+  /// **'1 member'**
+  String get groupsMemberOne;
+
+  /// No description provided for @groupsMemberCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} members'**
+  String groupsMemberCount(int count);
+
+  /// No description provided for @groupsPrivacyNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Posts and questions are private to members. They are checked for safety before others can see them. Be kind, and do not paste ID numbers, passwords, or account numbers.'**
+  String get groupsPrivacyNotice;
+
+  /// No description provided for @groupsNewPost.
+  ///
+  /// In en, this message translates to:
+  /// **'New post'**
+  String get groupsNewPost;
+
+  /// No description provided for @groupsAskQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask a question'**
+  String get groupsAskQuestion;
+
+  /// No description provided for @groupsJoinToRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Join to read posts and reply'**
+  String get groupsJoinToRead;
+
+  /// No description provided for @groupsJoinPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Only members can see posts and questions in this group. Join when you are ready to take part.'**
+  String get groupsJoinPrompt;
+
+  /// No description provided for @groupsJoinGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Join group'**
+  String get groupsJoinGroup;
+
+  /// No description provided for @groupsLeaveShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave'**
+  String get groupsLeaveShort;
+
+  /// No description provided for @groupsLeaveConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave this group?'**
+  String get groupsLeaveConfirmTitle;
+
+  /// No description provided for @groupsLeaveConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You will stop seeing posts in \"{title}\". You can join again later.'**
+  String groupsLeaveConfirmBody(String title);
+
+  /// No description provided for @groupsPostsLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load posts. Join the group and try again.'**
+  String get groupsPostsLoadError;
+
+  /// No description provided for @groupsNoPostsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No posts yet. Share something, or ask a question the group can help with.'**
+  String get groupsNoPostsYet;
+
+  /// No description provided for @groupsYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get groupsYou;
+
+  /// No description provided for @groupsPostOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Post options'**
+  String get groupsPostOptions;
+
+  /// No description provided for @groupsReplyOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply options'**
+  String get groupsReplyOptions;
+
+  /// No description provided for @groupsKindPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Post'**
+  String get groupsKindPost;
+
+  /// No description provided for @groupsKindQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get groupsKindQuestion;
+
+  /// No description provided for @groupsNoAnswersYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No answers yet'**
+  String get groupsNoAnswersYet;
+
+  /// No description provided for @groupsNoRepliesYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No replies yet'**
+  String get groupsNoRepliesYet;
+
+  /// No description provided for @groupsReplyOne.
+  ///
+  /// In en, this message translates to:
+  /// **'1 reply'**
+  String get groupsReplyOne;
+
+  /// No description provided for @groupsReplyMany.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} replies'**
+  String groupsReplyMany(int count);
+
+  /// No description provided for @groupsComposePostIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Share an update, a tip, or something that might help others in this group.'**
+  String get groupsComposePostIntro;
+
+  /// No description provided for @groupsComposeQuestionIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask the group something they can help with. Other members can reply on this thread.'**
+  String get groupsComposeQuestionIntro;
+
+  /// No description provided for @groupsComposeGuidelines.
+  ///
+  /// In en, this message translates to:
+  /// **'Posts are checked for safety before others can see them. Do not paste ID numbers, passwords, or account numbers. Talking about benefits, visas, and papers is fine.'**
+  String get groupsComposeGuidelines;
+
+  /// No description provided for @groupsComposeTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get groupsComposeTitleLabel;
+
+  /// No description provided for @groupsComposeQuestionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get groupsComposeQuestionLabel;
+
+  /// No description provided for @groupsComposeTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. A resume tip that helped me'**
+  String get groupsComposeTitleHint;
+
+  /// No description provided for @groupsComposeQuestionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. How did you find a pediatrician?'**
+  String get groupsComposeQuestionHint;
+
+  /// No description provided for @groupsComposeBodyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get groupsComposeBodyLabel;
+
+  /// No description provided for @groupsComposeDetailsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Details (optional)'**
+  String get groupsComposeDetailsLabel;
+
+  /// No description provided for @groupsComposeBodyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the story, a link, or anything useful.'**
+  String get groupsComposeBodyHint;
+
+  /// No description provided for @groupsComposeDetailsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add any details that would help people answer.'**
+  String get groupsComposeDetailsHint;
+
+  /// No description provided for @groupsAddPhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Add photos'**
+  String get groupsAddPhotos;
+
+  /// No description provided for @groupsAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get groupsAdd;
+
+  /// No description provided for @groupsPhotoCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of {max} photos'**
+  String groupsPhotoCount(int count, int max);
+
+  /// No description provided for @groupsPublishPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish post'**
+  String get groupsPublishPost;
+
+  /// No description provided for @groupsPostQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Post question'**
+  String get groupsPostQuestion;
+
+  /// No description provided for @groupsPhotoLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo library'**
+  String get groupsPhotoLibrary;
+
+  /// No description provided for @groupsCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera'**
+  String get groupsCamera;
+
+  /// No description provided for @groupsPhotoOpenError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open that photo. Try another one.'**
+  String get groupsPhotoOpenError;
+
+  /// No description provided for @groupsPublishError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not publish that. Try again.'**
+  String get groupsPublishError;
+
+  /// No description provided for @groupsRemovePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get groupsRemovePhoto;
+
+  /// No description provided for @groupsPostLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load this post.'**
+  String get groupsPostLoadError;
+
+  /// No description provided for @groupsPostRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'This post was removed.'**
+  String get groupsPostRemoved;
+
+  /// No description provided for @groupsAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers'**
+  String get groupsAnswers;
+
+  /// No description provided for @groupsReplies.
+  ///
+  /// In en, this message translates to:
+  /// **'Replies'**
+  String get groupsReplies;
+
+  /// No description provided for @groupsRepliesLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load replies.'**
+  String get groupsRepliesLoadError;
+
+  /// No description provided for @groupsNoAnswersHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'No answers yet. Be the first to help.'**
+  String get groupsNoAnswersHelp;
+
+  /// No description provided for @groupsNoRepliesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'No replies yet. Start the conversation.'**
+  String get groupsNoRepliesHelp;
+
+  /// No description provided for @groupsWriteAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Write an answer…'**
+  String get groupsWriteAnswer;
+
+  /// No description provided for @groupsWriteReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a reply…'**
+  String get groupsWriteReply;
+
+  /// No description provided for @groupsEditReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit reply'**
+  String get groupsEditReply;
+
+  /// No description provided for @groupsWriteReplyFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a reply first.'**
+  String get groupsWriteReplyFirst;
+
+  /// No description provided for @groupsDeleteReplyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this reply?'**
+  String get groupsDeleteReplyTitle;
+
+  /// No description provided for @groupsDeleteReplyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This cannot be undone.'**
+  String get groupsDeleteReplyBody;
+
+  /// No description provided for @groupsEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get groupsEdit;
+
+  /// No description provided for @groupsEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Edited'**
+  String get groupsEdited;
+
+  /// No description provided for @groupsReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply'**
+  String get groupsReply;
+
+  /// No description provided for @groupsDeletePostTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this post?'**
+  String get groupsDeletePostTitle;
+
+  /// No description provided for @groupsDeletePostBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Replies will be removed too. This cannot be undone.'**
+  String get groupsDeletePostBody;
+
+  /// No description provided for @groupsRemovePostTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this post?'**
+  String get groupsRemovePostTitle;
+
+  /// No description provided for @groupsRemovePostBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The post will be hidden from the group. The author has 7 days to appeal. If they do not, or a moderator declines the appeal, it will be deleted.'**
+  String get groupsRemovePostBody;
+
+  /// No description provided for @groupsRemovePostReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get groupsRemovePostReason;
+
+  /// No description provided for @groupsRemovePostHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. This broke the group rules.'**
+  String get groupsRemovePostHint;
+
+  /// No description provided for @groupsRemovePostReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please say why this post is being removed.'**
+  String get groupsRemovePostReasonRequired;
+
+  /// No description provided for @groupsRemovePostAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove post'**
+  String get groupsRemovePostAction;
+
+  /// No description provided for @groupsModerationChecking.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking this'**
+  String get groupsModerationChecking;
+
+  /// No description provided for @groupsModerationHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden from the group'**
+  String get groupsModerationHidden;
+
+  /// No description provided for @groupsAppealSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal sent'**
+  String get groupsAppealSent;
+
+  /// No description provided for @groupsReasonPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason: {reason}'**
+  String groupsReasonPrefix(String reason);
+
+  /// No description provided for @groupsHiddenByAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'An admin hid this post.'**
+  String get groupsHiddenByAdmin;
+
+  /// No description provided for @groupsDeletedAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'It will be deleted after {deadline} unless an appeal is approved.'**
+  String groupsDeletedAfter(String deadline);
+
+  /// No description provided for @groupsAppealPendingReview.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator will review your appeal.'**
+  String get groupsAppealPendingReview;
+
+  /// No description provided for @groupsAppeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal'**
+  String get groupsAppeal;
+
+  /// No description provided for @groupsAppealTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal this removal?'**
+  String get groupsAppealTitle;
+
+  /// No description provided for @groupsAppealIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A moderator will review it. If they agree, the post will show in the group again.'**
+  String get groupsAppealIntro;
+
+  /// No description provided for @groupsAppealLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Why should it stay? (optional)'**
+  String get groupsAppealLabel;
+
+  /// No description provided for @groupsSendAppeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Send appeal'**
+  String get groupsSendAppeal;
 }
 
 class _AppLocalizationsDelegate

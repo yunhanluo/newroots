@@ -726,4 +726,560 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get housingAskFollowUpHint => '이어서 질문하기…';
+
+  @override
+  String get educationNavigatorTitle => '교육 안내';
+
+  @override
+  String get educationHubIntro =>
+      '캘리포니아 학교가 어떻게 운영되는지 알아본 뒤, 가까운 공립·사립학교와 믿을 수 있는 과외, 도서관, STEM 프로그램을 찾으세요.';
+
+  @override
+  String get educationBasicsTitle => '교육 기초';
+
+  @override
+  String get educationBasicsSubtitle => '등록, 학구, 학년, 영어 학습자 지원, 학업 도움.';
+
+  @override
+  String get educationFindTitle => '학교 및 프로그램 찾기';
+
+  @override
+  String get educationFindSubtitle =>
+      '가까운 캘리포니아 공립·사립학교, 도서관, 과외, STEM 프로그램의 지도와 목록.';
+
+  @override
+  String get healthcareNavigatorTitle => '의료 안내';
+
+  @override
+  String get healthcareHubIntro =>
+      '캘리포니아에서 진료가 어떻게 이루어지는지 알아본 뒤, 가까운 믿을 수 있는 커뮤니티 헬스 센터를 찾으세요.';
+
+  @override
+  String get healthcareBasicsTitle => '의료 기초';
+
+  @override
+  String get healthcareBasicsSubtitle => '보험, 진료 과정, 커뮤니티 헬스 센터, 언어 지원.';
+
+  @override
+  String get healthcareFindTitle => '클리닉 찾기';
+
+  @override
+  String get healthcareFindSubtitle =>
+      '도시 또는 우편번호로 가까운 HRSA 커뮤니티 헬스 센터의 지도와 목록.';
+
+  @override
+  String get finderCityOrZipLabel => '도시 또는 우편번호';
+
+  @override
+  String get finderCityOrZipHint => '예: Oakland 또는 94102';
+
+  @override
+  String get finderSetCityOrZip => '도시 또는 우편번호를 입력하세요';
+
+  @override
+  String finderNear(String location) {
+    return '근처: $location';
+  }
+
+  @override
+  String get finderHideSearchOptions => '검색 옵션 숨기기';
+
+  @override
+  String get finderResizeMap => '지도 크기 조절';
+
+  @override
+  String get clinicsSearchIntro =>
+      '캘리포니아 도시 또는 우편번호 근처의 HRSA 커뮤니티 헬스 센터를 검색하세요. 핀은 공식 연방 명부에서 옵니다.';
+
+  @override
+  String get clinicsFindButton => '가까운 클리닉 찾기';
+
+  @override
+  String get clinicsSearchDetail => 'HRSA 커뮤니티 헬스 센터';
+
+  @override
+  String get clinicsEnterLocation => '가까운 클리닉을 찾으려면 도시 또는 우편번호를 입력하세요.';
+
+  @override
+  String get clinicsNoResults =>
+      '가까운 커뮤니티 헬스 센터가 없습니다. 다른 캘리포니아 도시나 우편번호를 시도하거나 나중에 검색 범위를 넓히세요.';
+
+  @override
+  String get clinicsLoadError => '클리닉을 불러올 수 없습니다. 잠시 후 다시 시도하세요.';
+
+  @override
+  String get englishSearchIntro =>
+      '캘리포니아 도시 또는 우편번호 근처의 믿을 수 있는 성인학교, 커뮤니티 칼리지, 도서관 ESL 프로그램을 찾으세요.';
+
+  @override
+  String get englishFindButton => '가까운 수업 찾기';
+
+  @override
+  String get englishSearchDetail => '성인학교, 칼리지, 도서관';
+
+  @override
+  String get englishEnterLocation => '가까운 수업을 찾으려면 도시 또는 우편번호를 입력하세요.';
+
+  @override
+  String get englishNoResults =>
+      '아직 가까운 ESL 자료가 없습니다. 다른 캘리포니아 도시나 우편번호를 시도하세요.';
+
+  @override
+  String get englishLoadError => '영어 자료를 불러올 수 없습니다. 잠시 후 다시 시도하세요.';
+
+  @override
+  String get englishSourceCurated => '출처: 선별된 캘리포니아 성인교육, 칼리지, 도서관';
+
+  @override
+  String englishSourceNamed(String source) {
+    return '출처: $source';
+  }
+
+  @override
+  String get educationSearchIntro =>
+      '공식 CDE 명부의 캘리포니아 공립·사립학교와 선별된 도서관, 과외, STEM 프로그램을 검색하세요.';
+
+  @override
+  String get educationFindButton => '근처 찾기';
+
+  @override
+  String get educationEnterLocation => '가까운 학교를 찾으려면 도시 또는 우편번호를 입력하세요.';
+
+  @override
+  String get educationNoResults =>
+      '가까운 학교나 프로그램이 없습니다. 다른 캘리포니아 도시나 우편번호를 시도하거나 필터를 바꾸세요.';
+
+  @override
+  String get educationLoadError => '교육 자료를 불러올 수 없습니다. 다시 시도하세요.';
+
+  @override
+  String get educationLoadErrorShort => '교육 자료를 불러올 수 없습니다. 잠시 후 다시 시도하세요.';
+
+  @override
+  String get educationTypeLabel => '유형';
+
+  @override
+  String get educationAllTypes => '모든 유형';
+
+  @override
+  String get educationKindSchools => '학교';
+
+  @override
+  String get educationKindPrograms => '프로그램 및 지원';
+
+  @override
+  String get educationKindPublicSchools => '공립학교';
+
+  @override
+  String get educationKindPrivateSchools => '사립학교';
+
+  @override
+  String get educationKindEnrollmentHelp => '등록 도움';
+
+  @override
+  String get educationKindLibraries => '도서관';
+
+  @override
+  String get educationKindTutoring => '과외';
+
+  @override
+  String get educationKindStem => 'STEM / 심화';
+
+  @override
+  String get educationAllGrades => '모든 학년';
+
+  @override
+  String get educationGradeLabel => '학년';
+
+  @override
+  String get educationGradePk => 'PK';
+
+  @override
+  String get educationGrade12 => '12학년';
+
+  @override
+  String educationGradeSingle(String grade) {
+    return '$grade학년';
+  }
+
+  @override
+  String educationGradesRange(String low, String high) {
+    return '$low–$high학년';
+  }
+
+  @override
+  String get educationMapBadge => 'CDE 학교 + 프로그램';
+
+  @override
+  String get groupsIntro =>
+      '그룹에 가입하면 글을 올리고, 질문하고, 캘리포니아의 다른 신규 이민자를 도울 수 있습니다.';
+
+  @override
+  String get groupsDiscover => '둘러보기';
+
+  @override
+  String get groupsMine => '내 그룹';
+
+  @override
+  String groupsMineCount(int count) {
+    return '내 그룹 ($count)';
+  }
+
+  @override
+  String get groupsSuggest => '새 그룹 제안';
+
+  @override
+  String get groupsJoin => '가입';
+
+  @override
+  String get groupsLeave => '그룹 나가기';
+
+  @override
+  String get groupsSearch => '검색';
+
+  @override
+  String get groupsSearchClear => '검색 지우기';
+
+  @override
+  String get groupsFilterAll => '전체';
+
+  @override
+  String get groupsSearchNoMatch => '검색과 일치하는 그룹이 없습니다.';
+
+  @override
+  String get groupsMineEmpty => '아직 가입한 그룹이 없습니다. 둘러보기로 가서 그룹을 찾아보세요.';
+
+  @override
+  String get groupsCategoryEmpty => '이 분류에는 아직 그룹이 없습니다.';
+
+  @override
+  String get groupsSuggestTitle => '그룹 제안';
+
+  @override
+  String get groupsSuggestIntro =>
+      '캘리포니아의 다른 신규 이민자를 위한 그룹을 제안하세요. 관리자가 모든 제안을 검토한 뒤에 가입이 열립니다.';
+
+  @override
+  String get groupsSuggestNameLabel => '그룹 이름';
+
+  @override
+  String get groupsSuggestNameHint => '예: 프레즈노 신규 이민자';
+
+  @override
+  String get groupsSuggestCategory => '분류';
+
+  @override
+  String get groupsSuggestPurposeLabel => '이 그룹은 무엇을 위한 건가요?';
+
+  @override
+  String get groupsSuggestPurposeHint => '누가 참여하고, 무엇을 이야기하나요?';
+
+  @override
+  String get groupsSuggestSubmit => '검토 요청 보내기';
+
+  @override
+  String get groupsSuggestSent => '제안을 보냈습니다. 관리자가 검토한 뒤에 그룹이 나타납니다.';
+
+  @override
+  String get groupsSuggestSendError => '그 제안을 보낼 수 없습니다. 다시 시도하세요.';
+
+  @override
+  String get groupsSuggestNameRequired => '그룹 이름을 입력하세요.';
+
+  @override
+  String get groupsSuggestDescriptionRequired => '짧은 설명을 추가하세요.';
+
+  @override
+  String get groupsCategoryParents => '부모';
+
+  @override
+  String get groupsCategoryJobs => '일자리';
+
+  @override
+  String get groupsCategoryLanguage => '영어';
+
+  @override
+  String get groupsCategoryCareers => '커리어';
+
+  @override
+  String get groupsCategoryCulture => '문화';
+
+  @override
+  String get groupsCategoryHousing => '주거';
+
+  @override
+  String get groupsCategoryOther => '기타';
+
+  @override
+  String get groupsFallbackTitle => '지원 그룹';
+
+  @override
+  String get groupsLoadError => '이 그룹을 불러올 수 없습니다.';
+
+  @override
+  String get groupsUnavailable => '이 그룹은 더 이상 없습니다.';
+
+  @override
+  String get groupsRemovedAdmin => '관리자가 이 그룹을 삭제했습니다.';
+
+  @override
+  String groupsRemovedWithReason(String reason) {
+    return '이 그룹이 삭제되었습니다. 이유: $reason';
+  }
+
+  @override
+  String get groupsMemberOne => '멤버 1명';
+
+  @override
+  String groupsMemberCount(int count) {
+    return '멤버 $count명';
+  }
+
+  @override
+  String get groupsPrivacyNotice =>
+      '게시물과 질문은 멤버만 볼 수 있습니다. 다른 사람이 보기 전에 안전을 확인합니다. 친절하게 대화하고, 신분증 번호, 비밀번호, 계좌 번호를 붙여 넣지 마세요.';
+
+  @override
+  String get groupsNewPost => '새 게시물';
+
+  @override
+  String get groupsAskQuestion => '질문하기';
+
+  @override
+  String get groupsJoinToRead => '가입하면 글을 읽고 답할 수 있습니다';
+
+  @override
+  String get groupsJoinPrompt =>
+      '이 그룹의 게시물과 질문은 멤버만 볼 수 있습니다. 참여할 준비가 되면 가입하세요.';
+
+  @override
+  String get groupsJoinGroup => '그룹 가입';
+
+  @override
+  String get groupsLeaveShort => '나가기';
+
+  @override
+  String get groupsLeaveConfirmTitle => '이 그룹에서 나갈까요?';
+
+  @override
+  String groupsLeaveConfirmBody(String title) {
+    return '\"$title\"의 글을 더 이상 보지 않습니다. 나중에 다시 가입할 수 있습니다.';
+  }
+
+  @override
+  String get groupsPostsLoadError => '게시물을 불러올 수 없습니다. 그룹에 가입한 뒤 다시 시도하세요.';
+
+  @override
+  String get groupsNoPostsYet =>
+      '아직 게시물이 없습니다. 나누고 싶은 이야기를 올리거나, 그룹이 도울 수 있는 질문을 하세요.';
+
+  @override
+  String get groupsYou => '나';
+
+  @override
+  String get groupsPostOptions => '게시물 옵션';
+
+  @override
+  String get groupsReplyOptions => '댓글 옵션';
+
+  @override
+  String get groupsKindPost => '게시물';
+
+  @override
+  String get groupsKindQuestion => '질문';
+
+  @override
+  String get groupsNoAnswersYet => '아직 답변이 없습니다';
+
+  @override
+  String get groupsNoRepliesYet => '아직 댓글이 없습니다';
+
+  @override
+  String get groupsReplyOne => '댓글 1개';
+
+  @override
+  String groupsReplyMany(int count) {
+    return '댓글 $count개';
+  }
+
+  @override
+  String get groupsComposePostIntro =>
+      '근황, 팁, 또는 이 그룹의 다른 사람에게 도움이 될 내용을 공유하세요.';
+
+  @override
+  String get groupsComposeQuestionIntro =>
+      '그룹이 도울 수 있는 것을 물어보세요. 다른 멤버가 이 글에 답할 수 있습니다.';
+
+  @override
+  String get groupsComposeGuidelines =>
+      '게시물은 다른 사람이 보기 전에 안전을 확인합니다. 신분증 번호, 비밀번호, 계좌 번호를 붙여 넣지 마세요. 혜택, 비자, 서류에 대해 이야기하는 것은 괜찮습니다.';
+
+  @override
+  String get groupsComposeTitleLabel => '제목';
+
+  @override
+  String get groupsComposeQuestionLabel => '질문';
+
+  @override
+  String get groupsComposeTitleHint => '예: 도움이 된 이력서 팁';
+
+  @override
+  String get groupsComposeQuestionHint => '예: 소아과 의사는 어떻게 찾았나요?';
+
+  @override
+  String get groupsComposeBodyLabel => '설명';
+
+  @override
+  String get groupsComposeDetailsLabel => '세부 내용 (선택)';
+
+  @override
+  String get groupsComposeBodyHint => '이야기, 링크, 또는 유용한 내용을 추가하세요.';
+
+  @override
+  String get groupsComposeDetailsHint => '답하는 데 도움이 될 세부 내용을 추가하세요.';
+
+  @override
+  String get groupsAddPhotos => '사진 추가';
+
+  @override
+  String get groupsAdd => '추가';
+
+  @override
+  String groupsPhotoCount(int count, int max) {
+    return '사진 $count / $max';
+  }
+
+  @override
+  String get groupsPublishPost => '게시하기';
+
+  @override
+  String get groupsPostQuestion => '질문 올리기';
+
+  @override
+  String get groupsPhotoLibrary => '사진 보관함';
+
+  @override
+  String get groupsCamera => '카메라';
+
+  @override
+  String get groupsPhotoOpenError => '그 사진을 열 수 없습니다. 다른 사진을 시도하세요.';
+
+  @override
+  String get groupsPublishError => '게시할 수 없습니다. 다시 시도하세요.';
+
+  @override
+  String get groupsRemovePhoto => '사진 삭제';
+
+  @override
+  String get groupsPostLoadError => '이 게시물을 불러올 수 없습니다.';
+
+  @override
+  String get groupsPostRemoved => '이 게시물은 삭제되었습니다.';
+
+  @override
+  String get groupsAnswers => '답변';
+
+  @override
+  String get groupsReplies => '댓글';
+
+  @override
+  String get groupsRepliesLoadError => '댓글을 불러올 수 없습니다.';
+
+  @override
+  String get groupsNoAnswersHelp => '아직 답변이 없습니다. 먼저 도와 주세요.';
+
+  @override
+  String get groupsNoRepliesHelp => '아직 댓글이 없습니다. 대화를 시작하세요.';
+
+  @override
+  String get groupsWriteAnswer => '답변 쓰기…';
+
+  @override
+  String get groupsWriteReply => '댓글 쓰기…';
+
+  @override
+  String get groupsEditReply => '댓글 수정';
+
+  @override
+  String get groupsWriteReplyFirst => '먼저 댓글을 작성하세요.';
+
+  @override
+  String get groupsDeleteReplyTitle => '이 댓글을 삭제할까요?';
+
+  @override
+  String get groupsDeleteReplyBody => '되돌릴 수 없습니다.';
+
+  @override
+  String get groupsEdit => '수정';
+
+  @override
+  String get groupsEdited => '수정됨';
+
+  @override
+  String get groupsReply => '댓글';
+
+  @override
+  String get groupsDeletePostTitle => '이 게시물을 삭제할까요?';
+
+  @override
+  String get groupsDeletePostBody => '댓글도 함께 삭제됩니다. 되돌릴 수 없습니다.';
+
+  @override
+  String get groupsRemovePostTitle => '이 게시물을 숨길까요?';
+
+  @override
+  String get groupsRemovePostBody =>
+      '게시물이 그룹에서 숨겨집니다. 작성자는 7일 동안 이의 신청을 할 수 있습니다. 신청하지 않거나 운영자가 거절하면 삭제됩니다.';
+
+  @override
+  String get groupsRemovePostReason => '이유';
+
+  @override
+  String get groupsRemovePostHint => '예: 그룹 규칙을 어겼습니다.';
+
+  @override
+  String get groupsRemovePostReasonRequired => '이 게시물을 숨기는 이유를 적어 주세요.';
+
+  @override
+  String get groupsRemovePostAction => '게시물 숨기기';
+
+  @override
+  String get groupsModerationChecking => '확인 중';
+
+  @override
+  String get groupsModerationHidden => '그룹에서 숨김';
+
+  @override
+  String get groupsAppealSent => '이의 신청을 보냄';
+
+  @override
+  String groupsReasonPrefix(String reason) {
+    return '이유: $reason';
+  }
+
+  @override
+  String get groupsHiddenByAdmin => '관리자가 이 게시물을 숨겼습니다.';
+
+  @override
+  String groupsDeletedAfter(String deadline) {
+    return '이의 신청이 승인되지 않으면 $deadline 이후에 삭제됩니다.';
+  }
+
+  @override
+  String get groupsAppealPendingReview => '운영자가 이의 신청을 검토합니다.';
+
+  @override
+  String get groupsAppeal => '이의 신청';
+
+  @override
+  String get groupsAppealTitle => '이 숨김에 이의를 신청할까요?';
+
+  @override
+  String get groupsAppealIntro => '운영자가 검토합니다. 동의하면 게시물이 그룹에 다시 보입니다.';
+
+  @override
+  String get groupsAppealLabel => '왜 남겨야 하나요? (선택)';
+
+  @override
+  String get groupsSendAppeal => '이의 신청 보내기';
 }

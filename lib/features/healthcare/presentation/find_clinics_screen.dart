@@ -12,6 +12,7 @@ import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
 import '../../../core/widgets/finder_controls.dart';
 import '../../../core/widgets/finder_map.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Map + list of nearby HRSA community health centers.
 class FindClinicsScreen extends ConsumerStatefulWidget {
@@ -56,11 +57,10 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
   }
 
   Future<void> _search() async {
+    final l10n = AppLocalizations.of(context);
     final locationText = _locationController.text.trim();
     if (locationText.isEmpty) {
-      setState(
-        () => _error = 'Enter a city or ZIP code to find nearby clinics.',
-      );
+      setState(() => _error = l10n.clinicsEnterLocation);
       return;
     }
 
@@ -85,8 +85,7 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
         // keeps the current location visible.
         if (result.centers.isNotEmpty) _searchExpanded = false;
         if (result.centers.isEmpty) {
-          _error =
-              'No community health centers found nearby. Try another California city or ZIP, or widen your search later.';
+          _error = l10n.clinicsNoResults;
         }
       });
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -96,7 +95,7 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
     } catch (error) {
       if (!mounted) return;
       setState(() {
-        _error = _describeError(error);
+        _error = _describeError(error, l10n);
         _centers = const [];
         _resolvedLabel = null;
         _searchCenter = null;
@@ -135,11 +134,11 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
     );
   }
 
-  String _describeError(Object error) {
+  String _describeError(Object error, AppLocalizations l10n) {
     if (error is FirebaseFunctionsException) {
-      return error.message ?? 'Could not load clinics. Try again shortly.';
+      return error.message ?? l10n.clinicsLoadError;
     }
-    return 'Could not load clinics. Try again shortly.';
+    return l10n.clinicsLoadError;
   }
 
   Future<void> _callPhone(String phone) async {
@@ -180,16 +179,17 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
     _tryAutofillFromSurvey(profile);
 
     final mapCenter = _searchCenter ?? _defaultCenter;
+    final l10n = AppLocalizations.of(context);
 
     return BrandScaffold(
-      title: 'Find a clinic',
+      title: l10n.healthcareFindTitle,
       body: Column(
         children: [
           if (!_searchExpanded)
             CollapsedSearchBar(
               location: _resolvedLabel ?? _locationController.text.trim(),
-              emptyLocationHint: 'Set a city or ZIP code',
-              detail: 'HRSA community health centers',
+              emptyLocationHint: l10n.finderSetCityOrZip,
+              detail: l10n.clinicsSearchDetail,
               loading: _loading,
               onExpand: () => setState(() => _searchExpanded = true),
             ),
@@ -203,9 +203,7 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
                     children: [
                       Expanded(
                         child: Text(
-                          'Search HRSA community health centers near a California '
-                          'city or ZIP. Pins are from the official federal '
-                          'directory.',
+                          l10n.clinicsSearchIntro,
                           style: TextStyle(
                             fontSize: 14,
                             height: 1.4,
@@ -225,8 +223,8 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
                     textInputAction: TextInputAction.search,
                     onSubmitted: (_) => _search(),
                     decoration: InputDecoration(
-                      labelText: 'City or ZIP code',
-                      hintText: 'e.g. Oakland or 94102',
+                      labelText: l10n.finderCityOrZipLabel,
+                      hintText: l10n.finderCityOrZipHint,
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
@@ -251,12 +249,12 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
                               color: Colors.white,
                             ),
                           )
-                        : const Text('Find nearby clinics'),
+                        : Text(l10n.clinicsFindButton),
                   ),
                   if (_resolvedLabel != null) ...[
                     const SizedBox(height: 8),
                     Text(
-                      'Near: $_resolvedLabel',
+                      l10n.finderNear(_resolvedLabel!),
                       style: TextStyle(
                         fontSize: 13,
                         color: Colors.black87.withValues(alpha: 0.6),
@@ -289,7 +287,7 @@ class _FindClinicsScreenState extends ConsumerState<FindClinicsScreen> {
                         center: mapCenter,
                         initialZoom: _searchCenter == null ? 6 : 11,
                         searchCenter: _searchCenter,
-                        badge: 'HRSA community health centers',
+                        badge: l10n.clinicsSearchDetail,
                         pins: [
                           for (final center in _centers)
                             FinderMapPin(

@@ -748,4 +748,583 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get housingAskFollowUpHint => 'Hỏi thêm…';
+
+  @override
+  String get educationNavigatorTitle => 'Điều hướng giáo dục';
+
+  @override
+  String get educationHubIntro =>
+      'Tìm hiểu cách trường học California hoạt động, rồi tìm trường công và tư gần bạn cùng gia sư, thư viện và chương trình STEM đáng tin.';
+
+  @override
+  String get educationBasicsTitle => 'Kiến thức cơ bản về giáo dục';
+
+  @override
+  String get educationBasicsSubtitle =>
+      'Ghi danh, học khu, khối lớp, hỗ trợ học sinh học tiếng Anh, và trợ giúp học tập.';
+
+  @override
+  String get educationFindTitle => 'Tìm trường và chương trình';
+
+  @override
+  String get educationFindSubtitle =>
+      'Bản đồ và danh sách trường công và tư California gần bạn, thư viện, gia sư, và chương trình STEM.';
+
+  @override
+  String get healthcareNavigatorTitle => 'Điều hướng y tế';
+
+  @override
+  String get healthcareHubIntro =>
+      'Tìm hiểu cách chăm sóc y tế hoạt động ở California, rồi tìm trung tâm y tế cộng đồng đáng tin gần bạn.';
+
+  @override
+  String get healthcareBasicsTitle => 'Cơ bản về chăm sóc sức khỏe';
+
+  @override
+  String get healthcareBasicsSubtitle =>
+      'Bảo hiểm, cách khám bệnh, trung tâm y tế cộng đồng, và hỗ trợ ngôn ngữ.';
+
+  @override
+  String get healthcareFindTitle => 'Tìm phòng khám';
+
+  @override
+  String get healthcareFindSubtitle =>
+      'Bản đồ và danh sách trung tâm y tế cộng đồng HRSA gần bạn theo thành phố hoặc ZIP.';
+
+  @override
+  String get finderCityOrZipLabel => 'Thành phố hoặc mã ZIP';
+
+  @override
+  String get finderCityOrZipHint => 'vd. Oakland hoặc 94102';
+
+  @override
+  String get finderSetCityOrZip => 'Nhập thành phố hoặc mã ZIP';
+
+  @override
+  String finderNear(String location) {
+    return 'Gần: $location';
+  }
+
+  @override
+  String get finderHideSearchOptions => 'Ẩn tùy chọn tìm kiếm';
+
+  @override
+  String get finderResizeMap => 'Đổi kích thước bản đồ';
+
+  @override
+  String get clinicsSearchIntro =>
+      'Tìm trung tâm y tế cộng đồng HRSA gần một thành phố hoặc mã ZIP ở California. Ghim đến từ danh mục liên bang chính thức.';
+
+  @override
+  String get clinicsFindButton => 'Tìm phòng khám gần đây';
+
+  @override
+  String get clinicsSearchDetail => 'Trung tâm y tế cộng đồng HRSA';
+
+  @override
+  String get clinicsEnterLocation =>
+      'Nhập thành phố hoặc mã ZIP để tìm phòng khám gần đây.';
+
+  @override
+  String get clinicsNoResults =>
+      'Không tìm thấy trung tâm y tế cộng đồng gần đây. Thử thành phố hoặc mã ZIP khác ở California, hoặc mở rộng tìm kiếm sau.';
+
+  @override
+  String get clinicsLoadError =>
+      'Không tải được phòng khám. Hãy thử lại sau ít phút.';
+
+  @override
+  String get englishSearchIntro =>
+      'Tìm trường dành cho người lớn, cao đẳng cộng đồng, và chương trình ESL thư viện đáng tin gần một thành phố hoặc mã ZIP ở California.';
+
+  @override
+  String get englishFindButton => 'Tìm lớp gần đây';
+
+  @override
+  String get englishSearchDetail => 'Trường người lớn, cao đẳng & thư viện';
+
+  @override
+  String get englishEnterLocation =>
+      'Nhập thành phố hoặc mã ZIP để tìm lớp gần đây.';
+
+  @override
+  String get englishNoResults =>
+      'Chưa có nguồn ESL gần đây. Hãy thử thành phố hoặc mã ZIP khác ở California.';
+
+  @override
+  String get englishLoadError =>
+      'Không tải được tài nguyên tiếng Anh. Hãy thử lại sau ít phút.';
+
+  @override
+  String get englishSourceCurated =>
+      'Nguồn: giáo dục người lớn, cao đẳng và thư viện California đã chọn lọc';
+
+  @override
+  String englishSourceNamed(String source) {
+    return 'Nguồn: $source';
+  }
+
+  @override
+  String get educationSearchIntro =>
+      'Tìm trường công và tư California từ danh mục CDE chính thức, cộng với thư viện, gia sư, và chương trình STEM đã chọn lọc.';
+
+  @override
+  String get educationFindButton => 'Tìm gần đây';
+
+  @override
+  String get educationEnterLocation =>
+      'Nhập thành phố hoặc mã ZIP để tìm trường gần đây.';
+
+  @override
+  String get educationNoResults =>
+      'Không tìm thấy trường hoặc chương trình gần đây. Thử thành phố hoặc mã ZIP khác ở California, hoặc đổi bộ lọc.';
+
+  @override
+  String get educationLoadError =>
+      'Không tải được nguồn giáo dục. Hãy thử lại.';
+
+  @override
+  String get educationLoadErrorShort =>
+      'Không tải được nguồn giáo dục. Hãy thử lại sau ít phút.';
+
+  @override
+  String get educationTypeLabel => 'Loại';
+
+  @override
+  String get educationAllTypes => 'Tất cả loại';
+
+  @override
+  String get educationKindSchools => 'Trường học';
+
+  @override
+  String get educationKindPrograms => 'Chương trình & hỗ trợ';
+
+  @override
+  String get educationKindPublicSchools => 'Trường công';
+
+  @override
+  String get educationKindPrivateSchools => 'Trường tư';
+
+  @override
+  String get educationKindEnrollmentHelp => 'Hỗ trợ ghi danh';
+
+  @override
+  String get educationKindLibraries => 'Thư viện';
+
+  @override
+  String get educationKindTutoring => 'Gia sư';
+
+  @override
+  String get educationKindStem => 'STEM / bồi dưỡng';
+
+  @override
+  String get educationAllGrades => 'Tất cả khối lớp';
+
+  @override
+  String get educationGradeLabel => 'Khối lớp';
+
+  @override
+  String get educationGradePk => 'MG';
+
+  @override
+  String get educationGrade12 => 'Lớp 12';
+
+  @override
+  String educationGradeSingle(String grade) {
+    return 'Lớp $grade';
+  }
+
+  @override
+  String educationGradesRange(String low, String high) {
+    return 'Lớp $low–$high';
+  }
+
+  @override
+  String get educationMapBadge => 'Trường CDE + chương trình';
+
+  @override
+  String get groupsIntro =>
+      'Tham gia một nhóm để đăng bài, đặt câu hỏi, và giúp người mới đến khác ở California.';
+
+  @override
+  String get groupsDiscover => 'Khám phá';
+
+  @override
+  String get groupsMine => 'Nhóm của tôi';
+
+  @override
+  String groupsMineCount(int count) {
+    return 'Nhóm của tôi ($count)';
+  }
+
+  @override
+  String get groupsSuggest => 'Đề xuất nhóm mới';
+
+  @override
+  String get groupsJoin => 'Tham gia';
+
+  @override
+  String get groupsLeave => 'Rời nhóm';
+
+  @override
+  String get groupsSearch => 'Tìm';
+
+  @override
+  String get groupsSearchClear => 'Xóa tìm kiếm';
+
+  @override
+  String get groupsFilterAll => 'Tất cả';
+
+  @override
+  String get groupsSearchNoMatch => 'Không có nhóm khớp với tìm kiếm của bạn.';
+
+  @override
+  String get groupsMineEmpty =>
+      'Bạn chưa tham gia nhóm nào. Chuyển sang Khám phá để tìm một nhóm.';
+
+  @override
+  String get groupsCategoryEmpty => 'Chưa có nhóm trong danh mục này.';
+
+  @override
+  String get groupsSuggestTitle => 'Đề xuất nhóm';
+
+  @override
+  String get groupsSuggestIntro =>
+      'Đề xuất một nhóm cho người mới đến khác ở California. Quản trị viên xem xét mọi đề xuất trước khi mở cho người khác tham gia.';
+
+  @override
+  String get groupsSuggestNameLabel => 'Tên nhóm';
+
+  @override
+  String get groupsSuggestNameHint => 'vd. Người mới đến ở Fresno';
+
+  @override
+  String get groupsSuggestCategory => 'Danh mục';
+
+  @override
+  String get groupsSuggestPurposeLabel => 'Nhóm này để làm gì?';
+
+  @override
+  String get groupsSuggestPurposeHint =>
+      'Ai nên tham gia, và mọi người sẽ nói về gì?';
+
+  @override
+  String get groupsSuggestSubmit => 'Gửi để xét duyệt';
+
+  @override
+  String get groupsSuggestSent =>
+      'Đã gửi đề xuất. Quản trị viên sẽ xét duyệt trước khi nhóm xuất hiện.';
+
+  @override
+  String get groupsSuggestSendError =>
+      'Không gửi được đề xuất đó. Hãy thử lại.';
+
+  @override
+  String get groupsSuggestNameRequired => 'Hãy đặt tên cho nhóm.';
+
+  @override
+  String get groupsSuggestDescriptionRequired => 'Thêm mô tả ngắn.';
+
+  @override
+  String get groupsCategoryParents => 'Phụ huynh';
+
+  @override
+  String get groupsCategoryJobs => 'Việc làm';
+
+  @override
+  String get groupsCategoryLanguage => 'Tiếng Anh';
+
+  @override
+  String get groupsCategoryCareers => 'Nghề nghiệp';
+
+  @override
+  String get groupsCategoryCulture => 'Văn hóa';
+
+  @override
+  String get groupsCategoryHousing => 'Nhà ở';
+
+  @override
+  String get groupsCategoryOther => 'Khác';
+
+  @override
+  String get groupsFallbackTitle => 'Nhóm hỗ trợ';
+
+  @override
+  String get groupsLoadError => 'Không tải được nhóm này.';
+
+  @override
+  String get groupsUnavailable => 'Nhóm này không còn nữa.';
+
+  @override
+  String get groupsRemovedAdmin => 'Quản trị viên đã gỡ nhóm này.';
+
+  @override
+  String groupsRemovedWithReason(String reason) {
+    return 'Nhóm này đã bị gỡ. Lý do: $reason';
+  }
+
+  @override
+  String get groupsMemberOne => '1 thành viên';
+
+  @override
+  String groupsMemberCount(int count) {
+    return '$count thành viên';
+  }
+
+  @override
+  String get groupsPrivacyNotice =>
+      'Bài đăng và câu hỏi chỉ dành cho thành viên. Chúng được kiểm tra an toàn trước khi người khác xem. Hãy tử tế, và đừng dán số ID, mật khẩu, hoặc số tài khoản.';
+
+  @override
+  String get groupsNewPost => 'Bài mới';
+
+  @override
+  String get groupsAskQuestion => 'Đặt câu hỏi';
+
+  @override
+  String get groupsJoinToRead => 'Tham gia để đọc bài và trả lời';
+
+  @override
+  String get groupsJoinPrompt =>
+      'Chỉ thành viên mới xem được bài đăng và câu hỏi trong nhóm này. Hãy tham gia khi bạn sẵn sàng.';
+
+  @override
+  String get groupsJoinGroup => 'Tham gia nhóm';
+
+  @override
+  String get groupsLeaveShort => 'Rời';
+
+  @override
+  String get groupsLeaveConfirmTitle => 'Rời nhóm này?';
+
+  @override
+  String groupsLeaveConfirmBody(String title) {
+    return 'Bạn sẽ không còn thấy bài trong \"$title\". Bạn có thể tham gia lại sau.';
+  }
+
+  @override
+  String get groupsPostsLoadError =>
+      'Không tải được bài đăng. Hãy tham gia nhóm rồi thử lại.';
+
+  @override
+  String get groupsNoPostsYet =>
+      'Chưa có bài. Hãy chia sẻ điều gì đó, hoặc hỏi nhóm để được giúp.';
+
+  @override
+  String get groupsYou => 'Bạn';
+
+  @override
+  String get groupsPostOptions => 'Tùy chọn bài đăng';
+
+  @override
+  String get groupsReplyOptions => 'Tùy chọn trả lời';
+
+  @override
+  String get groupsKindPost => 'Bài đăng';
+
+  @override
+  String get groupsKindQuestion => 'Câu hỏi';
+
+  @override
+  String get groupsNoAnswersYet => 'Chưa có câu trả lời';
+
+  @override
+  String get groupsNoRepliesYet => 'Chưa có phản hồi';
+
+  @override
+  String get groupsReplyOne => '1 phản hồi';
+
+  @override
+  String groupsReplyMany(int count) {
+    return '$count phản hồi';
+  }
+
+  @override
+  String get groupsComposePostIntro =>
+      'Chia sẻ cập nhật, mẹo, hoặc điều có thể giúp người khác trong nhóm này.';
+
+  @override
+  String get groupsComposeQuestionIntro =>
+      'Hỏi nhóm điều họ có thể giúp. Thành viên khác có thể trả lời trong chủ đề này.';
+
+  @override
+  String get groupsComposeGuidelines =>
+      'Bài đăng được kiểm tra an toàn trước khi người khác xem. Đừng dán số ID, mật khẩu, hoặc số tài khoản. Nói về phúc lợi, visa, và giấy tờ thì được.';
+
+  @override
+  String get groupsComposeTitleLabel => 'Tiêu đề';
+
+  @override
+  String get groupsComposeQuestionLabel => 'Câu hỏi';
+
+  @override
+  String get groupsComposeTitleHint => 'vd. Một mẹo sơ yếu lý lịch đã giúp tôi';
+
+  @override
+  String get groupsComposeQuestionHint =>
+      'vd. Bạn tìm bác sĩ nhi khoa thế nào?';
+
+  @override
+  String get groupsComposeBodyLabel => 'Mô tả';
+
+  @override
+  String get groupsComposeDetailsLabel => 'Chi tiết (không bắt buộc)';
+
+  @override
+  String get groupsComposeBodyHint =>
+      'Thêm câu chuyện, liên kết, hoặc điều hữu ích.';
+
+  @override
+  String get groupsComposeDetailsHint =>
+      'Thêm chi tiết giúp người khác trả lời.';
+
+  @override
+  String get groupsAddPhotos => 'Thêm ảnh';
+
+  @override
+  String get groupsAdd => 'Thêm';
+
+  @override
+  String groupsPhotoCount(int count, int max) {
+    return '$count / $max ảnh';
+  }
+
+  @override
+  String get groupsPublishPost => 'Đăng bài';
+
+  @override
+  String get groupsPostQuestion => 'Đăng câu hỏi';
+
+  @override
+  String get groupsPhotoLibrary => 'Thư viện ảnh';
+
+  @override
+  String get groupsCamera => 'Máy ảnh';
+
+  @override
+  String get groupsPhotoOpenError => 'Không mở được ảnh đó. Hãy thử ảnh khác.';
+
+  @override
+  String get groupsPublishError => 'Không đăng được. Hãy thử lại.';
+
+  @override
+  String get groupsRemovePhoto => 'Gỡ ảnh';
+
+  @override
+  String get groupsPostLoadError => 'Không tải được bài này.';
+
+  @override
+  String get groupsPostRemoved => 'Bài này đã bị gỡ.';
+
+  @override
+  String get groupsAnswers => 'Câu trả lời';
+
+  @override
+  String get groupsReplies => 'Phản hồi';
+
+  @override
+  String get groupsRepliesLoadError => 'Không tải được phản hồi.';
+
+  @override
+  String get groupsNoAnswersHelp =>
+      'Chưa có câu trả lời. Hãy là người đầu tiên giúp.';
+
+  @override
+  String get groupsNoRepliesHelp =>
+      'Chưa có phản hồi. Hãy bắt đầu cuộc trò chuyện.';
+
+  @override
+  String get groupsWriteAnswer => 'Viết câu trả lời…';
+
+  @override
+  String get groupsWriteReply => 'Viết phản hồi…';
+
+  @override
+  String get groupsEditReply => 'Sửa phản hồi';
+
+  @override
+  String get groupsWriteReplyFirst => 'Hãy viết phản hồi trước.';
+
+  @override
+  String get groupsDeleteReplyTitle => 'Xóa phản hồi này?';
+
+  @override
+  String get groupsDeleteReplyBody => 'Không hoàn tác được.';
+
+  @override
+  String get groupsEdit => 'Sửa';
+
+  @override
+  String get groupsEdited => 'Đã sửa';
+
+  @override
+  String get groupsReply => 'Trả lời';
+
+  @override
+  String get groupsDeletePostTitle => 'Xóa bài này?';
+
+  @override
+  String get groupsDeletePostBody =>
+      'Phản hồi cũng sẽ bị gỡ. Không hoàn tác được.';
+
+  @override
+  String get groupsRemovePostTitle => 'Gỡ bài này?';
+
+  @override
+  String get groupsRemovePostBody =>
+      'Bài sẽ bị ẩn khỏi nhóm. Tác giả có 7 ngày để kháng cáo. Nếu không kháng cáo, hoặc người kiểm duyệt từ chối, bài sẽ bị xóa.';
+
+  @override
+  String get groupsRemovePostReason => 'Lý do';
+
+  @override
+  String get groupsRemovePostHint => 'vd. Điều này phá quy tắc nhóm.';
+
+  @override
+  String get groupsRemovePostReasonRequired => 'Hãy nói vì sao bài này bị gỡ.';
+
+  @override
+  String get groupsRemovePostAction => 'Gỡ bài';
+
+  @override
+  String get groupsModerationChecking => 'Đang kiểm tra';
+
+  @override
+  String get groupsModerationHidden => 'Đã ẩn khỏi nhóm';
+
+  @override
+  String get groupsAppealSent => 'Đã gửi kháng cáo';
+
+  @override
+  String groupsReasonPrefix(String reason) {
+    return 'Lý do: $reason';
+  }
+
+  @override
+  String get groupsHiddenByAdmin => 'Quản trị viên đã ẩn bài này.';
+
+  @override
+  String groupsDeletedAfter(String deadline) {
+    return 'Sẽ bị xóa sau $deadline trừ khi kháng cáo được chấp nhận.';
+  }
+
+  @override
+  String get groupsAppealPendingReview =>
+      'Người kiểm duyệt sẽ xem kháng cáo của bạn.';
+
+  @override
+  String get groupsAppeal => 'Kháng cáo';
+
+  @override
+  String get groupsAppealTitle => 'Kháng cáo việc gỡ này?';
+
+  @override
+  String get groupsAppealIntro =>
+      'Người kiểm duyệt sẽ xem. Nếu đồng ý, bài sẽ hiện lại trong nhóm.';
+
+  @override
+  String get groupsAppealLabel => 'Vì sao nên giữ lại? (không bắt buộc)';
+
+  @override
+  String get groupsSendAppeal => 'Gửi kháng cáo';
 }

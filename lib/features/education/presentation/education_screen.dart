@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Feature 5: Education Navigator hub.
 class EducationScreen extends StatelessWidget {
@@ -11,14 +12,14 @@ class EducationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return BrandScaffold(
-      title: 'Education Navigator',
+      title: l10n.educationNavigatorTitle,
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 20, 16, 28),
         children: [
           Text(
-            'Learn how California schools work, then find nearby public and '
-            'private schools plus trusted tutoring, library, and STEM programs.',
+            l10n.educationHubIntro,
             style: TextStyle(
               fontSize: 15,
               height: 1.45,
@@ -28,17 +29,15 @@ class EducationScreen extends StatelessWidget {
           const SizedBox(height: 20),
           _HubCard(
             icon: Icons.menu_book_outlined,
-            title: 'Education basics',
-            subtitle:
-                'Enrollment, districts, grade levels, English learner support, and academic help.',
+            title: l10n.educationBasicsTitle,
+            subtitle: l10n.educationBasicsSubtitle,
             onTap: () => context.goNamed(Routes.educationTutorial),
           ),
           const SizedBox(height: 12),
           _HubCard(
             icon: Icons.school_outlined,
-            title: 'Find schools & programs',
-            subtitle:
-                'Map and list of nearby California public and private schools, libraries, tutoring, and STEM programs.',
+            title: l10n.educationFindTitle,
+            subtitle: l10n.educationFindSubtitle,
             onTap: () => context.goNamed(Routes.educationResources),
           ),
         ],
