@@ -997,6 +997,126 @@ class AppLocalizationsKo extends AppLocalizations {
   String get educationGradeK => 'K';
 
   @override
+  String get educationGenderCoed => '남녀공학';
+
+  @override
+  String get educationGenderBoys => '남학교';
+
+  @override
+  String get educationGenderGirls => '여학교';
+
+  @override
+  String get educationAffilNonReligious => '비종교';
+
+  @override
+  String get educationAffilCatholic => '가톨릭';
+
+  @override
+  String get educationAffilNondenominational => '무교파';
+
+  @override
+  String get educationAffilSeventhDayAdventist => '제칠일안식일예수재림교';
+
+  @override
+  String get educationAffilBaptist => '침례교';
+
+  @override
+  String get educationAffilLutheran => '루터교';
+
+  @override
+  String get educationAffilJewish => '유대교';
+
+  @override
+  String get educationAffilEvangelical => '복음주의';
+
+  @override
+  String get educationAffilIslamic => '이슬람(무슬림)';
+
+  @override
+  String get educationAffilOther => '기타';
+
+  @override
+  String get educationAffilCalvaryChapel => '갈보리채플';
+
+  @override
+  String get educationAffilAssemblyOfGod => '하나님의성회';
+
+  @override
+  String get educationAffilApostolic => '사도교회';
+
+  @override
+  String get educationAffilEpiscopal => '성공회';
+
+  @override
+  String get educationAffilPentecostal => '오순절';
+
+  @override
+  String get educationAffilDisciplesOfChrist => '그리스도의제자교회';
+
+  @override
+  String get educationAffilInterdenominational => '초교파';
+
+  @override
+  String get educationAffilReformed => '개혁교회';
+
+  @override
+  String get educationAffilMennonite => '메노나이트';
+
+  @override
+  String get educationAffilChurchOfChrist => '그리스도의교회';
+
+  @override
+  String get educationAffilPresbyterian => '장로교';
+
+  @override
+  String get educationAffilFourSquare => '사중복음';
+
+  @override
+  String get educationAffilNazarene => '나사렛교회';
+
+  @override
+  String get educationAffilOrthodox => '정교회(동방/그리스)';
+
+  @override
+  String get educationAffilChurchOfGod => '하나님의교회';
+
+  @override
+  String get educationAffilJehovahsWitnesses => '여호와의증인';
+
+  @override
+  String get educationAffilMormon => '몰몬(후기성도)';
+
+  @override
+  String get educationAffilFundamentalistChristian => '근본주의 기독교';
+
+  @override
+  String get educationAffilQuaker => '퀘이커(친구회)';
+
+  @override
+  String get educationAffilCovenant => '언약교회';
+
+  @override
+  String get educationAffilNewAge => '뉴에이지';
+
+  @override
+  String get educationAffilCharismatic => '은사주의';
+
+  @override
+  String get educationAffilMethodist => '감리교';
+
+  @override
+  String get educationAffilSikh => '시크교';
+
+  @override
+  String get educationAffilBuddhist => '불교';
+
+  @override
+  String get educationAffilBrethren => '형제교회';
+
+  @override
+  String get educationAffilScientology => '사이언톨로지';
+
+  @override
   String get groupsIntro =>
       '그룹에 가입하면 글을 올리고, 질문하고, 캘리포니아의 다른 신규 이민자를 도울 수 있습니다.';
 

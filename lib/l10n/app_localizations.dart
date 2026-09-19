@@ -1968,6 +1968,246 @@ abstract class AppLocalizations {
   /// **'K'**
   String get educationGradeK;
 
+  /// No description provided for @educationGenderCoed.
+  ///
+  /// In en, this message translates to:
+  /// **'Coeducational'**
+  String get educationGenderCoed;
+
+  /// No description provided for @educationGenderBoys.
+  ///
+  /// In en, this message translates to:
+  /// **'Boys only'**
+  String get educationGenderBoys;
+
+  /// No description provided for @educationGenderGirls.
+  ///
+  /// In en, this message translates to:
+  /// **'Girls only'**
+  String get educationGenderGirls;
+
+  /// No description provided for @educationAffilNonReligious.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-religious'**
+  String get educationAffilNonReligious;
+
+  /// No description provided for @educationAffilCatholic.
+  ///
+  /// In en, this message translates to:
+  /// **'Catholic'**
+  String get educationAffilCatholic;
+
+  /// No description provided for @educationAffilNondenominational.
+  ///
+  /// In en, this message translates to:
+  /// **'Nondenominational'**
+  String get educationAffilNondenominational;
+
+  /// No description provided for @educationAffilSeventhDayAdventist.
+  ///
+  /// In en, this message translates to:
+  /// **'Seventh-day Adventist'**
+  String get educationAffilSeventhDayAdventist;
+
+  /// No description provided for @educationAffilBaptist.
+  ///
+  /// In en, this message translates to:
+  /// **'Baptist'**
+  String get educationAffilBaptist;
+
+  /// No description provided for @educationAffilLutheran.
+  ///
+  /// In en, this message translates to:
+  /// **'Lutheran'**
+  String get educationAffilLutheran;
+
+  /// No description provided for @educationAffilJewish.
+  ///
+  /// In en, this message translates to:
+  /// **'Jewish'**
+  String get educationAffilJewish;
+
+  /// No description provided for @educationAffilEvangelical.
+  ///
+  /// In en, this message translates to:
+  /// **'Evangelical'**
+  String get educationAffilEvangelical;
+
+  /// No description provided for @educationAffilIslamic.
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic (Muslim)'**
+  String get educationAffilIslamic;
+
+  /// No description provided for @educationAffilOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get educationAffilOther;
+
+  /// No description provided for @educationAffilCalvaryChapel.
+  ///
+  /// In en, this message translates to:
+  /// **'Calvary Chapel'**
+  String get educationAffilCalvaryChapel;
+
+  /// No description provided for @educationAffilAssemblyOfGod.
+  ///
+  /// In en, this message translates to:
+  /// **'Assembly of God'**
+  String get educationAffilAssemblyOfGod;
+
+  /// No description provided for @educationAffilApostolic.
+  ///
+  /// In en, this message translates to:
+  /// **'Apostolic'**
+  String get educationAffilApostolic;
+
+  /// No description provided for @educationAffilEpiscopal.
+  ///
+  /// In en, this message translates to:
+  /// **'Episcopal'**
+  String get educationAffilEpiscopal;
+
+  /// No description provided for @educationAffilPentecostal.
+  ///
+  /// In en, this message translates to:
+  /// **'Pentecostal'**
+  String get educationAffilPentecostal;
+
+  /// No description provided for @educationAffilDisciplesOfChrist.
+  ///
+  /// In en, this message translates to:
+  /// **'Christian Church (Disciples of Christ)'**
+  String get educationAffilDisciplesOfChrist;
+
+  /// No description provided for @educationAffilInterdenominational.
+  ///
+  /// In en, this message translates to:
+  /// **'Interdenominational'**
+  String get educationAffilInterdenominational;
+
+  /// No description provided for @educationAffilReformed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reformed'**
+  String get educationAffilReformed;
+
+  /// No description provided for @educationAffilMennonite.
+  ///
+  /// In en, this message translates to:
+  /// **'Mennonite'**
+  String get educationAffilMennonite;
+
+  /// No description provided for @educationAffilChurchOfChrist.
+  ///
+  /// In en, this message translates to:
+  /// **'Church of Christ'**
+  String get educationAffilChurchOfChrist;
+
+  /// No description provided for @educationAffilPresbyterian.
+  ///
+  /// In en, this message translates to:
+  /// **'Presbyterian'**
+  String get educationAffilPresbyterian;
+
+  /// No description provided for @educationAffilFourSquare.
+  ///
+  /// In en, this message translates to:
+  /// **'Four Square Gospel'**
+  String get educationAffilFourSquare;
+
+  /// No description provided for @educationAffilNazarene.
+  ///
+  /// In en, this message translates to:
+  /// **'Church of the Nazarene'**
+  String get educationAffilNazarene;
+
+  /// No description provided for @educationAffilOrthodox.
+  ///
+  /// In en, this message translates to:
+  /// **'Orthodox (Eastern/Greek)'**
+  String get educationAffilOrthodox;
+
+  /// No description provided for @educationAffilChurchOfGod.
+  ///
+  /// In en, this message translates to:
+  /// **'Church of God'**
+  String get educationAffilChurchOfGod;
+
+  /// No description provided for @educationAffilJehovahsWitnesses.
+  ///
+  /// In en, this message translates to:
+  /// **'Jehovah\'s Witnesses'**
+  String get educationAffilJehovahsWitnesses;
+
+  /// No description provided for @educationAffilMormon.
+  ///
+  /// In en, this message translates to:
+  /// **'Mormon (Latter-day Saints)'**
+  String get educationAffilMormon;
+
+  /// No description provided for @educationAffilFundamentalistChristian.
+  ///
+  /// In en, this message translates to:
+  /// **'Fundamentalist Christian'**
+  String get educationAffilFundamentalistChristian;
+
+  /// No description provided for @educationAffilQuaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Quaker (Friends)'**
+  String get educationAffilQuaker;
+
+  /// No description provided for @educationAffilCovenant.
+  ///
+  /// In en, this message translates to:
+  /// **'Covenant'**
+  String get educationAffilCovenant;
+
+  /// No description provided for @educationAffilNewAge.
+  ///
+  /// In en, this message translates to:
+  /// **'New Age'**
+  String get educationAffilNewAge;
+
+  /// No description provided for @educationAffilCharismatic.
+  ///
+  /// In en, this message translates to:
+  /// **'Charismatic'**
+  String get educationAffilCharismatic;
+
+  /// No description provided for @educationAffilMethodist.
+  ///
+  /// In en, this message translates to:
+  /// **'Methodist'**
+  String get educationAffilMethodist;
+
+  /// No description provided for @educationAffilSikh.
+  ///
+  /// In en, this message translates to:
+  /// **'Sikh'**
+  String get educationAffilSikh;
+
+  /// No description provided for @educationAffilBuddhist.
+  ///
+  /// In en, this message translates to:
+  /// **'Buddhist'**
+  String get educationAffilBuddhist;
+
+  /// No description provided for @educationAffilBrethren.
+  ///
+  /// In en, this message translates to:
+  /// **'Church of the Brethren'**
+  String get educationAffilBrethren;
+
+  /// No description provided for @educationAffilScientology.
+  ///
+  /// In en, this message translates to:
+  /// **'Scientology'**
+  String get educationAffilScientology;
+
   /// No description provided for @groupsIntro.
   ///
   /// In en, this message translates to:

@@ -1032,6 +1032,126 @@ class AppLocalizationsVi extends AppLocalizations {
   String get educationGradeK => 'K';
 
   @override
+  String get educationGenderCoed => 'Nam nữ';
+
+  @override
+  String get educationGenderBoys => 'Chỉ nam';
+
+  @override
+  String get educationGenderGirls => 'Chỉ nữ';
+
+  @override
+  String get educationAffilNonReligious => 'Không tôn giáo';
+
+  @override
+  String get educationAffilCatholic => 'Công giáo';
+
+  @override
+  String get educationAffilNondenominational => 'Không thuộc hệ phái';
+
+  @override
+  String get educationAffilSeventhDayAdventist => 'Cơ Đốc Phục Lâm';
+
+  @override
+  String get educationAffilBaptist => 'Baptist';
+
+  @override
+  String get educationAffilLutheran => 'Lutheran';
+
+  @override
+  String get educationAffilJewish => 'Do Thái';
+
+  @override
+  String get educationAffilEvangelical => 'Tin Lành';
+
+  @override
+  String get educationAffilIslamic => 'Hồi giáo';
+
+  @override
+  String get educationAffilOther => 'Khác';
+
+  @override
+  String get educationAffilCalvaryChapel => 'Calvary Chapel';
+
+  @override
+  String get educationAffilAssemblyOfGod => 'Hội Thánh Chúa';
+
+  @override
+  String get educationAffilApostolic => 'Tông đồ';
+
+  @override
+  String get educationAffilEpiscopal => 'Anh giáo';
+
+  @override
+  String get educationAffilPentecostal => 'Ngũ Tuần';
+
+  @override
+  String get educationAffilDisciplesOfChrist => 'Hội Thánh Môn Đồ Chúa Kitô';
+
+  @override
+  String get educationAffilInterdenominational => 'Liên hệ phái';
+
+  @override
+  String get educationAffilReformed => 'Cải cách';
+
+  @override
+  String get educationAffilMennonite => 'Mennonite';
+
+  @override
+  String get educationAffilChurchOfChrist => 'Hội Thánh Chúa Kitô';
+
+  @override
+  String get educationAffilPresbyterian => 'Trưởng Lão';
+
+  @override
+  String get educationAffilFourSquare => 'Tứ Phương Phúc Âm';
+
+  @override
+  String get educationAffilNazarene => 'Hội Thánh Na-xa-rét';
+
+  @override
+  String get educationAffilOrthodox => 'Chính thống giáo (Đông/Hy Lạp)';
+
+  @override
+  String get educationAffilChurchOfGod => 'Hội Thánh Đức Chúa Trời';
+
+  @override
+  String get educationAffilJehovahsWitnesses => 'Nhân Chứng Giê-hô-va';
+
+  @override
+  String get educationAffilMormon => 'Mormon (Thánh hữu Ngày sau)';
+
+  @override
+  String get educationAffilFundamentalistChristian => 'Cơ Đốc bảo thủ';
+
+  @override
+  String get educationAffilQuaker => 'Quaker (Bạn Hữu)';
+
+  @override
+  String get educationAffilCovenant => 'Giao ước';
+
+  @override
+  String get educationAffilNewAge => 'Tân thời đại';
+
+  @override
+  String get educationAffilCharismatic => 'Ân tứ';
+
+  @override
+  String get educationAffilMethodist => 'Giám Lý';
+
+  @override
+  String get educationAffilSikh => 'Sikh';
+
+  @override
+  String get educationAffilBuddhist => 'Phật giáo';
+
+  @override
+  String get educationAffilBrethren => 'Hội Anh Em';
+
+  @override
+  String get educationAffilScientology => 'Scientology';
+
+  @override
   String get groupsIntro =>
       'Tham gia một nhóm để đăng bài, đặt câu hỏi, và giúp người mới đến khác ở California.';
 

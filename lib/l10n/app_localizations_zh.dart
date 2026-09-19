@@ -986,6 +986,126 @@ class AppLocalizationsZh extends AppLocalizations {
   String get educationGradeK => 'K';
 
   @override
+  String get educationGenderCoed => '男女同校';
+
+  @override
+  String get educationGenderBoys => '仅男生';
+
+  @override
+  String get educationGenderGirls => '仅女生';
+
+  @override
+  String get educationAffilNonReligious => '非宗教';
+
+  @override
+  String get educationAffilCatholic => '天主教';
+
+  @override
+  String get educationAffilNondenominational => '无宗派';
+
+  @override
+  String get educationAffilSeventhDayAdventist => '基督复临安息日会';
+
+  @override
+  String get educationAffilBaptist => '浸信会';
+
+  @override
+  String get educationAffilLutheran => '路德会';
+
+  @override
+  String get educationAffilJewish => '犹太教';
+
+  @override
+  String get educationAffilEvangelical => '福音派';
+
+  @override
+  String get educationAffilIslamic => '伊斯兰教';
+
+  @override
+  String get educationAffilOther => '其他';
+
+  @override
+  String get educationAffilCalvaryChapel => '各各他教会';
+
+  @override
+  String get educationAffilAssemblyOfGod => '神召会';
+
+  @override
+  String get educationAffilApostolic => '使徒会';
+
+  @override
+  String get educationAffilEpiscopal => '圣公会';
+
+  @override
+  String get educationAffilPentecostal => '五旬节派';
+
+  @override
+  String get educationAffilDisciplesOfChrist => '基督门徒会';
+
+  @override
+  String get educationAffilInterdenominational => '跨宗派';
+
+  @override
+  String get educationAffilReformed => '改革宗';
+
+  @override
+  String get educationAffilMennonite => '门诺会';
+
+  @override
+  String get educationAffilChurchOfChrist => '基督教会';
+
+  @override
+  String get educationAffilPresbyterian => '长老会';
+
+  @override
+  String get educationAffilFourSquare => '四方福音会';
+
+  @override
+  String get educationAffilNazarene => '拿撒勒人教会';
+
+  @override
+  String get educationAffilOrthodox => '东正教（希腊）';
+
+  @override
+  String get educationAffilChurchOfGod => '上帝的教会';
+
+  @override
+  String get educationAffilJehovahsWitnesses => '耶和华见证人';
+
+  @override
+  String get educationAffilMormon => '摩门教（后期圣徒）';
+
+  @override
+  String get educationAffilFundamentalistChristian => '基要派基督教';
+
+  @override
+  String get educationAffilQuaker => '贵格会';
+
+  @override
+  String get educationAffilCovenant => '圣约教会';
+
+  @override
+  String get educationAffilNewAge => '新时代';
+
+  @override
+  String get educationAffilCharismatic => '灵恩派';
+
+  @override
+  String get educationAffilMethodist => '卫理公会';
+
+  @override
+  String get educationAffilSikh => '锡克教';
+
+  @override
+  String get educationAffilBuddhist => '佛教';
+
+  @override
+  String get educationAffilBrethren => '弟兄会';
+
+  @override
+  String get educationAffilScientology => '山达基';
+
+  @override
   String get groupsIntro => '加入小组可以发帖、提问，并帮助加州的其他新移民。';
 
   @override

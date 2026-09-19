@@ -62,8 +62,14 @@ String _localizedEducationDescription(
   const separator = ' · ';
   final description = resource.description;
   if (!description.contains(separator)) return description;
-  final parts = description.split(separator);
-  final type = switch (parts.first) {
+  return description
+      .split(separator)
+      .map((part) => _localizedEducationLabel(part, l10n))
+      .join(separator);
+}
+
+String _localizedEducationLabel(String part, AppLocalizations l10n) {
+  return switch (part) {
     'Elementary' => l10n.educationTypeElementary,
     'High School' => l10n.educationTypeHighSchool,
     'Intermediate/Middle/Junior High' => l10n.educationTypeMiddle,
@@ -72,9 +78,49 @@ String _localizedEducationDescription(
     'Preschool' => l10n.educationTypePreschool,
     'Ungraded' => l10n.educationTypeUngraded,
     'Private school (tuition based)' => l10n.educationTypePrivateTuition,
-    _ => parts.first,
+    'Coeducational' => l10n.educationGenderCoed,
+    'Boys Only' => l10n.educationGenderBoys,
+    'Girls Only' => l10n.educationGenderGirls,
+    'Non-Religious' => l10n.educationAffilNonReligious,
+    'Catholic' => l10n.educationAffilCatholic,
+    'Nondenominational' => l10n.educationAffilNondenominational,
+    'Seventh-day Adventist' => l10n.educationAffilSeventhDayAdventist,
+    'Baptist' => l10n.educationAffilBaptist,
+    'Lutheran' => l10n.educationAffilLutheran,
+    'Jewish' => l10n.educationAffilJewish,
+    'Evangelical' => l10n.educationAffilEvangelical,
+    'Islamic (Muslim)' => l10n.educationAffilIslamic,
+    'Other' => l10n.educationAffilOther,
+    'Calvary Chapel' => l10n.educationAffilCalvaryChapel,
+    'Assembly of God' => l10n.educationAffilAssemblyOfGod,
+    'Apostolic' => l10n.educationAffilApostolic,
+    'Episcopal' => l10n.educationAffilEpiscopal,
+    'Pentecostal' => l10n.educationAffilPentecostal,
+    'Christian Church (Disciples of Christ)' =>
+      l10n.educationAffilDisciplesOfChrist,
+    'Interdenominational' => l10n.educationAffilInterdenominational,
+    'Reformed' => l10n.educationAffilReformed,
+    'Mennonite' => l10n.educationAffilMennonite,
+    'Church of Christ' => l10n.educationAffilChurchOfChrist,
+    'Presbyterian' => l10n.educationAffilPresbyterian,
+    'Four Square Gospel' => l10n.educationAffilFourSquare,
+    'Church of the Nazarene' => l10n.educationAffilNazarene,
+    'Orthodox (Eastern/Greek)' => l10n.educationAffilOrthodox,
+    'Church of God' => l10n.educationAffilChurchOfGod,
+    'Jehovah\'s Witnesses' => l10n.educationAffilJehovahsWitnesses,
+    'Mormon (Latter-day Saints)' => l10n.educationAffilMormon,
+    'Fundamentalist Christian' => l10n.educationAffilFundamentalistChristian,
+    'Quaker (Friends)' => l10n.educationAffilQuaker,
+    'Covenant' => l10n.educationAffilCovenant,
+    'New Age' => l10n.educationAffilNewAge,
+    'Charismatic' => l10n.educationAffilCharismatic,
+    'Methodist' => l10n.educationAffilMethodist,
+    'Sikh' => l10n.educationAffilSikh,
+    'Buddhist' => l10n.educationAffilBuddhist,
+    'Church of the Brethren' => l10n.educationAffilBrethren,
+    'Scientology' => l10n.educationAffilScientology,
+    _ => part,
   };
-  return [type, ...parts.skip(1)].join(separator);
 }
 
 String _schoolSourceTitle(

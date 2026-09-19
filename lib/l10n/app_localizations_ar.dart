@@ -1022,6 +1022,126 @@ class AppLocalizationsAr extends AppLocalizations {
   String get educationGradeK => 'K';
 
   @override
+  String get educationGenderCoed => 'مختلطة';
+
+  @override
+  String get educationGenderBoys => 'للبنين فقط';
+
+  @override
+  String get educationGenderGirls => 'للبنات فقط';
+
+  @override
+  String get educationAffilNonReligious => 'غير دينية';
+
+  @override
+  String get educationAffilCatholic => 'كاثوليكية';
+
+  @override
+  String get educationAffilNondenominational => 'غير طائفية';
+
+  @override
+  String get educationAffilSeventhDayAdventist => 'السبتيون';
+
+  @override
+  String get educationAffilBaptist => 'معمدانية';
+
+  @override
+  String get educationAffilLutheran => 'لوثرية';
+
+  @override
+  String get educationAffilJewish => 'يهودية';
+
+  @override
+  String get educationAffilEvangelical => 'إنجيلية';
+
+  @override
+  String get educationAffilIslamic => 'إسلامية';
+
+  @override
+  String get educationAffilOther => 'أخرى';
+
+  @override
+  String get educationAffilCalvaryChapel => 'كالفاري تشابل';
+
+  @override
+  String get educationAffilAssemblyOfGod => 'جمعيات الله';
+
+  @override
+  String get educationAffilApostolic => 'رسولية';
+
+  @override
+  String get educationAffilEpiscopal => 'أسقفية';
+
+  @override
+  String get educationAffilPentecostal => 'خمسينية';
+
+  @override
+  String get educationAffilDisciplesOfChrist => 'كنيسة المسيح (تلاميذ المسيح)';
+
+  @override
+  String get educationAffilInterdenominational => 'بين الطوائف';
+
+  @override
+  String get educationAffilReformed => 'إصلاحية';
+
+  @override
+  String get educationAffilMennonite => 'مينوناتية';
+
+  @override
+  String get educationAffilChurchOfChrist => 'كنيسة المسيح';
+
+  @override
+  String get educationAffilPresbyterian => 'مشيخية';
+
+  @override
+  String get educationAffilFourSquare => 'الإنجيل الرباعي';
+
+  @override
+  String get educationAffilNazarene => 'كنيسة الناصري';
+
+  @override
+  String get educationAffilOrthodox => 'أرثوذكسية (شرقية/يونانية)';
+
+  @override
+  String get educationAffilChurchOfGod => 'كنيسة الله';
+
+  @override
+  String get educationAffilJehovahsWitnesses => 'شهود يهوه';
+
+  @override
+  String get educationAffilMormon => 'مورمون (قديسو الأيام الأخيرة)';
+
+  @override
+  String get educationAffilFundamentalistChristian => 'مسيحية أصولية';
+
+  @override
+  String get educationAffilQuaker => 'الكويكرز (الأصدقاء)';
+
+  @override
+  String get educationAffilCovenant => 'العهد';
+
+  @override
+  String get educationAffilNewAge => 'العصر الجديد';
+
+  @override
+  String get educationAffilCharismatic => 'كاريزماتية';
+
+  @override
+  String get educationAffilMethodist => 'منهجية';
+
+  @override
+  String get educationAffilSikh => 'سيخية';
+
+  @override
+  String get educationAffilBuddhist => 'بوذية';
+
+  @override
+  String get educationAffilBrethren => 'كنيسة الإخوة';
+
+  @override
+  String get educationAffilScientology => 'السيانتولوجيا';
+
+  @override
   String get groupsIntro =>
       'انضم إلى مجموعة للنشر وطرح الأسئلة ومساعدة القادمين الجدد الآخرين في كاليفورنيا.';
 

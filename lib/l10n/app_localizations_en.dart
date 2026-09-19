@@ -1034,6 +1034,128 @@ class AppLocalizationsEn extends AppLocalizations {
   String get educationGradeK => 'K';
 
   @override
+  String get educationGenderCoed => 'Coeducational';
+
+  @override
+  String get educationGenderBoys => 'Boys only';
+
+  @override
+  String get educationGenderGirls => 'Girls only';
+
+  @override
+  String get educationAffilNonReligious => 'Non-religious';
+
+  @override
+  String get educationAffilCatholic => 'Catholic';
+
+  @override
+  String get educationAffilNondenominational => 'Nondenominational';
+
+  @override
+  String get educationAffilSeventhDayAdventist => 'Seventh-day Adventist';
+
+  @override
+  String get educationAffilBaptist => 'Baptist';
+
+  @override
+  String get educationAffilLutheran => 'Lutheran';
+
+  @override
+  String get educationAffilJewish => 'Jewish';
+
+  @override
+  String get educationAffilEvangelical => 'Evangelical';
+
+  @override
+  String get educationAffilIslamic => 'Islamic (Muslim)';
+
+  @override
+  String get educationAffilOther => 'Other';
+
+  @override
+  String get educationAffilCalvaryChapel => 'Calvary Chapel';
+
+  @override
+  String get educationAffilAssemblyOfGod => 'Assembly of God';
+
+  @override
+  String get educationAffilApostolic => 'Apostolic';
+
+  @override
+  String get educationAffilEpiscopal => 'Episcopal';
+
+  @override
+  String get educationAffilPentecostal => 'Pentecostal';
+
+  @override
+  String get educationAffilDisciplesOfChrist =>
+      'Christian Church (Disciples of Christ)';
+
+  @override
+  String get educationAffilInterdenominational => 'Interdenominational';
+
+  @override
+  String get educationAffilReformed => 'Reformed';
+
+  @override
+  String get educationAffilMennonite => 'Mennonite';
+
+  @override
+  String get educationAffilChurchOfChrist => 'Church of Christ';
+
+  @override
+  String get educationAffilPresbyterian => 'Presbyterian';
+
+  @override
+  String get educationAffilFourSquare => 'Four Square Gospel';
+
+  @override
+  String get educationAffilNazarene => 'Church of the Nazarene';
+
+  @override
+  String get educationAffilOrthodox => 'Orthodox (Eastern/Greek)';
+
+  @override
+  String get educationAffilChurchOfGod => 'Church of God';
+
+  @override
+  String get educationAffilJehovahsWitnesses => 'Jehovah\'s Witnesses';
+
+  @override
+  String get educationAffilMormon => 'Mormon (Latter-day Saints)';
+
+  @override
+  String get educationAffilFundamentalistChristian =>
+      'Fundamentalist Christian';
+
+  @override
+  String get educationAffilQuaker => 'Quaker (Friends)';
+
+  @override
+  String get educationAffilCovenant => 'Covenant';
+
+  @override
+  String get educationAffilNewAge => 'New Age';
+
+  @override
+  String get educationAffilCharismatic => 'Charismatic';
+
+  @override
+  String get educationAffilMethodist => 'Methodist';
+
+  @override
+  String get educationAffilSikh => 'Sikh';
+
+  @override
+  String get educationAffilBuddhist => 'Buddhist';
+
+  @override
+  String get educationAffilBrethren => 'Church of the Brethren';
+
+  @override
+  String get educationAffilScientology => 'Scientology';
+
+  @override
   String get groupsIntro =>
       'Join a group to post, ask questions, and help other newcomers in California.';
 

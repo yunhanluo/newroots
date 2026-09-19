@@ -1029,6 +1029,127 @@ class AppLocalizationsHi extends AppLocalizations {
   String get educationGradeK => 'K';
 
   @override
+  String get educationGenderCoed => 'सहशिक्षा';
+
+  @override
+  String get educationGenderBoys => 'केवल लड़के';
+
+  @override
+  String get educationGenderGirls => 'केवल लड़कियाँ';
+
+  @override
+  String get educationAffilNonReligious => 'गैर-धार्मिक';
+
+  @override
+  String get educationAffilCatholic => 'कैथोलिक';
+
+  @override
+  String get educationAffilNondenominational => 'बिना संप्रदाय';
+
+  @override
+  String get educationAffilSeventhDayAdventist => 'सेवेंथ-डे एडवेंटिस्ट';
+
+  @override
+  String get educationAffilBaptist => 'बैपटिस्ट';
+
+  @override
+  String get educationAffilLutheran => 'लूथरन';
+
+  @override
+  String get educationAffilJewish => 'यहूदी';
+
+  @override
+  String get educationAffilEvangelical => 'इवैन्जेलिकल';
+
+  @override
+  String get educationAffilIslamic => 'इस्लामी (मुस्लिम)';
+
+  @override
+  String get educationAffilOther => 'अन्य';
+
+  @override
+  String get educationAffilCalvaryChapel => 'कैल्वरी चैपल';
+
+  @override
+  String get educationAffilAssemblyOfGod => 'असेंबली ऑफ गॉड';
+
+  @override
+  String get educationAffilApostolic => 'अपोस्टोलिक';
+
+  @override
+  String get educationAffilEpiscopal => 'एपिस्कोपल';
+
+  @override
+  String get educationAffilPentecostal => 'पेंटेकोस्टल';
+
+  @override
+  String get educationAffilDisciplesOfChrist =>
+      'क्रिश्चियन चर्च (डिसाइपल्स ऑफ क्राइस्ट)';
+
+  @override
+  String get educationAffilInterdenominational => 'अंतर-संप्रदाय';
+
+  @override
+  String get educationAffilReformed => 'रिफॉर्म्ड';
+
+  @override
+  String get educationAffilMennonite => 'मेनोनाइट';
+
+  @override
+  String get educationAffilChurchOfChrist => 'चर्च ऑफ क्राइस्ट';
+
+  @override
+  String get educationAffilPresbyterian => 'प्रेस्बिटेरियन';
+
+  @override
+  String get educationAffilFourSquare => 'फोर स्क्वेयर गॉस्पेल';
+
+  @override
+  String get educationAffilNazarene => 'चर्च ऑफ द नाज़रीन';
+
+  @override
+  String get educationAffilOrthodox => 'ऑर्थोडॉक्स (पूर्वी/ग्रीक)';
+
+  @override
+  String get educationAffilChurchOfGod => 'चर्च ऑफ गॉड';
+
+  @override
+  String get educationAffilJehovahsWitnesses => 'यहोवा के साक्षी';
+
+  @override
+  String get educationAffilMormon => 'मॉर्मन (लैटर-डे सेंट्स)';
+
+  @override
+  String get educationAffilFundamentalistChristian => 'कट्टरपंथी ईसाई';
+
+  @override
+  String get educationAffilQuaker => 'क्वेकर (फ्रेंड्स)';
+
+  @override
+  String get educationAffilCovenant => 'कवेनेंट';
+
+  @override
+  String get educationAffilNewAge => 'न्यू एज';
+
+  @override
+  String get educationAffilCharismatic => 'करिश्माटिक';
+
+  @override
+  String get educationAffilMethodist => 'मेथोडिस्ट';
+
+  @override
+  String get educationAffilSikh => 'सिख';
+
+  @override
+  String get educationAffilBuddhist => 'बौद्ध';
+
+  @override
+  String get educationAffilBrethren => 'चर्च ऑफ द ब्रेथ्रेन';
+
+  @override
+  String get educationAffilScientology => 'साइंटोलॉजी';
+
+  @override
   String get groupsIntro =>
       'समूह में शामिल होकर पोस्ट करें, सवाल पूछें, और कैलिफोर्निया में अन्य नए लोगों की मदद करें।';
 
