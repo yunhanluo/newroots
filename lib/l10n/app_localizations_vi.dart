@@ -135,9 +135,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get authHaveAccount => 'Đã có tài khoản?';
 
   @override
-  String get authWhatIsNewRoots => 'NewRoots là gì?';
-
-  @override
   String get authPrivacyPolicy => 'Chính sách quyền riêng tư';
 
   @override
@@ -151,13 +148,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get authPasswordsDoNotMatch => 'Mật khẩu không khớp.';
-
-  @override
-  String get aboutTitle => 'Giới thiệu';
-
-  @override
-  String get aboutBody =>
-      'Nước Mỹ đầy cơ hội.\n\nĐây là một cường quốc kinh tế, với hiến pháp vững chắc và nhiều nền văn hóa.\n\nNhưng rất khó để đứng vững ở một đất nước mới — nhất là ở Mỹ.\n\nNewRoots ở đây để giúp bạn. Chúng tôi giúp bạn tìm chỗ đứng của mình.\nGiúp bạn kết nối, tránh bẫy, và dùng các nguồn hỗ trợ gần bạn.\nHãy để chúng tôi giới thiệu nước Mỹ với bạn.\n\nTìm rễ mới của bạn.';
 
   @override
   String get language => 'Ngôn ngữ';
@@ -964,6 +954,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get groupsJoin => 'Tham gia';
 
   @override
+  String get groupsJoined => 'Đã tham gia';
+
+  @override
   String get groupsLeave => 'Rời nhóm';
 
   @override
@@ -1287,10 +1280,46 @@ class AppLocalizationsVi extends AppLocalizations {
   String get groupsRemovePostAction => 'Gỡ bài';
 
   @override
-  String get groupsModerationChecking => 'Đang kiểm tra';
+  String get groupsModerationChecking => 'AI đang kiểm tra';
+
+  @override
+  String get groupsModerationPendingBody =>
+      'Chúng tôi đang kiểm tra trước khi người khác xem. Bài sẽ hiện sau một lát.';
 
   @override
   String get groupsModerationHidden => 'Đã ẩn khỏi nhóm';
+
+  @override
+  String get groupsModerationHiddenPii =>
+      'Đây giống số ID hoặc số tài khoản thật. Hãy xóa số rồi thử lại. Bạn vẫn có thể nói về chủ đề này.';
+
+  @override
+  String get groupsModerationHiddenScam =>
+      'Đây giống như đang xin tiền hoặc thông tin cá nhân. Hãy giữ nhóm không có bán hàng và đề nghị đáng ngờ.';
+
+  @override
+  String get groupsModerationHiddenHate =>
+      'Hãy tôn trọng nhau. Không cho phép bài không tử tế hoặc thù ghét.';
+
+  @override
+  String get groupsModerationHiddenHarassment =>
+      'Hãy tôn trọng nhau. Không cho phép quấy rối.';
+
+  @override
+  String get groupsModerationHiddenSexual =>
+      'Bài này không phù hợp nhóm hỗ trợ gia đình. Hãy giữ nội dung phù hợp.';
+
+  @override
+  String get groupsModerationHiddenSelfHarm =>
+      'Nếu bạn đang khủng hoảng, hãy gọi hoặc nhắn 988 tại Mỹ. Bài bị ẩn vì có thể chứa nội dung gây hại.';
+
+  @override
+  String get groupsModerationHiddenViolence =>
+      'Nhóm này không cho phép nội dung bạo lực.';
+
+  @override
+  String get groupsModerationHiddenGeneric =>
+      'Bài bị ẩn vì không đúng quy tắc cộng đồng. Hãy viết lại rồi thử lại.';
 
   @override
   String get groupsAppealSent => 'Đã gửi kháng cáo';
@@ -1327,4 +1356,62 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get groupsSendAppeal => 'Gửi kháng cáo';
+
+  @override
+  String get groupsNoticeDismiss => 'Đóng';
+
+  @override
+  String get groupsNoticeAppealReviewing =>
+      'Chúng tôi đang xem kháng cáo của bạn';
+
+  @override
+  String groupsNoticeStillHidden(String postTitle, String groupTitle) {
+    return '\"$postTitle\" trong $groupTitle vẫn đang bị ẩn.';
+  }
+
+  @override
+  String get groupsNoticePostBack => 'Bài của bạn đã trở lại';
+
+  @override
+  String groupsNoticeVisibleAgain(String postTitle, String groupTitle) {
+    return '\"$postTitle\" trong $groupTitle đã hiện lại với nhóm.';
+  }
+
+  @override
+  String get groupsNoticeAppealDeclined => 'Kháng cáo của bạn bị từ chối';
+
+  @override
+  String groupsNoticeWasRemoved(String postTitle, String groupTitle) {
+    return '\"$postTitle\" trong $groupTitle đã bị gỡ.';
+  }
+
+  @override
+  String get groupsNoticePostRemovedTitle => 'Bài của bạn đã bị gỡ';
+
+  @override
+  String groupsNoticeDeletedAfterWindow(String postTitle, String groupTitle) {
+    return '\"$postTitle\" trong $groupTitle đã bị xóa sau khi hết hạn kháng cáo.';
+  }
+
+  @override
+  String get groupsNoticePostHiddenTitle => 'Bài của bạn đã bị ẩn';
+
+  @override
+  String groupsNoticeHiddenReason(
+    String postTitle,
+    String groupTitle,
+    String reason,
+  ) {
+    return '\"$postTitle\" trong $groupTitle đã bị ẩn. Lý do: $reason';
+  }
+
+  @override
+  String groupsNoticeHiddenAdmin(String postTitle, String groupTitle) {
+    return 'Quản trị viên đã ẩn \"$postTitle\" trong $groupTitle.';
+  }
+
+  @override
+  String groupsNoticeAppealUntil(String deadline) {
+    return 'Bạn có thể kháng cáo đến $deadline.';
+  }
 }

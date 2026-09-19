@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../services/auth_service.dart';
-import '../../features/about/presentation/about_screen.dart';
 import '../../features/auth/presentation/auth_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/career/presentation/career_screen.dart';
@@ -36,7 +35,6 @@ import '../models/support_group.dart';
 abstract class Routes {
   static const auth = 'auth';
   static const signup = 'signup';
-  static const about = 'about';
   static const privacy = 'privacy';
   static const onboarding = 'onboarding';
   static const home = 'home';
@@ -71,7 +69,6 @@ final routerProvider = Provider<GoRouter>((ref) {
       final loggedIn = authService.currentUser != null;
       final atPublicRoute = state.matchedLocation == '/auth' ||
           state.matchedLocation == '/signup' ||
-          state.matchedLocation == '/about' ||
           state.matchedLocation == '/privacy';
 
       if (!loggedIn) return atPublicRoute ? null : '/auth';
@@ -92,11 +89,6 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/signup',
         name: Routes.signup,
         builder: (context, state) => const SignupScreen(),
-      ),
-      GoRoute(
-        path: '/about',
-        name: Routes.about,
-        builder: (context, state) => const AboutScreen(),
       ),
       GoRoute(
         path: '/privacy',

@@ -354,12 +354,6 @@ abstract class AppLocalizations {
   /// **'Already have an account?'**
   String get authHaveAccount;
 
-  /// No description provided for @authWhatIsNewRoots.
-  ///
-  /// In en, this message translates to:
-  /// **'What is NewRoots?'**
-  String get authWhatIsNewRoots;
-
   /// No description provided for @authPrivacyPolicy.
   ///
   /// In en, this message translates to:
@@ -389,18 +383,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match.'**
   String get authPasswordsDoNotMatch;
-
-  /// No description provided for @aboutTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'About'**
-  String get aboutTitle;
-
-  /// No description provided for @aboutBody.
-  ///
-  /// In en, this message translates to:
-  /// **'America brims with opportunities.\n\nIt is an economic powerhouse. It boasts a constitution so strong and effective that it has set the standard for dozens of other countries. It is a land of many unique cultures.\n\nBut it\'s hard to find your footing in a new country - especially in America.\n\nNewRoots is here to solve these problems. We\'ll help you find your place.\nWe\'ll help you make new connections. We\'ll help you steer clear of traps. We\'ll help you take advantage of resources near you.\nLet us show you what America is all about.\n\nFind your new roots.'**
-  String get aboutBody;
 
   /// No description provided for @language.
   ///
@@ -1836,6 +1818,12 @@ abstract class AppLocalizations {
   /// **'Join'**
   String get groupsJoin;
 
+  /// No description provided for @groupsJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'Joined'**
+  String get groupsJoined;
+
   /// No description provided for @groupsLeave.
   ///
   /// In en, this message translates to:
@@ -2427,14 +2415,68 @@ abstract class AppLocalizations {
   /// No description provided for @groupsModerationChecking.
   ///
   /// In en, this message translates to:
-  /// **'Checking this'**
+  /// **'The AI is checking this'**
   String get groupsModerationChecking;
+
+  /// No description provided for @groupsModerationPendingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We are checking this before others can see it. It should appear in a moment.'**
+  String get groupsModerationPendingBody;
 
   /// No description provided for @groupsModerationHidden.
   ///
   /// In en, this message translates to:
   /// **'Hidden from the group'**
   String get groupsModerationHidden;
+
+  /// No description provided for @groupsModerationHiddenPii.
+  ///
+  /// In en, this message translates to:
+  /// **'This looks like a real ID or account number. Please remove the number and try again. You can still talk about the topic.'**
+  String get groupsModerationHiddenPii;
+
+  /// No description provided for @groupsModerationHiddenScam.
+  ///
+  /// In en, this message translates to:
+  /// **'This looks like it could be asking people for money or personal details. Please keep the group free of sales and suspicious offers.'**
+  String get groupsModerationHiddenScam;
+
+  /// No description provided for @groupsModerationHiddenHate.
+  ///
+  /// In en, this message translates to:
+  /// **'Please keep this group respectful. Unkind or hateful posts are not allowed.'**
+  String get groupsModerationHiddenHate;
+
+  /// No description provided for @groupsModerationHiddenHarassment.
+  ///
+  /// In en, this message translates to:
+  /// **'Please keep this group respectful. Harassment is not allowed.'**
+  String get groupsModerationHiddenHarassment;
+
+  /// No description provided for @groupsModerationHiddenSexual.
+  ///
+  /// In en, this message translates to:
+  /// **'This post does not fit a family support group. Please keep posts appropriate.'**
+  String get groupsModerationHiddenSexual;
+
+  /// No description provided for @groupsModerationHiddenSelfHarm.
+  ///
+  /// In en, this message translates to:
+  /// **'If you are in crisis, call or text 988 in the US. This was hidden because it may include harmful content.'**
+  String get groupsModerationHiddenSelfHarm;
+
+  /// No description provided for @groupsModerationHiddenViolence.
+  ///
+  /// In en, this message translates to:
+  /// **'Violent content is not allowed in this group.'**
+  String get groupsModerationHiddenViolence;
+
+  /// No description provided for @groupsModerationHiddenGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'This was hidden because it did not meet community guidelines. Please rewrite it and try again.'**
+  String get groupsModerationHiddenGeneric;
 
   /// No description provided for @groupsAppealSent.
   ///
@@ -2495,6 +2537,88 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send appeal'**
   String get groupsSendAppeal;
+
+  /// No description provided for @groupsNoticeDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get groupsNoticeDismiss;
+
+  /// No description provided for @groupsNoticeAppealReviewing.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re reviewing your appeal'**
+  String get groupsNoticeAppealReviewing;
+
+  /// No description provided for @groupsNoticeStillHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{postTitle}\" in {groupTitle} is still hidden.'**
+  String groupsNoticeStillHidden(String postTitle, String groupTitle);
+
+  /// No description provided for @groupsNoticePostBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Your post is back'**
+  String get groupsNoticePostBack;
+
+  /// No description provided for @groupsNoticeVisibleAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{postTitle}\" in {groupTitle} is visible to the group again.'**
+  String groupsNoticeVisibleAgain(String postTitle, String groupTitle);
+
+  /// No description provided for @groupsNoticeAppealDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Your appeal was declined'**
+  String get groupsNoticeAppealDeclined;
+
+  /// No description provided for @groupsNoticeWasRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{postTitle}\" in {groupTitle} was removed.'**
+  String groupsNoticeWasRemoved(String postTitle, String groupTitle);
+
+  /// No description provided for @groupsNoticePostRemovedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your post was removed'**
+  String get groupsNoticePostRemovedTitle;
+
+  /// No description provided for @groupsNoticeDeletedAfterWindow.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{postTitle}\" in {groupTitle} was deleted after the appeal window ended.'**
+  String groupsNoticeDeletedAfterWindow(String postTitle, String groupTitle);
+
+  /// No description provided for @groupsNoticePostHiddenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your post was hidden'**
+  String get groupsNoticePostHiddenTitle;
+
+  /// No description provided for @groupsNoticeHiddenReason.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{postTitle}\" in {groupTitle} was hidden. Reason: {reason}'**
+  String groupsNoticeHiddenReason(
+    String postTitle,
+    String groupTitle,
+    String reason,
+  );
+
+  /// No description provided for @groupsNoticeHiddenAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{postTitle}\" in {groupTitle} was hidden by an admin.'**
+  String groupsNoticeHiddenAdmin(String postTitle, String groupTitle);
+
+  /// No description provided for @groupsNoticeAppealUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'You can appeal until {deadline}.'**
+  String groupsNoticeAppealUntil(String deadline);
 }
 
 class _AppLocalizationsDelegate

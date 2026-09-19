@@ -27,7 +27,9 @@ class GroupModerationBanner extends StatelessWidget {
     final title = pending
         ? l10n.groupsModerationChecking
         : l10n.groupsModerationHidden;
-    var body = moderation.authorMessage;
+    var body = pending
+        ? l10n.groupsModerationPendingBody
+        : _hiddenReason(l10n, moderation);
     if (isAdmin && moderation.isRejected && moderation.category.isNotEmpty) {
       body = '$body (admin: ${moderation.category})';
     }
@@ -78,4 +80,17 @@ class GroupModerationBanner extends StatelessWidget {
       ),
     );
   }
+}
+
+String _hiddenReason(AppLocalizations l10n, GroupModeration moderation) {
+  return switch (moderation.category) {
+    'pii' => l10n.groupsModerationHiddenPii,
+    'scam' => l10n.groupsModerationHiddenScam,
+    'hate' => l10n.groupsModerationHiddenHate,
+    'harassment' => l10n.groupsModerationHiddenHarassment,
+    'sexual' => l10n.groupsModerationHiddenSexual,
+    'self_harm' => l10n.groupsModerationHiddenSelfHarm,
+    'violence' => l10n.groupsModerationHiddenViolence,
+    _ => l10n.groupsModerationHiddenGeneric,
+  };
 }

@@ -136,9 +136,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get authHaveAccount => '¿Ya tiene una cuenta?';
 
   @override
-  String get authWhatIsNewRoots => '¿Qué es NewRoots?';
-
-  @override
   String get authPrivacyPolicy => 'Política de privacidad';
 
   @override
@@ -153,13 +150,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get authPasswordsDoNotMatch => 'Las contraseñas no coinciden.';
-
-  @override
-  String get aboutTitle => 'Acerca de';
-
-  @override
-  String get aboutBody =>
-      'Estados Unidos está lleno de oportunidades.\n\nEs una potencia económica. Tiene una constitución tan sólida que ha servido de modelo para decenas de otros países. Es un país de muchas culturas.\n\nPero es difícil encontrar su lugar en un país nuevo, sobre todo en Estados Unidos.\n\nNewRoots está aquí para ayudar. Le ayudamos a encontrar su lugar.\nLe ayudamos a hacer nuevas conexiones. Le ayudamos a evitar trampas. Le ayudamos a usar recursos cerca de usted.\nPermítanos mostrarle lo que Estados Unidos puede ofrecer.\n\nEncuentre sus nuevas raíces.';
 
   @override
   String get language => 'Idioma';
@@ -973,6 +963,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groupsJoin => 'Unirse';
 
   @override
+  String get groupsJoined => 'Unido';
+
+  @override
   String get groupsLeave => 'Salir del grupo';
 
   @override
@@ -1299,10 +1292,46 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groupsRemovePostAction => 'Quitar publicación';
 
   @override
-  String get groupsModerationChecking => 'Revisando esto';
+  String get groupsModerationChecking => 'La IA está revisando esto';
+
+  @override
+  String get groupsModerationPendingBody =>
+      'Estamos revisando esto antes de que otros lo vean. Debería aparecer en un momento.';
 
   @override
   String get groupsModerationHidden => 'Oculto del grupo';
+
+  @override
+  String get groupsModerationHiddenPii =>
+      'Esto parece un número real de identificación o de cuenta. Quítelo e inténtelo de nuevo. Aún puede hablar del tema.';
+
+  @override
+  String get groupsModerationHiddenScam =>
+      'Esto parece pedir dinero o datos personales. Mantenga el grupo libre de ventas y ofertas sospechosas.';
+
+  @override
+  String get groupsModerationHiddenHate =>
+      'Mantenga este grupo respetuoso. No se permiten publicaciones crueles o de odio.';
+
+  @override
+  String get groupsModerationHiddenHarassment =>
+      'Mantenga este grupo respetuoso. No se permite el acoso.';
+
+  @override
+  String get groupsModerationHiddenSexual =>
+      'Esta publicación no encaja en un grupo de apoyo familiar. Mantenga las publicaciones apropiadas.';
+
+  @override
+  String get groupsModerationHiddenSelfHarm =>
+      'Si está en crisis, llame o envíe un mensaje al 988 en EE. UU. Se ocultó porque puede incluir contenido dañino.';
+
+  @override
+  String get groupsModerationHiddenViolence =>
+      'El contenido violento no está permitido en este grupo.';
+
+  @override
+  String get groupsModerationHiddenGeneric =>
+      'Se ocultó porque no cumplió las normas de la comunidad. Reescríbala e inténtelo de nuevo.';
 
   @override
   String get groupsAppealSent => 'Apelación enviada';
@@ -1338,4 +1367,61 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get groupsSendAppeal => 'Enviar apelación';
+
+  @override
+  String get groupsNoticeDismiss => 'Cerrar';
+
+  @override
+  String get groupsNoticeAppealReviewing => 'Estamos revisando su apelación';
+
+  @override
+  String groupsNoticeStillHidden(String postTitle, String groupTitle) {
+    return '\"$postTitle\" en $groupTitle sigue oculta.';
+  }
+
+  @override
+  String get groupsNoticePostBack => 'Su publicación volvió';
+
+  @override
+  String groupsNoticeVisibleAgain(String postTitle, String groupTitle) {
+    return '\"$postTitle\" en $groupTitle vuelve a verse en el grupo.';
+  }
+
+  @override
+  String get groupsNoticeAppealDeclined => 'Su apelación fue rechazada';
+
+  @override
+  String groupsNoticeWasRemoved(String postTitle, String groupTitle) {
+    return '\"$postTitle\" en $groupTitle fue eliminada.';
+  }
+
+  @override
+  String get groupsNoticePostRemovedTitle => 'Su publicación fue eliminada';
+
+  @override
+  String groupsNoticeDeletedAfterWindow(String postTitle, String groupTitle) {
+    return '\"$postTitle\" en $groupTitle se eliminó cuando terminó el plazo de apelación.';
+  }
+
+  @override
+  String get groupsNoticePostHiddenTitle => 'Su publicación fue ocultada';
+
+  @override
+  String groupsNoticeHiddenReason(
+    String postTitle,
+    String groupTitle,
+    String reason,
+  ) {
+    return '\"$postTitle\" en $groupTitle fue ocultada. Motivo: $reason';
+  }
+
+  @override
+  String groupsNoticeHiddenAdmin(String postTitle, String groupTitle) {
+    return '\"$postTitle\" en $groupTitle fue ocultada por un administrador.';
+  }
+
+  @override
+  String groupsNoticeAppealUntil(String deadline) {
+    return 'Puede apelar hasta el $deadline.';
+  }
 }

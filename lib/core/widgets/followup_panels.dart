@@ -71,8 +71,8 @@ class FollowupAskPanel extends StatelessWidget {
         ),
         if (history.isNotEmpty) ...[
           const SizedBox(height: 12),
-          for (var i = history.length - 1; i >= 0; i--) ...[
-            if (i < history.length - 1) const Divider(height: 14),
+          for (var i = 0; i < history.length; i++) ...[
+            if (i > 0) const Divider(height: 14),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

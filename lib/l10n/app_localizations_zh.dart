@@ -134,9 +134,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get authHaveAccount => '已有账户？';
 
   @override
-  String get authWhatIsNewRoots => '什么是 NewRoots？';
-
-  @override
   String get authPrivacyPolicy => '隐私政策';
 
   @override
@@ -150,13 +147,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get authPasswordsDoNotMatch => '两次输入的密码不一致。';
-
-  @override
-  String get aboutTitle => '关于';
-
-  @override
-  String get aboutBody =>
-      '美国充满机会。\n\n它是经济强国，宪法影响了许多国家。这里也有多样的文化。\n\n但在新国家站稳脚跟并不容易，尤其是在美国。\n\nNewRoots 就是来帮助您的。我们帮您找到自己的位置。\n帮您建立新的联系，避开陷阱，并使用身边的资源。\n让我们带您认识美国。\n\n找到您的新根。';
 
   @override
   String get language => '语言';
@@ -920,6 +910,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get groupsJoin => '加入';
 
   @override
+  String get groupsJoined => '已加入';
+
+  @override
   String get groupsLeave => '退出小组';
 
   @override
@@ -1227,10 +1220,39 @@ class AppLocalizationsZh extends AppLocalizations {
   String get groupsRemovePostAction => '移除帖子';
 
   @override
-  String get groupsModerationChecking => '正在检查';
+  String get groupsModerationChecking => 'AI 正在检查';
+
+  @override
+  String get groupsModerationPendingBody => '我们正在检查，其他人暂时看不到。很快就会显示。';
 
   @override
   String get groupsModerationHidden => '已对本小组隐藏';
+
+  @override
+  String get groupsModerationHiddenPii =>
+      '这看起来像真实的身份证号或账号。请去掉号码后再试。您仍可以讨论这个话题。';
+
+  @override
+  String get groupsModerationHiddenScam => '这看起来像在向别人要钱或个人信息。请不要在小组里做销售或可疑提议。';
+
+  @override
+  String get groupsModerationHiddenHate => '请保持尊重。不允许不友善或仇恨内容。';
+
+  @override
+  String get groupsModerationHiddenHarassment => '请保持尊重。不允许骚扰。';
+
+  @override
+  String get groupsModerationHiddenSexual => '这条内容不适合家庭互助小组。请保持适当。';
+
+  @override
+  String get groupsModerationHiddenSelfHarm =>
+      '如果您正处于危机中，请在美国拨打或发送短信至 988。此内容可能有害，因此被隐藏。';
+
+  @override
+  String get groupsModerationHiddenViolence => '本小组不允许暴力内容。';
+
+  @override
+  String get groupsModerationHiddenGeneric => '因不符合社区规范而被隐藏。请改写后再试。';
 
   @override
   String get groupsAppealSent => '已提交申诉';
@@ -1265,4 +1287,61 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get groupsSendAppeal => '发送申诉';
+
+  @override
+  String get groupsNoticeDismiss => '关闭';
+
+  @override
+  String get groupsNoticeAppealReviewing => '我们正在审核您的申诉';
+
+  @override
+  String groupsNoticeStillHidden(String postTitle, String groupTitle) {
+    return '「$groupTitle」中的「$postTitle」仍处于隐藏状态。';
+  }
+
+  @override
+  String get groupsNoticePostBack => '您的帖子已恢复';
+
+  @override
+  String groupsNoticeVisibleAgain(String postTitle, String groupTitle) {
+    return '「$groupTitle」中的「$postTitle」已重新对小组成员可见。';
+  }
+
+  @override
+  String get groupsNoticeAppealDeclined => '您的申诉未获通过';
+
+  @override
+  String groupsNoticeWasRemoved(String postTitle, String groupTitle) {
+    return '「$groupTitle」中的「$postTitle」已被移除。';
+  }
+
+  @override
+  String get groupsNoticePostRemovedTitle => '您的帖子已被移除';
+
+  @override
+  String groupsNoticeDeletedAfterWindow(String postTitle, String groupTitle) {
+    return '申诉期结束后，「$groupTitle」中的「$postTitle」已被删除。';
+  }
+
+  @override
+  String get groupsNoticePostHiddenTitle => '您的帖子已被隐藏';
+
+  @override
+  String groupsNoticeHiddenReason(
+    String postTitle,
+    String groupTitle,
+    String reason,
+  ) {
+    return '「$groupTitle」中的「$postTitle」已被隐藏。原因：$reason';
+  }
+
+  @override
+  String groupsNoticeHiddenAdmin(String postTitle, String groupTitle) {
+    return '管理员隐藏了「$groupTitle」中的「$postTitle」。';
+  }
+
+  @override
+  String groupsNoticeAppealUntil(String deadline) {
+    return '您可以在 $deadline 前提出申诉。';
+  }
 }

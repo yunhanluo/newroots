@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Renders the light Markdown models often emit (`**bold**`, `*italic*`,
-/// `* ` / `- ` bullets) instead of showing the raw markers.
+/// Renders the light Markdown models often emit (`#` headings, `**bold**`,
+/// `*italic*`, `* ` / `- ` bullets) instead of showing the raw markers.
 class AiBodyText extends StatelessWidget {
   const AiBodyText(
     this.text, {
@@ -27,13 +27,63 @@ class AiBodyText extends StatelessWidget {
   }
 }
 
+final _bulletPrefix = RegExp(r'^(\s*)(?:\*|-)\s+', multiLine: true);
+final _headingLine = RegExp(r'^(#{1,6})\s+(.*?)\s*$');
+final _trailingHashes = RegExp(r'\s+#+\s*$');
+
 List<InlineSpan> parseAiBodySpans(String raw) {
   if (raw.isEmpty) return const [];
   final prepared = raw.replaceAllMapped(
-    RegExp(r'^(\s*)(?:\*|-)\s+', multiLine: true),
+    _bulletPrefix,
     (match) => '${match[1]}• ',
   );
-  return _parseInline(prepared);
+  final lines = prepared.split('\n');
+  final spans = <InlineSpan>[];
+
+  for (var i = 0; i < lines.length; i++) {
+    final line = lines[i];
+    final heading = _headingLine.firstMatch(line);
+    if (heading != null) {
+      final level = heading[1]!.length;
+      final title = heading[2]!.replaceFirst(_trailingHashes, '');
+      spans.add(
+        TextSpan(
+          style: _headingStyle(level),
+          children: _parseInline(title),
+        ),
+      );
+    } else {
+      spans.addAll(_parseInline(line));
+    }
+    if (i < lines.length - 1) {
+      spans.add(const TextSpan(text: '\n'));
+    }
+  }
+  return spans;
+}
+
+TextStyle _headingStyle(int level) {
+  return switch (level) {
+    1 => const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w800,
+        height: 1.3,
+      ),
+    2 => const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+      ),
+    3 => const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+      ),
+    _ => const TextStyle(
+        fontWeight: FontWeight.w700,
+        height: 1.3,
+      ),
+  };
 }
 
 List<InlineSpan> _parseInline(String input) {

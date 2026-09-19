@@ -299,6 +299,8 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
               const SizedBox(height: 10),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                clipBehavior: Clip.none,
+                padding: const EdgeInsets.symmetric(vertical: 2),
                 child: Row(
                   children: [
                     _FilterChip(
@@ -307,7 +309,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
                       onTap: () => setState(() => _filter = null),
                     ),
                     for (final category in SupportGroupCategory.values) ...[
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 10),
                       _FilterChip(
                         label: _groupsCategoryLabel(l10n, category),
                         selected: _filter == category,
@@ -644,32 +646,34 @@ class _FilterChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FilterChip(
-      label: Text(
-        label,
-        maxLines: 1,
-        softWrap: false,
-        overflow: TextOverflow.visible,
+    return Material(
+      color: selected ? kBrandGreen.withValues(alpha: 0.16) : Colors.white,
+      shape: StadiumBorder(
+        side: BorderSide(
+          color: selected
+              ? kBrandGreen
+              : kBrandGreen.withValues(alpha: 0.22),
+        ),
       ),
-      labelPadding: const EdgeInsets.symmetric(horizontal: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-      visualDensity: VisualDensity.standard,
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      selected: selected,
-      onSelected: (_) => onTap(),
-      selectedColor: kBrandGreen.withValues(alpha: 0.16),
-      checkmarkColor: kBrandGreen,
-      side: BorderSide(
-        color: selected
-            ? kBrandGreen
-            : kBrandGreen.withValues(alpha: 0.22),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        customBorder: const StadiumBorder(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Text(
+            label,
+            maxLines: 1,
+            softWrap: false,
+            style: TextStyle(
+              color: kBrandGreen,
+              fontSize: 14,
+              height: 1.2,
+              fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            ),
+          ),
+        ),
       ),
-      labelStyle: TextStyle(
-        color: kBrandGreen,
-        fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-      ),
-      backgroundColor: Colors.white,
-      showCheckmark: false,
     );
   }
 }
@@ -974,9 +978,9 @@ class _JoinedChip extends StatelessWidget {
         color: kBrandGreen.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(999),
       ),
-      child: const Text(
-        'Joined',
-        style: TextStyle(
+      child: Text(
+        AppLocalizations.of(context).groupsJoined,
+        style: const TextStyle(
           color: kBrandGreen,
           fontWeight: FontWeight.w700,
         ),

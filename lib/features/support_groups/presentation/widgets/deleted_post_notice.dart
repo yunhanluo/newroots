@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/models/support_group.dart';
 import '../../../../core/services/support_group_service.dart';
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'appeal_post_dialog.dart';
 
 /// In-app notice when an admin hid the user's post, with an appeal option.
@@ -17,6 +18,7 @@ class DeletedPostNotice extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final status = notice.appealStatus;
     final approved = status == PostAppealStatus.approved;
     final color = approved ? kBrandGreen : _removed;
@@ -24,31 +26,31 @@ class DeletedPostNotice extends ConsumerWidget {
         ? ''
         : DateFormat('MMM d').format(notice.purgeAt!.toLocal());
     final reason = notice.reason.trim();
+    final postTitle = notice.postTitle;
+    final groupTitle = notice.groupTitle;
     final String title;
     var body = '';
     switch (status) {
       case PostAppealStatus.pending:
-        title = 'We’re reviewing your appeal';
-        body = '"${notice.postTitle}" in ${notice.groupTitle} is still hidden.';
+        title = l10n.groupsNoticeAppealReviewing;
+        body = l10n.groupsNoticeStillHidden(postTitle, groupTitle);
       case PostAppealStatus.approved:
-        title = 'Your post is back';
-        body =
-            '"${notice.postTitle}" in ${notice.groupTitle} is visible to the group again.';
+        title = l10n.groupsNoticePostBack;
+        body = l10n.groupsNoticeVisibleAgain(postTitle, groupTitle);
       case PostAppealStatus.denied:
-        title = 'Your appeal was declined';
-        body = '"${notice.postTitle}" in ${notice.groupTitle} was removed.';
+        title = l10n.groupsNoticeAppealDeclined;
+        body = l10n.groupsNoticeWasRemoved(postTitle, groupTitle);
       case PostAppealStatus.expired:
-        title = 'Your post was removed';
-        body =
-            '"${notice.postTitle}" in ${notice.groupTitle} was deleted after the appeal window ended.';
+        title = l10n.groupsNoticePostRemovedTitle;
+        body = l10n.groupsNoticeDeletedAfterWindow(postTitle, groupTitle);
       case PostAppealStatus.open:
       case PostAppealStatus.none:
-        title = 'Your post was hidden';
+        title = l10n.groupsNoticePostHiddenTitle;
         body = reason.isNotEmpty
-            ? '"${notice.postTitle}" in ${notice.groupTitle} was hidden. Reason: $reason'
-            : '"${notice.postTitle}" in ${notice.groupTitle} was hidden by an admin.';
+            ? l10n.groupsNoticeHiddenReason(postTitle, groupTitle, reason)
+            : l10n.groupsNoticeHiddenAdmin(postTitle, groupTitle);
         if (notice.canAppeal && deadline.isNotEmpty) {
-          body = '$body You can appeal until $deadline.';
+          body = '$body ${l10n.groupsNoticeAppealUntil(deadline)}';
         }
     }
 
@@ -105,7 +107,7 @@ class DeletedPostNotice extends ConsumerWidget {
                         .read(supportGroupServiceProvider)
                         .markPostDeletionNoticeSeen(notice.id),
                     icon: const Icon(Icons.close, size: 18),
-                    tooltip: 'Dismiss',
+                    tooltip: l10n.groupsNoticeDismiss,
                   ),
               ],
             ),
@@ -121,7 +123,7 @@ class DeletedPostNotice extends ConsumerWidget {
                       backgroundColor: kBrandGreen,
                     ),
                     onPressed: () => _appeal(context, ref),
-                    child: const Text('Appeal'),
+                    child: Text(l10n.groupsAppeal),
                   ),
                 ),
               ),

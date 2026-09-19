@@ -55,15 +55,11 @@
   "authConfirmPassword": "Confirm password",
   "authNoAccount": "Don't have an account?",
   "authHaveAccount": "Already have an account?",
-  "authWhatIsNewRoots": "What is NewRoots?",
   "authPrivacyPolicy": "Privacy policy",
   "authEmailPasswordRequired": "Please enter your email and password.",
   "authFillAllFields": "Please fill in all fields.",
   "authPasswordTooShort": "Password must be at least 6 characters.",
   "authPasswordsDoNotMatch": "Passwords do not match.",
-
-  "aboutTitle": "About",
-  "aboutBody": "America brims with opportunities.\n\nIt is an economic powerhouse. It boasts a constitution so strong and effective that it has set the standard for dozens of other countries. It is a land of many unique cultures.\n\nBut it's hard to find your footing in a new country - especially in America.\n\nNewRoots is here to solve these problems. We'll help you find your place.\nWe'll help you make new connections. We'll help you steer clear of traps. We'll help you take advantage of resources near you.\nLet us show you what America is all about.\n\nFind your new roots.",
 
   "language": "Language",
   "preferredLanguage": "Preferred language",
@@ -419,6 +415,7 @@
   },
   "groupsSuggest": "Suggest a new group",
   "groupsJoin": "Join",
+  "groupsJoined": "Joined",
   "groupsLeave": "Leave group",
   "groupsSearch": "Search",
   "groupsSearchClear": "Clear search",
@@ -545,8 +542,17 @@
   "groupsRemovePostHint": "e.g. This broke the group rules.",
   "groupsRemovePostReasonRequired": "Please say why this post is being removed.",
   "groupsRemovePostAction": "Remove post",
-  "groupsModerationChecking": "Checking this",
+  "groupsModerationChecking": "The AI is checking this",
+  "groupsModerationPendingBody": "We are checking this before others can see it. It should appear in a moment.",
   "groupsModerationHidden": "Hidden from the group",
+  "groupsModerationHiddenPii": "This looks like a real ID or account number. Please remove the number and try again. You can still talk about the topic.",
+  "groupsModerationHiddenScam": "This looks like it could be asking people for money or personal details. Please keep the group free of sales and suspicious offers.",
+  "groupsModerationHiddenHate": "Please keep this group respectful. Unkind or hateful posts are not allowed.",
+  "groupsModerationHiddenHarassment": "Please keep this group respectful. Harassment is not allowed.",
+  "groupsModerationHiddenSexual": "This post does not fit a family support group. Please keep posts appropriate.",
+  "groupsModerationHiddenSelfHarm": "If you are in crisis, call or text 988 in the US. This was hidden because it may include harmful content.",
+  "groupsModerationHiddenViolence": "Violent content is not allowed in this group.",
+  "groupsModerationHiddenGeneric": "This was hidden because it did not meet community guidelines. Please rewrite it and try again.",
   "groupsAppealSent": "Appeal sent",
   "groupsReasonPrefix": "Reason: {reason}",
   "@groupsReasonPrefix": {
@@ -566,5 +572,60 @@
   "groupsAppealTitle": "Appeal this removal?",
   "groupsAppealIntro": "A moderator will review it. If they agree, the post will show in the group again.",
   "groupsAppealLabel": "Why should it stay? (optional)",
-  "groupsSendAppeal": "Send appeal"
+  "groupsSendAppeal": "Send appeal",
+  "groupsNoticeDismiss": "Dismiss",
+  "groupsNoticeAppealReviewing": "We're reviewing your appeal",
+  "groupsNoticeStillHidden": "\"{postTitle}\" in {groupTitle} is still hidden.",
+  "@groupsNoticeStillHidden": {
+    "placeholders": {
+      "postTitle": { "type": "String" },
+      "groupTitle": { "type": "String" }
+    }
+  },
+  "groupsNoticePostBack": "Your post is back",
+  "groupsNoticeVisibleAgain": "\"{postTitle}\" in {groupTitle} is visible to the group again.",
+  "@groupsNoticeVisibleAgain": {
+    "placeholders": {
+      "postTitle": { "type": "String" },
+      "groupTitle": { "type": "String" }
+    }
+  },
+  "groupsNoticeAppealDeclined": "Your appeal was declined",
+  "groupsNoticeWasRemoved": "\"{postTitle}\" in {groupTitle} was removed.",
+  "@groupsNoticeWasRemoved": {
+    "placeholders": {
+      "postTitle": { "type": "String" },
+      "groupTitle": { "type": "String" }
+    }
+  },
+  "groupsNoticePostRemovedTitle": "Your post was removed",
+  "groupsNoticeDeletedAfterWindow": "\"{postTitle}\" in {groupTitle} was deleted after the appeal window ended.",
+  "@groupsNoticeDeletedAfterWindow": {
+    "placeholders": {
+      "postTitle": { "type": "String" },
+      "groupTitle": { "type": "String" }
+    }
+  },
+  "groupsNoticePostHiddenTitle": "Your post was hidden",
+  "groupsNoticeHiddenReason": "\"{postTitle}\" in {groupTitle} was hidden. Reason: {reason}",
+  "@groupsNoticeHiddenReason": {
+    "placeholders": {
+      "postTitle": { "type": "String" },
+      "groupTitle": { "type": "String" },
+      "reason": { "type": "String" }
+    }
+  },
+  "groupsNoticeHiddenAdmin": "\"{postTitle}\" in {groupTitle} was hidden by an admin.",
+  "@groupsNoticeHiddenAdmin": {
+    "placeholders": {
+      "postTitle": { "type": "String" },
+      "groupTitle": { "type": "String" }
+    }
+  },
+  "groupsNoticeAppealUntil": "You can appeal until {deadline}.",
+  "@groupsNoticeAppealUntil": {
+    "placeholders": {
+      "deadline": { "type": "String" }
+    }
+  }
 }

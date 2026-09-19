@@ -136,9 +136,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get authHaveAccount => 'पहले से खाता है?';
 
   @override
-  String get authWhatIsNewRoots => 'NewRoots क्या है?';
-
-  @override
   String get authPrivacyPolicy => 'गोपनीयता नीति';
 
   @override
@@ -152,13 +149,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get authPasswordsDoNotMatch => 'पासवर्ड मेल नहीं खाते।';
-
-  @override
-  String get aboutTitle => 'परिचय';
-
-  @override
-  String get aboutBody =>
-      'अमेरिका अवसरों से भरा है।\n\nयह एक आर्थिक शक्ति है। इसका संविधान कई देशों के लिए उदाहरण बना। यहाँ कई संस्कृतियाँ हैं।\n\nलेकिन नए देश में जगह बनाना कठिन है — खासकर अमेरिका में।\n\nNewRoots आपकी मदद के लिए है। हम आपकी जगह खोजने में मदद करेंगे।\nनए रिश्ते बनाने, जाल से बचने, और पास के संसाधन इस्तेमाल करने में मदद करेंगे।\nआइए, अमेरिका को जानें।\n\nअपनी नई जड़ें खोजें।';
 
   @override
   String get language => 'भाषा';
@@ -962,6 +952,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get groupsJoin => 'शामिल हों';
 
   @override
+  String get groupsJoined => 'शामिल हैं';
+
+  @override
   String get groupsLeave => 'समूह छोड़ें';
 
   @override
@@ -1284,10 +1277,46 @@ class AppLocalizationsHi extends AppLocalizations {
   String get groupsRemovePostAction => 'पोस्ट हटाएँ';
 
   @override
-  String get groupsModerationChecking => 'जाँच हो रही है';
+  String get groupsModerationChecking => 'AI जाँच कर रहा है';
+
+  @override
+  String get groupsModerationPendingBody =>
+      'दूसरों को दिखाने से पहले हम इसकी जाँच कर रहे हैं। यह थोड़ी देर में दिखेगी।';
 
   @override
   String get groupsModerationHidden => 'समूह से छिपाया गया';
+
+  @override
+  String get groupsModerationHiddenPii =>
+      'यह असली पहचान या खाता संख्या लगती है। संख्या हटाकर फिर कोशिश करें। इस विषय पर बात करना ठीक है।';
+
+  @override
+  String get groupsModerationHiddenScam =>
+      'यह पैसे या निजी जानकारी माँगने जैसा लगता है। समूह में बिक्री और संदिग्ध ऑफ़र न रखें।';
+
+  @override
+  String get groupsModerationHiddenHate =>
+      'समूह में सम्मान रखें। कठोर या घृणा वाली पोस्ट नहीं चलेंगी।';
+
+  @override
+  String get groupsModerationHiddenHarassment =>
+      'समूह में सम्मान रखें। उत्पीड़न नहीं चलेगा।';
+
+  @override
+  String get groupsModerationHiddenSexual =>
+      'यह पोस्ट परिवार सहायता समूह के लिए ठीक नहीं है। उपयुक्त सामग्री रखें।';
+
+  @override
+  String get groupsModerationHiddenSelfHarm =>
+      'अगर आप संकट में हैं, तो अमेरिका में 988 पर कॉल या टेक्स्ट करें। यह हानिकारक लगने पर छिपा दी गई।';
+
+  @override
+  String get groupsModerationHiddenViolence =>
+      'इस समूह में हिंसक सामग्री नहीं चलती।';
+
+  @override
+  String get groupsModerationHiddenGeneric =>
+      'यह समुदाय के नियमों पर खरी नहीं उतरी, इसलिए छिपा दी गई। फिर लिखकर कोशिश करें।';
 
   @override
   String get groupsAppealSent => 'अपील भेजी गई';
@@ -1323,4 +1352,61 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get groupsSendAppeal => 'अपील भेजें';
+
+  @override
+  String get groupsNoticeDismiss => 'बंद करें';
+
+  @override
+  String get groupsNoticeAppealReviewing => 'हम आपकी अपील देख रहे हैं';
+
+  @override
+  String groupsNoticeStillHidden(String postTitle, String groupTitle) {
+    return '$groupTitle में \"$postTitle\" अभी भी छिपी है।';
+  }
+
+  @override
+  String get groupsNoticePostBack => 'आपकी पोस्ट वापस आ गई';
+
+  @override
+  String groupsNoticeVisibleAgain(String postTitle, String groupTitle) {
+    return '$groupTitle में \"$postTitle\" फिर समूह को दिख रही है।';
+  }
+
+  @override
+  String get groupsNoticeAppealDeclined => 'आपकी अपील अस्वीकार हुई';
+
+  @override
+  String groupsNoticeWasRemoved(String postTitle, String groupTitle) {
+    return '$groupTitle में \"$postTitle\" हटा दी गई।';
+  }
+
+  @override
+  String get groupsNoticePostRemovedTitle => 'आपकी पोस्ट हटा दी गई';
+
+  @override
+  String groupsNoticeDeletedAfterWindow(String postTitle, String groupTitle) {
+    return 'अपील की समय सीमा खत्म होने के बाद $groupTitle में \"$postTitle\" हटा दी गई।';
+  }
+
+  @override
+  String get groupsNoticePostHiddenTitle => 'आपकी पोस्ट छिपा दी गई';
+
+  @override
+  String groupsNoticeHiddenReason(
+    String postTitle,
+    String groupTitle,
+    String reason,
+  ) {
+    return '$groupTitle में \"$postTitle\" छिपा दी गई। कारण: $reason';
+  }
+
+  @override
+  String groupsNoticeHiddenAdmin(String postTitle, String groupTitle) {
+    return 'एक व्यवस्थापक ने $groupTitle में \"$postTitle\" छिपाई।';
+  }
+
+  @override
+  String groupsNoticeAppealUntil(String deadline) {
+    return 'आप $deadline तक अपील कर सकते हैं।';
+  }
 }

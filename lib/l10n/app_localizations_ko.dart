@@ -134,9 +134,6 @@ class AppLocalizationsKo extends AppLocalizations {
   String get authHaveAccount => '이미 계정이 있으신가요?';
 
   @override
-  String get authWhatIsNewRoots => 'NewRoots란?';
-
-  @override
   String get authPrivacyPolicy => '개인정보 처리방침';
 
   @override
@@ -150,13 +147,6 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get authPasswordsDoNotMatch => '비밀번호가 일치하지 않습니다.';
-
-  @override
-  String get aboutTitle => '소개';
-
-  @override
-  String get aboutBody =>
-      '미국에는 기회가 많습니다.\n\n경제적으로 강하고, 많은 나라에 영향을 준 헌법을 가지고 있으며, 다양한 문화가 있습니다.\n\n하지만 새로운 나라에서 자리를 잡기는 어렵습니다. 특히 미국에서는 더 그렇습니다.\n\nNewRoots가 도와드립니다. 자리를 찾고,\n새로운 관계를 만들고, 함정을 피하고, 가까운 자원을 쓰도록 돕습니다.\n미국이 어떤 나라인지 함께 알아보세요.\n\n새로운 뿌리를 찾으세요.';
 
   @override
   String get language => '언어';
@@ -932,6 +922,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get groupsJoin => '가입';
 
   @override
+  String get groupsJoined => '가입됨';
+
+  @override
   String get groupsLeave => '그룹 나가기';
 
   @override
@@ -1244,10 +1237,43 @@ class AppLocalizationsKo extends AppLocalizations {
   String get groupsRemovePostAction => '게시물 숨기기';
 
   @override
-  String get groupsModerationChecking => '확인 중';
+  String get groupsModerationChecking => 'AI가 확인하는 중';
+
+  @override
+  String get groupsModerationPendingBody =>
+      '다른 사람이 보기 전에 확인하고 있습니다. 잠시 후 나타납니다.';
 
   @override
   String get groupsModerationHidden => '그룹에서 숨김';
+
+  @override
+  String get groupsModerationHiddenPii =>
+      '실제 신분증 번호나 계좌 번호처럼 보입니다. 숫자를 지우고 다시 시도해 주세요. 그 주제에 대해 이야기하는 것은 괜찮습니다.';
+
+  @override
+  String get groupsModerationHiddenScam =>
+      '돈이나 개인 정보를 요청하는 것처럼 보입니다. 판매나 수상한 제안은 하지 마세요.';
+
+  @override
+  String get groupsModerationHiddenHate => '서로를 존중해 주세요. 불친절하거나 혐오하는 글은 안 됩니다.';
+
+  @override
+  String get groupsModerationHiddenHarassment => '서로를 존중해 주세요. 괴롭힘은 안 됩니다.';
+
+  @override
+  String get groupsModerationHiddenSexual =>
+      '이 내용은 가족 지원 그룹에 맞지 않습니다. 적절한 글을 올려 주세요.';
+
+  @override
+  String get groupsModerationHiddenSelfHarm =>
+      '위급한 상황이면 미국에서 988로 전화하거나 문자하세요. 해로운 내용일 수 있어 숨겼습니다.';
+
+  @override
+  String get groupsModerationHiddenViolence => '이 그룹에서는 폭력적인 내용을 올릴 수 없습니다.';
+
+  @override
+  String get groupsModerationHiddenGeneric =>
+      '커뮤니티 가이드에 맞지 않아 숨겼습니다. 다시 써서 올려 주세요.';
 
   @override
   String get groupsAppealSent => '이의 신청을 보냄';
@@ -1282,4 +1308,61 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get groupsSendAppeal => '이의 신청 보내기';
+
+  @override
+  String get groupsNoticeDismiss => '닫기';
+
+  @override
+  String get groupsNoticeAppealReviewing => '이의 신청을 검토하고 있습니다';
+
+  @override
+  String groupsNoticeStillHidden(String postTitle, String groupTitle) {
+    return '$groupTitle의 \"$postTitle\"은(는) 아직 숨겨져 있습니다.';
+  }
+
+  @override
+  String get groupsNoticePostBack => '게시물이 다시 보입니다';
+
+  @override
+  String groupsNoticeVisibleAgain(String postTitle, String groupTitle) {
+    return '$groupTitle의 \"$postTitle\"이(가) 그룹에 다시 보입니다.';
+  }
+
+  @override
+  String get groupsNoticeAppealDeclined => '이의 신청이 거절되었습니다';
+
+  @override
+  String groupsNoticeWasRemoved(String postTitle, String groupTitle) {
+    return '$groupTitle의 \"$postTitle\"이(가) 삭제되었습니다.';
+  }
+
+  @override
+  String get groupsNoticePostRemovedTitle => '게시물이 삭제되었습니다';
+
+  @override
+  String groupsNoticeDeletedAfterWindow(String postTitle, String groupTitle) {
+    return '이의 신청 기간이 끝나 $groupTitle의 \"$postTitle\"이(가) 삭제되었습니다.';
+  }
+
+  @override
+  String get groupsNoticePostHiddenTitle => '게시물이 숨겨졌습니다';
+
+  @override
+  String groupsNoticeHiddenReason(
+    String postTitle,
+    String groupTitle,
+    String reason,
+  ) {
+    return '$groupTitle의 \"$postTitle\"이(가) 숨겨졌습니다. 이유: $reason';
+  }
+
+  @override
+  String groupsNoticeHiddenAdmin(String postTitle, String groupTitle) {
+    return '관리자가 $groupTitle의 \"$postTitle\"을(를) 숨겼습니다.';
+  }
+
+  @override
+  String groupsNoticeAppealUntil(String deadline) {
+    return '$deadline까지 이의 신청을 할 수 있습니다.';
+  }
 }

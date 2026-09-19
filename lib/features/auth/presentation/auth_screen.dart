@@ -147,15 +147,6 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                       TextButton(
                         onPressed: _loading
                             ? null
-                            : () => context.pushNamed(Routes.about),
-                        style: TextButton.styleFrom(
-                          foregroundColor: kBrandGreen,
-                        ),
-                        child: Text(l10n.authWhatIsNewRoots),
-                      ),
-                      TextButton(
-                        onPressed: _loading
-                            ? null
                             : () => context.pushNamed(Routes.privacy),
                         style: TextButton.styleFrom(
                           foregroundColor: kBrandGreen,
