@@ -802,6 +802,14 @@ class AppLocalizationsVi extends AppLocalizations {
   String get finderResizeMap => 'Đổi kích thước bản đồ';
 
   @override
+  String get finderOpenWebsite => 'Mở trang web';
+
+  @override
+  String finderKmAway(String distance) {
+    return 'cách $distance km';
+  }
+
+  @override
   String get clinicsSearchIntro =>
       'Tìm trung tâm y tế cộng đồng HRSA gần một thành phố hoặc mã ZIP ở California. Ghim đến từ danh mục liên bang chính thức.';
 
@@ -822,6 +830,13 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get clinicsLoadError =>
       'Không tải được phòng khám. Hãy thử lại sau ít phút.';
+
+  @override
+  String get clinicsTypeFqhc => 'Trung tâm y tế đủ tiêu chuẩn liên bang (FQHC)';
+
+  @override
+  String get clinicsTypeFqhcLookAlike =>
+      'Trung tâm tương đương FQHC (Look-Alike)';
 
   @override
   String get englishSearchIntro =>
@@ -931,6 +946,90 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get educationMapBadge => 'Trường CDE + chương trình';
+
+  @override
+  String get educationMoreInformation => 'Thêm thông tin';
+
+  @override
+  String get educationAiSummaryLabel => 'Tóm tắt trường do AI tạo';
+
+  @override
+  String get educationAiSummaryReading =>
+      'Đang đọc thông tin chính thức của trường…';
+
+  @override
+  String get educationAiSummaryError =>
+      'Không tạo được tóm tắt này. Hãy thử lại sau.';
+
+  @override
+  String get educationAiSummaryClose => 'Đóng';
+
+  @override
+  String get educationAiSummaryCloseRetry => 'Đóng và thử lại';
+
+  @override
+  String get educationAiSummaryDisclaimer =>
+      'Tóm tắt này được AI tạo từ nguồn chính thức. Không gồm xếp hạng hay ý kiến phụ huynh và có thể thiếu thay đổi gần đây. Hãy xác minh chi tiết quan trọng trực tiếp với nhà trường.';
+
+  @override
+  String get educationAiSummaryHighlights => 'Nguồn cho biết';
+
+  @override
+  String get educationAiSummaryQuestions => 'Câu hỏi nên hỏi nhà trường';
+
+  @override
+  String get educationAiSummarySources => 'Nguồn';
+
+  @override
+  String get educationSourceCde => 'Danh mục trường học California';
+
+  @override
+  String get educationSourceWebsite => 'Trang web chính thức của trường';
+
+  @override
+  String get educationTypeElementary => 'Tiểu học';
+
+  @override
+  String get educationTypeHighSchool => 'Trung học phổ thông';
+
+  @override
+  String get educationTypeMiddle => 'Trung học cơ sở';
+
+  @override
+  String get educationTypeElemHigh => 'Liên cấp tiểu học–THPT';
+
+  @override
+  String get educationTypeAdult => 'Người lớn';
+
+  @override
+  String get educationTypePreschool => 'Mầm non';
+
+  @override
+  String get educationTypeUngraded => 'Không phân khối';
+
+  @override
+  String get educationTypePrivateTuition => 'Trường tư (có học phí)';
+
+  @override
+  String get educationChipPublicSchool => 'Trường công';
+
+  @override
+  String get educationChipPrivateSchool => 'Trường tư';
+
+  @override
+  String get educationChipLibrary => 'Thư viện công';
+
+  @override
+  String get educationChipResource => 'Tài nguyên giáo dục';
+
+  @override
+  String get educationBandMiddle => 'THCS';
+
+  @override
+  String get educationBandHigh => 'THPT';
+
+  @override
+  String get educationGradeK => 'K';
 
   @override
   String get groupsIntro =>

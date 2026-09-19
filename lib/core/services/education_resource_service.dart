@@ -50,6 +50,7 @@ class EducationResourceService {
     int? gradeMax,
     String kind = 'all',
     double radiusKm = 25,
+    String language = 'en',
   }) async {
     try {
       final result = await _functions
@@ -61,6 +62,7 @@ class EducationResourceService {
             if (gradeMin != null && gradeMax != null) 'gradeMax': gradeMax,
             'kind': kind,
             'radiusKm': radiusKm,
+            'language': language,
           });
       final data = Map<String, dynamic>.from(result.data);
       final raw = data['resources'];

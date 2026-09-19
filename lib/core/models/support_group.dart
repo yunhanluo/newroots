@@ -94,6 +94,10 @@ class SupportGroup {
           return 'Vietnamese';
         case 'ko':
           return 'Korean';
+        case 'hi':
+          return 'Hindi';
+        case 'ar':
+          return 'Arabic';
         case 'en':
         default:
           return 'English';

@@ -6,10 +6,15 @@ import {readFileSync} from "fs";
 import {dirname, join} from "path";
 import {fileURLToPath} from "url";
 import {HttpsError, CallableRequest} from "firebase-functions/v2/https";
+import {defineSecret} from "firebase-functions/params";
+import {localizeStringList, replyLanguageName} from "./ai_language.js";
+
+const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 
 export const findEnglishCallableOptions = {
   enforceAppCheck: false,
-  timeoutSeconds: 30,
+  secrets: [OPENAI_API_KEY],
+  timeoutSeconds: 45,
   memory: "256MiB" as const,
 };
 
@@ -33,6 +38,7 @@ interface FindInput {
   location?: string;
   radiusKm?: number;
   limit?: number;
+  language?: string;
 }
 
 let cached: EslResource[] | null = null;
@@ -182,6 +188,23 @@ export async function handleFindEnglishResources(
     verified: item.verified !== false,
     distanceKm: item.statewide ? null : distance,
   }));
+
+  const languageName = replyLanguageName(data.language);
+  try {
+    const apiKey = OPENAI_API_KEY.value();
+    if (apiKey) {
+      const descriptions = await localizeStringList(
+        apiKey,
+        resources.map((resource) => resource.description),
+        languageName,
+      );
+      for (let i = 0; i < resources.length; i++) {
+        resources[i].description = descriptions[i];
+      }
+    }
+  } catch (error) {
+    console.warn("findEnglishResources description localize failed", error);
+  }
 
   return {
     locationLabel: point.label,

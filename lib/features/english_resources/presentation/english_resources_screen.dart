@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../core/l10n/app_locale.dart';
 import '../../../core/models/resource.dart';
 import '../../../core/services/resource_service.dart';
 import '../../../core/services/user_profile_service.dart';
@@ -77,7 +78,10 @@ class _EnglishResourcesScreenState
     try {
       final result = await ref
           .read(resourceServiceProvider)
-          .findEnglishNearby(location: locationText);
+          .findEnglishNearby(
+            location: locationText,
+            language: ref.read(appLocaleProvider).languageCode,
+          );
 
       if (!mounted) return;
       final center = LatLng(result.latitude, result.longitude);
@@ -378,12 +382,15 @@ class _ResourceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final distance = resource.distanceKm;
     final distanceLabel = distance == null
         ? null
-        : distance < 10
-        ? '${distance.toStringAsFixed(1)} km away'
-        : '${distance.round()} km away';
+        : l10n.finderKmAway(
+            distance < 10
+                ? distance.toStringAsFixed(1)
+                : '${distance.round()}',
+          );
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -468,7 +475,7 @@ class _ResourceCard extends StatelessWidget {
                     minimumSize: Size.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: const Text('Open website'),
+                  child: Text(AppLocalizations.of(context).finderOpenWebsite),
                 ),
               ],
             ],

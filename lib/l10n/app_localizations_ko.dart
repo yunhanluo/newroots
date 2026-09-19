@@ -778,6 +778,14 @@ class AppLocalizationsKo extends AppLocalizations {
   String get finderResizeMap => '지도 크기 조절';
 
   @override
+  String get finderOpenWebsite => '웹사이트 열기';
+
+  @override
+  String finderKmAway(String distance) {
+    return '$distance km 떨어짐';
+  }
+
+  @override
   String get clinicsSearchIntro =>
       '캘리포니아 도시 또는 우편번호 근처의 HRSA 커뮤니티 헬스 센터를 검색하세요. 핀은 공식 연방 명부에서 옵니다.';
 
@@ -796,6 +804,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get clinicsLoadError => '클리닉을 불러올 수 없습니다. 잠시 후 다시 시도하세요.';
+
+  @override
+  String get clinicsTypeFqhc => '연방 자격 보건센터(FQHC)';
+
+  @override
+  String get clinicsTypeFqhcLookAlike => '연방 자격 보건센터(FQHC) 유사기관';
 
   @override
   String get englishSearchIntro =>
@@ -899,6 +913,88 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get educationMapBadge => 'CDE 학교 + 프로그램';
+
+  @override
+  String get educationMoreInformation => '자세히 보기';
+
+  @override
+  String get educationAiSummaryLabel => 'AI가 만든 학교 요약';
+
+  @override
+  String get educationAiSummaryReading => '학교 공식 정보를 읽는 중…';
+
+  @override
+  String get educationAiSummaryError => '이 요약을 만들지 못했습니다. 잠시 후 다시 시도하세요.';
+
+  @override
+  String get educationAiSummaryClose => '닫기';
+
+  @override
+  String get educationAiSummaryCloseRetry => '닫고 다시 시도';
+
+  @override
+  String get educationAiSummaryDisclaimer =>
+      '이 요약은 공식 자료를 바탕으로 AI가 만들었습니다. 평점이나 학부모 후기는 포함되지 않으며 최근 변경 사항이 빠질 수 있습니다. 중요한 내용은 학교에 직접 확인하세요.';
+
+  @override
+  String get educationAiSummaryHighlights => '자료에서 확인한 내용';
+
+  @override
+  String get educationAiSummaryQuestions => '학교에 물어볼 질문';
+
+  @override
+  String get educationAiSummarySources => '출처';
+
+  @override
+  String get educationSourceCde => '캘리포니아 학교 디렉터리';
+
+  @override
+  String get educationSourceWebsite => '학교 공식 웹사이트';
+
+  @override
+  String get educationTypeElementary => '초등학교';
+
+  @override
+  String get educationTypeHighSchool => '고등학교';
+
+  @override
+  String get educationTypeMiddle => '중학교';
+
+  @override
+  String get educationTypeElemHigh => '초·고등학교 통합';
+
+  @override
+  String get educationTypeAdult => '성인';
+
+  @override
+  String get educationTypePreschool => '유아원';
+
+  @override
+  String get educationTypeUngraded => '학년 미구분';
+
+  @override
+  String get educationTypePrivateTuition => '사립학교(수업료 있음)';
+
+  @override
+  String get educationChipPublicSchool => '공립학교';
+
+  @override
+  String get educationChipPrivateSchool => '사립학교';
+
+  @override
+  String get educationChipLibrary => '공공 도서관';
+
+  @override
+  String get educationChipResource => '교육 자료';
+
+  @override
+  String get educationBandMiddle => '중학교';
+
+  @override
+  String get educationBandHigh => '고등학교';
+
+  @override
+  String get educationGradeK => 'K';
 
   @override
   String get groupsIntro =>

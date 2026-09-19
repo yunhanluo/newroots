@@ -14,6 +14,17 @@ import '../../../core/widgets/finder_controls.dart';
 import '../../../core/widgets/finder_map.dart';
 import '../../../l10n/app_localizations.dart';
 
+String _localizedClinicType(String type, AppLocalizations l10n) {
+  switch (type.trim()) {
+    case 'Federally Qualified Health Center (FQHC)':
+      return l10n.clinicsTypeFqhc;
+    case 'Federally Qualified Health Center (FQHC) Look-Alike':
+      return l10n.clinicsTypeFqhcLookAlike;
+    default:
+      return type;
+  }
+}
+
 /// Map + list of nearby HRSA community health centers.
 class FindClinicsScreen extends ConsumerStatefulWidget {
   const FindClinicsScreen({super.key});
@@ -352,12 +363,15 @@ class _ClinicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final distance = center.distanceKm;
     final distanceLabel = distance == null
         ? null
-        : distance < 10
-        ? '${distance.toStringAsFixed(1)} km away'
-        : '${distance.round()} km away';
+        : l10n.finderKmAway(
+            distance < 10
+                ? distance.toStringAsFixed(1)
+                : '${distance.round()}',
+          );
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -422,7 +436,7 @@ class _ClinicCard extends StatelessWidget {
               if (center.type.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Text(
-                  center.type,
+                  _localizedClinicType(center.type, l10n),
                   style: TextStyle(
                     fontSize: 12,
                     height: 1.35,
@@ -457,7 +471,7 @@ class _ClinicCard extends StatelessWidget {
                           minimumSize: Size.zero,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
-                        child: const Text('Website'),
+                        child: Text(AppLocalizations.of(context).finderOpenWebsite),
                       ),
                   ],
                 ),

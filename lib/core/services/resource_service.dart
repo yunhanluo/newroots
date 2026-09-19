@@ -23,12 +23,14 @@ class ResourceService {
         List<Resource> resources,
       })> findEnglishNearby({
     required String location,
+    String language = 'en',
   }) async {
     try {
       final result = await _functions
           .httpsCallable('findEnglishResources')
           .call<Map<String, dynamic>>({
         'location': location.trim(),
+        'language': language,
       });
       final data = Map<String, dynamic>.from(result.data);
       final raw = data['resources'];

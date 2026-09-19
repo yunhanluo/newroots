@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../core/l10n/app_locale.dart';
 import '../../../core/models/education_resource.dart';
 import '../../../core/services/education_resource_service.dart';
 import '../../../core/services/user_profile_service.dart';
@@ -19,10 +20,76 @@ import '../../../l10n/app_localizations.dart';
 const _gradeFloor = -1.0;
 const _gradeCeiling = 12.0;
 
-String _gradeName(int grade) {
-  if (grade <= -1) return 'PK';
-  if (grade == 0) return 'K';
+String _gradeName(int grade, [AppLocalizations? l10n]) {
+  if (grade <= -1) return l10n?.educationGradePk ?? 'PK';
+  if (grade == 0) return l10n?.educationGradeK ?? 'K';
   return '$grade';
+}
+
+String _localizedKindLabel(EducationResource resource, AppLocalizations l10n) {
+  return switch (resource.kind) {
+    'school' => l10n.educationChipPublicSchool,
+    'private_school' => l10n.educationChipPrivateSchool,
+    'enrollment_help' => l10n.educationKindEnrollmentHelp,
+    'library' => l10n.educationChipLibrary,
+    'tutoring' => l10n.educationKindTutoring,
+    'stem' => l10n.educationKindStem,
+    _ => l10n.educationChipResource,
+  };
+}
+
+String _localizedGradeChip(EducationResource resource, AppLocalizations l10n) {
+  if (resource.gradeLow == null && resource.gradeHigh == null) {
+    if (resource.gradeBands.isEmpty) return '';
+    return resource.gradeBands
+        .map(
+          (band) => switch (band) {
+            'elementary' => l10n.educationTypeElementary,
+            'middle' => l10n.educationBandMiddle,
+            'high' => l10n.educationBandHigh,
+            _ => band,
+          },
+        )
+        .join(', ');
+  }
+  return '${_gradeName(resource.gradeLow!, l10n)}–${_gradeName(resource.gradeHigh!, l10n)}';
+}
+
+String _localizedEducationDescription(
+  EducationResource resource,
+  AppLocalizations l10n,
+) {
+  const separator = ' · ';
+  final description = resource.description;
+  if (!description.contains(separator)) return description;
+  final parts = description.split(separator);
+  final type = switch (parts.first) {
+    'Elementary' => l10n.educationTypeElementary,
+    'High School' => l10n.educationTypeHighSchool,
+    'Intermediate/Middle/Junior High' => l10n.educationTypeMiddle,
+    'Elementary-High Combination' => l10n.educationTypeElemHigh,
+    'Adult' => l10n.educationTypeAdult,
+    'Preschool' => l10n.educationTypePreschool,
+    'Ungraded' => l10n.educationTypeUngraded,
+    'Private school (tuition based)' => l10n.educationTypePrivateTuition,
+    _ => parts.first,
+  };
+  return [type, ...parts.skip(1)].join(separator);
+}
+
+String _schoolSourceTitle(
+  SchoolSummarySource source,
+  EducationResource school,
+  AppLocalizations l10n,
+) {
+  if (source.url.contains('cde.ca.gov/SchoolDirectory')) {
+    return l10n.educationSourceCde;
+  }
+  if (source.url == school.website ||
+      source.title == 'Official school website') {
+    return l10n.educationSourceWebsite;
+  }
+  return source.title;
 }
 
 const _schoolKinds = {'school', 'private_school'};
@@ -165,6 +232,7 @@ class _FindEducationResourcesScreenState
             gradeMin: _grades.start.round(),
             gradeMax: _grades.end.round(),
             kind: _kind,
+            language: ref.read(appLocaleProvider).languageCode,
           );
 
       if (!mounted) return;
@@ -258,8 +326,8 @@ class _FindEducationResourcesScreenState
 
   String _gradeRangeLabel(AppLocalizations l10n) {
     if (_allGrades) return l10n.educationAllGrades;
-    final low = _gradeName(_grades.start.round());
-    final high = _gradeName(_grades.end.round());
+    final low = _gradeName(_grades.start.round(), l10n);
+    final high = _gradeName(_grades.end.round(), l10n);
     return low == high
         ? l10n.educationGradeSingle(low)
         : l10n.educationGradesRange(low, high);
@@ -288,18 +356,17 @@ class _FindEducationResourcesScreenState
     }
   }
 
-  Future<void> _showSchoolSummary(
-    EducationResource resource,
-    String language,
-  ) async {
-    final cached = _summaryCache[resource.id];
+  Future<void> _showSchoolSummary(EducationResource resource) async {
+    final language = ref.read(appLocaleProvider).languageCode;
+    final cacheKey = '${resource.id}:$language';
+    final cached = _summaryCache[cacheKey];
     final future = cached != null
         ? Future.value(cached)
         : ref
               .read(educationResourceServiceProvider)
               .summarizeSchool(resourceId: resource.id, language: language)
               .then((summary) {
-                _summaryCache[resource.id] = summary;
+                _summaryCache[cacheKey] = summary;
                 return summary;
               });
 
@@ -537,10 +604,7 @@ class _FindEducationResourcesScreenState
                                 : () => _openUrl(resource.website),
                             onMoreInformation:
                                 _schoolKinds.contains(resource.kind)
-                                ? () => _showSchoolSummary(
-                                    resource,
-                                    profile?.languageCode ?? 'en',
-                                  )
+                                ? () => _showSchoolSummary(resource)
                                 : null,
                           );
                         },
@@ -625,8 +689,8 @@ class _GradeRangeField extends StatelessWidget {
             activeColor: kBrandGreen,
             inactiveColor: kBrandGreen.withValues(alpha: 0.18),
             labels: RangeLabels(
-              _gradeName(values.start.round()),
-              _gradeName(values.end.round()),
+              _gradeName(values.start.round(), l10n),
+              _gradeName(values.end.round(), l10n),
             ),
             onChanged: enabled ? onChanged : null,
           ),
@@ -671,12 +735,16 @@ class _EducationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final distance = resource.distanceKm;
     final distanceLabel = distance == null
         ? null
-        : distance < 10
-        ? '${distance.toStringAsFixed(1)} km away'
-        : '${distance.round()} km away';
+        : l10n.finderKmAway(
+            distance < 10
+                ? distance.toStringAsFixed(1)
+                : '${distance.round()}',
+          );
+    final gradeChip = _localizedGradeChip(resource, l10n);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -709,9 +777,8 @@ class _EducationCard extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 4,
                 children: [
-                  _Chip(label: resource.kindLabel),
-                  if (resource.gradeLabel.isNotEmpty)
-                    _Chip(label: resource.gradeLabel),
+                  _Chip(label: _localizedKindLabel(resource, l10n)),
+                  if (gradeChip.isNotEmpty) _Chip(label: gradeChip),
                   if (distanceLabel != null)
                     Text(
                       distanceLabel,
@@ -750,7 +817,7 @@ class _EducationCard extends StatelessWidget {
               if (resource.description.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Text(
-                  resource.description,
+                  _localizedEducationDescription(resource, l10n),
                   style: TextStyle(
                     fontSize: 12,
                     height: 1.35,
@@ -787,7 +854,7 @@ class _EducationCard extends StatelessWidget {
                           minimumSize: Size.zero,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
-                        child: const Text('Website'),
+                        child: Text(AppLocalizations.of(context).finderOpenWebsite),
                       ),
                     if (onMoreInformation != null)
                       TextButton.icon(
@@ -799,7 +866,7 @@ class _EducationCard extends StatelessWidget {
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         icon: const Icon(Icons.auto_awesome_outlined, size: 16),
-                        label: const Text('More information'),
+                        label: Text(l10n.educationMoreInformation),
                       ),
                   ],
                 ),
@@ -825,6 +892,7 @@ class _SchoolSummarySheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return FractionallySizedBox(
       heightFactor: 0.86,
       child: Column(
@@ -856,17 +924,17 @@ class _SchoolSummarySheet extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 5),
-                      const Row(
+                      Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.auto_awesome_outlined,
                             size: 15,
                             color: kBrandGreen,
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Text(
-                            'AI-generated school summary',
-                            style: TextStyle(
+                            l10n.educationAiSummaryLabel,
+                            style: const TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w700,
                               color: kBrandGreen,
@@ -879,7 +947,7 @@ class _SchoolSummarySheet extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  tooltip: 'Close',
+                  tooltip: l10n.educationAiSummaryClose,
                   icon: const Icon(Icons.close),
                 ),
               ],
@@ -891,13 +959,13 @@ class _SchoolSummarySheet extends StatelessWidget {
               future: summaryFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState != ConnectionState.done) {
-                  return const Center(
+                  return Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CircularProgressIndicator(color: kBrandGreen),
-                        SizedBox(height: 14),
-                        Text('Reading official school information…'),
+                        const CircularProgressIndicator(color: kBrandGreen),
+                        const SizedBox(height: 14),
+                        Text(l10n.educationAiSummaryReading),
                       ],
                     ),
                   );
@@ -920,15 +988,14 @@ class _SchoolSummarySheet extends StatelessWidget {
                           ),
                           const SizedBox(height: 12),
                           Text(
-                            message ??
-                                'Could not generate this summary. Try again shortly.',
+                            message ?? l10n.educationAiSummaryError,
                             textAlign: TextAlign.center,
                             style: const TextStyle(height: 1.4),
                           ),
                           const SizedBox(height: 16),
                           OutlinedButton(
                             onPressed: () => Navigator.of(context).pop(),
-                            child: const Text('Close and try again'),
+                            child: Text(l10n.educationAiSummaryCloseRetry),
                           ),
                         ],
                       ),
@@ -949,12 +1016,9 @@ class _SchoolSummarySheet extends StatelessWidget {
                           color: Colors.amber.withValues(alpha: 0.35),
                         ),
                       ),
-                      child: const Text(
-                        'This summary was generated by AI from official sources. '
-                        'It does not include ratings or parent reviews and may '
-                        'miss recent changes. Verify important details directly '
-                        'with the school.',
-                        style: TextStyle(fontSize: 13, height: 1.4),
+                      child: Text(
+                        l10n.educationAiSummaryDisclaimer,
+                        style: const TextStyle(fontSize: 13, height: 1.4),
                       ),
                     ),
                     const SizedBox(height: 18),
@@ -968,23 +1032,21 @@ class _SchoolSummarySheet extends StatelessWidget {
                     ),
                     if (summary.highlights.isNotEmpty) ...[
                       const SizedBox(height: 20),
-                      const _SummaryHeading(title: 'What the sources say'),
+                      _SummaryHeading(title: l10n.educationAiSummaryHighlights),
                       const SizedBox(height: 8),
                       for (final item in summary.highlights)
                         _SummaryBullet(text: item),
                     ],
                     if (summary.questionsToAsk.isNotEmpty) ...[
                       const SizedBox(height: 20),
-                      const _SummaryHeading(
-                        title: 'Questions to ask the school',
-                      ),
+                      _SummaryHeading(title: l10n.educationAiSummaryQuestions),
                       const SizedBox(height: 8),
                       for (final item in summary.questionsToAsk)
                         _SummaryBullet(text: item),
                     ],
                     if (summary.sources.isNotEmpty) ...[
                       const SizedBox(height: 20),
-                      const _SummaryHeading(title: 'Sources'),
+                      _SummaryHeading(title: l10n.educationAiSummarySources),
                       const SizedBox(height: 6),
                       for (final source in summary.sources)
                         Align(
@@ -996,7 +1058,9 @@ class _SchoolSummarySheet extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 4),
                             ),
                             icon: const Icon(Icons.open_in_new, size: 16),
-                            label: Text(source.title),
+                            label: Text(
+                              _schoolSourceTitle(source, school, l10n),
+                            ),
                           ),
                         ),
                     ],

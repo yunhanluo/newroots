@@ -6,10 +6,15 @@ import {readFileSync} from "fs";
 import {dirname, join} from "path";
 import {fileURLToPath} from "url";
 import {HttpsError, CallableRequest} from "firebase-functions/v2/https";
+import {defineSecret} from "firebase-functions/params";
+import {localizeStringList, replyLanguageName} from "./ai_language.js";
+
+const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
 
 export const educationResourcesCallableOptions = {
   enforceAppCheck: false,
-  timeoutSeconds: 30,
+  secrets: [OPENAI_API_KEY],
+  timeoutSeconds: 45,
   memory: "512MiB" as const,
 };
 
@@ -47,6 +52,7 @@ interface FindInput {
   gradeMax?: number;
   /** school | enrollment_help | library | tutoring | stem | all / empty */
   kind?: string;
+  language?: string;
 }
 
 const VALID_GRADE_BANDS = new Set(["elementary", "middle", "high"]);
@@ -260,6 +266,26 @@ export async function handleFindEducationResources(
     source: item.source ?? "cde",
     distanceKm: item.statewide ? null : distance,
   }));
+
+  const languageName = replyLanguageName(data.language);
+  try {
+    const apiKey = OPENAI_API_KEY.value();
+    if (apiKey) {
+      const toTranslate = resources.map((resource) =>
+        resource.description.includes(" · ") ? "" : resource.description
+      );
+      const localized = await localizeStringList(
+        apiKey,
+        toTranslate,
+        languageName,
+      );
+      for (let i = 0; i < resources.length; i++) {
+        if (toTranslate[i]) resources[i].description = localized[i];
+      }
+    }
+  } catch (error) {
+    console.warn("findEducationResources description localize failed", error);
+  }
 
   return {
     locationLabel: point.label,

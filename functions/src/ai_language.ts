@@ -148,3 +148,48 @@ export async function localizeJson<T extends Record<string, unknown>>(
   }
   return localized;
 }
+
+/** Translate a list of UI/resource blurbs, preserving order and empties. */
+export async function localizeStringList(
+  apiKey: string,
+  values: string[],
+  languageName: string,
+): Promise<string[]> {
+  if (isEnglishOutput(languageName) || values.length === 0) return values;
+
+  const unique: string[] = [];
+  const seen = new Map<string, number>();
+  const indexOfUnique: number[] = [];
+  for (const value of values) {
+    const key = value.trim();
+    if (!key) {
+      indexOfUnique.push(-1);
+      continue;
+    }
+    let idx = seen.get(key);
+    if (idx === undefined) {
+      idx = unique.length;
+      unique.push(key);
+      seen.set(key, idx);
+    }
+    indexOfUnique.push(idx);
+  }
+  if (unique.length === 0) return values;
+
+  try {
+    const localized = await localizeJson(apiKey, {strings: unique}, languageName);
+    const next = localized.strings;
+    if (!Array.isArray(next) || next.length !== unique.length) return values;
+    const translated = unique.map((original, i) => {
+      const item = next[i];
+      return typeof item === "string" && item.trim() ? item.trim() : original;
+    });
+    return values.map((original, i) => {
+      const idx = indexOfUnique[i];
+      return idx < 0 ? original : translated[idx];
+    });
+  } catch (error) {
+    console.warn("localizeStringList failed", error);
+    return values;
+  }
+}

@@ -796,6 +796,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get finderResizeMap => 'تغيير حجم الخريطة';
 
   @override
+  String get finderOpenWebsite => 'فتح الموقع';
+
+  @override
+  String finderKmAway(String distance) {
+    return 'على بعد $distance كم';
+  }
+
+  @override
   String get clinicsSearchIntro =>
       'ابحث عن مراكز الصحة المجتمعية التابعة لـ HRSA قرب مدينة أو رمز بريدي في كاليفورنيا. الدبابيس من الدليل الفيدرالي الرسمي.';
 
@@ -815,6 +823,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get clinicsLoadError => 'تعذر تحميل العيادات. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get clinicsTypeFqhc => 'مركز صحي مؤهل فدراليًا (FQHC)';
+
+  @override
+  String get clinicsTypeFqhcLookAlike => 'مركز مشابه لـ FQHC (Look-Alike)';
 
   @override
   String get englishSearchIntro =>
@@ -923,6 +937,89 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get educationMapBadge => 'مدارس CDE + برامج';
+
+  @override
+  String get educationMoreInformation => 'مزيد من المعلومات';
+
+  @override
+  String get educationAiSummaryLabel => 'ملخص مدرسي أنشأه الذكاء الاصطناعي';
+
+  @override
+  String get educationAiSummaryReading => 'جارٍ قراءة معلومات المدرسة الرسمية…';
+
+  @override
+  String get educationAiSummaryError =>
+      'تعذر إنشاء هذا الملخص. حاول مرة أخرى بعد قليل.';
+
+  @override
+  String get educationAiSummaryClose => 'إغلاق';
+
+  @override
+  String get educationAiSummaryCloseRetry => 'أغلق وحاول مرة أخرى';
+
+  @override
+  String get educationAiSummaryDisclaimer =>
+      'أُنشئ هذا الملخص بالذكاء الاصطناعي من مصادر رسمية. لا يتضمن تقييمات أو آراء أولياء الأمور وقد يغفل تغييرات حديثة. تحقق من التفاصيل المهمة مباشرة مع المدرسة.';
+
+  @override
+  String get educationAiSummaryHighlights => 'ما تقوله المصادر';
+
+  @override
+  String get educationAiSummaryQuestions => 'أسئلة تُطرح على المدرسة';
+
+  @override
+  String get educationAiSummarySources => 'المصادر';
+
+  @override
+  String get educationSourceCde => 'دليل مدارس كاليفورنيا';
+
+  @override
+  String get educationSourceWebsite => 'الموقع الرسمي للمدرسة';
+
+  @override
+  String get educationTypeElementary => 'ابتدائي';
+
+  @override
+  String get educationTypeHighSchool => 'ثانوي';
+
+  @override
+  String get educationTypeMiddle => 'متوسط';
+
+  @override
+  String get educationTypeElemHigh => 'ابتدائي–ثانوي مشترك';
+
+  @override
+  String get educationTypeAdult => 'تعليم الكبار';
+
+  @override
+  String get educationTypePreschool => 'مرحلة ما قبل المدرسة';
+
+  @override
+  String get educationTypeUngraded => 'بدون صف';
+
+  @override
+  String get educationTypePrivateTuition => 'مدرسة خاصة (برسوم)';
+
+  @override
+  String get educationChipPublicSchool => 'مدرسة حكومية';
+
+  @override
+  String get educationChipPrivateSchool => 'مدرسة خاصة';
+
+  @override
+  String get educationChipLibrary => 'مكتبة عامة';
+
+  @override
+  String get educationChipResource => 'مورد تعليمي';
+
+  @override
+  String get educationBandMiddle => 'متوسط';
+
+  @override
+  String get educationBandHigh => 'ثانوي';
+
+  @override
+  String get educationGradeK => 'K';
 
   @override
   String get groupsIntro =>

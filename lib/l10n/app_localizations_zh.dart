@@ -772,6 +772,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get finderResizeMap => '调整地图大小';
 
   @override
+  String get finderOpenWebsite => '打开网站';
+
+  @override
+  String finderKmAway(String distance) {
+    return '$distance 公里外';
+  }
+
+  @override
   String get clinicsSearchIntro => '按加州城市或邮编搜索附近的 HRSA 社区健康中心。地图标记来自联邦官方名录。';
 
   @override
@@ -788,6 +796,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get clinicsLoadError => '无法加载诊所。请稍后再试。';
+
+  @override
+  String get clinicsTypeFqhc => '联邦合格健康中心 (FQHC)';
+
+  @override
+  String get clinicsTypeFqhcLookAlike => '联邦合格健康中心 (FQHC) 同类机构';
 
   @override
   String get englishSearchIntro => '按加州城市或邮编查找可信的成人学校、社区学院和图书馆 ESL 课程。';
@@ -888,6 +902,88 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get educationMapBadge => 'CDE 学校 + 项目';
+
+  @override
+  String get educationMoreInformation => '更多信息';
+
+  @override
+  String get educationAiSummaryLabel => 'AI 生成的学校摘要';
+
+  @override
+  String get educationAiSummaryReading => '正在阅读学校官方信息…';
+
+  @override
+  String get educationAiSummaryError => '无法生成此摘要。请稍后再试。';
+
+  @override
+  String get educationAiSummaryClose => '关闭';
+
+  @override
+  String get educationAiSummaryCloseRetry => '关闭并重试';
+
+  @override
+  String get educationAiSummaryDisclaimer =>
+      '此摘要由 AI 根据官方来源生成。不包含评分或家长评价，也可能遗漏近期变化。重要信息请直接向学校核实。';
+
+  @override
+  String get educationAiSummaryHighlights => '来源中的要点';
+
+  @override
+  String get educationAiSummaryQuestions => '可以向学校询问的问题';
+
+  @override
+  String get educationAiSummarySources => '来源';
+
+  @override
+  String get educationSourceCde => '加州学校名录';
+
+  @override
+  String get educationSourceWebsite => '学校官方网站';
+
+  @override
+  String get educationTypeElementary => '小学';
+
+  @override
+  String get educationTypeHighSchool => '高中';
+
+  @override
+  String get educationTypeMiddle => '初中';
+
+  @override
+  String get educationTypeElemHigh => '小学至高中综合';
+
+  @override
+  String get educationTypeAdult => '成人教育';
+
+  @override
+  String get educationTypePreschool => '学前';
+
+  @override
+  String get educationTypeUngraded => '不分年级';
+
+  @override
+  String get educationTypePrivateTuition => '私立学校（收费）';
+
+  @override
+  String get educationChipPublicSchool => '公立学校';
+
+  @override
+  String get educationChipPrivateSchool => '私立学校';
+
+  @override
+  String get educationChipLibrary => '公共图书馆';
+
+  @override
+  String get educationChipResource => '教育资源';
+
+  @override
+  String get educationBandMiddle => '初中';
+
+  @override
+  String get educationBandHigh => '高中';
+
+  @override
+  String get educationGradeK => 'K';
 
   @override
   String get groupsIntro => '加入小组可以发帖、提问，并帮助加州的其他新移民。';

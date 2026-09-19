@@ -800,6 +800,14 @@ class AppLocalizationsHi extends AppLocalizations {
   String get finderResizeMap => 'मैप का आकार बदलें';
 
   @override
+  String get finderOpenWebsite => 'वेबसाइट खोलें';
+
+  @override
+  String finderKmAway(String distance) {
+    return '$distance किमी दूर';
+  }
+
+  @override
   String get clinicsSearchIntro =>
       'कैलिफोर्निया के शहर या ZIP के पास HRSA सामुदायिक स्वास्थ्य केंद्र खोजें। पिन आधिकारिक संघीय निर्देशिका से हैं।';
 
@@ -820,6 +828,12 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get clinicsLoadError =>
       'क्लिनिक लोड नहीं हो सकीं। थोड़ी देर बाद फिर कोशिश करें।';
+
+  @override
+  String get clinicsTypeFqhc => 'संघीय योग्य स्वास्थ्य केंद्र (FQHC)';
+
+  @override
+  String get clinicsTypeFqhcLookAlike => 'FQHC लुक-अलाइक केंद्र';
 
   @override
   String get englishSearchIntro =>
@@ -929,6 +943,90 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get educationMapBadge => 'CDE स्कूल + कार्यक्रम';
+
+  @override
+  String get educationMoreInformation => 'और जानकारी';
+
+  @override
+  String get educationAiSummaryLabel => 'AI से बना स्कूल सारांश';
+
+  @override
+  String get educationAiSummaryReading =>
+      'स्कूल की आधिकारिक जानकारी पढ़ी जा रही है…';
+
+  @override
+  String get educationAiSummaryError =>
+      'यह सारांश नहीं बन सका। थोड़ी देर बाद फिर कोशिश करें।';
+
+  @override
+  String get educationAiSummaryClose => 'बंद करें';
+
+  @override
+  String get educationAiSummaryCloseRetry => 'बंद करें और फिर कोशिश करें';
+
+  @override
+  String get educationAiSummaryDisclaimer =>
+      'यह सारांश आधिकारिक स्रोतों से AI ने बनाया है। इसमें रेटिंग या अभिभावकों की राय नहीं है, और हाल के बदलाव छूट सकते हैं। ज़रूरी जानकारी स्कूल से सीधे जाँचें।';
+
+  @override
+  String get educationAiSummaryHighlights => 'स्रोत क्या कहते हैं';
+
+  @override
+  String get educationAiSummaryQuestions => 'स्कूल से पूछने वाले सवाल';
+
+  @override
+  String get educationAiSummarySources => 'स्रोत';
+
+  @override
+  String get educationSourceCde => 'कैलिफोर्निया स्कूल निर्देशिका';
+
+  @override
+  String get educationSourceWebsite => 'स्कूल की आधिकारिक वेबसाइट';
+
+  @override
+  String get educationTypeElementary => 'प्राथमिक';
+
+  @override
+  String get educationTypeHighSchool => 'हाई स्कूल';
+
+  @override
+  String get educationTypeMiddle => 'मिडिल स्कूल';
+
+  @override
+  String get educationTypeElemHigh => 'प्राथमिक–हाई स्कूल संयुक्त';
+
+  @override
+  String get educationTypeAdult => 'वयस्क';
+
+  @override
+  String get educationTypePreschool => 'प्रीस्कूल';
+
+  @override
+  String get educationTypeUngraded => 'बिना कक्षा';
+
+  @override
+  String get educationTypePrivateTuition => 'प्राइवेट स्कूल (फीस सहित)';
+
+  @override
+  String get educationChipPublicSchool => 'सरकारी स्कूल';
+
+  @override
+  String get educationChipPrivateSchool => 'प्राइवेट स्कूल';
+
+  @override
+  String get educationChipLibrary => 'सार्वजनिक पुस्तकालय';
+
+  @override
+  String get educationChipResource => 'शिक्षा संसाधन';
+
+  @override
+  String get educationBandMiddle => 'मिडिल';
+
+  @override
+  String get educationBandHigh => 'हाई';
+
+  @override
+  String get educationGradeK => 'K';
 
   @override
   String get groupsIntro =>
