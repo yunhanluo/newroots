@@ -1,0 +1,167 @@
+{
+  "id": "housing",
+  "title": "Housing Navigator",
+  "subtitle": "Pag-upa, karapatan ng tenant, at pag-iwas sa scam sa pabahay.",
+  "landingTitle": "Housing Navigator",
+  "landingBody": "Alamin ang lahat tungkol sa pabahay sa California.",
+  "icon": "home",
+  "finishRoute": "home",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Maligayang pagdating",
+      "intro": "",
+      "body": "May hamon ang pag-upa o pagbili sa California. Maaaring hindi pamilyar ang mga patakaran, papeles, at gastos, lalo na kung bago kayo sa US.\n\nMagpatuloy sa pagbabasa para malaman ang mga kinakailangan sa pag-upa, iba pang paraan para maging kwalipikado, mapagkakatiwalaang resource sa pabahay, karapatan ng tenant, at paano umiwas sa scam sa pabahay.\n\nKung nalilito kayo anumang oras, tanungin ang AI sa ibaba ng screen. Maipapaliwanag nito ang kasalukuyang seksyon nang mas simple, o masagot ang tanong tungkol sa inyong sitwasyon.",
+      "topics": []
+    },
+    {
+      "title": "Unawain ang mga kinakailangan sa pag-upa",
+      "intro": "Karamihan sa landlord ay humihingi ng parehong pangunahing bagay kapag mag-a-apply kayo umupa. Kung nakahanda na ito, mas mabilis at mas kaunting stress ang pag-apply. Narito kung ano ang ibig sabihin ng bawat isa.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Application sa pag-upa",
+          "paragraph": "Ito ang form na ginagamit ng landlord o property manager para kolektahin ang inyong impormasyon. Karaniwang hinihingi ang buong pangalan, kasalukuyan at dating address, telepono, email, detalye ng trabaho, kita, at pangalan ng lahat na titira sa unit. May paper at online na form. Punan nang maingat at gamitin ang pangalang nasa ID. Magtabi ng kopya o screenshot ng isinumite ninyo para maalala ninyo ang ibinahagi."
+        },
+        {
+          "heading": "Photo ID",
+          "paragraph": "Kailangan ng landlord ng photo ID mula sa gobyerno para kumpirmahin kung sino kayo. Karaniwang tinatanggap ang passport, US driver license, state ID, o iba pang opisyal na photo ID. Dalhin ang orihinal para ipakita nang personal, at magtanong bago magpadala ng kopya online. Ibahagi lamang ang larawan ng ID sa mapagkakatiwalaang application portal o direkta sa property office, hindi sa random na text o social media."
+        },
+        {
+          "heading": "Patunay ng kita",
+          "paragraph": "Ipinapakita nito na kayang bayaran ang upa bawat buwan. Karaniwang patunay ang kamakailang pay stub, offer letter na may suweldo, bank statement, tax form, o liham mula sa employer. Maraming landlord ang naghahanap ng buwanang kitang humigit-kumulang dalawa hanggang tatlong beses ng upa, ngunit magkakaiba ang patakaran. Kung cash ang bayad, self-employed, o bago sa trabaho, tanungin kung anong dokumento ang tatanggapin. Mag-print o mag-save ng malinaw na kopya para mabilis ma-upload o maibigay."
+        },
+        {
+          "heading": "Mga reference",
+          "paragraph": "Ang reference ay taong makakontak ng landlord para malaman kung maaasahan kayo. Pinakagamitin ang dating landlord. Kung hindi pa kayo umupa sa US, madalas magamit ang employer, guro, case worker, o contact sa community organization. Humingi muna ng pahintulot, pagkatapos ay ibigay ang buong pangalan, relasyon sa inyo, telepono, at email. Sabihin sa inyong reference na maaaring tumawag ang landlord para handa silang sumagot."
+        },
+        {
+          "heading": "Credit at background check",
+          "paragraph": "Tinitingnan ng credit check kung paano ninyo hinawakan ang bill at utang sa US. Maaaring tumingin ang background check ng eviction o criminal record. Madalas kakaunti o wala pang US credit history ang mga bagong dating; karaniwan ito at hindi katulad ng masamang credit. Tanungin ang landlord kung ano ang sinusuri nila at ano ang ginagawa kung walang US credit file. Karaniwang pinapahintulutan ninyo ang mga check na ito sa application. Sa California, limitado ng batas ang screening fee, at maaari kayong humingi ng kopya ng anumang consumer report na ginamit para tanggihan ang application."
+        },
+        {
+          "heading": "Application fee",
+          "paragraph": "Ito ang bayad na sisingilin ng ilang landlord para sa screening, tulad ng credit o background check. Sa California, may tavan ang halaga at dapat saklawin lamang ang aktwal na gastos sa screening. Tanungin kung kailangan ang fee, magkano, at kung nare-refund bago kayo magbayad. Magbayad sa opisyal na opisina o portal, kumuha ng resibo, at huwag mag-wire ng pera o gumamit ng gift card para sa taong nagsasabing landlord siya."
+        }
+      ]
+    },
+    {
+      "title": "Alamin ang iba pang paraan para maging kwalipikado",
+      "intro": "Maraming bagong dating ang wala pang US credit history. Hindi ibig sabihin na hindi kayo makakapag-upa. Minsan tumatanggap ang landlord ng ibang paraan para ipakitang maaasahan kayo. Tanungin kung ano ang pinapayagan nila, at isaalang-alang ang mga karaniwang opsyon na ito.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Co-signer o guarantor",
+          "paragraph": "Ang co-signer ay taong mas malakas ang credit o kita na pumapayag magbayad ng upa kung hindi ninyo magawa. Madalas ito ay kamag-anak, kaibigan, o sponsor na nakatira sa US. Karaniwang pipunuin din ng taong iyon ang application at dadaan sa credit check. Humingi lamang sa taong pinagkakatiwalaan ninyo, at siguraduhing naiintindihan nilang legal silang responsable kung hindi mabayaran ang upa."
+        },
+        {
+          "heading": "Mas malaking security deposit",
+          "paragraph": "May landlord na tumatanggap ng mas mataas na deposit kapag maikli o wala ang credit history. Para bawasan ang kanilang panganib. May limitasyon ang California kung magkano ang puwedeng singilin, kaya tanungin kung ano ang pinapayagan para sa unit na iyon. Ilagay sa sulat ang anumang halaga ng deposit, at itago ang patunay ng binayaran."
+        },
+        {
+          "heading": "Patunay ng kita o ipon",
+          "paragraph": "Kahit walang credit history, makakatulong ang malakas na bank statement, pay stub, o patunay ng ipon. Gusto ng ilang landlord na makita ang ilang buwang kita o sapat na pera sa bangko para sa upa sa takdang panahon. Magdala ng malinaw at kamakailang dokumento. Kung maraming pinagmulan ang kita, isama lahat at lagyan ng label kung ano ang ipinapakita ng bawat dokumento."
+        },
+        {
+          "heading": "Liham ng employer o offer letter",
+          "paragraph": "Makukumpirma ng liham mula sa employer ang trabaho, petsa ng simula, at suweldo. Kung bago ang trabaho, maaaring magamit ang offer letter habang hinihintay ang unang pay stub. Humingi sa employer o HR ng signed letter sa letterhead ng kumpanya. Isama ang pangalan at telepono ng contact na matatawagan ng landlord para i-verify."
+        },
+        {
+          "heading": "Mga programa para sa bagong dating at pabahay",
+          "paragraph": "May nonprofit, resettlement agency, at lokal na programa sa pabahay na tumutulong sa mga imigrante na maghanap ng upaan o makakonekta sa landlord na nakikipagtulungan sa mga bagong dating. Maaaring mag-alok sila ng tulong sa application, reference, rental assistance, o listahan ng palakaibigang property. Magtanong sa library, community center, o opisina ng serbisyo para sa imigrante sa malapit tungkol sa tulong sa pabahay sa inyong wika."
+        }
+      ]
+    },
+    {
+      "title": "I-access ang resources sa pabahay",
+      "intro": "Hindi kailangang harapin mag-isa ang pabahay. Makakatulong ang library, nonprofit counselor, at site ng gobyerno na maghanap ng upaan, matutunan ang mga patakaran, at makakuha ng lokal na suporta. Narito ang ilang mapagkakatiwalaang website para magsimula.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "HUD (US Department of Housing and Urban Development)",
+          "paragraph": "Ang HUD ang pangunahing federal na ahensya sa pabahay. Ipinapaliwanag ng website nito ang tulong sa pag-upa, patakaran sa fair housing, at paano maghanap ng aprubadong housing counselor sa malapit. Gamitin ito kapag gusto ninyo ng opisyal na impormasyon ng gobyerno ng US.",
+          "url": "https://www.hud.gov/"
+        },
+        {
+          "heading": "HUD Find a Housing Counselor",
+          "paragraph": "Tumutulong ang kasangkapang ito ng HUD na maghanap ng HUD-approved housing counselor. Maipapaliwanag ng counselor ang application, budget, at opsyon sa pag-upa. Marami ang tumutulong sa telepono o personal, at ang ilan ay maraming wika.",
+          "url": "https://www.hud.gov/program_offices/housing/sfh/hcc"
+        },
+        {
+          "heading": "California Courts Self-Help Housing",
+          "paragraph": "Ito ang opisyal na self-help site ng korte ng California para sa pabahay. Saklaw nito ang eviction, deposit, pagkukumpuni, at iba pang isyu ng tenant sa simpleng wika. Magandang lugar ito para malaman kung ano ang proseso sa korte kung may problema sa pabahay.",
+          "url": "https://selfhelp.courts.ca.gov/housing"
+        },
+        {
+          "heading": "California Landlord-Tenant Guide",
+          "paragraph": "Naglalathala ang California Department of Consumer Affairs ng libreng gabay para sa landlord at tenant. Ipinapaliwanag nito ang deposit, pagtaas ng upa, pagkukumpuni, at notice. Basahin ito kapag gusto ninyo ng malinaw na pangkalahatang-ideya ng karaniwang patakaran sa pag-upa sa California.",
+          "url": "https://www.dca.ca.gov/publications/landlordbook.shtml"
+        },
+        {
+          "heading": "California Housing and Community Development",
+          "paragraph": "Ibinabahagi ng California HCD ang mga programa sa pabahay ng estado at resources para sa consumer. Tingnan ang site na ito para sa statewide na impormasyon sa pabahay at link para maghanap ng abot-kayang opsyon.",
+          "url": "https://www.hcd.ca.gov/"
+        },
+        {
+          "heading": "211",
+          "paragraph": "Ikinokonekta kayo ng 211 sa lokal na kalusugan at human services, kabilang ang pabahay at rental assistance sa maraming lugar. Maaari kayong maghanap online o tumawag sa 211 para magtanong tungkol sa tulong sa malapit sa inyong wika kapag available.",
+          "url": "https://www.211.org/"
+        }
+      ]
+    },
+    {
+      "title": "Unawain ang karapatan ng tenant",
+      "intro": "May mahalagang karapatan ang mga tenant sa California. Maaaring magkaiba ang patakaran ayon sa lungsod, kaya tingnan din ang lokal na batas. Narito ang mga batayan, ipinaliwanag nang isa-isa.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Security deposit",
+          "paragraph": "Ang security deposit ay pera na binabayaran ninyo nang pauna at hawak ng landlord habang umuupa kayo. Maaari nitong saklawin ang hindi nabayarang upa o sira na lampas sa normal na pagkasira. May limitasyon ang California kung magkano ang puwedeng singilin. Kapag umalis kayo, dapat ibalik ng landlord ang natitira at bigyan kayo ng itemized na listahan ng anumang bawas sa loob ng panahong itinakda ng batas. Kumuha ng larawang may petsa kapag lumipat kayo papasok at palabas para may patunay kayo ng kondisyon ng unit."
+        },
+        {
+          "heading": "Pagkukumpuni at matitirahang pabahay",
+          "paragraph": "Dapat ligtas at matitirahan ang inyong upaan. Karaniwang kasama ang gumaganang init, plumbing, kuryente, kandado, at kalayaan sa malubhang panganib tulad ng malaking tagas o peste. Sabihin sa landlord nang nakasulat kapag kailangan ng kumpuni, magtabi ng kopya, at bigyan ng sapat na oras para ayusin. Kung malubha ang problema at hindi pinapansin, tingnan ang lokal na opsyon o kausapin ang housing counselor o legal aid bago magpigil ng upa o umalis."
+        },
+        {
+          "heading": "Privacy",
+          "paragraph": "May karapatan kayo sa privacy sa inyong tahanan. Sa karamihan ng sitwasyon, dapat magbigay ang landlord ng paunang notice bago pumasok, maliban sa emerhensya. Tanungin kung anong notice ang kailangan ng lease at lokal na batas. Maaari ninyong tanggihan ang pagpasok na hindi sumusunod sa patakaran. Magtabi ng nakasulat na tala kung pumasok ang landlord nang walang tamang notice."
+        },
+        {
+          "heading": "Notice ng eviction",
+          "paragraph": "Sa pangkalahatan, hindi puwedeng i-lock out kayo ng landlord o patayin ang utilities para pilitin kayong umalis. Karaniwang nagsisimula ang eviction sa nakasulat na notice at, kung kailangan, kaso sa korte. Basahin nang mabuti ang anumang notice, tandaan ang deadline, at kumuha agad ng tulong mula sa legal aid o self-help court site. Huwag balewalain ang papeles ng korte. Ang pagharap at pagsagot sa oras ay nagpoprotekta sa inyong karapatan."
+        },
+        {
+          "heading": "Proteksyon laban sa diskriminasyon",
+          "paragraph": "Ipinagbabawal ng pederal at California fair housing laws ang diskriminasyon batay sa lahi, pinagmulang bansa, relihiyon, kasarian, disability, estado ng pamilya, at iba pang protektadong kategorya sa ilalim ng batas ng estado. Sa pangkalahatan, hindi puwedeng tumanggi ang landlord na magpaupa, magtakda ng ibang kondisyon, o mag-harass sa inyo dahil sa mga dahilan na iyon. Kung sa tingin ninyo ay hindi patas ang trato, maaari kayong makipag-ugnayan sa HUD fair housing, California Civil Rights enforcement, o lokal na fair housing nonprofit para sa tulong."
+        }
+      ]
+    },
+    {
+      "title": "Iwasan ang scam sa pabahay",
+      "intro": "Sinusubukan ng scam sa pabahay na madalian kayong magpadala ng pera o personal na impormasyon bago ninyo masuri kung totoo ang upaan. Narito ang mga karaniwang panlilinlang, paano ito kadalasang gumagana, at paano ito makikita.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Wire money at pagbabayad gamit ang gift card",
+          "paragraph": "Maaaring magpanggap ang scammer na wala sa bayan at hilingin kayong mag-wire ng pera, magpadala ng money order, gumamit ng Zelle, crypto, o bumili ng gift card para i-hold ang unit. Kapag naipadala na ang pera, madalas wala na ito. Halos hindi humihingi ang totoong landlord ng gift card o madaliang wire bago ang signed lease. Magbayad lamang sa kilalang opisina o mapagkakatiwalaang portal, at kumuha ng nakasulat na resibo."
+        },
+        {
+          "heading": "Magbayad bago mag-tour",
+          "paragraph": "May scam na humihingi ng deposit, application fee, o unang buwang upa bago ninyo makita ang lugar o makilala ang sinuman mula sa property. Maaaring sabihin nilang maraming interesado at kailangan magbayad ngayon. Karaniwang pinapayagan kayo ng totoong proseso na makita muna ang unit. Kung may humahadlang sa tour at gusto pa rin ng pera, ituring iyon na babala."
+        },
+        {
+          "heading": "Upaan na hindi ninyo mabisita",
+          "paragraph": "Madalas mag-post ang scammer ng magagandang larawan ng bahay na hindi nila kontrolado. Maaaring sabihin nilang nasa kamag-anak ang susi, nirerenovate, o makikita lamang pagkatapos magbayad. Dumating kayo sa kalaunan at nalaman na hindi naman ito inuupahan, o may ibang nakatira na. Ipagpilitang makita ang eksaktong unit nang personal, o live video walkthrough kasama ang naberipikang agent, bago magpadala ng pera."
+        },
+        {
+          "heading": "Peke na listing at peke na landlord",
+          "paragraph": "May ninakaw na larawan, kinopyang ad, at pekeng pangalan ng landlord sa social media at listing site. Karaniwang pain ang presyong sobrang mababa kumpara sa kapitbahayan. Tingnan kung mapapatunayan ng tao na sila ang may-ari o manager. Hanapin ang management company, bisitahin ang leasing office, at ihambing ang listing sa ibang ad para sa parehong address. Kung hindi magkatugma ang detalye, umalis na."
+        },
+        {
+          "heading": "Phishing para sa dokumento at identidad",
+          "paragraph": "Maaaring magpadala ang scammer ng link at humingi ng passport, Social Security number, bank login, o larawan ng ID sa email, text, o chat. Magagamit nila iyon para nakawin ang identidad o pera. Ibahagi lamang ang sensitibong dokumento sa landlord o portal na naberipika ninyo. Huwag mag-click ng hindi inaasahang link, at huwag magpadala ng buong packet ng ID sa estrangherong unang kumontak sa inyo."
+        }
+      ]
+    }
+  ]
+}

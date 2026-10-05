@@ -1,4 +1,4 @@
-/// Plain-language privacy policy in the seven app languages.
+/// Plain-language privacy policy in the eight app languages.
 class PrivacyPolicyCopy {
   const PrivacyPolicyCopy({
     required this.code,
@@ -461,6 +461,69 @@ const kPrivacyPolicyCopies = <PrivacyPolicyCopy>[
       PrivacySection(
         heading: '9. التواصل',
         body: 'أسئلة حول هذه السياسة: y@yunhanluo.com',
+      ),
+    ],
+  ),
+  PrivacyPolicyCopy(
+    code: 'tl',
+    nativeName: 'Tagalog',
+    title: 'Patakaran sa Privacy',
+    updated: 'Huling na-update: Agosto 29, 2026',
+    intro:
+        'Tumutulong ang NewRoots California sa mga pamilyang imigrante na maghanap ng resources, manatiling ligtas, at makakonekta sa ibang mga bagong dating sa California. Ipinapaliwanag ng page na ito kung anong impormasyon ang kinokolekta namin at paano namin ito ginagamit.',
+    sections: [
+      PrivacySection(
+        heading: '1. Sino kami',
+        body:
+            'Ang NewRoots California (“kami”) ang nagbibigay ng app na ito. Tumutulong ang app na mag-navigate sa buhay sa California. Hindi ito payo sa batas, kalusugan, o pananalapi.',
+      ),
+      PrivacySection(
+        heading: '2. Impormasyong kinokolekta namin',
+        body:
+            'Account: ang inyong email at password (sa pamamagitan ng Firebase Authentication).\n\n'
+            'Profile (opsyonal): gustong wika, lokasyon, laki ng pamilya, mga layunin, background sa trabaho, at edad ng mga anak kung pipiliin ninyong ibahagi.\n\n'
+            'Mga grupo ng suporta: mga grupong sinasalihan ninyo, at mga post, tanong, tugon, at larawang idinadagdag ninyo. Nakikita ito ng ibang miyembro ng grupong iyon.\n\n'
+            'ScamShield: teksto o screenshot na hinihingi ninyong suriin, at ang resulta na sine-save namin para sa inyo.\n\n'
+            'Tulong ng AI: mga tanong na tina-type ninyo sa mga kasangkapan tulad ng Roadmap, pabahay, trabaho, at edukasyon. Ipinapadala namin iyon sa aming server para makasagot ang AI sa inyong wika.\n\n'
+            'Paggamit ng app: mga ulat ng crash at pangunahing paggamit para maayos namin ang mga problema.\n\n'
+            'Hindi namin hinihingi ang inyong immigration status, Social Security number, o mga numero ng ID. Huwag i-post ang mga iyon sa mga grupo.',
+      ),
+      PrivacySection(
+        heading: '3. Paano namin ginagamit',
+        body:
+            'Ginagamit namin ang impormasyong ito para patakbuhin ang app, ipakita ang resources sa malapit, gawin ang inyong roadmap, suriin ang posibleng scam, at panatilihing gumagana ang mga grupo ng suporta.\n\n'
+            'Hindi namin ibinebenta ang inyong impormasyon.',
+      ),
+      PrivacySection(
+        heading: '4. Sino ang makakakita',
+        body:
+            'Nakikita ninyo ang sarili ninyong account, profile, at history ng ScamShield.\n\n'
+            'Nakikita ng mga miyembro ng grupo ang mga post at larawan doon. Maaaring makita ng mga admin kung kailangang alisin ang mapanganib na content.\n\n'
+            'Pribado sa inyong account ang mga screenshot na ina-upload ninyo para sa ScamShield.',
+      ),
+      PrivacySection(
+        heading: '5. Mga larawan',
+        body:
+            'Sine-save ang mga larawang idinadagdag ninyo sa post ng grupo para makita ng ibang miyembro. Maaari ninyong i-delete ang post na isinulat ninyo. Mag-upload lamang ng mga larawang may karapatan kayong ibahagi.',
+      ),
+      PrivacySection(
+        heading: '6. Mga bata',
+        body:
+            'Ang NewRoots ay para sa mga adulto at pamilya. Hindi ito para sa mga batang wala pang 13 na taon na gagamitin nang mag-isa.',
+      ),
+      PrivacySection(
+        heading: '7. Gaano katagal namin iniingatan',
+        body:
+            'Iniingatan namin ang inyong impormasyon habang bukas ang account. Kung magde-delete kayo ng post o pagsusuri sa ScamShield, inaalis namin ito sa app. Maaaring manatili ang mga backup nang maikling panahon.',
+      ),
+      PrivacySection(
+        heading: '8. Mga pagpipilian ninyo',
+        body:
+            'Maaari ninyong i-edit ang profile, umalis sa grupo, i-delete ang mga post na isinulat ninyo, at mag-sign out. Para i-delete ang account at ang datos na naka-store namin, mag-email sa amin.',
+      ),
+      PrivacySection(
+        heading: '9. Contact',
+        body: 'Mga tanong tungkol sa patakarang ito: y@yunhanluo.com',
       ),
     ],
   ),

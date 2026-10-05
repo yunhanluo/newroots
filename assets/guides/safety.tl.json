@@ -1,0 +1,158 @@
+{
+  "id": "safety",
+  "title": "Gabay sa Kaligtasan ng Komunidad",
+  "subtitle": "Mga numerong pang-emerhensya, inyong karapatan, at paano maghanda.",
+  "landingTitle": "Gabay sa Kaligtasan ng Komunidad",
+  "landingBody": "Mga numerong pang-emerhensya, inyong karapatan, at paano maghanda.",
+  "icon": "emergency",
+  "finishRoute": "home",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Maligayang pagdating",
+      "intro": "",
+      "body": "Nangangailangan ng oras ang pakiramdam na ligtas sa bagong bansa. Ang pag-alam kung sino ang tatawagan, ano ang inyong karapatan, at paano maghanda sa emerhensya ay nakakabawas ng takot at nakakatulong sa pamilya na kumilos agad kapag may nangyari.\n\nSaklaw ng gabay na ito ang mga numerong pang-emerhensya na puwedeng i-tap para tumawag, mga batayan ng Know Your Rights, paghahanda sa kalamidad, at mapagkakatiwalaang resources sa kaligtasan sa California at sa US.\n\nPangkalahatang impormasyon ito, hindi payo sa batas. Para sa inyong sariling kaso, kausapin ang abogado o mapagkakatiwalaang legal aid clinic.",
+      "topics": []
+    },
+    {
+      "title": "Mga numerong pang-emerhensya",
+      "intro": "I-save ang mga numerong ito sa telepono. Sa totoong emerhensya, tumawag agad. I-tap ang numero sa ibaba para tumawag. Kung hindi kayo sigurado kung emerhensya, tumawag pa rin at ipaliwanag kung ano ang nangyayari.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "911 — Pulis, sunog, at medikal na emerhensya",
+          "paragraph": "Gamitin ang 911 para sa agarang panganib: sunog, malubhang pinsala, krimen na nangyayari, o taong hindi makahinga. Sabihin muna sa dispatcher ang lokasyon, pagkatapos kung ano ang nangyari. Maaari kayong humingi ng interpreter. Manatili sa linya hanggang sabihin nilang puwede nang ibaba.",
+          "phone": "911",
+          "phoneLabel": "Tumawag sa 911"
+        },
+        {
+          "heading": "988 — Suicide and Crisis Lifeline",
+          "paragraph": "Tumawag o mag-text sa 988 kung kayo o ang minamahal ninyo ay nasa emosyonal na krisis, nag-iisip ng pagpapakamatay, o kailangan ng agarang tulong sa mental health. Libre at kumpidensyal ang tulong. May interpreter.",
+          "phone": "988",
+          "phoneLabel": "Tumawag sa 988"
+        },
+        {
+          "heading": "211 — Lokal na tulong at resources ng komunidad",
+          "paragraph": "Ikinokonekta kayo ng 211 sa lokal na pagkain, silungan, tulong sa utilities, at serbisyo ng komunidad. Kapaki-pakinabang ito kapag kailangan ninyo ng suporta ngunit hindi ito emerhensiyang banta sa buhay.",
+          "phone": "211",
+          "phoneLabel": "Tumawag sa 211"
+        },
+        {
+          "heading": "Poison Control — 1-800-222-1222",
+          "paragraph": "Tumawag kung may nakain ng gamot, panlinis, halaman, o kemikal nang hindi sinasadya. Dalhin ang produkto kung maaari. Sasabihin nila kung ano ang susunod na gawin.",
+          "phone": "18002221222",
+          "phoneLabel": "Tumawag sa Poison Control"
+        },
+        {
+          "heading": "National Domestic Violence Hotline — 1-800-799-7233",
+          "paragraph": "Tumawag kung kayo o ang kakilala ninyo ay sinasaktan, kinokontrol, o tinatakot ng partner o miyembro ng pamilya. Kumpidensyal ang tulong. Maaari ring bisitahin ang thehotline.org para sa chat.",
+          "phone": "18007997233",
+          "phoneLabel": "Tumawag sa hotline"
+        },
+        {
+          "heading": "Non-emergency na linya ng pulis",
+          "paragraph": "Para sa reklamo sa ingay, ulat ng nakaw pagkatapos mangyari, o tanong na hindi urgent, gamitin ang non-emergency na numero ng pulis ng lungsod sa halip na 911. Maghanap ng “[inyong lungsod] police non emergency” o magtanong sa librarian. I-save ang numerong iyon sa tabi ng 911."
+        }
+      ]
+    },
+    {
+      "title": "Know Your Rights",
+      "intro": "Sa Estados Unidos, may mahalagang karapatan ang mga tao kapag nakikipag-ugnayan sa pulis at immigration officer. Maaaring kumplikado ang mga patakaran, at magkakaiba ang bawat sitwasyon. Ang mga punto sa ibaba ay karaniwang batayan na kapaki-pakinabang sa maraming bagong dating. Hindi ito kapalit ng payo mula sa abogado sa imigrasyon o criminal defense. Kung hindi kayo sigurado, humingi ng abogado at iwasan ang paghula.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Puwede kayong manahimik",
+          "paragraph": "Sa pangkalahatan, may karapatan kayong manahimik. Maaari ninyong sabihin nang malinaw, “I want to remain silent. I want a lawyer.” Pagkatapos ay tumigil sa pagsagot ng tanong tungkol sa immigration status, saan kayo ipinanganak, o paano kayo pumasok sa bansa. Huwag magsinungaling at huwag magpakita ng pekeng dokumento. Ang pagsisinungaling sa federal officer ay maaaring magdulot ng seryosong legal na problema. Ang pananahimik ay hindi katulad ng pagtakbo o pagtalo. Magsalita nang mahinahon, panatilihing nakikita ang mga kamay, at ulitin na gusto ninyo ng abogado kung magpapatuloy ang tanong."
+        },
+        {
+          "heading": "Tanungin kung libre kayong umalis",
+          "paragraph": "Kung ihinto kayo ng officer sa kalye o pampublikong lugar, maaari ninyong tanungin, “Am I free to leave?” Kung oo, maaari kayong mahinahong umalis. Kung hindi, maaari kayong manahimik at humingi ng abogado. Hindi ninyo kailangang pumayag sa paghahanap sa bag, bulsa, o telepono. Maaari ninyong sabihin, “I do not consent to a search.” Maaari pa ring maghanap ang officer sa ilang sitwasyon, ngunit nakakatulong ang malinaw na salita sa kalaunan. Huwag pisikal na lumaban sa paghahanap. Manatiling mahinahon at tandaan ang mga detalye para masabi sa abogado ang nangyari."
+        },
+        {
+          "heading": "Pagpasok sa tahanan",
+          "paragraph": "Sa maraming sitwasyon, kailangan ng officer ng warrant na nilagdaan ng hukom para pumasok sa inyong tahanan. Maaari ninyong hilingin na isuksok ang warrant sa ilalim ng pinto o itapat sa bintana para mabasa ninyo. Tingnan kung nandoon ang address ninyo at pirma ng hukom. Hindi kailangang buksan ang pinto dahil may kumatok o nagsabing pulis sila. Kung hindi kayo sigurado, huwag buksan ang pinto. Tumawag sa mapagkakatiwalaang abogado, legal aid hotline, o miyembro ng pamilya na makakatulong sa payo sa inyong wika. Ang pagbukas ng pinto at pag-imbita ay maaaring magpahirap na hamunin ang pagpasok sa kalaunan."
+        },
+        {
+          "heading": "Ingatan ang mahahalagang dokumento",
+          "paragraph": "Magtabi ng kopya ng mahahalagang dokumento sa ligtas na lugar sa bahay, at isaalang-alang ang maliit na set ng kopya sa naka-lock na folder kung maglalakbay. Kapaki-pakinabang ang kopya ng ID, immigration paperwork, at emergency contact. Ibahagi lamang ang sensitibong papeles kapag pinagkakatiwalaan ninyo ang taong humihingi, tulad ng korte, lisensyadong abogado, o opisyal na appointment ng gobyerno. Mag-ingat sa taong humihingi ng pera o orihinal na dokumento para sa “tulong sa imigrasyon” nang walang lisensya. Kung may nagmamadaling kumuha ng passport o magbayad ng cash, huminto at magtanong muna sa legal aid clinic."
+        },
+        {
+          "heading": "Kumuha ng tulong mula sa mapagkakatiwalaang legal na organisasyon",
+          "paragraph": "Para sa tanong sa imigrasyon, gumamit ng lisensyadong abogado o accredited representative. Makakatulong ang Executive Office for Immigration Review at nonprofit legal aid clinic na maghanap ng murang tulong. Mag-ingat sa sinumang hindi lisensyadong abogado o accredited representative ngunit nag-aalok ng legal na payo sa imigrasyon, pumupuno ng form kapalit ng bayad, o nangangako ng guaranteed visa o green card. Minsan gumagamit ang scammer ng opisyal na tunog na titulo para magmukhang mapagkakatiwalaan. Humingi ng buong pangalan, lisensya o accreditation, at nakasulat na resibo. Kung tumanggi sila, umalis at magtanong sa legal aid clinic bago magbayad.",
+          "url": "https://www.justice.gov/eoir/find-legal-representation"
+        }
+      ]
+    },
+    {
+      "title": "Paghahanda sa kalamidad",
+      "intro": "Nahaharap ang California sa lindol, wildfire, heat wave, at baha. Ang simpleng plano ng pamilya ay nagpapabawas ng gulo sa emerhensya, lalo na kung hindi Ingles ang unang wika. Hindi kailangan ng mamahaling kagamitan. Magsimula sa meeting place, maliit na bag, at paraan para makatanggap ng alert.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Gumawa ng plano ng pamilya",
+          "paragraph": "Pagdesisyunan kung saan kayo magkikita kung hindi gumana ang telepono, tulad ng bahay ng kapitbahay, paaralan, o parke sa malapit. Pumili rin ng pangalawang meeting place na mas malayo kung sarado ang inyong block. Isulat ang numero ng contact sa ibang lungsod—kamag-anak o kaibigan. Mag-practice kung paano aalis nang mabilis sa bahay, kabilang ang gabi. Siguraduhing alam ng mga bata ang buong pangalan, address, at numero ng magulang. Kung may nangangailangan ng gamot, tulong sa paggalaw, o tulong sa wika sa tahanan, planuhin kung sino ang tutulong sa kanila."
+        },
+        {
+          "heading": "Bumuo ng maliit na go bag",
+          "paragraph": "Magtabi ng bag na mauunat sa loob ng isang minuto. Isama ang tubig, meryenda, flashlight, baterya, kopya ng ID at mahahalagang papeles, maliit na first aid kit, mask, gamot, maliit na pera, at charger ng telepono. Magdagdag ng whistle, mainit na damit, at anumang kailangan ng sanggol o nakatatanda. Itago ang bag kung saan maaabot ng lahat. Tingnan ito tuwing ilang buwan at palitan ang expired na pagkain, tubig, at gamot. Magtabi ng mas maikling bersyon sa kotse kung nagmamaneho kayo."
+        },
+        {
+          "heading": "Alamin ang mga lokal na alert",
+          "paragraph": "I-on ang Wireless Emergency Alerts sa telepono para maabot kayo ng mahahalagang babala kahit hindi kayo nanonood ng balita. Mag-sign up sa emergency alert ng lungsod o county kung available. Sa panahon ng wildfire, bagyo, at baha, sundan ang opisyal na update mula sa lungsod, county Office of Emergency Services, o Cal OES. Huwag umasa lamang sa tsismis sa social media. Kung nagsasabing mag-evacuate ang alert, umalis nang maaga sa halip na hintayin kung gaganda ang lagay.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "Lindol",
+          "paragraph": "Kung maramdaman ninyo ang pagyanig, Drop, Cover, and Hold On sa ilalim ng matibay na mesa kung maaari. Protektahan ang ulo at leeg. Lumayo sa bintana, salamin, at matataas na muwebles na maaaring tumumba. Kung nasa labas kayo, pumunta sa bukas na lugar palayo sa gusali, puno, at linya ng kuryente. Kung nasa kama, manatili doon at takpan ang ulo ng unan maliban kung nasa ilalim kayo ng mabigat na ilaw. Pagkatapos ng pagyanig, tingnan kung may nasugatan at amoy ng gas. Kung may amoy ng gas, umalis sa gusali at tumawag ng tulong mula sa labas. Asahan ang aftershock. Kung kailangang mag-evacuate, dalhin ang go bag at sundan ang opisyal na instruksyon."
+        },
+        {
+          "heading": "Wildfire at usok",
+          "paragraph": "Kung nagsasabing mag-evacuate ang opisyal, umalis nang maaga. Maaaring mabilis na maisara ang mga daan. Ipakete muna ang dokumento, gamot, telepono, charger, at alagang hayop. Magsuot ng mahabang manggas at matibay na sapatos kung maaari. Sa malakas na usok, manatili sa loob kung posible, isara ang bintana, at i-set ang air conditioning sa recirculate kung meron. Kung kailangang lumabas, gumamit ng mask na saktong sukat para sa pinong particle kapag meron kayo. Tingnan ang airnow.gov para sa air quality. Maging extra ingat ang may hika, problema sa puso, maliliit na bata, at nakatatanda sa araw ng usok.",
+          "url": "https://www.airnow.gov/"
+        },
+        {
+          "heading": "Baha",
+          "paragraph": "Maaaring magkaroon ng baha pagkatapos ng malakas na ulan, paglabas ng dam, o pag-apaw ng storm drain. Pumunta sa mas mataas na lugar sa sandaling magbabala ang lokal na opisyal. Huwag maglakad, lumangoy, o magmaneho sa tubig-baha. Ang tubig na mukhang mababaw ay maaaring magtago ng malakas na agos, bukas na drain, o wasak na daan. Anim na pulgada ng umaagos na tubig ay maaaring magpatumba ng tao, at isa hanggang dalawang talampakan ay maaaring magtangay ng kotse. Kung natigil ang kotse sa tumataas na tubig, lumabas at pumunta sa mas mataas na lugar kung ligtas. Bumalik kung sarado o natatakpan ng tubig ang daan. Pagkatapos ng baha, iwasan ang siraang gusali hanggang masuri, itapon ang pagkaing nahawakan ng tubig-baha, at magbantay sa kontaminadong tubig at natumbang linya ng kuryente. Makinig sa boil water notice mula sa lungsod o county.",
+          "url": "https://www.ready.gov/floods"
+        },
+        {
+          "heading": "Heat wave",
+          "paragraph": "Mapanganib ang sobrang init, lalo na para sa mga bata, nakatatanda, buntis, at sinumang nagtatrabaho sa labas. Uminom ng tubig nang madalas, kahit hindi nauuhaw. Manatili sa malamig na loob sa pinakamainit na bahagi ng araw. Gumamit ng fan, malamig na shower, at basang tela kung walang air conditioning. Tingnan ang kapitbahay at miyembro ng pamilyang nakatira mag-isa. Huwag iwanan ang bata o alagang hayop sa naka-park na kotse. Kasama sa babala ng heat illness ang hilo, sakit ng ulo, pagduduwal, pagkalito, at pagtigil ng pawis. Kung nalilito o nawalan ng malay ang tao dahil sa init, tumawag sa 911.",
+          "url": "https://www.ready.gov/heat"
+        }
+      ]
+    },
+    {
+      "title": "Mapagkakatiwalaang resources sa kaligtasan",
+      "intro": "Gumamit ng opisyal at kilalang organisasyon kapag kailangan ninyo ng mas malalim na tulong. Magandang panimulang punto ang mga site na ito.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Ready.gov",
+          "paragraph": "Mga gabay ng pederal sa paghahanda sa emerhensya para sa pamilya, kabilang ang checklist at impormasyon sa panganib sa iba’t ibang wika.",
+          "url": "https://www.ready.gov/"
+        },
+        {
+          "heading": "California Office of Emergency Services (Cal OES)",
+          "paragraph": "Impormasyon sa emerhensya ng estado, mga alert, at resources sa paghahanda para sa mga residente ng California.",
+          "url": "https://www.caloes.ca.gov/"
+        },
+        {
+          "heading": "American Red Cross",
+          "paragraph": "Tulong sa kalamidad, klase sa first aid, at suporta ng lokal na chapter pagkatapos ng sunog, baha, at iba pang emerhensya.",
+          "url": "https://www.redcross.org/"
+        },
+        {
+          "heading": "Immigrant Legal Resource Center (ILRC)",
+          "paragraph": "Mga materyales sa Know Your Rights at referral tungkol sa imigrasyon. Impormasyon ito, hindi kapalit ng sarili ninyong abogado.",
+          "url": "https://www.ilrc.org/"
+        },
+        {
+          "heading": "findhelp.org",
+          "paragraph": "Maghanap ayon sa ZIP code ng libre o murang lokal na tulong sa pagkain, pabahay, kalusugan, at iba pa.",
+          "url": "https://www.findhelp.org/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "id": "healthcare",
+  "title": "Mga batayan sa pangangalagang pangkalusugan",
+  "subtitle": "Insurance, pagbisita sa klinika, at community health center.",
+  "landingTitle": "Mga batayan sa pangangalagang pangkalusugan",
+  "landingBody": "Maikling gabay sa insurance, pagbisita sa klinika, community health center, at paghingi ng interpreter sa California.",
+  "icon": "health",
+  "finishRoute": "healthcare",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Maligayang pagdating",
+      "intro": "",
+      "body": "Maaaring nakakalito ang paghingi ng pangangalaga sa California kung bago kayo sa US. Iba sa maraming bansa ang pangalan ng insurance, uri ng klinika, at papeles.\n\nSaklaw ng maikling gabay na ito ang mga batayan sa insurance, ano ang asahan sa bisita, bakit magandang unang hinto ang community health center, at paano humingi ng interpreter.\n\nPangkalahatang impormasyon ito, hindi payo sa kalusugan o batas. Para sa inyong sariling desisyon sa kalusugan, kausapin ang clinician o mapagkakatiwalaang counselor.",
+      "topics": []
+    },
+    {
+      "title": "Mga batayan sa insurance",
+      "intro": "Tumutulong ang health insurance na bayaran ang pagbisita sa doktor, ospital, at gamot. May ilang karaniwang opsyon sa California. Hindi kailangang kabisaduhin ang lahat ng patakaran; simulan sa pag-alam kung aling programa ang maaaring angkop sa inyo.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Medi-Cal",
+          "paragraph": "Ang Medi-Cal ay Medicaid ng California. Sinasaklaw nito ang maraming residenteng mababa ang kita, kabilang ang maraming imigranteng kwalipikado sa ilalim ng patakaran ng estado. Maaaring kasama ang pagbisita sa doktor, emerhensya, pangangalaga sa pagbubuntis, at iba pa. Mag-apply sa Covered California o sa county social services. Magdala ng ID, impormasyon sa kita, at immigration documents kung meron kayo. Humingi ng tulong sa inyong wika.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Covered California",
+          "paragraph": "Ang Covered California ay ang marketplace ng estado kung saan makakabili kayo ng pribadong plano at makikita kung kwalipikado kayo sa tulong sa premium. Karaniwang sa taglagas ang open enrollment, ngunit maaaring maging kwalipikado kayo sa special enrollment pagkatapos ng malaking pagbabago sa buhay tulad ng paglipat o pagkawala ng ibang coverage.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Plano ng employer at paaralan",
+          "paragraph": "May insurance ang ilang trabaho at paaralan. Tanungin ang HR o student services kung ano ang available, kailan mag-enroll, at magkano bawat buwan. Ihambing ang premium (buwanang bayad) sa deductible (ang binabayaran ninyo bago mas magbayad ang insurance)."
+        },
+        {
+          "heading": "Kung walang insurance",
+          "paragraph": "Makakakuha pa rin kayo ng pangangalaga. Madalas mag-alok ang community health center (susunod na seksyon) ng sliding scale fee ayon sa kita. Dapat i-stabilize ng emergency room ang emerhensiyang kondisyon, ngunit maaaring napakamahal ang ER para sa hindi emerhensya. Para sa pangkaraniwang pangangalaga, mas magandang unang hakbang ang community clinic."
+        }
+      ]
+    },
+    {
+      "title": "Paano gumagana ang pangangalaga",
+      "intro": "Sa US, madalas magsimula ang mga tao sa primary care clinic para sa checkup at karaniwang problema, pagkatapos ay magpa-refer sa specialist kung kailangan.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Primary care",
+          "paragraph": "Ang primary care ang pangunahing doktor o klinika para sa sipon, malalang kondisyon tulad ng diabetes, checkup, bakuna, at referral. Nakakatulong ang magkaroon ng relasyon sa isang klinika para malaman nila ang history ninyo at magkakasama ang rekord."
+        },
+        {
+          "heading": "Urgent care kumpara sa emergency room",
+          "paragraph": "Ang urgent care ay para sa problemang kailangan ng atensyon sa araw ding iyon ngunit hindi naman banta sa buhay, tulad ng na-sprain na bukung-bukong o malalang sipon. Pumunta sa emergency room o tumawag sa 911 para sa matinding sakit sa dibdib, hirap sa paghinga, malakas na pagdurugo, o iba pang sintomas na banta sa buhay."
+        },
+        {
+          "heading": "Ano ang dalhin",
+          "paragraph": "Magdala ng photo ID kung meron, insurance card o impormasyon sa Medi-Cal, listahan ng gamot, at anumang nakaraang resulta ng pagsusuri. Dumating nang maaga para sa papeles. Tanungin ang front desk kung anong form ang kailangan at kung tumatanggap sila ng walk-in."
+        },
+        {
+          "heading": "Pagbabayad at bill",
+          "paragraph": "Magtanong tungkol sa gastos bago ang hindi emerhensiyang bisita kung maaari. Maaaring dumating ang bill pagkalipas ng ilang linggo para sa lab o specialist. Tumawag sa billing office kung may mali o hindi kayo makabayad. Maraming klinika ang may payment plan o application para sa financial assistance."
+        }
+      ]
+    },
+    {
+      "title": "Community health center",
+      "intro": "Magandang simula ang community health center na suportado ng pederal. Sa app na ito, ang mga pin ng klinika ay mula sa listahan ng US Health Resources and Services Administration (HRSA) ng Health Center Service Delivery at Look-Alike site sa California.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Ano ang mga ito",
+          "paragraph": "Ang mga klinikang ito (madalas tawaging FQHC o look-alike) ay nagbibigay ng primary care sa mga lugar na kulang sa serbisyo. Marami ring dental, behavioral health, at pharmacy. Nagsisilbi sila sa may insurance, Medi-Cal, at walang insurance."
+        },
+        {
+          "heading": "Sliding scale at palakaibigang pangangalaga",
+          "paragraph": "Madalas inaayos ang bayad ayon sa kita. Sanay ang staff na tumulong sa papeles at iba’t ibang wika. Hindi kailangang maging citizen para magpagamot sa marami sa mga site na ito. Tanungin ang klinika kung anong dokumento ang kailangan para sa sliding scale na bisita."
+        },
+        {
+          "heading": "Bakit ipinapakita namin sila sa mapa",
+          "paragraph": "Naglalathala ang HRSA ng opisyal na directory ng mga site na ito. Ginagamit ng NewRoots ang extract na iyon para sa California para tumuro ang mga pin sa naberipikang community health location, hindi random na listing. Tumawag muna para kumpirmahin ang oras, serbisyo, at kung tumatanggap sila ng bagong pasyente.",
+          "url": "https://data.hrsa.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Wika at interpreter",
+      "intro": "May karapatan kayong maunawaan ang inyong pangangalaga. Maraming klinika ang dapat magbigay ng libreng tulong sa wika para sa mga karaniwang wika. Huwag umasa sa bata para mag-interpret ng detalyeng medikal kapag maaari kayong humingi ng propesyonal.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Magtanong kapag nag-book",
+          "paragraph": "Kapag tumawag o mag check-in, sabihin: “Kailangan ko ng interpreter sa [inyong wika].” Tanungin kung may in-person staff, phone interpreter, o video interpreter. Kumpirmahin ang wika bago magsimula ang appointment."
+        },
+        {
+          "heading": "Ano ang kadalasang maibibigay ng klinika",
+          "paragraph": "Maraming community health center at ospital ang may serbisyo ng interpreter. Magkakaiba ang availability ayon sa wika at lugar. Kung hindi gaanong karaniwan ang wika ninyo, tanungin kung gaano kahabang paunawa ang kailangan. Magdala ng mapagkakatiwalaang adulto kung gusto ninyo ng dagdag na suporta, hindi bilang kapalit ng interpreter ng klinika kapag meron."
+        },
+        {
+          "heading": "Sa panahon ng bisita",
+          "paragraph": "Kausapin ang clinician sa pamamagitan ng interpreter. Magpahinga para maisalin nila nang buo. Hilingin na ulitin ang hindi ninyo naintindihan, kabilang ang pangalan ng gamot, dosis, at petsa ng follow-up. Maaari kayong humingi ng nakasulat na instruksyon sa simpleng Ingles o sa inyong wika kapag available."
+        }
+      ]
+    },
+    {
+      "title": "Mapagkakatiwalaang panimulang punto",
+      "intro": "Gamitin ang opisyal na site at lokal na klinika para sa pinakabagong patakaran. Nagbabago ang mga programa, kaya kumpirmahin ang detalye bago mag-apply o maglakbay nang malayo para magpagamot.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Covered California",
+          "paragraph": "Hanapin ang opsyon sa Medi-Cal at marketplace coverage, at kumuha ng tulong sa iba’t ibang wika.",
+          "url": "https://www.coveredca.com/"
+        },
+        {
+          "heading": "Find a Health Center (HRSA)",
+          "paragraph": "Opisyal na federal na kasangkapan para maghanap ng community health center. Ginagamit ng mapa ng app ang parehong directory data ng California para sa mga pin sa malapit.",
+          "url": "https://findahealthcenter.hrsa.gov/"
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Tumawag sa 211 o maghanap online para sa referral sa kalusugan, pagkain, at social service sa malapit.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

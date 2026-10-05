@@ -5,6 +5,23 @@
 
   "tagline": "From arrival to belonging.",
 
+  "welcomeTitle": "Welcome to NewRoots",
+  "welcomeSubtitle": "Thrive in America.",
+  "landingPurpose": "Find trusted local help and take the next step—in your language.",
+  "welcomePurpose": "NewRoots is an app for immigrants in California, created for the 2026 Congressional App Challenge. It helps you find trusted local help and take the next step—all in your preferred language.",
+  "welcomeContinue": "Continue",
+  "welcomeGetStarted": "Get started",
+  "welcomeDone": "Done",
+  "welcomeFeatureRoadmap": "A personal plan for your first months here.",
+  "welcomeFeatureCareer": "Match your work experience to jobs in the US.",
+  "welcomeFeatureHousing": "Understand renting and find housing help.",
+  "welcomeFeatureHealthcare": "Learn how healthcare works and find nearby clinics.",
+  "welcomeFeatureSafety": "A guide on what to do in an emergency or disaster.",
+  "welcomeFeatureScamShield": "Check a message or ad that might be a scam.",
+  "welcomeFeatureEnglish": "Find English classes near you.",
+  "welcomeFeatureEducation": "Find schools and programs for your family.",
+  "welcomeFeatureSupportGroups": "Talk with other newcomers in California.",
+
   "navHome": "Home",
   "navScamShield": "ScamShield",
   "navProfile": "Profile",
@@ -77,6 +94,7 @@
   "profileNoSurvey": "No survey data yet.",
   "profileReviewSuggestions": "Review group suggestions",
   "profileAdmin": "Admin",
+  "profileHelp": "Help",
 
   "priorityHousing": "Housing",
   "priorityEmployment": "Employment",

@@ -6,7 +6,7 @@ import '../../../core/services/user_profile_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../data/privacy_policy_copy.dart';
 
-/// Simple privacy policy in the seven supported languages.
+/// Simple privacy policy in the eight supported languages.
 class PrivacyPolicyScreen extends ConsumerStatefulWidget {
   const PrivacyPolicyScreen({super.key});
 

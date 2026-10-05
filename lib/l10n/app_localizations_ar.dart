@@ -15,6 +15,60 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tagline => 'من الوصول إلى الانتماء.';
 
   @override
+  String get welcomeTitle => 'مرحبًا بك في NewRoots';
+
+  @override
+  String get welcomeSubtitle => 'ازدهر في أمريكا.';
+
+  @override
+  String get landingPurpose =>
+      'اعثر على مساعدة محلية موثوقة واتخذ الخطوة التالية—بلغتك.';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots تطبيق للمهاجرين في كاليفورنيا، أُنشئ لتحدي التطبيقات الكونغرسية 2026. يساعدك على إيجاد مساعدة محلية موثوقة واتخاذ الخطوة التالية—كل ذلك بلغتك المفضلة.';
+
+  @override
+  String get welcomeContinue => 'متابعة';
+
+  @override
+  String get welcomeGetStarted => 'ابدأ';
+
+  @override
+  String get welcomeDone => 'تم';
+
+  @override
+  String get welcomeFeatureRoadmap => 'خطة شخصية لأشهرك الأولى هنا.';
+
+  @override
+  String get welcomeFeatureCareer =>
+      'اربط خبرتك العملية بوظائف في الولايات المتحدة.';
+
+  @override
+  String get welcomeFeatureHousing => 'افهم الإيجار واعثر على مساعدة سكن.';
+
+  @override
+  String get welcomeFeatureHealthcare =>
+      'تعرّف على نظام الرعاية الصحية واعثر على عيادات قريبة.';
+
+  @override
+  String get welcomeFeatureSafety => 'دليل عما تفعله في حالة طوارئ أو كارثة.';
+
+  @override
+  String get welcomeFeatureScamShield =>
+      'تحقق من رسالة أو إعلان قد يكون احتيالًا.';
+
+  @override
+  String get welcomeFeatureEnglish => 'اعثر على صفوف إنجليزية بالقرب منك.';
+
+  @override
+  String get welcomeFeatureEducation => 'اعثر على مدارس وبرامج لعائلتك.';
+
+  @override
+  String get welcomeFeatureSupportGroups =>
+      'تحدث مع قادمين جدد آخرين في كاليفورنيا.';
+
+  @override
   String get navHome => 'الرئيسية';
 
   @override
@@ -195,6 +249,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profileAdmin => 'مسؤول';
+
+  @override
+  String get profileHelp => 'مساعدة';
 
   @override
   String get priorityHousing => 'السكن';

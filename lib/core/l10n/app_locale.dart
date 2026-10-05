@@ -19,18 +19,18 @@ final localeOverrideProvider =
 final appLocaleProvider = Provider<Locale>((ref) {
   final override = ref.watch(localeOverrideProvider);
   if (isSupportedAppLanguage(override)) {
-    return Locale(override!.trim());
+    return Locale(normalizeAppLanguageCode(override));
   }
 
   final profileCode =
       ref.watch(userProfileProvider).value?.languageCode.trim() ?? '';
   if (isSupportedAppLanguage(profileCode)) {
-    return Locale(profileCode);
+    return Locale(normalizeAppLanguageCode(profileCode));
   }
 
   final device = WidgetsBinding.instance.platformDispatcher.locale;
   if (isSupportedAppLanguage(device.languageCode)) {
-    return Locale(device.languageCode);
+    return Locale(normalizeAppLanguageCode(device.languageCode));
   }
   return const Locale('en');
 });

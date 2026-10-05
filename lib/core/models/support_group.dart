@@ -94,6 +94,9 @@ class SupportGroup {
           return 'Vietnamese';
         case 'ko':
           return 'Korean';
+        case 'tl':
+        case 'fil':
+          return 'Tagalog';
         case 'hi':
           return 'Hindi';
         case 'ar':

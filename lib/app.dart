@@ -21,7 +21,7 @@ class NewRootsApp extends ConsumerWidget {
 
     return MaterialApp.router(
       title: FlavorConfig.instance.appTitle,
-      debugShowCheckedModeBanner: !FlavorConfig.instance.isProd,
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.light,

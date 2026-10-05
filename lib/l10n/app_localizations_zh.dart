@@ -15,6 +15,55 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tagline => '从抵达，到归属。';
 
   @override
+  String get welcomeTitle => '欢迎使用 NewRoots';
+
+  @override
+  String get welcomeSubtitle => '在美国扎根成长。';
+
+  @override
+  String get landingPurpose => '用您的语言找到可信的本地帮助，迈出下一步。';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots 是为加州移民打造的应用，为 2026 Congressional App Challenge 而创建。它帮助您找到可信的本地帮助，迈出下一步——全部使用您的首选语言。';
+
+  @override
+  String get welcomeContinue => '继续';
+
+  @override
+  String get welcomeGetStarted => '开始使用';
+
+  @override
+  String get welcomeDone => '完成';
+
+  @override
+  String get welcomeFeatureRoadmap => '为您在这里的最初几个月提供个人计划。';
+
+  @override
+  String get welcomeFeatureCareer => '把您的工作经验对接美国的工作。';
+
+  @override
+  String get welcomeFeatureHousing => '了解租房并找到住房帮助。';
+
+  @override
+  String get welcomeFeatureHealthcare => '了解医疗如何运作，并找到附近诊所。';
+
+  @override
+  String get welcomeFeatureSafety => '紧急情况或灾害时的应对指南。';
+
+  @override
+  String get welcomeFeatureScamShield => '检查可能是诈骗的消息或广告。';
+
+  @override
+  String get welcomeFeatureEnglish => '查找附近的英语课程。';
+
+  @override
+  String get welcomeFeatureEducation => '为家人查找学校和项目。';
+
+  @override
+  String get welcomeFeatureSupportGroups => '与加州其他新移民交流。';
+
+  @override
   String get navHome => '首页';
 
   @override
@@ -192,6 +241,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get profileAdmin => '管理员';
+
+  @override
+  String get profileHelp => '帮助';
 
   @override
   String get priorityHousing => '住房';

@@ -15,6 +15,55 @@ class AppLocalizationsKo extends AppLocalizations {
   String get tagline => '도착에서 소속까지.';
 
   @override
+  String get welcomeTitle => 'NewRoots에 오신 것을 환영합니다';
+
+  @override
+  String get welcomeSubtitle => '미국에서 뿌리내리세요.';
+
+  @override
+  String get landingPurpose => '사용하시는 언어로 믿을 수 있는 지역 도움을 찾고 다음 단계로 나아가세요.';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots는 캘리포니아 이민자를 위한 앱으로, 2026 Congressional App Challenge를 위해 만들었습니다. 믿을 수 있는 지역 도움을 찾고 다음 걸음을 내딛도록 돕습니다. 모두 선호하는 언어로 제공됩니다.';
+
+  @override
+  String get welcomeContinue => '계속';
+
+  @override
+  String get welcomeGetStarted => '시작하기';
+
+  @override
+  String get welcomeDone => '완료';
+
+  @override
+  String get welcomeFeatureRoadmap => '처음 몇 달을 위한 개인 계획입니다.';
+
+  @override
+  String get welcomeFeatureCareer => '당신의 경력을 미국 일자리와 연결합니다.';
+
+  @override
+  String get welcomeFeatureHousing => '임대 생활을 이해하고 주거 도움을 찾습니다.';
+
+  @override
+  String get welcomeFeatureHealthcare => '의료 체계를 배우고 근처 클리닉을 찾습니다.';
+
+  @override
+  String get welcomeFeatureSafety => '응급 상황이나 재난 때 할 일을 안내합니다.';
+
+  @override
+  String get welcomeFeatureScamShield => '사기일 수 있는 메시지나 광고를 확인합니다.';
+
+  @override
+  String get welcomeFeatureEnglish => '근처 영어 수업을 찾습니다.';
+
+  @override
+  String get welcomeFeatureEducation => '가족을 위한 학교와 프로그램을 찾습니다.';
+
+  @override
+  String get welcomeFeatureSupportGroups => '캘리포니아의 다른 신규 이민자와 이야기합니다.';
+
+  @override
   String get navHome => '홈';
 
   @override
@@ -192,6 +241,9 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get profileAdmin => '관리자';
+
+  @override
+  String get profileHelp => '도움말';
 
   @override
   String get priorityHousing => '주거';

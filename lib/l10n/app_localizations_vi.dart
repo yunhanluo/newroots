@@ -15,6 +15,63 @@ class AppLocalizationsVi extends AppLocalizations {
   String get tagline => 'Từ khi đến, đến khi thuộc về.';
 
   @override
+  String get welcomeTitle => 'Chào mừng đến NewRoots';
+
+  @override
+  String get welcomeSubtitle => 'Vững bước tại Mỹ.';
+
+  @override
+  String get landingPurpose =>
+      'Tìm sự giúp đỡ địa phương đáng tin cậy và bước tiếp—bằng ngôn ngữ của bạn.';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots là ứng dụng dành cho người nhập cư ở California, được tạo cho Congressional App Challenge 2026. Ứng dụng giúp bạn tìm hỗ trợ địa phương đáng tin và bước tiếp theo—tất cả bằng ngôn ngữ bạn chọn.';
+
+  @override
+  String get welcomeContinue => 'Tiếp tục';
+
+  @override
+  String get welcomeGetStarted => 'Bắt đầu';
+
+  @override
+  String get welcomeDone => 'Xong';
+
+  @override
+  String get welcomeFeatureRoadmap =>
+      'Kế hoạch cá nhân cho những tháng đầu ở đây.';
+
+  @override
+  String get welcomeFeatureCareer =>
+      'Nối kinh nghiệm làm việc của bạn với việc làm tại Mỹ.';
+
+  @override
+  String get welcomeFeatureHousing => 'Hiểu thuê nhà và tìm hỗ trợ nhà ở.';
+
+  @override
+  String get welcomeFeatureHealthcare =>
+      'Tìm hiểu hệ thống y tế và phòng khám gần bạn.';
+
+  @override
+  String get welcomeFeatureSafety =>
+      'Hướng dẫn việc cần làm khi khẩn cấp hoặc thiên tai.';
+
+  @override
+  String get welcomeFeatureScamShield =>
+      'Kiểm tra tin nhắn hoặc quảng cáo có thể là lừa đảo.';
+
+  @override
+  String get welcomeFeatureEnglish => 'Tìm lớp tiếng Anh gần bạn.';
+
+  @override
+  String get welcomeFeatureEducation =>
+      'Tìm trường và chương trình cho gia đình.';
+
+  @override
+  String get welcomeFeatureSupportGroups =>
+      'Trò chuyện với người mới đến khác ở California.';
+
+  @override
   String get navHome => 'Trang chủ';
 
   @override
@@ -193,6 +250,9 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get profileAdmin => 'Quản trị';
+
+  @override
+  String get profileHelp => 'Trợ giúp';
 
   @override
   String get priorityHousing => 'Nhà ở';

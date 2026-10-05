@@ -15,6 +15,65 @@ class AppLocalizationsEs extends AppLocalizations {
   String get tagline => 'De la llegada a la pertenencia.';
 
   @override
+  String get welcomeTitle => 'Bienvenido a NewRoots';
+
+  @override
+  String get welcomeSubtitle => 'Prospera en Estados Unidos.';
+
+  @override
+  String get landingPurpose =>
+      'Encuentre ayuda local de confianza y dé el siguiente paso, en su idioma.';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots es una app para inmigrantes en California, creada para el Congressional App Challenge 2026. Le ayuda a encontrar ayuda local de confianza y a dar el siguiente paso, todo en su idioma preferido.';
+
+  @override
+  String get welcomeContinue => 'Continuar';
+
+  @override
+  String get welcomeGetStarted => 'Empezar';
+
+  @override
+  String get welcomeDone => 'Listo';
+
+  @override
+  String get welcomeFeatureRoadmap =>
+      'Un plan personal para sus primeros meses aquí.';
+
+  @override
+  String get welcomeFeatureCareer =>
+      'Conecte su experiencia laboral con empleos en EE. UU.';
+
+  @override
+  String get welcomeFeatureHousing =>
+      'Entienda el alquiler y encuentre ayuda de vivienda.';
+
+  @override
+  String get welcomeFeatureHealthcare =>
+      'Aprenda cómo funciona la atención médica y encuentre clínicas cerca.';
+
+  @override
+  String get welcomeFeatureSafety =>
+      'Una guía sobre qué hacer en una emergencia o desastre.';
+
+  @override
+  String get welcomeFeatureScamShield =>
+      'Revise un mensaje o anuncio que podría ser una estafa.';
+
+  @override
+  String get welcomeFeatureEnglish =>
+      'Encuentre clases de inglés cerca de usted.';
+
+  @override
+  String get welcomeFeatureEducation =>
+      'Encuentre escuelas y programas para su familia.';
+
+  @override
+  String get welcomeFeatureSupportGroups =>
+      'Hable con otras personas recién llegadas en California.';
+
+  @override
   String get navHome => 'Inicio';
 
   @override
@@ -195,6 +254,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get profileAdmin => 'Admin';
+
+  @override
+  String get profileHelp => 'Ayuda';
 
   @override
   String get priorityHousing => 'Vivienda';

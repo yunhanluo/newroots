@@ -15,16 +15,6 @@ class AuthHeader extends StatelessWidget {
     final theme = Theme.of(context);
     return Column(
       children: [
-        Container(
-          height: 72,
-          width: 72,
-          decoration: const BoxDecoration(
-            color: kBrandGreen,
-            shape: BoxShape.circle,
-          ),
-          child: const Icon(Icons.eco_outlined, color: Colors.white, size: 40),
-        ),
-        const SizedBox(height: 20),
         Image.asset(
           'assets/images/logo.png',
           height: 40,

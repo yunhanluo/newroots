@@ -87,14 +87,24 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     final profile = await ref
         .read(userProfileServiceProvider)
         .getCurrentUserProfile();
-    if (!mounted || profile == null) return;
+    if (!mounted) return;
+    final override = ref.read(localeOverrideProvider);
+    final fallbackLanguage = isSupportedAppLanguage(override)
+        ? override!.trim()
+        : ref.read(appLocaleProvider).languageCode;
+    if (profile == null) {
+      setState(() => _languageCode = fallbackLanguage);
+      return;
+    }
     setState(() {
       _skippedQuestions
         ..clear()
         ..addAll(profile.skippedQuestions);
       _languageCode = _skippedQuestions.contains(1)
           ? null
-          : (profile.languageCode.isEmpty ? null : profile.languageCode);
+          : (profile.languageCode.isEmpty
+              ? fallbackLanguage
+              : profile.languageCode);
       _locationController.text =
           _skippedQuestions.contains(2) ? '' : profile.location;
       _familySize =

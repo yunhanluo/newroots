@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../services/auth_service.dart';
 import '../../features/auth/presentation/auth_screen.dart';
+import '../../features/auth/presentation/landing_screen.dart';
 import '../../features/auth/presentation/signup_screen.dart';
 import '../../features/career/presentation/career_screen.dart';
 import '../../features/education/presentation/education_screen.dart';
@@ -18,6 +19,7 @@ import '../../features/healthcare/presentation/healthcare_tutorial_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/housing/presentation/housing_screen.dart';
 import '../../features/onboarding/presentation/onboarding_screen.dart';
+import '../../features/welcome/presentation/welcome_screen.dart';
 import '../../features/privacy/presentation/privacy_policy_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/roadmap/presentation/roadmap_screen.dart';
@@ -33,10 +35,12 @@ import '../models/support_group.dart';
 
 /// Central route table. Names are referenced by screens via [context.goNamed].
 abstract class Routes {
+  static const landing = 'landing';
   static const auth = 'auth';
   static const signup = 'signup';
   static const privacy = 'privacy';
   static const onboarding = 'onboarding';
+  static const welcome = 'welcome';
   static const home = 'home';
   static const profile = 'profile';
   static const roadmap = 'roadmap';
@@ -67,19 +71,27 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: _GoRouterRefreshStream(authService.authStateChanges()),
     redirect: (context, state) {
       final loggedIn = authService.currentUser != null;
-      final atPublicRoute = state.matchedLocation == '/auth' ||
+      final atPublicRoute =
+          state.matchedLocation == '/landing' ||
+          state.matchedLocation == '/auth' ||
           state.matchedLocation == '/signup' ||
           state.matchedLocation == '/privacy';
 
-      if (!loggedIn) return atPublicRoute ? null : '/auth';
+      if (!loggedIn) return atPublicRoute ? null : '/landing';
       if (loggedIn &&
-          (state.matchedLocation == '/auth' ||
+          (state.matchedLocation == '/landing' ||
+              state.matchedLocation == '/auth' ||
               state.matchedLocation == '/signup')) {
-        return '/';
+        return ref.read(justSignedUpProvider) ? '/welcome' : '/';
       }
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/landing',
+        name: Routes.landing,
+        builder: (context, state) => const LandingScreen(),
+      ),
       GoRoute(
         path: '/auth',
         name: Routes.auth,
@@ -94,6 +106,12 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/privacy',
         name: Routes.privacy,
         builder: (context, state) => const PrivacyPolicyScreen(),
+      ),
+      GoRoute(
+        path: '/welcome',
+        name: Routes.welcome,
+        builder: (context, state) =>
+            WelcomeScreen(openGuide: state.uri.queryParameters['guide'] == '1'),
       ),
       GoRoute(
         path: '/onboarding',
@@ -183,9 +201,8 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: ':groupId',
                 name: Routes.supportGroupDetail,
-                builder: (context, state) => GroupChatScreen(
-                  groupId: state.pathParameters['groupId']!,
-                ),
+                builder: (context, state) =>
+                    GroupChatScreen(groupId: state.pathParameters['groupId']!),
                 routes: [
                   GoRoute(
                     path: 'new',
@@ -222,9 +239,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
     ],
-    errorBuilder: (context, state) => Scaffold(
-      body: Center(child: Text('Route not found: ${state.uri}')),
-    ),
+    errorBuilder: (context, state) =>
+        Scaffold(body: Center(child: Text('Route not found: ${state.uri}'))),
   );
 });
 

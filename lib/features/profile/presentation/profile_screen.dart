@@ -245,6 +245,15 @@ class ProfileScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 12),
+            TextButton.icon(
+              onPressed: () => context.pushNamed(
+                Routes.welcome,
+                queryParameters: {'guide': '1'},
+              ),
+              icon: const Icon(Icons.help_outline),
+              label: Text(l10n.profileHelp),
+              style: TextButton.styleFrom(foregroundColor: kBrandGreen),
+            ),
             OutlinedButton.icon(
               onPressed: () => ref.read(authServiceProvider).signOut(),
               icon: const Icon(Icons.logout),

@@ -1,0 +1,127 @@
+{
+  "id": "education",
+  "title": "Mga batayan sa edukasyon",
+  "subtitle": "Mga pampublikong paaralan sa California, pagpapatala, at akademikong suporta.",
+  "landingTitle": "Mga batayan sa edukasyon",
+  "landingBody": "Maikling gabay sa mga pampublikong paaralan sa California, pagpapatala, tulong sa English learner, at mga akademikong programa.",
+  "icon": "school",
+  "finishRoute": "education",
+  "version": 2,
+  "sections": [
+    {
+      "title": "Maligayang pagdating",
+      "intro": "",
+      "body": "Libre ang mga pampublikong paaralan sa California para sa mga batang nakatira sa estado. Maaaring hindi pamilyar ang mga patakaran, papeles, at pangalan ng grade kung bago kayo sa US.\n\nIpinapaliwanag ng maikling gabay na ito kung paano nakaayos ang K–12, paano hanapin ang inyong distrito, ano ang kadalasang kailangan sa pagpapatala, tulong sa English learner, at saan maghanap ng tutoring, library, at STEM na programa.\n\nPangkalahatang impormasyon ito, hindi payo sa batas. Magkakaiba ang patakaran ng distrito, kaya kumpirmahin ang mga detalye sa opisina ng lokal na paaralan.",
+      "topics": []
+    },
+    {
+      "title": "Paano gumagana ang K–12 sa California",
+      "intro": "Karamihan sa mga bata ay pumapasok sa pampublikong paaralang itinalaga ayon sa tinitirhan ng pamilya. Pinapatakbo ng mga distrito ang mga paaralan. Ang mga statewide na patakaran ay mula sa California Department of Education (CDE).",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Pampubliko, charter, at pribado",
+          "paragraph": "Walang tuition ang mga pampublikong paaralan at bukas sa mga lokal na residente. Ang charter school ay pampublikong paaralan na may mas flexible na programa; maaaring may lottery o waitlist. May tuition ang mga pribadong paaralan at sila ang nagtatakda ng admission. Naka-list sa app na ito ang pampubliko at pribadong paaralan, pati ang libre o murang mga programa ng suporta."
+        },
+        {
+          "heading": "Mga grade band",
+          "paragraph": "Karaniwang kindergarten hanggang grade 5 o 6 ang elementarya. Grade 6–8 o 7–8 ang middle school. Grade 9–12 ang high school. May mga paaralang K–8 o ibang kombinasyon. Tanungin ang distrito kung aling paaralan ang para sa edad ng inyong anak."
+        },
+        {
+          "heading": "California Department of Education",
+          "paragraph": "Naglalathala ang CDE ng mga directory ng paaralan, gabay sa pagpapatala, at resources para sa English learner. Gamitin ang opisyal na site ng CDE at distrito kapag kailangan ninyo ang pinakabagong patakaran.",
+          "url": "https://www.cde.ca.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Hanapin ang distrito at paaralan",
+      "intro": "Karaniwang ang address ng tahanan ang nagtatakda kung saang paaralan papasok ang inyong anak. Magsimula sa distritong nagsisilbi sa inyong kapitbahayan.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "School Locator",
+          "paragraph": "Gamitin ang CDE School Directory o ang website ng distrito ng lungsod/county para maghanap ng paaralan ayon sa address o lungsod. Sa app na ito, ipinapakita ng mapa ng Maghanap ng paaralan at programa ang malapit na pampublikong paaralan mula sa opisyal na directory ng California.",
+          "url": "https://www.cde.ca.gov/SchoolDirectory/"
+        },
+        {
+          "heading": "Tumawag sa opisina ng distrito",
+          "paragraph": "Kung nakakalito ang website, tumawag sa enrollment o student services ng distrito. Sabihin ang address, edad o grade ng anak, at tanungin kung aling paaralan ang kontakin. Humingi ng tulong sa inyong wika."
+        },
+        {
+          "heading": "Open enrollment at transfer",
+          "paragraph": "Pinapayagan ng ilang distrito ang paghingi na pumasok sa paaralan sa labas ng itinakdang hangganan. Magkakaiba ang patakaran at deadline. Magtanong nang maaga; maaaring limitado ang slot."
+        }
+      ]
+    },
+    {
+      "title": "Mga dokumento sa pagpapatala",
+      "intro": "Kailangan ng paaralan ng pangunahing impormasyon para irehistro ang bata. Magkakaiba ang eksaktong listahan ayon sa distrito, ngunit karaniwang hinihingi ang mga ito.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Patunay ng edad",
+          "paragraph": "Kadalasang sapat ang birth certificate, passport, o iba pang opisyal na dokumento ng edad. Tanungin kung anong kapalit ang tinatanggap ng distrito kung wala kayong US birth certificate."
+        },
+        {
+          "heading": "Patunay ng address",
+          "paragraph": "Maaaring magamit ang utility bill, lease, o liham mula sa shelter o pamilyang nagpatuloy sa inyo. Kung pansamantala kayong nakatira sa kamag-anak o hindi matatag ang pabahay, sabihin sa paaralan — may proteksyon ang California para sa mga estudyanteng walang tahanan."
+        },
+        {
+          "heading": "Mga rekord ng bakuna",
+          "paragraph": "May mga bakunang kailangan sa California para makapasok sa paaralan. Dalhin ang anumang rekord ng bakuna. Tanungin ang school nurse o county clinic kung paano makahabol kung kulang ang rekord."
+        },
+        {
+          "heading": "Immigration status",
+          "paragraph": "Dapat ipatala ng pampublikong paaralan ang mga batang nakatira sa distrito anuman ang immigration status. Hindi dapat kailanganin ang Social Security number o immigration papers para magpatala sa K–12 na pampublikong paaralan.",
+          "url": "https://www.cde.ca.gov/sp/hs/"
+        }
+      ]
+    },
+    {
+      "title": "English learner at akademikong suporta",
+      "intro": "Sanay ang mga paaralan sa pagtulong sa mga batang natututo ng Ingles at sa mga estudyanteng kailangan ng dagdag na akademikong tulong o tulong para sa disability.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Mga programa para sa English learner (EL)",
+          "paragraph": "Sinusuri ng paaralan ang kasanayan sa Ingles at nagbibigay ng English Language Development (ELD). Sabihin sa paaralan kung anong wika ang ginagamit sa tahanan. Humingi ng interpreter sa mga meeting.",
+          "url": "https://www.cde.ca.gov/sp/el/"
+        },
+        {
+          "heading": "IEP at 504 plan",
+          "paragraph": "Kung may disability o pagkakaiba sa pagkatuto ang inyong anak, magtanong tungkol sa evaluation. Maaaring magbigay ng suporta sa klase ang IEP o 504 plan. Maaari kayong humingi ng meeting at magdala ng advocate o interpreter.\n\nGinagawa ang IEP sa ilalim ng Individuals with Disabilities Education Act para sa estudyanteng kwalipikado sa special education. Nakasulat na plano ito na may mga layunin sa pagkatuto, espesyal na pagtuturo, serbisyo tulad ng speech o occupational therapy, at iskedyul ng pagsukat ng progreso. Ang 504 plan ay para sa estudyante na malaki ang epekto ng disability sa pangunahing gawain sa buhay ngunit maaaring hindi kailangan ng special education; nakatuon ito sa pantay na access sa pamamagitan ng accommodation tulad ng dagdag na oras sa pagsusulit, accessible na upuan, suporta sa kalusugan, o assistive technology. Maaari kayong humingi ng evaluation nang nakasulat, at dapat sundin ng paaralan ang pormal na timeline at kumuha ng inyong pahintulot bago mag-evaluate. Bahagi kayo ng team na nagpapasya, maaaring humingi ng libreng interpreter at kopya ng dokumento, at maaaring humingi ng isa pang meeting kung hindi nakakatulong ang plano. Humingi sa paaralan ng procedural safeguards kung hindi kayo sang-ayon sa evaluation, desisyon sa eligibility, serbisyo, o placement.",
+          "url": "https://www.cde.ca.gov/sp/se/qa/caprntorg.asp"
+        },
+        {
+          "heading": "After school at tutoring",
+          "paragraph": "Maraming distrito, library, at nonprofit ang nagbibigay ng libre o murang tulong sa homework. Tanungin ang school counselor at gamitin ang program finder ng app para sa tutoring at STEM sa malapit."
+        }
+      ]
+    },
+    {
+      "title": "Library, tutoring, at STEM",
+      "intro": "Hindi nagtatapos ang tulong sa silid-aralan. Tumutulong ang mga lokal na library at programa para sa kabataan sa pagbabasa, homework, at hands-on na agham.",
+      "body": "",
+      "topics": [
+        {
+          "heading": "Mga pampublikong library",
+          "paragraph": "May libreng card, libro, Wi-Fi, tulong sa homework, at programa para sa pamilya. Magtanong tungkol sa bilingual na storytime at digital na resource na magagamit sa bahay."
+        },
+        {
+          "heading": "Tutoring at enrichment",
+          "paragraph": "Hanapin ang after school program ng distrito, community center, at nonprofit tutoring. Kumpirmahin ang gastos, edad na tinatanggap, at transportasyon bago magpatala."
+        },
+        {
+          "heading": "Mga pagkakataon sa STEM",
+          "paragraph": "Makakatulong ang museo, coding club, at programa sa agham sa kasanayan at kumpiyansa. Magsimula sa mga libreng pampublikong opsyon sa malapit, pagkatapos ay tanungin ang paaralan tungkol sa club at summer program."
+        },
+        {
+          "heading": "211 California",
+          "paragraph": "Tumawag sa 211 o maghanap online para sa referral sa edukasyon, kabataan, at serbisyo para sa pamilya sa inyong wika kapag available.",
+          "url": "https://www.211ca.org/"
+        }
+      ]
+    }
+  ]
+}

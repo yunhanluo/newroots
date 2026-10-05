@@ -10,6 +10,7 @@ import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_hi.dart';
 import 'app_localizations_ko.dart';
+import 'app_localizations_tl.dart';
 import 'app_localizations_vi.dart';
 import 'app_localizations_zh.dart';
 
@@ -104,6 +105,7 @@ abstract class AppLocalizations {
     Locale('es'),
     Locale('hi'),
     Locale('ko'),
+    Locale('tl'),
     Locale('vi'),
     Locale('zh'),
   ];
@@ -119,6 +121,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'From arrival to belonging.'**
   String get tagline;
+
+  /// No description provided for @welcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to NewRoots'**
+  String get welcomeTitle;
+
+  /// No description provided for @welcomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Thrive in America.'**
+  String get welcomeSubtitle;
+
+  /// No description provided for @landingPurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Find trusted local help and take the next step—in your language.'**
+  String get landingPurpose;
+
+  /// No description provided for @welcomePurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'NewRoots is an app for immigrants in California, created for the 2026 Congressional App Challenge. It helps you find trusted local help and take the next step—all in your preferred language.'**
+  String get welcomePurpose;
+
+  /// No description provided for @welcomeContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get welcomeContinue;
+
+  /// No description provided for @welcomeGetStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Get started'**
+  String get welcomeGetStarted;
+
+  /// No description provided for @welcomeDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get welcomeDone;
+
+  /// No description provided for @welcomeFeatureRoadmap.
+  ///
+  /// In en, this message translates to:
+  /// **'A personal plan for your first months here.'**
+  String get welcomeFeatureRoadmap;
+
+  /// No description provided for @welcomeFeatureCareer.
+  ///
+  /// In en, this message translates to:
+  /// **'Match your work experience to jobs in the US.'**
+  String get welcomeFeatureCareer;
+
+  /// No description provided for @welcomeFeatureHousing.
+  ///
+  /// In en, this message translates to:
+  /// **'Understand renting and find housing help.'**
+  String get welcomeFeatureHousing;
+
+  /// No description provided for @welcomeFeatureHealthcare.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn how healthcare works and find nearby clinics.'**
+  String get welcomeFeatureHealthcare;
+
+  /// No description provided for @welcomeFeatureSafety.
+  ///
+  /// In en, this message translates to:
+  /// **'A guide on what to do in an emergency or disaster.'**
+  String get welcomeFeatureSafety;
+
+  /// No description provided for @welcomeFeatureScamShield.
+  ///
+  /// In en, this message translates to:
+  /// **'Check a message or ad that might be a scam.'**
+  String get welcomeFeatureScamShield;
+
+  /// No description provided for @welcomeFeatureEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'Find English classes near you.'**
+  String get welcomeFeatureEnglish;
+
+  /// No description provided for @welcomeFeatureEducation.
+  ///
+  /// In en, this message translates to:
+  /// **'Find schools and programs for your family.'**
+  String get welcomeFeatureEducation;
+
+  /// No description provided for @welcomeFeatureSupportGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Talk with other newcomers in California.'**
+  String get welcomeFeatureSupportGroups;
 
   /// No description provided for @navHome.
   ///
@@ -473,6 +571,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Admin'**
   String get profileAdmin;
+
+  /// No description provided for @profileHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get profileHelp;
 
   /// No description provided for @priorityHousing.
   ///
@@ -3063,6 +3167,7 @@ class _AppLocalizationsDelegate
     'es',
     'hi',
     'ko',
+    'tl',
     'vi',
     'zh',
   ].contains(locale.languageCode);
@@ -3084,6 +3189,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsHi();
     case 'ko':
       return AppLocalizationsKo();
+    case 'tl':
+      return AppLocalizationsTl();
     case 'vi':
       return AppLocalizationsVi();
     case 'zh':

@@ -22,7 +22,7 @@ class StaticGuideService {
 
   static const _assetPrefix = 'assets/guides';
   static const _prefPrefix = 'static_guide_cache_v2_';
-  static const _localizedLanguages = {'es', 'zh', 'vi', 'ko', 'hi', 'ar'};
+  static const _localizedLanguages = {'es', 'zh', 'vi', 'ko', 'tl', 'hi', 'ar'};
   static const _localizedGuides = <String, Set<String>>{
     StaticGuideIds.housing: _localizedLanguages,
     StaticGuideIds.safety: _localizedLanguages,

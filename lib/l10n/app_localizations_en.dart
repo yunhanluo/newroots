@@ -15,6 +15,64 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tagline => 'From arrival to belonging.';
 
   @override
+  String get welcomeTitle => 'Welcome to NewRoots';
+
+  @override
+  String get welcomeSubtitle => 'Thrive in America.';
+
+  @override
+  String get landingPurpose =>
+      'Find trusted local help and take the next step—in your language.';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots is an app for immigrants in California, created for the 2026 Congressional App Challenge. It helps you find trusted local help and take the next step—all in your preferred language.';
+
+  @override
+  String get welcomeContinue => 'Continue';
+
+  @override
+  String get welcomeGetStarted => 'Get started';
+
+  @override
+  String get welcomeDone => 'Done';
+
+  @override
+  String get welcomeFeatureRoadmap =>
+      'A personal plan for your first months here.';
+
+  @override
+  String get welcomeFeatureCareer =>
+      'Match your work experience to jobs in the US.';
+
+  @override
+  String get welcomeFeatureHousing =>
+      'Understand renting and find housing help.';
+
+  @override
+  String get welcomeFeatureHealthcare =>
+      'Learn how healthcare works and find nearby clinics.';
+
+  @override
+  String get welcomeFeatureSafety =>
+      'A guide on what to do in an emergency or disaster.';
+
+  @override
+  String get welcomeFeatureScamShield =>
+      'Check a message or ad that might be a scam.';
+
+  @override
+  String get welcomeFeatureEnglish => 'Find English classes near you.';
+
+  @override
+  String get welcomeFeatureEducation =>
+      'Find schools and programs for your family.';
+
+  @override
+  String get welcomeFeatureSupportGroups =>
+      'Talk with other newcomers in California.';
+
+  @override
   String get navHome => 'Home';
 
   @override
@@ -194,6 +252,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileAdmin => 'Admin';
+
+  @override
+  String get profileHelp => 'Help';
 
   @override
   String get priorityHousing => 'Housing';

@@ -33,7 +33,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     final email = _emailController.text.trim();
     final password = _passwordController.text;
     if (email.isEmpty || password.isEmpty) {
-      setState(() => _error = AppLocalizations.of(context).authEmailPasswordRequired);
+      setState(
+        () => _error = AppLocalizations.of(context).authEmailPasswordRequired,
+      );
       return;
     }
 
@@ -73,28 +75,38 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               ],
             ),
           ),
-          const SafeArea(
-            child: Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: LanguageMenuButton(),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (context.canPop()) {
+                        context.pop();
+                      } else {
+                        context.goNamed(Routes.landing);
+                      }
+                    },
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                  ),
+                  const Spacer(),
+                  const LanguageMenuButton(),
+                ],
+              ),
             ),
           ),
           SafeArea(
             child: Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 28,
-                  vertical: 24,
-                ),
+                padding: const EdgeInsets.fromLTRB(28, 56, 28, 24),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 420),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      AuthHeader(
-                        subtitle: l10n.authWelcomeBack,
-                      ),
+                      AuthHeader(subtitle: l10n.authWelcomeBack),
                       const SizedBox(height: 36),
                       AuthTextField(
                         controller: _emailController,

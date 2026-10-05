@@ -19,6 +19,7 @@ const kAppLanguages = <AppLanguage>[
   AppLanguage(code: 'zh', englishName: 'Chinese', nativeName: '中文'),
   AppLanguage(code: 'vi', englishName: 'Vietnamese', nativeName: 'Tiếng Việt'),
   AppLanguage(code: 'ko', englishName: 'Korean', nativeName: '한국어'),
+  AppLanguage(code: 'tl', englishName: 'Tagalog', nativeName: 'Tagalog'),
   AppLanguage(code: 'hi', englishName: 'Hindi', nativeName: 'हिन्दी'),
   AppLanguage(
     code: 'ar',
@@ -34,17 +35,24 @@ const kSupportedLanguageCodes = <String>{
   'zh',
   'vi',
   'ko',
+  'tl',
   'hi',
   'ar',
 };
 
+/// Maps device/profile codes onto the app language list (`fil` → Tagalog).
+String normalizeAppLanguageCode(String? code) {
+  final value = code?.trim().toLowerCase() ?? '';
+  if (value == 'fil') return 'tl';
+  return value;
+}
+
 bool isSupportedAppLanguage(String? code) {
-  final value = code?.trim() ?? '';
-  return kSupportedLanguageCodes.contains(value);
+  return kSupportedLanguageCodes.contains(normalizeAppLanguageCode(code));
 }
 
 AppLanguage? appLanguageByCode(String? code) {
-  final value = code?.trim() ?? '';
+  final value = normalizeAppLanguageCode(code);
   for (final language in kAppLanguages) {
     if (language.code == value) return language;
   }

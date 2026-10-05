@@ -15,6 +15,62 @@ class AppLocalizationsHi extends AppLocalizations {
   String get tagline => 'पहुँच से अपनापन तक।';
 
   @override
+  String get welcomeTitle => 'NewRoots में आपका स्वागत है';
+
+  @override
+  String get welcomeSubtitle => 'अमेरिका में आगे बढ़ें।';
+
+  @override
+  String get landingPurpose =>
+      'अपनी भाषा में भरोसेमंद स्थानीय मदद पाएँ और अगला कदम उठाएँ।';
+
+  @override
+  String get welcomePurpose =>
+      'NewRoots कैलिफोर्निया में प्रवासियों के लिए एक ऐप है, जिसे 2026 Congressional App Challenge के लिए बनाया गया है। यह भरोसेमंद स्थानीय मदद खोजने और अगला कदम उठाने में सहायता करता है—आपकी पसंदीदा भाषा में।';
+
+  @override
+  String get welcomeContinue => 'जारी रखें';
+
+  @override
+  String get welcomeGetStarted => 'शुरू करें';
+
+  @override
+  String get welcomeDone => 'हो गया';
+
+  @override
+  String get welcomeFeatureRoadmap =>
+      'यहाँ पहले महीनों के लिए आपकी निजी योजना।';
+
+  @override
+  String get welcomeFeatureCareer =>
+      'आपके काम के अनुभव को अमेरिका की नौकरियों से जोड़ें।';
+
+  @override
+  String get welcomeFeatureHousing => 'किराए को समझें और आवास मदद खोजें।';
+
+  @override
+  String get welcomeFeatureHealthcare =>
+      'स्वास्थ्य सेवा कैसे काम करती है, जानें और पास की क्लिनिक खोजें।';
+
+  @override
+  String get welcomeFeatureSafety => 'आपात या आपदा में क्या करें, इसकी गाइड।';
+
+  @override
+  String get welcomeFeatureScamShield =>
+      'संदेश या विज्ञापन जाँचें जो घोटाला हो सकता है।';
+
+  @override
+  String get welcomeFeatureEnglish => 'अपने पास अंग्रेज़ी कक्षाएँ खोजें।';
+
+  @override
+  String get welcomeFeatureEducation =>
+      'परिवार के लिए स्कूल और कार्यक्रम खोजें।';
+
+  @override
+  String get welcomeFeatureSupportGroups =>
+      'कैलिफोर्निया में अन्य नए लोगों से बात करें।';
+
+  @override
   String get navHome => 'होम';
 
   @override
@@ -194,6 +250,9 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get profileAdmin => 'एडमिन';
+
+  @override
+  String get profileHelp => 'मदद';
 
   @override
   String get priorityHousing => 'आवास';
