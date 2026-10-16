@@ -12,7 +12,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get appTitle => 'NewRoots';
 
   @override
-  String get tagline => 'Từ khi đến, đến khi thuộc về.';
+  String get tagline =>
+      'Từ khi đặt chân đến, đến khi cảm thấy thuộc về nơi này.';
 
   @override
   String get welcomeTitle => 'Chào mừng đến NewRoots';
@@ -43,7 +44,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get welcomeFeatureCareer =>
-      'Nối kinh nghiệm làm việc của bạn với việc làm tại Mỹ.';
+      'Kết nối kinh nghiệm làm việc của bạn với các cơ hội việc làm tại Mỹ.';
 
   @override
   String get welcomeFeatureHousing => 'Hiểu thuê nhà và tìm hỗ trợ nhà ở.';
@@ -874,18 +875,18 @@ class AppLocalizationsVi extends AppLocalizations {
       'Tìm trung tâm y tế cộng đồng HRSA gần một thành phố hoặc mã ZIP ở California. Ghim đến từ danh mục liên bang chính thức.';
 
   @override
-  String get clinicsFindButton => 'Tìm phòng khám gần đây';
+  String get clinicsFindButton => 'Tìm phòng khám gần bạn';
 
   @override
   String get clinicsSearchDetail => 'Trung tâm y tế cộng đồng HRSA';
 
   @override
   String get clinicsEnterLocation =>
-      'Nhập thành phố hoặc mã ZIP để tìm phòng khám gần đây.';
+      'Nhập thành phố hoặc mã ZIP để tìm phòng khám gần bạn.';
 
   @override
   String get clinicsNoResults =>
-      'Không tìm thấy trung tâm y tế cộng đồng gần đây. Thử thành phố hoặc mã ZIP khác ở California, hoặc mở rộng tìm kiếm sau.';
+      'Không tìm thấy trung tâm y tế cộng đồng gần bạn. Thử thành phố hoặc mã ZIP khác ở California, hoặc mở rộng tìm kiếm sau.';
 
   @override
   String get clinicsLoadError =>
@@ -903,18 +904,18 @@ class AppLocalizationsVi extends AppLocalizations {
       'Tìm trường dành cho người lớn, cao đẳng cộng đồng, và chương trình ESL thư viện đáng tin gần một thành phố hoặc mã ZIP ở California.';
 
   @override
-  String get englishFindButton => 'Tìm lớp gần đây';
+  String get englishFindButton => 'Tìm lớp gần bạn';
 
   @override
   String get englishSearchDetail => 'Trường người lớn, cao đẳng & thư viện';
 
   @override
   String get englishEnterLocation =>
-      'Nhập thành phố hoặc mã ZIP để tìm lớp gần đây.';
+      'Nhập thành phố hoặc mã ZIP để tìm lớp gần bạn.';
 
   @override
   String get englishNoResults =>
-      'Chưa có nguồn ESL gần đây. Hãy thử thành phố hoặc mã ZIP khác ở California.';
+      'Chưa có nguồn ESL gần bạn. Hãy thử thành phố hoặc mã ZIP khác ở California.';
 
   @override
   String get englishLoadError =>
@@ -934,15 +935,15 @@ class AppLocalizationsVi extends AppLocalizations {
       'Tìm trường công và tư California từ danh mục CDE chính thức, cộng với thư viện, gia sư, và chương trình STEM đã chọn lọc.';
 
   @override
-  String get educationFindButton => 'Tìm gần đây';
+  String get educationFindButton => 'Tìm gần bạn';
 
   @override
   String get educationEnterLocation =>
-      'Nhập thành phố hoặc mã ZIP để tìm trường gần đây.';
+      'Nhập thành phố hoặc mã ZIP để tìm trường gần bạn.';
 
   @override
   String get educationNoResults =>
-      'Không tìm thấy trường hoặc chương trình gần đây. Thử thành phố hoặc mã ZIP khác ở California, hoặc đổi bộ lọc.';
+      'Không tìm thấy trường hoặc chương trình gần bạn. Thử thành phố hoặc mã ZIP khác ở California, hoặc đổi bộ lọc.';
 
   @override
   String get educationLoadError =>

@@ -12,7 +12,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get appTitle => 'NewRoots';
 
   @override
-  String get tagline => '도착에서 소속까지.';
+  String get tagline => '낯선 시작에서 이곳의 일원이 되기까지.';
 
   @override
   String get welcomeTitle => 'NewRoots에 오신 것을 환영합니다';
@@ -40,7 +40,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get welcomeFeatureRoadmap => '처음 몇 달을 위한 개인 계획입니다.';
 
   @override
-  String get welcomeFeatureCareer => '당신의 경력을 미국 일자리와 연결합니다.';
+  String get welcomeFeatureCareer => '경력을 미국 일자리와 연결합니다.';
 
   @override
   String get welcomeFeatureHousing => '임대 생활을 이해하고 주거 도움을 찾습니다.';
@@ -612,7 +612,7 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get careerTimePending => '예상 시간 없음';
+  String get careerTimePending => '예상 소요 시간 확인 중';
 
   @override
   String get careerUndo => '실행 취소';

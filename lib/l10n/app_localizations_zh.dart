@@ -103,7 +103,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get placeholderComingSoon => '即将推出';
 
   @override
-  String get disclaimer => 'NewRoots 是导航工具，不能替代法律、医疗或财务专业人士。';
+  String get disclaimer => 'NewRoots 是一款指引工具，不能替代法律、医疗或财务专业人士。';
 
   @override
   String get actionSave => '保存';

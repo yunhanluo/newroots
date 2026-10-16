@@ -12,7 +12,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get appTitle => 'NewRoots';
 
   @override
-  String get tagline => 'पहुँच से अपनापन तक।';
+  String get tagline => 'आगमन से अपनापन तक।';
 
   @override
   String get welcomeTitle => 'NewRoots में आपका स्वागत है';

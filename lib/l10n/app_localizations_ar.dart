@@ -26,7 +26,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get welcomePurpose =>
-      'NewRoots تطبيق للمهاجرين في كاليفورنيا، أُنشئ لتحدي التطبيقات الكونغرسية 2026. يساعدك على إيجاد مساعدة محلية موثوقة واتخاذ الخطوة التالية—كل ذلك بلغتك المفضلة.';
+      'NewRoots تطبيق للمهاجرين في كاليفورنيا، أُنشئ لـ Congressional App Challenge 2026. يساعدك على إيجاد مساعدة محلية موثوقة واتخاذ الخطوة التالية—كل ذلك بلغتك المفضلة.';
 
   @override
   String get welcomeContinue => 'متابعة';

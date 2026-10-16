@@ -1,7 +1,7 @@
 {
   "@@locale": "ko",
   "appTitle": "NewRoots",
-  "tagline": "도착에서 소속까지.",
+  "tagline": "낯선 시작에서 이곳의 일원이 되기까지.",
 
   "welcomeTitle": "NewRoots에 오신 것을 환영합니다",
   "welcomeSubtitle": "미국에서 뿌리내리세요.",
@@ -11,7 +11,7 @@
   "welcomeGetStarted": "시작하기",
   "welcomeDone": "완료",
   "welcomeFeatureRoadmap": "처음 몇 달을 위한 개인 계획입니다.",
-  "welcomeFeatureCareer": "당신의 경력을 미국 일자리와 연결합니다.",
+  "welcomeFeatureCareer": "경력을 미국 일자리와 연결합니다.",
   "welcomeFeatureHousing": "임대 생활을 이해하고 주거 도움을 찾습니다.",
   "welcomeFeatureHealthcare": "의료 체계를 배우고 근처 클리닉을 찾습니다.",
   "welcomeFeatureSafety": "응급 상황이나 재난 때 할 일을 안내합니다.",
@@ -206,7 +206,7 @@
   "careerStepCompleted": "완료됨",
   "careerStepNow": "지금",
   "careerStepNowWithDuration": "지금 ({duration})",
-  "careerTimePending": "예상 시간 없음",
+  "careerTimePending": "예상 소요 시간 확인 중",
   "careerUndo": "실행 취소",
   "careerMarkComplete": "완료로 표시",
   "careerFinishStepAbove": "위의 단계를 먼저 완료하세요.",

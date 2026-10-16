@@ -12,7 +12,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appTitle => 'NewRoots';
 
   @override
-  String get tagline => 'De la llegada a la pertenencia.';
+  String get tagline => 'De llegar a sentirse parte de una comunidad.';
 
   @override
   String get welcomeTitle => 'Bienvenido a NewRoots';
@@ -173,8 +173,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get actionRetakeSurvey => 'Repetir encuesta';
 
   @override
-  String get authWelcomeBack =>
-      'Bienvenido de nuevo. Inicie sesión para continuar.';
+  String get authWelcomeBack => 'Hola de nuevo. Inicie sesión para continuar.';
 
   @override
   String get authCreateAccountSubtitle => 'Cree su cuenta para comenzar.';

@@ -27,7 +27,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get welcomePurpose =>
-      'Ang NewRoots ay app para sa mga imigrante sa California, ginawa para sa 2026 Congressional App Challenge. Tumutulong itong maghanap ng mapagkakatiwalaang tulong sa inyong lugar at gawin ang susunod na hakbang—lahat sa wikang gusto ninyo.';
+      'Ang NewRoots ay aplikasyon para sa mga imigrante sa California, ginawa para sa 2026 Congressional App Challenge. Tumutulong itong maghanap ng mapagkakatiwalaang tulong sa inyong lugar at gawin ang susunod na hakbang—lahat sa wikang gusto ninyo.';
 
   @override
   String get welcomeContinue => 'Magpatuloy';
@@ -75,22 +75,22 @@ class AppLocalizationsTl extends AppLocalizations {
       'Makipag-usap sa ibang mga bagong dating sa California.';
 
   @override
-  String get navHome => 'Home';
+  String get navHome => 'Tahanan';
 
   @override
   String get navScamShield => 'ScamShield';
 
   @override
-  String get navProfile => 'Profile';
+  String get navProfile => 'Profil';
 
   @override
-  String get featureRoadmap => 'Integration Roadmap';
+  String get featureRoadmap => 'Plano ng integrasyon';
 
   @override
   String get featureHousing => 'Pabahay';
 
   @override
-  String get featureCareer => 'Career Bridge';
+  String get featureCareer => 'Tulay sa hanapbuhay';
 
   @override
   String get featureEnglish => 'Pag-aaral ng Ingles';
@@ -159,19 +159,19 @@ class AppLocalizationsTl extends AppLocalizations {
   String get actionSkipForNow => 'Laktawan muna';
 
   @override
-  String get actionContinueSurvey => 'Ituloy ang survey';
+  String get actionContinueSurvey => 'Ituloy ang sarbey';
 
   @override
-  String get actionStartSurvey => 'Simulan ang Survey';
+  String get actionStartSurvey => 'Simulan ang Sarbey';
 
   @override
-  String get actionSkipSurvey => 'Laktawan ang Survey';
+  String get actionSkipSurvey => 'Laktawan ang Sarbey';
 
   @override
-  String get actionTakeSurvey => 'Sagutan ang Survey';
+  String get actionTakeSurvey => 'Sagutan ang Sarbey';
 
   @override
-  String get actionRetakeSurvey => 'Ulitin ang Survey';
+  String get actionRetakeSurvey => 'Ulitin ang Sarbey';
 
   @override
   String get authWelcomeBack =>
@@ -197,17 +197,17 @@ class AppLocalizationsTl extends AppLocalizations {
   String get authHaveAccount => 'May account na kayo?';
 
   @override
-  String get authPrivacyPolicy => 'Patakaran sa privacy';
+  String get authPrivacyPolicy => 'Patakaran sa pribasiya';
 
   @override
   String get authEmailPasswordRequired => 'Ilagay ang email at password.';
 
   @override
-  String get authFillAllFields => 'Punan ang lahat ng field.';
+  String get authFillAllFields => 'Punan ang lahat ng patlang.';
 
   @override
   String get authPasswordTooShort =>
-      'Dapat hindi bababa sa 6 na character ang password.';
+      'Dapat hindi bababa sa 6 na karakter ang password.';
 
   @override
   String get authPasswordsDoNotMatch => 'Hindi magkatugma ang mga password.';
@@ -225,7 +225,7 @@ class AppLocalizationsTl extends AppLocalizations {
   String get editPreferredLanguage => 'I-edit ang gustong wika';
 
   @override
-  String get profileTitle => 'Profile';
+  String get profileTitle => 'Profil';
 
   @override
   String get profileSignedIn => 'Naka-sign in';
@@ -249,7 +249,7 @@ class AppLocalizationsTl extends AppLocalizations {
   String get profileSkipped => 'Nilaktawan';
 
   @override
-  String get profileNoSurvey => 'Wala pang datos mula sa survey.';
+  String get profileNoSurvey => 'Wala pang datos mula sa sarbey.';
 
   @override
   String get profileReviewSuggestions => 'Suriin ang mga mungkahi ng grupo';
@@ -285,22 +285,22 @@ class AppLocalizationsTl extends AppLocalizations {
   String get priorityOtherHint => 'Ilarawan ang inyong prayoridad';
 
   @override
-  String get onboardingTitle => 'Survey sa pagsisimula';
+  String get onboardingTitle => 'Sarbey sa pagsisimula';
 
   @override
   String get onboardingIntro =>
-      'Sagutan ang maikling survey para sa personalisasyon.';
+      'Sagutan ang maikling sarbey para sa personalisasyon.';
 
   @override
-  String get onboardingSkipTitle => 'Laktawan ang survey?';
+  String get onboardingSkipTitle => 'Laktawan ang sarbey?';
 
   @override
   String get onboardingSkipBody =>
-      'Sa survey, naiintindihan namin ang inyong sitwasyon at nakakagawa kami ng mga solusyon (maaaring laktawan ang bawat tanong).';
+      'Sa sarbey, naiintindihan namin ang inyong sitwasyon at nakakagawa kami ng mga solusyon (maaaring laktawan ang bawat tanong).';
 
   @override
   String get onboardingSurveyLater =>
-      'Maaaring sagutan ang survey anumang oras sa page ng profile.';
+      'Maaaring sagutan ang sarbey anumang oras sa pahina ng profil.';
 
   @override
   String get onboardingQuestionLanguage => 'Gustong wika';
@@ -328,13 +328,13 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get scamIntro =>
-      'Suriin ang kahina-hinalang mensahe, email, alok sa trabaho, anunsyo ng paupahan, at content na tila gobyerno. Ipinaliwanag ng ScamShield kung bakit maaaring mapanganib ito para makapagpasya kayo kung ano ang susunod.';
+      'Suriin ang kahina-hinalang mensahe, email, alok sa trabaho, anunsyo ng paupahan, at nilalaman na tila gobyerno. Ipinaliwanag ng ScamShield kung bakit maaaring mapanganib ito para makapagpasya kayo kung ano ang susunod.';
 
   @override
   String get scamWhatChecking => 'Ano ang sinusuri ninyo?';
 
   @override
-  String get scamPasteLabel => 'I-paste ang mensahe o listing';
+  String get scamPasteLabel => 'I-paste ang mensahe o anunsyo';
 
   @override
   String get scamPasteHint => 'I-paste dito ang buong teksto…';
@@ -394,7 +394,7 @@ class AppLocalizationsTl extends AppLocalizations {
       'Hindi ma-delete ang pagsusuring iyon. Subukan ulit.';
 
   @override
-  String get scamChooseGallery => 'Pumili mula sa gallery';
+  String get scamChooseGallery => 'Pumili mula sa galeriya';
 
   @override
   String get scamTakePhoto => 'Kumuha ng larawan';
@@ -420,7 +420,7 @@ class AppLocalizationsTl extends AppLocalizations {
   }
 
   @override
-  String get scamCategorySms => 'Text message';
+  String get scamCategorySms => 'Mensahe ng text';
 
   @override
   String get scamCategoryEmail => 'Email';
@@ -466,7 +466,8 @@ class AppLocalizationsTl extends AppLocalizations {
   String get scamAddMessage => 'Magdagdag ng mensahe';
 
   @override
-  String get scamFollowUpTitle => 'Magdagdag ng follow-up mula sa usapan';
+  String get scamFollowUpTitle =>
+      'Magdagdag ng susunod na mensahe mula sa usapan';
 
   @override
   String get scamFollowUpHint => 'I-paste ang susunod na text o email…';
@@ -476,7 +477,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get scamFollowUpNeedInput =>
-      'Mag-paste ng follow-up na mensahe o magdagdag ng screenshot.';
+      'Mag-paste ng karagdagang mensahe o magdagdag ng screenshot.';
 
   @override
   String get scamFollowUpImageError => 'Hindi mabuksan ang larawang iyon.';
@@ -486,7 +487,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String scamThreadCount(int count) {
-    return '$count na mensahe sa thread na ito';
+    return '$count na mensahe sa usapang ito';
   }
 
   @override
@@ -515,13 +516,13 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get careerAddPriorJob =>
-      'Idagdag ang dating trabaho sa survey ng profile, o ilarawan ang background sa mga tala sa ibaba.';
+      'Idagdag ang dating trabaho sa sarbey ng profil, o ilarawan ang background sa mga tala sa ibaba.';
 
   @override
-  String get careerGoToProfile => 'Pumunta sa profile';
+  String get careerGoToProfile => 'Pumunta sa profil';
 
   @override
-  String get careerPriorEmployment => 'Dating trabaho (mula sa survey)';
+  String get careerPriorEmployment => 'Dating trabaho (mula sa sarbey)';
 
   @override
   String get careerAdditionalBackground => 'Karagdagang background';
@@ -549,7 +550,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get careerCouldNotSaveChecklist =>
-      'Hindi ma-save ang progreso ng checklist.';
+      'Hindi ma-save ang progreso ng listahan.';
 
   @override
   String get careerCouldNotSaveStep => 'Hindi ma-save ang progreso ng hakbang.';
@@ -664,7 +665,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get careerAskSubtitle =>
-      'Ginagamit ng mga tanong ang mga hakbang, tala, at background ninyo sa landas na ito. Nanatili ang sagot sa page na ito hanggang umalis kayo. I-save bilang tala ang anumang gusto ninyong itago.';
+      'Ginagamit ng mga tanong ang mga hakbang, tala, at background ninyo sa landas na ito. Nanatili ang sagot sa pahinang ito hanggang umalis kayo. I-save bilang tala ang anumang gusto ninyong itago.';
 
   @override
   String get careerAskHint =>
@@ -683,38 +684,38 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get roadmapSettlementPlan =>
-      'Ang inyong settlement plan batay sa sagot sa survey.';
+      'Ang inyong plano sa paninirahan batay sa sagot sa sarbey.';
 
   @override
   String get roadmapRegenerateAll => 'Gawing muli ang lahat';
 
   @override
-  String get roadmapRegenerateAllTitle => 'Gawing muli ang buong roadmap?';
+  String get roadmapRegenerateAllTitle => 'Gawing muli ang buong plano?';
 
   @override
   String get roadmapRegenerateAllBody =>
       'Pinapalitan nito ang tatlong seksyon ng bagong planong gawa ng AI. Nananatili ang mga tala sa bawat seksyon.';
 
   @override
-  String get roadmapCreating => 'Ginagawa ang personalisadong roadmap ninyo…';
+  String get roadmapCreating => 'Ginagawa ang personalisadong plano ninyo…';
 
   @override
   String get roadmapAnswerQuestions =>
-      'Sagutin ang mga tanong sa ibaba para matapos namin ang roadmap.';
+      'Sagutin ang mga tanong sa ibaba para matapos namin ang plano.';
 
   @override
-  String get roadmapUpdating => 'Ina-update ang roadmap…';
+  String get roadmapUpdating => 'Ina-update ang plano…';
 
   @override
-  String get roadmapGenerate => 'Gumawa ng Roadmap';
+  String get roadmapGenerate => 'Gumawa ng Plano';
 
   @override
   String get roadmapNoRoadmap =>
-      'Wala pang roadmap. I-tap sa ibaba para gumawa mula sa survey.';
+      'Wala pang plano. I-tap sa ibaba para gumawa mula sa sarbey.';
 
   @override
   String get roadmapEmptySurvey =>
-      'Sagutan ang survey sa pagsisimula para makagawa kami ng personalisadong roadmap.';
+      'Sagutan ang sarbey sa pagsisimula para makagawa kami ng personalisadong plano.';
 
   @override
   String roadmapRegenerateSectionTitle(String section) {
@@ -730,7 +731,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get roadmapAskSubtitle =>
-      'Ginagamit ng mga tanong ang checklist, tala, at survey ninyo. Nanatili ang sagot sa page na ito hanggang umalis kayo. I-save bilang tala ang anumang gusto ninyong itago.';
+      'Ginagamit ng mga tanong ang listahan, tala, at sarbey ninyo. Nanatili ang sagot sa pahinang ito hanggang umalis kayo. I-save bilang tala ang anumang gusto ninyong itago.';
 
   @override
   String get roadmapAskHint => 'Magtanong tungkol sa hakbang sa seksyong ito…';
@@ -747,7 +748,7 @@ class AppLocalizationsTl extends AppLocalizations {
       'Ano na ang nagawa ninyo para sa seksyong ito?';
 
   @override
-  String get roadmapNoChecklist => 'Wala pang item sa checklist.';
+  String get roadmapNoChecklist => 'Wala pang laman ang listahan.';
 
   @override
   String get roadmapCouldNotSaveNote => 'Hindi ma-save ang tala.';
@@ -762,7 +763,7 @@ class AppLocalizationsTl extends AppLocalizations {
   String get roadmapDeleteNoteBody => 'Inaalis nito ang tala sa seksyong ito.';
 
   @override
-  String get roadmapAiUnavailable => 'Hindi available ang serbisyo ng AI.';
+  String get roadmapAiUnavailable => 'Hindi magagamit ang serbisyo ng AI.';
 
   @override
   String get roadmapAiCouldNotAnswer => 'Hindi makasagot ang AI.';
@@ -811,10 +812,10 @@ class AppLocalizationsTl extends AppLocalizations {
   String get housingAskHint => 'Mag-type ng tanong…';
 
   @override
-  String get housingAskFollowUpHint => 'Magtanong ng follow-up…';
+  String get housingAskFollowUpHint => 'Magtanong pa…';
 
   @override
-  String get educationNavigatorTitle => 'Education Navigator';
+  String get educationNavigatorTitle => 'Gabay sa Edukasyon';
 
   @override
   String get educationHubIntro =>
@@ -825,7 +826,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get educationBasicsSubtitle =>
-      'Pagpapatala, distrito, antas, tulong sa English learner, at akademikong tulong.';
+      'Pagpapatala, distrito, antas, tulong sa mag-aaral ng Ingles, at akademikong tulong.';
 
   @override
   String get educationFindTitle => 'Maghanap ng paaralan at programa';
@@ -835,11 +836,11 @@ class AppLocalizationsTl extends AppLocalizations {
       'Mapa at listahan ng malapit na pampubliko at pribadong paaralan, library, tutoring, at STEM na programa sa California.';
 
   @override
-  String get healthcareNavigatorTitle => 'Healthcare Navigator';
+  String get healthcareNavigatorTitle => 'Gabay sa Kalusugan';
 
   @override
   String get healthcareHubIntro =>
-      'Alamin kung paano gumagana ang pangangalaga sa California, pagkatapos ay maghanap ng mapagkakatiwalaang community health center sa malapit.';
+      'Alamin kung paano gumagana ang pangangalaga sa California, pagkatapos ay maghanap ng mapagkakatiwalaang sentro ng kalusugan ng komunidad sa malapit.';
 
   @override
   String get healthcareBasicsTitle =>
@@ -847,14 +848,14 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get healthcareBasicsSubtitle =>
-      'Insurance, paano ang mga bisita, community health center, at tulong sa wika.';
+      'Insurance, paano ang mga bisita, sentro ng kalusugan ng komunidad, at tulong sa wika.';
 
   @override
   String get healthcareFindTitle => 'Maghanap ng klinika';
 
   @override
   String get healthcareFindSubtitle =>
-      'Mapa at listahan ng malapit na HRSA community health center ayon sa lungsod o ZIP.';
+      'Mapa at listahan ng malapit na HRSA sentro ng kalusugan ng komunidad ayon sa lungsod o ZIP.';
 
   @override
   String get finderCityOrZipLabel => 'Lungsod o ZIP code';
@@ -886,13 +887,13 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get clinicsSearchIntro =>
-      'Maghanap ng HRSA community health center malapit sa lungsod o ZIP sa California. Ang mga pin ay mula sa opisyal na federal directory.';
+      'Maghanap ng HRSA sentro ng kalusugan ng komunidad malapit sa lungsod o ZIP sa California. Ang mga pin ay mula sa opisyal na federal directory.';
 
   @override
   String get clinicsFindButton => 'Maghanap ng klinika sa malapit';
 
   @override
-  String get clinicsSearchDetail => 'HRSA community health center';
+  String get clinicsSearchDetail => 'HRSA sentro ng kalusugan ng komunidad';
 
   @override
   String get clinicsEnterLocation =>
@@ -900,7 +901,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get clinicsNoResults =>
-      'Walang nahanap na community health center sa malapit. Subukan ang ibang lungsod o ZIP sa California, o palawakin ang paghahanap.';
+      'Walang nahanap na sentro ng kalusugan ng komunidad sa malapit. Subukan ang ibang lungsod o ZIP sa California, o palawakin ang paghahanap.';
 
   @override
   String get clinicsLoadError =>
@@ -915,13 +916,14 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get englishSearchIntro =>
-      'Maghanap ng mapagkakatiwalaang adult school, community college, at library ESL program malapit sa lungsod o ZIP sa California.';
+      'Maghanap ng mapagkakatiwalaang paaralan para sa nasa hustong gulang, kolehiyong pampamayanan, at library ESL program malapit sa lungsod o ZIP sa California.';
 
   @override
   String get englishFindButton => 'Maghanap ng klase sa malapit';
 
   @override
-  String get englishSearchDetail => 'Mga adult school, kolehiyo, at library';
+  String get englishSearchDetail =>
+      'Mga paaralan para sa nasa hustong gulang, kolehiyo, at library';
 
   @override
   String get englishEnterLocation =>
@@ -929,15 +931,15 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get englishNoResults =>
-      'Wala pang nahanap na ESL resource sa malapit. Subukan ang ibang lungsod o ZIP sa California.';
+      'Wala pang nahanap na ESL mapagkukunan sa malapit. Subukan ang ibang lungsod o ZIP sa California.';
 
   @override
   String get englishLoadError =>
-      'Hindi ma-load ang mga resource sa Ingles. Subukan ulit sa ilang sandali.';
+      'Hindi ma-load ang mga mapagkukunan sa Ingles. Subukan ulit sa ilang sandali.';
 
   @override
   String get englishSourceCurated =>
-      'Pinagmulan: curated na adult ed, kolehiyo, at library sa California';
+      'Pinagmulan: mga piniling paaralan para sa nasa hustong gulang, kolehiyo, at library sa California';
 
   @override
   String englishSourceNamed(String source) {
@@ -946,7 +948,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get educationSearchIntro =>
-      'Maghanap ng pampubliko at pribadong paaralan sa California mula sa opisyal na CDE directory, kasama ang curated na library, tutoring, at STEM na programa.';
+      'Maghanap ng pampubliko at pribadong paaralan sa California mula sa opisyal na CDE directory, kasama ang mga piniling library, tutoring, at STEM na programa.';
 
   @override
   String get educationFindButton => 'Maghanap sa malapit';
@@ -957,15 +959,15 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get educationNoResults =>
-      'Walang nahanap na paaralan o programa sa malapit. Subukan ang ibang lungsod o ZIP sa California, o baguhin ang mga filter.';
+      'Walang nahanap na paaralan o programa sa malapit. Subukan ang ibang lungsod o ZIP sa California, o baguhin ang mga panala.';
 
   @override
   String get educationLoadError =>
-      'Hindi ma-load ang mga resource sa edukasyon. Subukan ulit.';
+      'Hindi ma-load ang mga mapagkukunan sa edukasyon. Subukan ulit.';
 
   @override
   String get educationLoadErrorShort =>
-      'Hindi ma-load ang mga resource sa edukasyon. Subukan ulit sa ilang sandali.';
+      'Hindi ma-load ang mga mapagkukunan sa edukasyon. Subukan ulit sa ilang sandali.';
 
   @override
   String get educationTypeLabel => 'Uri';
@@ -1044,7 +1046,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get educationAiSummaryDisclaimer =>
-      'Ang buod na ito ay ginawa ng AI mula sa mga opisyal na pinagmulan. Walang rating o review ng magulang, at maaaring hindi kasama ang mga kamakailang pagbabago. Kumpirmahin ang mahahalagang detalye sa paaralan mismo.';
+      'Ang buod na ito ay ginawa ng AI mula sa mga opisyal na pinagmulan. Walang rating o pagsusuri ng magulang, at maaaring hindi kasama ang mga kamakailang pagbabago. Kumpirmahin ang mahahalagang detalye sa paaralan mismo.';
 
   @override
   String get educationAiSummaryHighlights => 'Sinasabi ng mga pinagmulan';
@@ -1299,7 +1301,7 @@ class AppLocalizationsTl extends AppLocalizations {
       'Sino ang dapat sumali, at ano ang pag-uusapan?';
 
   @override
-  String get groupsSuggestSubmit => 'Isumite para sa review';
+  String get groupsSuggestSubmit => 'Isumite para sa pagsusuri';
 
   @override
   String get groupsSuggestSent =>
@@ -1344,7 +1346,7 @@ class AppLocalizationsTl extends AppLocalizations {
   String get groupsLoadError => 'Hindi ma-load ang grupong ito.';
 
   @override
-  String get groupsUnavailable => 'Hindi na available ang grupong ito.';
+  String get groupsUnavailable => 'Hindi na magagamit ang grupong ito.';
 
   @override
   String get groupsRemovedAdmin => 'Inalis ng admin ang grupong ito.';
@@ -1364,7 +1366,7 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get groupsPrivacyNotice =>
-      'Pribado sa mga miyembro ang mga post at tanong. Sinusuri ang mga ito para sa kaligtasan bago makita ng iba. Maging magalang, at huwag mag-paste ng numero ng ID, password, o account number.';
+      'Pribado sa mga miyembro ang mga post at tanong. Sinusuri ang mga ito para sa kaligtasan bago makita ng iba. Maging magalang, at huwag mag-paste ng numero ng ID, password, o numero ng account.';
 
   @override
   String get groupsNewPost => 'Bagong post';
@@ -1436,11 +1438,11 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get groupsComposeQuestionIntro =>
-      'Magtanong sa grupo ng maaari nilang tulungan. Maaaring tumugon ang ibang miyembro sa thread na ito.';
+      'Magtanong sa grupo ng maaari nilang tulungan. Maaaring tumugon ang ibang miyembro sa usapang ito.';
 
   @override
   String get groupsComposeGuidelines =>
-      'Sinusuri ang mga post para sa kaligtasan bago makita ng iba. Huwag mag-paste ng numero ng ID, password, o account number. Okay ang pag-usapan ang benefits, visa, at papeles.';
+      'Sinusuri ang mga post para sa kaligtasan bago makita ng iba. Huwag mag-paste ng numero ng ID, password, o numero ng account. Okay ang pag-usapan ang benefits, visa, at papeles.';
 
   @override
   String get groupsComposeTitleLabel => 'Pamagat';
@@ -1488,7 +1490,7 @@ class AppLocalizationsTl extends AppLocalizations {
   String get groupsPostQuestion => 'I-post ang tanong';
 
   @override
-  String get groupsPhotoLibrary => 'Photo library';
+  String get groupsPhotoLibrary => 'Mga larawan';
 
   @override
   String get groupsCamera => 'Camera';
@@ -1611,11 +1613,11 @@ class AppLocalizationsTl extends AppLocalizations {
 
   @override
   String get groupsModerationHiddenSelfHarm =>
-      'Kung kayo ay nasa krisis, tumawag o mag-text sa 988 sa US. Itinago ito dahil maaaring may nakasasamang content.';
+      'Kung kayo ay nasa krisis, tumawag o mag-text sa 988 sa US. Itinago ito dahil maaaring may nakasasamang nilalaman.';
 
   @override
   String get groupsModerationHiddenViolence =>
-      'Hindi pinapayagan ang marahas na content sa grupong ito.';
+      'Hindi pinapayagan ang marahas na nilalaman sa grupong ito.';
 
   @override
   String get groupsModerationHiddenGeneric =>
