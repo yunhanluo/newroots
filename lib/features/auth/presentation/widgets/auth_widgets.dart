@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../core/widgets/brand_wordmark.dart';
 
 export '../../../../core/theme/brand_colors.dart';
 
@@ -15,11 +16,7 @@ class AuthHeader extends StatelessWidget {
     final theme = Theme.of(context);
     return Column(
       children: [
-        Image.asset(
-          'assets/images/logo.png',
-          height: 40,
-          fit: BoxFit.contain,
-        ),
+        const BrandWordmark(fontSize: 36),
         const SizedBox(height: 10),
         Text(
           subtitle,

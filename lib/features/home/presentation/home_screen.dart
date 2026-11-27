@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/router/app_router.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
+import '../../../core/widgets/brand_wordmark.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../support_groups/presentation/widgets/deleted_group_notice.dart';
 import '../../support_groups/presentation/widgets/deleted_post_notice.dart';
@@ -52,11 +53,7 @@ class HomeScreen extends ConsumerWidget {
         scrolledUnderElevation: 0,
         elevation: 0,
         foregroundColor: Colors.white,
-        title: Image.asset(
-          'assets/images/logo_white.png',
-          height: 28,
-          fit: BoxFit.contain,
-        ),
+        title: const BrandWordmark.white(),
         actions: [
           IconButton(
             icon: const Icon(Icons.person_outline, color: Colors.white),
