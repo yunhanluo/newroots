@@ -29,7 +29,7 @@ class FlavorConfig {
     // TODO: wire real project ids once Firebase projects are created.
     _instance = FlavorConfig._(
       flavor: flavor,
-      appTitle: flavor == Flavor.prod ? 'NewRoots' : 'NewRoots (dev)',
+      appTitle: 'NewRoots',
       firebaseProjectId:
           flavor == Flavor.prod ? 'newroots-prod' : 'newroots-dev',
     );
