@@ -80,8 +80,8 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
       if (!mounted) return;
       setState(() {
         _banner = written == 0
-            ? 'Starter groups are already loaded.'
-            : 'Loaded $written starter groups. Join one to start posting.';
+            ? AppLocalizations.of(context).groupsSeedAlreadyLoaded
+            : AppLocalizations.of(context).groupsSeedLoaded(written);
       });
     } on SupportGroupException catch (e) {
       if (!mounted) return;
@@ -89,8 +89,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
     } catch (_) {
       if (!mounted) return;
       setState(
-        () => _banner =
-            'Could not load starter groups. Deploy Firestore rules, then try again.',
+        () => _banner = AppLocalizations.of(context).groupsSeedFailed,
       );
     } finally {
       if (mounted) setState(() => _seeding = false);
@@ -214,8 +213,10 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
         if (isAdmin)
           IconButton(
             tooltip: pendingCount == 0
-                ? 'Review groups'
-                : 'Review groups ($pendingCount pending)',
+                ? AppLocalizations.of(context).groupsReviewGroups
+                : AppLocalizations.of(
+                    context,
+                  ).groupsReviewGroupsPending(pendingCount),
             onPressed: () => context.pushNamed(Routes.groupAdmin),
             icon: Badge(
               isLabelVisible: pendingCount > 0,
@@ -227,9 +228,7 @@ class _SupportGroupsScreenState extends ConsumerState<SupportGroupsScreen> {
       body: groupsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => _ErrorBody(
-          message:
-              'Could not load groups. Deploy Firestore rules '
-              '(firebase deploy --only firestore:rules), then try again.',
+          message: AppLocalizations.of(context).groupsLoadFailed,
           onRetry: () => ref.invalidate(supportGroupsProvider),
         ),
         data: (groups) {
@@ -417,8 +416,10 @@ class _MySuggestionsListState extends State<_MySuggestionsList> {
                   Expanded(
                     child: Text(
                       _expanded
-                          ? 'Your suggestions'
-                          : 'Your suggestions ($count)',
+                          ? AppLocalizations.of(context).groupsYourSuggestions
+                          : AppLocalizations.of(
+                              context,
+                            ).groupsYourSuggestionsCount(count),
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -474,7 +475,7 @@ class _MySuggestionTile extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              'Waiting for an admin to review.',
+              AppLocalizations.of(context).groupsWaitingForReview,
               style: TextStyle(
                 fontSize: 13,
                 color: Colors.black87.withValues(alpha: 0.6),
@@ -765,16 +766,18 @@ class _GroupCard extends StatelessWidget {
                   ),
                   if (isAdmin)
                     PopupMenuButton<String>(
-                      tooltip: 'Group options',
+                      tooltip: AppLocalizations.of(context).groupsOptions,
                       padding: EdgeInsets.zero,
                       icon: const Icon(Icons.more_vert, color: Colors.black54),
                       onSelected: (value) {
                         if (value == 'delete') onDelete();
                       },
-                      itemBuilder: (context) => const [
+                      itemBuilder: (context) => [
                         PopupMenuItem(
                           value: 'delete',
-                          child: Text('Delete group'),
+                          child: Text(
+                            AppLocalizations.of(context).groupsDeleteGroup,
+                          ),
                         ),
                       ],
                     )
@@ -801,9 +804,11 @@ class _GroupCard extends StatelessWidget {
                   enabled: !deleting,
                   textCapitalization: TextCapitalization.sentences,
                   maxLength: 300,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Why is this group being removed?',
+                    hintText: AppLocalizations.of(
+                      context,
+                    ).groupsDeleteReasonHint,
                     counterText: '',
                     filled: true,
                     fillColor: kBrandPageBg,
@@ -815,7 +820,7 @@ class _GroupCard extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: deleting ? null : onCancelDelete,
-                      child: const Text('Cancel'),
+                      child: Text(AppLocalizations.of(context).actionCancel),
                     ),
                     const SizedBox(width: 4),
                     TextButton(
@@ -827,7 +832,7 @@ class _GroupCard extends StatelessWidget {
                               height: 16,
                               child: CircularProgressIndicator(strokeWidth: 2),
                             )
-                          : const Text('Delete'),
+                          : Text(AppLocalizations.of(context).actionDelete),
                     ),
                   ],
                 ),
@@ -916,9 +921,9 @@ class _DeletedGroupCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        'This group was removed',
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context).groupsRemovedTitle,
+                        style: const TextStyle(
                           fontSize: 13,
                           color: Colors.black45,
                         ),
@@ -931,7 +936,9 @@ class _DeletedGroupCard extends StatelessWidget {
             const SizedBox(height: 10),
             if (group.deletedReason.isNotEmpty)
               Text(
-                'Reason: ${group.deletedReason}',
+                AppLocalizations.of(
+                  context,
+                ).groupsReasonPrefix(group.deletedReason),
                 style: const TextStyle(
                   fontSize: 14,
                   height: 1.4,
@@ -939,9 +946,9 @@ class _DeletedGroupCard extends StatelessWidget {
                 ),
               )
             else
-              const Text(
-                'An admin removed this group.',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).groupsRemovedAdmin,
+                style: const TextStyle(
                   fontSize: 14,
                   height: 1.4,
                   color: Colors.black54,
@@ -957,7 +964,7 @@ class _DeletedGroupCard extends StatelessWidget {
                   side: BorderSide(color: Colors.black.withValues(alpha: 0.25)),
                 ),
                 onPressed: onRemove,
-                child: const Text('Remove from my groups'),
+                child: Text(AppLocalizations.of(context).groupsRemoveFromMine),
               ),
             ),
           ],
@@ -1007,16 +1014,16 @@ class _EmptyGroups extends StatelessWidget {
             color: kBrandGreen.withValues(alpha: 0.8),
           ),
           const SizedBox(height: 12),
-          const Text(
-            'No groups yet',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context).groupsEmptyTitle,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            'Load the starter groups for new parents, job seekers, language learners, and more.',
+            AppLocalizations.of(context).groupsEmptyBody,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 15,
@@ -1036,7 +1043,7 @@ class _EmptyGroups extends StatelessWidget {
                       color: Colors.white,
                     ),
                   )
-                : const Text('Load starter groups'),
+                : Text(AppLocalizations.of(context).groupsLoadStarter),
           ),
         ],
       ),
@@ -1069,7 +1076,7 @@ class _BannerNote extends StatelessWidget {
               IconButton(
                 onPressed: onDismiss,
                 icon: const Icon(Icons.close, size: 18),
-                tooltip: 'Dismiss',
+                tooltip: AppLocalizations.of(context).groupsNoticeDismiss,
               ),
           ],
         ),
@@ -1097,7 +1104,7 @@ class _ErrorBody extends StatelessWidget {
             FilledButton(
               style: FilledButton.styleFrom(minimumSize: const Size(160, 48)),
               onPressed: onRetry,
-              child: const Text('Try again'),
+              child: Text(AppLocalizations.of(context).actionTryAgain),
             ),
           ],
         ),

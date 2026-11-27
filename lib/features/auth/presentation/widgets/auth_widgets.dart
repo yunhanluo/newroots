@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/services/auth_service.dart';
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 
 export '../../../../core/theme/brand_colors.dart';
 
@@ -43,6 +45,9 @@ class AuthTextField extends StatefulWidget {
     this.keyboardType,
     this.textInputAction,
     this.onSubmitted,
+    this.onChanged,
+    this.focusNode,
+    this.autofillHints,
   });
 
   final TextEditingController controller;
@@ -53,6 +58,9 @@ class AuthTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final ValueChanged<String>? onSubmitted;
+  final ValueChanged<String>? onChanged;
+  final FocusNode? focusNode;
+  final Iterable<String>? autofillHints;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -63,8 +71,16 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return TextField(
       controller: widget.controller,
+      focusNode: widget.focusNode,
+      autofillHints: widget.autofillHints,
+      onChanged: widget.onChanged,
+      autocorrect:
+          !widget.obscureText &&
+          widget.keyboardType != TextInputType.emailAddress,
+      enableSuggestions: !widget.obscureText,
       obscureText: _obscured,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
@@ -86,7 +102,9 @@ class _AuthTextFieldState extends State<AuthTextField> {
                       : Icons.visibility_off_outlined,
                   color: Colors.black54,
                 ),
-                tooltip: _obscured ? 'Show password' : 'Hide password',
+                tooltip: _obscured
+                    ? l10n.authShowPassword
+                    : l10n.authHidePassword,
                 onPressed: () => setState(() => _obscured = !_obscured),
               )
             : null,
@@ -141,6 +159,75 @@ class AuthPrimaryButton extends StatelessWidget {
                 ),
               )
             : Text(label, style: const TextStyle(fontSize: 16)),
+      ),
+    );
+  }
+}
+
+/// Translates an [AuthErrorCode] into the current app language.
+String localizedAuthError(AppLocalizations l10n, AuthErrorCode code) {
+  switch (code) {
+    case AuthErrorCode.invalidEmail:
+      return l10n.authErrorInvalidEmail;
+    case AuthErrorCode.userDisabled:
+      return l10n.authErrorUserDisabled;
+    case AuthErrorCode.wrongCredentials:
+      return l10n.authErrorWrongCredentials;
+    case AuthErrorCode.emailInUse:
+      return l10n.authErrorEmailInUse;
+    case AuthErrorCode.weakPassword:
+      return l10n.authErrorWeakPassword;
+    case AuthErrorCode.network:
+      return l10n.authErrorNetwork;
+    case AuthErrorCode.tooManyRequests:
+      return l10n.authErrorTooManyRequests;
+    case AuthErrorCode.unknown:
+      return l10n.authErrorGeneric;
+  }
+}
+
+/// Tinted message box for form errors (or successes) on the auth screens.
+class AuthMessageBanner extends StatelessWidget {
+  const AuthMessageBanner({
+    super.key,
+    required this.message,
+    this.isError = true,
+  });
+
+  final String message;
+  final bool isError;
+
+  static const _errorColor = Color(0xFFB3261E);
+
+  @override
+  Widget build(BuildContext context) {
+    final color = isError ? _errorColor : kBrandGreen;
+    return Semantics(
+      liveRegion: true,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: color.withValues(alpha: 0.35)),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              isError ? Icons.error_outline : Icons.check_circle_outline,
+              color: color,
+              size: 20,
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                message,
+                style: TextStyle(color: color, fontSize: 14, height: 1.35),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

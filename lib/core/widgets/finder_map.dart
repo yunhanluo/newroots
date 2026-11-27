@@ -5,6 +5,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../theme/brand_colors.dart';
+import '../../l10n/app_localizations.dart';
 
 const kMapMinZoom = 5.0;
 const kMapMaxZoom = 18.0;
@@ -184,7 +185,7 @@ class FinderMap extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    tooltip: 'Zoom in',
+                    tooltip: AppLocalizations.of(context).mapZoomIn,
                     visualDensity: VisualDensity.compact,
                     onPressed: () => _zoomBy(1),
                     icon: const Icon(Icons.add, color: kBrandGreen),
@@ -194,7 +195,7 @@ class FinderMap extends StatelessWidget {
                     color: kBrandGreen.withValues(alpha: 0.2),
                   ),
                   IconButton(
-                    tooltip: 'Zoom out',
+                    tooltip: AppLocalizations.of(context).mapZoomOut,
                     visualDensity: VisualDensity.compact,
                     onPressed: () => _zoomBy(-1),
                     icon: const Icon(Icons.remove, color: kBrandGreen),

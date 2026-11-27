@@ -1715,4 +1715,326 @@ class AppLocalizationsTl extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return 'Maaari kayong mag-appeal hanggang $deadline.';
   }
+
+  @override
+  String get authForgotPassword => 'Nakalimutan ang password?';
+
+  @override
+  String get authResetTitle => 'I-reset ang inyong password';
+
+  @override
+  String get authResetBody =>
+      'Ilagay ang inyong email at magpapadala kami ng link para i-reset ang inyong password.';
+
+  @override
+  String get authResetSend => 'Ipadala ang link';
+
+  @override
+  String authResetSent(String email) {
+    return 'Kung may account para sa $email, nagpadala kami ng link para i-reset ang inyong password. Tingnan ang inyong inbox.';
+  }
+
+  @override
+  String get authEmailRequired => 'Pakilagay ang inyong email address.';
+
+  @override
+  String get authShowPassword => 'Ipakita ang password';
+
+  @override
+  String get authHidePassword => 'Itago ang password';
+
+  @override
+  String get authErrorInvalidEmail => 'Mukhang mali ang email address na iyan.';
+
+  @override
+  String get authErrorUserDisabled => 'Na-disable ang account na ito.';
+
+  @override
+  String get authErrorWrongCredentials => 'Mali ang email o password.';
+
+  @override
+  String get authErrorEmailInUse => 'May account na para sa email na iyan.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Pumili ng mas matibay na password (hindi bababa sa 6 na character).';
+
+  @override
+  String get authErrorNetwork =>
+      'Walang koneksyon sa internet. Pakisubukang muli.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Masyadong maraming pagsubok. Maghintay sandali at subukang muli.';
+
+  @override
+  String get authErrorGeneric => 'May nangyaring mali. Pakisubukang muli.';
+
+  @override
+  String get homeGreeting => 'Maligayang pagbabalik';
+
+  @override
+  String get homeGreetingSubtitle => 'Ano ang gusto ninyong gawin ngayon?';
+
+  @override
+  String get homeProfileTooltip => 'Ang inyong profile';
+
+  @override
+  String get homeFinishProfileTitle => 'Kumpletuhin ang inyong profile';
+
+  @override
+  String get homeFinishProfileBody =>
+      'Sagutin ang ilang mabilis na tanong para maiangkop namin ang inyong roadmap.';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return 'Tanong $current sa $total';
+  }
+
+  @override
+  String get onboardingSkipped => 'Nilaktawan';
+
+  @override
+  String get onboardingSignInAgain =>
+      'Mag-sign in muli bago i-save ang inyong mga sagot.';
+
+  @override
+  String get onboardingSaveFailed =>
+      'Hindi ma-save ang inyong mga sagot. Pakisubukang muli.';
+
+  @override
+  String get onboardingSaveSignIn =>
+      'Hindi ma-save ang inyong mga sagot. Mag-sign in muli.';
+
+  @override
+  String get onboardingSaveNetwork =>
+      'Hindi maabot ang server. Tingnan ang inyong koneksyon at subukang muli.';
+
+  @override
+  String get onboardingBackgroundHint => 'Ang inyong karanasan';
+
+  @override
+  String get onboardingChildrenFirst =>
+      'Sagutin muna kung ilan ang inyong mga anak, o laktawan ang tanong na ito.';
+
+  @override
+  String get onboardingNoChildren => 'Walang edad ng anak na idadagdag.';
+
+  @override
+  String get mapZoomIn => 'Mag-zoom in';
+
+  @override
+  String get mapZoomOut => 'Mag-zoom out';
+
+  @override
+  String get notFoundTitle => 'Hindi nahanap ang pahina';
+
+  @override
+  String get notFoundBody =>
+      'Hindi namin mahanap ang pahinang hinahanap ninyo.';
+
+  @override
+  String get notFoundGoHome => 'Pumunta sa home';
+
+  @override
+  String get actionTryAgain => 'Subukang muli';
+
+  @override
+  String get groupsSeedAlreadyLoaded =>
+      'Naka-load na ang mga panimulang grupo.';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return 'Na-load ang $count panimulang grupo. Sumali sa isa para magsimulang mag-post.';
+  }
+
+  @override
+  String get groupsSeedFailed =>
+      'Hindi ma-load ang mga panimulang grupo. Pakisubukang muli.';
+
+  @override
+  String get groupsLoadFailed =>
+      'Hindi ma-load ang mga grupo. Pakisubukang muli.';
+
+  @override
+  String get groupsReviewGroups => 'Suriin ang mga grupo';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return 'Suriin ang mga grupo ($count nakabinbin)';
+  }
+
+  @override
+  String get groupsYourSuggestions => 'Ang inyong mga mungkahi';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return 'Ang inyong mga mungkahi ($count)';
+  }
+
+  @override
+  String get groupsWaitingForReview => 'Naghihintay ng pagsusuri ng admin.';
+
+  @override
+  String get groupsOptions => 'Mga opsyon ng grupo';
+
+  @override
+  String get groupsDeleteGroup => 'I-delete ang grupo';
+
+  @override
+  String get groupsDeleteReasonHint => 'Bakit inaalis ang grupong ito?';
+
+  @override
+  String get groupsRemovedTitle => 'Inalis ang grupong ito';
+
+  @override
+  String get groupsRemoveFromMine => 'Alisin sa aking mga grupo';
+
+  @override
+  String get groupsEmptyTitle => 'Wala pang grupo';
+
+  @override
+  String get groupsEmptyBody =>
+      'I-load ang mga panimulang grupo para sa mga bagong magulang, naghahanap ng trabaho, nag-aaral ng wika, at iba pa.';
+
+  @override
+  String get groupsLoadStarter => 'I-load ang mga panimulang grupo';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle =>
+      'Inalis ang isang grupong sinalihan ninyo';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return 'Inalis ang \"$title\". Dahilan: $reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return 'Inalis ng admin ang \"$title\".';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => 'Naaprubahan ang inyong grupo';
+
+  @override
+  String get groupsSuggestionDeclinedTitle =>
+      'Tinanggihan ang inyong mungkahing grupo';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return 'Bukas na ang \"$title\". Idinagdag kayo bilang miyembro.';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return 'Hindi idinagdag ang \"$title\". Dahilan: $reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return 'Hindi idinagdag ang \"$title\". Maaari kayong magmungkahi ng ibang grupo.';
+  }
+
+  @override
+  String get groupsOpenGroup => 'Buksan ang grupo';
+
+  @override
+  String get adminTitle => 'Admin ng grupo';
+
+  @override
+  String get adminOnly =>
+      'Ang mga admin lang ang makakasuri ng mga mungkahing grupo.';
+
+  @override
+  String get adminLoadSuggestionsFailed =>
+      'Hindi ma-load ang mga mungkahi. Pakisubukang muli.';
+
+  @override
+  String get adminAppealsTitle => 'Mga apela sa post';
+
+  @override
+  String get adminAppealsBody =>
+      'Nananatili ang mga nakatagong post nang 7 araw. I-restore ang isa para muling ipakita sa grupo.';
+
+  @override
+  String get adminLoadAppealsFailed =>
+      'Hindi ma-load ang mga apela. Pakisubukang muli.';
+
+  @override
+  String get adminNoAppeals => 'Walang nakabinbing apela.';
+
+  @override
+  String get adminGroupFallback => 'Grupo';
+
+  @override
+  String get adminSuggestionsTitle => 'Mga mungkahing grupo';
+
+  @override
+  String get adminSuggestionsBody =>
+      'Aprubahan ang isang mungkahi para buksan ang grupo sa lahat.';
+
+  @override
+  String get adminPendingOnly => 'Nakabinbin lang';
+
+  @override
+  String get adminNoPending => 'Walang nakabinbing mungkahi sa ngayon.';
+
+  @override
+  String get adminNoSuggestions => 'Wala pang mungkahi.';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return 'Iminungkahi ni $name';
+  }
+
+  @override
+  String get adminDeclineReasonHint =>
+      'Bakit tinatanggihan ang grupong ito? (opsyonal)';
+
+  @override
+  String get adminDecline => 'Tanggihan';
+
+  @override
+  String get adminApprove => 'Aprubahan';
+
+  @override
+  String get adminOpen => 'Buksan';
+
+  @override
+  String get adminRestore => 'I-restore';
+
+  @override
+  String adminHeldUntil(String date) {
+    return 'Naka-hold hanggang $date';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return 'Inalis: $reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return 'Apela: $appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => 'Tanggihan ang apelang ito?';
+
+  @override
+  String get adminDeclineAppealBody =>
+      'Permanenteng ide-delete ang post. Sasabihan ang may-akda na tinanggihan ang apela.';
+
+  @override
+  String get adminDeletePost => 'I-delete ang post';
+
+  @override
+  String get adminStatusPending => 'Nakabinbin';
+
+  @override
+  String get adminStatusApproved => 'Naaprubahan';
+
+  @override
+  String get adminStatusDeclined => 'Tinanggihan';
 }

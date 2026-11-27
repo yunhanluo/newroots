@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/models/support_group.dart';
 import '../../../../core/services/support_group_service.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// In-app notice when an admin removes a group the user had joined.
 class DeletedGroupNotice extends ConsumerWidget {
@@ -24,10 +25,11 @@ class DeletedGroupNotice extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final reason = group.deletedReason.trim();
     final body = reason.isNotEmpty
-        ? '"${group.title}" was removed. Reason: $reason'
-        : '"${group.title}" was removed by an admin.';
+        ? l10n.groupsNoticeGroupRemovedReason(group.title, reason)
+        : l10n.groupsNoticeGroupRemovedAdmin(group.title);
 
     return Material(
       color: _color.withValues(alpha: 0.1),
@@ -52,8 +54,8 @@ class DeletedGroupNotice extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'A group you joined was removed',
+                      Text(
+                        l10n.groupsNoticeGroupRemovedTitle,
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
@@ -75,7 +77,7 @@ class DeletedGroupNotice extends ConsumerWidget {
                 IconButton(
                   onPressed: () => _dismiss(ref),
                   icon: const Icon(Icons.close, size: 18),
-                  tooltip: 'Dismiss',
+                  tooltip: l10n.groupsNoticeDismiss,
                 ),
               ],
             ),
@@ -91,7 +93,7 @@ class DeletedGroupNotice extends ConsumerWidget {
                     side: BorderSide(color: _color.withValues(alpha: 0.5)),
                   ),
                   onPressed: () => _remove(ref),
-                  child: const Text('Remove from my groups'),
+                  child: Text(l10n.groupsRemoveFromMine),
                 ),
               ),
             ),

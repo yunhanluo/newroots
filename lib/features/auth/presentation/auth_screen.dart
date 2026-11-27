@@ -19,11 +19,21 @@ class AuthScreen extends ConsumerStatefulWidget {
 class _AuthScreenState extends ConsumerState<AuthScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _passwordFocus = FocusNode();
   bool _loading = false;
   String? _error;
+  String? _notice;
+
+  bool get _canSubmit =>
+      !_loading &&
+      _emailController.text.trim().isNotEmpty &&
+      _passwordController.text.isNotEmpty;
+
+  void _onFieldChanged(String _) => setState(() {});
 
   @override
   void dispose() {
+    _passwordFocus.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -42,16 +52,35 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
     setState(() {
       _loading = true;
       _error = null;
+      _notice = null;
     });
 
     try {
       await ref.read(authServiceProvider).signInWithEmail(email, password);
       // On success, the router redirect sends the user home automatically.
     } on AuthException catch (e) {
-      if (mounted) setState(() => _error = e.message);
+      if (mounted) {
+        setState(
+          () =>
+              _error = localizedAuthError(AppLocalizations.of(context), e.code),
+        );
+      }
     } finally {
       if (mounted) setState(() => _loading = false);
     }
+  }
+
+  Future<void> _forgotPassword() async {
+    final sentTo = await showDialog<String>(
+      context: context,
+      builder: (_) =>
+          _ForgotPasswordDialog(initialEmail: _emailController.text.trim()),
+    );
+    if (sentTo == null || !mounted) return;
+    setState(() {
+      _error = null;
+      _notice = AppLocalizations.of(context).authResetSent(sentTo);
+    });
   }
 
   @override
@@ -108,38 +137,68 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                     children: [
                       AuthHeader(subtitle: l10n.authWelcomeBack),
                       const SizedBox(height: 36),
-                      AuthTextField(
-                        controller: _emailController,
-                        label: l10n.authEmail,
-                        prefixIcon: Icons.email_outlined,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
+                      AutofillGroup(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            AuthTextField(
+                              controller: _emailController,
+                              label: l10n.authEmail,
+                              prefixIcon: Icons.email_outlined,
+                              keyboardType: TextInputType.emailAddress,
+                              textInputAction: TextInputAction.next,
+                              autofillHints: const [
+                                AutofillHints.email,
+                                AutofillHints.username,
+                              ],
+                              onChanged: _onFieldChanged,
+                              onSubmitted: (_) => _passwordFocus.requestFocus(),
+                            ),
+                            const SizedBox(height: 16),
+                            AuthTextField(
+                              controller: _passwordController,
+                              focusNode: _passwordFocus,
+                              label: l10n.authPassword,
+                              prefixIcon: Icons.lock_outline,
+                              obscureText: true,
+                              textInputAction: TextInputAction.done,
+                              autofillHints: const [AutofillHints.password],
+                              onChanged: _onFieldChanged,
+                              onSubmitted: (_) {
+                                if (_canSubmit) _logIn();
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      const SizedBox(height: 16),
-                      AuthTextField(
-                        controller: _passwordController,
-                        label: l10n.authPassword,
-                        prefixIcon: Icons.lock_outline,
-                        obscureText: true,
-                        textInputAction: TextInputAction.done,
-                        onSubmitted: (_) => _logIn(),
+                      Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: TextButton(
+                          onPressed: _loading ? null : _forgotPassword,
+                          style: TextButton.styleFrom(
+                            foregroundColor: kBrandGreen,
+                          ),
+                          child: Text(l10n.authForgotPassword),
+                        ),
                       ),
                       if (_error != null) ...[
-                        const SizedBox(height: 16),
-                        Text(
-                          _error!,
-                          style: const TextStyle(color: Colors.red),
-                        ),
+                        const SizedBox(height: 8),
+                        AuthMessageBanner(message: _error!),
                       ],
-                      const SizedBox(height: 24),
+                      if (_notice != null) ...[
+                        const SizedBox(height: 8),
+                        AuthMessageBanner(message: _notice!, isError: false),
+                      ],
+                      const SizedBox(height: 16),
                       AuthPrimaryButton(
                         label: l10n.actionLogIn,
                         loading: _loading,
-                        onPressed: _logIn,
+                        onPressed: _canSubmit ? _logIn : null,
                       ),
                       const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text(
                             l10n.authNoAccount,
@@ -173,6 +232,110 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// Asks for an email and sends a Firebase password-reset link.
+/// Pops with the email address on success.
+class _ForgotPasswordDialog extends ConsumerStatefulWidget {
+  const _ForgotPasswordDialog({required this.initialEmail});
+
+  final String initialEmail;
+
+  @override
+  ConsumerState<_ForgotPasswordDialog> createState() =>
+      _ForgotPasswordDialogState();
+}
+
+class _ForgotPasswordDialogState extends ConsumerState<_ForgotPasswordDialog> {
+  late final _emailController = TextEditingController(
+    text: widget.initialEmail,
+  );
+  bool _sending = false;
+  String? _error;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _send() async {
+    final l10n = AppLocalizations.of(context);
+    final email = _emailController.text.trim();
+    if (email.isEmpty) {
+      setState(() => _error = l10n.authEmailRequired);
+      return;
+    }
+    setState(() {
+      _sending = true;
+      _error = null;
+    });
+    try {
+      await ref.read(authServiceProvider).sendPasswordResetEmail(email);
+      if (mounted) Navigator.of(context).pop(email);
+    } on AuthException catch (e) {
+      if (mounted) setState(() => _error = localizedAuthError(l10n, e.code));
+    } finally {
+      if (mounted) setState(() => _sending = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return AlertDialog(
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
+      title: Text(l10n.authResetTitle),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              l10n.authResetBody,
+              style: const TextStyle(color: Colors.black54),
+            ),
+            const SizedBox(height: 16),
+            AuthTextField(
+              controller: _emailController,
+              label: l10n.authEmail,
+              prefixIcon: Icons.email_outlined,
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.send,
+              autofillHints: const [AutofillHints.email],
+              onSubmitted: (_) => _sending ? null : _send(),
+            ),
+            if (_error != null) ...[
+              const SizedBox(height: 12),
+              AuthMessageBanner(message: _error!),
+            ],
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: _sending ? null : () => Navigator.of(context).pop(),
+          style: TextButton.styleFrom(foregroundColor: kBrandGreen),
+          child: Text(l10n.actionCancel),
+        ),
+        FilledButton(
+          onPressed: _sending ? null : _send,
+          style: FilledButton.styleFrom(backgroundColor: kBrandGreen),
+          child: _sending
+              ? const SizedBox(
+                  height: 18,
+                  width: 18,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white,
+                  ),
+                )
+              : Text(l10n.authResetSend),
+        ),
+      ],
     );
   }
 }

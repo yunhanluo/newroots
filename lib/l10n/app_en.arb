@@ -721,5 +721,168 @@
     "placeholders": {
       "deadline": { "type": "String" }
     }
-  }
+  },
+  "authForgotPassword": "Forgot password?",
+  "authResetTitle": "Reset your password",
+  "authResetBody": "Enter your email and we'll send you a link to reset your password.",
+  "authResetSend": "Send reset link",
+  "authResetSent": "If an account exists for {email}, we sent a link to reset your password. Check your inbox.",
+  "@authResetSent": {
+    "placeholders": {
+      "email": { "type": "String" }
+    }
+  },
+  "authEmailRequired": "Please enter your email address.",
+  "authShowPassword": "Show password",
+  "authHidePassword": "Hide password",
+  "authErrorInvalidEmail": "That email address doesn't look right.",
+  "authErrorUserDisabled": "This account has been disabled.",
+  "authErrorWrongCredentials": "Incorrect email or password.",
+  "authErrorEmailInUse": "An account already exists for that email.",
+  "authErrorWeakPassword": "Please choose a stronger password (at least 6 characters).",
+  "authErrorNetwork": "No internet connection. Please try again.",
+  "authErrorTooManyRequests": "Too many attempts. Please wait a moment and try again.",
+  "authErrorGeneric": "Something went wrong. Please try again.",
+  "homeGreeting": "Welcome back",
+  "homeGreetingSubtitle": "What would you like to do today?",
+  "homeProfileTooltip": "Your profile",
+  "homeFinishProfileTitle": "Finish your profile",
+  "homeFinishProfileBody": "Answer a few quick questions so we can tailor your roadmap.",
+  "onboardingQuestionProgress": "Question {current} of {total}",
+  "@onboardingQuestionProgress": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "onboardingSkipped": "Skipped",
+  "onboardingSignInAgain": "Please sign in again before saving your answers.",
+  "onboardingSaveFailed": "Could not save your answers. Please try again.",
+  "onboardingSaveSignIn": "Could not save your answers. Please sign in again.",
+  "onboardingSaveNetwork": "Could not reach the server. Check your connection and try again.",
+  "onboardingBackgroundHint": "Your background",
+  "onboardingChildrenFirst": "Answer how many children you have first, or skip this question.",
+  "onboardingNoChildren": "No children's ages to add.",
+  "mapZoomIn": "Zoom in",
+  "mapZoomOut": "Zoom out",
+  "notFoundTitle": "Page not found",
+  "notFoundBody": "We couldn't find the page you were looking for.",
+  "notFoundGoHome": "Go to home",
+  "actionTryAgain": "Try again",
+  "groupsSeedAlreadyLoaded": "Starter groups are already loaded.",
+  "groupsSeedLoaded": "Loaded {count} starter groups. Join one to start posting.",
+  "@groupsSeedLoaded": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groupsSeedFailed": "Could not load starter groups. Please try again.",
+  "groupsLoadFailed": "Could not load groups. Please try again.",
+  "groupsReviewGroups": "Review groups",
+  "groupsReviewGroupsPending": "Review groups ({count} pending)",
+  "@groupsReviewGroupsPending": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groupsYourSuggestions": "Your suggestions",
+  "groupsYourSuggestionsCount": "Your suggestions ({count})",
+  "@groupsYourSuggestionsCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "groupsWaitingForReview": "Waiting for an admin to review.",
+  "groupsOptions": "Group options",
+  "groupsDeleteGroup": "Delete group",
+  "groupsDeleteReasonHint": "Why is this group being removed?",
+  "groupsRemovedTitle": "This group was removed",
+  "groupsRemoveFromMine": "Remove from my groups",
+  "groupsEmptyTitle": "No groups yet",
+  "groupsEmptyBody": "Load the starter groups for new parents, job seekers, language learners, and more.",
+  "groupsLoadStarter": "Load starter groups",
+  "groupsNoticeGroupRemovedTitle": "A group you joined was removed",
+  "groupsNoticeGroupRemovedReason": "\"{title}\" was removed. Reason: {reason}",
+  "@groupsNoticeGroupRemovedReason": {
+    "placeholders": {
+      "title": { "type": "String" },
+      "reason": { "type": "String" }
+    }
+  },
+  "groupsNoticeGroupRemovedAdmin": "\"{title}\" was removed by an admin.",
+  "@groupsNoticeGroupRemovedAdmin": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "groupsSuggestionApprovedTitle": "Your group was approved",
+  "groupsSuggestionDeclinedTitle": "Your group suggestion was declined",
+  "groupsSuggestionApprovedBody": "\"{title}\" is now open. You were added as a member.",
+  "@groupsSuggestionApprovedBody": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "groupsSuggestionDeclinedReason": "\"{title}\" was not added. Reason: {reason}",
+  "@groupsSuggestionDeclinedReason": {
+    "placeholders": {
+      "title": { "type": "String" },
+      "reason": { "type": "String" }
+    }
+  },
+  "groupsSuggestionDeclinedBody": "\"{title}\" was not added. You can suggest another group.",
+  "@groupsSuggestionDeclinedBody": {
+    "placeholders": {
+      "title": { "type": "String" }
+    }
+  },
+  "groupsOpenGroup": "Open group",
+  "adminTitle": "Group admin",
+  "adminOnly": "Only admins can review group suggestions.",
+  "adminLoadSuggestionsFailed": "Could not load suggestions. Please try again.",
+  "adminAppealsTitle": "Post appeals",
+  "adminAppealsBody": "Hidden posts stay for 7 days. Restore one to show it in the group again.",
+  "adminLoadAppealsFailed": "Could not load appeals. Please try again.",
+  "adminNoAppeals": "No pending appeals.",
+  "adminGroupFallback": "Group",
+  "adminSuggestionsTitle": "Group suggestions",
+  "adminSuggestionsBody": "Approve a suggestion to open the group for everyone to join.",
+  "adminPendingOnly": "Pending only",
+  "adminNoPending": "No pending suggestions right now.",
+  "adminNoSuggestions": "No suggestions yet.",
+  "adminSuggestedBy": "Suggested by {name}",
+  "@adminSuggestedBy": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "adminDeclineReasonHint": "Why is this group being declined? (optional)",
+  "adminDecline": "Decline",
+  "adminApprove": "Approve",
+  "adminOpen": "Open",
+  "adminRestore": "Restore",
+  "adminHeldUntil": "Held until {date}",
+  "@adminHeldUntil": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+  "adminRemovedReason": "Removed: {reason}",
+  "@adminRemovedReason": {
+    "placeholders": {
+      "reason": { "type": "String" }
+    }
+  },
+  "adminAppealText": "Appeal: {appeal}",
+  "@adminAppealText": {
+    "placeholders": {
+      "appeal": { "type": "String" }
+    }
+  },
+  "adminDeclineAppealTitle": "Decline this appeal?",
+  "adminDeclineAppealBody": "The post will be permanently deleted. The author will be told the appeal was declined.",
+  "adminDeletePost": "Delete post",
+  "adminStatusPending": "Pending",
+  "adminStatusApproved": "Approved",
+  "adminStatusDeclined": "Declined"
 }

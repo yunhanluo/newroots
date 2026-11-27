@@ -1612,4 +1612,302 @@ class AppLocalizationsZh extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return '您可以在 $deadline 前提出申诉。';
   }
+
+  @override
+  String get authForgotPassword => '忘记密码？';
+
+  @override
+  String get authResetTitle => '重置密码';
+
+  @override
+  String get authResetBody => '输入您的电子邮箱，我们会向您发送重置密码的链接。';
+
+  @override
+  String get authResetSend => '发送重置链接';
+
+  @override
+  String authResetSent(String email) {
+    return '如果 $email 已注册账户，我们已发送重置密码的链接。请查看您的收件箱。';
+  }
+
+  @override
+  String get authEmailRequired => '请输入您的电子邮箱。';
+
+  @override
+  String get authShowPassword => '显示密码';
+
+  @override
+  String get authHidePassword => '隐藏密码';
+
+  @override
+  String get authErrorInvalidEmail => '该电子邮箱地址似乎不正确。';
+
+  @override
+  String get authErrorUserDisabled => '此账户已被停用。';
+
+  @override
+  String get authErrorWrongCredentials => '电子邮箱或密码不正确。';
+
+  @override
+  String get authErrorEmailInUse => '该电子邮箱已注册账户。';
+
+  @override
+  String get authErrorWeakPassword => '请选择更安全的密码（至少 6 个字符）。';
+
+  @override
+  String get authErrorNetwork => '没有网络连接，请重试。';
+
+  @override
+  String get authErrorTooManyRequests => '尝试次数过多，请稍后再试。';
+
+  @override
+  String get authErrorGeneric => '出了点问题，请重试。';
+
+  @override
+  String get homeGreeting => '欢迎回来';
+
+  @override
+  String get homeGreetingSubtitle => '今天想做什么？';
+
+  @override
+  String get homeProfileTooltip => '个人资料';
+
+  @override
+  String get homeFinishProfileTitle => '完善个人资料';
+
+  @override
+  String get homeFinishProfileBody => '回答几个简单问题，我们将为您定制路线图。';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return '第 $current 题，共 $total 题';
+  }
+
+  @override
+  String get onboardingSkipped => '已跳过';
+
+  @override
+  String get onboardingSignInAgain => '保存答案前请重新登录。';
+
+  @override
+  String get onboardingSaveFailed => '无法保存您的答案，请重试。';
+
+  @override
+  String get onboardingSaveSignIn => '无法保存您的答案，请重新登录。';
+
+  @override
+  String get onboardingSaveNetwork => '无法连接服务器。请检查网络后重试。';
+
+  @override
+  String get onboardingBackgroundHint => '您的背景';
+
+  @override
+  String get onboardingChildrenFirst => '请先回答您有几个孩子，或跳过此问题。';
+
+  @override
+  String get onboardingNoChildren => '没有需要添加的孩子年龄。';
+
+  @override
+  String get mapZoomIn => '放大';
+
+  @override
+  String get mapZoomOut => '缩小';
+
+  @override
+  String get notFoundTitle => '找不到页面';
+
+  @override
+  String get notFoundBody => '我们找不到您要访问的页面。';
+
+  @override
+  String get notFoundGoHome => '返回首页';
+
+  @override
+  String get actionTryAgain => '重试';
+
+  @override
+  String get groupsSeedAlreadyLoaded => '入门群组已加载。';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return '已加载 $count 个入门群组。加入一个群组即可开始发帖。';
+  }
+
+  @override
+  String get groupsSeedFailed => '无法加载入门群组，请重试。';
+
+  @override
+  String get groupsLoadFailed => '无法加载群组，请重试。';
+
+  @override
+  String get groupsReviewGroups => '审核群组';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return '审核群组（$count 个待处理）';
+  }
+
+  @override
+  String get groupsYourSuggestions => '您的建议';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return '您的建议（$count）';
+  }
+
+  @override
+  String get groupsWaitingForReview => '等待管理员审核。';
+
+  @override
+  String get groupsOptions => '群组选项';
+
+  @override
+  String get groupsDeleteGroup => '删除群组';
+
+  @override
+  String get groupsDeleteReasonHint => '为什么要删除此群组？';
+
+  @override
+  String get groupsRemovedTitle => '此群组已被删除';
+
+  @override
+  String get groupsRemoveFromMine => '从我的群组中移除';
+
+  @override
+  String get groupsEmptyTitle => '还没有群组';
+
+  @override
+  String get groupsEmptyBody => '加载面向新手父母、求职者、语言学习者等人群的入门群组。';
+
+  @override
+  String get groupsLoadStarter => '加载入门群组';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle => '您加入的一个群组已被删除';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return '“$title”已被删除。原因：$reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return '“$title”已被管理员删除。';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => '您的群组已获批准';
+
+  @override
+  String get groupsSuggestionDeclinedTitle => '您的群组建议未获通过';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return '“$title”现已开放，您已被添加为成员。';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return '“$title”未被添加。原因：$reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return '“$title”未被添加。您可以建议其他群组。';
+  }
+
+  @override
+  String get groupsOpenGroup => '打开群组';
+
+  @override
+  String get adminTitle => '群组管理';
+
+  @override
+  String get adminOnly => '只有管理员可以审核群组建议。';
+
+  @override
+  String get adminLoadSuggestionsFailed => '无法加载建议，请重试。';
+
+  @override
+  String get adminAppealsTitle => '帖子申诉';
+
+  @override
+  String get adminAppealsBody => '隐藏的帖子会保留 7 天。恢复后会重新显示在群组中。';
+
+  @override
+  String get adminLoadAppealsFailed => '无法加载申诉，请重试。';
+
+  @override
+  String get adminNoAppeals => '没有待处理的申诉。';
+
+  @override
+  String get adminGroupFallback => '群组';
+
+  @override
+  String get adminSuggestionsTitle => '群组建议';
+
+  @override
+  String get adminSuggestionsBody => '批准建议后，群组将向所有人开放。';
+
+  @override
+  String get adminPendingOnly => '仅待处理';
+
+  @override
+  String get adminNoPending => '目前没有待处理的建议。';
+
+  @override
+  String get adminNoSuggestions => '还没有建议。';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return '由 $name 建议';
+  }
+
+  @override
+  String get adminDeclineReasonHint => '为什么拒绝此群组？（可选）';
+
+  @override
+  String get adminDecline => '拒绝';
+
+  @override
+  String get adminApprove => '批准';
+
+  @override
+  String get adminOpen => '打开';
+
+  @override
+  String get adminRestore => '恢复';
+
+  @override
+  String adminHeldUntil(String date) {
+    return '保留至 $date';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return '删除原因：$reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return '申诉：$appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => '拒绝此申诉？';
+
+  @override
+  String get adminDeclineAppealBody => '该帖子将被永久删除，作者会收到申诉被拒绝的通知。';
+
+  @override
+  String get adminDeletePost => '删除帖子';
+
+  @override
+  String get adminStatusPending => '待处理';
+
+  @override
+  String get adminStatusApproved => '已批准';
+
+  @override
+  String get adminStatusDeclined => '已拒绝';
 }

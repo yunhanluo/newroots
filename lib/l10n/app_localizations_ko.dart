@@ -1633,4 +1633,303 @@ class AppLocalizationsKo extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return '$deadline까지 이의 신청을 할 수 있습니다.';
   }
+
+  @override
+  String get authForgotPassword => '비밀번호를 잊으셨나요?';
+
+  @override
+  String get authResetTitle => '비밀번호 재설정';
+
+  @override
+  String get authResetBody => '이메일을 입력하시면 비밀번호 재설정 링크를 보내 드립니다.';
+
+  @override
+  String get authResetSend => '재설정 링크 보내기';
+
+  @override
+  String authResetSent(String email) {
+    return '$email 계정이 있다면 비밀번호 재설정 링크를 보냈습니다. 받은편지함을 확인하세요.';
+  }
+
+  @override
+  String get authEmailRequired => '이메일 주소를 입력하세요.';
+
+  @override
+  String get authShowPassword => '비밀번호 표시';
+
+  @override
+  String get authHidePassword => '비밀번호 숨기기';
+
+  @override
+  String get authErrorInvalidEmail => '이메일 주소가 올바르지 않은 것 같습니다.';
+
+  @override
+  String get authErrorUserDisabled => '이 계정은 비활성화되었습니다.';
+
+  @override
+  String get authErrorWrongCredentials => '이메일 또는 비밀번호가 올바르지 않습니다.';
+
+  @override
+  String get authErrorEmailInUse => '이 이메일로 이미 계정이 있습니다.';
+
+  @override
+  String get authErrorWeakPassword => '더 강력한 비밀번호를 선택하세요(6자 이상).';
+
+  @override
+  String get authErrorNetwork => '인터넷에 연결되어 있지 않습니다. 다시 시도해 주세요.';
+
+  @override
+  String get authErrorTooManyRequests => '시도 횟수가 너무 많습니다. 잠시 후 다시 시도해 주세요.';
+
+  @override
+  String get authErrorGeneric => '문제가 발생했습니다. 다시 시도해 주세요.';
+
+  @override
+  String get homeGreeting => '다시 오신 것을 환영합니다';
+
+  @override
+  String get homeGreetingSubtitle => '오늘은 무엇을 하시겠어요?';
+
+  @override
+  String get homeProfileTooltip => '내 프로필';
+
+  @override
+  String get homeFinishProfileTitle => '프로필 완성하기';
+
+  @override
+  String get homeFinishProfileBody => '몇 가지 간단한 질문에 답하시면 로드맵을 맞춤 설정해 드립니다.';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return '질문 $current/$total';
+  }
+
+  @override
+  String get onboardingSkipped => '건너뜀';
+
+  @override
+  String get onboardingSignInAgain => '답변을 저장하기 전에 다시 로그인해 주세요.';
+
+  @override
+  String get onboardingSaveFailed => '답변을 저장할 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get onboardingSaveSignIn => '답변을 저장할 수 없습니다. 다시 로그인해 주세요.';
+
+  @override
+  String get onboardingSaveNetwork => '서버에 연결할 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.';
+
+  @override
+  String get onboardingBackgroundHint => '나의 경력';
+
+  @override
+  String get onboardingChildrenFirst => '먼저 자녀 수를 답하시거나 이 질문을 건너뛰세요.';
+
+  @override
+  String get onboardingNoChildren => '추가할 자녀 나이가 없습니다.';
+
+  @override
+  String get mapZoomIn => '확대';
+
+  @override
+  String get mapZoomOut => '축소';
+
+  @override
+  String get notFoundTitle => '페이지를 찾을 수 없습니다';
+
+  @override
+  String get notFoundBody => '찾으시는 페이지를 찾을 수 없습니다.';
+
+  @override
+  String get notFoundGoHome => '홈으로 이동';
+
+  @override
+  String get actionTryAgain => '다시 시도';
+
+  @override
+  String get groupsSeedAlreadyLoaded => '기본 그룹이 이미 불러와져 있습니다.';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return '기본 그룹 $count개를 불러왔습니다. 그룹에 가입해 글을 올려 보세요.';
+  }
+
+  @override
+  String get groupsSeedFailed => '기본 그룹을 불러올 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get groupsLoadFailed => '그룹을 불러올 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get groupsReviewGroups => '그룹 검토';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return '그룹 검토($count개 대기 중)';
+  }
+
+  @override
+  String get groupsYourSuggestions => '내 제안';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return '내 제안($count)';
+  }
+
+  @override
+  String get groupsWaitingForReview => '관리자 검토를 기다리는 중입니다.';
+
+  @override
+  String get groupsOptions => '그룹 옵션';
+
+  @override
+  String get groupsDeleteGroup => '그룹 삭제';
+
+  @override
+  String get groupsDeleteReasonHint => '이 그룹을 삭제하는 이유는 무엇인가요?';
+
+  @override
+  String get groupsRemovedTitle => '이 그룹은 삭제되었습니다';
+
+  @override
+  String get groupsRemoveFromMine => '내 그룹에서 제거';
+
+  @override
+  String get groupsEmptyTitle => '아직 그룹이 없습니다';
+
+  @override
+  String get groupsEmptyBody => '새 부모, 구직자, 언어 학습자 등을 위한 기본 그룹을 불러오세요.';
+
+  @override
+  String get groupsLoadStarter => '기본 그룹 불러오기';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle => '가입한 그룹이 삭제되었습니다';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return '\"$title\" 그룹이 삭제되었습니다. 사유: $reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return '\"$title\" 그룹이 관리자에 의해 삭제되었습니다.';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => '그룹이 승인되었습니다';
+
+  @override
+  String get groupsSuggestionDeclinedTitle => '그룹 제안이 거절되었습니다';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return '\"$title\" 그룹이 열렸습니다. 회원으로 추가되었습니다.';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return '\"$title\" 그룹이 추가되지 않았습니다. 사유: $reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return '\"$title\" 그룹이 추가되지 않았습니다. 다른 그룹을 제안할 수 있습니다.';
+  }
+
+  @override
+  String get groupsOpenGroup => '그룹 열기';
+
+  @override
+  String get adminTitle => '그룹 관리';
+
+  @override
+  String get adminOnly => '관리자만 그룹 제안을 검토할 수 있습니다.';
+
+  @override
+  String get adminLoadSuggestionsFailed => '제안을 불러올 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get adminAppealsTitle => '게시물 이의 신청';
+
+  @override
+  String get adminAppealsBody => '숨긴 게시물은 7일간 보관됩니다. 복원하면 그룹에 다시 표시됩니다.';
+
+  @override
+  String get adminLoadAppealsFailed => '이의 신청을 불러올 수 없습니다. 다시 시도해 주세요.';
+
+  @override
+  String get adminNoAppeals => '대기 중인 이의 신청이 없습니다.';
+
+  @override
+  String get adminGroupFallback => '그룹';
+
+  @override
+  String get adminSuggestionsTitle => '그룹 제안';
+
+  @override
+  String get adminSuggestionsBody => '제안을 승인하면 누구나 가입할 수 있도록 그룹이 열립니다.';
+
+  @override
+  String get adminPendingOnly => '대기 중만';
+
+  @override
+  String get adminNoPending => '현재 대기 중인 제안이 없습니다.';
+
+  @override
+  String get adminNoSuggestions => '아직 제안이 없습니다.';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return '$name 님의 제안';
+  }
+
+  @override
+  String get adminDeclineReasonHint => '이 그룹을 거절하는 이유는 무엇인가요? (선택)';
+
+  @override
+  String get adminDecline => '거절';
+
+  @override
+  String get adminApprove => '승인';
+
+  @override
+  String get adminOpen => '열기';
+
+  @override
+  String get adminRestore => '복원';
+
+  @override
+  String adminHeldUntil(String date) {
+    return '$date까지 보관';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return '삭제 사유: $reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return '이의 신청: $appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => '이 이의 신청을 거절할까요?';
+
+  @override
+  String get adminDeclineAppealBody =>
+      '게시물이 영구적으로 삭제됩니다. 작성자에게 이의 신청이 거절되었음을 알립니다.';
+
+  @override
+  String get adminDeletePost => '게시물 삭제';
+
+  @override
+  String get adminStatusPending => '대기 중';
+
+  @override
+  String get adminStatusApproved => '승인됨';
+
+  @override
+  String get adminStatusDeclined => '거절됨';
 }

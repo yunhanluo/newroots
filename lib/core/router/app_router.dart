@@ -32,6 +32,7 @@ import '../../features/support_groups/presentation/group_post_screen.dart';
 import '../../features/support_groups/presentation/suggest_group_screen.dart';
 import '../../features/support_groups/presentation/support_groups_screen.dart';
 import '../models/support_group.dart';
+import '../widgets/not_found_screen.dart';
 
 /// Central route table. Names are referenced by screens via [context.goNamed].
 abstract class Routes {
@@ -239,8 +240,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ],
       ),
     ],
-    errorBuilder: (context, state) =>
-        Scaffold(body: Center(child: Text('Route not found: ${state.uri}'))),
+    errorBuilder: (context, state) => const NotFoundScreen(),
   );
 });
 

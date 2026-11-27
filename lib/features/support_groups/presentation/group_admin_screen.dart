@@ -9,6 +9,7 @@ import '../../../core/services/admin_service.dart';
 import '../../../core/services/support_group_service.dart';
 import '../../../core/theme/brand_colors.dart';
 import '../../../core/widgets/brand_scaffold.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Admin review of suggested support groups.
 class GroupAdminScreen extends ConsumerStatefulWidget {
@@ -116,18 +117,16 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Decline this appeal?'),
-        content: const Text(
-          'The post will be permanently deleted. The author will be told the appeal was declined.',
-        ),
+        title: Text(AppLocalizations.of(context).adminDeclineAppealTitle),
+        content: Text(AppLocalizations.of(context).adminDeclineAppealBody),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(AppLocalizations.of(context).actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Delete post'),
+            child: Text(AppLocalizations.of(context).adminDeletePost),
           ),
         ],
       ),
@@ -154,13 +153,13 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
   Widget build(BuildContext context) {
     final isAdmin = ref.watch(isAdminProvider);
     if (!isAdmin) {
-      return const BrandScaffold(
-        title: 'Group admin',
+      return BrandScaffold(
+        title: AppLocalizations.of(context).adminTitle,
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Text(
-              'Only admins can review group suggestions.',
+              AppLocalizations.of(context).adminOnly,
               textAlign: TextAlign.center,
             ),
           ),
@@ -176,14 +175,14 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
     };
 
     return BrandScaffold(
-      title: 'Group admin',
+      title: AppLocalizations.of(context).adminTitle,
       body: suggestionsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) => const Center(
+        error: (error, _) => Center(
           child: Padding(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Text(
-              'Could not load suggestions. Deploy Firestore rules, then try again.',
+              AppLocalizations.of(context).adminLoadSuggestionsFailed,
               textAlign: TextAlign.center,
             ),
           ),
@@ -198,16 +197,16 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 28),
             children: [
-              const Text(
-                'Post appeals',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).adminAppealsTitle,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Hidden posts stay for 7 days. Restore one to show it in the group again.',
+                AppLocalizations.of(context).adminAppealsBody,
                 style: TextStyle(
                   fontSize: 15,
                   height: 1.45,
@@ -216,12 +215,10 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
               ),
               const SizedBox(height: 12),
               if (appealsAsync.hasError)
-                const Text(
-                  'Could not load appeals. Deploy Firestore indexes, then try again.',
-                )
+                Text(AppLocalizations.of(context).adminLoadAppealsFailed)
               else if (appeals.isEmpty)
                 Text(
-                  'No pending appeals.',
+                  AppLocalizations.of(context).adminNoAppeals,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black87.withValues(alpha: 0.65),
@@ -231,7 +228,9 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
                 for (final post in appeals) ...[
                   _AppealCard(
                     post: post,
-                    groupTitle: groupTitles[post.groupId] ?? 'Group',
+                    groupTitle:
+                        groupTitles[post.groupId] ??
+                        AppLocalizations.of(context).adminGroupFallback,
                     busy: _busyAppealId == post.id,
                     onOpen: post.groupId.isEmpty
                         ? null
@@ -248,16 +247,16 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
                   const SizedBox(height: 12),
                 ],
               const SizedBox(height: 28),
-              const Text(
-                'Group suggestions',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).adminSuggestionsTitle,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Approve a suggestion to open the group for everyone to join.',
+                AppLocalizations.of(context).adminSuggestionsBody,
                 style: TextStyle(
                   fontSize: 15,
                   height: 1.45,
@@ -268,7 +267,7 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: FilterChip(
-                  label: const Text('Pending only'),
+                  label: Text(AppLocalizations.of(context).adminPendingOnly),
                   selected: _pendingOnly,
                   onSelected: (value) => setState(() => _pendingOnly = value),
                   selectedColor: kBrandGreen.withValues(alpha: 0.16),
@@ -293,8 +292,8 @@ class _GroupAdminScreenState extends ConsumerState<GroupAdminScreen> {
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     _pendingOnly
-                        ? 'No pending suggestions right now.'
-                        : 'No suggestions yet.',
+                        ? AppLocalizations.of(context).adminNoPending
+                        : AppLocalizations.of(context).adminNoSuggestions,
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black87.withValues(alpha: 0.65),
@@ -407,7 +406,7 @@ class _SuggestionCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Suggested by $who',
+              AppLocalizations.of(context).adminSuggestedBy(who),
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.black87.withValues(alpha: 0.55),
@@ -417,7 +416,9 @@ class _SuggestionCard extends StatelessWidget {
                 suggestion.rejectReason!.isNotEmpty) ...[
               const SizedBox(height: 8),
               Text(
-                'Reason: ${suggestion.rejectReason}',
+                AppLocalizations.of(
+                  context,
+                ).groupsReasonPrefix(suggestion.rejectReason!),
                 style: const TextStyle(fontSize: 13),
               ),
             ],
@@ -429,9 +430,11 @@ class _SuggestionCard extends StatelessWidget {
                   enabled: !rejecting,
                   textCapitalization: TextCapitalization.sentences,
                   maxLength: 300,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     isDense: true,
-                    hintText: 'Why is this group being declined? (optional)',
+                    hintText: AppLocalizations.of(
+                      context,
+                    ).adminDeclineReasonHint,
                     counterText: '',
                     filled: true,
                     fillColor: kBrandPageBg,
@@ -443,7 +446,7 @@ class _SuggestionCard extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: rejecting ? null : onCancelReject,
-                      child: const Text('Cancel'),
+                      child: Text(AppLocalizations.of(context).actionCancel),
                     ),
                     const SizedBox(width: 4),
                     TextButton(
@@ -455,7 +458,7 @@ class _SuggestionCard extends StatelessWidget {
                               height: 16,
                               child: CircularProgressIndicator(strokeWidth: 2),
                             )
-                          : const Text('Decline'),
+                          : Text(AppLocalizations.of(context).adminDecline),
                     ),
                   ],
                 ),
@@ -466,7 +469,7 @@ class _SuggestionCard extends StatelessWidget {
                     Expanded(
                       child: OutlinedButton(
                         onPressed: busy ? null : onReject,
-                        child: const Text('Decline'),
+                        child: Text(AppLocalizations.of(context).adminDecline),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -485,7 +488,7 @@ class _SuggestionCard extends StatelessWidget {
                                   color: Colors.white,
                                 ),
                               )
-                            : const Text('Approve'),
+                            : Text(AppLocalizations.of(context).adminApprove),
                       ),
                     ),
                   ],
@@ -518,7 +521,17 @@ class _StatusChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
-        status.label,
+        switch (status) {
+          GroupSuggestionStatus.pending => AppLocalizations.of(
+            context,
+          ).adminStatusPending,
+          GroupSuggestionStatus.approved => AppLocalizations.of(
+            context,
+          ).adminStatusApproved,
+          GroupSuggestionStatus.rejected => AppLocalizations.of(
+            context,
+          ).adminStatusDeclined,
+        },
         style: TextStyle(
           color: color,
           fontWeight: FontWeight.w700,
@@ -575,7 +588,8 @@ class _AppealCard extends StatelessWidget {
             Text(
               [
                 groupTitle,
-                if (deadline.isNotEmpty) 'Held until $deadline',
+                if (deadline.isNotEmpty)
+                  AppLocalizations.of(context).adminHeldUntil(deadline),
               ].join(' · '),
               style: TextStyle(
                 fontSize: 13,
@@ -585,14 +599,16 @@ class _AppealCard extends StatelessWidget {
             if (post.removedReason.isNotEmpty) ...[
               const SizedBox(height: 8),
               Text(
-                'Removed: ${post.removedReason}',
+                AppLocalizations.of(
+                  context,
+                ).adminRemovedReason(post.removedReason),
                 style: const TextStyle(fontSize: 14, height: 1.4),
               ),
             ],
             if (appeal.isNotEmpty) ...[
               const SizedBox(height: 8),
               Text(
-                'Appeal: $appeal',
+                AppLocalizations.of(context).adminAppealText(appeal),
                 style: const TextStyle(fontSize: 14, height: 1.4),
               ),
             ],
@@ -603,7 +619,7 @@ class _AppealCard extends StatelessWidget {
                   Expanded(
                     child: OutlinedButton(
                       onPressed: busy ? null : onOpen,
-                      child: const Text('Open'),
+                      child: Text(AppLocalizations.of(context).adminOpen),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -611,7 +627,7 @@ class _AppealCard extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: busy ? null : onDeny,
-                    child: const Text('Decline'),
+                    child: Text(AppLocalizations.of(context).adminDecline),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -630,7 +646,7 @@ class _AppealCard extends StatelessWidget {
                               color: Colors.white,
                             ),
                           )
-                        : const Text('Restore'),
+                        : Text(AppLocalizations.of(context).adminRestore),
                   ),
                 ),
               ],

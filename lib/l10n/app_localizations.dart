@@ -3149,6 +3149,546 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can appeal until {deadline}.'**
   String groupsNoticeAppealUntil(String deadline);
+
+  /// No description provided for @authForgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get authForgotPassword;
+
+  /// No description provided for @authResetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your password'**
+  String get authResetTitle;
+
+  /// No description provided for @authResetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email and we\'ll send you a link to reset your password.'**
+  String get authResetBody;
+
+  /// No description provided for @authResetSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send reset link'**
+  String get authResetSend;
+
+  /// No description provided for @authResetSent.
+  ///
+  /// In en, this message translates to:
+  /// **'If an account exists for {email}, we sent a link to reset your password. Check your inbox.'**
+  String authResetSent(String email);
+
+  /// No description provided for @authEmailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address.'**
+  String get authEmailRequired;
+
+  /// No description provided for @authShowPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Show password'**
+  String get authShowPassword;
+
+  /// No description provided for @authHidePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide password'**
+  String get authHidePassword;
+
+  /// No description provided for @authErrorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'That email address doesn\'t look right.'**
+  String get authErrorInvalidEmail;
+
+  /// No description provided for @authErrorUserDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'This account has been disabled.'**
+  String get authErrorUserDisabled;
+
+  /// No description provided for @authErrorWrongCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect email or password.'**
+  String get authErrorWrongCredentials;
+
+  /// No description provided for @authErrorEmailInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'An account already exists for that email.'**
+  String get authErrorEmailInUse;
+
+  /// No description provided for @authErrorWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a stronger password (at least 6 characters).'**
+  String get authErrorWeakPassword;
+
+  /// No description provided for @authErrorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please try again.'**
+  String get authErrorNetwork;
+
+  /// No description provided for @authErrorTooManyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Please wait a moment and try again.'**
+  String get authErrorTooManyRequests;
+
+  /// No description provided for @authErrorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get authErrorGeneric;
+
+  /// No description provided for @homeGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get homeGreeting;
+
+  /// No description provided for @homeGreetingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What would you like to do today?'**
+  String get homeGreetingSubtitle;
+
+  /// No description provided for @homeProfileTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profile'**
+  String get homeProfileTooltip;
+
+  /// No description provided for @homeFinishProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish your profile'**
+  String get homeFinishProfileTitle;
+
+  /// No description provided for @homeFinishProfileBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer a few quick questions so we can tailor your roadmap.'**
+  String get homeFinishProfileBody;
+
+  /// No description provided for @onboardingQuestionProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String onboardingQuestionProgress(int current, int total);
+
+  /// No description provided for @onboardingSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped'**
+  String get onboardingSkipped;
+
+  /// No description provided for @onboardingSignInAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in again before saving your answers.'**
+  String get onboardingSignInAgain;
+
+  /// No description provided for @onboardingSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save your answers. Please try again.'**
+  String get onboardingSaveFailed;
+
+  /// No description provided for @onboardingSaveSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not save your answers. Please sign in again.'**
+  String get onboardingSaveSignIn;
+
+  /// No description provided for @onboardingSaveNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not reach the server. Check your connection and try again.'**
+  String get onboardingSaveNetwork;
+
+  /// No description provided for @onboardingBackgroundHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your background'**
+  String get onboardingBackgroundHint;
+
+  /// No description provided for @onboardingChildrenFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer how many children you have first, or skip this question.'**
+  String get onboardingChildrenFirst;
+
+  /// No description provided for @onboardingNoChildren.
+  ///
+  /// In en, this message translates to:
+  /// **'No children\'s ages to add.'**
+  String get onboardingNoChildren;
+
+  /// No description provided for @mapZoomIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom in'**
+  String get mapZoomIn;
+
+  /// No description provided for @mapZoomOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom out'**
+  String get mapZoomOut;
+
+  /// No description provided for @notFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found'**
+  String get notFoundTitle;
+
+  /// No description provided for @notFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find the page you were looking for.'**
+  String get notFoundBody;
+
+  /// No description provided for @notFoundGoHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to home'**
+  String get notFoundGoHome;
+
+  /// No description provided for @actionTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get actionTryAgain;
+
+  /// No description provided for @groupsSeedAlreadyLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Starter groups are already loaded.'**
+  String get groupsSeedAlreadyLoaded;
+
+  /// No description provided for @groupsSeedLoaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Loaded {count} starter groups. Join one to start posting.'**
+  String groupsSeedLoaded(int count);
+
+  /// No description provided for @groupsSeedFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load starter groups. Please try again.'**
+  String get groupsSeedFailed;
+
+  /// No description provided for @groupsLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load groups. Please try again.'**
+  String get groupsLoadFailed;
+
+  /// No description provided for @groupsReviewGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Review groups'**
+  String get groupsReviewGroups;
+
+  /// No description provided for @groupsReviewGroupsPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Review groups ({count} pending)'**
+  String groupsReviewGroupsPending(int count);
+
+  /// No description provided for @groupsYourSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Your suggestions'**
+  String get groupsYourSuggestions;
+
+  /// No description provided for @groupsYourSuggestionsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Your suggestions ({count})'**
+  String groupsYourSuggestionsCount(int count);
+
+  /// No description provided for @groupsWaitingForReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for an admin to review.'**
+  String get groupsWaitingForReview;
+
+  /// No description provided for @groupsOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Group options'**
+  String get groupsOptions;
+
+  /// No description provided for @groupsDeleteGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete group'**
+  String get groupsDeleteGroup;
+
+  /// No description provided for @groupsDeleteReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Why is this group being removed?'**
+  String get groupsDeleteReasonHint;
+
+  /// No description provided for @groupsRemovedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This group was removed'**
+  String get groupsRemovedTitle;
+
+  /// No description provided for @groupsRemoveFromMine.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from my groups'**
+  String get groupsRemoveFromMine;
+
+  /// No description provided for @groupsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No groups yet'**
+  String get groupsEmptyTitle;
+
+  /// No description provided for @groupsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Load the starter groups for new parents, job seekers, language learners, and more.'**
+  String get groupsEmptyBody;
+
+  /// No description provided for @groupsLoadStarter.
+  ///
+  /// In en, this message translates to:
+  /// **'Load starter groups'**
+  String get groupsLoadStarter;
+
+  /// No description provided for @groupsNoticeGroupRemovedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A group you joined was removed'**
+  String get groupsNoticeGroupRemovedTitle;
+
+  /// No description provided for @groupsNoticeGroupRemovedReason.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" was removed. Reason: {reason}'**
+  String groupsNoticeGroupRemovedReason(String title, String reason);
+
+  /// No description provided for @groupsNoticeGroupRemovedAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" was removed by an admin.'**
+  String groupsNoticeGroupRemovedAdmin(String title);
+
+  /// No description provided for @groupsSuggestionApprovedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your group was approved'**
+  String get groupsSuggestionApprovedTitle;
+
+  /// No description provided for @groupsSuggestionDeclinedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your group suggestion was declined'**
+  String get groupsSuggestionDeclinedTitle;
+
+  /// No description provided for @groupsSuggestionApprovedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" is now open. You were added as a member.'**
+  String groupsSuggestionApprovedBody(String title);
+
+  /// No description provided for @groupsSuggestionDeclinedReason.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" was not added. Reason: {reason}'**
+  String groupsSuggestionDeclinedReason(String title, String reason);
+
+  /// No description provided for @groupsSuggestionDeclinedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" was not added. You can suggest another group.'**
+  String groupsSuggestionDeclinedBody(String title);
+
+  /// No description provided for @groupsOpenGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Open group'**
+  String get groupsOpenGroup;
+
+  /// No description provided for @adminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Group admin'**
+  String get adminTitle;
+
+  /// No description provided for @adminOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Only admins can review group suggestions.'**
+  String get adminOnly;
+
+  /// No description provided for @adminLoadSuggestionsFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load suggestions. Please try again.'**
+  String get adminLoadSuggestionsFailed;
+
+  /// No description provided for @adminAppealsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Post appeals'**
+  String get adminAppealsTitle;
+
+  /// No description provided for @adminAppealsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden posts stay for 7 days. Restore one to show it in the group again.'**
+  String get adminAppealsBody;
+
+  /// No description provided for @adminLoadAppealsFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load appeals. Please try again.'**
+  String get adminLoadAppealsFailed;
+
+  /// No description provided for @adminNoAppeals.
+  ///
+  /// In en, this message translates to:
+  /// **'No pending appeals.'**
+  String get adminNoAppeals;
+
+  /// No description provided for @adminGroupFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get adminGroupFallback;
+
+  /// No description provided for @adminSuggestionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Group suggestions'**
+  String get adminSuggestionsTitle;
+
+  /// No description provided for @adminSuggestionsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve a suggestion to open the group for everyone to join.'**
+  String get adminSuggestionsBody;
+
+  /// No description provided for @adminPendingOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending only'**
+  String get adminPendingOnly;
+
+  /// No description provided for @adminNoPending.
+  ///
+  /// In en, this message translates to:
+  /// **'No pending suggestions right now.'**
+  String get adminNoPending;
+
+  /// No description provided for @adminNoSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'No suggestions yet.'**
+  String get adminNoSuggestions;
+
+  /// No description provided for @adminSuggestedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggested by {name}'**
+  String adminSuggestedBy(String name);
+
+  /// No description provided for @adminDeclineReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Why is this group being declined? (optional)'**
+  String get adminDeclineReasonHint;
+
+  /// No description provided for @adminDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get adminDecline;
+
+  /// No description provided for @adminApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get adminApprove;
+
+  /// No description provided for @adminOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get adminOpen;
+
+  /// No description provided for @adminRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get adminRestore;
+
+  /// No description provided for @adminHeldUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Held until {date}'**
+  String adminHeldUntil(String date);
+
+  /// No description provided for @adminRemovedReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Removed: {reason}'**
+  String adminRemovedReason(String reason);
+
+  /// No description provided for @adminAppealText.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal: {appeal}'**
+  String adminAppealText(String appeal);
+
+  /// No description provided for @adminDeclineAppealTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline this appeal?'**
+  String get adminDeclineAppealTitle;
+
+  /// No description provided for @adminDeclineAppealBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The post will be permanently deleted. The author will be told the appeal was declined.'**
+  String get adminDeclineAppealBody;
+
+  /// No description provided for @adminDeletePost.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete post'**
+  String get adminDeletePost;
+
+  /// No description provided for @adminStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get adminStatusPending;
+
+  /// No description provided for @adminStatusApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get adminStatusApproved;
+
+  /// No description provided for @adminStatusDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get adminStatusDeclined;
 }
 
 class _AppLocalizationsDelegate

@@ -6,6 +6,7 @@ import '../../../../core/models/support_group.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/services/support_group_service.dart';
 import '../../../../core/theme/brand_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 
 /// In-app notice when an admin has approved or declined a user's suggestion.
 class SuggestionReviewNotice extends ConsumerWidget {
@@ -35,15 +36,16 @@ class SuggestionReviewNotice extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final approved = suggestion.status == GroupSuggestionStatus.approved;
     final color = approved ? kBrandGreen : const Color(0xFFB3261E);
+    final l10n = AppLocalizations.of(context);
     final title = approved
-        ? 'Your group was approved'
-        : 'Your group suggestion was declined';
+        ? l10n.groupsSuggestionApprovedTitle
+        : l10n.groupsSuggestionDeclinedTitle;
+    final reason = suggestion.rejectReason ?? '';
     final body = approved
-        ? '"${suggestion.title}" is now open. You were added as a member.'
-        : (suggestion.rejectReason != null &&
-                suggestion.rejectReason!.isNotEmpty)
-            ? '"${suggestion.title}" was not added. Reason: ${suggestion.rejectReason}'
-            : '"${suggestion.title}" was not added. You can suggest another group.';
+        ? l10n.groupsSuggestionApprovedBody(suggestion.title)
+        : reason.isNotEmpty
+            ? l10n.groupsSuggestionDeclinedReason(suggestion.title, reason)
+            : l10n.groupsSuggestionDeclinedBody(suggestion.title);
 
     return Material(
       color: color.withValues(alpha: 0.1),
@@ -93,7 +95,7 @@ class SuggestionReviewNotice extends ConsumerWidget {
                 IconButton(
                   onPressed: () => _dismiss(ref),
                   icon: const Icon(Icons.close, size: 18),
-                  tooltip: 'Dismiss',
+                  tooltip: l10n.groupsNoticeDismiss,
                 ),
               ],
             ),
@@ -111,7 +113,7 @@ class SuggestionReviewNotice extends ConsumerWidget {
                       backgroundColor: kBrandGreen,
                     ),
                     onPressed: () => _openGroup(context, ref),
-                    child: const Text('Open group'),
+                    child: Text(l10n.groupsOpenGroup),
                   ),
                 ),
               ),

@@ -20,7 +20,7 @@ class AuthService {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      throw AuthException(_friendlyMessage(e));
+      throw AuthException(_errorCode(e));
     }
   }
 
@@ -31,7 +31,17 @@ class AuthService {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      throw AuthException(_friendlyMessage(e));
+      throw AuthException(_errorCode(e));
+    }
+  }
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email.trim());
+    } on FirebaseAuthException catch (e) {
+      // Don't reveal whether an account exists for this email.
+      if (e.code == 'user-not-found') return;
+      throw AuthException(_errorCode(e));
     }
   }
 
@@ -46,36 +56,49 @@ class AuthService {
     );
   }
 
-  /// Translates Firebase error codes into plain, friendly language.
-  String _friendlyMessage(FirebaseAuthException e) {
+  /// Maps Firebase error codes to app-level codes the UI can translate.
+  AuthErrorCode _errorCode(FirebaseAuthException e) {
     switch (e.code) {
       case 'invalid-email':
-        return 'That email address doesn\'t look right.';
+        return AuthErrorCode.invalidEmail;
       case 'user-disabled':
-        return 'This account has been disabled.';
+        return AuthErrorCode.userDisabled;
       case 'user-not-found':
       case 'wrong-password':
       case 'invalid-credential':
-        return 'Incorrect email or password.';
+        return AuthErrorCode.wrongCredentials;
       case 'email-already-in-use':
-        return 'An account already exists for that email.';
+        return AuthErrorCode.emailInUse;
       case 'weak-password':
-        return 'Please choose a stronger password (at least 6 characters).';
+        return AuthErrorCode.weakPassword;
       case 'network-request-failed':
-        return 'No internet connection. Please try again.';
+        return AuthErrorCode.network;
+      case 'too-many-requests':
+        return AuthErrorCode.tooManyRequests;
       default:
-        return 'Something went wrong. Please try again.';
+        return AuthErrorCode.unknown;
     }
   }
 }
 
-/// Thrown for auth failures with a user-friendly [message].
+enum AuthErrorCode {
+  invalidEmail,
+  userDisabled,
+  wrongCredentials,
+  emailInUse,
+  weakPassword,
+  network,
+  tooManyRequests,
+  unknown,
+}
+
+/// Thrown for auth failures; translate [code] in the UI.
 class AuthException implements Exception {
-  const AuthException(this.message);
-  final String message;
+  const AuthException(this.code);
+  final AuthErrorCode code;
 
   @override
-  String toString() => message;
+  String toString() => 'AuthException($code)';
 }
 
 /// Lightweight user model independent of Firebase types.

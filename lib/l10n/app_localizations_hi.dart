@@ -1687,4 +1687,324 @@ class AppLocalizationsHi extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return 'आप $deadline तक अपील कर सकते हैं।';
   }
+
+  @override
+  String get authForgotPassword => 'पासवर्ड भूल गए?';
+
+  @override
+  String get authResetTitle => 'अपना पासवर्ड रीसेट करें';
+
+  @override
+  String get authResetBody =>
+      'अपना ईमेल दर्ज करें और हम आपको पासवर्ड रीसेट करने का लिंक भेजेंगे।';
+
+  @override
+  String get authResetSend => 'रीसेट लिंक भेजें';
+
+  @override
+  String authResetSent(String email) {
+    return 'अगर $email के लिए कोई खाता है, तो हमने पासवर्ड रीसेट करने का लिंक भेज दिया है। अपना इनबॉक्स देखें।';
+  }
+
+  @override
+  String get authEmailRequired => 'कृपया अपना ईमेल पता दर्ज करें।';
+
+  @override
+  String get authShowPassword => 'पासवर्ड दिखाएं';
+
+  @override
+  String get authHidePassword => 'पासवर्ड छिपाएं';
+
+  @override
+  String get authErrorInvalidEmail => 'यह ईमेल पता सही नहीं लग रहा है।';
+
+  @override
+  String get authErrorUserDisabled => 'यह खाता बंद कर दिया गया है।';
+
+  @override
+  String get authErrorWrongCredentials => 'ईमेल या पासवर्ड गलत है।';
+
+  @override
+  String get authErrorEmailInUse => 'इस ईमेल के लिए पहले से एक खाता मौजूद है।';
+
+  @override
+  String get authErrorWeakPassword =>
+      'कृपया एक मज़बूत पासवर्ड चुनें (कम से कम 6 अक्षर)।';
+
+  @override
+  String get authErrorNetwork =>
+      'इंटरनेट कनेक्शन नहीं है। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'बहुत अधिक प्रयास हुए। कृपया थोड़ी देर रुककर फिर से कोशिश करें।';
+
+  @override
+  String get authErrorGeneric => 'कुछ गलत हो गया। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get homeGreeting => 'फिर से स्वागत है';
+
+  @override
+  String get homeGreetingSubtitle => 'आज आप क्या करना चाहेंगे?';
+
+  @override
+  String get homeProfileTooltip => 'आपकी प्रोफ़ाइल';
+
+  @override
+  String get homeFinishProfileTitle => 'अपनी प्रोफ़ाइल पूरी करें';
+
+  @override
+  String get homeFinishProfileBody =>
+      'कुछ छोटे सवालों के जवाब दें ताकि हम आपका रोडमैप आपके हिसाब से बना सकें।';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return 'प्रश्न $current / $total';
+  }
+
+  @override
+  String get onboardingSkipped => 'छोड़ा गया';
+
+  @override
+  String get onboardingSignInAgain =>
+      'अपने जवाब सेव करने से पहले कृपया फिर से साइन इन करें।';
+
+  @override
+  String get onboardingSaveFailed =>
+      'आपके जवाब सेव नहीं हो सके। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get onboardingSaveSignIn =>
+      'आपके जवाब सेव नहीं हो सके। कृपया फिर से साइन इन करें।';
+
+  @override
+  String get onboardingSaveNetwork =>
+      'सर्वर से कनेक्ट नहीं हो सका। अपना कनेक्शन जांचें और फिर से कोशिश करें।';
+
+  @override
+  String get onboardingBackgroundHint => 'आपकी पृष्ठभूमि';
+
+  @override
+  String get onboardingChildrenFirst =>
+      'पहले बताएं कि आपके कितने बच्चे हैं, या यह प्रश्न छोड़ दें।';
+
+  @override
+  String get onboardingNoChildren =>
+      'जोड़ने के लिए बच्चों की कोई उम्र नहीं है।';
+
+  @override
+  String get mapZoomIn => 'ज़ूम इन करें';
+
+  @override
+  String get mapZoomOut => 'ज़ूम आउट करें';
+
+  @override
+  String get notFoundTitle => 'पेज नहीं मिला';
+
+  @override
+  String get notFoundBody => 'आप जो पेज ढूंढ रहे थे, वह हमें नहीं मिला।';
+
+  @override
+  String get notFoundGoHome => 'होम पर जाएं';
+
+  @override
+  String get actionTryAgain => 'फिर से कोशिश करें';
+
+  @override
+  String get groupsSeedAlreadyLoaded => 'शुरुआती ग्रुप पहले से लोड हैं।';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return '$count शुरुआती ग्रुप लोड हुए। पोस्ट करना शुरू करने के लिए किसी एक से जुड़ें।';
+  }
+
+  @override
+  String get groupsSeedFailed =>
+      'शुरुआती ग्रुप लोड नहीं हो सके। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get groupsLoadFailed =>
+      'ग्रुप लोड नहीं हो सके। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get groupsReviewGroups => 'ग्रुप की समीक्षा करें';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return 'ग्रुप की समीक्षा करें ($count बाकी)';
+  }
+
+  @override
+  String get groupsYourSuggestions => 'आपके सुझाव';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return 'आपके सुझाव ($count)';
+  }
+
+  @override
+  String get groupsWaitingForReview => 'एडमिन की समीक्षा का इंतज़ार है।';
+
+  @override
+  String get groupsOptions => 'ग्रुप विकल्प';
+
+  @override
+  String get groupsDeleteGroup => 'ग्रुप हटाएं';
+
+  @override
+  String get groupsDeleteReasonHint => 'यह ग्रुप क्यों हटाया जा रहा है?';
+
+  @override
+  String get groupsRemovedTitle => 'यह ग्रुप हटा दिया गया';
+
+  @override
+  String get groupsRemoveFromMine => 'मेरे ग्रुप से हटाएं';
+
+  @override
+  String get groupsEmptyTitle => 'अभी कोई ग्रुप नहीं है';
+
+  @override
+  String get groupsEmptyBody =>
+      'नए माता-पिता, नौकरी ढूंढने वालों, भाषा सीखने वालों और अन्य लोगों के लिए शुरुआती ग्रुप लोड करें।';
+
+  @override
+  String get groupsLoadStarter => 'शुरुआती ग्रुप लोड करें';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle =>
+      'आपके जुड़े हुए एक ग्रुप को हटा दिया गया';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return '\"$title\" हटा दिया गया। कारण: $reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return '\"$title\" को एक एडमिन ने हटा दिया।';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => 'आपका ग्रुप स्वीकृत हो गया';
+
+  @override
+  String get groupsSuggestionDeclinedTitle =>
+      'आपका ग्रुप सुझाव अस्वीकार कर दिया गया';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return '\"$title\" अब खुला है। आपको सदस्य के रूप में जोड़ दिया गया है।';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return '\"$title\" नहीं जोड़ा गया। कारण: $reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return '\"$title\" नहीं जोड़ा गया। आप कोई दूसरा ग्रुप सुझा सकते हैं।';
+  }
+
+  @override
+  String get groupsOpenGroup => 'ग्रुप खोलें';
+
+  @override
+  String get adminTitle => 'ग्रुप एडमिन';
+
+  @override
+  String get adminOnly => 'केवल एडमिन ही ग्रुप सुझावों की समीक्षा कर सकते हैं।';
+
+  @override
+  String get adminLoadSuggestionsFailed =>
+      'सुझाव लोड नहीं हो सके। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get adminAppealsTitle => 'पोस्ट अपील';
+
+  @override
+  String get adminAppealsBody =>
+      'छिपी हुई पोस्ट 7 दिनों तक रहती हैं। किसी पोस्ट को ग्रुप में फिर से दिखाने के लिए उसे बहाल करें।';
+
+  @override
+  String get adminLoadAppealsFailed =>
+      'अपील लोड नहीं हो सकीं। कृपया फिर से कोशिश करें।';
+
+  @override
+  String get adminNoAppeals => 'कोई अपील बाकी नहीं है।';
+
+  @override
+  String get adminGroupFallback => 'ग्रुप';
+
+  @override
+  String get adminSuggestionsTitle => 'ग्रुप सुझाव';
+
+  @override
+  String get adminSuggestionsBody =>
+      'सुझाव स्वीकार करें ताकि ग्रुप सबके जुड़ने के लिए खुल जाए।';
+
+  @override
+  String get adminPendingOnly => 'केवल बाकी';
+
+  @override
+  String get adminNoPending => 'अभी कोई सुझाव बाकी नहीं है।';
+
+  @override
+  String get adminNoSuggestions => 'अभी तक कोई सुझाव नहीं है।';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return '$name द्वारा सुझाया गया';
+  }
+
+  @override
+  String get adminDeclineReasonHint =>
+      'यह ग्रुप क्यों अस्वीकार किया जा रहा है? (वैकल्पिक)';
+
+  @override
+  String get adminDecline => 'अस्वीकार करें';
+
+  @override
+  String get adminApprove => 'स्वीकार करें';
+
+  @override
+  String get adminOpen => 'खोलें';
+
+  @override
+  String get adminRestore => 'बहाल करें';
+
+  @override
+  String adminHeldUntil(String date) {
+    return '$date तक रोका गया';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return 'हटाया गया: $reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return 'अपील: $appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => 'यह अपील अस्वीकार करें?';
+
+  @override
+  String get adminDeclineAppealBody =>
+      'पोस्ट हमेशा के लिए हटा दी जाएगी। लेखक को बताया जाएगा कि अपील अस्वीकार हो गई।';
+
+  @override
+  String get adminDeletePost => 'पोस्ट हटाएं';
+
+  @override
+  String get adminStatusPending => 'बाकी';
+
+  @override
+  String get adminStatusApproved => 'स्वीकृत';
+
+  @override
+  String get adminStatusDeclined => 'अस्वीकृत';
 }

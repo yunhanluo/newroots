@@ -24,10 +24,12 @@ class LandingScreen extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
+                stops: const [0.0, 0.45, 0.7, 1.0],
                 colors: [
-                  kBrandGreen.withValues(alpha: 0.25),
+                  kBrandGreen.withValues(alpha: 0.30),
                   kBrandGreen.withValues(alpha: 0.55),
-                  kBrandGreen.withValues(alpha: 0.88),
+                  kBrandGreen.withValues(alpha: 0.85),
+                  kBrandGreen.withValues(alpha: 0.96),
                 ],
               ),
             ),

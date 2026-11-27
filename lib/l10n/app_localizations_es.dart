@@ -1706,4 +1706,329 @@ class AppLocalizationsEs extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return 'Puede apelar hasta el $deadline.';
   }
+
+  @override
+  String get authForgotPassword => '¿Olvidó su contraseña?';
+
+  @override
+  String get authResetTitle => 'Restablecer su contraseña';
+
+  @override
+  String get authResetBody =>
+      'Ingrese su correo electrónico y le enviaremos un enlace para restablecer su contraseña.';
+
+  @override
+  String get authResetSend => 'Enviar enlace';
+
+  @override
+  String authResetSent(String email) {
+    return 'Si existe una cuenta para $email, le enviamos un enlace para restablecer su contraseña. Revise su bandeja de entrada.';
+  }
+
+  @override
+  String get authEmailRequired => 'Ingrese su correo electrónico.';
+
+  @override
+  String get authShowPassword => 'Mostrar contraseña';
+
+  @override
+  String get authHidePassword => 'Ocultar contraseña';
+
+  @override
+  String get authErrorInvalidEmail =>
+      'Ese correo electrónico no parece correcto.';
+
+  @override
+  String get authErrorUserDisabled => 'Esta cuenta ha sido desactivada.';
+
+  @override
+  String get authErrorWrongCredentials =>
+      'Correo electrónico o contraseña incorrectos.';
+
+  @override
+  String get authErrorEmailInUse =>
+      'Ya existe una cuenta con ese correo electrónico.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Elija una contraseña más segura (al menos 6 caracteres).';
+
+  @override
+  String get authErrorNetwork =>
+      'No hay conexión a internet. Inténtelo de nuevo.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Demasiados intentos. Espere un momento e inténtelo de nuevo.';
+
+  @override
+  String get authErrorGeneric => 'Algo salió mal. Inténtelo de nuevo.';
+
+  @override
+  String get homeGreeting => 'Bienvenido de nuevo';
+
+  @override
+  String get homeGreetingSubtitle => '¿Qué le gustaría hacer hoy?';
+
+  @override
+  String get homeProfileTooltip => 'Su perfil';
+
+  @override
+  String get homeFinishProfileTitle => 'Complete su perfil';
+
+  @override
+  String get homeFinishProfileBody =>
+      'Responda unas preguntas rápidas para que podamos personalizar su plan.';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return 'Pregunta $current de $total';
+  }
+
+  @override
+  String get onboardingSkipped => 'Omitida';
+
+  @override
+  String get onboardingSignInAgain =>
+      'Inicie sesión de nuevo antes de guardar sus respuestas.';
+
+  @override
+  String get onboardingSaveFailed =>
+      'No se pudieron guardar sus respuestas. Inténtelo de nuevo.';
+
+  @override
+  String get onboardingSaveSignIn =>
+      'No se pudieron guardar sus respuestas. Inicie sesión de nuevo.';
+
+  @override
+  String get onboardingSaveNetwork =>
+      'No se pudo conectar con el servidor. Revise su conexión e inténtelo de nuevo.';
+
+  @override
+  String get onboardingBackgroundHint => 'Su experiencia';
+
+  @override
+  String get onboardingChildrenFirst =>
+      'Primero responda cuántos hijos tiene, u omita esta pregunta.';
+
+  @override
+  String get onboardingNoChildren => 'No hay edades de hijos que agregar.';
+
+  @override
+  String get mapZoomIn => 'Acercar';
+
+  @override
+  String get mapZoomOut => 'Alejar';
+
+  @override
+  String get notFoundTitle => 'Página no encontrada';
+
+  @override
+  String get notFoundBody => 'No pudimos encontrar la página que buscaba.';
+
+  @override
+  String get notFoundGoHome => 'Ir al inicio';
+
+  @override
+  String get actionTryAgain => 'Intentar de nuevo';
+
+  @override
+  String get groupsSeedAlreadyLoaded =>
+      'Los grupos iniciales ya están cargados.';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return 'Se cargaron $count grupos iniciales. Únase a uno para empezar a publicar.';
+  }
+
+  @override
+  String get groupsSeedFailed =>
+      'No se pudieron cargar los grupos iniciales. Inténtelo de nuevo.';
+
+  @override
+  String get groupsLoadFailed =>
+      'No se pudieron cargar los grupos. Inténtelo de nuevo.';
+
+  @override
+  String get groupsReviewGroups => 'Revisar grupos';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return 'Revisar grupos ($count pendientes)';
+  }
+
+  @override
+  String get groupsYourSuggestions => 'Sus sugerencias';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return 'Sus sugerencias ($count)';
+  }
+
+  @override
+  String get groupsWaitingForReview =>
+      'Esperando la revisión de un administrador.';
+
+  @override
+  String get groupsOptions => 'Opciones del grupo';
+
+  @override
+  String get groupsDeleteGroup => 'Eliminar grupo';
+
+  @override
+  String get groupsDeleteReasonHint => '¿Por qué se elimina este grupo?';
+
+  @override
+  String get groupsRemovedTitle => 'Este grupo fue eliminado';
+
+  @override
+  String get groupsRemoveFromMine => 'Quitar de mis grupos';
+
+  @override
+  String get groupsEmptyTitle => 'Aún no hay grupos';
+
+  @override
+  String get groupsEmptyBody =>
+      'Cargue los grupos iniciales para nuevos padres, personas que buscan empleo, estudiantes de idiomas y más.';
+
+  @override
+  String get groupsLoadStarter => 'Cargar grupos iniciales';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle =>
+      'Se eliminó un grupo al que se unió';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return '\"$title\" fue eliminado. Motivo: $reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return '\"$title\" fue eliminado por un administrador.';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => 'Su grupo fue aprobado';
+
+  @override
+  String get groupsSuggestionDeclinedTitle =>
+      'Su sugerencia de grupo fue rechazada';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return '\"$title\" ya está abierto. Se le agregó como miembro.';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return '\"$title\" no se agregó. Motivo: $reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return '\"$title\" no se agregó. Puede sugerir otro grupo.';
+  }
+
+  @override
+  String get groupsOpenGroup => 'Abrir grupo';
+
+  @override
+  String get adminTitle => 'Administración de grupos';
+
+  @override
+  String get adminOnly =>
+      'Solo los administradores pueden revisar sugerencias de grupos.';
+
+  @override
+  String get adminLoadSuggestionsFailed =>
+      'No se pudieron cargar las sugerencias. Inténtelo de nuevo.';
+
+  @override
+  String get adminAppealsTitle => 'Apelaciones de publicaciones';
+
+  @override
+  String get adminAppealsBody =>
+      'Las publicaciones ocultas se conservan 7 días. Restaure una para mostrarla de nuevo en el grupo.';
+
+  @override
+  String get adminLoadAppealsFailed =>
+      'No se pudieron cargar las apelaciones. Inténtelo de nuevo.';
+
+  @override
+  String get adminNoAppeals => 'No hay apelaciones pendientes.';
+
+  @override
+  String get adminGroupFallback => 'Grupo';
+
+  @override
+  String get adminSuggestionsTitle => 'Sugerencias de grupos';
+
+  @override
+  String get adminSuggestionsBody =>
+      'Apruebe una sugerencia para abrir el grupo a todos.';
+
+  @override
+  String get adminPendingOnly => 'Solo pendientes';
+
+  @override
+  String get adminNoPending => 'No hay sugerencias pendientes por ahora.';
+
+  @override
+  String get adminNoSuggestions => 'Aún no hay sugerencias.';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return 'Sugerido por $name';
+  }
+
+  @override
+  String get adminDeclineReasonHint =>
+      '¿Por qué se rechaza este grupo? (opcional)';
+
+  @override
+  String get adminDecline => 'Rechazar';
+
+  @override
+  String get adminApprove => 'Aprobar';
+
+  @override
+  String get adminOpen => 'Abrir';
+
+  @override
+  String get adminRestore => 'Restaurar';
+
+  @override
+  String adminHeldUntil(String date) {
+    return 'Retenida hasta el $date';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return 'Eliminada: $reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return 'Apelación: $appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => '¿Rechazar esta apelación?';
+
+  @override
+  String get adminDeclineAppealBody =>
+      'La publicación se eliminará de forma permanente. Se le informará al autor que la apelación fue rechazada.';
+
+  @override
+  String get adminDeletePost => 'Eliminar publicación';
+
+  @override
+  String get adminStatusPending => 'Pendiente';
+
+  @override
+  String get adminStatusApproved => 'Aprobado';
+
+  @override
+  String get adminStatusDeclined => 'Rechazado';
 }

@@ -1694,4 +1694,320 @@ class AppLocalizationsVi extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return 'Bạn có thể kháng cáo đến $deadline.';
   }
+
+  @override
+  String get authForgotPassword => 'Quên mật khẩu?';
+
+  @override
+  String get authResetTitle => 'Đặt lại mật khẩu';
+
+  @override
+  String get authResetBody =>
+      'Nhập email của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.';
+
+  @override
+  String get authResetSend => 'Gửi liên kết';
+
+  @override
+  String authResetSent(String email) {
+    return 'Nếu có tài khoản cho $email, chúng tôi đã gửi liên kết đặt lại mật khẩu. Hãy kiểm tra hộp thư của bạn.';
+  }
+
+  @override
+  String get authEmailRequired => 'Vui lòng nhập địa chỉ email.';
+
+  @override
+  String get authShowPassword => 'Hiện mật khẩu';
+
+  @override
+  String get authHidePassword => 'Ẩn mật khẩu';
+
+  @override
+  String get authErrorInvalidEmail => 'Địa chỉ email này có vẻ không đúng.';
+
+  @override
+  String get authErrorUserDisabled => 'Tài khoản này đã bị vô hiệu hóa.';
+
+  @override
+  String get authErrorWrongCredentials => 'Email hoặc mật khẩu không đúng.';
+
+  @override
+  String get authErrorEmailInUse => 'Đã có tài khoản dùng email này.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Vui lòng chọn mật khẩu mạnh hơn (ít nhất 6 ký tự).';
+
+  @override
+  String get authErrorNetwork => 'Không có kết nối internet. Vui lòng thử lại.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Quá nhiều lần thử. Vui lòng đợi một lát rồi thử lại.';
+
+  @override
+  String get authErrorGeneric => 'Đã xảy ra lỗi. Vui lòng thử lại.';
+
+  @override
+  String get homeGreeting => 'Chào mừng bạn trở lại';
+
+  @override
+  String get homeGreetingSubtitle => 'Hôm nay bạn muốn làm gì?';
+
+  @override
+  String get homeProfileTooltip => 'Hồ sơ của bạn';
+
+  @override
+  String get homeFinishProfileTitle => 'Hoàn tất hồ sơ';
+
+  @override
+  String get homeFinishProfileBody =>
+      'Trả lời vài câu hỏi nhanh để chúng tôi điều chỉnh lộ trình cho bạn.';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return 'Câu hỏi $current/$total';
+  }
+
+  @override
+  String get onboardingSkipped => 'Đã bỏ qua';
+
+  @override
+  String get onboardingSignInAgain =>
+      'Vui lòng đăng nhập lại trước khi lưu câu trả lời.';
+
+  @override
+  String get onboardingSaveFailed =>
+      'Không thể lưu câu trả lời. Vui lòng thử lại.';
+
+  @override
+  String get onboardingSaveSignIn =>
+      'Không thể lưu câu trả lời. Vui lòng đăng nhập lại.';
+
+  @override
+  String get onboardingSaveNetwork =>
+      'Không thể kết nối máy chủ. Kiểm tra kết nối và thử lại.';
+
+  @override
+  String get onboardingBackgroundHint => 'Kinh nghiệm của bạn';
+
+  @override
+  String get onboardingChildrenFirst =>
+      'Hãy trả lời bạn có bao nhiêu con trước, hoặc bỏ qua câu hỏi này.';
+
+  @override
+  String get onboardingNoChildren => 'Không có tuổi của con để thêm.';
+
+  @override
+  String get mapZoomIn => 'Phóng to';
+
+  @override
+  String get mapZoomOut => 'Thu nhỏ';
+
+  @override
+  String get notFoundTitle => 'Không tìm thấy trang';
+
+  @override
+  String get notFoundBody => 'Chúng tôi không tìm thấy trang bạn cần.';
+
+  @override
+  String get notFoundGoHome => 'Về trang chủ';
+
+  @override
+  String get actionTryAgain => 'Thử lại';
+
+  @override
+  String get groupsSeedAlreadyLoaded => 'Các nhóm khởi đầu đã được tải.';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return 'Đã tải $count nhóm khởi đầu. Hãy tham gia một nhóm để bắt đầu đăng bài.';
+  }
+
+  @override
+  String get groupsSeedFailed =>
+      'Không thể tải các nhóm khởi đầu. Vui lòng thử lại.';
+
+  @override
+  String get groupsLoadFailed => 'Không thể tải các nhóm. Vui lòng thử lại.';
+
+  @override
+  String get groupsReviewGroups => 'Duyệt nhóm';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return 'Duyệt nhóm ($count đang chờ)';
+  }
+
+  @override
+  String get groupsYourSuggestions => 'Đề xuất của bạn';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return 'Đề xuất của bạn ($count)';
+  }
+
+  @override
+  String get groupsWaitingForReview => 'Đang chờ quản trị viên duyệt.';
+
+  @override
+  String get groupsOptions => 'Tùy chọn nhóm';
+
+  @override
+  String get groupsDeleteGroup => 'Xóa nhóm';
+
+  @override
+  String get groupsDeleteReasonHint => 'Vì sao nhóm này bị xóa?';
+
+  @override
+  String get groupsRemovedTitle => 'Nhóm này đã bị xóa';
+
+  @override
+  String get groupsRemoveFromMine => 'Xóa khỏi nhóm của tôi';
+
+  @override
+  String get groupsEmptyTitle => 'Chưa có nhóm nào';
+
+  @override
+  String get groupsEmptyBody =>
+      'Tải các nhóm khởi đầu dành cho cha mẹ mới, người tìm việc, người học ngôn ngữ và nhiều hơn nữa.';
+
+  @override
+  String get groupsLoadStarter => 'Tải nhóm khởi đầu';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle => 'Một nhóm bạn tham gia đã bị xóa';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return '\"$title\" đã bị xóa. Lý do: $reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return '\"$title\" đã bị quản trị viên xóa.';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => 'Nhóm của bạn đã được duyệt';
+
+  @override
+  String get groupsSuggestionDeclinedTitle =>
+      'Đề xuất nhóm của bạn đã bị từ chối';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return '\"$title\" đã mở. Bạn đã được thêm làm thành viên.';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return '\"$title\" không được thêm. Lý do: $reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return '\"$title\" không được thêm. Bạn có thể đề xuất nhóm khác.';
+  }
+
+  @override
+  String get groupsOpenGroup => 'Mở nhóm';
+
+  @override
+  String get adminTitle => 'Quản trị nhóm';
+
+  @override
+  String get adminOnly => 'Chỉ quản trị viên mới có thể duyệt đề xuất nhóm.';
+
+  @override
+  String get adminLoadSuggestionsFailed =>
+      'Không thể tải đề xuất. Vui lòng thử lại.';
+
+  @override
+  String get adminAppealsTitle => 'Kháng nghị bài đăng';
+
+  @override
+  String get adminAppealsBody =>
+      'Bài đăng bị ẩn được giữ 7 ngày. Khôi phục để hiển thị lại trong nhóm.';
+
+  @override
+  String get adminLoadAppealsFailed =>
+      'Không thể tải kháng nghị. Vui lòng thử lại.';
+
+  @override
+  String get adminNoAppeals => 'Không có kháng nghị đang chờ.';
+
+  @override
+  String get adminGroupFallback => 'Nhóm';
+
+  @override
+  String get adminSuggestionsTitle => 'Đề xuất nhóm';
+
+  @override
+  String get adminSuggestionsBody =>
+      'Duyệt đề xuất để mở nhóm cho mọi người tham gia.';
+
+  @override
+  String get adminPendingOnly => 'Chỉ đang chờ';
+
+  @override
+  String get adminNoPending => 'Hiện không có đề xuất đang chờ.';
+
+  @override
+  String get adminNoSuggestions => 'Chưa có đề xuất nào.';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return 'Đề xuất bởi $name';
+  }
+
+  @override
+  String get adminDeclineReasonHint =>
+      'Vì sao từ chối nhóm này? (không bắt buộc)';
+
+  @override
+  String get adminDecline => 'Từ chối';
+
+  @override
+  String get adminApprove => 'Duyệt';
+
+  @override
+  String get adminOpen => 'Mở';
+
+  @override
+  String get adminRestore => 'Khôi phục';
+
+  @override
+  String adminHeldUntil(String date) {
+    return 'Giữ đến $date';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return 'Đã xóa: $reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return 'Kháng nghị: $appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => 'Từ chối kháng nghị này?';
+
+  @override
+  String get adminDeclineAppealBody =>
+      'Bài đăng sẽ bị xóa vĩnh viễn. Tác giả sẽ được thông báo rằng kháng nghị bị từ chối.';
+
+  @override
+  String get adminDeletePost => 'Xóa bài đăng';
+
+  @override
+  String get adminStatusPending => 'Đang chờ';
+
+  @override
+  String get adminStatusApproved => 'Đã duyệt';
+
+  @override
+  String get adminStatusDeclined => 'Đã từ chối';
 }

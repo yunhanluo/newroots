@@ -23,11 +23,23 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmController = TextEditingController();
+  final _passwordFocus = FocusNode();
+  final _confirmFocus = FocusNode();
   bool _loading = false;
   String? _error;
 
+  bool get _canSubmit =>
+      !_loading &&
+      _emailController.text.trim().isNotEmpty &&
+      _passwordController.text.isNotEmpty &&
+      _confirmController.text.isNotEmpty;
+
+  void _onFieldChanged(String _) => setState(() {});
+
   @override
   void dispose() {
+    _passwordFocus.dispose();
+    _confirmFocus.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmController.dispose();
@@ -77,7 +89,12 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       }
       if (mounted) context.goNamed(Routes.welcome);
     } on AuthException catch (e) {
-      if (mounted) setState(() => _error = e.message);
+      if (mounted) {
+        setState(
+          () =>
+              _error = localizedAuthError(AppLocalizations.of(context), e.code),
+        );
+      }
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -187,45 +204,63 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                               },
                       ),
                       const SizedBox(height: 16),
-                      AuthTextField(
-                        controller: _emailController,
-                        prefixIcon: Icons.email_outlined,
-                        label: l10n.authEmail,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      const SizedBox(height: 16),
-                      AuthTextField(
-                        controller: _passwordController,
-                        label: l10n.authPassword,
-                        prefixIcon: Icons.lock_outline,
-                        obscureText: true,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      const SizedBox(height: 16),
-                      AuthTextField(
-                        controller: _confirmController,
-                        label: l10n.authConfirmPassword,
-                        obscureText: true,
-                        textInputAction: TextInputAction.done,
-                        onSubmitted: (_) => _createAccount(),
+                      AutofillGroup(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            AuthTextField(
+                              controller: _emailController,
+                              prefixIcon: Icons.email_outlined,
+                              label: l10n.authEmail,
+                              keyboardType: TextInputType.emailAddress,
+                              textInputAction: TextInputAction.next,
+                              autofillHints: const [AutofillHints.email],
+                              onChanged: _onFieldChanged,
+                              onSubmitted: (_) => _passwordFocus.requestFocus(),
+                            ),
+                            const SizedBox(height: 16),
+                            AuthTextField(
+                              controller: _passwordController,
+                              focusNode: _passwordFocus,
+                              label: l10n.authPassword,
+                              prefixIcon: Icons.lock_outline,
+                              obscureText: true,
+                              textInputAction: TextInputAction.next,
+                              autofillHints: const [AutofillHints.newPassword],
+                              onChanged: _onFieldChanged,
+                              onSubmitted: (_) => _confirmFocus.requestFocus(),
+                            ),
+                            const SizedBox(height: 16),
+                            AuthTextField(
+                              controller: _confirmController,
+                              focusNode: _confirmFocus,
+                              label: l10n.authConfirmPassword,
+                              prefixIcon: Icons.lock_outline,
+                              obscureText: true,
+                              textInputAction: TextInputAction.done,
+                              autofillHints: const [AutofillHints.newPassword],
+                              onChanged: _onFieldChanged,
+                              onSubmitted: (_) {
+                                if (_canSubmit) _createAccount();
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                       if (_error != null) ...[
                         const SizedBox(height: 16),
-                        Text(
-                          _error!,
-                          style: const TextStyle(color: Colors.red),
-                        ),
+                        AuthMessageBanner(message: _error!),
                       ],
                       const SizedBox(height: 24),
                       AuthPrimaryButton(
                         label: l10n.actionCreateAccount,
                         loading: _loading,
-                        onPressed: _createAccount,
+                        onPressed: _canSubmit ? _createAccount : null,
                       ),
                       const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text(
                             l10n.authHaveAccount,

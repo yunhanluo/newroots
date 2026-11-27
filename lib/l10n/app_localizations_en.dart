@@ -1697,4 +1697,320 @@ class AppLocalizationsEn extends AppLocalizations {
   String groupsNoticeAppealUntil(String deadline) {
     return 'You can appeal until $deadline.';
   }
+
+  @override
+  String get authForgotPassword => 'Forgot password?';
+
+  @override
+  String get authResetTitle => 'Reset your password';
+
+  @override
+  String get authResetBody =>
+      'Enter your email and we\'ll send you a link to reset your password.';
+
+  @override
+  String get authResetSend => 'Send reset link';
+
+  @override
+  String authResetSent(String email) {
+    return 'If an account exists for $email, we sent a link to reset your password. Check your inbox.';
+  }
+
+  @override
+  String get authEmailRequired => 'Please enter your email address.';
+
+  @override
+  String get authShowPassword => 'Show password';
+
+  @override
+  String get authHidePassword => 'Hide password';
+
+  @override
+  String get authErrorInvalidEmail => 'That email address doesn\'t look right.';
+
+  @override
+  String get authErrorUserDisabled => 'This account has been disabled.';
+
+  @override
+  String get authErrorWrongCredentials => 'Incorrect email or password.';
+
+  @override
+  String get authErrorEmailInUse => 'An account already exists for that email.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Please choose a stronger password (at least 6 characters).';
+
+  @override
+  String get authErrorNetwork => 'No internet connection. Please try again.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Too many attempts. Please wait a moment and try again.';
+
+  @override
+  String get authErrorGeneric => 'Something went wrong. Please try again.';
+
+  @override
+  String get homeGreeting => 'Welcome back';
+
+  @override
+  String get homeGreetingSubtitle => 'What would you like to do today?';
+
+  @override
+  String get homeProfileTooltip => 'Your profile';
+
+  @override
+  String get homeFinishProfileTitle => 'Finish your profile';
+
+  @override
+  String get homeFinishProfileBody =>
+      'Answer a few quick questions so we can tailor your roadmap.';
+
+  @override
+  String onboardingQuestionProgress(int current, int total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get onboardingSkipped => 'Skipped';
+
+  @override
+  String get onboardingSignInAgain =>
+      'Please sign in again before saving your answers.';
+
+  @override
+  String get onboardingSaveFailed =>
+      'Could not save your answers. Please try again.';
+
+  @override
+  String get onboardingSaveSignIn =>
+      'Could not save your answers. Please sign in again.';
+
+  @override
+  String get onboardingSaveNetwork =>
+      'Could not reach the server. Check your connection and try again.';
+
+  @override
+  String get onboardingBackgroundHint => 'Your background';
+
+  @override
+  String get onboardingChildrenFirst =>
+      'Answer how many children you have first, or skip this question.';
+
+  @override
+  String get onboardingNoChildren => 'No children\'s ages to add.';
+
+  @override
+  String get mapZoomIn => 'Zoom in';
+
+  @override
+  String get mapZoomOut => 'Zoom out';
+
+  @override
+  String get notFoundTitle => 'Page not found';
+
+  @override
+  String get notFoundBody => 'We couldn\'t find the page you were looking for.';
+
+  @override
+  String get notFoundGoHome => 'Go to home';
+
+  @override
+  String get actionTryAgain => 'Try again';
+
+  @override
+  String get groupsSeedAlreadyLoaded => 'Starter groups are already loaded.';
+
+  @override
+  String groupsSeedLoaded(int count) {
+    return 'Loaded $count starter groups. Join one to start posting.';
+  }
+
+  @override
+  String get groupsSeedFailed =>
+      'Could not load starter groups. Please try again.';
+
+  @override
+  String get groupsLoadFailed => 'Could not load groups. Please try again.';
+
+  @override
+  String get groupsReviewGroups => 'Review groups';
+
+  @override
+  String groupsReviewGroupsPending(int count) {
+    return 'Review groups ($count pending)';
+  }
+
+  @override
+  String get groupsYourSuggestions => 'Your suggestions';
+
+  @override
+  String groupsYourSuggestionsCount(int count) {
+    return 'Your suggestions ($count)';
+  }
+
+  @override
+  String get groupsWaitingForReview => 'Waiting for an admin to review.';
+
+  @override
+  String get groupsOptions => 'Group options';
+
+  @override
+  String get groupsDeleteGroup => 'Delete group';
+
+  @override
+  String get groupsDeleteReasonHint => 'Why is this group being removed?';
+
+  @override
+  String get groupsRemovedTitle => 'This group was removed';
+
+  @override
+  String get groupsRemoveFromMine => 'Remove from my groups';
+
+  @override
+  String get groupsEmptyTitle => 'No groups yet';
+
+  @override
+  String get groupsEmptyBody =>
+      'Load the starter groups for new parents, job seekers, language learners, and more.';
+
+  @override
+  String get groupsLoadStarter => 'Load starter groups';
+
+  @override
+  String get groupsNoticeGroupRemovedTitle => 'A group you joined was removed';
+
+  @override
+  String groupsNoticeGroupRemovedReason(String title, String reason) {
+    return '\"$title\" was removed. Reason: $reason';
+  }
+
+  @override
+  String groupsNoticeGroupRemovedAdmin(String title) {
+    return '\"$title\" was removed by an admin.';
+  }
+
+  @override
+  String get groupsSuggestionApprovedTitle => 'Your group was approved';
+
+  @override
+  String get groupsSuggestionDeclinedTitle =>
+      'Your group suggestion was declined';
+
+  @override
+  String groupsSuggestionApprovedBody(String title) {
+    return '\"$title\" is now open. You were added as a member.';
+  }
+
+  @override
+  String groupsSuggestionDeclinedReason(String title, String reason) {
+    return '\"$title\" was not added. Reason: $reason';
+  }
+
+  @override
+  String groupsSuggestionDeclinedBody(String title) {
+    return '\"$title\" was not added. You can suggest another group.';
+  }
+
+  @override
+  String get groupsOpenGroup => 'Open group';
+
+  @override
+  String get adminTitle => 'Group admin';
+
+  @override
+  String get adminOnly => 'Only admins can review group suggestions.';
+
+  @override
+  String get adminLoadSuggestionsFailed =>
+      'Could not load suggestions. Please try again.';
+
+  @override
+  String get adminAppealsTitle => 'Post appeals';
+
+  @override
+  String get adminAppealsBody =>
+      'Hidden posts stay for 7 days. Restore one to show it in the group again.';
+
+  @override
+  String get adminLoadAppealsFailed =>
+      'Could not load appeals. Please try again.';
+
+  @override
+  String get adminNoAppeals => 'No pending appeals.';
+
+  @override
+  String get adminGroupFallback => 'Group';
+
+  @override
+  String get adminSuggestionsTitle => 'Group suggestions';
+
+  @override
+  String get adminSuggestionsBody =>
+      'Approve a suggestion to open the group for everyone to join.';
+
+  @override
+  String get adminPendingOnly => 'Pending only';
+
+  @override
+  String get adminNoPending => 'No pending suggestions right now.';
+
+  @override
+  String get adminNoSuggestions => 'No suggestions yet.';
+
+  @override
+  String adminSuggestedBy(String name) {
+    return 'Suggested by $name';
+  }
+
+  @override
+  String get adminDeclineReasonHint =>
+      'Why is this group being declined? (optional)';
+
+  @override
+  String get adminDecline => 'Decline';
+
+  @override
+  String get adminApprove => 'Approve';
+
+  @override
+  String get adminOpen => 'Open';
+
+  @override
+  String get adminRestore => 'Restore';
+
+  @override
+  String adminHeldUntil(String date) {
+    return 'Held until $date';
+  }
+
+  @override
+  String adminRemovedReason(String reason) {
+    return 'Removed: $reason';
+  }
+
+  @override
+  String adminAppealText(String appeal) {
+    return 'Appeal: $appeal';
+  }
+
+  @override
+  String get adminDeclineAppealTitle => 'Decline this appeal?';
+
+  @override
+  String get adminDeclineAppealBody =>
+      'The post will be permanently deleted. The author will be told the appeal was declined.';
+
+  @override
+  String get adminDeletePost => 'Delete post';
+
+  @override
+  String get adminStatusPending => 'Pending';
+
+  @override
+  String get adminStatusApproved => 'Approved';
+
+  @override
+  String get adminStatusDeclined => 'Declined';
 }

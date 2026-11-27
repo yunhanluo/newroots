@@ -206,7 +206,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       debugPrint('Onboarding save failed: $e');
       if (mounted) {
         setState(
-          () => _error = 'Please sign in again before saving your answers.',
+          () => _error = AppLocalizations.of(context).onboardingSignInAgain,
         );
       }
       return;
@@ -214,7 +214,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       debugPrint('Onboarding save failed: $e\n$stack');
       if (mounted) {
         setState(
-          () => _error = 'Could not save your answers. Please try again.',
+          () => _error = AppLocalizations.of(context).onboardingSaveFailed,
         );
       }
       return;
@@ -226,13 +226,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   String _saveErrorMessage(FirebaseException e) {
+    final l10n = AppLocalizations.of(context);
     switch (e.code) {
       case 'permission-denied':
-        return 'Could not save your answers. Please sign in again.';
+        return l10n.onboardingSaveSignIn;
       case 'unavailable':
-        return 'Could not reach the server. Check your connection and try again.';
+        return l10n.onboardingSaveNetwork;
       default:
-        return 'Could not save your answers. Please try again.';
+        return l10n.onboardingSaveFailed;
     }
   }
 
@@ -454,14 +455,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
           cursorColor: kBrandGreen,
           onChanged: (_) => setState(() => _skippedQuestions.remove(step)),
-          decoration: _inputDecoration('Your background'),
+          decoration: _inputDecoration(l10n.onboardingBackgroundHint),
         );
       default:
         return ChildrenAgesEditor(
           draft: _childrenAges,
           emptyMessage: _skippedQuestions.contains(3) || _familySize == null
-              ? 'Answer how many children you have first, or skip this question.'
-              : 'No children’s ages to add.',
+              ? l10n.onboardingChildrenFirst
+              : l10n.onboardingNoChildren,
           onChanged: () => setState(() {
             _skippedQuestions.remove(step);
             _error = null;
@@ -483,9 +484,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: const Color(0xFFD9E2DE)),
         ),
-        child: const Text(
-          'Skipped',
-          style: TextStyle(
+        child: Text(
+          AppLocalizations.of(context).onboardingSkipped,
+          style: const TextStyle(
             color: Colors.black54,
             fontSize: 18,
             fontStyle: FontStyle.italic,
@@ -659,7 +660,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Question $questionNumber of $_totalQuestions',
+                      AppLocalizations.of(context).onboardingQuestionProgress(
+                        questionNumber,
+                        _totalQuestions,
+                      ),
                       textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.black54),
                     ),
