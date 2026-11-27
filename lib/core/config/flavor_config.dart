@@ -1,7 +1,6 @@
 /// App build flavors (see DEPLOY_PLAN.md §1).
 ///
-/// Each flavor points at a different Firebase project so test data never
-/// touches production.
+/// Both flavors use the single newroots-dev Firebase project.
 enum Flavor { dev, prod }
 
 class FlavorConfig {
@@ -26,12 +25,10 @@ class FlavorConfig {
   }
 
   static FlavorConfig init(Flavor flavor) {
-    // TODO: wire real project ids once Firebase projects are created.
     _instance = FlavorConfig._(
       flavor: flavor,
       appTitle: flavor == Flavor.prod ? 'NewRoots' : 'NewRoots (dev)',
-      firebaseProjectId:
-          flavor == Flavor.prod ? 'newroots-prod' : 'newroots-dev',
+      firebaseProjectId: 'newroots-dev',
     );
     return _instance!;
   }
